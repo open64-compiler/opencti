@@ -1,0 +1,23 @@
+#!/bin/sh
+
+app=$1
+wrapper=$2
+binary_location=.
+workdir=.
+if [[ $wrapper = "none" ]]
+then
+    wrapper=""
+fi
+
+
+# Main portion of script
+#
+  case $app in
+    ex*)
+      cd $workdir
+      $wrapper $binary_location/${app} < ${app}.in  > ${app}.out 2> ${app}.err
+      ;;
+    *)
+      echo Unknown benchmark name, skipping
+      ;;
+  esac

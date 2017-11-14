@@ -1,0 +1,279 @@
+CTI - Common Test Infrastructure
+-----------------------------------------------------------------------
+
+CTI is a "next generation" Testing infrastructure. CTI is currently
+supported in Linux and HP-UX (IPF and PA).
+
+Overview:
+  Leverage of common test sources
+  Allows individual developers to customize how each test is run 
+  Use a common machine pool for building and running tests
+  Automatically generate shell scripts to help in triage/re-run
+  Mostly a mix of perl and shell scripts
+
+Availability
+-----------------------------------------------------------------------
+
+The latest code in development can be obtained via SVN at
+http://svn.open64.net/svnroot/open64/opencti/trunk.
+
+Installation
+-----------------------------------------------------------------------
+
+Following steps give an example of typical installation process:
+
+1. This example assumes there are 4 machines host1, host2, host3, host4.
+   host1 and host2 are used for quality testing, host3 and host4 are
+   used for performance testing. In this case, host1 is also used as 
+   the dTM (Distributed Test Manager) server and webserver. Before
+   start, lets make sure the following prerequisites are met:
+    1.1  Set up NIS server, the 4 machines should connect to the same NIS server 
+    1.2  Set up a NFS mount point which is accessible to all this 4 machines, say /export/cti
+    1.3  Install perl 5.8 in all these machines 
+    1.4  Make a new directory /tmp/dTM and change mod to 777
+         like > mkdir /tmp/dTM ; chmod 777 /tmp/dTM
+    1.5  Install Java JVM in the CTI server machine, host1 
+    1.6  Configure a web server with "php", "cgi" and "perl" support.
+
+2. Logon to host1, download CTI source code to dir /export/cti/open_cti,
+   run ./configure.pl, you can accept most of the default option except
+   "dTM server hostname", "Web server hostname", "Web server user id"
+   and "Web server root path".
+   
+   jack@host1> cd /export/cti/open_cti
+   jack@host1> ./configure.pl
+   CTI home path [/export/cti/open_cti]: 
+   CTI admin user id [jack]: 
+   dTM server hostname [host1.xxx.com]:
+   dTM port number [6969]: 
+   dTM auxiliary port number [6968]: 
+   Perl path [/usr/local/bin/perl]: 
+   Java home path [/usr/lib64/jvm/java]:
+   Java options [-Xmx768m]: 
+   load daemon port number [5010]: 
+   Remote shell command [/usr/bin/ssh]: 
+   Web server hostname []: webserver.xxx.com 
+   Web server user id [www]: 
+   Web server root path [~jack/CTI]: CTI
+
+   Checking ...
+   SUCCESS: Required Perl modules found.
+   SUCCESS: Required Java '1.6.0' found at '/usr/lib64/jvm/java/bin/java'.
+
+   Updated 'host1.xxx.com' in dtm/conf/dTM_conf.xml ...
+   Updated 'host1.xxx.com' in doc/dtm_faq.html ...
+   .....
+
+3. Set up the Web server root path. Link open_cti/www directory to web server default
+   document directory as CTI, the command is similar as following. The value
+   /var/www/htdocs depends on where your root web server is. 
+
+   jack@host1> ln -s /export/cti/open_cti/www /var/www/htdocs/CTI
+
+   Now, use your web browser to access the address http://host1.xxx.com/CTI/index.html.
+   You should be able to see the main CTI page, if everything is setup correctly.
+
+4. Modify file export/cti/open_cti/dtm/conf/dTM_conf.xml, add Pools and machines. 
+   For ex: add 2 servers in Default pool and 2 servers in Performance pool   
+
+   ****BEFORE MODIFICATION****
+   <!-- POOLS -->
+   <pool>
+     <name>Default</name>
+     <host>host_name1</host>
+   </pool>
+
+   <pool>
+     <name>Performance</name>
+     <host>host_name1</host>
+   </pool>
+
+   ****AFTER MODIFICATION****
+   <!-- POOLS -->
+   <pool>
+     <name>Default</name>
+     <host>host1</host>
+     <host>host2</host>
+   </pool>
+
+   <pool>
+     <name>Performance</name>
+     <host>host3</host>
+     <host>host4</host>
+   </pool>
+
+5. Start the dtm server
+
+   jack@host1> /export/cti/open_cti/dtm/bin/dtm.pl -start
+   ...
+   dTM server is coming up on host1.xxx.com:6969...
+   dTM server is up on host1.xxx.com:6969 :-)
+
+6. Before enabling the servers, make sure the web server can interpret CGI at
+   directory dtm/cgi-bin and www/dtm/www/cgi-bin , for apache2 server, 
+   insert following lines to httpd.conf. The value /var/www/htdocs 
+   depends on where your root web server is.
+
+   ScriptAlias /CTI/cgi-bin/ "/var/www/htdocs/CTI/cgi-bin/"
+   ScriptAlias /CTI/dtm/www/cgi-bin/ "/var/www/htdocs/CTI/dtm/www/cgi-bin/"
+   <Directory "/var/www/htdocs/CTI/cgi-bin">
+     AllowOverride None
+     Options +ExecCGI -Includes
+     AddHandler cgi-script cgi
+     Order allow,deny
+     Allow from all
+   </Directory>
+   <Directory "/var/www/htdocs/CTI/dtm/www/cgi-bin">
+     AllowOverride None
+     Options +ExecCGI -Includes
+     AddHandler cgi-script cgi
+     Order allow,deny
+     Allow from all
+   </Directory>
+
+   Restart the web server. 
+
+7. Visit the dtm servers on web, enable servers you just add. Check the dtm server at
+   http://host1.xxx.com/CTI/dtm/www/cgi-bin/dTMState.php.
+   You can see the servers with a yellow background in both Default and Performance Pool.
+   To enable them, click Admin->Pool Summary, there is an column named "Enable", 
+   the value is "N", click it to enable each servers. After this, you can see the 
+   background of the server turn to blue. 
+
+
+Quick Start To Run CTI Tests
+-----------------------------------------------------------------------
+
+Contents
+  - Prepare
+  - Run tests with command line
+  - Run tests through web-page
+  - Triage test results
+
+1. Prepare
+
+  Before start the first testing, there are some items to be prepared.
+
+  1.1 Make sure CTI has been configured, if not please refer to <Installation> part
+
+  1.2 Make sure your test case has been added to {ctihome}/
+      cti_groups, if not please refer to:
+      Link 1: "http://{webserver}/{webroot}/cgi-bin/addtest.cgi"
+              to add Regression test case
+      Link 2: "http://{webserver}/{webroot}/CTI/doc/
+              cti-application-import.txt" to add Application or 
+              Performance test case
+
+  1.3 Prepare option files to specify the environment variables such as 
+      Compilers, OPT_LEVEL...
+      There are already template option files for regression test and 
+      Perf test at "{ctihome}/cti_regression/*.opt" and 
+      "{ctihome}/cti_perf/*.opt".
+      For more info of option files please refer to:
+      "http://{webserver}/{webroot}/doc/CTI_Users_Guide.html#options"
+
+  1.4 [optional] If run tests through web-page, a schedule file is also 
+      needed. Templates can be found at:"{ctihome}/
+      cti_regression/*.sched" and "{ctihome}/cti_perf/*.sched"
+
+
+2. Run tests with command line
+
+  2.1 Tools to run tests: "TM.pl" is located at 
+      {ctihome}/bin/
+
+  2.2 View available options for "TM.pl"
+      ${ctihome}/bin/TM.pl --help
+
+  2.3 Take regression test for example:
+      2.3.1 $ "{ctihome}/bin/TM.pl -d  -w {workdir} -l {logfile} \
+            -f {ctihome}/cti_regression/Regression.opt -nomail \
+            -x DTM_POOL=Default run"
+            {workdir} and {logfile} can be set by user which are used to 
+            specify the test work directory and test log file.
+
+      2.3.2 Check result
+            The result log is written to file {logfile}, it will show the 
+            number of PASS and FAIL.
+            Failed cases will be listed with different error type groups[COMPILATION FAILURES ,
+            EXECUTION FAILURES, OUTPUT DIFFERENCE FAILURES]
+            Here is a sample piece of log.[All fail because did not set compiler path]
+                # TOTAL TESTS=112,  PASS=0,  FAIL=112,  RUNNING=0
+
+                #_________________________________________________________
+                #  COMPILATION FAILURES
+                #_________________________________________________________
+                # Total Number of COMPILATION FAILURES = 112
+                Regression/apo/bug15235.c
+                Regression/cg/bug15191_4.c
+                Regression/cg/bug15191_7.c
+                Regression/cg/bug15199.c
+                Regression/cg/bug285.C
+                Regression/fe/bug15035.cxx
+                ......
+
+
+3. Run tests through web-page
+
+  Take perf test for example[option and schedule locate at {ctihome}/cti_perf]:
+
+  3.1 Modify {ctihome}/cti_perf/*.opt
+      Change line: export REAL_HARDWARE_MACHINE="{PERF_MACHINE_LISTS}" to the
+      real performance machines with blank as separator
+      ex: export REAL_HARDWARE_MACHINE="Perf_machine1 Perf_machine2 .... Perf_machineN"
+
+  3.2 Open link "http://{webserver}/{webroot}/cgi-bin/show-schedule.cgi?
+      sched={ctihome}/cti_perf/perf.sched"
+      There are link at the top of the page:
+        CTI Home: Document page
+        dTM server: DTM server page to show the current machine status and current tasks
+        Show failures: More details of daily failure
+        Schedule file:current page
+        Start tests: Run test
+        Show time taken: show how much time taken for current testing
+
+  3.3 Click "Start tests", choose the list to run, input "username", Click "Do it!"
+
+  3.4 Check the on-going tests at "http://{webserver}/{webroot}
+      /CTI/dtm/www/cgi-bin/dTMState.php?dumpUser="username" ", the username is set at step3.3.
+
+  3.5 Go back to page "http://{webserver}/{webroot}/cgi-bin/show-schedule.cgi
+      ?sched={ctihome}/cti_perf/perf.sched"
+
+      It will show the result in the table, like below:
+                Options file, view/dates        {dates} fail/total      Wed fail/total ...
+                perf.rate.opt                    {dates} 0 / 1                 ...
+                perf.speed.opt                   {dates} 0 / 1                 ...
+
+  3.6 Check log: Click link "{dates}" [http://{webserver}/{webroot}/cgi-bin/
+      get-log-file.cgi?log={ctihome}/cti_perf/log.{dates}.perf.rate.opt] will show the log file
+
+
+4. Triage test rest results
+
+  After tests finishes, there will be a workdir saved which maintains auto-generated shell scripts for triage.
+  Take above perf test for example, it's workdir is at
+  {ctihome}/cti_perf/work.{dates}.perf.rate.opt
+
+  4.1 cd {workdir}
+
+  4.2 There are generally following files:
+ 
+      *.env - Environment variables + options that you passed in your option file
+      *.compile.sh - Script to recompile
+      *.run.sh - Script to rerun test
+      *.result - Success/failure message
+      compare.results - should be empty if successful, else has the diff of your output with the master output
+      Soft links to actual sources (*.c, cpp) under {cti_groups} directory
+
+  4.3 If the error type is COMPILATION FAILURE run script *.compile.sh, it will generates  *.comp.err with the
+      actual invocation and output of the compile
+
+  4.4 If the error type is EXECUTION FAILURE run script *.run.sh, it will generate *.run.out with the output
+
+  The best way to learn is to read the *.sh and try to understand the calling relations.
+
+
+For more info of CTI document please refer to "http://{webserver}/{webroot}"
+
+Have Fun with CTI testing!

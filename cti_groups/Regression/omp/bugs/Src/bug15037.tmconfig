@@ -1,0 +1,4 @@
+RUN_TESTS=false
+LINK_TESTS=false
+OUTPUT_COMPARE=false
+

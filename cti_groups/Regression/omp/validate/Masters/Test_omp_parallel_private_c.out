@@ -1,0 +1,9 @@
+
+
+-----------------------------------------------------------------------------
+---------------------OpenMP ver 2.5 verification test------------------------
+-----------------------------------------------------------------------------
+ Test case       : "omp_parallel_private" construct verification. 
+-----------------------------------------------------------------------------
+The "omp_parallel_private" construct test verification : FAILS 
+Private variable count = 1 

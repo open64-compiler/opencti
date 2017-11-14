@@ -1,0 +1,127 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!--
+ ====================================================================
+
+ Copyright (C) 2011, Hewlett-Packard Development Company, L.P.
+ All Rights Reserved.
+
+ Open64 is free software; you can redistribute it and/or
+ modify it under the terms of the GNU General Public License
+ as published by the Free Software Foundation; either version 2
+ of the License, or (at your option) any later version.
+
+ Open64 is distributed in the hope that it will be useful,
+ but WITHOUT ANY WARRANTY; without even the implied warranty of
+ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ GNU General Public License for more details.
+
+ You should have received a copy of the GNU General Public License
+ along with this program; if not, write to the Free Software
+ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston,
+ MA  02110-1301, USA.
+
+ ====================================================================
+-->
+
+<!-- dTM Server configuration file -->
+
+<!DOCTYPE dTM [
+
+<!ELEMENT dTM (server, machine*, pool+, user+)>
+
+<!ELEMENT server (dtmhome, host, port, auxport, rsh, loadmonitor, loadmonport, loadmontimeout, sysinfo, admin, webaccount, defworkdir, defservice*, log, errorlog, launchgroupcount?, launchgroupwait?)>
+<!ELEMENT host (#PCDATA)>
+<!ELEMENT port (#PCDATA)>
+<!ELEMENT auxport (#PCDATA)>
+<!ELEMENT rsh (#PCDATA)>
+<!ELEMENT loadmonitor (#PCDATA)>
+<!ELEMENT loadmonport (#PCDATA)>
+<!ELEMENT loadmontimeout (#PCDATA)>
+<!ELEMENT sysinfo (#PCDATA)>
+<!ELEMENT dtmhome (#PCDATA)>
+<!ELEMENT admin (#PCDATA)>
+<!ELEMENT webaccount (#PCDATA)>
+<!ELEMENT defworkdir (#PCDATA)>
+<!ELEMENT defservice (#PCDATA)>
+<!ELEMENT log (#PCDATA)>
+<!ELEMENT errorlog (#PCDATA)>
+<!ELEMENT launchgroupcount (#PCDATA)>
+<!ELEMENT launchgroupwait (#PCDATA)>
+
+<!ELEMENT machine (host, os?, arch?, impl?, freq?, cpus?, workdir?, service*)>
+<!ELEMENT os (#PCDATA)>
+<!ELEMENT arch (#PCDATA)>
+<!ELEMENT impl (#PCDATA)>
+<!ELEMENT freq (#PCDATA)>
+<!ELEMENT cpus (#PCDATA)>
+<!ELEMENT workdir (#PCDATA)>
+<!ELEMENT service (#PCDATA)>
+
+<!ELEMENT pool (name, host+)>
+
+<!ELEMENT user (name, mpool, priority)>
+<!ELEMENT name (#PCDATA)>
+<!ELEMENT mpool (#PCDATA)>
+<!ELEMENT priority (#PCDATA)>
+
+]>
+
+
+<dTM>
+
+  <server>
+    <dtmhome>{CONFIGURE_ctihome}/dtm</dtmhome>
+    <host>{CONFIGURE_dtmserver}</host>
+    <port>{CONFIGURE_port}</port>
+    <auxport>{CONFIGURE_auxport}</auxport>
+    <rsh>{CONFIGURE_rsh}</rsh>
+    <loadmonitor>loadd</loadmonitor>
+    <loadmonport>{CONFIGURE_loadmonport}</loadmonport>
+    <loadmontimeout>10</loadmontimeout>
+    <sysinfo>get_sys_info.pl</sysinfo>
+    <admin>{CONFIGURE_admin}</admin>
+    <webaccount>{CONFIGURE_webaccount}</webaccount>
+    <defworkdir>/tmp/dTM</defworkdir>
+    <defservice>native</defservice>
+    <defservice>funcsim</defservice>
+    <log>server.log</log>
+    <errorlog>error.log</errorlog>
+    <launchgroupcount>64</launchgroupcount>
+    <launchgroupwait>3000</launchgroupwait>
+  </server>
+
+
+  <!-- example machine definition 
+  <machine>
+    <host>host_name1</host>
+    <os>Linux_SLES11_SP1</os>
+    <arch>x86_64</arch>
+    <impl>AuthenticAMD</impl>
+    <freq>2800</freq>
+    <cpus>8</cpus> 
+    <workdir>/tmp/dTM</workdir>
+    <service>native</service>
+    <service>funcsim</service>
+  </machine>
+  -->
+
+  <!-- POOLS -->
+  <pool>
+    <name>Default</name>
+    <host>host_name1</host>
+  </pool>
+
+  <pool>
+    <name>Performance</name>
+    <host>host_name2</host>
+  </pool>
+
+  <!-- guru, who use the default pool w/ higher priority -->
+  <user>
+    <name>{CONFIGURE_admin}</name>
+    <mpool>Default</mpool>
+    <priority>0</priority>
+  </user>
+
+</dTM>
+

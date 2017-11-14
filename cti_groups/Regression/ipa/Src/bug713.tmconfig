@@ -1,0 +1,5 @@
+OPT_LEVEL=fast
+DATA_MODE="+DD64"
+RUN_TESTS=false
+LINK_TESTS_EXE=true
+

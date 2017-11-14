@@ -1,0 +1,7 @@
+OPT_LEVEL=3
+#CC_OPTIONS="-COMP-rpr:enable+trace+gplimit=2 -OPT:wssa=on"
+CC_OPTIONS="-OPT:wssa=on"
+RUN_TESTS=false
+LINK_TESTS=false
+#CT_DIFF=true
+CT_DIFF=false

@@ -1,0 +1,83 @@
+<!--
+ ====================================================================
+
+ Copyright (C) 2011, Hewlett-Packard Development Company, L.P.
+ All Rights Reserved.
+
+ Open64 is free software; you can redistribute it and/or
+ modify it under the terms of the GNU General Public License
+ as published by the Free Software Foundation; either version 2
+ of the License, or (at your option) any later version.
+
+ Open64 is distributed in the hope that it will be useful,
+ but WITHOUT ANY WARRANTY; without even the implied warranty of
+ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ GNU General Public License for more details.
+
+ You should have received a copy of the GNU General Public License
+ along with this program; if not, write to the Free Software
+ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston,
+ MA  02110-1301, USA.
+
+ ====================================================================
+-->
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+<HEAD>
+<TITLE>Update Known Failures Guide</TITLE>
+</HEAD>
+<BODY>
+
+<PRE>
+<code>
+
+<H3>Update Known Failures User Guide</H3>
+
+<a name="add"></a>
+<H4>Add Failures </H4>
+
+    Four options according to your needs:
+
+    1. Add commented failures, only need to click "Add" button
+       at the bottom of the right pane.
+
+    2. Add commented failures & those with same Err Msg(move mouse
+       to the test name will display it), choose radio button "ALL 
+       SAME ERR MSG", then click "Add"
+
+    3. Add commented failures & those match with the patterns.
+       First confirm the pattern string, it should be the most general
+       words that all fails you want to add are able to match with it.
+       Input the pattern string to text field at the bottom of right pane.
+       Then select one of the fails which matches with the pattern and input 
+       your comments, choose radio button "ALL ALIKE ERR MSG with PERL 
+       Pattern" and click "Add".
+       Please note: only one field can be commented, and all those added 
+                    fails will have the same comment.
+      
+    4. Add all fails without Err msg.
+       Input "no core dump" to the pattern field, choose "ALL ALIKE ERR MSG 
+       with PERL Pattern" and click "Add". They will be added with same 
+       comment "no core dump"
+
+<a name="delete"></a>
+<H4>Delete Failures </H4>
+
+    Three options according to your needs:
+
+    1. Delete chosen failures, only need to click "Delete" button.
+    
+    2. Delete chosen failures & those with same Err Msg.
+
+    3. Delete chosen failures & those with same Err comment.
+
+<H4>Other Notes </H4>
+
+* The add pattern function may have Internal server error when your pattern
+  match with too much records. 
+
+</code>
+</PRE>
+
+</body>
+</HTML>

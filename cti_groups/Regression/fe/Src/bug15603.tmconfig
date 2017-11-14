@@ -1,0 +1,3 @@
+RUN_TESTS=false
+LINK_TESTS_EXE=true
+

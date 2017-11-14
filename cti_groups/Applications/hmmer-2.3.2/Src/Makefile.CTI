@@ -1,0 +1,26 @@
+# Makefile.CTI for hmmer-2.3.2
+
+APP_CONFIGFILE=./configure
+APP_MKFILE=Makefile
+CMP_FILE=compare.results
+INST_DIR=$(PWD)/target
+
+# environment override
+export CC       = $(CC)
+export CFLAGS   = $(EXTRA_FLAGS) $(EXTRA_CFLAGS)
+export AR=$(AR)
+export ARFLAGS
+
+compile:
+	$(APP_CONFIGFILE)
+	$(MAKE) -f $(APP_MKFILE)
+
+validate: run_tests
+
+run_tests:
+	$(MAKE) -f $(APP_MKFILE) check --quiet
+	touch $(CMP_FILE)
+
+clean:
+	$(MAKE) -s -f $(APP_MKFILE) clean
+

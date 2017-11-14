@@ -1,0 +1,785 @@
+<!--
+ ====================================================================
+
+ Copyright (C) 2011, Hewlett-Packard Development Company, L.P.
+ All Rights Reserved.
+
+ Open64 is free software; you can redistribute it and/or
+ modify it under the terms of the GNU General Public License
+ as published by the Free Software Foundation; either version 2
+ of the License, or (at your option) any later version.
+
+ Open64 is distributed in the hope that it will be useful,
+ but WITHOUT ANY WARRANTY; without even the implied warranty of
+ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ GNU General Public License for more details.
+
+ You should have received a copy of the GNU General Public License
+ along with this program; if not, write to the Free Software
+ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston,
+ MA  02110-1301, USA.
+
+ ====================================================================
+-->
+<h1>CTI Users Guide</h1>
+
+<h3>Contents</h3>
+ 
+<ul>
+ <li> <a href="CTI_Users_Guide.html#tutorial">Tutorial</a></li>
+ <li> <a href="CTI_Users_Guide.html#structure">Directory Structure</a></li>
+ <li> <a href="CTI_Users_Guide.html#tmconfig">tmconfig Files</a></li>
+ <li> <a href="CTI_Users_Guide.html#drivers">Driver Scripts</a></li>
+ <li> <a href="CTI_Users_Guide.html#add">Adding Tests</a></li>
+ <li> <a href="CTI_Users_Guide.html#tm">The tm Command</a></li>
+ <li> <a href="CTI_Users_Guide.html#options">Options</a></li>
+ <li> <a href="CTI_Users_Guide.html#hooks">Hook scripts</a></li>
+</ul>
+<hr size=1>
+  
+<h3><a name="tutorial">Tutorial</a></h3>
+CTI is a "next generation" infrastructure which provides improvements to and replaces TestManager (TM).
+<p>
+For this tutorial, pick a system from the list of machines in the <a href="%DTM_WEBHOME%/cgi-bin/dTMState.php?dumpPool=Default">default machine pool</a> used by the distributed test manager.
+
+<pre>
+<code>
+$ ssh &lt;machine&gt;
+$ %CTI_HOME%/bin/TM.pl -x SELECTIONS="Regression/.../eic  Regression/.../debug" -x CLEAN=false run
+</code>
+</pre>
+The tm option "-x" indicates that the next argument is a variable/value pair read by the test system.  For this run, we used SELECTIONS to select 'eic' and 'debug' as the only test unit to run and CLEAN=false so that files in the work directory are not removed.   For failed test cases, the work files are never removed.
+<br>
+If you want to execute the installed compilers, add an option for each compiler variable, such as "-x CXX=/opt/aCC/bin/aCC"
+<p>
+ <li>Test Results</li>
+<p>
+A log file containing test results and various option settings is produced upon completion of the test run.  The location and name of this file is controlled by the "LOG" option and can be emailed to an address by setting the "SEND_LOG" option.  By default, the file is created in your current working directory and is emailed to you.<br>
+Here's an example of the log file:
+<code>
+<pre>
+# Start time was Fri Oct 28 02:38:08 2011 on host
+# TEST_WORK_DIR --> /path/to/test/work/dir/results/work.fri.Regression.nightly
+# OPT_LEVEL     --> fast
+# DATA_MODE     --> +DD64
+# COMPILER_VERSION --> opencc
+# CTI_GROUPS    --> /path/to/cti/groups
+# REPOSITORY_TYPE --> RCS
+# OPTIONS_FILE--> /path/to/options/file/Regression.nightly
+# SELECTIONS  --> Regression/open64/apo
+# VIEW    --> None
+# DTM_POOL    --> Default
+# DTM_CPUARCH --> x86_64
+# DTM_PRIORITY--> 2
+# DISTRIBUTED_TM --> true
+# SEND_LOG    --> 
+# SKIP_SELECTIONS--> 
+# END OF HEADER
+
+# TOTAL TESTS=114,  PASS=114,  FAIL=0,  RUNNING=0
+
+# TIME_TAKEN --> 01:24:35 [1319799763 - 1319794688]
+
+# End Time was Fri Oct 28 04:02:43 2011
+</code>
+</pre>
+
+<li>Examining test failures</li>
+
+<p>
+When a test fails, CTI assigns it a failure outcome based on how
+the failre was detected. Failures include things like compiler errors,
+failures to link, runtime failures, etc. 
+A complete list of CTI test outcomes/results can be found <a href="describe-test-results.cgi"><b>here</b></a>.
+</p>
+
+<p>
+If a test fails in CTI, there will be "debris" remaining in the work
+directory that can be used to diagnose the failure. For example, suppose
+that the log file from a test run includes the following failures
+</p>
+
+<code>
+<pre>
+...
+#_________________________________________________________
+#  COMPILATION FAILURES 
+#_________________________________________________________
+# Total Number of COMPILATION FAILURES = 2
+Regression/.../modsched/CLLbs16166.c
+SPEC/SPECfp2000/178.galgel
+
+#_________________________________________________________
+#  EXECUTION FAILURES 
+#_________________________________________________________
+# Total Number of EXECUTION FAILURES = 1
+SPEC/SPECint2000/176.gcc
+
+</code>
+</pre>
+
+<p>
+To find out why the tests failed, "cd" to the work directory, 
+then to the subdirectory corresponding to the failed unit. For example,
+to look at the first compilation failure above, you would cd to 
+[work_dir]/Regression/.../modsched.
+</p>
+
+<p>
+Within the unit work directory, look for a file named
+<b>[test].err</b> or <b>[test].comp.err</b>, which will contain the
+stderr output from the compilation and/or link for the test. This is
+generally where any errors will turn up.  For execution failures,
+examine <b>[test].out</b> or <b>[test].run.out</b>, which will contain
+the output from the test run. For example, to examine the execution
+failure above, you could look for the file <b>176.gcc.run.out</b>.
+Other output files will similarly be qualifier by test name.
+</p>
+
+<li>Rerunning test failures</li>
+
+<p>
+There are several ways to rerun tests that are reported failed in CTI.
+<p>
+The first way involves using a browser to look at the work dir log file.
+There is a line in the log file itself that can be used to point a web
+browser at the log file itself and then from there rerun tests.
+At the top there is a selection called "Rerun". If you click
+that you'll see a new window with check boxes next to all the failed
+tests. By default all tests will be rerun but by unchecking a box it
+will skip a test. Click the "rerun" button at the bottom to 
+start tests.
+
+<p>
+A work directory containing test cases, scripts, and output is created during the test run.  By default, this directory is created in your currrent working directory, but you can control the location and name by setting the <a href="#testworkdir">TEST_WORK_DIR</a> option. 
+<p>
+The procedure for rerunning a test case varies depending on the test driver script used for the particular set of tests you ran.  The driver script used for each group of tests is determined by the implementor of those tests. See the section on <a href="CTI_Users_Guide.html#drivers">drivers</a> for more details, also the section on triaging. In our example here, the driver script used is regression.pl which produces (per test case) a set of shell scripts that compiles, links, executes, and compares the test case and its output.
+<p>
+Let's say that the eic_test.c test failed.  To rerun that test, you can go to the Regression/.../eic directory located in your test work dir and execute the eic_test.sh script.  This script invokes the compile, link, execute, and compare scripts.  Run the script with "sh -x eic_test.sh" to see where the failure is taking place (each of the various steps in the test takes place in an auxiliary scripts, to the top-level trace output is fairly easy to read).
+<p>
+ <li>Your Option File</li><p>
+   The test script accepts an option file argument (file containing mostly environment variable settings) that can be used by you to specify which compilers/wrappers to use, which test suites to run, where to place log files and work directories, which options to pass to the test groups, etc.
+<p> 
+All of the options have defaults set in %CTI_HOME%/conf/default.conf and all options can be specified on the tm command line using the -x argument.  Your option settings will override the defaults and any command line settings will override your option file.
+<p>
+Some variables are mentioned here to get you started. See the 
+<a href="#options">options section</a> for more details and a pointer
+to a complete list. (ednote: I keep mixing nomenclature: options or variables or env variables, what do we want?)
+<p>
+ <ul>
+    <li>CC, CXX, and FC</li> 
+<p>
+These variables specify C, C++, and Fortran compiler to use.
+<p>
+    <li>SELECTIONS</li><p>
+The SELECTIONS variable indicates which test UNITS or GROUPS to execute.  This variable takes one or more directories, where each directory represents a test GROUP, UNIT, or test to execute.   These test GROUPS and UNITS are organized in a hierarchy under %CTI_HOME%/GROUPS.  Explore those directories to determine what's available.
+<p> 
+   <li>LOG</li>
+<p>
+   <li>TEST_WORK_DIR</li>
+
+<p>
+The TEST_WORK_DIR control variable specifies the directory where the
+results of tests are to be placed when the test is run. By default,
+only failing tests are placed in the test work directory, unless the
+CLEAN control variable is set to "false".
+</p>
+
+<p>
+<b>WARNING:</b>It is best to set TEST_WORK_DIR to a directory that
+does not exist, or a directory that would not be missed if overwritten.
+If you give the "clean" option when invoking tm, 
+the directory pointed to by TEST_WORK_DIR will be removed (e.g. you don't want to set TEST_WORK_DIR to your home directory in this case).
+
+<p>
+
+ </ul><p>
+Now, create an options file with the following lines:<p>
+<pre>
+<code>
+   CC=/opt/ansic/bin/cc
+   CXX=/opt/aCC/bin/aCC
+   SELECTIONS=Regression/.../eic
+   LOG=$HOME/eic.log
+   TEST_WORK_DIR=$HOME/work.eic
+   SEND_LOG=&lt;your email addr&gt;
+</code>
+</pre>
+<p>
+And, execute with your new options file:
+<pre>
+<code> 
+$ %CTI_HOME%/bin/TM.pl -f &lt;your option file&gt; clean run analyze
+</code>
+</pre>
+<p>
+ <li>Distributed Mode</li>
+<p>
+The Distributed TM facility (dTM) allows you to execute tests on machines associated with a test pool.  The tests that you specifiy are automatically assigned to one or more of the test machines contained in the pool based on the architecture and load of the machine.  Here's how:
+<p>
+<ul>
+<li>You must first be registered with the dTM server.
+How is this done?
+<p>
+<li>Specify -d on the command line. (Or, specify DISTRIBUTED_TM=true in your options file)</li>
+<p>
+<pre>
+<code>
+$ %CTI_HOME%/bin/TM.pl -d -f &lt;your option file&gt; clean run
+</code>
+</pre>
+<li>Check Status</li>
+<p>
+Click on your user-id in the "User Task Queues" at <a href="%DTM_WEBHOME%/cgi-bin/dTMState.php" target="_blank">%DTM_WEBHOME%/cgi-bin/dTMState.php</a> for status of your test tasks.  Note that the list is a queue, so your user-id only appears if you have a test task waiting or executing.  Once all of you tasks complete, your uid will no longer be present. 
+<p>
+</ul>
+<p>
+ <li>Executing Single tests.</li><p>
+ <li>Killing your test run.
+</ul>
+
+<h3><a name="tmconfig">Tmconfig Files</a></h3>
+<h4>tmconfig</h4>
+<p>
+The tmconfig file is used to hold customizations for a given group, unit, or test.  
+ If a "tmconfig" file appears at a given point in the test source
+ hierarchy (for example at the group or unit level), then the settings
+ of each option variable contained within that file will be
+ applied for all of the descendants of the group/unit within the
+ hierarchy.
+<p>
+The settings in a tmconfig file take precedence over the settings in the default.conf file.  In addition, each test may have its own tmconfig file "&lt;test&gt;.tmconfig" which takes precedence over the group or unit tmconfig file.  "&lt;test&gt;.tmconfig" files must be located in the Src directory for a Unit along side the actual test sources.
+<p>
+<ul>
+<li>Format</li><p>
+The format of this file will be a series of shell-style variable
+settings, e.g.
+<pre>
+<code>
+	# this is a comment
+	VAR1=VALUE
+	VAR2="another value"
+</pre>
+</code>
+where VAR1 and VAR2 are option variables recognized by CTI, see <a href="CTI_Users_Guide.html#options">Customizable Options</a> for a list.  In addition, the options EXTRA_POST_xxx and EXTRA_PRE_xxx are recognized (see below).
+<p>
+Additionally, the file can be conditionalized by the use of %if/%else/%endif
+conditional expressions.  Preprocessing is done automatically if a %if
+statement is seen in a tmconfig file and is done by the filepp preprocessor
+written in perl.  Conditions can be written to check the values of the
+CTI_TARGET_COMPILER, CTI_TARGET_OS, CTI_TARGET_OS_RELEASE, CTI_TARGET_ARCH,
+CTI_COMPILE_HOST_OS, and CTI_RUN_HOST_OS variables.  Only these CTI variables
+are set when preprocessing.  An if statement might look something like:
+<pre>
+<code>
+	%if ("CTI_TARGET_COMPILER" eq "GCC")
+</pre>
+</code>
+<p>
+CTI_TARGET_COMPILER is set to GCC by default. CTI_TARGET_OS is set to
+Linux by default.  CTI_TARGET_OS_RELEASE will depend on the type
+of OS. CTI_TARGET_ARCH is set to x86_64 by default.
+<p>
+<li>Adding values to existing variable settings.</li><p>
+ There is frequently a need to do test runs in which we want to use
+ the 'hardwired' set of options for regression tests, but we want to
+ add in additional options for all compiles (ex: add "+aCC6_beta" to
+ CC_OPTIONS, or add "-l&lt;mumble&gt;" to LIBS, etc).
+<p>
+The special variables "EXTRA_PRE_&lt;variable&gt;" and "EXTRA_POST_&lt;variable&gt;", where &lt;variable&gt; is a customizable option, are used to add values to an option variable.
+<p>
+ This works as follows.  For a given variable VAR, for a given
+ point P within the test hierarchy (where P can be the top level,
+ group/meta-group, unit, or test):
+<p>
+<ol>
+    <li>Start by inheriting setting of VAR from parent of P.</li><p>
+
+    <li>Read "tmconfig" file from dir P if present, and apply any
+       override for VAR.</li><p>
+
+    <li>Look for environment customization, if P'_VAR is set to X,
+       then set VAR to X (where P' is equivalent to P with
+       slashes translated into underscores).</li><p>
+
+    <li>Look for variable EXTRA_PRE_P'_VAR. If set to X, then prepend
+       X to current setting of VAR.</li><p>
+
+    <li>Look for variable EXTRA_POST_P'_VAR. If set to X, then append
+       X to current setting of VAR.</li><p>
+</ol>
+ Note that in EXTRA_PRE_* and EXTRA_POST_* really only make sense for
+ variables that can take on string values as opposed numeric values or
+ booleans. For example, it probably would not make much sense to use
+ "EXTRA_POST_Regression_OPT_LEVEL=5", or
+ "EXTRA_PRE_Applications_gnutar_RUN_TESTS=true".
+</ul>
+<p>
+<h4>tmconfig.env</h4>
+<p>
+As mentioned in the tmconfig section, one can create "&lt;test&gt;.tmconfig"
+files for specific tests and put them in the Src directory of a Unit.
+But if Src is a symlink to an external testsuite or if you need to
+create tmconfig files for a large number of tests you can create a single
+tmconfig.env file at the Unit level instead.  The format of this file
+looks like a regular tmconfig file in that it contains shell style
+variable assignments but each assignment is preceded by a testname or a
+regular expression to match multiple test names.  The regular expression
+should be a simple filename regular expression with that only uses the
+Star (*) special character.  Period (.) and Question mark (?) are not
+understood by the tmconfig.env reader.
+<p>
+Note that if your test consists of a single file like foo.c,
+the testname or regular expression used in tmconfig.env should not include the
+suffix of the filename.  I.e. for a test that consists of the file foo.c,
+the testname that you want to list is foo, not foo.c.
+<p>
+An example of a tmconfig.env file:
+<pre>
+<code>
+	# this is a comment
+	test1: VAR1=VALUE
+	foo  : VAR1=VALUE
+	C*   : VAR2="another value"
+	C*   : VAR3="yet another value"
+</code>
+</pre>
+In this example VAR1 will be set only when running test1.
+VAR2 and VAR3 will both be set for any test whose name starts with an
+upper case 'C'.
+<p>
+<h4>tmconfig.list</h4>
+<p>
+tmconfig.list is an alternative to &lt;test&gt;.list files, just like
+tmconfig.env is a way to avoid &lt;test&gt;.tmconfig files.  If you have
+a lot of multi-file tests or don't want to put list files in the Src
+directory you can put a tmconfig.list file in the Unit directory.
+<p>
+An example of a tmconfig.list file:
+<pre>
+<code>
+        # this is a comment
+        test1 : x.c y.c 
+        test2 : a.c b.f
+</code>
+</pre>
+In this example test1 will compile the files x.c and y.c and link them
+together (if this an execute or link test) and test2 will do the same
+with files a.c and b.f.
+<p>
+<h3><a name="drivers">Driver scripts</a></h3>
+<p>
+Each test unit within CTI has an associated driver script, controlled
+by the setting of the variable UNIT_DRIVER. The driver script for the
+unit is the top-level script invoked by the CTI harness to execute
+the tests for the unit (e.g. do the compiles, links, runs, etc). 
+In the current implementatation of CTI, there are three main
+drivers in use:
+</p>
+<p>
+<ul>
+<li>regression.pl</li>
+<p>
+This driver is geared torwards small tests cases (a few source files) that are typically used for regression testing purposes. The source directory for the unit is assumed to contain a collection of independent tests; for each test, the driver works by emitting a series of shell scripts, then executes the shell scripts to perform the test. Tests that use the regression driver have a "flat" directory structure.
+</p>
+<li>application.pl</li>
+<p>
+This driver is intended for use with larger applications, those where
+you have a Makefile to help with the building of the app. Applications may have arbitrary source directory structures.
+</p>
+<li>script-driver.pl</li>
+<p>
+This driver is similar to regression.pl in that is geared towards regression testing (smaller test cases). The main difference is in the execution of the tests-- the script driver assumes that each test case will have a hand-written script that performs the test, allowing for more flexibility in terms of how testing is performed.
+</p>
+</ul>
+<p>
+Driver scripts must follow a specific set of conventions with regard to command line arguments, recording of test results, etc. Many of the functions that are shared by all of the drivers (ex: options customization) are implemented as perl modules that are included into each script.
+</p>
+
+<h3><a name="add">Adding a Test with "addtest.pl"</a></h3>
+<p>
+The "add" functionality of the tm command allows you to add a test to CTI.  The test can be a "regression type" test or an "application type" test (see above). An application-type test is anything that is not a regression-type test.  It may use an adhoc directory structure and it may or may not use the regression.pl driver.  
+<p>
+If you're adding a regression-type test case, the "add" function will accept a single-file or multiple-file test case.  For an application-type test, the "add" function will accept a single directory that represents the complete test case. 
+<p>
+The test is copied to a location rooted at %CTI_HOME%/GROUPS, tmconfig files are added or checked out and modified, Clearcase elements are created for each new file/directory, and everything is checked in.   The future -vp option can be specified to keep files as view private with no Clearcase commands executed; this can be helpful to check your work.  For now, the -dryrun option can be used.  
+<p>
+The following sections show the usage output of "addtest.pl" and detailed examples.  You can also use the <a href="test_add-test.cgi" target="_blank">GUI interface</a>. 
+<p>
+<ul>
+  <li>addtest.pl usage</li>
+<pre>
+<code>
+Usage: %CTI_HOME%/bin/www/addtest.pl NAME [-h|-help] [options] 
+Options:
+      -d DIRECTORY
+      -f file-list
+      -ud UNIT-DRIVER
+      -cf CONFIG-FILE
+      -cv VAR1=value VAR2=value2 ...
+      -w LOCATION
+      -group
+      -me master-error-file-list
+      -mo master-output-file-list
+      -r "REMARK"
+      -home test-home-dir
+      -log log-pathname
+      -m mail_address
+      -v 
+      -dryrun
+      -h|-help
+
+      where:
+        -h|-help          - Display verbose help message.
+        NAME              - The name of a test or a group to to added.
+                            The tm will check for uniqueness within
+                            the unit.
+        -f file-list      - Space separated list of files.
+                            Mutually exclusive with -d
+        -d DIRECTORY      - Directory whose contents are the test
+                            The contents of the directory (including
+                            subdirectories) constitute the test.
+                            Mutually exclusive with -f
+        -ud UNIT-DRIVER   - One of the unit drivers:
+                              application.pl
+                              regression.pl
+                              runTestsInUnit.pl for RTS tests
+        -cf CONFIG-FILE   - The tmconfig file to use for this test.
+                            All test level customizable env. variables
+                            could be set here.
+        -cv VAR1=value VAR2=value2 ...
+                          - Set the test level customizable env.
+                            variables explicitly. These settings
+                            will be added to the test level tmconfig
+                            file for the test.
+        -w LOCATION       - Where to put it in the hierarchy. For
+                            regression test, it would take the 
+                            form of:
+                              Regression/$lt;group&gt;/&lt;unit&gt;
+                            For other test,
+                              $lt;meta-group&gt;/$lt;group&gt;
+        -group              Add a group or unit. NAME is going to be
+                            used as group or unit name and -w specifys
+                            the location in the hierarchy.
+        -me master-error-file-list
+                          - The golden files for compiler and linker
+                            outputs (stdout + stderr). This option
+                            is valid only for regression test.
+        -mo master-output-file-list
+                          - The test case runtime output files. This
+                            option is used only for regression test.
+        -r "REMARK"       - A comment about the test.
+        -home test-home-dir
+                          - Set TEST_HOME_DIR to test-home-dir. Default
+                            to %CTI_HOME%.
+        -log log-pathname - Log info will be saved to log-pathname. 
+        -m address        - Someone's email address; the log will be 
+                            send to this address.
+        -v                  Verbose. send out message to stdout.
+        -dryrun           - Show the copy and clearcase checkin commands
+                            without running them. This is for script debug
+                            purpose.
+</code>
+</pre>
+<p>
+  <li>The -dryrun option.</li>
+<p>
+This option causes addtest.pl to echo the commands without performing any actions.  It is recommended that you use this option often to check your work.
+<p>
+  <li>Adding a new group or unit.</li>
+<p>
+The -group option allows you to create a new group or unit directory.  This will create a Clearcase element for the group or unit directory, update the group tmconfig file, and checkin the changes.
+<p>
+Example: add directory (group) "my_regressions" to meta-group Regression.
+<pre>
+<code>
+	$ %CTI_HOME%/bin/www/addtest.pl my_regressions -group -w Regression -dryrun 
+</pre>
+</code>
+From the usage output above, we see that "addtest.pl" takes a NAME.  In this case, the NAME argument is used as the group name.<br>
+The -w option takes a directory name that is relative to ${CTI_GROUPS}.<br>
+The result of this command is the addition of the directory ${CTI_GROUPS}/Regression/my_regressions.
+<p> 
+In the above example, the group my_regressions was added to the meta-group (or, higher level group) Regression.  You can also use the -group option to add a unit directory.
+<pre>
+<code>
+	$ %CTI_HOME%/bin/www/addtest.pl aCC_regressions -group -w Regression/my_regressions -dryrun 
+</pre>
+</code>
+<p>
+Since this command is adding a Unit directory under the Regression hierarchy, the result is the addition of the following 3 directories rooted at ${CTI_GROUPS}:<p>
+<ul>
+<li>Regression/my_regressions</li>
+<li>Regression/my_regressions/Src</li>
+<li>Regression/my_regressions/Masters</li>
+</ul>
+<p>
+  <li>Adding a regression-type test.</li>
+<p>
+Use -f to add a regression-type test case to CTI.  
+<p>
+Example: add test case "foo.c" to the "my_regressions" test group.
+<pre>
+<code>
+	$ %CTI_HOME%/bin/www/addtest.pl foo -f /path/to/tests/foo.c \
+	  -cv RUN_TESTS=false -w Regression/my_regressions -dryrun
+</pre>
+</code>
+The TEST_NAME "foo" is used for the name of the new test case, it could be different than the source file "foo.c".<br>
+The -cv option specifies option variables for this test case.<br>
+The result of this command is a new test in CTI: %CTI_HOME%/GROUPS/Regression/my_regressions/foo.c, along with its configuration file foo.tmconfig containing a single line "RUN_TESTS=false".
+<p>
+Example: adding a multi-file test case "foo.c" to the "my_regressions" test group.
+<pre>
+<code>
+	$ %CTI_HOME%/bin/www/addtest.pl foo -f /path/to/tests/foo.c \
+	 /path/to/tests/f1.h -cv RUN_TESTS=false \
+	 -w Regression/my_regressions -dryrun
+</pre>
+</code>
+<p>
+In the above example, 3 files are created in my_regressions group: foo.c, f1.h and foo.tmconfig.
+<p>
+  <li>Adding an application-type test case.</li>
+<p>
+Use the -d option to add an application-type test case.
+<pre>
+<code>
+$ %CTI_HOME%/bin/www/addtest.pl app1 -d /path/to/app1 -w Applications -dryrun
+</code>
+</pre>
+This example takes all files located in /path/to/app1 and places them in a new directory Applications/app1.
+<p>
+  <li>addtest.pl Limitations</li>
+     <ul>
+        <li>cannot add a meta-group</li>
+        <li>-vp not yet implemented</li>
+     </ul>
+</ul>
+
+
+<p>
+<h3><a name="tm">The tm Command</a></h3>
+<p>
+Here's the usage message for the tm command:
+<pre>
+<code>
+  Usage: TM [-w dir] [-l log] [-skip file] [-id string]
+            [-native|-cross] [-px VAR=value] [[-x] VAR=value] [-h|-help]
+            [-d|-nod|-d=poolname:machine1,machine2,...] [-m users|-nomail]
+            [-s] [-c] [-skip file] [-xf F] [-f options_file] [subcommand ...]
+  Options:
+    -h or -help    - display this message.
+    -f option_file - pick up specified options file to run a test.
+    -d             - set DISTRIBUTED_TM to true. Default to options
+                     file setting.
+    -nod           - set DISTRIBUTED_TM to false.
+    -d=poolname:machine1,machine2,...
+                   - set DISTRIBUTED_TM to true and DTM_POOL to
+                     poolname:machine1,machine2,...; The poolname
+                     can be empty, in this case, the option would
+                     look like -d=:machine1,machine2,...
+    -s             - Sort units so longer running tests start first.
+    -c             - Do not check for valid DATA_MODE values.
+    -id string     - set TEST_WORK_DIR and LOG, respectively, to
+                       <string>.work and <string>.log
+    -w dir         - set TEST_WORK_DIR to dir. If used both -w and -id,
+                     the right one on the command line will win.
+    -l log         - set LOG to log. If used both -l and -id, the right
+                     one will win.
+    -m users       - set SEND_LOG to users; default to TM invoker.
+    -nomail        - do not send the log.
+    -skip file     - do not run the tests listed in the skip file.
+    -native        - set these env. vars to some values for native test:
+                       DTM_CPUARCH, USE_SIMULATORS, NATIVE_RUN
+    -cross         - set the above env. vars to some values for cross test.
+                     If neither -native nor -cross is specified, the vars
+                     have to be set in options file or via -x option.
+    -px VAR=value  - export VAR=value before reading in users options file
+                     and after default options file.
+    [-x] VAR=value - export VAR=value after reading in users options file.
+    -xf XFILE      - source file XFILE containing options settings (takes
+                     place after reading user options file).
+    subcommand ... - the choices are:
+      clean        - remove the work directory and the log file;
+      run          - run the tests specified by SELECTIONS;
+      test_setting - output all env. vars, only for testing purpose;
+                   - subcommands default to "clean run" if not specified
+                     in command line.
+</code>
+</pre>
+<p>
+<h3><a name="options">Options</a></h3>
+<p>
+<ul>
+<li>User Options</li>
+
+<P>A variety of options are provided to the user so that the behaviour
+of the tm command can be finely controlled. Here we shall walk through
+each of the options and describe each one. It is important to understand
+that some of these options are inter-related. Setting one to TRUE, may
+obiviate the need for another. Typically, the last set option in the options
+file take precedence over any prior settings. As much as possible, these
+relationships are clearly described.</P>
+
+<P>The user options file may be located anywhere. However, while invoking
+tm it needs to be passed in a an argument to the <B>-f </B>option. The
+layout of the user options file is very trivial :&nbsp;a field=value pair.
+</P>
+
+<TABLE BORDER=1 WIDTH="700" >
+<TR>
+	<TH ALIGN=CENTER WIDTH="10%">Option</TH>
+	<TH ALIGN=CENTER VALIGN=CENTER WIDTH="300">Description</TH>
+	<TH ALIGN=CENTER VALIGN=CENTER WIDTH="100">Default Value</TH>
+</TR>
+<TR>
+	<TD ALIGN=LEFT VALIGN=CENTER NOWRAP WIDTH="300">LOG</TD>
+	<TD ALIGN=LEFT VALIGN=CENTER NOWRAP WIDTH="300">The log file is the place where the output from the tm run is sent to.</TD>
+	<TD ALIGN=LEFT VALIGN=TOP NOWRAP WIDTH="100"> &nbsp;</TD>
+</TR>
+<TR>
+	<TD WIDTH="10%">TEST_WORK_DIR</TD>
+	<TD>The work area that the tm may use as a temporary scratch area while processing the tests. Also, in case of a failure, the test output will be left behind in the work area.</TD>
+	<TD>&nbsp;</TD>
+</TR>
+<TR>
+	<TD>SELECTIONS</TD>
+	<TD><A NAME="SELECTIONS"></A>Only the tests specified in this list are procesesed.  </TD>
+	<TD>All the tests</TD>
+</TR>
+<TR>
+	<TD>SHOW_SCRIPT_TRACE</TD>
+	<TD>Helps in the debugging of tm itself. tm becomes exremely verbose, echoing out each of it's actions.</TD>
+	<TD>FALSE</TD>
+</TR>
+<TR>
+	<TD>CTI_REPORT_PASSES</TD>
+	<TD>Also list the tests that pass.</TD>
+	<TD>FALSE</TD>
+</TR>
+<TR>
+	<TD>SEND_LOG</TD>
+	<TD>At the end of the tm command the LOG will be emailed to the list specified by this variable. i.e. SEND_LOG=&quot;user1 user2 userX&quot;</TD>
+	<TD>&quot;&quot;</TD>
+</TR>
+<TR>
+	<TD>RUN_STDOUT_VERBOSE</TD>
+	<TD>The output of the RUN&nbsp;command is shown in the stdout.</TD>
+	<TD>FALSE</TD>
+</TR>
+<TR>
+	<TD>TIME_LIMIT</TD>
+	<TD>No test is allowed to exceed this amount of user time (in minutes) while running.<BR> Use this to catch programs that loop infinitely or generally run for long time.</TD>
+	<TD>20 minutes</TD>
+</TR>
+<TR>
+	<TD>CLEAN</TD>
+	<TD>If TRUE&nbsp;then the results of processing a test are removed even if the test passed. The results of a failing tests are left behind even if this is TRUE.</TD>
+	<TD>TRUE</TD>
+</TR>
+<tr>
+	<td>NATIVE_RUN</td>
+	<td>Run test only when executing on a native system.  Must this be included in customizable option to take any affect?  Than indicates that we should reconsider whether to continue this mechanism.  </td>
+	<td>&nbsp; </td>
+</tr>
+<tr>
+	<td>USE_SIMULATORS</td>
+	<td>If true, run the simulator.  </td>
+	<td>&nbsp; </td>
+</tr>
+<tr>
+	<td>DISTRIBUTED_TM</td>
+	<td>Use dTM to launch test tasks.  This will distribute the test jobs to machines in the test pool.  </td>
+	<td>&nbsp; </td>
+</tr>
+<tr>
+	<td>DTM_CPUARCH</td>
+	<td>Direct dTM to launch tests on a particular architecture.  </td>
+	<td>&nbsp; </td>
+</tr>
+</TABLE>
+
+<p>
+<li>Test Level Customizable Options</li>
+</p>
+A complete list of available options: <a href="describe-cti-options.cgi">list</a>
+<p>
+<li>Environment variables</li>
+<p>
+Any environment variable set at the point where a CTI job is kicked off will
+be preserved; each unit will inherit a copy of that environment (subject
+to any customization that takes place via tmconfig files). If a test
+fails (or if the test passes and CLEAN is set to false), CTI will also
+takes steps to preserve the environment variables that were in effect
+when the test ran, by emitting a "*.env" file at that point. Note that
+CTI will only capture environment variables that it knows about (e.g. TLCO's
+or options on the official "saved" list. See the 
+<a href="describe-cti-options.cgi">options web page</a> for a list of all TLCO's and saved options.
+<p>
+</ul>
+
+<p>
+<h3><a name="hooks">Hooks scripts</a></h3>
+<p>
+CTI provides a mechanism for executing auxiliary scripts to help set up or control test execution. These scripts are typically referred to as "hooks". You can use various control variables to cause hook scripts to be run at various points in test execution. Some examples of hook script uses include:
+</p>
+<ul>
+<li>setting up a work dirctory in some special way before a test executes (for example, copying in a fresh "flow.data" for PBO testing, or copying in input files needed for the test)
+</li>
+<li>performing analysis of a test after the test execution is complete (for example, checking for core files or other debris, or post-processing the results of the tests in some way)
+</li>
+</ul>
+<p>
+The following table shows some of the ways in which hooks can be used in CTI.
+Click on the control variable name to see its description in the 
+master list of <a href="describe-cti-options.cgi">test-level customizable options.</a>.
+</p>
+
+<TABLE BORDER=1 WIDTH=700>
+<TR>
+	<TH>Control variable</TH>
+	<TH>Description</TH>
+</TR>
+
+<TR>
+	<TD>PRE_RUN_HOOKS</TD>
+	<TD><p>This control variable is set to a list of scripts to be executed before each unit is started. This hook is typically used to control some aspect of the test setup.</TD>
+</TR>
+
+<TR>
+	<TD>POST_RUN_HOOKS</TD>
+	<TD><p> This control variable is set to a list of scripts to be executed after each unit is complete. This hook is used for post-processing the results from a unit.</TD>
+</TR>
+
+<TR>
+	<TD>RUN_TESTS_HOOKS</TD>
+	<TD> <p> A list of scripts to be run immediately prior to executing a test. Unlike PRE_RUN_HOOKS, this script executes for each test in a regression unit, as opposed to just once per unit.  </TD>
+</TR>
+
+<TR>
+	<TD>APPLICATION_RUN_HOOK</TD>
+	<TD> <p> This hook is specific to units that are run with the application driver. It is used in cases where we want to bypass the normally way of running the test, and instead use some other mechanism for the run (performance testing is the most common use for this hook). The run hook script will be executed once during the setup for the unit-- its job is to emit another script to perform the "custom" run.  </TD>
+</TR>
+
+<TR>
+	<TD>APPLICATION_SETUP_HOOKS</TD>
+	<TD><p> This control variable is specific to the application driver. It provides a list of hook scripts to be run immediately following the creation of a work directory for an application test.  </TD>
+</TR>
+
+<TR>
+	<TD>PRE_ITERATION_HOOKS</TD>
+	<TD> <p> A list of hooks to be run immediately before each iteration in a multi-iteration test. This hook is typically used to set up the work directory prior to an iteration (ex: removing object files for an application test). See MULTIPLE_ITERATIONS.</TD>
+</TR>
+
+<TR>
+	<TD>POST_ITERATION_HOOKS</TD>
+	<TD><p> A list of hooks to be run immediately following each iteration in a multi-iteration test. This hook is often used for PBO testing. See MULTIPLE_ITERATIONS.</TD>
+</TR>
+
+</TABLE>
+
+<p>
+Hook scripts are typically written in Perl (*.pl) or shell (*.sh). All
+hook scripts reside in the CTI utility script directory: %CTI_HOME%/Scripts/utils.
+</p>

@@ -1,0 +1,218 @@
+<!--
+ ====================================================================
+
+ Copyright (C) 2011, Hewlett-Packard Development Company, L.P.
+ All Rights Reserved.
+
+ Open64 is free software; you can redistribute it and/or
+ modify it under the terms of the GNU General Public License
+ as published by the Free Software Foundation; either version 2
+ of the License, or (at your option) any later version.
+
+ Open64 is distributed in the hope that it will be useful,
+ but WITHOUT ANY WARRANTY; without even the implied warranty of
+ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ GNU General Public License for more details.
+
+ You should have received a copy of the GNU General Public License
+ along with this program; if not, write to the Free Software
+ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston,
+ MA  02110-1301, USA.
+
+ ====================================================================
+-->
+<HTML>
+<HEAD>
+<TITLE>Add new CTI test - help</TITLE>
+</HEAD>
+<BODY>
+
+<PRE>
+<code>
+
+<H3>  Fields on the form for adding a new test</H3>
+
+<a name="sources"></a> 
+<H4>Sources</H4>
+    Full path names of files that constitute a test case. This 
+    includes source program (.c, .f, .C etc.) files, header (.h) files,
+    test specific libraries,
+    object files or input data files, if any. The source program
+    files go first. If you have files besides the soure program,
+    the tool will set TEST_AUXFILES; and you don't have to set it
+    in the additional env. vars section.
+
+    The base name of the first listed file is used as the test name.
+
+    A test, consisting of multiple source program files, is called a
+    .list test, you do not have to create a .list file. The add test
+    tool will count the number of source program files and create a
+    .list file for you. But you may do so if you wish (e.g., to choose
+    a different test name).
+
+    All files listed here will be added to the Src directory of
+    the specified unit. If one of files names is the same as
+    the one present in the Src directory, the add test tool will
+    reject it and send out an error message.
+
+
+<a name="tmconfig"></a> 
+<H4> Configuration file</H4>
+    The tmconfig file to use for this test. All test level customizable
+    env. variables could be set here.
+
+<a name="target"></a>
+<H4>Target path</H4>
+    Specify what unit you want this test to go into. The default
+    value has been set to Regression/.../. You just need to append
+    the unit name. The unit must be exist before adding a test.
+    This is a required box.
+ 
+<a name="additional"></a> 
+<H4>Additional env vars</H4> 
+    The environment variable settings you choose here will be
+    added to the tmconfig file for the test.
+
+    When adding a new test, you need to consider the test should
+
+    1. be compiled at what optimization level,
+    2. with what data mode,
+    3. exercise what compiler options, and
+    4. if it is runnable, or
+    5. linked with what specific libraries; or
+    6. if it is a cycle count test
+
+<H4>OPT_LEVEL</H4>
+    If you choose a specific number to optimization level, the
+    test will only run at this optimization level, regardless of
+    what optimization level you set in your options file or via TM
+    command line. 
+
+    If you don't set OPT_LEVEL, the test will run at the level
+    specified in an options file or via TM command line. This
+    could easily produce bogus failure, if a test does not apply
+    to all optimization levels and you forget to set OPT_LEVEL.
+    At the time you add a test, you might think that our team and
+    I only run the test at +O2, which is default, so I don't have
+    to set OPT_LEVEL. But remember someone else from other team
+    may run it at +O1 or +O4 with their own options file. The
+    advise is that always set OPT_LEVEL if the test does not
+    apply to all optimization levels.
+
+    Note that there is no way to specify a test not to run at a
+    specific optimization level in the current CTI implementation.
+    There is no way to set a test to run at only two or three
+    optimization levels either. However there is a way to skip
+    some tests at TM command level via a setting to SKIP_SELECTIONS.
+
+<H4>DATA_MODE</H4>
+    If you choose +DD64 or +DD32, the test will always be compiled
+    at the specified data mode, regardless of what you set to
+    DATA_MODE in the options file or via TM command line.
+
+    If you don't set DATA_MODE, the test would take DATA_MODE
+    setting from the options file or TM command line.
+
+<H4>CC_OPTIONS, CXX_OPTIONS and FC_OPTIONS</H4>
+    The options are used to compile the test. Since data mode,
+    optimization level, libraries are treated separately on this
+    web page, you may not use them in these OPTIONS string.
+
+<H4>RUN_TESTS</H4>
+    If it is compile-only test, choose FALSE. If it is runnable,
+    choose TRUE or %NATIVE_RUN. The %NATIVE_RUN will let you
+    disable running the test on simulator (for cross test), but allow
+    us to run the test on native machines (for native test). This is
+    used in cases where a test takes long time to run on simulator. 
+
+<H4>LINK_TESTS</H4>
+    If it is compile-only test and you already set RUN_TESTS=FALSE.
+    the test is still considered linkable under CTI default settings,
+    creating a shared library (.so file) for the test. If you don't
+    want this behavior, turn it off by set LINK_TESTS to FALSE.
+
+<a name="cct"></a> 
+<H4>Cycle count test</H4>
+    Adding a cycle count test is a complex task, since we do not have
+    an infrastructure support for consistency check between the
+    settings. Here are some of the variables you may need to set 
+
+    . DATA_MODE must be set to either +DD32 or +DD64.
+    . Add +Uzrsched=cycle option to EXTRA_PRE_CC_OPTIONS, 
+      EXTRA_PRE_CXX_OPTIONS or EXTRA_PRE_FC_OPTIONS
+      depending the language type of the test you are adding.
+    . Set CT_DIFF=TRUE, since the cycle count output goes into
+      the compiler output.
+    . Set ERROR_COMPARE_SCRIPT=cycleCompare.pl.
+    . OPT_LEVEL must be equal or greater than 2.
+    . Set CT_DIFF_OPT_LEVELS=the number you set to OPT_LEVEL.
+
+    Notes that a cycle count test can be either compile-only or 
+    runnable; this doesn't make a difference. If one chooses 'Yes',
+    then the following tmconfig variables will be set:
+
+        EXTRA_PRE_CC_OPTIONS="+Uzrsched=cycle" (for C test)
+        EXTRA_PRE_CXX_OPTIONS="+Uzrsched=cycle" (for C++ test)
+        EXTRA_PRE_FC_OPTIONS="+Uzrsched=cycle" (for fortran test)
+        CT_DIFF="true"
+        CT_DIFF_OPT_LEVELS="2"
+        ERROR_COMPARE_SCRIPT="cycleCompare.pl"
+
+
+<H4>LIBS</H4>
+    If the test needs special libraries or object files to link
+    against, add them in LIBS. If the library is standard one, use
+    -l&lt;libname&gt;, If not, (assuming you have put the full path
+    names of the libraries in the Sources box,) you only need to
+    provide base name of the libraries.
+ 
+<H4>Other environment variables</H4>
+    TM supports many environment variables for you to customize a test.
+    For definition and effect of these variables, refer to 
+    <A HREF="http://{CONFIGURE_webserver}/{CONFIGURE_webroot}/cgi-bin/describe-cti-options.cgi"
+    >the CTI/TM document</A> on the CTI web page.
+
+    If you need more boxes for environment variables settings, click
+    on the <B>number</B> you want or <B>more</B> on the web page.
+
+<a name="masters"></a>
+<H4>Master error files and Master outputs</H4>
+    If you want to add test output files (called master output file)
+    and compiler outputs (master error files), you can enter the full
+    path names here. If the test is not runnable, you don't need to
+    add master output file. The base name of test output and error
+    files must follow the example bellow.
+
+    These master files will be stored in the Master directory of the
+    specified unit by the add test tool.
+
+    In general, it is not required to add test output and error
+    files, even if it's a runnable test. TM nightly run can generate
+    test output and compiler output for you. A test without test 
+    output and compiler output masters will be listed in No master
+    .out and No master .err sections in test log file.  The next 
+    morning after adding the test, you can check out nightly test
+    log (via web) and see if the master files are generated correct.
+    If so, remaster your test via the web.
+
+<a name="comments"></a>
+<H4>Comments</H4>
+    Some comments about the test to be added when check in the test.
+ 
+<a name="email"></a>
+<H4>Your email address</H4>
+    Specify persons to be notified when adding a test. Default
+    to llo-ia64, to let everybody know this is a new test if
+    it failed in an individual test.
+
+<a name="user_id"></a>
+<H4>Your User ID</H4>
+    Specify persons in the svn commit log, to let everybody know
+    the new test is added by whom.
+
+
+</code>
+</PRE>
+
+</body>
+</HTML>

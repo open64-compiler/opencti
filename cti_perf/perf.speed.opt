@@ -1,0 +1,51 @@
+# ====================================================================
+#
+# Copyright (C) 2011, Hewlett-Packard Development Company, L.P.
+# All Rights Reserved.
+#
+# Open64 is free software; you can redistribute it and/or
+# modify it under the terms of the GNU General Public License
+# as published by the Free Software Foundation; either version 2
+# of the License, or (at your option) any later version.
+#
+# Open64 is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with this program; if not, write to the Free Software
+# Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston,
+# MA  02110-1301, USA.
+#
+# ====================================================================
+# Run nightly perf tests
+export SELECTIONS="Perf/ex1"
+
+export DATA_MODE_MAPPING="+DD32/-m32 +DD64/-m64"
+export CTI_OPT_SIGN="-"
+export DATA_MODE="+DD64"
+export OPT_LEVEL=2
+
+export CTI_COMPILE_HOST_OS=Linux
+export CTI_RUN_HOST_OS=Linux
+
+export DTM_OPSYS="Linux_SLES"
+export DTM_CPUARCH="x86_64"
+
+export CTI_GROUPS={CONFIGURE_ctihome}/cti_groups
+export CLEAN=FALSE
+
+export PERF_NUM_COPIES=1
+export PERF_BIND_CMDS='BIND0=\"numactl -m 0 --physcpubind=0\"'
+
+export APPLICATION_RUN_HOOK={CONFIGURE_ctihome}/Scripts/real_hardware_scripts/cti_gen_real_hardware_run_log.sh
+
+#define the peformace machines, canbe a machine lists
+export REAL_HARDWARE_MACHINE="{PERF_MACHINE_LISTS}"
+
+export CC=opencc
+export CXX=openCC
+export FC=openf90
+
+export LD_LIBRARY_PATH=/usr/lib/gcc-lib/x86_64-open64-linux/LATEST:/usr/lib/gcc-lib/x86_64-open64-linux/LATEST/32

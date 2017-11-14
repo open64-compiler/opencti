@@ -1,0 +1,5 @@
+
+The omp_init_nest_lock routine initializes a nestable lock testcase
+
+ omp_init_nest_lock verification PASS 
+

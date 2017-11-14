@@ -1,0 +1,4 @@
+EXTRA_POST_CC_OPTIONS="-lm"
+EXTRA_PRE_CC_OPTIONS="-AC99"
+TEST_AUXFILES="floorplan.in"
+RUN_OPTIONS="< floorplan.in"

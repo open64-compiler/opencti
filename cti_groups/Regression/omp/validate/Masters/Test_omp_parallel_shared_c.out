@@ -1,0 +1,10 @@
+
+
+-----------------------------------------------------------------------------
+---------------------OpenMP ver 2.5 verification test------------------------
+-----------------------------------------------------------------------------
+ Test case       : "omp_parallel_shared" construct verification. 
+-----------------------------------------------------------------------------
+The omp_set_num_threads construct test verification : PASSES 
+Shared variable count = 2 
+

@@ -1,0 +1,3 @@
+
+TEST :omp_get_wtime , omp_get_wtick
+

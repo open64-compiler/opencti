@@ -1,0 +1,6 @@
+OPT_LEVEL=2
+DATA_MODE="+DD64"
+CXX_OPTIONS="-OPT:alias=field_sensitive"
+RUN_TESTS=false
+LINK_TESTS=false
+

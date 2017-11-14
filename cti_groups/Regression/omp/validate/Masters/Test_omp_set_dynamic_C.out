@@ -1,0 +1,28 @@
+
+
+-----------------------------------------------------------------------------
+---------------------OpenMP ver 2.5 verification test------------------------
+-----------------------------------------------------------------------------
+------------------------------ C++  -----------------------------------------
+ Test case       :  "omp_set_dynamic" construct verification.
+ Expected result : The "omp_set_dynamic" routine returns the value of the   
+                   nthreads-var internal control variable, which is used to  
+                   determine the number of threads that would form the new 
+                   team of threads. 
+-----------------------------------------------------------------------------
+-----------------------------------------------------------------------------
+Now testing with the omp_set_dynamic disabled option
+-----------------------------------------------------------------------------
+
+The "omp_set_dynamic" construct test verification : PASSES 
+Specified thread count = 4
+Actual thread count = 4
+
+-----------------------------------------------------------------------------
+Now testing with the omp_set_dynamic enabled option
+-----------------------------------------------------------------------------
+
+The "omp_set_dynamic" construct test verification : PASSES 
+Specified thread count = 4
+Actual thread count =  2
+

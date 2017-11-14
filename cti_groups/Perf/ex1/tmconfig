@@ -1,0 +1,9 @@
+#
+# Default input set is test
+# 
+SPECIN=ref
+SPECOUT=ref
+#
+# Default time limit
+#
+

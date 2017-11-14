@@ -1,0 +1,4 @@
+
+
+TEST #pragma omp for nowait PASSED
+

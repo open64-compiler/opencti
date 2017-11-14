@@ -1,0 +1,14 @@
+
+
+test2() iteration 1
+
+test2() iteration 2
+
+test2() iteration 3
+
+test2() iteration 4
+
+test2() iteration 5
+
+Test: #pragma omp for ordered :PASS
+

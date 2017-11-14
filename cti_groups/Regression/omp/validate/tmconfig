@@ -1,0 +1,6 @@
+OPT_LEVEL="3"
+
+CC_OPTIONS="-mp"
+CXX_OPTIONS="-mp"
+FC_OPTIONS="-mp"
+

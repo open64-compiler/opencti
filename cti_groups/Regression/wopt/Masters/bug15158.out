@@ -1,0 +1,111 @@
+
+
+
+Suite++(R): The Plum Hall Validation Suite for C++. License XVS061
+licensed solely for the use of employees of Hewlett Packard  X061 C069.
+for use within a two-mile radius of 11000 Wolfe Road.
+The Primary Contact person at this site is Sassan Hazeghi
+
+
+Technical support is provided by  Plum Hall Inc, phone  808-882-1255,
+FAX 808-882-1556 or support@plumhall.com. The software is copyrighted
+and proprietary to Plum Hall Inc, and by license is restricted to the
+two-mile-radius site.  The reports it produces (such as this one) are
+not for distribution outside your organization.  Consult your license
+for any special provisions.   We appreciate your ideas and questions.
+
+Version Dating: If this software is executed after the date below, it
+is probably out-of-date. In that case, consult with your site Primary
+Contact to obtain an up-to-date copy.
+
+Expiration Date: 2003-07-01
+
+***** Reached first test *****
+#PASSED:  528Y11b
+#PASSED:  528Y12
+#PASSED:  528Y21a
+#PASSED:  528Y21b
+#PASSED:  528Y21c
+#PASSED:  528Y22
+#PASSED:  528Y31a
+#PASSED:  528Y31b
+#PASSED:  528Y32
+#PASSED:  528Y34a
+#PASSED:  528Y34b
+#PASSED:  528Y41
+#PASSED:  528Y42
+#PASSED:  528Y51
+#PASSED:  529Y11
+#PASSED:  529Y12
+#PASSED:  529Y21a
+#PASSED:  529Y21b
+#PASSED:  529Y22a
+#PASSED:  529Y22b
+#PASSED:  529Y23
+#PASSED:  529Y41
+#PASSED:  529Y42
+#PASSED:  529Y43
+#PASSED:  529Y51a
+#PASSED:  529Y51b
+#PASSED:  529Y52
+#PASSED:  529Y53
+#PASSED:  529Y61
+#PASSED:  529Y71
+#PASSED:  529Y72
+#PASSED:  529Y81
+#PASSED:  529Y82
+#PASSED:  529Y83
+#PASSED:  529Y91
+#PASSED:  529Y92
+#PASSED:  529Y93
+#PASSED:  529Y_101
+#PASSED:  529Y_102
+#PASSED:  52_10Y11
+#PASSED:  52_10Y12
+#PASSED:  52_10Y23
+#PASSED:  52_10Y51
+#PASSED:  52_10Y61
+#PASSED:  52_10Y63
+#PASSED:  52_10Y71
+#PASSED:  52_10Y81
+#PASSED:  52_10Y91
+#PASSED:  52_10Y92
+#PASSED:  52_10Y93
+#PASSED:  52_10Y94
+#PASSED:  52_10Y_101
+#PASSED:  52_10Y_102
+#PASSED:  52_10Y_103
+#PASSED:  52_10Y_104a
+#PASSED:  52_10Y_114b
+#PASSED:  52_11Y11
+#PASSED:  52_11Y12
+#PASSED:  52_11Y21
+#PASSED:  52_11Y31
+#PASSED:  52_11Y32a
+#PASSED:  52_11Y32b
+#PASSED:  52_11Y41
+#PASSED:  52_11Y42
+#PASSED:  52_11Y51
+#PASSED:  52_11Y52
+#PASSED:  52_11Y61
+#PASSED:  52_11Y62
+#PASSED:  53Y13a
+#PASSED:  53Y13b
+#PASSED:  53Y14a
+#PASSED:  53Y14b
+#PASSED:  53Y1_10a
+#PASSED:  53Y1_10b
+#PASSED:  53Y1_11
+#PASSED:  53Y1_12a
+#PASSED:  53Y1_12b
+#PASSED:  53Y1_13a
+#PASSED:  53Y1_13b
+#PASSED:  53Y1_14a
+#PASSED:  53Y1_14b
+#PASSED:  53Y1_15a
+#PASSED:  53Y1_15b
+***** 260 individual successful items in t05d *****
+***** 83 successful test cases in t05d *****
+***** 0 errors detected in t05d *****
+***** 0 skipped sections in t05d *****
+

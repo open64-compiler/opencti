@@ -1,0 +1,3 @@
+OPT_LEVEL=3
+RUN_TESTS=true
+LINK_TESTS_EXE=true

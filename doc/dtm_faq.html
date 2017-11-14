@@ -1,0 +1,830 @@
+<!--
+ ====================================================================
+
+ Copyright (C) 2011, Hewlett-Packard Development Company, L.P.
+ All Rights Reserved.
+
+ Open64 is free software; you can redistribute it and/or
+ modify it under the terms of the GNU General Public License
+ as published by the Free Software Foundation; either version 2
+ of the License, or (at your option) any later version.
+
+ Open64 is distributed in the hope that it will be useful,
+ but WITHOUT ANY WARRANTY; without even the implied warranty of
+ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ GNU General Public License for more details.
+
+ You should have received a copy of the GNU General Public License
+ along with this program; if not, write to the Free Software
+ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston,
+ MA  02110-1301, USA.
+
+ ====================================================================
+-->
+<center><h1>dTM Server FAQ</h1></center>
+
+<center>
+<hr WIDTH="100%"></center>
+
+<ul>
+<li><a href="#UpdateFAQ">How do I update this FAQ?</a></li>
+</ul>
+
+<h3>Job Control</h3>
+<ul>
+<li><a href="#CmdLineKill">How do I cancel submitted jobs?</a></li>
+<li><a href="#CmdEnable">How do I enable/disable a machine in a dTM pool?</a></li>
+<li><a href="#AllEnable">How do I enable/disable all machines in all pools?</a></li>
+<li><a href="#Relocate">How do I put running jobs back to pending list to be rescheduled?</a></li>
+<li><a href="#EnvVar">Can I control which machines my jobs are launched on?</a></li>
+<li><a href="#SharePool">What are the guidelines for using sharing pools and absolute priority?</a></li>
+<li><a href="#Priority">What are absolute and relative priorities and why do we need them?</a></li>
+<li><a href="#ProcessError">What would I do when I get a PROCESS ERROR in the log file?</a></li>
+</ul>
+
+<h3>Test machine status</h3>
+<ul>
+<li><a href="#MachineInfo">How should I interpret the CPU/disk numbers displayed for each test machine?</a></li>
+</ul>
+
+<h3>Performance test machine lock</h3>
+<ul>
+<li><a href="#GetLock">How do I get a performance machine lock manually?</a></li>
+<li><a href="#ReleaseLock">How do I release a performance machine lock manually?</a></li>
+<li><a href="#SetLocktime">How do I set up 'locktime' and 'waittime' for my performance dTM jobs?</a></li>
+<li><a href="#CancelPerfTask">How do I cancel a task in the performance task queue?</a></li>
+<li><a href="#ReRun">How do I rerun my performance test with a higher priority?</a></li>
+</ul>
+
+<h3>Server Control</h3>
+<ul>
+<li><a href="#LogFile">How do I tell if the server is hung or taking many errors, and needs to be restarted?</a></li>
+<li><a href="#SoftKill">How do I restart dTM without terminating current jobs?</a></li>
+<li><a href="#Revive">How do I kill and restart the server, when it is not responding or launching jobs?</a></li>
+<li><a href="#NewMachine">How do I configure a new test machine?</a></li>
+<li><a href="#AddMachine">How do I add a machine to a dTM pool or remove it from dTM?</a></li>
+<li><a href="#ChangeMachine">What should I do if I make changes to a test machine's configuration or installed OS?</a></li>
+<li><a href="#NewServer">How do I configure a machine to run a dTM server?</a></li>
+</ul>
+
+<a NAME="UpdateFAQ"></a>
+
+<hr WIDTH="100%">
+
+
+<a NAME="CmdLineKill"></a>
+
+<h1>How do I cancel submitted jobs?</h1>
+<p>
+This can be done either via the command line or the CTI web. Each task submitted to
+the dTM server is assigned a group id and a task id.  The individual task and 
+the group as a whole can be canceled, with dtm -cancel command:
+<ol>
+</p>
+<p>
+<pre><code> %DTM_HOME%/bin/dtm.pl -cancel  &lt;group #&gt;:&lt;task #&gt;
+
+Examples:
+1) kill a task
+  %DTM_HOME%/bin/dtm.pl -cancel 183:14
+2) kill a group
+  %DTM_HOME%/bin/dtm.pl -cancel 183:-1
+</code></pre>
+</p><p>
+</ol>
+Note that using a task id -1 will kill a group (i.e. all tasks within the
+specified group).  The group and task id's can be found:
+<ol>
+<li>On the "Machine Pool" page for a given test pool.
+All currently running jobs are displayed next to the machine they are
+running on.
+The group and task ids are indicated for each job in the first line
+"groupid:taskid user"
+<br>&nbsp;
+<table BGCOLOR="#CCCCCC"><tr><td><table BORDER=0 CELLPADDING=2 CELLSPACING=2 >
+   <tbody> <tr>
+   <td ALIGN=CENTER BGCOLOR="#9999CC"> host_name <br> 4 x <font COLOR="green">25%</font><BR>du: <FONT COLOR="green">55%</FONT></td>
+   <td ALIGN=CENTER BGCOLOR="#FFFFCC"> <font size=-1 >6222:0  user_name <A HREF="javascript:s('c');">cancel!</A><br>Debug (2:33)<br>Regression/apo</font></td>
+   <td ALIGN=CENTER BGCOLOR="#FFFFCC"> <font size=-1 >6222:4  user_name <A HREF="javascript:s('c');">cancel!</A><br>Debug (1:27)<br>Regression/cg</font></td>
+   <td ALIGN=CENTER BGCOLOR="#FFFFCC"> <font size=-1 >6204:67 user_name <A HREF="javascript:s('c');">cancel!</A><br>Opt (0:55)<br>Regression/omp</font></td></tr>
+   </tr></tbody>
+</table></td></tr></table>
+<br>&nbsp;</li>
+<li>On the "User Queue" page for a user.
+All submitted jobs are broken out by groups and the group id is indicated in
+the header, the individual task id's are provided for each task in the group,
+"taskid:unit".
+<br>&nbsp;
+<TABLE BGCOLOR="#CCCCCC" align=left><TR><TD><TABLE BORDER=0 CELLPADDING=5 CELLSPACING=2 >
+<TBODY>
+<TR><TD ALIGN=CENTER BGCOLOR="#9999CC"><TABLE BORDER=0 CELLPADDING=2 CELLSPACING=0><TBODY><TR>
+<TD ALIGN=CENTER BGCOLOR="#9999CC"><font  size=-1 >
+Job: <a href=%CTI_WEBHOME%/cgi-bin/get-options-file.cgi?file=/path/to/Regression.nightly&view=None>/path/to/options/option_file.nightly</a> (0)</font></TD></TR><TR><TD ALIGN=CENTER BGCOLOR="#9999CC"><font  size=-1>
+Log: <a href=%CTI_WEBHOME%/cgi-bin/get-log-file.cgi?log=/path/to/results/log.fri.option_file.nightly>/path/to/results/log.fri.option_file.nightly</a></font></TD></TR><TR><TD ALIGN=CENTER BGCOLOR="#9999CC"><font  size=-1>
+Group=<a href=%CTI_WEBHOME%/cgi-bin/get-file.cgi?file=%DTM_HOME%/log/server.log&fi=%201356:>1356</a>, View=None, Pool=Default, Priority=2 &nbsp;&nbsp;<a href=./dtmcmd.cgi?phps=dTMState.php&dtmhome=%DTM_HOME%&user=user_name&cancel=1356:-1&dumpUser=user_name>Cancel!</a></font></TD></TR><TR><TD ALIGN=CENTER BGCOLOR="#9999CC"><font  size=-1>
+# TOTAL TESTS=114,  PASS=18,  FAIL=0,  RUNNING=96
+</font></TD></TR></TBODY></TABLE></TD></TR>
+<TR><TD>
+<TABLE BORDER=0 CELLPADDING=2 CELLSPACING=2>
+<TR>
+<TD ALIGN=CENTER BGCOLOR="#66FFFF" > <font  size=-1 >3 : host_name (0)<BR>Regression/sync<BR> <a href=./dtmcmd.cgi?phps=dTMState.php&dtmhome=%DTM_HOME%&user=user_name&cancel=1356:3&dumpUser=user_name>cancel!</a></font></TD><TD ALIGN=CENTER BGCOLOR="#66FFFF" > <font  size=-1 >7 : host_name (0)<BR>Regression/lno<BR> <a href=./dtmcmd.cgi?phps=dTMState.php&dtmhome=%DTM_HOME%&user=user_name&cancel=1356:7&dumpUser=user_name>cancel!</a></font></TD><TD ALIGN=CENTER BGCOLOR="#66FFFF" > <font  size=-1 >8 : host_name (0)<BR>Regression/wopt<BR> <a href=./dtmcmd.cgi?phps=dTMState.php&dtmhome=%DTM_HOME%&user=user_name&cancel=1356:8&dumpUser=user_name>cancel!</a></font></TD></TR></TABLE>
+</TD></TR></TBODY>
+</TABLE>
+</li></ol>
+
+In the above web page examples, task boxes and group boxes contain a cancel! button in it. Clicking on it will kill the task
+or the group immediately. Note that since a group contains many individual tasks, it may take a little bit longer to cancel.
+You may need to reload the web page many time to see the result of killing a group.<br>
+<hr WIDTH="100%">
+
+
+<a NAME="CmdEnable"></a>
+
+<h1>How do I enable/disable a machine in a dTM pool?</h1>
+When a machine is disabled, it prevents dTM server from allocating any dTM jobs on it. This is 
+useful for cases where you need exclusive use of a particular machine or a machine behaviors
+bedly and needs a reboot. The disable and enable can be done via the command line or via the web page.
+The formats of commands are:
+<ul>
+<pre><code> %DTM_HOME%/bin/dtm.pl -enable &lt;host_name&gt; 
+ %DTM_HOME%/bin/dtm.pl -disable &lt;host_name&gt; -info="strings"
+
+Examples:
+1) disable host_name
+  %DTM_HOME%/bin/dtm.pl -disable host_name -info="My experiment"
+2) enable host_name
+  %DTM_HOME%/bin/dtm.pl -enable host_name
+</code></pre>
+</ul>
+You need to provide some information for disable as to why you disable it.
+Note that the above commands affect only the foreground server. If you want to send 
+the command to the background server, use -bg option (though this is not encouraged to do so)
+<ul>
+   <pre><code> %DTM_HOME%/bin/dtm.pl -bg -enable &lt;host_name&gt; 
+ %DTM_HOME%/bin/dtm.pl -bg -disable &lt;host_name&gt; -info="strings"
+</code></pre>
+</ul>
+But you can't see the effect of the command via the web, because the web page only displays the status of foreground server.
+
+<hr WIDTH="100%">
+
+<a NAME="AllEnable"></a>
+<h1>How do I enable/disable all machines in all pools?</h1>
+<pre><code> perl -ne 'print "%DTM_HOME%/bin/dtm -enable=$1\n" if m|&lt;host&gt;(.+?)&lt;|' %DTM_HOME%/conf/dTM_conf.xml |sort -u | ksh
+</code></pre>
+<hr WIDTH="100%">
+
+
+<h1><a NAME="Relocate"></a>
+
+<h1>How do I put running jobs back to pending list to be rescheduled?</h1>
+If a test is running for a very long time and you suspect that it may be hanging (due to process issue or a test case
+running into a infinite loop), you may want to stop its running and put it back to the pending list and have CTI 
+reallocate it to another machine to give another try. You can do so with the following dTM reschedule command:
+
+<ol>
+<pre><code>   %DTM_HOME%/bin/dtm.pl -resched   &lt;group #&gt;:&lt;task #&gt;</code></pre>
+</ol>
+Note that the task to be rescheduled must be running. For example:
+<ol>
+<pre><code>   %DTM_HOME%/bin/dtm.pl -resched 3245:5 </code></pre>
+</ol>
+will reschedule task 5 of group 3245.
+<hr WIDTH="100%">
+
+
+<a NAME="EnvVar"></a>
+
+<h1>Can I control which machines my jobs are launched on?</h1>
+Yes.  Here is a list of environment variables
+that you may place in your TM options file to have fine tuned job
+control
+<ul>
+<li>DTM_CPUARCH - specify CPU architecture</li>
+<li>DTM_OPSYS - Linux_SLES_11</li>
+<li>DTM_CPUIMPL - specify implementation</li>
+<li>DTM_CPUFREQ - minimum desired cpu frequency</li>
+<li>DTM_MINCPUS - minimum desired number of cpus</li>
+<li>DTM_PRIORITY - jobs are scheduled to launch based on their priorities. If you
+do not set DTM_PRIORITY, the default value is 2. A value in range 1 through 8999 
+is a relative priority, meaning that your task with a higher relative priority will
+only put off your own tasks with lower relative priorities.
+
+A value in a range from 9000 to 10000 is a absolute priority. A task with highest 
+absolute priority in the dTM server will get machine resource first if there are
+machines available for the task.
+
+</li>
+<li>DTM_POOL - names of test pools and/or machines to be used for running jobs. The 
+format of valid string is </li>
+
+<pre><code>  DTM_POOL=[Pool[,Pool]*][:Mach[,Mach]*][/[Pool[,Pool]*][:Mach[,Mach]*]]
+  where
+    Pool=poolname[#threshold]
+    Mach=machinename[#threshold]
+    Meta Symbols    [ ] *
+    Delimiters      : / # ,
+
+</code></pre>
+
+The pools and machines prior to "/" are primary pools, the ones after it are
+secondary pools. While the primary pool is required, the secondary pool is
+optional. The threshold values for primary pools and machines are ignored.
+
+<pre><code>Examples:
+  DTM_POOL=Default
+    - use only Default machine pool as primary pool.
+  DTM_POOL=Default,Special
+    - use both Special and Default pool machines as primary pool.
+  DTM_POOL=Default/Special#30,Build#30
+    - use the Default machine as primary pool. When the primary pool is busy
+      and one of the secondary pool (Special or Build) machines has
+      more than 30% of CPU idle time, use the machine.
+  DTM_POOL=Special:host02,host03
+    - use host02 and host03 in Special pool as primary pool
+  DTM_POOL=Default/Build:build13#50,build21#30,build22#30
+    - use Default as primary pool and build13, build21 and build22 in the
+      Build pool as secondary pool. Note that build13, build21 and build22
+      have different thresholds. 
+  DTM_POOL=:host01,host02,host03
+    - use machine host01, host02 and host03 as primary pool, reguardless of
+      where the machines come from.
+  DTM_POOL=Special,Default:host01,host02,host03
+    - use machine host01, host02 and host03, from either Special or Default
+      pools, as primary pool.
+</code></pre>
+An example using Special as primary pool and selected machines as secondary pool:
+<pre><code> %CTI_HOME%/bin/TM.pl -d -f /path/to/Myoptions DTM_POOL=Special/:host01#30,build20#35
+</code></pre>
+</ul>
+<p>
+For secondary pools, it is recommanded to use 30 for Special and Default
+pools and 35 for Build pool as a threshold value.
+</p>
+
+<hr WIDTH="100%">
+
+
+<a NAME="SharePool"></a>
+<h1>What are the guidelines for using sharing pools and absolute priority?</h1>
+<p>
+Sharing pool policy: If your team has a dedicated pool, use
+it as your primary pool and other pools as your secondary
+pools if you want; otherwise use Default as a primary pool,
+and pools other than Default as secondary pool.
+</p>
+<p>
+Absolute priority policy: Use absolute priority on exception
+basis. For example, in urgent need of test result, or doing
+development at night. But don't send too many absolute priority
+TM runs at a time.
+</p>
+
+<hr WIDTH="100%">
+
+<a NAME="Priority"></a>
+<h1>What are absolute and relative priorities and why do we need them?</h1>
+<p>
+The valid range for DTM_PRIORITY is from 1 to 10000. The higher part
+(9000 - 10000) is absolute priority and the lower (1 - 8999) relative priority.
+When the dTM allocates machines, a task with a highest absolute priority
+will get a machine first and absolute priority tasks will get machines
+before relative priority tasks. The tasks with the same absolute priority
+will be on a first in first serve basis. While absolute priority give your
+task ability to run before others, it does not make a fair use of CPU cycles.
+</p>
+<p>
+Suppose we only have absolute priority in dTM, if you want to prioritize 
+your two runs with different priorities, your higher one may put off
+not only your lower run but also some other peoples tasks. This is
+what we are trying to prevent with relative priority. In short, relative priority
+allows a user to prioritize  his/her own test runs without affecting
+other's tasks in term of CPU usage. However this is not true
+for performance pool. A priority is absolute all the time for performance 
+machines. Note that the dTM server applys the same DTM_PRIORITY setting to both 
+performance and non-performance pools.
+</p>
+
+<hr WIDTH="100%">
+
+<a NAME="ProcessError"></a>
+<h1>What would I do when I get a PROCESS ERROR in the log file?</h1>
+<p>
+When a test unit is allocated on a machine, the dTM launches it with a new process and
+redirects the standard output
+and standard error of the process to a file, named result.UID. After the unit
+finishes, the TM checks if the file exists. If not, we definitely have a PROCESS ERROR.
+It is hard for dTM server to figure out what is causing the process error.
+It may be due to machine issues, clearcase, networks and NFS problems, OS gliches, Java
+or TM/dTM bugs.
+</p>
+<p>
+The current implementation of TM/dTM does not help diagnose the root cause of abmornal
+process problems. Instead the dTM/TM does something defensive:
+report the problem and take only actions to make sure that the server itself is still
+in a healthy state and continues to accept tasks from users. The future development of
+TM/dTM may go further by taking aggressive actions.
+</p>
+<p>
+With this said, if you get a process error from a test run, you have to diagnose it
+yourself manually. How to do it? It is not hard fortunately: run
+the following command from the dTM server:
+</p>
+<p>
+<pre>
+	ssh HOST %DTM_HOME%/bin/dtm_runUTM.pl -id=GID:TID:UNIT -w=WORKDIR
+</pre>
+</p>
+<p>
+where HOST is the machine on which you will launch the unit;
+GID and TID, representing group id and task id , are
+assigned numbers for the unit, which should be any numbers greater than 0
+for rerunning purpose. UNIT is partial pathname for the unit, such as
+Regression/.../sched. WORKDIR is the test's work directory full
+pathname.
+</p>
+<p>
+This is the exact command that dTM uses to launch a test unit.
+For a local run,  you can simply log onto
+the local machine and start your rerun with dtm_runUTM. You may modify the
+TMEnv file under the work directory to add, remove or change one or more environment
+variable settings, before the unit rerun.
+</p>
+
+<hr WIDTH="100%">
+
+<a NAME="GetLock"></a>
+<h1>How do I get a performance machine lock manually?</h1>
+<p>
+The dTM server is capable of managing the performance locks for your dTM tasks.
+You do not have to do anything special to get this functionality, even when doing
+a rerun. However occasionally
+you may want to grab a performance machine to do something other than TM tasks,
+such as installing software, or updating certain PBO data stored on
+the machine. You can do this in one of two ways. One is to disable a performance
+machine, like you would do to a non-performance machine. The other is to request 
+a lock on the machine with the getlock command. When the machine is allocated to
+you, log onto it and do your job there. When you finish your job, release the
+lock using the releaselock command. The usage of the getlock command follows:
+<ol>
+<pre><code>
+  %DTM_HOME%/bin/getlock.pl &lt;machine_list&gt; -locktime=&lt;minutes&gt; [-waittime=&lt;minutes&gt;] [-priority=&lt;number&gt;] [-info=&lt;strings&gt;] [-reserve]
+Description:
+       Request dTM server to get a performance machine lock from the specified
+       machine list. The dTM server will put the request in the performance task queue.
+       When one of the requested machines is available, the dTM server allocates the
+       machine to this task by outputting the host name to standard output. If an
+       interactive user specifys -reserve option, it will send the allocated host
+       name via email.
+Options:
+  &lt;machine_list&gt; - a list of performance machine host names delimited by a comma;
+                   or a file which contains a list of performance machine host names
+                   delimited by spaces or commas. This is a required argument.
+  -locktime=&lt;minutes&gt; - how long a task holds a machine lock. If its value is non-zero,
+                   when the time a user holds a lock exceeds the value, the dTM server
+                   will force the lock to be released. For interactive users, this option
+                   is required.
+  -waittime=&lt;minutes&gt; - how long to wait in the performance queue to get a lock.
+                   If its value is non-zero, when the waittime times out, the dTM server will
+                   force the task to be removed from the queue and send a "FAIL" to the getlock
+                   command or an email for a user task.
+  -priority=&lt;number&gt; - the task priority. The performance task queue is ordered by
+                   task priority. For a dTM job, its priority is decided by the setting
+                   in DTM_PRIORITY. Default to 2.
+  -info=&lt;strings&gt; -  information displayed on the web page. For dTM or rerun jobs, you
+                   don't have to specify it. For other job, it is required.
+  -reserve      -  the command put your request to the dTM performance queue and return
+                   immediately. You are going to be notified with an email when a
+                   machine is allocated to you. This option only works for interactive
+                   use.
+Example:
+  %DTM_HOME%/bin/getlock.pl host1 -priority=2000 -locktime=20 -info="updating PBO data"
+</code></pre>
+</ol>
+After you issue the command in the above example, you'll be notified via email
+when a machine is allocated to you.
+</p>
+<hr WIDTH="100%">
+
+
+<a NAME="SetLocktime"></a>
+<h1>How do I set up 'locktime' and 'waittime' for my performance dTM jobs?</h1>
+<p>
+A performance task has two attributes in dTM: locktime and waittime. Locktime
+indicates how long a task holds a machine lock. If the locktime of a task is 
+non-zero, when the time the task holds a lock exceeds the locktime, the dTM server
+will force the lock to be released. If the locktime is zero, dTM won't release the
+lock until a releaselock command is issued on the machine.
+</p>
+
+<p>
+Waittime indicates how long the task waits in the performance queue to get a lock.
+If the value is non-zero, when the waittime times out, the dTM server will force the task to be
+removed from the queue and send a "FAIL" to the getlock command and an email
+the owner of the task. If the waittime is zero, the task will remain in the queue
+until 1) the task is assigned a machine lock or 2) some one issues a "dtm.pl -perfcancel"
+command to the task.
+</p>
+
+<p>
+By default, the locktime and waittime are set to 0 in the getlock command. If you want
+to set them, you need to use -locktime and -waittime options in the getlock command line
+or export the following environment variables before issues the getlock:
+</p>
+<p>
+<ol>
+<pre><code>   DTM_PERF_LOCKTIME
+   DTM_PERF_WAITTIME
+</code></pre>
+</ol>
+</p>
+<p>
+The unit for these variables is minutes. For a dTM task, in the CTI default.conf file,
+the locktime and waittime are set to 3 hours and 20 minutes (200 minutes) and fifteen hours
+(900 minutes) respectively. Do not change these default setting until you really know what
+you are doing, since it may impact other people's performance testing.
+</p>
+<p>
+Example:
+<ol>
+<pre><code>  # 2 hours for locktime and 10 hours for waittime
+%CTI_HOME%/bin/TM.pl -d -f /path/to/my_options DTM_PERF_LOCKTIME=120 DTM_PERF_WAITTIME=600
+</code></pre>
+</ol>
+</p>
+<hr WIDTH="100%">
+
+<a NAME="ReleaseLock"></a>
+<h1>How do I release a performance machine lock manually?</h1>
+<p>
+If you have manually grabbed a performance machine lock, release it with the following command
+so that others can use the machine:
+<ol>
+	<pre><code> %DTM_HOME%/bin/releaselock.pl  &lt;performance_machine&gt;
+</code></pre>
+</ol>
+Do not manually release a machine lock for a dTM or rerun task, until you are 100% sure
+that the task being run has finished or has been killed.
+</p>
+<hr WIDTH="100%">
+
+<a NAME="CancelPerfTask"></a>
+<h1>How do I cancel a performance task in the performance task queue?</h1>
+<p>
+In general, you do not need to cancel a task in the performance task queue. It is managed
+by the dTM server. But in case something goes wrong, and you need to do so, use the following command
+<ol>
+<pre><code> %DTM_HOME%/bin/dtm.pl -perfcancel &lt;task #&gt;
+</code></pre>
+</ol>
+Every performance task has a unique task id, which is displayed on the performance pool 
+web page. 
+You can't cancel a performance task that is running on on a performance machine. Instead,
+if you are really sure that the task has finished, use the releaselock command to release the machine lock.
+</p>
+<hr WIDTH="100%">
+
+<a NAME="ReRun"></a>
+<h1>How do I rerun my performance test with a higher priority?</h1>
+<p>
+By default, a performance test rerun will use the default priority 2, even if the original run was
+using some higher priority. If you want to rerun it and need it to be complete soon, raise
+the priority. What you need to do is to edit the runhook.sh file with whatever editor you like;
+search for 'getlock'; and add the option -priority=&lt;number_greater_than_2&gt; to the getlock
+command line.
+</p>
+<hr WIDTH="100%">
+
+<a NAME="LogFile"></a>
+
+<h1>How do I tell if the server is hung or taking many errors, and needs to be restarted?</h1>
+<p>
+The server maintains 2 log files:
+<li>server log: %DTM_HOME%/log/%DTM_SERVERLOG%</li>
+<li>error log:  %DTM_HOME%/log/%DTM_ERRORLOG%</li>
+Scan that file to see whether the server is making progress, or if many errors are being logged.
+You can also look at the log file by clickng on <a href="%CTI_WEBHOME%/cgi-bin/get-file.cgi?file=%DTM_HOME%/log/%DTM_SERVERLOG%&last=200">Sever Log</a> and <a href="%CTI_WEBHOME%/cgi-bin/get-file.cgi?file=%DTM_HOME%/log/%DTM_ERRORLOG%&last=200">Error log</a> on the menu. 
+It will display the last 200 lines of the log. If you want to see more lines, change the web script argument last=200.
+</p>
+
+<hr WIDTH="100%">
+
+
+<a NAME="SoftKill"></a>
+
+<h1>How do I restart dTM server without terminating current jobs?</h1>
+When your TM command is running with dTM, it communicates the 
+jobs with dTM server via a network connection between them. 
+It is possible to shutdown the current server and
+restart a new server without terminating the jobs (and connections) that have been submitted to
+the currently running server.
+<ol>
+<li>The first step is to start the shutdown process of the current server.
+This puts the server in a state where it will no longer accept jobs and it will
+quit running as soon as all of the currently pending jobs have completed (it's called
+<b>background server</b>). This is done via the command line <b>(as any user)</b> by entering:
+<br>&nbsp;
+<pre><code>  %DTM_HOME%/bin/dtm.pl -stop
+</code></pre>
+<p>The dtm.pl -stop command will provide you, in the log file, with the current status
+of the server being shutdown.  Here is a sample output in the log.  Once the
+old server stops <font COLOR="green">accepting tasks</font>, one can proceed with step 2
+and start the new server.
+<pre><code>[10:17:24] Reading configuration...
+[10:17:25] Attempting to connect to server...
+[10:17:25] Connected to %DTM_SERVER%:%DTM_PORT%
+</code></pre><font COLOR="green"><pre><code>[10:17:25] Server on %DTM_SERVER%:%DTM_PORT% is no longer accepting tasks.
+</code></pre></font><pre><code>[10:17:25] Server on %DTM_SERVER%:%DTM_PORT% is accepting status queries only.
+[10:18:25] Server on %DTM_SERVER%:%DTM_PORT% there are no more pending tasks.
+[10:18:25] Server on %DTM_SERVER%:%DTM_AUXPORT% listener stopped.
+[10:18:25] Server on %DTM_SERVER%:%DTM_AUXPORT% connection manager stopped.
+[10:18:25] Server on %DTM_SERVER%:%DTM_AUXPORT% task queue monitor stopped.
+[10:18:25] Server on %DTM_SERVER%:%DTM_AUXPORT% test machine monitor stopped.
+[10:18:25] Server on %DTM_SERVER%:%DTM_AUXPORT% main server thread stopped.
+[10:18:25] Server on %DTM_SERVER%:%DTM_AUXPORT% server will now terminate.
+</code></pre>
+<p>If you want to know the machine status stored in the background server, type in
+the command:
+<pre><code>  %DTM_HOME%/bin/dtm.pl -bg -dynamic </code></pre>
+
+<li>The second step is to start the new server <b>(as %CTI_USER%)</b> on the server machine,
+which is %DTM_SERVER%, by entering:
+<br>
+<pre><code> %DTM_HOME%/bin/dtm.pl -start
+</code></pre>
+
+<p>The newly started server (<b>foreground server</b>) will take the machine
+status from the background. So we don't have to worry about the
+machine status, even if a machine was disabled automatically by the
+background server before.
+</ol>
+
+<p>Note that when you start a server, if there is no background server running,
+the machines state of non-performance test machine will be read from TestMachineState.log file
+under the log directory and that of performance machines will be read from PerfMachineState.log file.
+This would allow us to restore machines state easily from server machine crashes. 
+But if this is the first time to start a server and the files do not exist,
+all machines state will be set to disabled. In this case, you need to manually
+enable all machines that you want to use, either via the dTM status web page or 
+by invoking command
+<ol>
+<pre><code> %DTM_HOME%/bin/dtm.pl -enable &lt;host_name&gt;
+</code></pre>
+</ol>
+
+<hr WIDTH="100%">
+
+
+<a NAME="Revive"></a>
+
+<h1>How do I kill and restart the server, when it is not responding or launching jobs?</h1>
+
+When the dTM server is hanging, log on to the dTM server (as cti user) and see which java
+processes are still running. For example,
+<ol>
+	<pre><code>
+$ ps -ef | grep java | grep -v grep
+ %CTI_USER% 26104     1  0  May  5  ?        151:35 %DTM_JAVAHOME%/bin/java %DTM_JAVAOPTIONS% -cp %DTM_HOME%/lib dTMServer -config=%DTM_HOME%/conf/dTM_conf.xml
+</code></pre>
+</ol>
+
+If there is only one java process running, which must be the foreground server. We use the solution
+to the above question to put the current server to the background and start a new one as a foreground
+server. If there are two java processes running, meaning we already have both foreground and background
+servers running, use unix "kill -9" to kill the one with the earlier start time, which must be background server;
+then turn the foreground into background and restart a new server. 
+
+After the new server restarts, cancel the groups or tasks on the background server (originally the
+foreground server) and restart the tests with new server.
+<br><br>
+<b>If you are not able to turn the foreground server to background successfully, then we have a serious problem
+with either dTM server or java VM. The only thing we can do is kill the java process, and restart a server.
+Now try to access the web page again, enable the machines that was in a good state via the web page</li>
+<p>
+
+Note that killing dTM server will cause pending (queued but not issued)
+dTM jobs to abort immediately. Any jobs that are already launched
+at the time the server was killed continue to run. But the results can not
+be recorded in the log file. Therefore it doesn't make sense to continue to run them.
+The step 3 above is trying to kills all of them. Once the server
+has been killed, all of the clients will proceed to generate a TM log file
+based only on the tests that have completed yet. Pending jobs
+and jobs currently running will be recoreded in the log file as missing test failures.
+<br>&nbsp;
+<hr WIDTH="100%">
+
+
+<a NAME="NewMachine"></a>
+
+<h1>How do I configure a new test machine?</h1>
+
+Here is a list of things that you need to do in order to add a new machine
+to the dTM pool. Some of these things are not strictly required for use
+with dTM, but they make the machine a lot more usable for general development.
+<br>&nbsp;
+<ol>
+<li>
+For a non-performance machine, create the /tmp/dTM directory on the machine.
+This directory should be on a
+file system that has one gigabyte of free space, hopefully more. If not, find a
+disk that has at least a gigabyte of free space on the machine and
+create a subdirectory named dTM on it and make /tmp/dTM a soft link to the
+that directory. The new dTM directory ,and the soft link if any, has 
+to be owned by %CTI_USER%, and should be permission 0777. 
+<br>&nbsp;</li><li>
+Create an entry for the machine in the <A href="#ChangeMachine">dTM config file %DTM_HOME%/conf/dTM_conf.xml</a>,
+that describes the machine.  (See the <i>README</i> file in that directory.)
+The config file entry should include correct values for the OS version
+of the machine, number of processors, clock frequency, and should 
+include the path to the /dTM (or /tmp/dTM) dir on the machine. Number of processors
+and mhz can be obtained by running %DTM_HOME%/bin/get_sys_info.pl when 
+logged into the test machine.
+<br>&nbsp;</li><li>
+Check to make sure that the /tmp and /var/tmp directories are on partitions
+that have sufficient space (400-500 mega free, or more).
+<br>&nbsp;</li>
+Check to make sure that the %CTI_USER% .rhosts file contains the name of
+the new machine.
+<br>&nbsp;</li>
+<li>
+Update the root contab entry to include the following lines:
+<pre><code># Cleanup of /tmp, /var/tmp
+25 18 * * * %CTI_HOME%/bin/CTItmpclean.sh
+</code></pre>
+<p>
+This entry is needed in order to prevent /tmp from filling up and
+(eventually) causing tests to fail due to lack of disk space. "CTI root dir"
+is the root of the CTI installation, e.g. %CTI_HOME% or equivalent.
+</p>
+</li>
+</ol>
+Once you are finished with all of the above, add the machine to the pool
+with the command described in the following question.
+<hr WIDTH="100%">
+
+<a NAME="AddMachine"></a>
+
+<h1>How do I add a machine to a dTM pool or remove it from dTM?</h1>
+
+Note that you have to be %CTI_USER% to add or remove a machine. Note that a machine can
+be only shared between non-performance pools, not between the Performance pool and
+a non-performance pool.
+<BR>
+When you have a good entry in the dTM configuration file %DTM_HOME%/conf/dTM_conf.xml for
+a machine (if not, you can always <A href="#ChangeMachine">add it to the dTM config file</a> first),
+ you can add it to a pool using command
+<ol>
+<pre><code> %DTM_HOME%/bin/dtm.pl -addmachine &lt;host_name&gt; -pool &lt;pool_name&gt;
+</code></pre>
+</ol>
+The command will take the machine description from the dTM_conf.xml file and add it
+to the specified pool.
+When there is no entry for a machine in the dTM_conf.xml file, you can still add it to dTM server.
+However if you restart a server, the added machine may be lost and you may need to re-add it.
+If the machine description is the same as another machine in a pool (except for the
+host name), you can add it with the command
+<ol>
+<pre><code> %DTM_HOME%/bin/dtm.pl -addmachine &lt;host_name&gt; -pool &lt;pool_name&gt; -sameas &lt;anothermachine&gt;
+</code></pre>
+</ol>
+Otherwise, you have to add a machine with full description:
+<ol>
+<pre><code> %DTM_HOME%/bin/dtm.pl -addmachine &lt;machine_description&gt; -pool &lt;pool_name&gt;
+where &lt;machine_description&gt; is in format
+  &lt;hostname>:&lt;OS&gt;:&lt;architecture&gt;:&lt;CPU_Implementation&gt;:&lt;Frequency&gt;:&lt;#ofCPU&gt;:&lt;work_dir&gt;:&lt;service&gt;
+
+</code></pre>
+</ol>
+The newly added machine is disabled. To use it with dTM server, you have to enable it by using <A href="#CmdEnable">dtm enable</a> command.<BR>
+To remove a machine from dTM server, disable the machine first, then use command
+<ol>
+<pre><code> %DTM_HOME%/bin/dtm.pl -rmmachine &lt;host_name&gt;
+</code></pre>
+</ol>
+Note that it will remove the machine from ALL pools in dTM server, if it's disabled and no task is running on it. 
+If the removed machine still has an entry in the dTM_conf.xml file, it will re-appear in dTM when you restart dTM server.<br>
+
+<hr WIDTH="100%">
+
+
+<a NAME="ChangeMachine"></a>
+
+<h1>What should I do if I want to change the dTM configuration file for a test machine?</h1>
+
+If you upgrade the OS, change the number of processors (or make other
+alterations to the hardware), relocate the /dTM directory for a dTM test
+machine, or add a new machine to dTM, be sure to make changes approperately
+to the dTM configuration file %DTM_HOME%/conf/dTM_conf.xml. (See the <i>README</i> file in that directory.) Usually it will take following
+steps to change a configuration for a machine:
+<ol><pre><code> 1. Disable the machine with <A href="#CmdEnable">dtm -disable</a> command.</li>
+ 2. Remove the machine from dTM server by <A href="#AddMachine">dtm -rmmachine</a> command.</li>
+ 3. [OPTIONAL]:Modify the machine description in the %DTM_HOME%/conf/dTM_conf.xml file.</li>
+ 4. Add it back to a pool by <A href="#AddMachine">dtm -addmachine</a> command.</li>
+ 5. Enable it by <A href="#CmdEnable">dtm -enable</a> command.</li>
+</code></pre></ol>
+For step 3, in the %DTM_HOME%/conf/dTM_conf.xml file, there are 9 properties
+for each machine:
+<ol><PRE><code>
+  &lt;machine&gt;
+    &lt;host&gt;host_name&lt;/host&gt;
+    &lt;os&gt;Linux_SLES11_SP1&lt;/os&gt;
+    &lt;arch&gt;x86_64&lt;/arch&gt;
+    &lt;impl&gt;AuthenticAMD&lt;/impl&gt;
+    &lt;freq&gt;2800&lt;/freq&gt;
+    &lt;cpus&gt;8&lt;/cpus&gt; 
+    &lt;workdir&gt;/tmp/dTM&lt;/workdir&gt;
+    &lt;service&gt;native&lt;/service&gt;
+    &lt;service&gt;funcsim&lt;/service&gt;
+  &lt;/machine&gt;
+</code></PRE></ol>
+
+dTM will query the machine and get these values. You may want to override a 
+value, e.g., you want to use 6 CPUs of a 8 CPU machine. For this you will
+define the machine like following:
+<ol><PRE><code>
+  &lt;machine&gt;
+    &lt;host&gt;host_name&lt;/host&gt;
+    &lt;cpus&gt;6&lt;/cpus&gt; 
+  &lt;/machine&gt;
+</code></PRE></ol>
+
+<BR>
+Then add or remove the machine 
+to or from a pool:
+
+<ol><PRE><code>  &lt;pool&gt;
+    &lt;name&gt;Default&lt;/name&gt;
+    &lt;host&gt;host_name&lt;/host&gt;
+    ... ...
+    ... ...
+  &lt;/pool&gt;
+</code></PRE></ol>
+
+The dTM server can manage one Performance pool and multiple non-performance
+pools.
+A machine can be only shared between non-performance pools, not between
+the Performance pool and a non-performance pool.
+
+<BR>
+
+<hr WIDTH="100%">
+
+
+<a NAME="NewServer"></a>
+
+<h1>How do I configure a machine to run a dTM server?</h1>
+  <ol>
+	  <li>Following perl modules are required:
+	  <pre>
+   1. HTML/Entities.pm
+   2. HTTP/Request/Common.pm
+   3. LWP/UserAgent.pm
+   4. Mail/Internet.pm
+   5. Mail/Util.pm
+   6. XML/Simple.pm </li>
+	  </pre>
+	  <li>Make sure at least Java 1.5 is available on the machine.</li>
+  </ol>
+Once these steps are complete you may start the dTM server on the new machine.
+
+
+<li>
+<p>
+For checking the status of jobs on your server, use the following URL:
+
+<p>
+<a href="%DTM_WEBHOME%/cgi-bin/dTMState.php?server={CONFIGURE_dtmserver}"> %DTM_WEBHOME%/cgi-bin/dTMState.php?server={CONFIGURE_dtmserver}</a>
+</li>
+
+<p>
+</ol>
+
+<hr WIDTH="100%">
+
+<a NAME="MachineInfo"></a>
+
+<h1>How should I interpret the CPU/disk numbers displayed for each test machine?</h1>
+
+The dTM status web page shows a row for each test machine. The left-most
+box in the row gives some information on the state of the machine itself: host_name, number of CPUs, CPU utilization, and disk utilization. Example:
+<ol>
+<table BGCOLOR="#CCCCCC"><tr><td><table BORDER=0 CELLPADDING=2 CELLSPACING=2 >
+   <tbody> <tr>
+   <td ALIGN=CENTER BGCOLOR="#9999CC"> host01 <br> 4 x <font COLOR="green">33%</font><BR>du: <FONT COLOR="green">75%</FONT></td>
+   </tr></tbody>
+</table></td></tr></table>
+</ol>
+<p>
+The status page obtains number of CPUs, CPU and disk utilization numbers by
+connecting to a load daemon on the test machine. CPU utilization
+ranges from 0 to 100%; the server will generally not launch jobs onto a
+machine whose CPU utilization is less than 25%.  The disk utilization
+number reflects the maximum utilization of /dTM, /tmp, and /var/tmp on
+the test machine. For example, if /tmp is at 88%, /var/tmp is at 12%,
+and /dTM is at 90%, then the number shown will be 90%.  The dTM server
+will avoid launching jobs on a machine if its disk utilization metric
+goes above 95%.
+</p>
+
+<hr WIDTH="100%">
+

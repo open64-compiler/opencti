@@ -1,0 +1,51 @@
+#!/bin/ksh
+# ====================================================================
+#
+# Copyright (C) 2011, Hewlett-Packard Development Company, L.P.
+# All Rights Reserved.
+#
+# Open64 is free software; you can redistribute it and/or
+# modify it under the terms of the GNU General Public License
+# as published by the Free Software Foundation; either version 2
+# of the License, or (at your option) any later version.
+#
+# Open64 is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with this program; if not, write to the Free Software
+# Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston,
+# MA  02110-1301, USA.
+#
+# ====================================================================
+
+if [[ $# < 2 ]]; then
+   echo "Usage: saveOpt2Env options_file save_to_file"
+   exit 1
+fi
+OPTIONS_FILE=$1
+SAVE_FILE=$2
+
+if [[ ! -f $OPTIONS_FILE ]]; then
+   echo "File not found: $OPTIONS_FILE"
+   exit 1
+fi
+
+. $OPTIONS_FILE
+
+# some of the old options file do not "export" TEST_WORK_DIR and LOG,
+# so we do it here
+if [[ -n "$TEST_WORK_DIR" ]]; then
+   export TEST_WORK_DIR
+fi
+if [[ -n "$LOG" ]]; then
+   export LOG
+fi
+
+# save env. vars
+env > $SAVE_FILE
+
+exit $?
+

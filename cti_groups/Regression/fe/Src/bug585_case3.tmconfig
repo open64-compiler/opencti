@@ -1,0 +1,4 @@
+OPT_LEVEL=0
+RUN_TESTS=false 
+LINK_TESTS_EXE=false
+LINK_TESTS=false

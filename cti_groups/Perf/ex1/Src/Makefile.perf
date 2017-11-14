@@ -1,0 +1,38 @@
+#
+# Hewlett-Packard 9000 Series 700 Makefile Wrapper
+# for PCX-U Ultra-lite suite
+#
+MACHID = hp
+
+validate all: run 
+	/bin/true
+
+compile:
+	$(MAKE) "MACHID=${MACHID}" \
+	"CC=${CC}" \
+	"FC=${FC}" \
+	"F90=${FC}" \
+	"LOCAL_OPT=${LOCAL_OPT} ${OPT} ${EXTRA_FLAGS}" \
+	"FLAGS=${LOCAL_OPT} ${OPT} ${EXTRA_FLAGS}" \
+	"EXTRA_FFLAGS=${LOCAL_FFLAGS} ${EXTRA_FFLAGS}" \
+	"EXTRA_F90FLAGS=${LOCAL_FFLAGS} ${EXTRA_FFLAGS}" \
+	"EXTRA_LDFLAGS=${LOCAL_OPT} ${EXTRA_FLAGS} ${EXTRA_LDFLAGS}" \
+	"EXTRA_LIBS=${LOCAL_LIBS} ${EXTRA_LIBS}" \
+	"BENCHPATH=${BENCHPATH}" \
+	"SPECIN=${SPECIN}" \
+	"SPECOUT=${SPECOUT}" \
+	build
+
+# The run script generator will inherit the environment at the time
+# the test is running, hence it will pick up all the appropriate settings
+# for variables relating to running (ex: USE_SIMULATORS). This target will
+# perform both run and compare.
+#
+run: compile
+	if (test ! -f ./run.${SPECIN}.sh) then ./bin/run_utils/gen_spec_run_script.sh > run.${SPECIN}.sh ; /bin/chmod 0777 run.${SPECIN}.sh ; fi
+	./run.${SPECIN}.sh
+clean:
+	$(MAKE) clean
+
+clobber:
+	$(MAKE) clobber

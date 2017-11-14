@@ -1,0 +1,3 @@
+#This test will fail at runtime until (unless) we implement
+#untied tasks with arbitrary scheduling points
+RUN_TESTS_NEG=FALSE

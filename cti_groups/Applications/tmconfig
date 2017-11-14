@@ -1,0 +1,13 @@
+#
+# Sub-groups and units in this meta-group
+#
+CHILDREN=hmmer-2.3.2 gsl-1.14
+#
+# Driver
+# 
+UNIT_DRIVER=application.pl
+#
+# Default time limit 
+#
+TIME_LIMIT=180
+

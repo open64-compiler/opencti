@@ -1,0 +1,23 @@
+       PROGRAM PARALLEL COPYIN
+	IMPLICIT NONE
+	INTEGER :: I,T
+       INTEGER, DIMENSION(1,2):: A
+
+!$OMP THREADPRIVATE(A) 
+!$OMP PARALLEL NUM_THREADS(2) PRIVATE(I,T) COPYIN(A)
+      I = OMP_GET_THREAD_NUM()
+      
+
+      IF (I .EQ. 0) THEN
+	 A(1,1) = 100
+        T=5
+      ELSE IF (I .EQ. 1) THEN
+        A(1,2) = 200
+      END IF
+!$OMP END PARALLEL
+       IF ((A(1,1).EQ. 100) .AND. (A(1,2).EQ. 200) ) THEN
+          WRITE(*,*) ' TEST : PARALLEL DEFAULT PASSED', A(1,1), A(1,2)
+       ELSE
+          WRITE(*,*) ' TEST : PARALLEL DEFAULT FAILED', A(1,1), A(1,2)
+       ENDIF   
+       END PROGRAM PARALLEL COPYIN

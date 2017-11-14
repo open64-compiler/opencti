@@ -1,0 +1,41 @@
+# ====================================================================
+#
+# Copyright (C) 2011, Hewlett-Packard Development Company, L.P.
+# All Rights Reserved.
+#
+# Open64 is free software; you can redistribute it and/or
+# modify it under the terms of the GNU General Public License
+# as published by the Free Software Foundation; either version 2
+# of the License, or (at your option) any later version.
+#
+# Open64 is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with this program; if not, write to the Free Software
+# Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston,
+# MA  02110-1301, USA.
+#
+# ====================================================================
+
+This directory currently contains test-level and unit-level drivers,
+e.g. scripts referred to in the TEST_DRIVER and UNIT_DRIVER control
+variables within CTI options files and tmconfig files.
+
+Design notes for those making changes:
+
+1) Please use /usr/local/bin/perl for the time being for all new Perl
+driver scripts. This is a temporary measure; at some point we will
+have an official "approved" copy of Perl for CTI.  Make sure you use
+the "-w" flag!
+
+2) If you are writing Perl code that you think might be used by more
+than one driver, please place the code into a module and put it in the
+"lib" subdirectory. For library code, make sure you following the
+existing conventions for modules. If you do choose to include "lib"
+modules, make sure that your top-level driver implements the
+"main::error" and "main::warning" functions, since these functions
+are called by the library code. 
+

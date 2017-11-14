@@ -1,0 +1,88 @@
+#!/usr/local/bin/perl -w
+# ====================================================================
+#
+# Copyright (C) 2011, Hewlett-Packard Development Company, L.P.
+# All Rights Reserved.
+#
+# Open64 is free software; you can redistribute it and/or
+# modify it under the terms of the GNU General Public License
+# as published by the Free Software Foundation; either version 2
+# of the License, or (at your option) any later version.
+#
+# Open64 is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with this program; if not, write to the Free Software
+# Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston,
+# MA  02110-1301, USA.
+#
+# ====================================================================
+
+#use strict;
+use FindBin qw($Bin);
+use FileHandle;
+use File::Path;
+
+sub usage()
+{
+  print <<EOF;
+  Usage: genTestLog [-l log] -w dir
+  Options:
+    -h or -help    - display this message.
+    -w dir         - the work directory from which we try to produce log file
+    -l log         - the result log file. If not specified, use the log file
+                     specified with the TM run.
+EOF
+  exit 1;
+}
+usage() if (@ARGV == 0);
+
+my ($WorkDir, $Log) = ('', '');
+while (@ARGV) {
+   $_ = shift @ARGV;
+   if (/^-w$/) {
+      $WorkDir = shift @ARGV;
+   } elsif (/^-l$/) {
+      $Log = shift @ARGV;
+   } else {
+      usage();
+   }
+}
+die("Work directory is not specified\n") unless $WorkDir;
+
+use lib "$Bin/../Scripts";
+require 'tmUtilities.pl';
+use lib "$Bin/../Scripts/drivers/lib";
+use recordTestResult;
+use generateUnitList;
+
+$ENV{'SHELL'}='/bin/sh';
+# Restore the TM environment from an env. file
+my $envFile = "$WorkDir/TMEnv";
+die("Env file not found: $envFile") unless (-f $envFile);
+restoreEnv($envFile);
+$ENV{'TEST_WORK_DIR'} = $WorkDir;
+$ENV{'LOG'} = $Log if $Log;
+$ENV{'NO_TM'} = 'true';
+
+# some other conditions to generate test log
+#my $view = $ENV{'CURRENT_VIEW'} || '';
+#if ($view ne 'tailOpt') {
+#   exit 0;
+#}
+
+if (! -d "$WorkDir/TMmsgs") {
+   print "No MSG dir: $WorkDir/TMmsgs\n";
+   exit 1;
+}
+my @resultfiles = <$WorkDir/TMmsgs/result.*>;
+if (@resultfiles == 0) {
+   print "No result files under $WorkDir/TMmsgs\n";
+   exit 1;
+}
+
+generateLog("UseResultFiles", 0);
+

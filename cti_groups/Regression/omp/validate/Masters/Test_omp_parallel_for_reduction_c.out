@@ -1,0 +1,3 @@
+
+result = 15 : pragma_omp_parallel_for_reduction test PASSES
+

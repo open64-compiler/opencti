@@ -1,0 +1,43 @@
+#!/bin/sh
+
+#set -v
+#set -x
+
+app=$1
+from_dir=$2
+unit_src_dir=$3
+home_dir=$PWD
+result_dir=run/00000001
+bin_dir=$home_dir/bin
+
+if [ `uname` = HP-UX ]
+then
+  RCP=/usr/bin/rcp
+else
+  RCP=/usr/bin/scp
+fi
+
+PERLWRAP=""
+if [ "$CTI_PERL" != "" ] ; then PERLWRAP=$CTI_PERL ; fi
+
+mkdir -p $result_dir
+cd $result_dir
+touch $home_dir/compare.results
+
+case $app in
+    ex*)
+        $RCP $from_dir/${app}.out .
+        $RCP $from_dir/${app}.err .
+        if ! diff ${app}.out ../../data/test/output/${app}.out
+        then
+            echo 'diff failed -----------' >> $home_dir/compare.results
+            diff ${app}.out ../../data/test/output/${app}.out>>$home_dir/compare.results
+            echo 'end of failing diff----' >> $home_dir/compare.results
+        fi
+        ;;
+    *)
+        echo "App $app, unknown, cannot diff it."
+        ;;
+
+esac
+

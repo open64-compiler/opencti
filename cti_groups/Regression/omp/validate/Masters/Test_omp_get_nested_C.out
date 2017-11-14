@@ -1,0 +1,14 @@
+
+
+-----------------------------------------------------------------------------
+---------------------OpenMP ver 2.5 verification test------------------------
+-----------------------------------------------------------------------------
+------------------------------C++ -------------------------------------------
+ Test case       : " omp_get_nested" construct verification. 
+-----------------------------------------------------------------------------
+The  omp_get_nested construct test verification : PASSES 
+Actual value retrived from omp_get_nested construct = 0
+
+The  omp_get_nested construct test verification : PASSES 
+Actual value retrived from omp_get_nested construct = 1
+

@@ -1,0 +1,4 @@
+
+
+pragma_omp_parallel_num_threads test PASSES
+

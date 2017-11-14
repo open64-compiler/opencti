@@ -1,0 +1,6 @@
+
+In Task, j = 100
+In Task, j = 100
+After parallel, j = 100
+The Test #"#omp parallel sections firstprivate" PASSED
+

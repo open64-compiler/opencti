@@ -1,0 +1,208 @@
+# ====================================================================
+#
+# Copyright (C) 2011, Hewlett-Packard Development Company, L.P.
+# All Rights Reserved.
+#
+# Open64 is free software; you can redistribute it and/or
+# modify it under the terms of the GNU General Public License
+# as published by the Free Software Foundation; either version 2
+# of the License, or (at your option) any later version.
+#
+# Open64 is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with this program; if not, write to the Free Software
+# Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston,
+# MA  02110-1301, USA.
+#
+# ====================================================================
+
+      TM driver script support for applications (including SPEC)
+      ==========================================================
+
+Introduction 
+------------
+
+ Each application unit contains sources for a single runnable 
+ application. Application units typically are those that meet 
+ the following conditions:
+
+     - all source files are linked together to form a single
+       program (although the program may be divided up into 
+       shared libraries).
+     - the application program is linkable and runnable
+     - the application has a Makefile
+
+ The existing application driver script works as follows.  It first
+ populates the work directory with symbolic links to the installed
+ sources, and performs any necessary option customization. Then it
+ generates (on the fly) a pair of shell scripts. The first shell
+ script contains commands to compile & link the application (via
+ "make"); the second shell script contains commands to run the
+ application and compare the results with expected output (also via
+ "make").
+
+Description
+-----------
+
+1. Makefile interface
+
+ The following section describes how application makefiles should
+ be structured for use with CTI. 
+
+
+ A. Makefile naming
+
+ Application makefiles should be named "Makefile". If it is not
+ possible for some reason to have a makefile named "Makefile" that
+ supports the CTI conventions (perhaps because of an existing
+ application Makefile of some sort), a wrapper makefile can be
+ written, and the control variable MAKEWRAPPER set to the name of the
+ wrapper for the unit.
+
+
+ B. Makefile flavor
+
+ Applications makefiles should be written to be "gmake" compatible.
+
+
+ C. Source languages
+
+ Applications may contain source files written in a mix of languages,
+ or in a single language. The assumption is that each application will
+ have some "primary" language, which is defined as the language whose
+ wrapper/drive is used to link the application. The rules within the
+ Makefile relating to building of object files (e.g. ".c.o: ...") need
+ to be written in a way that respect control variables such as "CC",
+ "CXX", etc (described below).
+
+   
+ D. Targets
+
+ The following targets should be implemented for each Makefile:
+
+   "compile"       compiles and links the application.
+
+   "run"           runs compiled application, producing a pass/fail
+                   result.  Dependent on "compile".
+
+   "compare"       compares the results of the last run to determine
+                   pass/fail. The existing TM convention is that a
+                   passing result is signalled by producing a
+                   zero-length file in the work directory named
+                   "compare.results". A missing file or a non-zero
+                   length "compare.results" indicates a failure. This
+                   convention will be brought forward for CTI.
+
+   "validate"      run application and compare results. This target
+                   typically just looks like "run compare".
+
+   "clean"         removes generated executable and object files.
+
+
+ E. Control variables
+
+ The following variables should be implemented for each Makefile:
+
+   CC              name of C compiler wrapper for compiling  C code
+ 
+   CXX             name of C++ compiler wrapper for compiling C++ code
+
+   FC              name of Fortran compiler wrapper for compiling Fortran code
+
+   AR              path to "ar" tool
+
+   EXTRA_FLAGS     additional compilation flags, to be passed on all
+                   compiles and on the invocation of the wrapper for
+                   linking. 
+
+   EXTRA_CFLAGS    command line options to be passed only for C compiles
+
+   EXTRA_CXXFLAGS  command line options to be passed only for C++ compiles
+
+   EXTRA_FFLAGS    command line options to be passed only for Fortran compiles
+
+   EXTRA_LIBS      additional libraries and/or command line options to
+                   be passed when invoking the compiler driver during
+                   linking. For applications that contain components
+                   shared libraries, these flags will be applied when
+                   linking a shared library as well.
+
+   SIMULATOR       simulator or wrapper to be used for
+                   running executables. If SIMULATOR is not set, run 
+                   executable natively.
+
+   The driver script invoking the Makefile will typically set
+   EXTRA_FLAGS based on the current settings of the control variables
+   DATA_MODE and OPT_LEVEL. Options in CC_OPTIONS will be passed to
+   EXTRA_CFLAGS, etc.
+
+
+ F. Application driver
+
+ If an application unit contains a properly written Makefile, then the
+ test driver for the unit is fairly straightforward.  As discussed
+ previously, the driver first generates a "compile" script , containing a "gmake"
+ invocation, then generates a "run" script (also with a gmake
+ invocation), then it runs the two scripts back to back. Here is a
+ greatly simplified example of what the generated scripts might look
+ like:
+
+    Compile script:
+
+    #!/bin/sh
+    ... variable settings ...
+    exec gmake compile \ 
+      LIBS=-lm EXTRA_FLAGS="+O1 +DD64" ...
+
+    Run script:
+
+    #!/bin/sh
+    ... variable settings ...
+    exec gmake validate \ 
+      SIMULATOR=""
+
+ 
+ 
+3. Specialized control variables for applications
+
+ There are many cases in which additional information has to be passed
+ from the test harness to the Makefile. For example, for the SPEC
+ benchmarks, you need to select one of three program input data sets
+ ("test", "train", or "ref") prior to running the program.  Input set
+ selection is normally under user control, that is, the user would
+ select the input set in his/her options file, along with all the
+ other options file settings (e.g. DATA_MODE, OPT_LEVEL, etc).
+
+ Having the application for the Makefile pick these bits of
+ information out of the environment is problematic, because it
+ obscures the workings of the Makefile, and makes it difficult for an
+ outsider to understand how the Makefile is controlled.  In order to
+ make such interfaces explicit, there will be test-level customizable
+ option UNIT_MAKEVARS that can be set for particular
+ units. UNIT_MAKEVARS will contain a list of makefile variable
+ names. At the point where "make" is invoked to perform some action
+ (e.g. compile, run, etc), the driver script will query the
+ environment for each variable in UNIT_MAKEVARS and pass this
+ resulting variable setting explicitly to the Makefile. UNIT_MAKEVARS
+ will typically be set in the "tmconfig" file at the group level.
+
+ Example: suppose that my TM options file contains the following
+  
+    # this var is examined by SPEC makefile
+    export SPECIN=train      
+    export SPECOUT=train
+
+ If the UNIT_MAKEVARS option is set to "SPECIN SPECOUT" for a
+ particular SPEC unit, then when the driver invokes "make" for the
+ program, it will include "SPECIN=train SPECOUT=train" when it invokes
+ "make", e.g.
+
+    gmake compile EXTRA_FLAGS=... ...   SPECIN=train SPECOUT=train
+
+ Anyone reading the compile script for the unit can use this
+ information to get a better idea for what variables are explicit
+ Makefile inputs.

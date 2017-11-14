@@ -1,0 +1,1 @@
+EXTRA_POST_CC_OPTIONS="-lm"

@@ -1,0 +1,6 @@
+
+The parallel section was executed 4 times in parallel.
+The sum of the consecutive integers from 1 to 10, is 55
+All of the the functions, func1 through func5 succeeded! 
+ Test : "#pragma omp sections reduction" PASSED 
+

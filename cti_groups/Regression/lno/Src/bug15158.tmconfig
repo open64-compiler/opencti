@@ -1,0 +1,6 @@
+OPT_LEVEL=3
+CC_OPTIONS="-LNO:simd_verbose=ON"
+RUN_TESTS=false
+LINK_TESTS=false
+CT_DIFF=true
+ERROR_FILTERS="zinRegression15158.sh"

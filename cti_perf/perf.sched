@@ -1,0 +1,86 @@
+# ====================================================================
+#
+# Copyright (C) 2011, Hewlett-Packard Development Company, L.P.
+# All Rights Reserved.
+#
+# Open64 is free software; you can redistribute it and/or
+# modify it under the terms of the GNU General Public License
+# as published by the Free Software Foundation; either version 2
+# of the License, or (at your option) any later version.
+#
+# Open64 is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with this program; if not, write to the Free Software
+# Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston,
+# MA  02110-1301, USA.
+#
+# ====================================================================
+###########################################################################
+#
+# Here are the definitions of CTI Perf test.
+#
+# The order of tests in the list does not affect execution.
+#
+# This file is in perl format. Everything in the file should
+# follow perl language syntax. The file will be read in with a
+# perl "do" statement.
+#
+# Follow the existing examples when adding new tests.  A couple of
+# syntactic items: days must be specified with square brackets and
+# quotes, # e.g. [ "mon","tue"]. Each record must end with a 
+# semicolon. Fields in a record must end with a comma.
+#
+###########################################################################
+
+$SCHED_known_failures = 1;
+$SCHED_old_log        = 1;
+
+# CTI Regression Test Source directory
+my $CTIREG_TEST_DIR = '{CONFIGURE_ctihome}/cti_perf';
+
+# Location of options files
+my $OPTION_DIR = $CTIREG_TEST_DIR;
+
+# Location of log files, cti RESULTS directory
+my $LOG_DIR = $CTIREG_TEST_DIR ;
+
+# Location of work directories
+my $WORK_DIR = $LOG_DIR;
+
+# Machine to launch from, '' value stands for local system
+my $LAUNCH_MACHINE = '';
+
+my $color          = "#F0F0E6";
+
+# The days to run the tests 
+my @DAYS    = qw(mon tue wed thu fri sat sun);
+
+my $actions = "-nomail -x DTM_POOL=Default clean run";
+
+
+my @Options = qw (
+    perf.rate.opt
+    perf.speed.opt
+);
+
+
+for my $of (@Options) {
+  TestInfo->new(
+        DAYS        => \@DAYS,
+        MACHINE     => "$LAUNCH_MACHINE",
+        DISTRIBUTED => 1,
+        OPTIONS     => "$OPTION_DIR/$of",
+        ACTIONS     => "$actions",
+        WORKDIR     => "$WORK_DIR/work.DAY.$of",
+        LOGNAME     => "$LOG_DIR/log.DAY.$of",
+        KEY         => "NONE",
+        CELLCOLOR   => $color,
+  );
+}
+
+1;
+

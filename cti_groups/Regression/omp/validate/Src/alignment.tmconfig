@@ -1,0 +1,3 @@
+TEST_AUXFILES="alignment.in"
+RUN_OPTIONS="< alignment.in"
+EXTRA_POST_CC_OPTIONS="-lm"

@@ -1,0 +1,12 @@
+
+
+-----------------------------------------------------------------------------
+---------------------OpenMP ver 2.5 verification test------------------------
+-----------------------------------------------------------------------------
+----------------------------------- C++ -------------------------------------
+ Test case       : "omp_get_num_procs" construct verification. 
+ Expected result : The omp_get_num_procs routine returns the number of 
+		   processors available to the program
+ 
+-----------------------------------------------------------------------------
+The "omp_get_num_procs" construct test verification : PASSES 

@@ -1,0 +1,15 @@
+
+
+----------------------------------------------------------------------------- 
+---------------------OpenMP ver 2.5 verification test------------------------ 
+--------------------------------- C++ --------------------------------------- 
+----------------------------------------------------------------------------- 
+ Test case       : "omp_set_num_threads" construct verification. 
+ Expected result : The number of threads spawned should be equal to the 
+		   specified number of threads
+ 
+----------------------------------------------------------------------------- 
+The omp_set_num_threads construct test verification : PASSES
+Specified thread count = 2
+Actual thread count = 2
+

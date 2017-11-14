@@ -1,0 +1,22 @@
+#
+# Groups in this meta-group
+#
+CHILDREN=ex1
+#
+# Driver
+#
+UNIT_DRIVER=application.pl
+#
+# When performing a make in a SPEC dir, be sure to pass SPECIN
+# and SPECOUT to the makefile
+#
+# UNIT_MAKEVARS="SPECIN SPECOUT"
+#
+# Make wrapper
+#
+MAKEWRAPPER=Makefile.perf
+#
+# Default input set
+#
+SPECIN=ref
+SPECOUT=ref

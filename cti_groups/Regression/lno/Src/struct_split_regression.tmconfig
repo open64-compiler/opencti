@@ -1,0 +1,3 @@
+OPT_LEVEL=fast
+CC_OPTIONS="-OPT:struct_array_copy=2 -OPT:alias=field_sensitive -Wb,-tt32:0x10000000"
+CT_DIFF=true

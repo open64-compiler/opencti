@@ -1,0 +1,8 @@
+OPT_LEVEL="3"
+
+CC_OPTIONS="-apo "
+CXX_OPTIONS="-apo "
+FC_OPTIONS="-apo "
+
+
+

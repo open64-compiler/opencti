@@ -1,0 +1,4 @@
+
+Calculated sum 55.000000
+#pragma omp parallel for shared Test PASSED
+

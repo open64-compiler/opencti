@@ -1,0 +1,3 @@
+
+ TEST #pragma omp parallel section default ,shared , omp_get_num_procs and num_thread constructs PASSES 
+

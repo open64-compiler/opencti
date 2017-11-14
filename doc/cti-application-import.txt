@@ -1,0 +1,576 @@
+# ====================================================================
+#
+# Copyright (C) 2011, Hewlett-Packard Development Company, L.P.
+# All Rights Reserved.
+#
+# Open64 is free software; you can redistribute it and/or
+# modify it under the terms of the GNU General Public License
+# as published by the Free Software Foundation; either version 2
+# of the License, or (at your option) any later version.
+#
+# Open64 is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with this program; if not, write to the Free Software
+# Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston,
+# MA  02110-1301, USA.
+#
+# ====================================================================
+
+                Importing applications into CTI
+
+                
+
+1. Introduction
+
+This document describes how to validate/update an application Makefile to make 
+it CTI-compliant.  In order for a Makefile to work properly with CTI, it has to 
+obey certain conventions with regard to which make variables it reads. These 
+conventions are set out in the following document: <CTI_HOME>/doc/app-script.txt.
+
+
+
+2. Description
+
+To successfully import application into CTI, developer should follow following 
+steps:
+   1) Inspect the application with GCC
+   2) Inspect the application with specific compiler
+   3) Follow the pre-import testing guidelines
+   4) Import the application into CTI environment
+
+NOTE: The example given here in this document applies to porting of Application
+      in Linux environment.
+
+
+2.1 Inspect the Application with GCC
+
+CAUTION: Before importing the new application into CTI, developer may need to 
+         inspect application with GCC compiler in an isolated system.  For this 
+         purpose use isolated Linux system since new application may install
+         binary files into local file system. Some application cannot uninstall 
+         or rollback to old good state. And also some application needs SUDO 
+         access that cannot be easily available. 
+
+         Solution 1: Use VMPLAYER with UBUNTU/SUSE LINUX on developer 
+                     client system if resource is good enough. 
+         Solution 2: Install UBUNTU/SUSE LINUX on any old system and use if 
+                     freely available locally.
+
+* Download/get latest stable build Application source code package from 
+  application developer website to that local system.
+ 
+  For example, 
+      a) Download gsl-1.14.tar.gz tarball from http://www.gnu.org/prep/ftp.html
+      b) Unpack the tarball and cd to unpacked folder
+         $ tar -zxvf gsl-1.14.tar.gz
+         $ cd gsl-1.14
+      c) Run the configure script and run make if successful
+         $ ./configure
+         $ make
+         $ make check
+    
+In the above steps developer should inspect following:
+1) From application documentations, readme and errors from configure script 
+   developer can figure out necessary pre-requirements and install on local 
+   system.  
+
+2) Developer can check on documentation webpage and readme, install file from 
+   package and also run ./configure --help to see necessary Environment 
+   variables and switches
+
+3) Although above requirements are correctly supplied, application can still 
+   fail on configure and make steps. In that case have a look on failed reason,
+   search the internet to find out if it is already known issue and have already 
+   a patch for it or not. If new patch is available for downloaded package then 
+   download that patch, apply it on source code and retry again.
+   In case it is a known failure but patch isn't available, then try previous 
+   stable build.
+
+4) If 'make check' isn't available for package after build testing then search 
+   for alternative testing solution for after build testing.
+   Some package use 'test' instead of 'check' or can be others. Open Makefile 
+   from application root folder or other possible test folders, tests, 
+   regression.. and so on (if exist) and look for useable one.
+   Some packages have Example folder with some examples those can compile and 
+   run. Those can also be useful for testing purpose.
+   If don't find anything to use then look for application webpage for examples 
+   and other samples as testing purpose.
+
+Remark: Some application need to run 'make install' prior to do testing. In that
+        case look for '--prefix' switch for application to install local 
+        directory other than default directory. Selecting local directory can 
+        avoid SUDO requirement and also can avoid left behind binary that can 
+        cause conflict with other application testing.
+
+
+2.2 Inspect the application with specific compiler
+
+Do the necessary build environment with specific compiler and do the build as 
+done before with gcc.
+
+1) Creating environment
+    Open shell and create environment using 'export'. For example,
+      $ export CC=/path/to/opencc
+      $ export CXX=/path/to/openCC
+      $ export FC=/path/to/openf90
+      $ export CFLAGS=-O1
+      $ export CXXFLAGS=-O1
+
+Remark: Use only necessary exports. For example don't do exporting for CXX if 
+    application didn't use C++. Same for FC
+Remark: Some application need to pass as switch and don't understand Environment 
+    variables.
+    
+2) Run configure and make and read output to see compiler and flags are correctly 
+   used or not.  If compiler and switches isn't correctly used then need to do 
+   enhancement in configure and make script as necessary.
+3) Look for failures and try to decide configure and make script error or error 
+    of compiler itself.
+    Need to make enhancement and changes if failure is caused by configure and 
+    make script error.
+    Inform to compiler developer if failure is caused by error of compiler 
+    itself.
+    There is no specific rule and steps to do enhancement and changes in 
+    configure and make script but try to maintain integrity of original script. 
+    Also look for minimum changes that absolutely necessary for specific 
+    compiler and won't effect to other compiler if use as is.
+    
+If you had make changes in configure and make scripts then create a patch file 
+of the original source tree and enhanced source tree (without any changes make by 
+configure and make)
+    $ diff -rupN original/ new/ > original.patch
+
+You can use patch to apply clean source code from unpacked tarball as
+    $ patch -p1 < original.patch
+
+Keep this patch file for future use. This might help in the porting of future 
+version of this application.
+
+
+2.3 Import the application into CTI environment
+
+2.3.1 Creating personal CTI environment
+
+For this purpose you need to create personal CTI environment.
+
+2.3.2 Application Directory structure & organization
+
+The sources for CTI tests are organized into a hierarchical structure; interior 
+nodes within the CTI source tree are referred to as "groups", and leaf nodes are 
+referred to as "units". CTI identified a unit directory by the presence of a 
+subdirectory named "Src". Each group and unit directory can also have a tmconfig 
+file to hold CTI variable settings needed for that group/unit. Picture:
+
+    <CTI_HOME> {
+    GROUPS {
+        Group_1 {
+          tmconfig
+          Unit_x {
+            tmconfig
+            Src { 
+              <files, dirs>
+            }
+            Tools { ... }
+          }
+          Unit_y {
+            Src { 
+              <files>
+            }
+          }
+          Unit_z { ... }
+          ...
+        }
+        Group_2 {
+          Unit_q
+          Unit_r
+          Unit_s
+        }
+        ...
+    }
+
+2.3.3 Source file import
+
+A first step for importing your application into CTI is to locate the spot where 
+you want to place it in the CTI "GROUPS" hierarchy, then copy in the files.
+
+Most free-standing applications (e.g. not a test suite, not a SPEC program, not 
+a collection of regression tests) will wind up in the Applications group. 
+
+Let's suppose that I am importing an open source application named "gsl-1.14". 
+Remark: Un-tar from original tarball and apply patch of you have one that will 
+        maintain original file permissions. Don't copy from your working folder. 
+        The copy from your working folder can have binary remaining and that can 
+        cause CTI not working properly.
+
+      <CTI_GROUPS> {
+           Applications { 
+             ...
+             filter { ... }
+             gsl-1.14 {            <<*******
+                Src {              <<*******
+                  Makefile.in      <<*******
+                  configure        <<*******
+                  main.c           <<*******
+                  ...              <<*******
+                }                  <<*******
+             }
+             flex { ... }
+           }
+           Regression { ... }
+           SPEC { ... }
+           ...
+        }
+      }
+
+
+2.3.4 Makefile setup
+
+The CTI application driver expects to see a makefile in your application Src 
+directory that supports a specific set of targets (described in detail in 
+$CTI_HOME/doc/app-script.txt), including "compile", "validate", etc. The actual 
+name of the CTI Makefile is controlled by the CTI option MAKEWRAPPER, which 
+defaults to "M.hp.TAHOE", but can be overridden. 
+
+2.3.4.1 Using the CTI makefile template
+
+If your application is fairly simple (flat source hierarchy) and/or it doesn't 
+contain a workable Makefile already, you may want to try 
+Using the existing CTI template makefile ("common.mk"), which already has 
+targets set up and simply needs to be customized by providing the appropriate 
+hook scripts and variable settings.  Here is an example of a wrapper that uses 
+common.mk (this is from Applications/cheb):
+
+    BENCHNAME = cheb
+    BENCHARGS = 
+
+    SRCS = cheb.f
+
+    LINKCOMPILER = ${FC}
+    LOCAL_LIBS = 
+
+    # include the common gmake rules
+    include ${GMAKEROOT}/common.mk
+
+    OUT_FILES := cheb.dat qcheb.dat
+    DIFFER := ../do-compare.sh
+
+    compile: defaultcompile
+    clean: defaultclean
+    run: defaultrun
+    compare: defaultcompare
+
+You can inspect <CTI_HOME>/Scripts/gmake/common.mk to see how it works and which 
+variables it expects to see set. In the case above, we've been able to use 
+almost all of common.mk intact with the exception of a special program to diff \
+output against the master copy. 
+
+2.3.4.2 Using a wrapper around an existing makefile
+
+If the application you are importing is larger and more complex, and it comes 
+with an existing Makefile and build process, then typically you will want to 
+write a makefile wrapper that recursively runs make with the existing Makefile. 
+Example:
+
+# Make.CTI for gsl-1.14
+
+APP_CONFIGFILE=./configure
+APP_MKFILE=Makefile
+CMP_FILE=compare.results
+
+# export and unexport environment to submake
+export CC = $(CC)
+export CFLAGS = $(EXTRA_FLAGS) $(EXTRA_CFLAGS)
+unexport CXX
+unexport CXXFLAGS
+
+export GMAKEROOT = $(GMAKEROOT) \
+				CC="$(CC)" \
+				CFLAGS="$(EXTRA_FLAGS) $(EXTRA_CFLAGS)" \
+
+compile:
+	$(APP_CONFIGFILE) 
+	$(MAKE) -f $(APP_MKFILE)
+
+validate: run_tests
+
+run_tests:
+	$(MAKE) -f $(APP_MKFILE) --quiet check || exit 1;
+	touch $(CMP_FILE)
+
+clean:
+	$(MAKE) -s -f $(APP_MKFILE) clean
+
+
+On above example:
+    Environment valuables are passing to configure and make script with export. 
+    CXX and CXXFLAGS are removed since application didn't use it.
+    
+    compile will do action of ./configure and make
+    
+    validate will run make check
+    
+At the end: if make check is successful then touch will create empty 
+compare.results file. CTI will look for empty compare.results file as successful. 
+If compare.results is not empty or does not exist, CTI will report the test as 
+FAIL.
+
+Following is little bit complex example:
+# Makefile.CTI for lam-7.1.4
+# Source Makefile.in are patched with lam-7.1.4.patch
+# 2/23/2011 Add 'exit 0' to the end of testing commands
+
+APP_CONFIGFILE=./configure
+APP_MKFILE=Makefile
+CMP_FILE=compare.results
+INST_DIR=$(PWD)/target
+
+
+# environment override
+export CC       = $(CC)
+export CFLAGS   = $(EXTRA_FLAGS) $(EXTRA_CFLAGS)
+export CXX      = $(CXX)
+export CXXFLAGS = $(EXTRA_FLAGS) $(EXTRA_CXXFLAGS)
+export FC       = $(FC)
+export FFLAGS   = $(EXTRA_FFLAGS)
+export AR       = $(CTI_AR)
+export PATH    := $(PATH):$(INST_DIR)/bin
+
+export GMAKEROOT=$(GMAKEROOT) \
+				CC="$(CC)" \
+				CFLAGS="$(EXTRA_FLAGS) $(EXTRA_CFLAGS)" \
+				CXX="$(CXX)" \
+				CXXFLAGS="$(EXTRA_FLAGS) $(EXTRA_CXXFLAGS)"
+				FC="$(FC)" \
+				FFLAGS="$(EXTRA_FFLAGS)"
+
+compile:
+	$(APP_CONFIGFILE) --prefix=$(INST_DIR)
+	$(MAKE) -f $(APP_MKFILE)
+
+validate: setup run_tests teardown
+# Setup will install and compile examples
+setup:
+	$(MAKE) -f $(APP_MKFILE) install
+	$(MAKE) -f $(APP_MKFILE) lamexamples || exit 1;
+	lamboot
+
+# run_test will run all examples files one by one
+# have to use 'exit 0' to avoid break with error 
+# since lamboot need lamhalt to clear from system.
+run_tests:
+	touch $(CMP_FILE) && exit 0;
+
+	cd examples/alltoall; \
+	mpirun C alltoall 2>> $(CMP_FILE) && exit 0;
+
+	cd examples/cxx; \
+	mpirun C chapter_10 2>> $(CMP_FILE) && exit 0;
+
+	cd examples/fault; \
+	mpirun n0 ./master 2>> $(CMP_FILE) && exit 0;
+
+	cd examples/hello; \
+	mpirun C hello; \
+	mpirun C cxxhello 2>> $(CMP_FILE) && exit 0;
+
+	cd examples/mandelbrot; \
+	mpirun myapp 2>> $(CMP_FILE) && exit 0;
+
+	cd examples/pi; \
+	mpirun C cpi 2>> $(CMP_FILE) && exit 0; \
+	mpirun C cxxpi 2>> $(CMP_FILE) && exit 0; \
+	mpirun C fpi 2>> $(CMP_FILE) && exit 0;
+
+	cd examples/ring \
+	mpirun C ring 2>> $(CMP_FILE) && exit 0; \
+	mpirun C cxxring 2>> $(CMP_FILE) && exit 0; \
+	mpirun C fring 2>> $(CMP_FILE) && exit 0;
+
+	cd examples/romio; \
+	mpirun C simple -fname testfile 2>> $(CMP_FILE) && exit 0;
+
+	cd examples/topology; \
+	mpirun -np 4 cxx_topology 2>> $(CMP_FILE) && exit 0;
+
+	cd examples/trivial \
+	mpirun myapp 2>> $(CMP_FILE) && exit 0;
+
+	cd examples/wave1d \
+	mpirun C wave 2>> $(CMP_FILE) && exit 0;
+
+teardown:
+	lamhalt
+	$(MAKE) -f $(APP_MKFILE) uninstall --quiet
+
+clean:
+	$(MAKE) -s -f $(APP_MKFILE) clean
+	$(MAKE) -s -f $(APP_MKFILE) distclean
+ 
+On that example:
+1) Compiler and flags are passed with export since ./configure script looking 
+    for environment  variables
+2) Use --prefix since testing need to run make install
+3) Validate have 3 steps: setup, run_test and teardown
+   a. Setup will run make install and compile Examples. 
+   b. Run_test will run examples
+   c. Examples need to run lanboot prior and also need lamhalt to run after to 
+       remove from memory. So run-test process need to add && exit 0; on every 
+       steps to avoid CTI exist if return error.
+   d. All application errors are appended to compare.results file for CTI to 
+      know some example fail.
+   Remark: compare.results file can also use as compare result from output with 
+   pre obtained data.
+
+2.3.4.3 Makefile wrapper name
+
+Once you have written a Makefile wrapper (let's call it "Makefile.CTI") you need
+to place it into the Src directory, then update the application tmconfig file 
+(e.g. <CTI_GROUPS>/Applications/<yourapp>/tmconfig) with the name of the wrapper, 
+
+E.g:
+
+    % cat tmconfig
+    MAKEWRAPPER=Makefile.CTI
+    %
+
+
+
+3. Running the application in your local CTI
+
+Once you have done some rudimentary testing of your Makefile wrapper, it's time 
+to do some trial runs of your application. For that purpose add your application 
+to your CTI environment by editing opt file
+
+{CONFIGURE_ctihome}/cti_regression/cti_regression.opt
+Make change on OPT_LEVEL as necessary
+
+export SELECTIONS="Applications/gsl-1.14"
+export DATA_MODE="+DD64"
+export OPT_LEVEL=1
+export CTI_REPORT_PASSES=true
+export CLEAN=FALSE
+
+Kick off the run:
+*  ssh {host_name} "{CONFIGURE_ctihome}/bin/tm-schedule.pl -s \
+ {CONFIGURE_ctihome}/cti_regression/cti_regression.sched \
+ -run -no_match" 
+*  Monitor and verify the results at:
+http://{CONFIGURE_webserver}/{CONFIGURE_webroot}/cgi-bin/show-schedule.cgi?sched=
+{CONFIGURE_ctihome}/cti_regression/cti_regression.sched
+
+You will need to check the *.comp.err file in the resulting work directory to 
+make sure that all of the critical options settings are making it through (
+e.g. you specified +DD32 in the options file-- are you seeing this option in the 
+build log?). 
+
+4. Pre-import testing guidelines
+
+Once you have a clean run, you must run with additional options prior to
+adding your new application into the nightly testing. We recommend
+running the full set of options which will be used for the application
+once it has been added to nightly testing.
+
+For example, the nightly testing for Linux/open64 applications currently
+runs 7 sets at -m32 and the same 7 sets at -m64, so these are the options
+to be used for pre-import testing of open64 applications. After either
+succeeding with these options--or determining that any failures are due 
+to compiler issues rather than porting problems--add the application into
+the nightly testing.
+
+Any non-porting issues found by this testing should be reported to the 
+developers for their followup.
+
+
+5. Running the application in your production CTI
+
+You can import your application for nightly build testing by editing tmconfig 
+file located under Applications folder.
+Add your application to CHILDREN variable.
+Remark: You may need to do check out and check in form RCS or iSVN to make 
+changes.
+
+
+
+6. Application setup concerns
+
+Here are some additional things you may need to think about while setting up your 
+application.
+
+6.1 Portability
+
+Not every application is 64-bit clean; make sure that you test your app with 
++DD64 and +DD32. If the app is not 64-bit clean and will never be 64-bit clean, 
+then typically you need to add an override in the tmconfig file, e.g.
+
+   DATA_MODE=+DD32
+
+It is also a good idea to try to check for applications that make assumptions 
+about how they are being run. For example, suppose that you have an application 
+that writes to a file named "/tmp/tmpfile" during its execution. Such an 
+application will work fine if it's the only thing being run on a given system, 
+but if you try to run two copies of it on the same machine at the same time, if 
+may fail due to a collision. This type of issue needs to be sorted out.
+
+6.2 Dependencies
+
+Many applications have dependencies, e.g. specific libraries they need to link 
+against, helper applications (perl, sed) they need to run, and so on. This is a 
+tricky area, since a lot depends on the nature of the application.
+
+Try to avoid hard-coding paths to helper applications in to the app Makefiles, 
+however.
+
+6.3 Limits
+
+CTI test runs impose a time limit on the compile and execution phases of the 
+test run. If you have a really large app, you may need to use an increased time 
+limit in order to avoid spurious "long compile" or "long execution" failures. 
+This can be done by adding
+
+   TIME_LIMIT=NNN
+
+to you app's tmconfig file (where NNN is a number of minutes).
+
+6.4 Options
+
+Some applications are sensitive to particular tricks played by the optimizer. If 
+you run you application at +O2 or above and it fails to validate you may need to 
+look into whether it has to be compiled with a compatibility option such as 
++Ofltacc or +Ointeger_overflow=conservative.
+
+
+
+7. Appendix
+
+7.1 Frequently Asked Questions.
+
+Q.  MAKE didn't use optimization flags correctly as passed by C/CXXFLAGS.
+    MAKE output showing different optimization flags in the same line.
+A.  Need to edit configure script. Look for where script determine the 
+    optimization flags. Made code change as use default optimization flags if no 
+    C/CXXFLAGS supplied and use C/CXXFLAGS when supplied.
+
+Q.  Application building is still using gcc, Although I set CC environment 
+    variable to opencc correctly.
+    configure script output message similar to 'Unknown C compiler' or 'Unknown 
+    C++ compiler'.
+A.  First check ./configure --help to see is there another way to pass CC or CXX 
+    correct compiler with switches.
+    Sometime you will see like 'Unknown C compiler' or 'Unknown C++ compiler' at
+    ./configure output. In that case configure script need to make code change 
+    to understand open64 compiler.
+
+Q.  My 'make check' testing or example testing need x windows. 
+    When run testing x windows box open and waiting mouse click or key input.
+    But when I run form CTI CTI didn't finish for a long time.
+    When I run form ssh testing return unknown character and just stop there.
+A.  Mouse click and key input cannot do with CTI. Open C/C++ source code and 
+    hard code as Mouse click or key input is already applied.
+    CTI ssh shell cannot open X windows over network. Create DISPLAY variable as 
+    following. X window will pop up at system's local screen.
+        export DISPLAY=:0.0; \
+        make check

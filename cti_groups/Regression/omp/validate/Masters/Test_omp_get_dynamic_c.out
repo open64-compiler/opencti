@@ -1,0 +1,14 @@
+
+
+-----------------------------------------------------------------------------
+---------------------OpenMP ver 2.5 verification test------------------------
+-----------------------------------------------------------------------------
+ Test case       : "omp_get_dynamic" construct verification. 
+ Expected result : The omp_get_dynamic routine returns the value of of the  
+		   	   dyn-var internal control variable.
+ 
+-----------------------------------------------------------------------------
+The "omp_get_dynamic" construct test verification : PASSES 
+omp_get_dynamic_actual_value = 1 
+The "omp_get_dynamic" construct test verification : PASSES 
+omp_get_dynamic_actual_value = 0 

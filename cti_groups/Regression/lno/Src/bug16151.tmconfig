@@ -1,0 +1,4 @@
+OPT_LEVEL=3
+FC_OPTIONS="${FC_OPTIONS} -march=barcelona -LNO:loop_model_simd=on -LNO:fu=6:blocking=0:prefetch=0 -OPT:Ofast:ro=3:unroll_size=256 -CG:merge_counters_x86=on -HP:bdt=2m:heap=2m -WOPT:sib=on"
+RUN_TESTS=false
+LINK_TESTS_EXE=false

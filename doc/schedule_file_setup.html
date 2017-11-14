@@ -1,0 +1,78 @@
+<!--
+ ====================================================================
+
+ Copyright (C) 2011, Hewlett-Packard Development Company, L.P.
+ All Rights Reserved.
+
+ Open64 is free software; you can redistribute it and/or
+ modify it under the terms of the GNU General Public License
+ as published by the Free Software Foundation; either version 2
+ of the License, or (at your option) any later version.
+
+ Open64 is distributed in the hope that it will be useful,
+ but WITHOUT ANY WARRANTY; without even the implied warranty of
+ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ GNU General Public License for more details.
+
+ You should have received a copy of the GNU General Public License
+ along with this program; if not, write to the Free Software
+ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston,
+ MA  02110-1301, USA.
+
+ ====================================================================
+-->
+<html>
+<head>
+    <title>How to setup a schedule file</title>
+    <link rel="stylesheet" type="text/css" href="../css/homepages-v5.css" />
+</head>
+<body>
+
+<br>
+<h2 align="center">How to setup a schedule file</h2>
+<br>
+  A CTI schedule file is a collection of perl test objects which can be used to run daily CTI tests and generate web report results. The format of this data is as following:
+
+<pre><code>TestInfo->new(
+    VIEW        => "your_test_view",
+    DAYS        => [the_weekly_days_to_run_this_test],            # ex.: ['mon', 'wed', 'fri']
+    MACHINE     => "the_host_from_where_the_tests_are_launched",
+    DISTRIBUTED => to_use_or_not_dTM,                             # 1 = use dTM
+    OPTIONS     => "/the/option/file",
+    ACTIONS     => "additional_options_passed_to_TM_command",
+    WORKDIR     => "/the/work/directory",
+    LOGNAME     => "/the/log/file",
+    KEY         => "key_selection",                               # see "tm-schedule -help"
+);
+</code></pre>
+
+<br>
+  Everything in a schedule file should follow Perl language syntax. The file will be read in with a perl 'do' statement and will abort if any perl error syntax occur.
+In order to setup a schedule file a user doesn't have to, necessary, knows the Perl language syntax itself, the format is pretty straightforward for someone accustomed to any scripting language and a peek in somebody else's schedule file can help a lot.
+
+<br>
+Once such a schedule file is defined a user can validate it and launch all the specified tests using '${CTI_HOME}/bin/tm-schedule.pl' script, see the usage message.<br>
+Example of a tm-schedule invocation:
+<pre><code>${CONFIGURE_ctihome}/bin/tm-schedule.pl -no_match -s {CONFIGURE_ctihome}/cti_regression/cti_regression.sched -run
+</code></pre>
+
+<br>
+To access the first layer of web reports use 'show-schedule' and 'show-failures' CGI scripts as following:
+<pre><code>http://{CONFIGURE_webserver}/{CONFIGURE_webroot}/cgi-bin/show-schedule.cgi?sched={CONFIGURE_ctihome}/cti_regression/cti_regression.sched
+http://{CONFIGURE_webserver}/{CONFIGURE_webroot}/cgi-bin/show-failures.cgi?sched={CONFIGURE_ctihome}/cti_regression/cti_regression.sched
+</code></pre>
+
+<br>
+<br>
+Additionally the schedule file can be used to customize some settings for 'show-schedule' and 'show-failures' reports as following:
+<ul>
+ <li>use '%SCHED_Menu' hash table to customize the top menu for the web reports</li>
+ <li>use '$SCHED_known_failures' variable to render, by default, the known failures column on 'show-failures' page;</li>
+ <li>use '$SCHED_Cache_dir' variable to specify a different than default cache directory</li>
+</ul>
+<br>
+
+</body>
+</html>
+
+

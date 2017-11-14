@@ -1,0 +1,99 @@
+#!/usr/local/bin/perl -w
+# ====================================================================
+#
+# Copyright (C) 2011, Hewlett-Packard Development Company, L.P.
+# All Rights Reserved.
+#
+# Open64 is free software; you can redistribute it and/or
+# modify it under the terms of the GNU General Public License
+# as published by the Free Software Foundation; either version 2
+# of the License, or (at your option) any later version.
+#
+# Open64 is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with this program; if not, write to the Free Software
+# Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston,
+# MA  02110-1301, USA.
+#
+# ====================================================================
+
+sub usage {
+  print "ckill <pid>\n";
+}
+
+#
+# Make sure we've been provided with a valid process id
+#
+if ( @ARGV != 1 || $ARGV[0] <= 0 ) {
+  usage();
+  exit 0;
+}
+
+#
+# Determine the current user name
+#
+open(NAME,"whoami|");
+$name = <NAME>;
+close NAME;
+chop $name;
+
+push(@track,$ARGV[0]);
+push(@tokill,$ARGV[0]);
+
+$done = 0;
+$iter = 1;
+while ( !$done ) {
+  $done = 1;
+
+  #
+  # Locate all currently running processes owned 
+  # by the current user
+  #
+  @pids = ();
+  @ppids = ();
+  open(PS,"ps -ef|");
+  while ( <PS> ) {
+    my ($uname,$pid,$ppid,$junk) = split(' ', $_, 4);
+    if ( $uname eq $name ) {
+      push(@pids,$pid);
+      push(@ppids,$ppid);
+    }
+  }
+  close PS;
+
+  #
+  # Locate all currently running processes that are
+  # children of process id's that we are tracking.
+  #
+  while ( @track != 0 ) {
+    $curpid = pop(@track);
+
+    foreach $j ( 0 .. $#ppids ) {
+      if ( $ppids[$j] == $curpid ) {
+	push(@tokill,$pids[$j]);
+	push(@track,$pids[$j]);
+      }
+    }
+  }
+
+  if ( @tokill != 0 ) {
+    kill 'TERM',@tokill;
+    $done = 0;
+    
+    # Start over and look for children of all pid's 
+    # that we killed
+    @track = @tokill;
+    @tokill = ();
+  }
+  $iter += 1;
+}
+
+
+
+
+
+

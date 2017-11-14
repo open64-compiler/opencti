@@ -1,0 +1,21 @@
+#
+# Units in this group.
+#
+CHILDREN=fe ipa wopt lno cg omp apo sync lwopt
+#
+# driver
+UNIT_DRIVER=regression.pl
+#
+# 10 minutes per compile/link/run
+TIME_LIMIT=10
+#
+# Compile with -I<unit_src_dir>
+INCLUDE_PATH=.
+#
+# Where to find error/output files
+MASTER_FILE_PATH="../Masters"
+#
+# Default error and output compare scripts
+ERROR_COMPARE_SCRIPT=errDiff.pl
+OUTPUT_COMPARE_SCRIPT=outDiff.pl
+

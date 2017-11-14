@@ -1,0 +1,74 @@
+# ====================================================================
+#
+# Copyright (C) 2011, Hewlett-Packard Development Company, L.P.
+# All Rights Reserved.
+#
+# Open64 is free software; you can redistribute it and/or
+# modify it under the terms of the GNU General Public License
+# as published by the Free Software Foundation; either version 2
+# of the License, or (at your option) any later version.
+#
+# Open64 is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with this program; if not, write to the Free Software
+# Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston,
+# MA  02110-1301, USA.
+#
+# ====================================================================
+
+# This sample option file was created to run tests under cti_groups
+# directory using open64 compilers in Linux SuSE machines in dTM pool
+
+# Run cti_regression tests
+# Location of imported CTI tests
+export CTI_GROUPS={CONFIGURE_ctihome}/cti_groups
+
+# Select cti_groups/Regression tests
+export SELECTIONS="Regression/apo      \
+                   Regression/fe       \
+                   Regression/wopt     \
+                   Regression/lno      \
+                   Regression/cg       \
+                   Regression/omp/bugs \
+                   Regression/sync"
+
+# Select cti_groups/Applications tests
+export SELECTIONS="$SELECTIONS Applications"
+
+# Use 64-bit compiler option
+export DATA_MODE="+DD64"
+
+# Internal switch to use -m32 and -m64 options for open64 compiler
+export DATA_MODE_MAPPING="+DD32/-m32 +DD64/-m64"
+
+# Compiler option prefix sign (e.g, +, -)
+export CTI_OPT_SIGN="-"
+
+# OPT level
+export OPT_LEVEL=fast
+
+# Compile and run on a Linux machine
+export CTI_COMPILE_HOST_OS=Linux
+export CTI_RUN_HOST_OS=Linux
+
+# dTM operating system, choose Linux SuSe machine in the dTM pool
+export DTM_OPSYS="Linux_SLES"
+
+# dTM CPU architecture, choose x86_64 architecture machines in the dTM pool
+export DTM_CPUARCH="x86_64"
+
+# Location of compilers to test - provide full path for compilers
+# C compiler
+export CC=opencc
+# C++ compiler
+export CXX=openCC
+# Fortran compiler
+export FC=openf90
+
+# Location of shared libraries - provide full path to shared libraries
+export LD_LIBRARY_PATH=
+
