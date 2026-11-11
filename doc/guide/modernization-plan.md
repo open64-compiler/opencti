@@ -249,6 +249,12 @@ These phases are ordered by usable deliverables, not estimated calendar dates. D
 
 Schema design in phase 0 must include remote attempt identity and DSL phases so later backends do not force a reporting rewrite. A minimal remote submission experiment can happen early after the contracts stabilize, but dashboard parity and collection durability remain gates. Performance acceptance on real hardware follows successful remote correctness and lease handling.
 
+## Phase 0 working artifacts
+
+The [dashboard feature preservation ledger](dashboard-feature-ledger.md) records feature IDs, implementation evidence, owner roles, fixture specifications and dashboard scenarios. The [failure triage acceptance scenarios](failure-triage-acceptance.md) define legacy characterization and preservation/replay gates for Docker, mounted dependencies, standalone debugging, the DSL and remote GPUs.
+
+These documents start phase 0; they do not establish a passing reference deployment. Historical/reference fixtures have not yet been acquired, owner roles are unassigned, and all runtime acceptance scenarios are not run. The existing PDF is the peer-review snapshot preceding these working artifacts; the Markdown and generated HTML contain the current links.
+
 ## First implementation scope
 
 Start with the evidence ledger, import contracts, and one dashboard-to-result vertical slice. Use a small legacy regression run and one application result, including a known failure, a new failure, and accessible logs/masters. Make that history native and durable on the Mac, with a working link to any legacy action not yet replaced.

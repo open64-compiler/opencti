@@ -6,6 +6,9 @@ These guides describe the code imported at commit `8c3d603`, rather than a curre
 
 ## Start here
 
+- [Dashboard feature preservation ledger](dashboard-feature-ledger.md): phase 0 feature IDs, implementation evidence, fixture requirements and dashboard acceptance scenarios.
+- [Failure triage acceptance scenarios](failure-triage-acceptance.md): phase 0 characterization and Docker, mount, standalone replay, DSL and GPU preservation gates.
+
 - [Modernization plan](modernization-plan.md): proposed migration preserving failed-test debugging environments and dashboard features, with Perl retirement, Docker, DSL, and remote GPU execution.
 - [Architecture](architecture.md): the three test families, enrollment procedures, harness lifecycle, administration, and modernization boundaries.
 
