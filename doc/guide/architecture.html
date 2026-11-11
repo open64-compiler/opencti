@@ -1,0 +1,314 @@
+<!--
+Copyright (C) 2011, Hewlett-Packard Development Company, L.P.
+All Rights Reserved.
+Open64 is free software; you can redistribute it and/or modify it under the
+terms of the GNU General Public License as published by the Free Software
+Foundation; either version 2 of the License, or (at your option) any later
+version. Distributed WITHOUT ANY WARRANTY; without even the implied warranty
+of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General
+Public License for more details.
+-->
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>CTI architecture reconstructed from the implementation — OpenCTI</title><style>body{margin:0;background:#f4f6f8;color:#18232e;font:17px/1.6 system-ui,sans-serif}
+main{max-width:1050px;margin:auto;padding:2rem;background:white;min-height:100vh}
+a{color:#075ca8}nav{padding:.7rem 0;border-bottom:1px solid #ccd5dd}
+h1,h2,h3{line-height:1.25;scroll-margin-top:1rem}h2{margin-top:2rem}
+pre{padding:1rem;background:#eff3f7;overflow:auto;border:1px solid #d5dce3}
+code{font: .88em/1.5 ui-monospace,monospace;overflow-wrap:anywhere}
+table{border-collapse:collapse;width:100%;display:block;overflow:auto}
+th,td{padding:.6rem;border:1px solid #ccd5dd;text-align:left;vertical-align:top}
+th{background:#eff3f7}td:first-child{min-width:10rem}footer{border-top:1px solid #ccd5dd;margin-top:2rem;color:#52606b}
+@media(max-width:640px){main{padding:1rem}body{font-size:16px}}
+</style></head><body><main>
+<nav><a href="index.html">CTI documentation</a></nav>
+<h1 id="cti-architecture-reconstructed-from-the-implementation">CTI architecture reconstructed from the implementation</h1>
+<p><a href="index.html">Documentation home</a></p>
+<h2 id="purpose-and-scope">Purpose and scope</h2>
+<p>CTI is a compiler-testing system. It combines a test repository, configurable harnesses, run orchestration, optional distributed machine allocation, and result reporting. It consumes an externally built compiler; it does not build Open64. Its durable interface is a collection of configuration files, generated shell scripts, environment snapshots, result messages, and logs.</p>
+<p>This document reconstructs the implementation imported at <code>8c3d603</code>, with documentation rebuilt at <code>df5d611</code>. It describes current behavior first and proposes modernization boundaries at the end. It is based on source inspection, not a successful deployment or suite execution. Examples describe the contracts an import must satisfy; they do not certify the shipped examples on a modern host.</p>
+<h2 id="reading-map">Reading map</h2>
+<ul>
+<li><a href="#the-three-test-families">Test families</a> and <a href="#structural-architecture">system structure</a>.</li>
+<li><a href="#core-concepts-and-ownership">Catalog concepts</a>, <a href="#what-the-shipped-test-set-contains">shipped content</a>, and <a href="#common-execution-lifecycle">run lifecycle</a>.</li>
+<li>Adding <a href="#adding-regression-tests">regression tests</a>, <a href="#adding-application-correctness-tests">applications</a>, and <a href="#adding-performance-tests">performance tests</a>.</li>
+<li><a href="#adapting-externally-scripted-suites">Script-suite adapter</a>.</li>
+<li><a href="#how-users-administer-testing">User administration</a> and <a href="#how-operators-administer-machines-and-services">site operations</a>.</li>
+<li><a href="#how-harnesses-are-managed">Harness management</a>, <a href="#storage-messages-and-the-result-contract">storage and results</a>, and <a href="#modernization-boundaries-and-first-decisions">modernization boundaries</a>.</li>
+</ul>
+<h2 id="the-three-test-families">The three test families</h2>
+<p>The repository organizes test content into three top-level families. The distinction is about what is being tested and how the result is interpreted, rather than three completely separate execution engines.</p>
+<table><thead><tr><th>Family</th><th>Purpose</th><th>Shipped content</th><th>Execution mechanism</th><th>Primary evidence</th></tr></thead><tbody>
+<tr><td>Regression testing</td><td>Check a small compiler behavior: compile, link, runtime correctness, diagnostics, or an expected failure</td><td><code>Regression/</code>, organized by compiler area and OpenMP</td><td><code>regression.pl</code> and <code>regressionDriver.pm</code>; normally one verdict per discovered test</td><td>Phase status, diagnostic/output comparisons, per-test result tags</td></tr>
+<tr><td>Application correctness testing</td><td>Verify that a larger application builds and passes its own checks with the compiler under test</td><td><code>Applications/gsl-1.14</code> and <code>Applications/hmmer-2.3.2</code></td><td><code>application.pl</code> and <code>applicationDriver.pm</code>; normally one verdict per application unit</td><td><code>make compile</code>, <code>make validate</code>, and an empty <code>compare.results</code> marker</td></tr>
+<tr><td>Performance testing</td><td>Compile a benchmark, run controlled timed copies on selected hardware, and validate its output</td><td><code>Perf/ex1</code>, common run/diff helpers, speed/rate option templates</td><td>The application driver plus <code>APPLICATION_RUN_HOOK</code>; separate performance-machine reservation</td><td>Timings and hardware-run logs, plus correctness comparison and CTI verdict</td></tr>
+</tbody></table>
+<p>The family bindings are explicit in <a href="../../cti_groups/Regression/tmconfig">Regression/tmconfig</a>, <a href="../../cti_groups/Applications/tmconfig">Applications/tmconfig</a>, and <a href="../../cti_groups/Perf/tmconfig">Perf/tmconfig</a>. In particular, <code>Perf</code> selects <code>UNIT_DRIVER=application.pl</code>; there is no independent performance unit driver.</p>
+<p>The implementation also supports a third built-in driver, <code>script-driver.pl</code>, for adapting externally scripted test suites. This is an extension mechanism, separate from the three bundled content families. No tracked <code>cti_groups/**/tmconfig</code> in this baseline selects it. Confusing driver types with test families would obscure the reuse between application and performance testing.</p>
+<h2 id="structural-architecture">Structural architecture</h2>
+<pre><code>User / site scheduler / web launch form
+                 |
+       options file + selections + run paths
+                 |
+              TM.pl ----------------------- summary log / postprocessing
+                 |                                      ^
+       expand groups; enumerate tests                    |
+                 |                               collect unit messages
+          choose execution mode                          |
+          /                   \                          |
+ local unit loop         dTM client -- Java server       |
+          |                   |                          |
+          |             worker dtm_runUTM.pl             |
+          \___________________/                          |
+                 |                                       |
+           meta-driver ----------------------------------+
+                 |
+   scratch workspace + unit customization + pre-run hooks
+                 |
+       UNIT_DRIVER dispatch
+       /                 \                    \
+ regression         application             script adapter
+ discover tests     prepare application     collect test names
+ emit phases        make compile           invoke glue script
+ compile/link/run   make validate OR        compare output
+ compare masters    performance run hook
+       \___________________|__________________/
+                 |
+   result tags + artifacts + post-run hooks + copy-back
+
+Performance run hook -&gt; reserve performance host -&gt; copy/run/time/diff
+                    -&gt; release reservation
+Web reports         -&gt; read schedules, logs, work trees, and report caches</code></pre>
+<p>The web interface is a launch/reporting surface around the same file-based workflows. It is not required for local execution. dTM is a machine-allocation and remote-task service, not the compiler test oracle. Drivers and comparison scripts determine test verdicts.</p>
+<h2 id="core-concepts-and-ownership">Core concepts and ownership</h2>
+<table><thead><tr><th>Concept</th><th>Representation</th><th>Owner and lifecycle</th></tr></thead><tbody>
+<tr><td>Test repository</td><td><code>CTI_GROUPS</code>, normally <code>cti_groups/</code></td><td>Test maintainer imports sources, masters, wrappers, and metadata</td></tr>
+<tr><td>Group</td><td>Directory with a <code>tmconfig</code> declaring <code>CHILDREN</code></td><td>Maintainer explicitly enrolls child groups/units</td></tr>
+<tr><td>Unit</td><td>Directory containing <code>Src/</code></td><td>Scheduling boundary; one unit task is assigned to a worker</td></tr>
+<tr><td>Regression/script test</td><td>Discovered source, list-defined case, or collector-produced name inside a unit</td><td>Driver generates and records individual test outcomes</td></tr>
+<tr><td>Application/performance test</td><td>The application unit itself</td><td>Driver enumerates one unit-level test, regardless of upstream check count</td></tr>
+<tr><td>Campaign configuration</td><td>Shell <code>.opt</code> file and command-line assignments</td><td>User chooses compilers, flags, selections, runtime settings, and retention</td></tr>
+<tr><td>Scheduled run definition</td><td>Perl <code>.sched</code> file containing <code>TestInfo</code> records</td><td>User/site operator selects days, options, log/work paths, and launch mode</td></tr>
+<tr><td>Run</td><td>TM invocation with a work root, summary log, and saved environment</td><td>TM creates, executes, aggregates, and optionally mails the result</td></tr>
+<tr><td>dTM task group</td><td>Submitted run constraints and unit tasks</td><td>Java scheduler allocates worker capacity and reports task completion</td></tr>
+<tr><td>Performance reservation</td><td>Request for exclusive use of a performance machine</td><td>Performance scheduler grants/releases a host independently of compilation scheduling</td></tr>
+<tr><td>Expected result</td><td>Master <code>.out</code>/<code>.err</code>, application validation, or benchmark diff helper</td><td>Test maintainer defines the oracle; changing it changes the test&#x27;s meaning</td></tr>
+<tr><td>Known failure</td><td>Reporting-cache annotation</td><td>User classifies observed failures without changing the underlying test verdict</td></tr>
+</tbody></table>
+<p>The granularity matters: dTM distributes units, not each source test inside a regression unit. Upstream <code>make check</code> may run hundreds of checks while CTI still counts that application as one test.</p>
+<h2 id="what-the-shipped-test-set-contains">What the shipped test set contains</h2>
+<p>An inventory of tracked paths under <code>*/Src/</code> identifies 13 unit directories: 10 regression units, two applications, and one performance example. This is a repository-content inventory, not a count of runnable test cases or a promise that every unit is reachable through a group selection.</p>
+<table><thead><tr><th>Family</th><th>Units present</th></tr></thead><tbody>
+<tr><td>Regression</td><td><code>apo</code>, <code>cg</code>, <code>fe</code>, <code>ipa</code>, <code>lno</code>, <code>lwopt</code>, <code>wopt</code>, <code>sync</code>, <code>omp/bugs</code>, <code>omp/validate</code></td></tr>
+<tr><td>Applications</td><td><code>gsl-1.14</code>, <code>hmmer-2.3.2</code></td></tr>
+<tr><td>Performance</td><td><code>ex1</code></td></tr>
+</tbody></table>
+<p>A directory&#x27;s existence and its enrollment are different. <code>Regression/tmconfig</code> lists <code>omp</code> as a child, but this baseline has no <code>Regression/omp/tmconfig</code> to expand <code>bugs</code> and <code>validate</code>. Direct selections of those units work around the missing group enrollment; a broad <code>Regression</code> selection does not discover them merely by walking directories. The stock regression option file directly selects <code>Regression/omp/bugs</code> and also includes <code>Applications</code>.</p>
+<p>There is also no <code>cti_groups/tmconfig</code>, so <code>.all.</code> has no root <code>CHILDREN</code> list to expand. OpenMP C/C++ names collide on case-insensitive filesystems. Inventory and portability checks must distinguish tracked content, selected content, and executed content.</p>
+<p>Selection implementation: <a href="../../Scripts/generateUnitList.pm">generateUnitList.pm</a>. Campaign example: <a href="../../cti_regression/cti_regression.opt">cti_regression.opt</a>.</p>
+<h2 id="common-execution-lifecycle">Common execution lifecycle</h2>
+<ol>
+<li>TM imports global definitions and loads defaults, user option files, and command-line adjustments. Option files are executed by a Korn-shell helper; they are executable configuration.</li>
+<li>TM establishes the run work directory, saves <code>TMEnv</code>, expands <code>SELECTIONS</code> through <code>CHILDREN</code>, and records the unit list.</li>
+<li>Before execution, TM invokes the meta-driver in enumeration mode for each unit. Regression/script drivers enumerate individual tests; the application driver enumerates the unit itself. Enumeration can call script-suite collection hooks.</li>
+<li>TM creates an initial log and either loops over units locally or submits unit tasks to dTM. The normal local outer loop is sequential; application make parallelism and benchmark copy counts are separate controls.</li>
+<li>The meta-driver chooses working storage, customizes the unit enough to resolve <code>UNIT_DRIVER</code>, executes pre-run hooks, and invokes the driver. The three recognized driver names dispatch to Perl module functions in-process; other driver names use the external script invocation path.</li>
+<li>The driver discovers/prepares tests, customizes settings, emits environment and phase scripts, executes them, and records results. The generated meta-script applies phase time limits and stops on failed phases.</li>
+<li>The meta-driver executes applicable post-run hooks and copies scratch messages and surviving work artifacts back to the final run tree.</li>
+<li>TM reconciles unit results with enumeration, refreshes the summary log, runs <code>POST_PROCESS_CMD</code>, and optionally sends the log. <code>TMmsgs</code> is normally removed at the end unless <code>DTM_SAVE_MSGS_DIR=true</code>.</li>
+</ol>
+<p>Evidence: <a href="../../bin/TM.pl">TM.pl</a>, <a href="../../Scripts/drivers/lib/metaDriver.pm">metaDriver.pm</a>, <a href="../../Scripts/drivers/lib/generateMetaScript.pm">generateMetaScript.pm</a>, <a href="../../Scripts/drivers/lib/recordTestResult.pm">recordTestResult.pm</a>.</p>
+<p>Local mode bypasses the dTM server, but does not fully isolate the runner from dTM configuration code. <code>CTI_lib.pm</code> imports <code>DTM_lib</code> when <code>DTM_HOME</code> is set, and the meta-driver obtains the scratch directory through <code>get_dtm_machine_workdir</code>. A valid installation therefore still needs suitable environment/XML configuration even for local runs. <code>DTM_lib</code> has a limited fallback parser when <code>XML::Simple</code> is unavailable.</p>
+<h2 id="adding-regression-tests">Adding regression tests</h2>
+<p>A regression unit contains independent test cases under <code>Src/</code>, with optional <code>Masters/</code> and customization files. Source extensions are mapped to compiler variables by <code>EXT_TO_FE</code>; <code>LANG_TYPE</code> controls ordinary discovery. A <code>.list</code> file or <code>tmconfig.list</code> can group multiple sources into one logical test so the components do not also run independently.</p>
+<p>A typical addition is:</p>
+<pre><code>cti_groups/Regression/myunit/
+  tmconfig
+  Src/
+    sample.c
+    sample.tmconfig
+  Masters/
+    sample.out</code></pre>
+<p>For a new unit, set its driver or inherit <code>regression.pl</code> from <code>Regression</code>, and add <code>myunit</code> to the parent&#x27;s <code>CHILDREN</code>. An existing unit needs no new enrollment entry for each normally discovered source file.</p>
+<p>Example <code>Src/sample.tmconfig</code> for a raw-output executable test:</p>
+<pre><code>RUN_TESTS=true
+OUTPUT_COMPARE=true
+RUN_TESTS_PAD_OUTPUT=false</code></pre>
+<p>Put the expected raw output in <code>Masters/sample.out</code>. Empty output requires a present, empty file. The regression group sets <code>MASTER_FILE_PATH=../Masters</code>, resolved relative to <code>Src/</code>. Use the test base name for <code>.tmconfig</code> and master names; use the discovered filename including its extension for <code>TESTS</code>.</p>
+<table><thead><tr><th>Intent</th><th>Configuration and oracle</th></tr></thead><tbody>
+<tr><td>Compile only, no link</td><td><code>RUN_TESTS=false</code>, <code>LINK_TESTS=false</code>; compiler status</td></tr>
+<tr><td>Expected compiler rejection</td><td><code>CT_NEG=true</code>, normally no runtime step; successful compilation is a failure</td></tr>
+<tr><td>Exact diagnostic check</td><td><code>CT_DIFF=true</code>, global comparison gate enabled, matching <code>.err</code> master or <code>ERROR_MASTER_EMPTY=true</code></td></tr>
+<tr><td>Runtime correctness</td><td>Compile/link/run status and output master; optional filters/qualifiers</td></tr>
+<tr><td>Expected runtime failure</td><td><code>RUN_TESTS_NEG=true</code>, with runtime exit checking configured as intended</td></tr>
+<tr><td>Several sources form one test</td><td><code>.list</code> or unit <code>tmconfig.list</code>; one verdict for the combined test</td></tr>
+</tbody></table>
+<p>Before enrollment in a campaign, run the unit with <code>TESTS=sample.c</code>, <code>CLEAN=false</code>, and a fresh work directory. Inspect the emitted compiler command, runtime output, and result; then run the wider unit. Confirm both the expected successful behavior and that a deliberately wrong result would be detected when developing a new oracle.</p>
+<p>On a configured deployment, with a site option file defining real compilers, a focused invocation is:</p>
+<pre><code>perl &quot;$CTI_HOME/bin/TM.pl&quot; -nod -nomail -f ./site.opt \
+  -x SELECTIONS=Regression/myunit -x TESTS=sample.c -x CLEAN=false \
+  -w &quot;$PWD/sample.work&quot; -l &quot;$PWD/sample.log&quot; run</code></pre>
+<p>Implementation: <a href="../../Scripts/drivers/lib/collectTests.pm">collectTests.pm</a>, <a href="../../Scripts/drivers/lib/regressionDriver.pm">regressionDriver.pm</a>, <a href="../../Scripts/drivers/lib/locateMaster.pm">locateMaster.pm</a>. Detailed procedure: <a href="adding-tests.html">adding tests</a>.</p>
+<h2 id="adding-application-correctness-tests">Adding application correctness tests</h2>
+<p>Import a clean application source tree into <code>Applications/&lt;name&gt;/Src</code>, preserve upstream notices, and record any patches separately from generated build files. Add a unit <code>tmconfig</code> and enroll the unit in <code>Applications/tmconfig</code>.</p>
+<pre><code>cti_groups/Applications/myapp/
+  tmconfig                 # MAKEWRAPPER=Makefile.CTI
+  Src/
+    Makefile.CTI
+    configure
+    ... upstream sources ...</code></pre>
+<p>The application driver mirrors the source tree into the work directory using links and delegates build knowledge to a GNU make wrapper. It normally runs <code>compile</code>, then <code>validate</code>. The wrapper must forward the CTI-selected compilers and flags into the upstream build, propagate failures, and create <code>compare.results</code> only after successful validation.</p>
+<p>A suitable wrapper pattern is:</p>
+<pre><code>export CC
+export CFLAGS = $(EXTRA_FLAGS) $(EXTRA_CFLAGS)
+
+compile:
+	./configure
+	$(MAKE) -f Makefile
+
+validate:
+	rm -f compare.results
+	$(MAKE) -f Makefile check
+	: &gt; compare.results</code></pre>
+<p>Recipe indentation must be tabs. Forward <code>CXX</code>, <code>FC</code>, their language-specific options, libraries, and other build variables as needed. <code>EXTRA_FLAGS</code> includes data-mode and optimization flags. CTI cannot prove that an upstream configure/build system respected these variables; the importer must inspect the actual build log.</p>
+<p>Application success requires the normal phase to return successfully and <code>compare.results</code> to exist and be empty. A missing marker and a nonempty marker represent different failures. Never overwrite a validation failure with an unconditional success marker. CTI&#x27;s default <code>CLEAN=true</code> can remove successful work trees; use <code>CLEAN=false</code> while validating an import.</p>
+<p>The shipped <a href="../../cti_groups/Applications/gsl-1.14/Src/Makefile.CTI">GSL</a> and <a href="../../cti_groups/Applications/hmmer-2.3.2/Src/Makefile.CTI">HMMER</a> wrappers demonstrate integration, but still need inspection before reuse. Dependencies, test data, interactive assumptions, fixed temporary paths, and time limits belong to the application&#x27;s integration contract.</p>
+<p>A focused application invocation uses the same manager, with the unit as the selected test:</p>
+<pre><code>perl &quot;$CTI_HOME/bin/TM.pl&quot; -nod -nomail -f ./site.opt \
+  -x SELECTIONS=Applications/myapp -x CLEAN=false \
+  -w &quot;$PWD/myapp.work&quot; -l &quot;$PWD/myapp.log&quot; run</code></pre>
+<p>Implementation: <a href="../../Scripts/drivers/lib/applicationDriver.pm">applicationDriver.pm</a>, <a href="../../Scripts/drivers/lib/CTI.pm">CTI.pm</a>, <a href="../../bin/gmake">bin/gmake</a>. A unit is not a sandbox: writable symlinked source files and external build commands need care.</p>
+<h2 id="adding-performance-tests">Adding performance tests</h2>
+<p>A performance unit starts as an application-style build and adds controlled hardware execution, workload data, run/diff helpers, and a measurement configuration. It must satisfy correctness checks as well as produce timing data.</p>
+<p>The shipped model is:</p>
+<pre><code>cti_groups/Perf/
+  tmconfig                 # application.pl; MAKEWRAPPER=Makefile.perf
+  bin/run_utils/
+    run_Perf_perf_ref
+    diff_Perf_perf_ref
+    ... test/train helpers and script generator ...
+  ex1/
+    tmconfig
+    Src/
+      Makefile
+      Makefile.perf
+      ex1.cc
+      data/test/input/...
+      data/test/output/...
+      data/train/...
+      data/ref/...</code></pre>
+<ol>
+<li>Establish that the benchmark builds with the chosen compiler and the intended flags. Provide the application&#x27;s <code>compile</code> contract and executable-name mapping.</li>
+<li>Provide input datasets and expected outputs, with the selectors needed by the wrapper and run hook. <code>test</code>, <code>train</code>, and <code>ref</code> are the sample conventions.</li>
+<li>Adapt the common run/diff helpers for the new benchmark name. The current generator derives an executable from the unit basename and also contains explicit special cases; unknown benchmark handling must not silently skip your test.</li>
+<li>Set <code>APPLICATION_RUN_HOOK</code> to the chosen generator. The supplied <code>cti_gen_real_hardware_run_log.sh</code> receives the unit and a filename to generate, rather than performing the timed run immediately.</li>
+<li>Choose actual performance hosts and timing/input/copy settings. The speed template uses one copy; the rate template uses eight. Replace sample CPU binding commands with settings appropriate to the selected machines.</li>
+<li>Configure performance-machine reservation through dTM, then run and retain the hardware log, timings, output comparisons, compiler configuration, and host identity. A local TM compile/run can still require dTM for the performance reservation.</li>
+<li>Verify output correctness and measurement comparability before registering the benchmark in routine schedules. The current path does not provide a general statistical regression-threshold policy.</li>
+</ol>
+<p>The generated hardware run reserves a host using <code>getlock</code>, creates remote temporary storage, copies executable/input/scripts, executes timed copies, retrieves timing/output evidence, runs diff helpers, and releases the reservation through <code>releaselock</code>. The application driver still evaluates the resulting <code>compare.results</code> marker. Useful artifacts include <code>real_hardware.out</code>, <code>time.out</code>, and per-copy output directories.</p>
+<p>The performance helper interfaces are also part of enrollment. In the current generator, the remote run helper receives the benchmark basename, a wrapper value (<code>none</code> in the supplied generator), and a per-copy working directory. The local diff helper receives the basename, remote copy-directory address, local result directory, comparison-marker path, and copy-command argument. The supplied helpers use benchmark-name dispatch rather than auto-discovering arbitrary workloads. Resolve comparison-marker paths consistently when a helper changes directory.</p>
+<p>After adapting a site copy of <code>perf.speed.opt</code> or <code>perf.rate.opt</code>, a distributed compile plus reserved-hardware run can be launched as follows:</p>
+<pre><code>perl &quot;$CTI_HOME/bin/TM.pl&quot; -d -nomail -f ./site-perf.opt \
+  -x SELECTIONS=Perf/mybench -x DTM_POOL=Default \
+  -x REAL_HARDWARE_MACHINE=perf1 -x CLEAN=false \
+  -w &quot;$PWD/mybench.work&quot; -l &quot;$PWD/mybench.log&quot; run</code></pre>
+<p>Here <code>perf1</code> is an example site performance host, not a bundled machine definition. The option file must supply the run generator, input selector, compatible compilers/binding settings, and performance-related configuration. The compile pool and reserved execution host serve different roles.</p>
+<p>There are two resource decisions: a unit can compile on a normal dTM worker and then reserve a different machine from the performance pool. <code>REAL_HARDWARE_DISABLE_LOCKING</code> bypasses the reservation machinery; it does not establish exclusive access by another means.</p>
+<p>The baseline is a template requiring engineering work, not a ready-made benchmark service. For example, <code>Perf/ex1/Src/Makefile.perf</code> forwards <code>FLAGS</code> while the leaf <code>Makefile</code> consumes <code>CFLAGS</code>; the wrapper does not establish that all selected flags reach that leaf build. Its vanilla run path refers to unit-local <code>bin/run_utils</code>, whereas the tracked helpers reside at <code>Perf/bin/run_utils</code>. These are source-observed integration mismatches to validate and repair before claiming measurements, not runtime failures reproduced by this documentation work.</p>
+<p>Evidence: <a href="../../Scripts/real_hardware_scripts/cti_gen_real_hardware_run_log.sh">performance generator</a>, <a href="../../cti_groups/Perf/ex1/Src/Makefile.perf">sample wrapper</a>, <a href="../../cti_groups/Perf/ex1/Src/Makefile">leaf makefile</a>, <a href="../../cti_perf/perf.speed.opt">speed options</a>, <a href="../../cti_perf/perf.rate.opt">rate options</a>, <a href="../../dtm/bin/getlock.pl">getlock</a>, <a href="../../dtm/src/PerfScheduler.java">PerfScheduler</a>.</p>
+<h2 id="adapting-externally-scripted-suites">Adapting externally scripted suites</h2>
+<p>Select <code>UNIT_DRIVER=script-driver.pl</code> for a unit with <code>Src/</code>. This adapter supplies discovery, per-test environment capture, invocation, output comparison, and CTI result reporting while letting a glue script implement the suite&#x27;s commands.</p>
+<table><thead><tr><th>Setting</th><th>Contract in the implementation</th></tr></thead><tbody>
+<tr><td><code>SCRIPT_TEST_COLLECTION_HOOK</code></td><td>Name of an executable under <code>Scripts/utils</code>; called with the unit&#x27;s source directory; prints whitespace-separated test names</td></tr>
+<tr><td><code>SCRIPT_TEST_INVOKER</code></td><td>Glue script called with one selected test name; resolves under <code>Scripts/utils</code> unless the configured path begins with <code>.</code></td></tr>
+<tr><td><code>TEST_AUXFILES</code></td><td>Additional files linked for file-based tests</td></tr>
+<tr><td><code>MASTER_FILE_PATH</code>, output suffix and qualifiers</td><td>Locate expected output using the shared comparison machinery</td></tr>
+<tr><td><code>RUN_TESTS_CHECK_EXIT</code></td><td>When true, a nonzero invoker status records <code>ScriptTestFailure</code>; the script driver reads this despite metadata describing it as regression-only</td></tr>
+</tbody></table>
+<p>The collector&#x27;s names can identify files or directories. The driver creates a per-test working directory, links test content, restores the saved environment, runs the invoker, and compares output. It captures stdout and stderr separately and concatenates stdout followed by stderr; this does not preserve their original interleaving. <code>TESTS</code> includes names, while fully qualified <code>SKIP_SELECTIONS</code> excludes them.</p>
+<p>Set the collection and invocation hooks, provide masters or an explicitly empty master, select a small case, and verify the glue&#x27;s translation of CTI compiler/options. The collection hook has no phase time limit. The script driver explicitly rejects <code>MULTIPLE_ITERATIONS</code>. Enumeration runs collection, so it is not a side-effect-free operation for arbitrary hooks.</p>
+<p>Implementation: <a href="../../Scripts/drivers/lib/scriptDriver.pm">scriptDriver.pm</a>, <a href="../../Scripts/drivers/lib/refineTestList.pm">refineTestList.pm</a>, <a href="../../Scripts/drivers/lib/locateTools.pm">locateTools.pm</a>.</p>
+<h2 id="how-users-administer-testing">How users administer testing</h2>
+<p>User-facing administration is assembled from files and tools rather than a single project/database model.</p>
+<table><thead><tr><th>Activity</th><th>Interface and responsibility</th></tr></thead><tbody>
+<tr><td>Define a run matrix</td><td>Copy <code>.opt</code> files; choose compilers, data mode, optimization, selections, libraries, and runtime controls</td></tr>
+<tr><td>Select or exclude tests</td><td><code>SELECTIONS</code> for groups/units, <code>TESTS</code> for individual regression/script names, <code>SKIP_SELECTIONS</code> or <code>-skip</code> for exclusions</td></tr>
+<tr><td>Inspect effective settings</td><td><code>TM.pl ... test_setting</code>; inspect unit/test scripts for the later hierarchical customizations</td></tr>
+<tr><td>Run locally or remotely</td><td><code>TM.pl -nod</code> or <code>TM.pl -d</code>; choose fresh work/log paths and explicit mail policy</td></tr>
+<tr><td>Repeat planned campaigns</td><td><code>.sched</code> records plus <code>tm-schedule.pl</code>; a site scheduler supplies recurring invocation</td></tr>
+<tr><td>Monitor progress</td><td>Summary log, launcher <code>.tmout</code>, dTM task/pool displays, and web schedule reports</td></tr>
+<tr><td>Investigate failure</td><td>Preserve environment and work artifacts; rerun emitted phase scripts under the configured shell</td></tr>
+<tr><td>Classify accepted outstanding failures</td><td>Known-failure editor/cache; retain the failing result rather than changing the oracle</td></tr>
+<tr><td>Change expected output</td><td>Review and edit a master or validation helper; legacy remaster tools also exist and can modify repository content</td></tr>
+<tr><td>Retain evidence</td><td>Unique run locations, <code>CLEAN=false</code> when needed, optional message preservation, and explicit archival before reuse</td></tr>
+</tbody></table>
+<p>Run-level precedence is defaults, <code>-px</code>, user options, extra options, CLI-derived settings, then <code>-x</code>. Group/unit/test customization happens afterward; level-specific environment overrides can beat configuration at the same level. A command-line base option is therefore not an unconditional override of every test. See <a href="configuration.html">configuration</a>.</p>
+<p>A <code>run</code> replaces an existing work tree even if <code>CLEAN=false</code>; driver-level cleanup is a separate behavior. The outer TM process normally exits zero after a completed run with failing tests. Automation must consume the recorded verdicts and summary, rather than treating process completion as test success.</p>
+<p>The web forms reuse schedules and launch/report tools. The legacy add-test and check-in helpers still contain SVN/ClearCase assumptions. They do not supply a Git-native enrollment transaction. For this checkout, maintain sources and enrollment files in Git and review the resulting diff.</p>
+<p>Operational details: <a href="running-tests.html">running tests</a>, <a href="scheduling.html">scheduling</a>, <a href="known-failures.html">known failures</a>, <a href="../../bin/www/addtest.pl">addtest.pl</a>, <a href="../../www/cgi-bin/start_tests.cgi">start_tests.cgi</a>.</p>
+<h2 id="how-operators-administer-machines-and-services">How operators administer machines and services</h2>
+<p>The site operator configures installation paths/interpreters, accounts, shared storage, remote execution, worker scratch directories, dTM server settings, and optional web execution. The shipped scripts assume trusted executable configuration and participating accounts with filesystem access.</p>
+<table><thead><tr><th>Layer</th><th>Configuration / implementation</th><th>Operator actions</th></tr></thead><tbody>
+<tr><td>Deployment</td><td><code>configure.pl</code>, global <code>.env</code> files, <code>conf/default.conf</code></td><td>Set absolute paths and tools; inspect in-place substitutions; retain a clean configuration baseline</td></tr>
+<tr><td>Worker inventory and pools</td><td><code>dtm/conf/dTM_conf.xml</code></td><td>Define host attributes, normal/performance pools, users, default scratch locations and services</td></tr>
+<tr><td>dTM server</td><td><code>dtm.pl</code>, <code>dTMServer</code>, <code>Listener</code>, <code>RequestManager</code></td><td>Verify configuration, start as configured admin on configured host, monitor logs, manage lifecycle</td></tr>
+<tr><td>Normal unit capacity</td><td><code>TaskScheduler</code>, <code>TaskGroup</code>, <code>TaskAssignment</code>, <code>TestMachine</code></td><td>Enable/disable workers; inspect queues/constraints; cancel or reschedule tasks deliberately</td></tr>
+<tr><td>Worker health</td><td>Native <code>loadd</code> plus <code>TestMachineMonitor</code></td><td>Supply the correct architecture binary, remote execution, scratch access, and load-monitor connectivity</td></tr>
+<tr><td>Performance capacity</td><td><code>PerfScheduler</code>, <code>PerfTask</code>, performance pool</td><td>Observe reservations; allocate suitable machines; cancel/release stale work deliberately</td></tr>
+<tr><td>Web surface</td><td><code>www/cgi-bin</code>, <code>dtm/www/cgi-bin</code>, execution accounts</td><td>Configure CGI/PHP, readable logs/cache, intended write permissions, and access controls</td></tr>
+<tr><td>Retention</td><td>Run paths, server logs, cleanup utilities</td><td>Define what to archive and when it is safe to remove it</td></tr>
+</tbody></table>
+<p>Representative commands are <code>dtm.pl -verify</code>, <code>-start</code>, <code>-status</code>, <code>-pool_status Default,Performance</code>, <code>-dynamic</code>, <code>-enable host</code>, <code>-disable host -info reason</code>, <code>-cancel GROUP:RANGE</code>, and <code>-resched GROUP:TASK</code>. Dynamic machine/pool operations also exist. Treat persistent XML definitions and dynamic server changes as distinct state that must be reconciled deliberately.</p>
+<p>The server persists machine state in <code>dtm/log/TestMachineState.log</code> and <code>PerfMachineState.log</code> and includes foreground/background state-transfer logic. This is specific state-recovery code, not evidence of a transactional job database or guaranteed recovery of every in-flight task. Startup is not idempotent: <code>-start</code> errors if the server is reachable, and its startup wait loop has no explicit deadline.</p>
+<p>Evidence: <a href="../../dtm/bin/dtm.pl">dTM client/launcher</a>, <a href="../../dtm/src/dTMConfig.java">server configuration</a>, <a href="../../dtm/src/dTMServer.java">server startup/state recovery</a>, <a href="../../dtm/src/TaskScheduler.java">task scheduler</a>, <a href="../../dtm/src/RequestManager.java">request handling</a>, <a href="distributed.html">distributed operations</a>.</p>
+<h2 id="how-harnesses-are-managed">How harnesses are managed</h2>
+<p>CTI has several layers of harness code. Distinguish the framework&#x27;s orchestration from suite-specific support libraries and from the application/benchmark&#x27;s own runner.</p>
+<table><thead><tr><th>Harness layer</th><th>Location and selection</th><th>Build/execution lifecycle</th></tr></thead><tbody>
+<tr><td>Unit drivers</td><td><code>Scripts/drivers</code>, selected by <code>UNIT_DRIVER</code></td><td>Meta-driver resolves an executable name; built-in names dispatch to shared Perl modules</td></tr>
+<tr><td>Suite support libraries/modules</td><td>Pre-run hooks and <code>TEST_AUXMODDIR</code></td><td>Compiled in the unit workspace using the selected compiler/data mode/options</td></tr>
+<tr><td>Regression phases and oracles</td><td>Driver generators, <code>Scripts/utils</code>, master files</td><td>Generate compile/link/run/compare scripts; apply configured filters and comparisons</td></tr>
+<tr><td>Application build/check harness</td><td>Unit <code>Src/</code> make wrapper and upstream test suite</td><td>Prepare work-tree links; execute compile and validate targets</td></tr>
+<tr><td>Performance harness</td><td>Run generator, run/diff helpers, datasets, remote limiter</td><td>Generate run wrapper; reserve hardware; execute timed copies; validate and retrieve results</td></tr>
+<tr><td>External suite adapter</td><td>Script collector and invoker</td><td>Discover suite names; translate environment/options; invoke and compare</td></tr>
+</tbody></table>
+<p>Tool lookup is intentionally narrow. <code>locateDriver</code> resolves <code>UNIT_DRIVER</code> under <code>Scripts/drivers</code>; comparison scripts, filters, and ordinary run hooks resolve under <code>Scripts/utils</code>. There is no general plugin registry or package/version resolver. The application run generator is invoked from its configured path. <code>invokeScript</code> chooses <code>CTI_PERL</code> for <code>.pl</code> and <code>CTI_SHELL</code> for <code>.sh</code> while still requiring executability. A script&#x27;s shebang alone does not define every invocation&#x27;s interpreter.</p>
+<p>Unit pre/post hooks receive the unit name, unit workspace, and an output file to append to. Pre-run hook failure prevents the unit driver and records <code>PreRunHookError</code>. In the current meta-driver, post-run hooks are invoked with result checking disabled, so a nonzero exit does not by itself generate <code>PostRunHookError</code>; it must not be treated as a reliable checked teardown phase. Application setup hooks receive unit and workspace; their invocation return is not explicitly checked in <code>execute_setup_hooks</code>. These asymmetries matter when designing a replacement lifecycle.</p>
+<p><code>TEST_AUXMODDIR</code> implicitly inserts <code>buildAuxiliaryModules.pl</code> before user pre-run hooks. It compiles support sources inside each unit, optionally ordered by <code>TEST_AUXMODFILES</code>; tests must consume the resulting objects/modules through their configuration. Dedicated hooks such as <code>buildModena_libHarness.sh</code> and <code>buildPlumHallHarness.sh</code> serve historical external suites. Some contain placeholder external paths; their presence does not mean the suite or its license/data is bundled.</p>
+<p>Support harnesses are built per unit rather than once per campaign. The code&#x27;s rationale is that units can execute concurrently on different workers and may need different compiler/architecture/data-mode support objects. This avoids assuming a cross-worker build product is universally valid, at the cost of repeated work. There is no general shared artifact cache with a compiler/options content key.</p>
+<p>Generated scripts and <code>.env</code> files are part of the harness contract. The saved-options registries determine what reproduction scripts retain. A failure reproduction still depends on referenced source paths, interpreter/tool availability, and runtime libraries; it is not a self-contained immutable bundle.</p>
+<p>Evidence: <a href="../../Scripts/drivers/lib/metaDriver.pm">metaDriver.pm</a>, <a href="../../Scripts/drivers/lib/locateTools.pm">tool lookup</a>, <a href="../../Scripts/drivers/lib/invokeScript.pm">script invocation</a>, <a href="../../Scripts/utils/buildAuxiliaryModules.pl">auxiliary build hook</a>, <a href="../../Scripts/utils/buildModena_libHarness.sh">Modena hook</a>, <a href="../../Scripts/utils/buildPlumHallHarness.sh">Plum Hall hook</a>, <a href="../../Scripts/drivers/lib/savedOptions.pm">saved-option handling</a>.</p>
+<h2 id="storage-messages-and-the-result-contract">Storage, messages, and the result contract</h2>
+<p>The installation/test tree, final run tree, worker scratch tree, and remote performance workspace have different lifecycles. Unless <code>DTM_USE_REAL_WORKDIR</code> is enabled, the meta-driver creates temporary unit work under the configured machine scratch directory and copies surviving artifacts/messages back with <code>cpio</code>. This choice also applies to local unit execution; local mode does not inherently mean execution in the final result directory.</p>
+<p>The worker launcher restores the submitted <code>TMEnv</code> from the shared run directory and places verbose output in <code>runUTM.out.&lt;task-id&gt;</code>. Its completion marker is an infrastructure signal; the per-test result messages remain the verdict source. Shared filesystem visibility is part of the control plane, not merely a convenient result archive.</p>
+<table><thead><tr><th>Artifact</th><th>Meaning</th></tr></thead><tbody>
+<tr><td><code>TMEnv</code></td><td>Run-level environment restored by workers</td></tr>
+<tr><td><code>TMmsgs/enumfile.&lt;id&gt;</code></td><td>Expected tests for the unit</td></tr>
+<tr><td><code>TMmsgs/result.&lt;id&gt;</code></td><td>Recorded unit/test outcomes; cancellation and warning/error files supplement it</td></tr>
+<tr><td><code>&lt;test&gt;.env</code> and generated scripts</td><td>Reproduction configuration and phase commands</td></tr>
+<tr><td><code>&lt;test&gt;.result</code></td><td>Driver result tag</td></tr>
+<tr><td>Compile/run logs and comparisons</td><td>Evidence supporting that tag</td></tr>
+<tr><td>Summary log</td><td>Aggregated counts and categorized failures</td></tr>
+<tr><td>Web caches</td><td>Derived reporting state and known-failure annotations</td></tr>
+</tbody></table>
+<p><code>recordTestResult.pm</code> reconciles expected tests with observed results and can classify absent outcomes as <code>Missing</code>. Not every total-loss path becomes a normal <code>Missing</code> record: absent result files can also produce a process warning/error. <code>Cancelled</code>, copy-back failures, driver errors, and comparison errors are separate from compiler defects.</p>
+<p><code>SuccessExec</code> is the shared successful tag. Negative tests can legitimately succeed because the compiler or executable failed as expected. A result model must retain expectation and actual phase outcome separately. The complete declared tags live in <a href="../../conf/TestResultTypes.conf">TestResultTypes.conf</a> and the <a href="reference.html">generated reference</a>.</p>
+<p>For the application run-hook path, the generated outer wrapper checks <code>compare.results</code> but does not explicitly propagate the hook process&#x27;s exit status before those checks. The normal application make path checks make&#x27;s status. Preserve the intended correctness contract during modernization, and characterize this difference rather than copying it into a new runner accidentally.</p>
+<p>Evidence: <a href="../../dtm/bin/dtm_runUTM.pl">worker launcher</a>, <a href="../../Scripts/drivers/lib/metaDriver.pm">copy-back and hooks</a>, <a href="../../Scripts/drivers/lib/recordTestResult.pm">result reconciliation</a>, <a href="../../Scripts/drivers/lib/applicationDriver.pm">application script generation</a>.</p>
+<h2 id="modernization-boundaries-and-first-decisions">Modernization boundaries and first decisions</h2>
+<p>The following are architectural recommendations inferred from the implementation. They are not features already provided by CTI, and this documentation change does not implement them.</p>
+<table><thead><tr><th>Boundary</th><th>Existing coupling</th><th>Modernization direction</th><th>Behavior to preserve</th></tr></thead><tbody>
+<tr><td>Test catalog</td><td>Filesystem discovery plus explicit <code>CHILDREN</code>, executable preprocessing, and implicit driver selection</td><td>Explicit validated manifests, with an importer for current layouts</td><td>Group/unit identity, multi-source cases, selectors, negative tests, and masters</td></tr>
+<tr><td>Run specification</td><td>Shell options, global environment, and hierarchical late overrides</td><td>A resolved immutable run plan with a trace of each option&#x27;s origin</td><td>Current precedence and intentional per-test exceptions</td></tr>
+<tr><td>Harness adapter</td><td>Built-in Perl dispatch, hardcoded lookup directories, shell generation</td><td>Versioned adapter contracts for discovery, prepare, execute, compare, and teardown</td><td>Application/performance reuse and external-suite adaptation</td></tr>
+<tr><td>Execution backend</td><td>Shared-path remote shell, custom socket messages, native load monitor</td><td>Separate local and remote backends with explicit requests, cancellation, and completion records</td><td>Unit scheduling granularity and resource constraints</td></tr>
+<tr><td>Performance allocation</td><td>Compilation scheduling and hardware reservation intertwined by environment and hook code</td><td>Explicit exclusive-resource leases and workload/measurement manifests</td><td>Copy count, binding, datasets, correctness, timings, and release behavior</td></tr>
+<tr><td>Artifacts/results</td><td>Writable work trees, messages, summary text, and reporting caches</td><td>Structured results with immutable artifacts and generated human reports</td><td>Existing result categories, expected-failure semantics, and reproduction evidence</td></tr>
+<tr><td>Support-harness builds</td><td>Per-unit compilation with implicit external dependencies</td><td>Dependency declarations and optional correctly keyed artifact reuse</td><td>Compiler/data-mode/target compatibility and worker isolation</td></tr>
+<tr><td>Administration</td><td>In-place configuration, persistent XML plus dynamic state, CGI accounts, legacy VCS helpers</td><td>Reviewed deployment configuration and a defined authenticated management interface</td><td>Operator controls, queue visibility, and deliberate enrollment/oracle changes</td></tr>
+</tbody></table>
+<p>A practical first implementation milestone is a reliable local run plan and structured result adapter around a small characterized regression/application subset. Validate the performance sample&#x27;s flag, helper-path, comparison, and reservation behavior before treating it as a modernization acceptance benchmark. Then add remote execution and exclusive performance resources behind the same catalog/result contracts.</p>
+<p>Before changing the engine, decide which historical targets and external suites remain supported; whether unit-level scheduling remains the allocation boundary; how expected output is reviewed; what evidence must survive cleanup; and how to migrate shell options and executable schedules. Those decisions determine compatibility obligations more than the choice of a new implementation language.</p>
+<p>This reconstruction leaves runtime code and the pre-existing case-collision files unchanged. It establishes the architecture and observed gaps for subsequent modernization work.</p>
+<footer>Reconstructed from OpenCTI source, baseline 8c3d603. Generated by doc/tools/build_docs.py.</footer>
+</main></body></html>

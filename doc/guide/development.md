@@ -1,6 +1,8 @@
-# Architecture and maintenance
+# Development and documentation maintenance
 
 [Documentation home](index.md)
+
+The [architecture reconstruction](architecture.md) explains test families, enrollment, execution, harness management, user/site administration, and modernization boundaries. This page is the source map and maintenance companion.
 
 ## Source map
 

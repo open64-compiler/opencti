@@ -6,6 +6,8 @@ These guides describe the code imported at commit `8c3d603`, rather than a curre
 
 ## Start here
 
+- [Architecture](architecture.md): the three test families, enrollment procedures, harness lifecycle, administration, and modernization boundaries.
+
 - [Installation](installation.md): requirements, checkout integrity, and in-place configuration.
 - [Running tests](running-tests.md): local quick start, CLI reference, artifacts, and troubleshooting.
 - [Configuration](configuration.md): option loading, selection, compiler flags, and customization.

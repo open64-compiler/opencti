@@ -10,6 +10,7 @@ source distribution; modern platform compatibility needs validation.
 Start with doc/guide/index.md, or open doc/guide/index.html in a browser.
 The documentation is reconstructed from the code at commit 8c3d603.
 
+  Architecture and modernization baseline: doc/guide/architecture.md
   Installation and platform requirements: doc/guide/installation.md
   Local runs, commands, and failure triage: doc/guide/running-tests.md
   Options and hierarchical customization: doc/guide/configuration.md

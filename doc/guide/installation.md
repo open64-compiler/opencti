@@ -61,7 +61,7 @@ Review matches; inactive comments and historical examples can still contain plac
 
 ## Local-only setup
 
-Local execution does not contact dTM when `DISTRIBUTED_TM` is false. The stock configurator still requires Java and web answers. To configure manually for a local deployment, review its substitution list, set installation/tool values in `lib/CTI_global.env` and `conf/default.conf`, and ensure scripts' Perl interpreter paths exist. Set `CTI_GROUPS` explicitly in your option file. This is a manual alternative, not a separate supported configuration switch.
+Local execution does not contact dTM when `DISTRIBUTED_TM` is false. The stock configurator still requires Java and web answers. To configure manually for a local deployment, review its substitution list, set installation/tool values in `lib/CTI_global.env` and `conf/default.conf`, and ensure scripts' Perl interpreter paths exist. Also set the installation and scratch settings in `dtm/lib/DTM_global.env` and `dtm/conf/dTM_conf.xml`: local runs bypass the dTM server but still use its configuration/library code to resolve machine scratch storage. Set `CTI_GROUPS` explicitly in your option file. This is a manual alternative, not a separate supported configuration switch.
 
 Use [the local run example](running-tests.md) to inspect settings before executing a small unit. Local runs need neither a running dTM server nor a web server. Do not start services simply to display the docs.
 
