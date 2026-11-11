@@ -6,6 +6,7 @@ These guides describe the code imported at commit `8c3d603`, rather than a curre
 
 ## Start here
 
+- [Modernization plan](modernization-plan.md): proposed migration preserving failed-test debugging environments and dashboard features, with Perl retirement, Docker, DSL, and remote GPU execution.
 - [Architecture](architecture.md): the three test families, enrollment procedures, harness lifecycle, administration, and modernization boundaries.
 
 - [Installation](installation.md): requirements, checkout integrity, and in-place configuration.
