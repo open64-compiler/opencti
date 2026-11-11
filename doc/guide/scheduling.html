@@ -1,0 +1,56 @@
+<!--
+Copyright (C) 2011, Hewlett-Packard Development Company, L.P.
+All Rights Reserved.
+Open64 is free software; you can redistribute it and/or modify it under the
+terms of the GNU General Public License as published by the Free Software
+Foundation; either version 2 of the License, or (at your option) any later
+version. Distributed WITHOUT ANY WARRANTY; without even the implied warranty
+of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General
+Public License for more details.
+-->
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Schedules and performance runs — OpenCTI</title><style>body{margin:0;background:#f4f6f8;color:#18232e;font:17px/1.6 system-ui,sans-serif}
+main{max-width:1050px;margin:auto;padding:2rem;background:white;min-height:100vh}
+a{color:#075ca8}nav{padding:.7rem 0;border-bottom:1px solid #ccd5dd}
+h1,h2,h3{line-height:1.25;scroll-margin-top:1rem}h2{margin-top:2rem}
+pre{padding:1rem;background:#eff3f7;overflow:auto;border:1px solid #d5dce3}
+code{font: .88em/1.5 ui-monospace,monospace;overflow-wrap:anywhere}
+table{border-collapse:collapse;width:100%;display:block;overflow:auto}
+th,td{padding:.6rem;border:1px solid #ccd5dd;text-align:left;vertical-align:top}
+th{background:#eff3f7}td:first-child{min-width:10rem}footer{border-top:1px solid #ccd5dd;margin-top:2rem;color:#52606b}
+@media(max-width:640px){main{padding:1rem}body{font-size:16px}}
+</style></head><body><main>
+<nav><a href="index.html">CTI documentation</a></nav>
+<h1 id="schedules-and-performance-runs">Schedules and performance runs</h1>
+<p><a href="index.html">Documentation home</a></p>
+<h2 id="schedule-format">Schedule format</h2>
+<p>A schedule is executable Perl, loaded with <code>do</code>, which creates <code>TestInfo</code> objects. Copy <a href="../../cti_regression/cti_regression.sched">cti_regression.sched</a> or <a href="../../cti_perf/perf.sched">perf.sched</a>, then update all site-specific paths and settings. Finish the file with <code>1;</code>.</p>
+<pre><code>TestInfo-&gt;new(
+    DAYS        =&gt; [&quot;mon&quot;, &quot;tue&quot;, &quot;wed&quot;, &quot;thu&quot;, &quot;fri&quot;],
+    MACHINE     =&gt; &quot;&quot;,
+    DISTRIBUTED =&gt; 0,
+    OPTIONS     =&gt; &quot;/absolute/path/local.opt&quot;,
+    ACTIONS     =&gt; &quot;-nomail run&quot;,
+    WORKDIR     =&gt; &quot;/absolute/path/results/work.DAY.local&quot;,
+    LOGNAME     =&gt; &quot;/absolute/path/results/log.DAY.local&quot;,
+    KEY         =&gt; &quot;local&quot;,
+);
+1;</code></pre>
+<p><code>MACHINE</code> is the launch-host field for non-distributed tests; an empty value selects the current host. Distributed records construct a <code>TM.pl -d</code> command on the launcher. <code>DISTRIBUTED =&gt; 0</code> constructs <code>TM.pl -nod</code>. <code>ACTIONS</code> contains TM arguments and subcommands, not arbitrary newer test-runner commands. Unless actions explicitly request mail, <code>TestInfo</code> adds <code>-nomail</code>.</p>
+<p><code>DAY</code> is replaced in the supported path positions with the selected weekday, not a full calendar date. Reusing a weekday can reuse and replace the same work directory. Keep separate copies when retaining multiple weeks of evidence.</p>
+<h2 id="validate-and-launch">Validate and launch</h2>
+<pre><code>perl &quot;$CTI_HOME/bin/tm-schedule.pl&quot; -s ./local.sched -validate
+perl &quot;$CTI_HOME/bin/tm-schedule.pl&quot; -s ./local.sched -no_match -run -dryrun
+perl &quot;$CTI_HOME/bin/tm-schedule.pl&quot; -s ./local.sched -no_match -run</code></pre>
+<p>Review validation output; validation prints warnings and is not a proof of a successful test run. A schedule with syntax errors can produce warnings rather than an immediate abort, so also inspect diagnostics and the reported set of selected tests. Loading a schedule executes its Perl code even in validation or dry-run mode. The dry-run code prints constructed commands and can create log directories; it does not launch TM subprocesses.</p>
+<p>The scheduler filters records by day, view/work-root tag, and optional key. <code>-no_match</code> avoids requiring the current view/work-root tag to match a record. <code>-day mon</code> selects a day; <code>-key local</code> filters by key; <code>-ignore_days</code> bypasses the record&#x27;s day constraint. A sibling <code>&lt;schedule&gt;.frozen</code> file prevents invocation. <code>-run</code> waits for the launched child commands. Launcher output is redirected to <code>&lt;LOGNAME&gt;.tmout</code>, separately from TM&#x27;s summary log.</p>
+<p>Evidence: <a href="../../bin/tm-schedule.pl">tm-schedule.pl</a>, <a href="../../lib/TestInfo.pm">TestInfo.pm</a>.</p>
+<h2 id="web-reports">Web reports</h2>
+<p>On a configured web deployment, open <code>cgi-bin/show-schedule.cgi?sched=/absolute/path/local.sched</code> or <code>cgi-bin/show-failures.cgi?sched=/absolute/path/local.sched</code>. The schedule must be readable by the web execution account, as must the relevant logs and cached results.</p>
+<p>Report controls include <code>%SCHED_Menu</code>, <code>$SCHED_known_failures</code>, <code>$SCHED_old_log</code>, and <code>$SCHED_Cache_dir</code>. They customize reports; a schedule file does not by itself register a periodic operating-system job. Invoke <code>tm-schedule.pl</code> from your site&#x27;s scheduler when recurring execution is required.</p>
+<h2 id="performance-templates">Performance templates</h2>
+<p>The <code>cti_perf</code> samples select <code>Perf/ex1</code> and set <code>APPLICATION_RUN_HOOK</code> to <code>Scripts/real_hardware_scripts/cti_gen_real_hardware_run_log.sh</code>. Speed uses one copy; rate uses eight. Both contain site-specific CPU binding commands and a <code>{PERF_MACHINE_LISTS}</code> placeholder which is not one of <code>configure.pl</code>&#x27;s replacement variables.</p>
+<p>Set real performance hosts, compiler paths, compatible CPU binding commands, copy counts, and runtime libraries before use. Review <code>REAL_HARDWARE_*</code>, <code>PERF_*</code>, and lock settings in <a href="../../conf/default.conf">default.conf</a> and the <a href="../../Scripts/real_hardware_scripts/cti_gen_real_hardware_run_log.sh">run generator</a>. Do not interpret sample hostnames or CPU mappings as a usable benchmark deployment. Exclusive machine access and comparable inputs are necessary to interpret timings.</p>
+<footer>Reconstructed from OpenCTI source, baseline 8c3d603. Generated by doc/tools/build_docs.py.</footer>
+</main></body></html>

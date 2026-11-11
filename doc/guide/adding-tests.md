@@ -1,0 +1,102 @@
+# Adding regression and application tests
+
+[Documentation home](index.md)
+
+## Layout and enrollment
+
+```text
+cti_groups/
+  Regression/
+    tmconfig                 # CHILDREN and regression.pl selection
+    myunit/
+      tmconfig
+      tmconfig.env           # optional pattern-specific settings
+      tmconfig.list          # optional multi-source definitions
+      Src/
+        sample.c
+        sample.tmconfig      # optional per-test settings
+      Masters/
+        sample.out
+  Applications/
+    tmconfig                 # CHILDREN and application.pl selection
+    myapp/
+      tmconfig
+      Src/
+        Makefile.CTI
+        ...
+```
+
+A `Src/` subdirectory identifies a unit. Add new units to the parent group's `CHILDREN` list for group-wide runs. A direct unit selection works without parent enrollment. Preserve filename case, especially C `.c` versus C++ `.C`.
+
+## Regression tests
+
+The [regression driver](../../Scripts/drivers/lib/regressionDriver.pm) discovers individual sources by the configured extension/language mapping. Put a single-source test in `Src/`. Add its runtime master under the configured `MASTER_FILE_PATH`; `Regression/tmconfig` sets that path to `../Masters`, relative to `Src`.
+
+A minimal test that produces no output can use an empty master:
+
+```c
+int main(void) { return 0; }
+```
+
+For `sample.c`, place an empty `Masters/sample.out`. CTI's regression output padding is enabled by default; set `RUN_TESTS_PAD_OUTPUT=false` in `Src/sample.tmconfig` when the master should contain only raw program output. Verify the captured output before accepting the master.
+
+For a compile-only test, add `RUN_TESTS=false` to its `.tmconfig`; also set `LINK_TESTS=false` if no link step is intended. A negative compile test uses `CT_NEG=true`. To compare diagnostics, enable `CT_DIFF=true` and provide the appropriate `.err` master, or use `ERROR_MASTER_EMPTY=true` if an empty diagnostic master is intended.
+
+For multi-source tests, create `Src/<name>.list` listing source files, or a unit-level `tmconfig.list` with records such as:
+
+```text
+joined: first.c second.c
+```
+
+Inspect [readListFile.pm](../../Scripts/drivers/lib/readListFile.pm) for list syntax. [collectTests.pm](../../Scripts/drivers/lib/collectTests.pm) prevents these component sources from also running as independent tests.
+
+Master names start with the test base name and the configured suffix (`out` or `err` by default). `RUNTIME_OUTPUT_QUALIFIERS` and `ERROR_OUTPUT_QUALIFIERS` can insert option values into the name. [locateMaster.pm](../../Scripts/drivers/lib/locateMaster.pm) defines the lookup order and the special Fortran handling of the `COMPILER_VERSION` qualifier.
+
+Use `SELECTIONS` for the unit and `TESTS` for a specific test filename. Run locally with `CLEAN=false`, inspect compile/link/run commands, and confirm that the intended failure or output comparison is exercised before adding it to broad selections.
+
+## Application wrapper contract
+
+The [application driver](../../Scripts/drivers/lib/applicationDriver.pm) operates on one application unit, populates a work directory, customizes options, and generates scripts calling GNU make. Set the wrapper filename in the application's `tmconfig`:
+
+```text
+MAKEWRAPPER=Makefile.CTI
+```
+
+The implementation adds `-f` only when `MAKEWRAPPER` is set. Otherwise GNU make uses its normal makefile discovery. There is no hardcoded `M.hp.TAHOE` default in this driver.
+
+The normal compile stage invokes the make target `compile`; the normal execution stage invokes `validate`. A successful validation must return zero and leave `compare.results` present and empty. A missing file produces an execution failure; a nonempty file produces an output-difference failure. Separate `run`, `compare`, and `clean` targets are useful wrapper conventions; they are not each independently invoked by the normal two-stage driver path.
+
+The driver passes `CC`, `CXX`, `FC`, `AR`, `EXTRA_FLAGS`, language-specific `EXTRA_CFLAGS`/`EXTRA_CXXFLAGS`/`EXTRA_FFLAGS`, `EXTRA_LIBS`, `SIMULATOR`, and `GMAKEROOT` when defined. `EXTRA_FLAGS` includes data-mode and optimization settings. Wrappers must actually forward those flags to the upstream build; assigning `CC` alone does not prove the compiler used the intended options.
+
+A simple wrapper around a configure/make project can follow this pattern. Recipe indentation must be tabs:
+
+```make
+export CC
+export CFLAGS = $(EXTRA_FLAGS) $(EXTRA_CFLAGS)
+
+compile:
+	./configure
+	$(MAKE) -f Makefile
+
+validate:
+	rm -f compare.results
+	$(MAKE) -f Makefile check
+	: > compare.results
+
+clean:
+	$(MAKE) -f Makefile clean
+```
+
+Only create the empty marker after validation succeeds. Remove stale markers first. A failed upstream check must propagate failure rather than being hidden by an unconditional successful command. For a real bundled example, see [GSL's wrapper](../../cti_groups/Applications/gsl-1.14/Src/Makefile.CTI).
+
+`APPLICATION_SETUP_HOOKS` customizes work-directory preparation. `APPLICATION_RUN_HOOK` supplies a script generator for specialized runs; it receives the unit name and output-script filename. Performance templates use this mechanism. Use [the declared hooks](reference.md) and driver code to establish argument and exit-code contracts.
+
+## Import and dependencies
+
+Import a clean source tree, not a previously built directory. Retain upstream notices and record any portability patches. Ensure configuration respects the selected compilers and flags, and arrange for tests to run without interactive input. Avoid fixed scratch filenames that collide across concurrent jobs. Set `TIME_LIMIT` to a justified value for larger builds.
+
+The bundled application units are `Applications/gsl-1.14` and `Applications/hmmer-2.3.2`; `Perf/ex1` is a performance example. Dependencies come from each unit's wrapper and upstream source, not from a package dependency installer. Application runs also require the hardcoded Linux GNU make path described in [installation](installation.md).
+
+## Legacy add-test tools
+
+`TM.pl` does not implement an `add` command. The older import tool is [bin/www/addtest.pl](../../bin/www/addtest.pl), with a web form at `www/cgi-bin/addtest.cgi`. Its parser requires `-CTI_GROUPS` to specify the absolute test root. It includes SVN/ClearCase-oriented check-in helpers and is not a Git-aware replacement for editing a working tree. Use the manual layout workflow above for this Git checkout; review the tool's implementation and dry-run behavior before using it in a configured legacy repository.

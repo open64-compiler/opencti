@@ -1,70 +1,57 @@
 <!--
- ====================================================================
-
- Copyright (C) 2011, Hewlett-Packard Development Company, L.P.
- All Rights Reserved.
-
- Open64 is free software; you can redistribute it and/or
- modify it under the terms of the GNU General Public License
- as published by the Free Software Foundation; either version 2
- of the License, or (at your option) any later version.
-
- Open64 is distributed in the hope that it will be useful,
- but WITHOUT ANY WARRANTY; without even the implied warranty of
- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- GNU General Public License for more details.
-
- You should have received a copy of the GNU General Public License
- along with this program; if not, write to the Free Software
- Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston,
- MA  02110-1301, USA.
-
- ====================================================================
+Copyright (C) 2011, Hewlett-Packard Development Company, L.P.
+All Rights Reserved.
+Open64 is free software; you can redistribute it and/or modify it under the
+terms of the GNU General Public License as published by the Free Software
+Foundation; either version 2 of the License, or (at your option) any later
+version. Distributed WITHOUT ANY WARRANTY; without even the implied warranty
+of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General
+Public License for more details.
 -->
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
-<html>
-<head>
-<title>CTI</title>
-<link rel="stylesheet" type="text/css" href="css/homepages-v5.css" />
-</head>
-<body>
-<h2>  Common Test Infrastructure (CTI)  </h2>
-
-<ul> 
-	<li><h3>The Basics</h3> 
-	<ul> 
-		<li><a href="doc/CTI_Users_Guide.html">Users Guide</a></li> 
-	</ul> 
-	</li> 
-	
-	<li> <h3>Distributed Test Manager (dTM) </h3>
-	<ul> 
-		<li><a href="doc/dtm_faq.html">dTM FAQ</a></li> 
-		<li><a href="dtm/www/cgi-bin/dTMState.php">dTM server</a></li> 
-	</ul> 
-	</li> 
-	
-	<li><h3>Quick Links</h3>
-	<ul> 
-		<li><a href="cgi-bin/addtest.cgi">Add Test GUI</a> </li> 
-	</ul>
-	</li> 
-	
-	<li> <h3>CTI Details</h3> 
-	<ul> 
-		<li><a href="cgi-bin/describe-cti-options.cgi">Catalog of CTI test-level customizable options</a></li> 
-		<li><a href="cgi-bin/describe-test-results.cgi">Catalog of CTI test outputcomes/results</a></li> 
-		<li><a href="doc/schedule_file_setup.html">Schedule file setup</a></li> 
-		<li><a href="doc/update_known_failures.html">Update Known Failures User Guide</a></li> 
-	</ul>
-	</li>
-
-	<li> <h3>Various Docs</h3>
-	<ul> 
-		<li><a href="doc/cti-application-import.txt">Import Application to CTI</a></li>
-		<li><a href="doc/app-script.txt">Application driver script</a></li>
-	</ul>
-       	</li>
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>CTI documentation — OpenCTI</title><style>body{margin:0;background:#f4f6f8;color:#18232e;font:17px/1.6 system-ui,sans-serif}
+main{max-width:1050px;margin:auto;padding:2rem;background:white;min-height:100vh}
+a{color:#075ca8}nav{padding:.7rem 0;border-bottom:1px solid #ccd5dd}
+h1,h2,h3{line-height:1.25;scroll-margin-top:1rem}h2{margin-top:2rem}
+pre{padding:1rem;background:#eff3f7;overflow:auto;border:1px solid #d5dce3}
+code{font: .88em/1.5 ui-monospace,monospace;overflow-wrap:anywhere}
+table{border-collapse:collapse;width:100%;display:block;overflow:auto}
+th,td{padding:.6rem;border:1px solid #ccd5dd;text-align:left;vertical-align:top}
+th{background:#eff3f7}td:first-child{min-width:10rem}footer{border-top:1px solid #ccd5dd;margin-top:2rem;color:#52606b}
+@media(max-width:640px){main{padding:1rem}body{font-size:16px}}
+</style></head><body><main>
+<nav><a href="guide/index.html">CTI documentation</a></nav>
+<h1 id="cti-documentation">CTI documentation</h1>
+<p>CTI (Common Test Infrastructure) tests compilers by compiling and running regression programs and larger applications. It records categorized results and leaves scripts and environment files for reproducing failures. Open64 itself is not built by this package.</p>
+<p>These guides describe the code imported at commit <code>8c3d603</code>, rather than a currently certified deployment. Examples require site configuration and a suitable Linux environment. The original distribution also contains HP-UX, IA64, simulator, ClearCase, and SVN integrations; their presence does not establish compatibility with current systems.</p>
+<h2 id="start-here">Start here</h2>
+<ul>
+<li><a href="guide/installation.html">Installation</a>: requirements, checkout integrity, and in-place configuration.</li>
+<li><a href="guide/running-tests.html">Running tests</a>: local quick start, CLI reference, artifacts, and troubleshooting.</li>
+<li><a href="guide/configuration.html">Configuration</a>: option loading, selection, compiler flags, and customization.</li>
+<li><a href="guide/adding-tests.html">Adding tests</a>: regression units, output masters, and application wrappers.</li>
+<li><a href="guide/distributed.html">Distributed testing</a>: dTM configuration, lifecycle, schedules, and web layout.</li>
+<li><a href="guide/scheduling.html">Schedules</a>: launching predefined runs and adapting performance templates.</li>
+<li><a href="guide/known-failures.html">Known failures</a>: maintaining report annotations.</li>
+<li><a href="guide/development.html">Development</a>: source map, execution flow, maintenance, and documentation build.</li>
+<li><a href="guide/reference.html">Reference catalog</a>: options and result types generated from the configuration files.</li>
 </ul>
-
-</body></html>
+<h2 id="choose-a-workflow">Choose a workflow</h2>
+<table><thead><tr><th>Goal</th><th>Entry point</th><th>Additional services</th></tr></thead><tbody>
+<tr><td>Run a compiler regression unit locally</td><td><code>bin/TM.pl -nod</code></td><td>None</td></tr>
+<tr><td>Run an application locally</td><td><code>bin/TM.pl -nod</code>, application make wrapper</td><td>GNU make and application dependencies</td></tr>
+<tr><td>Share test machines</td><td><code>bin/TM.pl -d</code></td><td>Java dTM server, SSH, shared paths, load monitors</td></tr>
+<tr><td>Launch predefined test sets</td><td><code>bin/tm-schedule.pl</code></td><td>dTM only when the schedule requests distributed execution</td></tr>
+<tr><td>Browse results or launch tests on the web</td><td><code>www/cgi-bin/</code>, <code>dtm/www/cgi-bin/</code></td><td>Configured CGI/PHP web server and execution accounts</td></tr>
+</tbody></table>
+<h2 id="documentation-scope">Documentation scope</h2>
+<p>Source links in these guides point to the implementation used to establish each behavior. The <a href="CTI_Users_Guide.html">user guide</a> and <a href="app-script.txt">application notes</a> at the original documentation paths are rebuilt from these guides. Conflicts in the old prose have been corrected to match the implementation. See the <a href="guide/development.html">correction record</a> for specific changes.</p>
+<p>The code includes GPL version 2-or-later notices in infrastructure files. Bundled application sources carry their own notices; inspect those files when redistributing them.</p>
+<footer>Reconstructed from OpenCTI source, baseline 8c3d603. Generated by doc/tools/build_docs.py.</footer>
+</main><script>
+const path = location.pathname;
+if (!(path.endsWith('/doc/') || path.endsWith('/doc/index.html'))) {
+  document.querySelectorAll('a[href^="guide/"]').forEach(a => a.setAttribute('href', 'doc/' + a.getAttribute('href')));
+}
+</script></body></html>

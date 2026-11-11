@@ -1,0 +1,116 @@
+# Running tests and reading results
+
+[Documentation home](index.md)
+
+## First local run
+
+Start on a configured Linux deployment with a small regression unit. The following option file uses Open64 compilers supplied by the site; replace `/opt/open64/bin` with the actual installation. Save it outside the source tree as `local.opt`:
+
+```sh
+export CTI_GROUPS="$CTI_HOME/cti_groups"
+export SELECTIONS="Regression/fe"
+export CC=/opt/open64/bin/opencc
+export CXX=/opt/open64/bin/openCC
+export FC=/opt/open64/bin/openf90
+export DATA_MODE=+DD64
+export DATA_MODE_MAPPING="+DD32/-m32 +DD64/-m64"
+export CTI_OPT_SIGN="-"
+export OPT_LEVEL=2
+export CTI_COMPILE_HOST_OS=Linux
+export CTI_RUN_HOST_OS=Linux
+export CTI_REPORT_PASSES=true
+export CLEAN=false
+```
+
+`CTI_HOME` must resolve to the configured installation, and the selected compilers must be executable. The defaults deliberately set `CC`, `CXX`, and `FC` to `/bin/false`. Unit settings may further customize options; inspect the generated compile command before assuming your chosen flags reached a test.
+
+From a separate scratch directory, set your installation path and inspect the effective run environment:
+
+```sh
+export CTI_HOME=/absolute/path/to/opencti
+perl "$CTI_HOME/bin/TM.pl" -nod -nomail -f ./local.opt \
+  -w "$PWD/fe.work" -l "$PWD/fe.log" test_setting
+```
+
+`test_setting` prints the full environment and exits before running drivers. Avoid sharing its output without reviewing it for credentials inherited from the shell. It still loads option files, checks selections/paths, and can create the log's parent directory.
+
+Run the selected unit:
+
+```sh
+perl "$CTI_HOME/bin/TM.pl" -nod -nomail -f ./local.opt \
+  -w "$PWD/fe.work" -l "$PWD/fe.log" run
+```
+
+`run` replaces a previous work directory: it moves it to a `.clean` sibling and removes that directory asynchronously. Use a fresh work/log location for runs you want to retain. `CLEAN=false` preserves driver artifacts; it does not disable this top-level replacement.
+
+## TM command reference
+
+The parser in [TM.pl](../../bin/TM.pl) accepts these options. Its built-in help contains historical discrepancies listed below.
+
+| Option | Implemented purpose |
+| --- | --- |
+| `-f FILE` | Load a shell options file after defaults |
+| `-xf FILE` | Load another shell options file after `-f` |
+| `-px NAME=value` | Set an environment variable after defaults, before the user options file |
+| `-x NAME=value` or `NAME=value` | Set an environment variable after option files and CLI-derived adjustments |
+| `-nod` | Request local execution |
+| `-d` | Request distributed execution |
+| `-d=POOL:host1,host2` | Request distributed execution with a pool/host restriction |
+| `-w DIR`, `-l FILE` | Set work directory and summary log |
+| `-id NAME` | Set `NAME.work` and `NAME.log`; explicit `-w`/`-l` take precedence regardless of argument order |
+| `-nomail` | Disable final log mail unless subsequently overridden by `-x SEND_LOG=...` |
+| `-m true`, `-m false`, `-m USER` | Choose final log recipients; absent a choice, mail defaults to the invoker |
+| `-skip FILE` | Read whitespace-separated fully qualified skip selections |
+| `-s` | Sort units using recorded timing information |
+| `-c` | Disable data-mode validation |
+| `-env DIR` | Set `TEST_ENV_DIR` before loading defaults; defaults may overwrite it |
+| `-native`, `-cross` | Apply historical IPF/PA simulator settings; do not use these as generic x86 switches |
+| `-h`, `-help` | Print usage and exit with status 1 |
+
+The accepted subcommands are `run`, `clean`, and `test_setting`. With no subcommand the code selects `run`. `clean` is parsed but has no standalone action in the dispatch loop; cleanup happens inside `run`. The help text's claim that the default is `clean run` does not match the implementation.
+
+The script ends with `exit 0` after a completed run even when tests fail. Check the summary log and per-test results rather than treating the TM process exit code as the test verdict. Fatal infrastructure errors may still terminate the process earlier.
+
+## Select and narrow tests
+
+`SELECTIONS` names groups or units relative to `CTI_GROUPS`. Select a unit using `SELECTIONS="Regression/fe"`; use `TESTS` to narrow regression tests to exact unqualified test filenames, including extensions:
+
+```sh
+perl "$CTI_HOME/bin/TM.pl" -nod -nomail -f ./local.opt \
+  -x 'TESTS=bug15191_4.c' -x 'SELECTIONS=Regression/cg' \
+  -w "$PWD/one.work" -l "$PWD/one.log" run
+```
+
+Groups expand through `CHILDREN` in their `tmconfig`. `SELECTIONS=.all.` requires root `CHILDREN` configuration; this checkout has no `cti_groups/tmconfig`, so explicitly select `Regression` and/or `Applications` instead. A single source path is not a unit selection. See [configuration](configuration.md).
+
+## Artifacts and triage
+
+The summary log records totals and groups failures by the labels in [the result catalog](reference.md). Unit work directories appear under the run's work tree. Names vary by driver and iteration, but useful artifacts include:
+
+| Artifact | Use |
+| --- | --- |
+| `*.env` | Saved options and environment used by generated scripts |
+| `*.compile.sh`, `*.comp.err` | Recompile script and compile/link diagnostics |
+| `*.run.sh`, `*.run.out` | Runtime reproduction script and captured program output |
+| `*.result` | Internal result tag, such as `CompileErr` or `DiffPgmOut` |
+| `compare.results` | Application validation status; present and empty for success |
+| `TMmsgs/` | Messages collected to build the summary log |
+
+Read each generated script, change to its working directory, and run it with the configured shell. Keep its `.env` file and referenced source paths available. Recompiling or rerunning can overwrite artifacts, so copy the failure directory first if you need the original evidence.
+
+## Troubleshooting
+
+| Symptom | What to inspect |
+| --- | --- |
+| Missing `/usr/local/bin/perl` or `/bin/ksh` | Script shebangs and configured Perl path; explicitly invoking Perl only bypasses the first script's shebang |
+| Cannot load options, missing environment dump | `Scripts/saveOpt2Env`, Korn shell, option syntax, permissions, and temporary-file errors |
+| `CTI_GROUPS directory not found` | Resolved path and remaining configuration tokens |
+| No tests selected or unknown group/unit | `SELECTIONS`, `CHILDREN`, `Src/`, and the unit's real filename case |
+| All compilations fail immediately | Compiler paths and flags; defaults point to `/bin/false` |
+| `NoMasterOut` or `NoMasterErr` | `MASTER_FILE_PATH`, suffixes, qualifiers, and case collisions |
+| `DiffPgmOut` | Output, master file, filters, and padding settings; do not remaster until the behavior is understood |
+| `LongCompilation`, `LongLinking`, `LongExec` | Phase log and `TIME_LIMIT` in minutes |
+| Driver or hook errors | Generated scripts, hook exit codes, shell compatibility, and site tools |
+| dTM jobs wait indefinitely | Pool/host status, OS/architecture matching, load monitors, SSH, and shared-path access |
+
+Some tests are compiler- or target-specific. A failure on a different compiler family or modern host is not by itself evidence of a new compiler defect.

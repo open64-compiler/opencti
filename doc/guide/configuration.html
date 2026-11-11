@@ -1,0 +1,83 @@
+<!--
+Copyright (C) 2011, Hewlett-Packard Development Company, L.P.
+All Rights Reserved.
+Open64 is free software; you can redistribute it and/or modify it under the
+terms of the GNU General Public License as published by the Free Software
+Foundation; either version 2 of the License, or (at your option) any later
+version. Distributed WITHOUT ANY WARRANTY; without even the implied warranty
+of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General
+Public License for more details.
+-->
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Configuration and option precedence — OpenCTI</title><style>body{margin:0;background:#f4f6f8;color:#18232e;font:17px/1.6 system-ui,sans-serif}
+main{max-width:1050px;margin:auto;padding:2rem;background:white;min-height:100vh}
+a{color:#075ca8}nav{padding:.7rem 0;border-bottom:1px solid #ccd5dd}
+h1,h2,h3{line-height:1.25;scroll-margin-top:1rem}h2{margin-top:2rem}
+pre{padding:1rem;background:#eff3f7;overflow:auto;border:1px solid #d5dce3}
+code{font: .88em/1.5 ui-monospace,monospace;overflow-wrap:anywhere}
+table{border-collapse:collapse;width:100%;display:block;overflow:auto}
+th,td{padding:.6rem;border:1px solid #ccd5dd;text-align:left;vertical-align:top}
+th{background:#eff3f7}td:first-child{min-width:10rem}footer{border-top:1px solid #ccd5dd;margin-top:2rem;color:#52606b}
+@media(max-width:640px){main{padding:1rem}body{font-size:16px}}
+</style></head><body><main>
+<nav><a href="index.html">CTI documentation</a></nav>
+<h1 id="configuration-and-option-precedence">Configuration and option precedence</h1>
+<p><a href="index.html">Documentation home</a></p>
+<h2 id="three-kinds-of-configuration">Three kinds of configuration</h2>
+<table><thead><tr><th>File</th><th>Format</th><th>Reader</th></tr></thead><tbody>
+<tr><td><code>lib/CTI_global.env</code>, <code>dtm/lib/DTM_global.env</code></td><td>Assignment files interpreted by Perl loaders; not arbitrary shell programs</td><td><code>CTI_lib.pm</code>, <code>DTM_lib.pm</code></td></tr>
+<tr><td><code>conf/default.conf</code>, user <code>.opt</code> files</td><td>Shell code sourced by <code>/bin/ksh</code>; values must be exported</td><td><code>Scripts/saveOpt2Env</code>, called by <code>loadOptions</code></td></tr>
+<tr><td>Group/unit <code>tmconfig</code>, <code>tmconfig.env</code>, test <code>.tmconfig</code></td><td>CTI assignment records, optionally preprocessed; not shell scripts</td><td>Driver configuration modules</td></tr>
+<tr><td><code>.sched</code></td><td>Executable Perl creating <code>TestInfo</code> records, ending with a true value</td><td><code>bin/tm-schedule.pl</code>, web reporting code</td></tr>
+</tbody></table>
+<h2 id="run-level-loading-order">Run-level loading order</h2>
+<p><a href="../../bin/TM.pl">TM.pl</a> and <a href="../../Scripts/tmUtilities.pl">tmUtilities.pl</a> implement this sequence:</p>
+<ol>
+<li>Load global definitions while importing <code>CTI_lib</code>; already defined environment values are preserved by its definition loader.</li>
+<li>Establish host metadata and load <code>conf/default.conf</code> through <code>Scripts/saveOpt2Env</code>.</li>
+<li>Apply <code>-px NAME=value</code> assignments.</li>
+<li>Load the <code>-f</code> options file, if supplied.</li>
+<li>Load the <code>-xf</code> options file, if supplied.</li>
+<li>Apply CLI-derived work/log, distributed, mail, skip, and native/cross settings and host defaults.</li>
+<li>Apply <code>-x NAME=value</code> and bare <code>NAME=value</code> assignments.</li>
+<li>Select units; drivers subsequently apply group/unit/test customizations.</li>
+</ol>
+<p>An unqualified <code>-x OPT_LEVEL=2</code> wins at the run level, but a unit&#x27;s <code>tmconfig</code> can still replace it later. Use a level-specific override when you need to override that unit&#x27;s setting. Explicit <code>-w</code> and <code>-l</code> beat <code>-id</code> regardless of position; a final <code>-x TEST_WORK_DIR=...</code> or <code>-x LOG=...</code> can replace them again.</p>
+<h2 id="selection-and-test-discovery">Selection and test discovery</h2>
+<p><code>CTI_GROUPS</code> is the root containing <code>Regression</code>, <code>Applications</code>, and <code>Perf</code>. <code>SELECTIONS</code> contains whitespace-separated relative group/unit paths. A directory with <code>Src/</code> is a unit. Other directories expand only through their <code>CHILDREN</code> configuration; simply creating a subdirectory does not enroll it in a group run.</p>
+<p>The root <code>.all.</code> selection reads root <code>CHILDREN</code>, which is absent from this distribution. Use explicit groups. <code>SKIP_SELECTIONS</code> can exclude fully qualified groups, units, or regression tests. <code>TESTS</code> narrows regression tests by exact unqualified name.</p>
+<p><a href="../../Scripts/drivers/lib/collectTests.pm">collectTests.pm</a> discovers sources using <code>LANG_TYPE</code> and <code>EXT_TO_FE</code>, plus explicit <code>.list</code> and <code>tmconfig.list</code> definitions. Sources belonging to multi-file tests are removed from the standalone test set. List-defined tests can be included regardless of the normal language filter.</p>
+<h2 id="hierarchical-customization">Hierarchical customization</h2>
+<p><a href="../../Scripts/drivers/lib/customizeOptions.pm">customizeOptions.pm</a> walks the selected group/unit path from its outer group to its leaf. More specific levels can replace values from earlier levels. Regression tests then apply test-specific settings.</p>
+<ul>
+<li>Group/unit files use <code>NAME=value</code> or <code>NAME=&quot;value&quot;</code>, without <code>export</code>. Keep comments on their own lines.</li>
+<li>Unit <code>tmconfig.env</code> contains <code>test-pattern: NAME=value</code> records matched against a test base name.</li>
+<li>Test files are <code>Src/&lt;test-base&gt;.tmconfig</code>, with the source extension stripped. Their settings take precedence over matching <code>tmconfig.env</code> entries.</li>
+<li>Only names listed in <code>conf/TestLevelCustomizableOptions.conf</code>, and the recognized customization variants, are accepted in these files.</li>
+</ul>
+<p>Level-specific environment names join path components with underscores. For example, to override <code>OPT_LEVEL</code> at <code>Regression/apo</code>, set:</p>
+<pre><code>export Regression_apo_OPT_LEVEL=2</code></pre>
+<p>At the same level, this environment value takes precedence over the <code>tmconfig</code> assignment. <code>EXTRA_PRE_NAME</code> and <code>EXTRA_POST_NAME</code> add text before/after an option rather than simply replacing it. Multi-iteration tests can use <code>NAME_ITERATION_N</code> and corresponding pre/post variants. Consult the implementation for the distinction between non-leaf accumulation and leaf expansion before creating complex combinations.</p>
+<p><code>tmconfig</code> values expand <code>CTI_HOME</code> and <code>CTI_GROUPS</code>; do not assume general shell variable expansion or shell evaluation. <a href="../../Scripts/drivers/lib/openFile.pm">openFile.pm</a> handles supported preprocessing. For examples of actual customizations, inspect the selected unit&#x27;s files rather than copying obsolete target-specific flags.</p>
+<h2 id="compiler-and-execution-controls">Compiler and execution controls</h2>
+<table><thead><tr><th>Variable</th><th>Meaning / default in this checkout</th></tr></thead><tbody>
+<tr><td><code>CC</code>, <code>CXX</code>, <code>FC</code></td><td>C, C++, Fortran compilers; each defaults to <code>/bin/false</code></td></tr>
+<tr><td><code>CTI_OPT_SIGN</code>, <code>OPT_LEVEL</code></td><td>Form optimization flags; Linux defaults use <code>-</code> and level <code>2</code></td></tr>
+<tr><td><code>DATA_MODE</code></td><td>Historical <code>+DD32</code> or <code>+DD64</code> selector; default <code>+DD64</code></td></tr>
+<tr><td><code>DATA_MODE_MAPPING</code></td><td>Map selectors to actual flags, e.g. <code>+DD32/-m32 +DD64/-m64</code></td></tr>
+<tr><td><code>CC_OPTIONS</code>, <code>CXX_OPTIONS</code>, <code>FC_OPTIONS</code></td><td>Additional language-specific compiler options</td></tr>
+<tr><td><code>RUN_TESTS</code>, <code>LINK_TESTS</code></td><td>Compile/run and link controls; both default true</td></tr>
+<tr><td><code>CT_NEG</code>, <code>RUN_TESTS_NEG</code></td><td>Expect compile or execution failure; both default false</td></tr>
+<tr><td><code>CT_DIFF_TESTING</code>, <code>CT_DIFF</code></td><td>Global compiler-output comparison gate and per-test request; true and false respectively</td></tr>
+<tr><td><code>OUTPUT_COMPARE</code></td><td>Compare runtime output; default true</td></tr>
+<tr><td><code>MASTER_FILE_PATH</code></td><td>Search locations for masters, relative to the unit source directory unless absolute</td></tr>
+<tr><td><code>TIME_LIMIT</code></td><td>Per-process phase limit in minutes; defaults to 40, with group overrides</td></tr>
+<tr><td><code>CLEAN</code></td><td>Driver cleanup control; default true; top-level <code>run</code> still replaces the work tree</td></tr>
+<tr><td><code>UNIT_DRIVER</code></td><td>Selected by groups/units; global default <code>/bin/false</code></td></tr>
+<tr><td><code>CTI_REPORT_PASSES</code></td><td>Include pass details; default false</td></tr>
+</tbody></table>
+<p>The <a href="reference.html">generated catalog</a> contains the complete declared test-level names and result types. Its descriptions are copied from the configuration metadata and can contain historical language. The configuration files remain authoritative for declared keys; driver code determines actual behavior.</p>
+<p><code>conf/SavedOptions.conf</code> adds environment names captured for reproduction. Test-level customizable options are also saved, except entries explicitly excluded by <code>conf/UnsavedOptions.conf</code>.</p>
+<footer>Reconstructed from OpenCTI source, baseline 8c3d603. Generated by doc/tools/build_docs.py.</footer>
+</main></body></html>

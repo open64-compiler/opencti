@@ -1,39 +1,128 @@
 <!--
- ====================================================================
-
- Copyright (C) 2011, Hewlett-Packard Development Company, L.P.
- All Rights Reserved.
-
- Open64 is free software; you can redistribute it and/or
- modify it under the terms of the GNU General Public License
- as published by the Free Software Foundation; either version 2
- of the License, or (at your option) any later version.
-
- Open64 is distributed in the hope that it will be useful,
- but WITHOUT ANY WARRANTY; without even the implied warranty of
- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- GNU General Public License for more details.
-
- You should have received a copy of the GNU General Public License
- along with this program; if not, write to the Free Software
- Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston,
- MA  02110-1301, USA.
-
- ====================================================================
+Copyright (C) 2011, Hewlett-Packard Development Company, L.P.
+All Rights Reserved.
+Open64 is free software; you can redistribute it and/or modify it under the
+terms of the GNU General Public License as published by the Free Software
+Foundation; either version 2 of the License, or (at your option) any later
+version. Distributed WITHOUT ANY WARRANTY; without even the implied warranty
+of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General
+Public License for more details.
 -->
-<head>
-<title>CTI Test Dependencies</title>
-</head>
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Installation — OpenCTI</title><style>body{margin:0;background:#f4f6f8;color:#18232e;font:17px/1.6 system-ui,sans-serif}
+main{max-width:1050px;margin:auto;padding:2rem;background:white;min-height:100vh}
+a{color:#075ca8}nav{padding:.7rem 0;border-bottom:1px solid #ccd5dd}
+h1,h2,h3{line-height:1.25;scroll-margin-top:1rem}h2{margin-top:2rem}
+pre{padding:1rem;background:#eff3f7;overflow:auto;border:1px solid #d5dce3}
+code{font: .88em/1.5 ui-monospace,monospace;overflow-wrap:anywhere}
+table{border-collapse:collapse;width:100%;display:block;overflow:auto}
+th,td{padding:.6rem;border:1px solid #ccd5dd;text-align:left;vertical-align:top}
+th{background:#eff3f7}td:first-child{min-width:10rem}footer{border-top:1px solid #ccd5dd;margin-top:2rem;color:#52606b}
+@media(max-width:640px){main{padding:1rem}body{font-size:16px}}
+</style></head><body><main>
+<nav><a href="guide/index.html">CTI documentation</a></nav>
+<h1 id="installation">Installation</h1>
+<p><a href="guide/index.html">Documentation home</a></p>
+<h2 id="host-and-tool-requirements">Host and tool requirements</h2>
+<p>There is no top-level compile/install target. Most CTI infrastructure runs directly as Perl or shell scripts; dTM includes Java classes and native load-monitor binaries. Test compilers and application dependencies are external.</p>
+<table><thead><tr><th>Component</th><th>Requirements visible in the code</th></tr></thead><tbody>
+<tr><td>Test manager and drivers</td><td>Perl; Unix tools; <code>/bin/ksh</code> for <code>Scripts/saveOpt2Env</code>; a compatible shell for generated scripts</td></tr>
+<tr><td>Application driver</td><td>Linux; GNU make at <code>/usr/bin/gmake</code> through <code>bin/gmake</code>; application-specific tools</td></tr>
+<tr><td>Interactive configuration</td><td>Perl modules <code>HTML::Entities</code>, <code>HTTP::Request::Common</code>, <code>LWP::UserAgent</code>, <code>Mail::Internet</code>, <code>Mail::Util</code>, <code>XML::Simple</code>; Java checked unconditionally</td></tr>
+<tr><td>dTM</td><td>Java runtime; Perl with <code>XML::Simple</code>; SSH or configured remote shell; working native load monitor on each worker; shared installation/results paths</td></tr>
+<tr><td>Rebuilding dTM</td><td>JDK for Java sources, C compiler and pthread support for <code>loadd.c</code></td></tr>
+<tr><td>Web interface</td><td>CGI-capable web server, Perl CGI dependencies including <code>CGI</code>, PHP for <code>dTMState.php</code></td></tr>
+<tr><td>Documentation build</td><td>Python 3 standard library</td></tr>
+</tbody></table>
+<p>The old README names Perl 5.8 and Linux/HP-UX. There is no current compatibility test matrix. The shipped <code>bin/gmake</code> explicitly rejects non-Linux hosts, and shell scripts contain <code>[[ ... ]]</code>; a generic POSIX <code>/bin/sh</code> is not sufficient for every path. macOS can be used to inspect the source and build these docs, but is not a verified test host.</p>
+<p>Evidence: <a href="../configure.pl">configuration checks</a>, <a href="../Scripts/saveOpt2Env">option loader</a>, <a href="../bin/gmake">make wrapper</a>, <a href="../Scripts/drivers/lib/applicationDriver.pm">application driver</a>.</p>
+<h2 id="obtain-a-complete-checkout">Obtain a complete checkout</h2>
+<pre><code>git clone https://github.com/open64-compiler/opencti.git
+cd opencti</code></pre>
+<p>Use a case-sensitive filesystem. OpenMP validation tests contain pairs such as <code>Test_omp_destroy_lock_C.C</code> and <code>Test_omp_destroy_lock_c.c</code>; they cannot coexist in a case-insensitive working tree. A clone may finish with collision warnings and immediately show modified files. A Git archive retains both names, but extracting it onto the same filesystem does not solve the collision.</p>
+<p>Choose an absolute installation path without spaces or shell metacharacters. Many infrastructure commands interpolate paths into shell command strings. For dTM, make the installation and test/results paths available at the same locations to the launcher and workers; align user identities and permissions across hosts. NIS and NFS were the original deployment choices, not mandatory named technologies in the local runner.</p>
+<h2 id="configure-a-deployment-copy">Configure a deployment copy</h2>
+<p>Keep an unconfigured checkout or backup before running the configurator. Run it from the repository root on the intended host:</p>
+<pre><code>perl configure.pl</code></pre>
+<p>The script prompts for the CTI path, administrator, dTM host/ports, Perl path, Java home/options, load-monitor port, remote-shell command, and web host/account/root. Defaults include dTM ports <code>6969</code> and <code>6968</code>, load-monitor port <code>5010</code>, and SSH at <code>/usr/bin/ssh</code>.</p>
+<p>It checks the six Perl modules listed above and executes the selected Java binary. Its Java-version parser expects the historical <code>java version &quot;1.x...&quot;</code> format and compares the second version component against 5. A modern JDK may fail this check despite being newer. Do not interpret this check as proof of compatibility with modern Java; adapting it is a code change outside this documentation rebuild.</p>
+<p>The substitution list in <code>configure.pl</code> includes:</p>
+<ul>
+<li><code>conf/default.conf</code>, <code>lib/CTI_global.env</code>, and dTM environment/XML files.</li>
+<li>Regression and performance option/schedule templates.</li>
+<li>Web scripts and selected older documentation files.</li>
+</ul>
+<p>It replaces literal configuration tokens in place. A second run does not replace values whose tokens were already consumed. Selecting a different Perl path also recursively rewrites occurrences of <code>/usr/local/bin/perl</code> in text files. The default user web root can create a <code>public_html/CTI</code> symlink in the configuring user&#x27;s home directory.</p>
+<p>Check the relevant configuration files afterward:</p>
+<pre><code>rg -n &#x27;\{CONFIGURE_&#x27; conf lib dtm/conf dtm/lib cti_regression cti_perf</code></pre>
+<p>Review matches; inactive comments and historical examples can still contain placeholders. Do not run a blanket substitution across bundled application sources.</p>
+<h2 id="local-only-setup">Local-only setup</h2>
+<p>Local execution does not contact dTM when <code>DISTRIBUTED_TM</code> is false. The stock configurator still requires Java and web answers. To configure manually for a local deployment, review its substitution list, set installation/tool values in <code>lib/CTI_global.env</code> and <code>conf/default.conf</code>, and ensure scripts&#x27; Perl interpreter paths exist. Set <code>CTI_GROUPS</code> explicitly in your option file. This is a manual alternative, not a separate supported configuration switch.</p>
+<p>Use <a href="guide/running-tests.html">the local run example</a> to inspect settings before executing a small unit. Local runs need neither a running dTM server nor a web server. Do not start services simply to display the docs.</p>
+<h2 id="optional-services">Optional services</h2>
+<p>For dTM worker definitions, native load monitors, Java rebuilding, and the web document root, continue with <a href="guide/distributed.html">distributed testing</a>. For application dependencies, inspect the selected unit&#x27;s <code>tmconfig</code>, <code>Src/Makefile.CTI</code>, and upstream installation notes.</p>
+<h1 id="adding-regression-and-application-tests">Adding regression and application tests</h1>
+<p><a href="guide/index.html">Documentation home</a></p>
+<h2 id="layout-and-enrollment">Layout and enrollment</h2>
+<pre><code>cti_groups/
+  Regression/
+    tmconfig                 # CHILDREN and regression.pl selection
+    myunit/
+      tmconfig
+      tmconfig.env           # optional pattern-specific settings
+      tmconfig.list          # optional multi-source definitions
+      Src/
+        sample.c
+        sample.tmconfig      # optional per-test settings
+      Masters/
+        sample.out
+  Applications/
+    tmconfig                 # CHILDREN and application.pl selection
+    myapp/
+      tmconfig
+      Src/
+        Makefile.CTI
+        ...</code></pre>
+<p>A <code>Src/</code> subdirectory identifies a unit. Add new units to the parent group&#x27;s <code>CHILDREN</code> list for group-wide runs. A direct unit selection works without parent enrollment. Preserve filename case, especially C <code>.c</code> versus C++ <code>.C</code>.</p>
+<h2 id="regression-tests">Regression tests</h2>
+<p>The <a href="../Scripts/drivers/lib/regressionDriver.pm">regression driver</a> discovers individual sources by the configured extension/language mapping. Put a single-source test in <code>Src/</code>. Add its runtime master under the configured <code>MASTER_FILE_PATH</code>; <code>Regression/tmconfig</code> sets that path to <code>../Masters</code>, relative to <code>Src</code>.</p>
+<p>A minimal test that produces no output can use an empty master:</p>
+<pre><code>int main(void) { return 0; }</code></pre>
+<p>For <code>sample.c</code>, place an empty <code>Masters/sample.out</code>. CTI&#x27;s regression output padding is enabled by default; set <code>RUN_TESTS_PAD_OUTPUT=false</code> in <code>Src/sample.tmconfig</code> when the master should contain only raw program output. Verify the captured output before accepting the master.</p>
+<p>For a compile-only test, add <code>RUN_TESTS=false</code> to its <code>.tmconfig</code>; also set <code>LINK_TESTS=false</code> if no link step is intended. A negative compile test uses <code>CT_NEG=true</code>. To compare diagnostics, enable <code>CT_DIFF=true</code> and provide the appropriate <code>.err</code> master, or use <code>ERROR_MASTER_EMPTY=true</code> if an empty diagnostic master is intended.</p>
+<p>For multi-source tests, create <code>Src/&lt;name&gt;.list</code> listing source files, or a unit-level <code>tmconfig.list</code> with records such as:</p>
+<pre><code>joined: first.c second.c</code></pre>
+<p>Inspect <a href="../Scripts/drivers/lib/readListFile.pm">readListFile.pm</a> for list syntax. <a href="../Scripts/drivers/lib/collectTests.pm">collectTests.pm</a> prevents these component sources from also running as independent tests.</p>
+<p>Master names start with the test base name and the configured suffix (<code>out</code> or <code>err</code> by default). <code>RUNTIME_OUTPUT_QUALIFIERS</code> and <code>ERROR_OUTPUT_QUALIFIERS</code> can insert option values into the name. <a href="../Scripts/drivers/lib/locateMaster.pm">locateMaster.pm</a> defines the lookup order and the special Fortran handling of the <code>COMPILER_VERSION</code> qualifier.</p>
+<p>Use <code>SELECTIONS</code> for the unit and <code>TESTS</code> for a specific test filename. Run locally with <code>CLEAN=false</code>, inspect compile/link/run commands, and confirm that the intended failure or output comparison is exercised before adding it to broad selections.</p>
+<h2 id="application-wrapper-contract">Application wrapper contract</h2>
+<p>The <a href="../Scripts/drivers/lib/applicationDriver.pm">application driver</a> operates on one application unit, populates a work directory, customizes options, and generates scripts calling GNU make. Set the wrapper filename in the application&#x27;s <code>tmconfig</code>:</p>
+<pre><code>MAKEWRAPPER=Makefile.CTI</code></pre>
+<p>The implementation adds <code>-f</code> only when <code>MAKEWRAPPER</code> is set. Otherwise GNU make uses its normal makefile discovery. There is no hardcoded <code>M.hp.TAHOE</code> default in this driver.</p>
+<p>The normal compile stage invokes the make target <code>compile</code>; the normal execution stage invokes <code>validate</code>. A successful validation must return zero and leave <code>compare.results</code> present and empty. A missing file produces an execution failure; a nonempty file produces an output-difference failure. Separate <code>run</code>, <code>compare</code>, and <code>clean</code> targets are useful wrapper conventions; they are not each independently invoked by the normal two-stage driver path.</p>
+<p>The driver passes <code>CC</code>, <code>CXX</code>, <code>FC</code>, <code>AR</code>, <code>EXTRA_FLAGS</code>, language-specific <code>EXTRA_CFLAGS</code>/<code>EXTRA_CXXFLAGS</code>/<code>EXTRA_FFLAGS</code>, <code>EXTRA_LIBS</code>, <code>SIMULATOR</code>, and <code>GMAKEROOT</code> when defined. <code>EXTRA_FLAGS</code> includes data-mode and optimization settings. Wrappers must actually forward those flags to the upstream build; assigning <code>CC</code> alone does not prove the compiler used the intended options.</p>
+<p>A simple wrapper around a configure/make project can follow this pattern. Recipe indentation must be tabs:</p>
+<pre><code>export CC
+export CFLAGS = $(EXTRA_FLAGS) $(EXTRA_CFLAGS)
 
-<body bgcolor=gray>
-<h2>CTI Test Dependencies</h2>
+compile:
+	./configure
+	$(MAKE) -f Makefile
 
-<table border=1>
-<tr>
-  <th>Test Name
-  <th>Dependency
-  <th>Installed Location
-</tr>
+validate:
+	rm -f compare.results
+	$(MAKE) -f Makefile check
+	: &gt; compare.results
 
-
-</table>
+clean:
+	$(MAKE) -f Makefile clean</code></pre>
+<p>Only create the empty marker after validation succeeds. Remove stale markers first. A failed upstream check must propagate failure rather than being hidden by an unconditional successful command. For a real bundled example, see <a href="../cti_groups/Applications/gsl-1.14/Src/Makefile.CTI">GSL&#x27;s wrapper</a>.</p>
+<p><code>APPLICATION_SETUP_HOOKS</code> customizes work-directory preparation. <code>APPLICATION_RUN_HOOK</code> supplies a script generator for specialized runs; it receives the unit name and output-script filename. Performance templates use this mechanism. Use <a href="guide/reference.html">the declared hooks</a> and driver code to establish argument and exit-code contracts.</p>
+<h2 id="import-and-dependencies">Import and dependencies</h2>
+<p>Import a clean source tree, not a previously built directory. Retain upstream notices and record any portability patches. Ensure configuration respects the selected compilers and flags, and arrange for tests to run without interactive input. Avoid fixed scratch filenames that collide across concurrent jobs. Set <code>TIME_LIMIT</code> to a justified value for larger builds.</p>
+<p>The bundled application units are <code>Applications/gsl-1.14</code> and <code>Applications/hmmer-2.3.2</code>; <code>Perf/ex1</code> is a performance example. Dependencies come from each unit&#x27;s wrapper and upstream source, not from a package dependency installer. Application runs also require the hardcoded Linux GNU make path described in <a href="guide/installation.html">installation</a>.</p>
+<h2 id="legacy-add-test-tools">Legacy add-test tools</h2>
+<p><code>TM.pl</code> does not implement an <code>add</code> command. The older import tool is <a href="../bin/www/addtest.pl">bin/www/addtest.pl</a>, with a web form at <code>www/cgi-bin/addtest.cgi</code>. Its parser requires <code>-CTI_GROUPS</code> to specify the absolute test root. It includes SVN/ClearCase-oriented check-in helpers and is not a Git-aware replacement for editing a working tree. Use the manual layout workflow above for this Git checkout; review the tool&#x27;s implementation and dry-run behavior before using it in a configured legacy repository.</p>
+<footer>Reconstructed from OpenCTI source, baseline 8c3d603. Generated by doc/tools/build_docs.py.</footer>
+</main></body></html>
