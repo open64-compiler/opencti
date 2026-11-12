@@ -1,0 +1,32 @@
+{
+  "mode": "session-b",
+  "records": [],
+  "framework_files_unchanged": true,
+  "baseline_unchanged": true,
+  "mountinfo": "139 88 0:63 / / rw,relatime - overlay overlay rw,lowerdir=/var/lib/docker/overlay2/l/OGHLBOHIMN2IXKAE4GRZVXFSLK:/var/lib/docker/overlay2/l/QJD5A3P7KSU72QZAIS5PIEVRV3:/var/lib/docker/overlay2/l/TYQEKSSORHHOSEEMJ5R7YBXIOK:/var/lib/docker/overlay2/l/ATUUTYKPL3IP5SFKTW4A2PNWG2:/var/lib/docker/overlay2/l/QU4SGSAYYC3DG7YI2BUSCYY7H6:/var/lib/docker/overlay2/l/3KCQMCMHWIBOFS3SS6PWCCDST3:/var/lib/docker/overlay2/l/EYRDWAKQDDQYGH4RM4CX7A45QW:/var/lib/docker/overlay2/l/TNWS7OECUR4RVDBV32SYIO6UPS,upperdir=/var/lib/docker/overlay2/aaa8cf1bf0eb232a8545311b7ecc57f520860271f17beba1536cd310822d1cae/diff,workdir=/var/lib/docker/overlay2/aaa8cf1bf0eb232a8545311b7ecc57f520860271f17beba1536cd310822d1cae/work\n141 139 0:72 / /proc rw,nosuid,nodev,noexec,relatime - proc proc rw\n142 139 0:73 / /dev rw,nosuid - tmpfs tmpfs rw,size=65536k,mode=755\n143 142 0:74 / /dev/pts rw,nosuid,noexec,relatime - devpts devpts rw,gid=5,mode=620,ptmxmode=666\n144 139 0:75 / /sys ro,nosuid,nodev,noexec,relatime - sysfs sysfs ro\n145 144 0:40 / /sys/fs/cgroup ro,nosuid,nodev,noexec,relatime - cgroup2 cgroup rw\n146 142 0:70 / /dev/mqueue rw,nosuid,nodev,noexec,relatime - mqueue mqueue rw\n147 142 0:76 / /dev/shm rw,nosuid,nodev,noexec,relatime - tmpfs shm rw,size=65536k\n148 139 0:46 /shinmingliu/opcti/validation/phase0/legacy/runs/ft08-001/metadata /metadata ro,nosuid,nodev,relatime - fakeowner /run/host_mark/Users rw,fakeowner\n149 139 0:46 /shinmingliu/opcti/validation/phase0/legacy/runs/ft08-001/baseline /baseline ro,nosuid,nodev,relatime - fakeowner /run/host_mark/Users rw,fakeowner\n150 139 0:46 /shinmingliu/opcti/validation/phase0/legacy/runs/ft08-001/sealed-evidence /evidence ro,nosuid,nodev,relatime - fakeowner /run/host_mark/Users rw,fakeowner\n151 139 0:46 /shinmingliu/opcti/validation/phase0/legacy/runs/ft08-001/coord /coord ro,nosuid,nodev,relatime - fakeowner /run/host_mark/Users rw,fakeowner\n152 139 0:46 /shinmingliu/opcti/validation/phase0/legacy/runs/ft08-001/session-b /export rw,nosuid,nodev,relatime - fakeowner /run/host_mark/Users rw,fakeowner\n153 139 0:46 /shinmingliu/opcti/validation/phase0/legacy/runs/ft08-001/sessions/b/suite /fixtures rw,nosuid,nodev,relatime - fakeowner /run/host_mark/Users rw,fakeowner\n154 139 0:46 /shinmingliu/opcti/validation/phase0/legacy/runs/ft08-001/sessions/b/work /work rw,nosuid,nodev,relatime - fakeowner /run/host_mark/Users rw,fakeowner\n155 139 0:46 /shinmingliu/opcti/validation/phase0/legacy/runs/ft08-001/retained-tools /tools ro,nosuid,nodev,relatime - fakeowner /run/host_mark/Users rw,fakeowner\n156 139 254:1 /docker/containers/ec05c53ba4b5f7c9b006052544a4fee8002230f75889bae64ebe11aef99bf983/resolv.conf /etc/resolv.conf rw,relatime - ext4 /dev/vda1 rw,discard\n157 139 254:1 /docker/containers/ec05c53ba4b5f7c9b006052544a4fee8002230f75889bae64ebe11aef99bf983/hostname /etc/hostname rw,relatime - ext4 /dev/vda1 rw,discard\n158 139 254:1 /docker/containers/ec05c53ba4b5f7c9b006052544a4fee8002230f75889bae64ebe11aef99bf983/hosts /etc/hosts rw,relatime - ext4 /dev/vda1 rw,discard\n89 141 0:72 /bus /proc/bus ro,nosuid,nodev,noexec,relatime - proc proc rw\n90 141 0:72 /fs /proc/fs ro,nosuid,nodev,noexec,relatime - proc proc rw\n91 141 0:72 /irq /proc/irq ro,nosuid,nodev,noexec,relatime - proc proc rw\n92 141 0:72 /sys /proc/sys ro,nosuid,nodev,noexec,relatime - proc proc rw\n93 141 0:72 /sysrq-trigger /proc/sysrq-trigger ro,nosuid,nodev,noexec,relatime - proc proc rw\n94 141 0:73 /null /proc/interrupts rw,nosuid - tmpfs tmpfs rw,size=65536k,mode=755\n95 141 0:73 /null /proc/kcore rw,nosuid - tmpfs tmpfs rw,size=65536k,mode=755\n96 141 0:73 /null /proc/keys rw,nosuid - tmpfs tmpfs rw,size=65536k,mode=755\n97 141 0:77 / /proc/scsi ro,relatime - tmpfs tmpfs ro\n98 141 0:73 /null /proc/timer_list rw,nosuid - tmpfs tmpfs rw,size=65536k,mode=755\n99 144 0:78 / /sys/firmware ro,relatime - tmpfs tmpfs ro\n",
+  "opened": {
+    "source_id": "46332a8f8e79bcc380b069ebbd696c8cf336f9be5d454d660a759b5360ba52b3",
+    "work_id": "ec0c044c96017b56b1c0e191813a1424455c6b05c186a6096e44d20538147c54",
+    "settings": {
+      "message": "captured-failure",
+      "generation": 1
+    },
+    "generated_files": {
+      "generated/build-config.json": "3a372f3cf6dc0455f6a412481938dee238d5659c138d04d6270b5ca8065bdbce",
+      "generated/generated.c": "f47c522c6470420b2dced6f885de97978b8f90f0dbce9a9de8397213fc507746",
+      "generated/generated.h": "7936929c4769720c6c8115a11dd5e712e77684537dd236ae1beb0380b009406a"
+    },
+    "generation_on_open": 1
+  },
+  "source_before": "46332a8f8e79bcc380b069ebbd696c8cf336f9be5d454d660a759b5360ba52b3",
+  "source_after": "46332a8f8e79bcc380b069ebbd696c8cf336f9be5d454d660a759b5360ba52b3",
+  "work_before": "ec0c044c96017b56b1c0e191813a1424455c6b05c186a6096e44d20538147c54",
+  "work_after": "ec0c044c96017b56b1c0e191813a1424455c6b05c186a6096e44d20538147c54",
+  "generated_files": {
+    "generated/build-config.json": "3a372f3cf6dc0455f6a412481938dee238d5659c138d04d6270b5ca8065bdbce",
+    "generated/generated.c": "f47c522c6470420b2dced6f885de97978b8f90f0dbce9a9de8397213fc507746",
+    "generated/generated.h": "7936929c4769720c6c8115a11dd5e712e77684537dd236ae1beb0380b009406a"
+  },
+  "phases_executed": 0,
+  "observer_unchanged": true
+}

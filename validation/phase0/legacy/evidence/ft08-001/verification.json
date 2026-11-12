@@ -1,0 +1,17 @@
+{
+  "scenario": "FT08",
+  "hashed_files": 174,
+  "initial_source_files": 6,
+  "preserved_generated_files": 3,
+  "regular_file_inode_checks": 25,
+  "overlapping_sessions": 2,
+  "session_a_phases": 2,
+  "session_b_phases": 0,
+  "session_b_byte_identical": true,
+  "original_evidence_and_baseline_unchanged": true,
+  "read_only_write_denials": 2,
+  "copied_work_only_hazard_demonstrated": true,
+  "saved_recipes_unchanged": 4,
+  "container_mount_maps_checked": 4,
+  "native_session_service_acceptance": "open"
+}

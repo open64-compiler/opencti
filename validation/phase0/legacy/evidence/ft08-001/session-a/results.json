@@ -1,0 +1,66 @@
+{
+  "mode": "session-a",
+  "records": [
+    {
+      "name": "edited-compile",
+      "argv": [
+        "bash",
+        "./FT08.compile.sh"
+      ],
+      "cwd": "/work/Applications/FT08",
+      "returncode": 0
+    },
+    {
+      "name": "edited-run",
+      "argv": [
+        "bash",
+        "./FT08.run.sh"
+      ],
+      "cwd": "/work/Applications/FT08",
+      "returncode": 0
+    }
+  ],
+  "framework_files_unchanged": true,
+  "baseline_unchanged": true,
+  "mountinfo": "184 111 0:65 / / rw,relatime - overlay overlay rw,lowerdir=/var/lib/docker/overlay2/l/EZPH7SEP443YVNCPI57D3JP33S:/var/lib/docker/overlay2/l/QJD5A3P7KSU72QZAIS5PIEVRV3:/var/lib/docker/overlay2/l/TYQEKSSORHHOSEEMJ5R7YBXIOK:/var/lib/docker/overlay2/l/ATUUTYKPL3IP5SFKTW4A2PNWG2:/var/lib/docker/overlay2/l/QU4SGSAYYC3DG7YI2BUSCYY7H6:/var/lib/docker/overlay2/l/3KCQMCMHWIBOFS3SS6PWCCDST3:/var/lib/docker/overlay2/l/EYRDWAKQDDQYGH4RM4CX7A45QW:/var/lib/docker/overlay2/l/TNWS7OECUR4RVDBV32SYIO6UPS,upperdir=/var/lib/docker/overlay2/3e5ef5a82f572f95fb30b83890e904150842ef17d1450147646e355bc4a8f407/diff,workdir=/var/lib/docker/overlay2/3e5ef5a82f572f95fb30b83890e904150842ef17d1450147646e355bc4a8f407/work\n186 184 0:82 / /proc rw,nosuid,nodev,noexec,relatime - proc proc rw\n187 184 0:83 / /dev rw,nosuid - tmpfs tmpfs rw,size=65536k,mode=755\n188 187 0:84 / /dev/pts rw,nosuid,noexec,relatime - devpts devpts rw,gid=5,mode=620,ptmxmode=666\n189 184 0:85 / /sys ro,nosuid,nodev,noexec,relatime - sysfs sysfs ro\n190 189 0:40 / /sys/fs/cgroup ro,nosuid,nodev,noexec,relatime - cgroup2 cgroup rw\n191 187 0:80 / /dev/mqueue rw,nosuid,nodev,noexec,relatime - mqueue mqueue rw\n192 187 0:86 / /dev/shm rw,nosuid,nodev,noexec,relatime - tmpfs shm rw,size=65536k\n193 184 0:46 /shinmingliu/opcti/validation/phase0/legacy/runs/ft08-001/retained-tools /tools ro,nosuid,nodev,relatime - fakeowner /run/host_mark/Users rw,fakeowner\n194 184 0:46 /shinmingliu/opcti/validation/phase0/legacy/runs/ft08-001/metadata /metadata ro,nosuid,nodev,relatime - fakeowner /run/host_mark/Users rw,fakeowner\n195 184 0:46 /shinmingliu/opcti/validation/phase0/legacy/runs/ft08-001/baseline /baseline ro,nosuid,nodev,relatime - fakeowner /run/host_mark/Users rw,fakeowner\n196 184 0:46 /shinmingliu/opcti/validation/phase0/legacy/runs/ft08-001/sealed-evidence /evidence ro,nosuid,nodev,relatime - fakeowner /run/host_mark/Users rw,fakeowner\n197 184 0:46 /shinmingliu/opcti/validation/phase0/legacy/runs/ft08-001/coord /coord ro,nosuid,nodev,relatime - fakeowner /run/host_mark/Users rw,fakeowner\n198 184 0:46 /shinmingliu/opcti/validation/phase0/legacy/runs/ft08-001/session-a /export rw,nosuid,nodev,relatime - fakeowner /run/host_mark/Users rw,fakeowner\n199 184 0:46 /shinmingliu/opcti/validation/phase0/legacy/runs/ft08-001/sessions/a/suite /fixtures rw,nosuid,nodev,relatime - fakeowner /run/host_mark/Users rw,fakeowner\n200 184 0:46 /shinmingliu/opcti/validation/phase0/legacy/runs/ft08-001/sessions/a/work /work rw,nosuid,nodev,relatime - fakeowner /run/host_mark/Users rw,fakeowner\n201 184 254:1 /docker/containers/d09c700818b12fb362a034016a1a3955911030b6960a20767c84a758d70b4d8e/resolv.conf /etc/resolv.conf rw,relatime - ext4 /dev/vda1 rw,discard\n202 184 254:1 /docker/containers/d09c700818b12fb362a034016a1a3955911030b6960a20767c84a758d70b4d8e/hostname /etc/hostname rw,relatime - ext4 /dev/vda1 rw,discard\n203 184 254:1 /docker/containers/d09c700818b12fb362a034016a1a3955911030b6960a20767c84a758d70b4d8e/hosts /etc/hosts rw,relatime - ext4 /dev/vda1 rw,discard\n112 186 0:82 /bus /proc/bus ro,nosuid,nodev,noexec,relatime - proc proc rw\n113 186 0:82 /fs /proc/fs ro,nosuid,nodev,noexec,relatime - proc proc rw\n114 186 0:82 /irq /proc/irq ro,nosuid,nodev,noexec,relatime - proc proc rw\n115 186 0:82 /sys /proc/sys ro,nosuid,nodev,noexec,relatime - proc proc rw\n116 186 0:82 /sysrq-trigger /proc/sysrq-trigger ro,nosuid,nodev,noexec,relatime - proc proc rw\n117 186 0:83 /null /proc/interrupts rw,nosuid - tmpfs tmpfs rw,size=65536k,mode=755\n118 186 0:83 /null /proc/kcore rw,nosuid - tmpfs tmpfs rw,size=65536k,mode=755\n119 186 0:83 /null /proc/keys rw,nosuid - tmpfs tmpfs rw,size=65536k,mode=755\n120 186 0:87 / /proc/scsi ro,relatime - tmpfs tmpfs ro\n121 186 0:83 /null /proc/timer_list rw,nosuid - tmpfs tmpfs rw,size=65536k,mode=755\n122 189 0:88 / /sys/firmware ro,relatime - tmpfs tmpfs ro\n",
+  "opened": {
+    "source_id": "46332a8f8e79bcc380b069ebbd696c8cf336f9be5d454d660a759b5360ba52b3",
+    "work_id": "ec0c044c96017b56b1c0e191813a1424455c6b05c186a6096e44d20538147c54",
+    "settings": {
+      "message": "captured-failure",
+      "generation": 1
+    },
+    "generated_files": {
+      "generated/build-config.json": "3a372f3cf6dc0455f6a412481938dee238d5659c138d04d6270b5ca8065bdbce",
+      "generated/generated.c": "f47c522c6470420b2dced6f885de97978b8f90f0dbce9a9de8397213fc507746",
+      "generated/generated.h": "7936929c4769720c6c8115a11dd5e712e77684537dd236ae1beb0380b009406a"
+    },
+    "generation_on_open": 1
+  },
+  "source_before": "46332a8f8e79bcc380b069ebbd696c8cf336f9be5d454d660a759b5360ba52b3",
+  "source_after": "39cd85a2c037a1e6e38f6e846f405b0e90e6fa15f3a9a3e61fefe9377c0469c2",
+  "work_before": "ec0c044c96017b56b1c0e191813a1424455c6b05c186a6096e44d20538147c54",
+  "work_after": "977a97b9c8e81942f0d8bc96f3add945b37e55ea0da976730b7e47f62c7a1688",
+  "generated_files": {
+    "generated/build-config.json": "89f8386f341e3c3e1aac11ccb95803e29c11f700d60a2bee2bca6f0ed7aed1b8",
+    "generated/generated.c": "f47c522c6470420b2dced6f885de97978b8f90f0dbce9a9de8397213fc507746",
+    "generated/generated.h": "2ea2df3b9fa2ae381b235cb26a131a1772ab622dfc36ebede267e026c45f3d8e"
+  },
+  "settings": {
+    "message": "approved",
+    "generation": 2
+  },
+  "actual": "approved\n",
+  "result_tag": null,
+  "read_only_write_denials": [
+    {
+      "path": "/baseline/approved.out",
+      "errno": 30
+    },
+    {
+      "path": "/evidence/failed-source.tar.gz",
+      "errno": 30
+    }
+  ],
+  "session_marker": "session-a-only.txt"
+}

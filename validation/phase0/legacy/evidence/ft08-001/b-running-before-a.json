@@ -1,0 +1,309 @@
+{
+  "Id": "ec05c53ba4b5f7c9b006052544a4fee8002230f75889bae64ebe11aef99bf983",
+  "Created": "2026-11-12T18:03:58.268151043Z",
+  "Path": "python3",
+  "Args": [
+    "/tools/worker.py"
+  ],
+  "State": {
+    "Status": "running",
+    "Running": true,
+    "Paused": false,
+    "Restarting": false,
+    "OOMKilled": false,
+    "Dead": false,
+    "Pid": 788,
+    "ExitCode": 0,
+    "Error": "",
+    "StartedAt": "2026-11-12T18:03:58.37481446Z",
+    "FinishedAt": "0001-01-01T00:00:00Z"
+  },
+  "Image": "sha256:a119c5e4a42dedbb5cdce10d448efce31b4054018bde56a4e476bc2c529fa62c",
+  "ResolvConfPath": "/var/lib/docker/containers/ec05c53ba4b5f7c9b006052544a4fee8002230f75889bae64ebe11aef99bf983/resolv.conf",
+  "HostnamePath": "/var/lib/docker/containers/ec05c53ba4b5f7c9b006052544a4fee8002230f75889bae64ebe11aef99bf983/hostname",
+  "HostsPath": "/var/lib/docker/containers/ec05c53ba4b5f7c9b006052544a4fee8002230f75889bae64ebe11aef99bf983/hosts",
+  "LogPath": "/var/lib/docker/containers/ec05c53ba4b5f7c9b006052544a4fee8002230f75889bae64ebe11aef99bf983/ec05c53ba4b5f7c9b006052544a4fee8002230f75889bae64ebe11aef99bf983-json.log",
+  "Name": "/cti-ft08-e2bc768a4b02",
+  "RestartCount": 0,
+  "Driver": "overlay2",
+  "Platform": "linux",
+  "MountLabel": "",
+  "ProcessLabel": "",
+  "AppArmorProfile": "",
+  "ExecIDs": null,
+  "HostConfig": {
+    "Binds": null,
+    "ContainerIDFile": "",
+    "LogConfig": {
+      "Type": "json-file",
+      "Config": {}
+    },
+    "NetworkMode": "none",
+    "PortBindings": {},
+    "RestartPolicy": {
+      "Name": "no",
+      "MaximumRetryCount": 0
+    },
+    "AutoRemove": false,
+    "VolumeDriver": "",
+    "VolumesFrom": null,
+    "ConsoleSize": [
+      0,
+      0
+    ],
+    "CapAdd": null,
+    "CapDrop": [
+      "ALL"
+    ],
+    "CgroupnsMode": "private",
+    "Dns": null,
+    "DnsOptions": [],
+    "DnsSearch": [],
+    "ExtraHosts": null,
+    "GroupAdd": null,
+    "IpcMode": "private",
+    "Cgroup": "",
+    "Links": null,
+    "OomScoreAdj": 0,
+    "PidMode": "",
+    "Privileged": false,
+    "PublishAllPorts": false,
+    "ReadonlyRootfs": false,
+    "SecurityOpt": [
+      "no-new-privileges"
+    ],
+    "UTSMode": "",
+    "UsernsMode": "",
+    "ShmSize": 67108864,
+    "Runtime": "runc",
+    "Isolation": "",
+    "CpuShares": 0,
+    "Memory": 1073741824,
+    "NanoCpus": 1000000000,
+    "CgroupParent": "",
+    "BlkioWeight": 0,
+    "BlkioWeightDevice": [],
+    "BlkioDeviceReadBps": [],
+    "BlkioDeviceWriteBps": [],
+    "BlkioDeviceReadIOps": [],
+    "BlkioDeviceWriteIOps": [],
+    "CpuPeriod": 0,
+    "CpuQuota": 0,
+    "CpuRealtimePeriod": 0,
+    "CpuRealtimeRuntime": 0,
+    "CpusetCpus": "",
+    "CpusetMems": "",
+    "Devices": [],
+    "DeviceCgroupRules": null,
+    "DeviceRequests": null,
+    "MemoryReservation": 0,
+    "MemorySwap": 2147483648,
+    "MemorySwappiness": null,
+    "OomKillDisable": null,
+    "PidsLimit": null,
+    "Ulimits": [],
+    "CpuCount": 0,
+    "CpuPercent": 0,
+    "IOMaximumIOps": 0,
+    "IOMaximumBandwidth": 0,
+    "Mounts": [
+      {
+        "Type": "bind",
+        "Source": "/Users/shinmingliu/opcti/validation/phase0/legacy/runs/ft08-001/retained-tools",
+        "Target": "/tools",
+        "ReadOnly": true
+      },
+      {
+        "Type": "bind",
+        "Source": "/Users/shinmingliu/opcti/validation/phase0/legacy/runs/ft08-001/metadata",
+        "Target": "/metadata",
+        "ReadOnly": true
+      },
+      {
+        "Type": "bind",
+        "Source": "/Users/shinmingliu/opcti/validation/phase0/legacy/runs/ft08-001/baseline",
+        "Target": "/baseline",
+        "ReadOnly": true
+      },
+      {
+        "Type": "bind",
+        "Source": "/Users/shinmingliu/opcti/validation/phase0/legacy/runs/ft08-001/sealed-evidence",
+        "Target": "/evidence",
+        "ReadOnly": true
+      },
+      {
+        "Type": "bind",
+        "Source": "/Users/shinmingliu/opcti/validation/phase0/legacy/runs/ft08-001/coord",
+        "Target": "/coord",
+        "ReadOnly": true
+      },
+      {
+        "Type": "bind",
+        "Source": "/Users/shinmingliu/opcti/validation/phase0/legacy/runs/ft08-001/session-b",
+        "Target": "/export"
+      },
+      {
+        "Type": "bind",
+        "Source": "/Users/shinmingliu/opcti/validation/phase0/legacy/runs/ft08-001/sessions/b/suite",
+        "Target": "/fixtures"
+      },
+      {
+        "Type": "bind",
+        "Source": "/Users/shinmingliu/opcti/validation/phase0/legacy/runs/ft08-001/sessions/b/work",
+        "Target": "/work"
+      }
+    ],
+    "MaskedPaths": [
+      "/proc/acpi",
+      "/proc/asound",
+      "/proc/interrupts",
+      "/proc/kcore",
+      "/proc/keys",
+      "/proc/latency_stats",
+      "/proc/sched_debug",
+      "/proc/scsi",
+      "/proc/timer_list",
+      "/proc/timer_stats",
+      "/sys/devices/virtual/powercap",
+      "/sys/firmware"
+    ],
+    "ReadonlyPaths": [
+      "/proc/bus",
+      "/proc/fs",
+      "/proc/irq",
+      "/proc/sys",
+      "/proc/sysrq-trigger"
+    ]
+  },
+  "GraphDriver": {
+    "Data": {
+      "ID": "ec05c53ba4b5f7c9b006052544a4fee8002230f75889bae64ebe11aef99bf983",
+      "LowerDir": "/var/lib/docker/overlay2/aaa8cf1bf0eb232a8545311b7ecc57f520860271f17beba1536cd310822d1cae-init/diff:/var/lib/docker/overlay2/1wdzjbdhqu6tfzi2i401crrq1/diff:/var/lib/docker/overlay2/ttri2xu5n18wwohwi38tooeik/diff:/var/lib/docker/overlay2/os4d819slnpizlvcm8g13nv3a/diff:/var/lib/docker/overlay2/eac0fiqi2yu7zsw9xnen2hz18/diff:/var/lib/docker/overlay2/dj9xzqgejlnfjccxc2pdbh4ky/diff:/var/lib/docker/overlay2/jrgrxuvb8pkc0dbik46t9mjwc/diff:/var/lib/docker/overlay2/45b9d819b5b52e3f6876c7b987dcf6a2689fa57a81ed6f264c428e6c77388b17/diff",
+      "MergedDir": "/var/lib/docker/overlay2/aaa8cf1bf0eb232a8545311b7ecc57f520860271f17beba1536cd310822d1cae/merged",
+      "UpperDir": "/var/lib/docker/overlay2/aaa8cf1bf0eb232a8545311b7ecc57f520860271f17beba1536cd310822d1cae/diff",
+      "WorkDir": "/var/lib/docker/overlay2/aaa8cf1bf0eb232a8545311b7ecc57f520860271f17beba1536cd310822d1cae/work"
+    },
+    "Name": "overlay2"
+  },
+  "Mounts": [
+    {
+      "Type": "bind",
+      "Source": "/Users/shinmingliu/opcti/validation/phase0/legacy/runs/ft08-001/baseline",
+      "Destination": "/baseline",
+      "Mode": "",
+      "RW": false,
+      "Propagation": "rprivate"
+    },
+    {
+      "Type": "bind",
+      "Source": "/Users/shinmingliu/opcti/validation/phase0/legacy/runs/ft08-001/sealed-evidence",
+      "Destination": "/evidence",
+      "Mode": "",
+      "RW": false,
+      "Propagation": "rprivate"
+    },
+    {
+      "Type": "bind",
+      "Source": "/Users/shinmingliu/opcti/validation/phase0/legacy/runs/ft08-001/coord",
+      "Destination": "/coord",
+      "Mode": "",
+      "RW": false,
+      "Propagation": "rprivate"
+    },
+    {
+      "Type": "bind",
+      "Source": "/Users/shinmingliu/opcti/validation/phase0/legacy/runs/ft08-001/session-b",
+      "Destination": "/export",
+      "Mode": "",
+      "RW": true,
+      "Propagation": "rprivate"
+    },
+    {
+      "Type": "bind",
+      "Source": "/Users/shinmingliu/opcti/validation/phase0/legacy/runs/ft08-001/sessions/b/suite",
+      "Destination": "/fixtures",
+      "Mode": "",
+      "RW": true,
+      "Propagation": "rprivate"
+    },
+    {
+      "Type": "bind",
+      "Source": "/Users/shinmingliu/opcti/validation/phase0/legacy/runs/ft08-001/sessions/b/work",
+      "Destination": "/work",
+      "Mode": "",
+      "RW": true,
+      "Propagation": "rprivate"
+    },
+    {
+      "Type": "bind",
+      "Source": "/Users/shinmingliu/opcti/validation/phase0/legacy/runs/ft08-001/retained-tools",
+      "Destination": "/tools",
+      "Mode": "",
+      "RW": false,
+      "Propagation": "rprivate"
+    },
+    {
+      "Type": "bind",
+      "Source": "/Users/shinmingliu/opcti/validation/phase0/legacy/runs/ft08-001/metadata",
+      "Destination": "/metadata",
+      "Mode": "",
+      "RW": false,
+      "Propagation": "rprivate"
+    }
+  ],
+  "Config": {
+    "Hostname": "ec05c53ba4b5",
+    "Domainname": "",
+    "User": "",
+    "AttachStdin": false,
+    "AttachStdout": true,
+    "AttachStderr": true,
+    "Tty": false,
+    "OpenStdin": false,
+    "StdinOnce": false,
+    "Env": [
+      "FT08_MODE=session-b",
+      "PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin",
+      "DEBIAN_FRONTEND=noninteractive",
+      "CTI_HOME=/opt/cti",
+      "CTI_PERL=/usr/bin/perl",
+      "CTI_SHELL=/bin/bash"
+    ],
+    "Cmd": [
+      "python3",
+      "/tools/worker.py"
+    ],
+    "Image": "sha256:a119c5e4a42dedbb5cdce10d448efce31b4054018bde56a4e476bc2c529fa62c",
+    "Volumes": null,
+    "WorkingDir": "/capture",
+    "Entrypoint": null,
+    "Labels": {
+      "org.opencontainers.image.version": "24.04"
+    },
+    "StopTimeout": 1
+  },
+  "NetworkSettings": {
+    "SandboxID": "008ed7a111d81750890072bb1ecd9f60554e8ea326209e0cac49a2e85132a502",
+    "SandboxKey": "/var/run/docker/netns/008ed7a111d8",
+    "Ports": {},
+    "Networks": {
+      "none": {
+        "IPAMConfig": null,
+        "Links": null,
+        "Aliases": null,
+        "DriverOpts": null,
+        "GwPriority": 0,
+        "NetworkID": "db469be2416af8289efb850ec787ddcb5266451b56691319d8bd80134baf0452",
+        "EndpointID": "79dcc15455a234238ef69e0731cabade2affc6cf4d2d1d4eaa2f7de31993fd99",
+        "Gateway": "",
+        "IPAddress": "",
+        "MacAddress": "",
+        "IPPrefixLen": 0,
+        "IPv6Gateway": "",
+        "GlobalIPv6Address": "",
+        "GlobalIPv6PrefixLen": 0,
+        "DNSNames": null
+      }
+    }
+  }
+}

@@ -1,0 +1,84 @@
+<!--
+Copyright (C) 2011, Hewlett-Packard Development Company, L.P.
+All Rights Reserved.
+Open64 is free software; you can redistribute it and/or modify it under the
+terms of the GNU General Public License as published by the Free Software
+Foundation; either version 2 of the License, or (at your option) any later
+version. Distributed WITHOUT ANY WARRANTY; without even the implied warranty
+of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General
+Public License for more details.
+-->
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Phase 0 FT08 writable source and session isolation results — OpenCTI</title><style>body{margin:0;background:#f4f6f8;color:#18232e;font:17px/1.6 system-ui,sans-serif}
+main{max-width:1050px;margin:auto;padding:2rem;background:white;min-height:100vh}
+a{color:#075ca8}nav{padding:.7rem 0;border-bottom:1px solid #ccd5dd}
+h1,h2,h3{line-height:1.25;scroll-margin-top:1rem}h2{margin-top:2rem}
+pre{padding:1rem;background:#eff3f7;overflow:auto;border:1px solid #d5dce3}
+code{font: .88em/1.5 ui-monospace,monospace;overflow-wrap:anywhere}
+table{border-collapse:collapse;width:100%;display:block;overflow:auto}
+th,td{padding:.6rem;border:1px solid #ccd5dd;text-align:left;vertical-align:top}
+th{background:#eff3f7}td:first-child{min-width:10rem}footer{border-top:1px solid #ccd5dd;margin-top:2rem;color:#52606b}
+@media(max-width:640px){main{padding:1rem}body{font-size:16px}}
+</style></head><body><main>
+<nav><a href="index.html">CTI documentation</a></nav>
+<h1 id="phase-0-ft08-writable-source-and-session-isolation-results">Phase 0 FT08 writable source and session isolation results</h1>
+<p><a href="index.html">Documentation home</a> · <a href="failure-triage-acceptance.html">Failure triage scenarios</a> · <a href="phase0-ft07-results.html">FT07 shared support</a></p>
+<h2 id="result-and-scope">Result and scope</h2>
+<p>FT08 passed automated checks for a synthetic application using the stock application driver. Its build writes generated C source, a header and build configuration into a private writable source tree. Both the initial inputs and actual failed source/work state were retained. Two debugging containers opened together from that failure; only session A edited and rebuilt. Session B&#x27;s source/work trees, original evidence and baseline remained unchanged. The reference finished on November 12 2026 at 10:03 AM America Los Angeles time.</p>
+<p>The existing framework, default configuration, approved tests/masters, live checkout and earlier evidence remain untouched. All writable execution/session inputs are new sandbox copies. This is a synthetic application preservation test, not a native session service or arbitrary application qualification.</p>
+<h2 id="legacy-behavior-and-actual-generated-state">Legacy behavior and actual generated state</h2>
+<p>Source review and the capture show that <code>applicationDriver.pm</code> calls <code>CTI::treelink</code> to populate its work directory with file symlinks back to the application&#x27;s <code>Src</code> tree. Copying only that work directory preserves links to the same source paths. Writable source isolation therefore requires private source backing as well as private work backing.</p>
+<p>The runner archives six initial fixture files before TM, then seeds a separate writable execution source copy at <code>/fixtures</code>. Its application starts with <code>settings.json</code> containing message <code>captured-failure</code> and generation 0. The fixture&#x27;s real Makefile <code>compile</code> target runs a Python generator, compiles generated C and links an ELF64 application. The generator updates the existing source configuration through generation 1 and writes:</p>
+<ul>
+<li><code>generated/generated.c</code>: consumed C source.</li>
+<li><code>generated/generated.h</code>: the message definition used by that source.</li>
+<li><code>generated/build-config.json</code>: consumed message, generation and source/generator paths.</li>
+</ul>
+<p>These files are created inside the private source tree, not reconstructed later from a source revision. Their actual failed bytes and the changed configuration are archived separately from the failed work directory, which contains the executable, object, generated phase scripts, environment, comparison result, logs and source links. The initial snapshot still has generation 0 and no generated directory.</p>
+<p>The application executes successfully and prints <code>captured-failure</code>. Its fixture comparator records a nonempty <code>compare.results</code> against <code>/baseline/approved.out</code>, whose contents are <code>approved</code>. Stock TM records <code>DiffPgmOut</code> and one failed test; its process returns 0.</p>
+<p>For this driver, the generated <code>FT08.compile.sh</code> invokes <code>make compile</code>, including generation, compilation and linking. <code>FT08.run.sh</code> invokes <code>make validate</code>, which executes and compares. There is no stock standalone regression-style compare script in this fixture. The saved Makefile also provides separate <code>run</code> and <code>compare</code> targets; the report retains these actual interfaces rather than inventing uniform script names.</p>
+<h2 id="two-overlapping-writable-sessions">Two overlapping writable sessions</h2>
+<p>After the failure container exits, each session receives independent archive extractions of both the failed source and work trees. Each container maps its own source to <code>/fixtures</code> and work to <code>/work</code>, so unchanged absolute source-link text resolves within that session&#x27;s namespace. All source and work mounts are writable in both sessions. The sealed evidence and original baseline are separate read-only mounts.</p>
+<p>The controller checks 25 corresponding regular files and confirms that A/B copies have distinct device/inode identities, excluding shared hardlinks. Actual Docker inspection records prove distinct host source/work backings, compatible destinations, no peer-directory exposure and read-only evidence/baseline mounts. No live repository root, home directory, Docker socket or original mutable work tree is mounted into either session.</p>
+<p>Session B starts first, verifies its copied failed source/work identities and all three generated-file digests, then waits without running a build. Session A opens from exactly the same identities and generation 1. Docker inspections show B running both before A starts and after A&#x27;s edits/rebuild finish; B then performs its final byte/mode/link checks. Its administrative ready/result logs are written only to its own export directory, outside the preserved source/work trees.</p>
+<p>Session A edits the configuration through the legacy work-to-source symlink, creates an A-only note, removes its generated C file and invokes the original compile script. The generator recreates the file, changes its header/build configuration and records generation 2. A&#x27;s rebuilt executable differs from the original and prints <code>approved</code>; the saved run/validate script returns 0 with an empty comparison result and no failure marker. This is a changed debugging attempt, not a replacement for the original failed record.</p>
+<p>Opening either session does not invoke TM, the generator or a setup/build hook. Both inspect the captured generated state first. Only A&#x27;s explicit compile advances generation to 2. B retains generation 1, the original failing configuration, executable, logs and <code>DiffPgmOut</code> marker byte for byte.</p>
+<h2 id="checks-and-observations">Checks and observations</h2>
+<table><thead><tr><th>Check</th><th>Observed result</th></tr></thead><tbody>
+<tr><td>Initial inputs</td><td>Six files retained, generation 0, no generated directory; unchanged after capture and sessions</td></tr>
+<tr><td>Failed mutable state</td><td>Three generated files plus generation-1 settings and failed work archived before sessions open</td></tr>
+<tr><td>Open sessions</td><td>Both start from identical failed source/work IDs and generated-file digests, without generation</td></tr>
+<tr><td>A edit/build</td><td>Stock compile and run scripts return 0; A reaches generation 2, prints <code>approved</code> and compares successfully</td></tr>
+<tr><td>B during/after A</td><td>Writable but inspection-only; zero phases executed and source/work IDs remain identical to captured failure</td></tr>
+<tr><td>Original evidence and failed trees</td><td>Before/after inventories remain equal; original source generation 1 and original failure preserved</td></tr>
+<tr><td>Approved baseline write</td><td>Attempt from A rejected with <code>EROFS</code>; baseline remains <code>approved</code></td></tr>
+<tr><td>Sealed failure archive write</td><td>Attempt from A rejected with <code>EROFS</code>; evidence digest unchanged</td></tr>
+<tr><td>Shared-source negative control</td><td>Two disposable copied workspaces intentionally share one disposable source; a write through one configuration link is visible through the other</td></tr>
+<tr><td>Saved phase/environment recipes</td><td>All four checked files remain byte-identical in A&#x27;s changed work archive</td></tr>
+<tr><td>Cleanup</td><td>All four capture/session/control containers removed after evidence export</td></tr>
+</tbody></table>
+<p>The negative control uses neither protected session&#x27;s source/work tree. It demonstrates the write-through hazard of copying work directories alone. Its topology metadata describes the shared writable source; it is not evidence of an implemented native session API rejecting such a request. The positive experiment enforces private source/work copies and checks their regular-file inode separation.</p>
+<h2 id="evidence-and-repeatability">Evidence and repeatability</h2>
+<p>See the <a href="../../validation/phase0/legacy/README.md">experiment instructions</a>. New tools are <a href="../../validation/phase0/legacy/run_ft08.py">run_ft08.py</a>, <a href="../../validation/phase0/legacy/ft08/state.py">state.py</a>, the <a href="../../validation/phase0/legacy/ft08/worker.py">worker</a>, the <a href="../../validation/phase0/legacy/ft08/generate.py">fixture generator</a>, its <a href="../../validation/phase0/legacy/ft08/compare.py">comparator</a> and <a href="../../validation/phase0/legacy/verify_ft08.py">verify_ft08.py</a>.</p>
+<table><thead><tr><th>Evidence</th><th>Review purpose</th></tr></thead><tbody>
+<tr><td><a href="../../validation/phase0/legacy/evidence/ft08-001/summary.json">Summary</a></td><td>Scoped result, platform identity and native acceptance limits</td></tr>
+<tr><td><a href="../../validation/phase0/legacy/evidence/ft08-001/sealed-evidence/initial-source.tar.gz">Initial source archive</a></td><td>Actual pre-run source/configuration before generation</td></tr>
+<tr><td><a href="../../validation/phase0/legacy/evidence/ft08-001/sealed-evidence/failed-source.tar.gz">Failed source archive</a></td><td>Actual generated files and failed mutable configuration</td></tr>
+<tr><td><a href="../../validation/phase0/legacy/evidence/ft08-001/sealed-evidence/failed-work.tar.gz">Failed work archive</a></td><td>Original executable/object, recipes, links, output and mismatch</td></tr>
+<tr><td><a href="../../validation/phase0/legacy/evidence/ft08-001/capture/results.json">Capture results</a></td><td>Stock TM invocation, failure and generated inventory</td></tr>
+<tr><td><a href="../../validation/phase0/legacy/evidence/ft08-001/metadata/isolation-topology.json">Isolation topology</a></td><td>Distinct A/B source/work roots and 25 inode checks</td></tr>
+<tr><td><a href="../../validation/phase0/legacy/evidence/ft08-001/b-running-after-a.json">B running after A</a></td><td>Actual observer-container state after A&#x27;s mutation/build window</td></tr>
+<tr><td><a href="../../validation/phase0/legacy/evidence/ft08-001/session-a/results.json">Session A</a></td><td>Opened identities, changed attempt, generated-file digests and rejected writes</td></tr>
+<tr><td><a href="../../validation/phase0/legacy/evidence/ft08-001/session-b/results.json">Session B</a></td><td>Identical before/after source/work identities and zero executed phases</td></tr>
+<tr><td><a href="../../validation/phase0/legacy/evidence/ft08-001/metadata/preserved-state-before.json">Original state before</a> · <a href="../../validation/phase0/legacy/evidence/ft08-001/metadata/preserved-state-after.json">after</a></td><td>Initial inputs, original failed source/work, evidence and baseline inventories</td></tr>
+<tr><td><a href="../../validation/phase0/legacy/evidence/ft08-001/unsafe-shared-control/results.json">Unsafe control</a></td><td>Write-through visibility when copied workspaces share writable source</td></tr>
+<tr><td><a href="../../validation/phase0/legacy/evidence/ft08-001/verification.json">Verification</a></td><td>Full audit of archives, generated files, overlapping sessions, mounts and recipe identity</td></tr>
+<tr><td><a href="../../validation/phase0/legacy/evidence/ft08-001/SHA256SUMS.json">Checksums</a></td><td>Compact digests; raw-run index and runtime retention descriptor included</td></tr>
+</tbody></table>
+<p>The full reference is <code>validation/phase0/legacy/runs/ft08-001/</code>; compact review evidence is approximately 342 KB under <code>evidence/ft08-001/</code>. It retains initial/failed archives, A&#x27;s changed source/work archives, actual mount/overlap records, B observations, diagnostic controls and exact worker/generator code. The earlier 586 MB platform image remains local and ignored, with its digest recorded. The review bundle alone does not supply the compiler/interpreter/runtime image.</p>
+<h2 id="remaining-boundaries">Remaining boundaries</h2>
+<p>This verifies the requested source/work isolation contract for one stock application fixture. It does not make the legacy driver a native snapshot/session service. The replacement must give every writable session its own declared source and work backing, preserve captured generated state, identify changed-session outputs and retain original evidence and approved masters independently.</p>
+<p>B intentionally does not edit or compile, matching this scenario&#x27;s byte-identity requirement. The evidence combines an overlapping observer with distinct writable mounts and inode checks; it is not a universal malicious-process or host-writer isolation proof. Arbitrary external symlink closure, historical application setup/build systems, native retention/concurrency controls, debugger attachment, dashboard flows and GPU/DSL acceptance remain open. FT09 through FT19 remain not run; phase 0 is not complete.</p>
+<footer>Reconstructed from OpenCTI source, baseline 8c3d603. Generated by doc/tools/build_docs.py.</footer>
+</main></body></html>

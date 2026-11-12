@@ -1,0 +1,23 @@
+{
+  "scenario": "FT08",
+  "status": "pass_for_synthetic_writable_application_subset",
+  "image_id": "sha256:a119c5e4a42dedbb5cdce10d448efce31b4054018bde56a4e476bc2c529fa62c",
+  "finished_utc": "2026-11-12T18:03:59.556410+00:00",
+  "legacy_code_unchanged": true,
+  "earlier_capture_unchanged": true,
+  "initial_and_failed_states_preserved": true,
+  "session_b_unchanged": true,
+  "two_sessions_overlapped": true,
+  "generated_on_open": false,
+  "session_a_rebuilt_and_passed": true,
+  "baseline_unchanged": true,
+  "source_and_work_copies_not_hardlinked": true,
+  "unsafe_shared_source_control_detected": true,
+  "native_session_service_implemented": false,
+  "limits": [
+    "Synthetic stock application driver with fixture-supplied generator/Makefile/comparator",
+    "Only session A edits/compiles; B is a writable but non-mutating observer",
+    "No arbitrary external symlink closure, concurrent host-writer or native retention claim",
+    "Historical applications, debugger attachment, dashboard, GPU/DSL and peer acceptance open"
+  ]
+}

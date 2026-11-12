@@ -1,0 +1,184 @@
+{
+  "source_a": "/Users/shinmingliu/opcti/validation/phase0/legacy/runs/ft08-001/sessions/a/suite",
+  "source_b": "/Users/shinmingliu/opcti/validation/phase0/legacy/runs/ft08-001/sessions/b/suite",
+  "work_a": "/Users/shinmingliu/opcti/validation/phase0/legacy/runs/ft08-001/sessions/a/work",
+  "work_b": "/Users/shinmingliu/opcti/validation/phase0/legacy/runs/ft08-001/sessions/b/work",
+  "guard_errors": [],
+  "regular_file_inode_checks": [
+    {
+      "path": "suite/groups/Applications/FT08/Src/Makefile",
+      "a_device": 16777234,
+      "a_inode": 21974429,
+      "b_device": 16777234,
+      "b_inode": 21974469
+    },
+    {
+      "path": "suite/groups/Applications/FT08/Src/compare.py",
+      "a_device": 16777234,
+      "a_inode": 21974430,
+      "b_device": 16777234,
+      "b_inode": 21974470
+    },
+    {
+      "path": "suite/groups/Applications/FT08/Src/generate.py",
+      "a_device": 16777234,
+      "a_inode": 21974431,
+      "b_device": 16777234,
+      "b_inode": 21974471
+    },
+    {
+      "path": "suite/groups/Applications/FT08/Src/generated/build-config.json",
+      "a_device": 16777234,
+      "a_inode": 21974433,
+      "b_device": 16777234,
+      "b_inode": 21974473
+    },
+    {
+      "path": "suite/groups/Applications/FT08/Src/generated/generated.c",
+      "a_device": 16777234,
+      "a_inode": 21974434,
+      "b_device": 16777234,
+      "b_inode": 21974474
+    },
+    {
+      "path": "suite/groups/Applications/FT08/Src/generated/generated.h",
+      "a_device": 16777234,
+      "a_inode": 21974435,
+      "b_device": 16777234,
+      "b_inode": 21974475
+    },
+    {
+      "path": "suite/groups/Applications/FT08/Src/settings.json",
+      "a_device": 16777234,
+      "a_inode": 21974436,
+      "b_device": 16777234,
+      "b_inode": 21974476
+    },
+    {
+      "path": "suite/groups/Applications/tmconfig",
+      "a_device": 16777234,
+      "a_inode": 21974437,
+      "b_device": 16777234,
+      "b_inode": 21974477
+    },
+    {
+      "path": "suite/phase0.opt",
+      "a_device": 16777234,
+      "a_inode": 21974438,
+      "b_device": 16777234,
+      "b_inode": 21974478
+    },
+    {
+      "path": "work/Applications/FT08/FT08.comp.err",
+      "a_device": 16777234,
+      "a_inode": 21974442,
+      "b_device": 16777234,
+      "b_inode": 21974482
+    },
+    {
+      "path": "work/Applications/FT08/FT08.compile.sh",
+      "a_device": 16777234,
+      "a_inode": 21974443,
+      "b_device": 16777234,
+      "b_inode": 21974483
+    },
+    {
+      "path": "work/Applications/FT08/FT08.env",
+      "a_device": 16777234,
+      "a_inode": 21974444,
+      "b_device": 16777234,
+      "b_inode": 21974484
+    },
+    {
+      "path": "work/Applications/FT08/FT08.result",
+      "a_device": 16777234,
+      "a_inode": 21974445,
+      "b_device": 16777234,
+      "b_inode": 21974485
+    },
+    {
+      "path": "work/Applications/FT08/FT08.run.out",
+      "a_device": 16777234,
+      "a_inode": 21974446,
+      "b_device": 16777234,
+      "b_inode": 21974486
+    },
+    {
+      "path": "work/Applications/FT08/FT08.run.sh",
+      "a_device": 16777234,
+      "a_inode": 21974447,
+      "b_device": 16777234,
+      "b_inode": 21974487
+    },
+    {
+      "path": "work/Applications/FT08/FT08.sh",
+      "a_device": 16777234,
+      "a_inode": 21974448,
+      "b_device": 16777234,
+      "b_inode": 21974488
+    },
+    {
+      "path": "work/Applications/FT08/actual.out",
+      "a_device": 16777234,
+      "a_inode": 21974450,
+      "b_device": 16777234,
+      "b_inode": 21974490
+    },
+    {
+      "path": "work/Applications/FT08/app",
+      "a_device": 16777234,
+      "a_inode": 21974451,
+      "b_device": 16777234,
+      "b_inode": 21974491
+    },
+    {
+      "path": "work/Applications/FT08/compare.results",
+      "a_device": 16777234,
+      "a_inode": 21974453,
+      "b_device": 16777234,
+      "b_inode": 21974493
+    },
+    {
+      "path": "work/Applications/FT08/generated.o",
+      "a_device": 16777234,
+      "a_inode": 21974455,
+      "b_device": 16777234,
+      "b_inode": 21974495
+    },
+    {
+      "path": "work/TMEnv",
+      "a_device": 16777234,
+      "a_inode": 21974457,
+      "b_device": 16777234,
+      "b_inode": 21974497
+    },
+    {
+      "path": "work/TMUnits",
+      "a_device": 16777234,
+      "a_inode": 21974458,
+      "b_device": 16777234,
+      "b_inode": 21974498
+    },
+    {
+      "path": "work/TMmsgs/enumfile.1",
+      "a_device": 16777234,
+      "a_inode": 21974460,
+      "b_device": 16777234,
+      "b_inode": 21974500
+    },
+    {
+      "path": "work/TMmsgs/result.1",
+      "a_device": 16777234,
+      "a_inode": 21974461,
+      "b_device": 16777234,
+      "b_inode": 21974501
+    },
+    {
+      "path": "work/log.header",
+      "a_device": 16777234,
+      "a_inode": 21974462,
+      "b_device": 16777234,
+      "b_inode": 21974502
+    }
+  ]
+}
