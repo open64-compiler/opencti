@@ -1,0 +1,12 @@
+{
+  "compiler-A.tar.gz": {
+    "local_path": "/Users/shinmingliu/opcti/validation/phase0/legacy/runs/ft06-002/dependency-archives/compiler-A.tar.gz",
+    "bytes": 38710033,
+    "sha256": "2b58496d2bc03c36e6a2dcb397dec3885cf23140b75aa693898f8c96a22e589f"
+  },
+  "runtime-image.tar": {
+    "local_path": "/Users/shinmingliu/opcti/validation/phase0/legacy/runs/run-002/runtime-image.tar",
+    "bytes": 586248192,
+    "sha256": "8b69adc550862c611dd9f4b58a2126e6f82e94dc7a2c7781dfae3163418bf8a5"
+  }
+}

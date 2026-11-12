@@ -1,0 +1,87 @@
+<!--
+Copyright (C) 2011, Hewlett-Packard Development Company, L.P.
+All Rights Reserved.
+Open64 is free software; you can redistribute it and/or modify it under the
+terms of the GNU General Public License as published by the Free Software
+Foundation; either version 2 of the License, or (at your option) any later
+version. Distributed WITHOUT ANY WARRANTY; without even the implied warranty
+of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General
+Public License for more details.
+-->
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Phase 0 FT06 mounted dependency preservation results — OpenCTI</title><style>body{margin:0;background:#f4f6f8;color:#18232e;font:17px/1.6 system-ui,sans-serif}
+main{max-width:1050px;margin:auto;padding:2rem;background:white;min-height:100vh}
+a{color:#075ca8}nav{padding:.7rem 0;border-bottom:1px solid #ccd5dd}
+h1,h2,h3{line-height:1.25;scroll-margin-top:1rem}h2{margin-top:2rem}
+pre{padding:1rem;background:#eff3f7;overflow:auto;border:1px solid #d5dce3}
+code{font: .88em/1.5 ui-monospace,monospace;overflow-wrap:anywhere}
+table{border-collapse:collapse;width:100%;display:block;overflow:auto}
+th,td{padding:.6rem;border:1px solid #ccd5dd;text-align:left;vertical-align:top}
+th{background:#eff3f7}td:first-child{min-width:10rem}footer{border-top:1px solid #ccd5dd;margin-top:2rem;color:#52606b}
+@media(max-width:640px){main{padding:1rem}body{font-size:16px}}
+</style></head><body><main>
+<nav><a href="index.html">CTI documentation</a></nav>
+<h1 id="phase-0-ft06-mounted-dependency-preservation-results">Phase 0 FT06 mounted dependency preservation results</h1>
+<p><a href="index.html">Documentation home</a> · <a href="failure-triage-acceptance.html">Failure triage scenarios</a> · <a href="phase0-ft05-results.html">FT05 baseline preservation</a></p>
+<h2 id="result-and-scope">Result and scope</h2>
+<p>FT06 passed automated checks for a new synthetic C regression with independently mounted compiler, shared runtime, dataset and comparator dependencies, plus a suite snapshot containing an uncommitted header edit. After capture, all five original sandbox directories retained their host pathnames but received incompatible contents. Reopening with the captured content identities still executed the original binary, rebuilt from the captured source/header and reproduced <code>DiffPgmOut</code>. The reference completed on November 11 2026 at 10:55 PM America Los Angeles time.</p>
+<p>The experiment uses the stock legacy framework from the earlier retained image. It changes no framework code, default configuration, existing test or approved master. All fixtures, dependency mutations and the small Git repository used to demonstrate a dirty header are disposable copies outside the framework tree. This is a preservation-contract experiment, not an implemented native artifact service or production compiler certification.</p>
+<h2 id="pre-run-dependency-capture">Pre-run dependency capture</h2>
+<p>The earlier FT01 through FT05 cases used the compiler inside the retained image. FT06 therefore captures a new failure rather than claiming that the old work archive already contained external compiler/runtime dependencies.</p>
+<p>Before starting TM, the runner copies each consumed directory into a separate object named by a SHA-256 content identity. The identity covers sorted regular-file paths, bytes, modes and symlink targets/resolved file digests; <code>.git</code> metadata is excluded. Both original and copied inventories must match. The manifest and timestamp are written before the capture container is created. TM receives only these snapshots through read-only mounts, and their identities are checked before and after the run.</p>
+<table><thead><tr><th>Role and saved destination</th><th>Version A consumed by the failure</th><th>Version B at the same original sandbox pathname</th></tr></thead><tbody>
+<tr><td>Compiler, <code>/deps/compiler</code></td><td>Copied GCC 13.3.0 ELF driver, <code>cc1</code>, assembler, linker, <code>collect2</code>, GCC support files and C headers/sysroot; a recorded entry script selects those paths and defines <code>compiler-A</code></td><td>Entry script replaced with an incompatible command that reports <code>FT06_COMPILER_B</code> and exits 86</td></tr>
+<tr><td>Runtime, <code>/deps/runtime</code></td><td>A real shared <code>libft06.so</code> returning <code>runtime-A</code>, with its source</td><td>Rebuilt library with the same filename/SONAME returning <code>runtime-B</code></td></tr>
+<tr><td>Inputs, <code>/deps/inputs</code></td><td><code>current.txt</code> is a relative link to a dataset containing <code>input-A</code></td><td>Same link name retargeted to a new dataset containing <code>input-B</code></td></tr>
+<tr><td>Comparator, <code>/deps/comparator</code></td><td>Synthetic Perl comparator reports its A identity and emits <code>DiffPgmOut</code> when bytes differ</td><td>Comparator replaced with a permissive B implementation that accepts the mismatch</td></tr>
+<tr><td>Suite, <code>/fixtures</code></td><td>Source, master, options and <code>consumed.h</code> with uncommitted <code>dirty-header-A</code></td><td>Header changed to <code>dirty-header-B</code></td></tr>
+</tbody></table>
+<p>The fixture is committed in a new isolated Git repository with <code>committed-header</code>, then edited to <code>dirty-header-A</code> without committing. The exact patch, Git status, committed header and consumed header bytes are retained. Replay reads the captured edited snapshot; it does not check out a branch or re-resolve the original dataset link.</p>
+<p>The generated scripts retain their normal stock behavior. External options select <code>CC=/deps/compiler/bin/gcc</code>, the library and RPATH under <code>/deps/runtime</code>, the dataset argument, and the source include path. Source review found that <code>locateCompareScript</code> prefixes the framework utilities directory even for a supplied path; this fixture uses the relative option <code>../../../../deps/comparator/compare.pl</code>, which resolves to the mounted comparator. No change to the locator or generated scripts is made.</p>
+<p>The copied compiler and sysroot cover this C regression&#x27;s selected build components. Their executable loader and some system libraries, and the program&#x27;s libc/loader, also belong to the exact retained platform image. The image is part of the dependency closure; the copied toolchain is not claimed to run on an arbitrary image or architecture.</p>
+<h2 id="capture-mutation-and-replay-observations">Capture, mutation and replay observations</h2>
+<p>Stock TM reports one test and one output-difference failure. Its process returns 0, while the case&#x27;s result is <code>DiffPgmOut</code>. Its output is:</p>
+<pre><code>compiler-A|runtime-A|input-A|dirty-header-A</code></pre>
+<p>The master contains <code>approved-baseline</code>, so that output deliberately mismatches. The failure is archived before mutations. Version B is then installed only into the sandbox originals; their paths stay the same and all five directory identities change. A fresh replay container selects the A object identities and reconstructs the original container destinations. It has no access to the original mutable directories, active fixture repository or live checkout.</p>
+<table><thead><tr><th>Check</th><th>Observed result</th></tr></thead><tbody>
+<tr><td>Archived binary replay</td><td>Run exits 0 with all four A markers; comparison exits 1 with <code>DiffPgmOut</code></td></tr>
+<tr><td>Independent rebuild</td><td>Copied session executable/object are deleted; original compile/link scripts exit 0; rebuilt run again emits A markers and comparison again yields <code>DiffPgmOut</code></td></tr>
+<tr><td>Selected build components</td><td>GCC verbose logs show the mounted ELF driver, <code>cc1</code>, assembler, <code>collect2</code> and sysroot paths</td></tr>
+<tr><td>Selected runtime</td><td>ELF dynamic metadata names <code>/deps/runtime</code>; loader tracing confirms initialization of <code>/deps/runtime/libft06.so</code></td></tr>
+<tr><td>Selected comparator</td><td>Comparison stderr identifies <code>FT06_COMPARATOR_A</code></td></tr>
+<tr><td>Changed-compiler sensitivity control</td><td>Original generated compile script fails with <code>CompileErr</code> when only the compiler mount uses B</td></tr>
+<tr><td>Changed-runtime sensitivity control</td><td>Archived binary emits <code>runtime-B</code> when only the runtime mount uses B</td></tr>
+<tr><td>Changed-input sensitivity control</td><td>Archived binary emits <code>input-B</code> when only the dataset mount uses B</td></tr>
+<tr><td>Changed-comparator sensitivity control</td><td>The original mismatch is accepted when only the comparator mount uses B</td></tr>
+<tr><td>Changed-header sensitivity control</td><td>Recompile/link/run against only the changed suite emits <code>dirty-header-B</code></td></tr>
+<tr><td>Missing dependency controls</td><td>Omitting each of the five mounts produces <code>MissingPrerequisite</code> naming that dependency; no phase executes</td></tr>
+<tr><td>Incorrect content control</td><td>Providing B at the compiler destination produces <code>DependencyIdentityMismatch</code> with expected/actual IDs before any phase executes</td></tr>
+<tr><td>Integrity and cleanup</td><td>Captured objects and original earlier failure evidence unchanged; sandbox B originals unchanged by replay; all 13 capture/replay/control containers removed</td></tr>
+</tbody></table>
+<p>The five sensitivity controls intentionally bypass identity preflight to characterize what the unchanged legacy recipes would consume from mutable mounts. The protected replay and missing/wrong-dependency checks use a validation-only preflight. A successful negative-control worker means it observed the expected rejection; it does not mean a test was executed successfully with a missing dependency.</p>
+<h2 id="evidence-and-repeatability">Evidence and repeatability</h2>
+<p>The <a href="../../validation/phase0/legacy/README.md">experiment instructions</a> document execution and verification. New tools are <a href="../../validation/phase0/legacy/run_ft06.py">run_ft06.py</a>, the <a href="../../validation/phase0/legacy/ft06/prepare.py">preparation script</a>, <a href="../../validation/phase0/legacy/ft06/dependencies.py">snapshot identity helper</a>, <a href="../../validation/phase0/legacy/ft06/worker.py">worker</a> and <a href="../../validation/phase0/legacy/verify_ft06.py">verify_ft06.py</a>.</p>
+<table><thead><tr><th>Evidence</th><th>Review purpose</th></tr></thead><tbody>
+<tr><td><a href="../../validation/phase0/legacy/evidence/ft06-002/summary.json">Summary</a></td><td>Scoped result, retained image and acceptance boundaries</td></tr>
+<tr><td><a href="../../validation/phase0/legacy/evidence/ft06-002/metadata/dependency-manifest.json">Pre-run dependency manifest</a></td><td>A content IDs, file inventories, original host paths, snapshot paths and container destinations</td></tr>
+<tr><td><a href="../../validation/phase0/legacy/evidence/ft06-002/metadata/same-path-mutations.json">Same-path mutations</a></td><td>A/B identities and changed entry digests, including link retargeting</td></tr>
+<tr><td><a href="../../validation/phase0/legacy/evidence/ft06-002/metadata/source-edit.patch">Source patch</a></td><td>Exact uncommitted header edit consumed by the failure</td></tr>
+<tr><td><a href="../../validation/phase0/legacy/evidence/ft06-002/capture/results.json">Capture results</a></td><td>Stock TM invocation, actual output and result tag</td></tr>
+<tr><td><a href="../../validation/phase0/legacy/evidence/ft06-002/replay/results.json">Replay results</a></td><td>Saved-binary and independent rebuild phases, outputs and mountinfo</td></tr>
+<tr><td><a href="../../validation/phase0/legacy/evidence/ft06-002/replay/container-inspect.json">Replay mount inspection</a></td><td>Actual A snapshot sources, read-only destinations and disabled network</td></tr>
+<tr><td><a href="../../validation/phase0/legacy/evidence/ft06-002/replay/loader-trace.stderr">Runtime selection trace</a></td><td>Loaded mounted library rather than only a configured path</td></tr>
+<tr><td><a href="../../validation/phase0/legacy/evidence/ft06-002/missing-runtime/results.json">Missing runtime example</a></td><td>Named prerequisite, expected ID and zero executed phases</td></tr>
+<tr><td><a href="../../validation/phase0/legacy/evidence/ft06-002/wrong-compiler/results.json">Wrong compiler example</a></td><td>Expected/actual content mismatch and zero executed phases</td></tr>
+<tr><td><a href="../../validation/phase0/legacy/evidence/ft06-002/legacy-characterization.json">Legacy characterization gap</a></td><td>Work archive holds a source link and recipes, without the external dependency/header bytes</td></tr>
+<tr><td><a href="../../validation/phase0/legacy/evidence/ft06-002/verification.json">Verification</a></td><td>Full reference-run audit, six phase checks, five sensitivity controls, six prerequisite controls and saved recipe identity</td></tr>
+<tr><td><a href="../../validation/phase0/legacy/evidence/ft06-002/compact-verification.json">Compact verification</a></td><td>Review-bundle audit; the large compiler archive is explicitly omitted</td></tr>
+<tr><td><a href="../../validation/phase0/legacy/evidence/ft06-002/SHA256SUMS.json">Checksums</a></td><td>Compact evidence digests; raw run index and large-artifact manifest retained separately</td></tr>
+</tbody></table>
+<p>The full reference is <code>validation/phase0/legacy/runs/ft06-002/</code>. Compact review evidence is approximately 2.21 MB. It excludes the copied compiler object and its 38,710,033-byte archive, as well as the earlier 586,248,192-byte platform image archive. Preserve those local archives alongside the compact evidence for actual future replay. Small A dependency archives, B changed-file payloads, the original failure archive, session archives, manifests, exact worker/preparation code and controls are retained in the review collection. The earlier <code>ft06-001</code> stopped before TM because the validation inventory treated a framework directory symlink as a file; it is not the reference.</p>
+<h2 id="characterization-gap-and-remaining-gates">Characterization gap and remaining gates</h2>
+<p>The stock workspace preserves generated commands and a link to the consumed source, but does not itself snapshot the mounted compiler, runtime, dataset, comparator or dirty header. Recipes pointing to today&#x27;s paths are insufficient. FT06 supplies the missing pre-run snapshot and identity orchestration externally, without changing the framework. The replacement must make that behavior part of its capture/reopen contract and retain the original bytes independently of any repository commit or current mount link.</p>
+<p>These inputs were snapshotted before execution, mounted read-only and checked before/after use; the experiment does not infer consumed bytes solely from post-failure hashes. It does not demonstrate protection from a concurrent privileged host writer modifying the snapshot store. Native retention, concurrency control, artifact import/materialization APIs and owner/reviewer acceptance remain open.</p>
+<p>The result covers this synthetic ARM64 C/GCC subset. It does not establish arbitrary compiler installations, additional runtime/search-path closure, unrecorded environment dependencies, shared prebuilt support harnesses, production historical suites, dashboard navigation, remote GPU or DSL replay. FT07 through FT19 remain not run, and phase 0 is not complete.</p>
+<footer>Reconstructed from OpenCTI source, baseline 8c3d603. Generated by doc/tools/build_docs.py.</footer>
+</main></body></html>

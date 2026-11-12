@@ -1,0 +1,28 @@
+{
+  "scenario": "FT06",
+  "finished_utc": "2026-11-12T06:55:21.081249+00:00",
+  "status": "pass_for_synthetic_mounted_dependency_subset",
+  "image_id": "sha256:a119c5e4a42dedbb5cdce10d448efce31b4054018bde56a4e476bc2c529fa62c",
+  "original_capture_unchanged": true,
+  "captured_objects_unchanged": true,
+  "mutated_original_locations_unchanged_during_replay": true,
+  "legacy_code_unchanged": true,
+  "roles": [
+    "compiler",
+    "runtime",
+    "inputs",
+    "comparator",
+    "suite"
+  ],
+  "missing_dependency_controls": 5,
+  "identity_mismatch_controls": 1,
+  "legacy_sensitivity_controls": 5,
+  "pre_run_snapshot": true,
+  "native_artifact_service_implemented": false,
+  "limits": [
+    "Synthetic C regression, not production Open64/DSL/GPU coverage",
+    "Toolchain ELF loader and system libraries also depend on the retained platform image",
+    "No concurrent hostile host-writer isolation or native retention service claimed",
+    "Legacy scripts need external snapshot/identity orchestration; no built-in guard claimed"
+  ]
+}

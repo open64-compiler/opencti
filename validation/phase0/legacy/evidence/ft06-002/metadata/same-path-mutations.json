@@ -1,0 +1,85 @@
+{
+  "compiler": {
+    "same_original_host_path": "/Users/shinmingliu/opcti/validation/phase0/legacy/runs/ft06-002/original-locations/compiler",
+    "a_id": "4b9899d3d39f7a43f9bb2811df5c0532e029f47c100ada078ffdf0b1266954e4",
+    "b_id": "34504e04ae85401cf02a7f098d543c5ff3c5a59ce60d43007263537bac1dbc90",
+    "changed_entries": [
+      {
+        "path": "bin/gcc",
+        "kind": "file",
+        "bytes": 45,
+        "mode": 493,
+        "sha256": "c4875317a2672b5faba38ed4baa7a07ec6d4bd6599b9b1abc301789a8c8ffb86"
+      }
+    ]
+  },
+  "runtime": {
+    "same_original_host_path": "/Users/shinmingliu/opcti/validation/phase0/legacy/runs/ft06-002/original-locations/runtime",
+    "a_id": "68e00168d33a45cdc5774596b2b2dae1b49034c8a0b22ca6da197639bd86bed0",
+    "b_id": "78f0633afbeef649994ef01dd5236e3d88d537633e1bba3abef0cced2ac3a6bc",
+    "changed_entries": [
+      {
+        "path": "libft06.so",
+        "kind": "file",
+        "bytes": 69368,
+        "mode": 493,
+        "sha256": "ced2cf0b54b67116e3ed7120e2d3755ee1e48dddf6e589d7c403cddbe9475b8e"
+      },
+      {
+        "path": "runtime.c",
+        "kind": "file",
+        "bytes": 55,
+        "mode": 420,
+        "sha256": "aa906db98615ff3262a3a198386bbc12dca885a26550591d52292d434eed74e6"
+      }
+    ]
+  },
+  "inputs": {
+    "same_original_host_path": "/Users/shinmingliu/opcti/validation/phase0/legacy/runs/ft06-002/original-locations/inputs",
+    "a_id": "773c6b9294745583ed24e7b7aa714b0d457a5e5791e89dc42d099ffe1fe5dbd8",
+    "b_id": "ff759c3720f3f89f05aa9fecaab1ffc79db99601985ffaa06ae346a66558e96b",
+    "changed_entries": [
+      {
+        "path": "current.txt",
+        "kind": "link",
+        "target": "dataset-b.txt",
+        "resolved_sha256": "cf0f6caf1150593c5e7357d10c6b82039a5f5928074d902a979e6d94c6563067"
+      },
+      {
+        "path": "dataset-b.txt",
+        "kind": "file",
+        "bytes": 8,
+        "mode": 420,
+        "sha256": "cf0f6caf1150593c5e7357d10c6b82039a5f5928074d902a979e6d94c6563067"
+      }
+    ]
+  },
+  "comparator": {
+    "same_original_host_path": "/Users/shinmingliu/opcti/validation/phase0/legacy/runs/ft06-002/original-locations/comparator",
+    "a_id": "8a84a11ec541f8d7726dd5fda93ba52ef812832033fafce2bf59cc7916134f0a",
+    "b_id": "9aec9587831879dc9ad35b8d65d79b8d88e671c669dae634e264748a4bb782e8",
+    "changed_entries": [
+      {
+        "path": "compare.pl",
+        "kind": "file",
+        "bytes": 60,
+        "mode": 493,
+        "sha256": "3a6eec3fd80b0088e6124a259f53f4cf027c8134dcbd8f7f332ca5d2c691cf99"
+      }
+    ]
+  },
+  "suite": {
+    "same_original_host_path": "/Users/shinmingliu/opcti/validation/phase0/legacy/runs/ft06-002/original-locations/suite",
+    "a_id": "8c99fb2b2500fc1e22d71d6ae7fa1ecf7d3b4b9263469cc642708aa273b9d4f4",
+    "b_id": "52080ad2d4c9e0ef803cc30cac858daa7d110c48f4157763cd29459d0222d01b",
+    "changed_entries": [
+      {
+        "path": "groups/Regression/FT06/Src/consumed.h",
+        "kind": "file",
+        "bytes": 41,
+        "mode": 420,
+        "sha256": "60cb2256d17e606a4ed014f384baa805ac5934997d761d5879d936342bedb8c3"
+      }
+    ]
+  }
+}

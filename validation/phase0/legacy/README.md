@@ -120,3 +120,36 @@ python3 validation/phase0/legacy/verify_ft05.py \
 Verification rechecks file digests, archive-to-fixture identities, old/new baseline bytes, six comparison outcomes, actual read-only mount flags, RCS recovery and 24 saved FT03 recipe/environment files. The compact evidence retains the exact worker used for the run. Read the [FT05 report](../../../doc/guide/phase0-ft05-results.md) for the legacy overwrite limitation and native acceptance boundaries.
 
 This covers synthetic snapshot replay and the local RCS helper, not CGI/dashboard previews, the web alternate-master action, SVN/ClearCase helpers, test enrollment, or peer approval. DA12 and native promotion acceptance remain open. No live master, framework file or pre-existing case-collision change is modified.
+
+## FT06 mounted dependency preservation experiment
+
+`run_ft06.py` captures a new stock-framework failure whose GCC components, shared runtime, dataset and comparator are independently mounted. A fifth mount contains the suite, including a genuinely uncommitted header edit in an isolated fixture Git repository. Python 3.9 or newer, Git and Docker are required; the retained ARM64 runtime is loaded from the earlier capture. No package build or network access is needed. No existing framework source, configuration or test is changed.
+
+```sh
+python3 validation/phase0/legacy/run_ft06.py \
+  --capture validation/phase0/legacy/runs/run-002 \
+  --output validation/phase0/legacy/runs/new-ft06-run
+```
+
+The output directory must be new. Preparation copies the real GCC driver, helpers, assembler/linker, support files and C headers/sysroot into a sandbox compiler mount, and builds A/B versions of a small shared library. The compiler still depends on the exact retained image's executable loader and system libraries; its copied files are not a portable standalone toolchain.
+
+Before TM starts, each A directory is copied into a separate snapshot named by its content identity. The inventory includes bytes, file modes and link targets/resolved digests; Git metadata is excluded. The header's committed version, dirty patch and Git status are retained separately. All original execution mounts are the saved A objects read-only. TM produces an intentional output mismatch containing compiler/runtime/dataset/dirty-header A markers, and archives its failed workspace.
+
+Only after capture, the original sandbox compiler entry, library, input link, comparator and header are replaced by incompatible B contents at their unchanged host paths. A fresh replay container reconstructs the original destinations from A identities, runs the archived executable and comparison, deletes copied build outputs, and recompiles/links/runs/compares with the original scripts. GCC verbose logs and runtime loader tracing identify the selected mounted components.
+
+Five separate controls deliberately bypass snapshot preflight and substitute only one B mount each, demonstrating sensitivity to compiler, runtime, dataset, comparator and header changes. Five missing-mount controls and one wrong-compiler-identity control use preflight and must report the named prerequisite before any phase executes. This guard belongs to the validation tools; the stock framework is not claimed to implement it. Every worker is isolated, with networking disabled and only declared sandbox mounts; all 13 capture/replay/control containers are removed after evidence export.
+
+The successful reference is `runs/ft06-002/`. The first setup attempt, `ft06-001`, stopped before TM due to validation inventory handling of a directory symlink. Compact evidence in `evidence/ft06-002/` is approximately 2.21 MB, including the complete pre-run manifest, A/B change records, source patch, small dependency archives, changed B payloads, original/session archives, actual mount inspections and logs. The 38.7 MB compiler archive and earlier 586 MB runtime image remain local/ignored; their byte sizes and SHA-256 digests are recorded. Keep both archives to execute future replay; the compact bundle alone is for review.
+
+Verify full or compact evidence with:
+
+```sh
+python3 validation/phase0/legacy/verify_ft06.py \
+  validation/phase0/legacy/evidence/ft06-002
+```
+
+The full audit checks 4,897 recorded file hashes and 2,380 archived dependency files. Both audits verify pre-run identities, the A/B identity changes, all 13 container mount maps, six replay phase results, five sensitivity controls, five missing prerequisites, one identity rejection and six unchanged recipe/environment files. Compact verification checks the small dependency archives and the recorded compiler inventory; it does not pretend the omitted compiler/runtime archives are present.
+
+Captured GCC, TM and loader diagnostic whitespace is preserved verbatim through narrowly scoped Git attributes so review/checkout does not invalidate the evidence digests.
+
+Read the [FT06 report](../../../doc/guide/phase0-ft06-results.md) for the stock workspace's missing dependency-snapshot behavior, comparator path configuration and platform-image boundary. This is synthetic preservation evidence, not a native artifact/retention implementation, concurrent-host-writer test, production suite, dashboard or GPU/DSL acceptance. Original captures and live framework/fixtures remain unchanged.
