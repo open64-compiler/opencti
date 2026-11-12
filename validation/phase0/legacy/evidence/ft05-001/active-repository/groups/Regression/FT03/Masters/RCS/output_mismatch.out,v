@@ -1,0 +1,41 @@
+head	1.2;
+access;
+symbols;
+locks; strict;
+comment	@# @;
+
+
+1.2
+date	2026.11.12.06.35.46;	author root;	state Exp;
+branches;
+next	1.1;
+
+1.1
+date	2026.11.12.06.35.46;	author root;	state Exp;
+branches;
+next	;
+
+
+desc
+@initial checkin
+@
+
+
+1.2
+log
+@Automatically remastered/created by /opt/cti/bin/www/remaster-test.pl [initiated by: phase0-ft05] - FT05 isolated promotion expected to actual
+@
+text
+@actual
+@
+
+
+1.1
+log
+@Initial revision
+@
+text
+@d1 1
+a1 1
+expected
+@

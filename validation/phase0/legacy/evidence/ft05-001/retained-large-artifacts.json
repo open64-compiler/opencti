@@ -1,0 +1,12 @@
+{
+  "runtime-image.tar": {
+    "local_path": "/Users/shinmingliu/opcti/validation/phase0/legacy/runs/ft05-001/runtime-image.tar",
+    "bytes": 588090880,
+    "sha256": "38af049f9b5747e534d0552a56adaa23e466b59c600eb11ffb55678e199730fb",
+    "purpose": "Retained legacy runtime plus RCS package; excluded from compact review evidence"
+  },
+  "base_runtime": {
+    "local_path": "/Users/shinmingliu/opcti/validation/phase0/legacy/runs/run-002/runtime-image.tar",
+    "image_id": "sha256:a119c5e4a42dedbb5cdce10d448efce31b4054018bde56a4e476bc2c529fa62c"
+  }
+}

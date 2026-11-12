@@ -1,0 +1,18 @@
+{
+  "scenario": "FT05",
+  "finished_utc": "2026-11-12T06:35:50.814117+00:00",
+  "status": "protected_replay_contract_verified_for_synthetic_FT03;legacy_unpinned_control_fails_immutability",
+  "base_image_id": "sha256:a119c5e4a42dedbb5cdce10d448efce31b4054018bde56a4e476bc2c529fa62c",
+  "image_id": "sha256:d1a8771cc253da2038a74b793b13d6308ce3452b88c7481eaed074a43790324f",
+  "original_capture_unchanged": true,
+  "captured_v1_unchanged": true,
+  "promotion_repository_local_only": true,
+  "legacy_code_unchanged": true,
+  "native_promotion_service_implemented": false,
+  "preview": "validation-only diff, no stock helper dry-run claimed",
+  "limits": [
+    "No web preview/action exercised",
+    "Only local RCS helper characterized; no SVN/ClearCase service",
+    "Peer approval and production native-promotion gate remain open"
+  ]
+}

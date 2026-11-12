@@ -1,0 +1,185 @@
+[
+  {
+    "argv": [
+      "docker",
+      "image",
+      "load",
+      "-i",
+      "/Users/shinmingliu/opcti/validation/phase0/legacy/runs/run-002/runtime-image.tar"
+    ],
+    "returncode": 0,
+    "stdout": "Loaded image ID: sha256:a119c5e4a42dedbb5cdce10d448efce31b4054018bde56a4e476bc2c529fa62c\n",
+    "stderr": ""
+  },
+  {
+    "argv": [
+      "docker",
+      "tag",
+      "sha256:a119c5e4a42dedbb5cdce10d448efce31b4054018bde56a4e476bc2c529fa62c",
+      "opencti:phase0-ft05-base"
+    ],
+    "returncode": 0,
+    "stdout": "",
+    "stderr": ""
+  },
+  {
+    "argv": [
+      "docker",
+      "build",
+      "--platform",
+      "linux/arm64",
+      "--progress",
+      "plain",
+      "-t",
+      "opencti:phase0-ft05-rcs",
+      "/Users/shinmingliu/opcti/validation/phase0/legacy/ft05"
+    ],
+    "returncode": 0,
+    "stdout": "",
+    "stderr": "#0 building with \"desktop-linux\" instance using docker driver\n\n#1 [internal] load build definition from Dockerfile\n#1 transferring dockerfile: 208B done\n#1 DONE 0.0s\n\n#2 [internal] load metadata for docker.io/library/opencti:phase0-ft05-base\n#2 DONE 0.0s\n\n#3 [internal] load .dockerignore\n#3 transferring context: 2B done\n#3 DONE 0.0s\n\n#4 [1/2] FROM docker.io/library/opencti:phase0-ft05-base\n#4 DONE 0.0s\n\n#5 [2/2] RUN apt-get update && apt-get install -y --no-install-recommends rcs     && rm -rf /var/lib/apt/lists/*\n#5 0.702 Get:1 http://ports.ubuntu.com/ubuntu-ports noble InRelease [256 kB]\n#5 1.675 Get:2 http://ports.ubuntu.com/ubuntu-ports noble-updates InRelease [126 kB]\n#5 1.915 Get:3 http://ports.ubuntu.com/ubuntu-ports noble-backports InRelease [126 kB]\n#5 2.155 Get:4 http://ports.ubuntu.com/ubuntu-ports noble-security InRelease [126 kB]\n#5 2.397 Get:5 http://ports.ubuntu.com/ubuntu-ports noble/multiverse arm64 Packages [274 kB]\n#5 2.557 Get:6 http://ports.ubuntu.com/ubuntu-ports noble/restricted arm64 Packages [113 kB]\n#5 2.613 Get:7 http://ports.ubuntu.com/ubuntu-ports noble/main arm64 Packages [1776 kB]\n#5 3.001 Get:8 http://ports.ubuntu.com/ubuntu-ports noble/universe arm64 Packages [19.0 MB]\n#5 4.742 Get:9 http://ports.ubuntu.com/ubuntu-ports noble-updates/restricted arm64 Packages [3392 kB]\n#5 4.924 Get:10 http://ports.ubuntu.com/ubuntu-ports noble-updates/multiverse arm64 Packages [107 kB]\n#5 4.933 Get:11 http://ports.ubuntu.com/ubuntu-ports noble-updates/universe arm64 Packages [2233 kB]\n#5 5.068 Get:12 http://ports.ubuntu.com/ubuntu-ports noble-updates/main arm64 Packages [1853 kB]\n#5 5.121 Get:13 http://ports.ubuntu.com/ubuntu-ports noble-backports/main arm64 Packages [49.0 kB]\n#5 5.123 Get:14 http://ports.ubuntu.com/ubuntu-ports noble-backports/universe arm64 Packages [36.3 kB]\n#5 5.123 Get:15 http://ports.ubuntu.com/ubuntu-ports noble-backports/multiverse arm64 Packages [669 B]\n#5 5.123 Get:16 http://ports.ubuntu.com/ubuntu-ports noble-security/main arm64 Packages [1540 kB]\n#5 5.301 Get:17 http://ports.ubuntu.com/ubuntu-ports noble-security/multiverse arm64 Packages [102 kB]\n#5 5.308 Get:18 http://ports.ubuntu.com/ubuntu-ports noble-security/universe arm64 Packages [1656 kB]\n#5 5.393 Get:19 http://ports.ubuntu.com/ubuntu-ports noble-security/restricted arm64 Packages [3270 kB]\n#5 5.829 Fetched 36.1 MB in 6s (6291 kB/s)\n#5 5.829 Reading package lists...\n#5 6.195 Reading package lists...\n#5 6.537 Building dependency tree...\n#5 6.624 Reading state information...\n#5 6.744 The following NEW packages will be installed:\n#5 6.744   rcs\n#5 7.231 0 upgraded, 1 newly installed, 0 to remove and 35 not upgraded.\n#5 7.231 Need to get 186 kB of archives.\n#5 7.231 After this operation, 353 kB of additional disk space will be used.\n#5 7.231 Get:1 http://ports.ubuntu.com/ubuntu-ports noble/universe arm64 rcs arm64 5.10.1-1 [186 kB]\n#5 8.037 debconf: delaying package configuration, since apt-utils is not installed\n#5 8.050 Fetched 186 kB in 1s (154 kB/s)\n#5 8.059 Selecting previously unselected package rcs.\n#5 8.059 (Reading database ... \n(Reading database ... 5%\n(Reading database ... 10%\n(Reading database ... 15%\n(Reading database ... 20%\n(Reading database ... 25%\n(Reading database ... 30%\n(Reading database ... 35%\n(Reading database ... 40%\n(Reading database ... 45%\n(Reading database ... 50%\n(Reading database ... 55%\n(Reading database ... 60%\n(Reading database ... 65%\n(Reading database ... 70%\n(Reading database ... 75%\n(Reading database ... 80%\n(Reading database ... 85%\n(Reading database ... 90%\n(Reading database ... 95%\n(Reading database ... 100%\n(Reading database ... 12377 files and directories currently installed.)\n#5 8.076 Preparing to unpack .../rcs_5.10.1-1_arm64.deb ...\n#5 8.077 Unpacking rcs (5.10.1-1) ...\n#5 8.094 Setting up rcs (5.10.1-1) ...\n#5 DONE 8.1s\n\n#6 exporting to image\n#6 exporting layers done\n#6 writing image sha256:d1a8771cc253da2038a74b793b13d6308ce3452b88c7481eaed074a43790324f done\n#6 naming to docker.io/library/opencti:phase0-ft05-rcs done\n#6 DONE 0.0s\n"
+  },
+  {
+    "argv": [
+      "docker",
+      "image",
+      "inspect",
+      "opencti:phase0-ft05-rcs"
+    ],
+    "returncode": 0,
+    "stdout": "[\n    {\n        \"Id\": \"sha256:d1a8771cc253da2038a74b793b13d6308ce3452b88c7481eaed074a43790324f\",\n        \"RepoTags\": [\n            \"opencti:phase0-ft05-rcs\"\n        ],\n        \"RepoDigests\": [],\n        \"Comment\": \"buildkit.dockerfile.v0\",\n        \"Created\": \"2026-11-12T06:35:45.887752751Z\",\n        \"Config\": {\n            \"Env\": [\n                \"PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin\",\n                \"DEBIAN_FRONTEND=noninteractive\",\n                \"CTI_HOME=/opt/cti\",\n                \"CTI_PERL=/usr/bin/perl\",\n                \"CTI_SHELL=/bin/bash\"\n            ],\n            \"Cmd\": [\n                \"/bin/bash\"\n            ],\n            \"WorkingDir\": \"/capture\",\n            \"Labels\": {\n                \"org.opencontainers.image.version\": \"24.04\"\n            },\n            \"ArgsEscaped\": true\n        },\n        \"Architecture\": \"arm64\",\n        \"Os\": \"linux\",\n        \"Size\": 576245373,\n        \"GraphDriver\": {\n            \"Data\": {\n                \"LowerDir\": \"/var/lib/docker/overlay2/1wdzjbdhqu6tfzi2i401crrq1/diff:/var/lib/docker/overlay2/ttri2xu5n18wwohwi38tooeik/diff:/var/lib/docker/overlay2/os4d819slnpizlvcm8g13nv3a/diff:/var/lib/docker/overlay2/eac0fiqi2yu7zsw9xnen2hz18/diff:/var/lib/docker/overlay2/dj9xzqgejlnfjccxc2pdbh4ky/diff:/var/lib/docker/overlay2/jrgrxuvb8pkc0dbik46t9mjwc/diff:/var/lib/docker/overlay2/45b9d819b5b52e3f6876c7b987dcf6a2689fa57a81ed6f264c428e6c77388b17/diff\",\n                \"MergedDir\": \"/var/lib/docker/overlay2/owq7pkhlgz3yeair3lscfpbq4/merged\",\n                \"UpperDir\": \"/var/lib/docker/overlay2/owq7pkhlgz3yeair3lscfpbq4/diff\",\n                \"WorkDir\": \"/var/lib/docker/overlay2/owq7pkhlgz3yeair3lscfpbq4/work\"\n            },\n            \"Name\": \"overlay2\"\n        },\n        \"RootFS\": {\n            \"Type\": \"layers\",\n            \"Layers\": [\n                \"sha256:2d8834226313616cc27c8a08ca876096cf83f18090b5fa07fd65dba017ec9e5e\",\n                \"sha256:bc00e9265433bf61e2511b0692908e4dd29af19c1e95502c8a2a973e8f6f178c\",\n                \"sha256:f0619e923ce52f724f07145713f6b7dd8de97f6f1c18ac70dfd5c9dab3dddee9\",\n                \"sha256:ee25e8507093fbef25ae6f0dde330041130a3327c3f93739562cfbd43b4844db\",\n                \"sha256:219a2fa39458eda4a1a1a73727ef8172b60824f8e76af6d3dbf3a41b4c72be68\",\n                \"sha256:a4615f60a1e199d252bc572cb16534bd0f4e0c87fa67c666f120d9bf11b6182a\",\n                \"sha256:5e3df576073dd17048e8cf7754d6e94b26a56cd3cee0dbba9255a9d1408c46d5\",\n                \"sha256:0f0f49e5f9d41fccc5c3a89a69c51b2c4347189f842fd48c97033c7e4dad0219\"\n            ]\n        },\n        \"Metadata\": {\n            \"LastTagTime\": \"2026-11-12T06:35:45.898868709Z\"\n        }\n    }\n]\n",
+    "stderr": ""
+  },
+  {
+    "argv": [
+      "docker",
+      "image",
+      "inspect",
+      "sha256:a119c5e4a42dedbb5cdce10d448efce31b4054018bde56a4e476bc2c529fa62c"
+    ],
+    "returncode": 0,
+    "stdout": "[\n    {\n        \"Id\": \"sha256:a119c5e4a42dedbb5cdce10d448efce31b4054018bde56a4e476bc2c529fa62c\",\n        \"RepoTags\": [\n            \"opencti:phase0-ft05-base\",\n            \"opencti:phase0-legacy-ft01-ft03\"\n        ],\n        \"RepoDigests\": [],\n        \"Comment\": \"buildkit.dockerfile.v0\",\n        \"Created\": \"2026-11-11T22:55:50.184648138Z\",\n        \"Config\": {\n            \"Env\": [\n                \"PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin\",\n                \"DEBIAN_FRONTEND=noninteractive\",\n                \"CTI_HOME=/opt/cti\",\n                \"CTI_PERL=/usr/bin/perl\",\n                \"CTI_SHELL=/bin/bash\"\n            ],\n            \"Cmd\": [\n                \"/bin/bash\"\n            ],\n            \"WorkingDir\": \"/capture\",\n            \"Labels\": {\n                \"org.opencontainers.image.version\": \"24.04\"\n            },\n            \"ArgsEscaped\": true\n        },\n        \"Architecture\": \"arm64\",\n        \"Os\": \"linux\",\n        \"Size\": 574441591,\n        \"GraphDriver\": {\n            \"Data\": {\n                \"LowerDir\": \"/var/lib/docker/overlay2/ttri2xu5n18wwohwi38tooeik/diff:/var/lib/docker/overlay2/os4d819slnpizlvcm8g13nv3a/diff:/var/lib/docker/overlay2/eac0fiqi2yu7zsw9xnen2hz18/diff:/var/lib/docker/overlay2/dj9xzqgejlnfjccxc2pdbh4ky/diff:/var/lib/docker/overlay2/jrgrxuvb8pkc0dbik46t9mjwc/diff:/var/lib/docker/overlay2/45b9d819b5b52e3f6876c7b987dcf6a2689fa57a81ed6f264c428e6c77388b17/diff\",\n                \"MergedDir\": \"/var/lib/docker/overlay2/1wdzjbdhqu6tfzi2i401crrq1/merged\",\n                \"UpperDir\": \"/var/lib/docker/overlay2/1wdzjbdhqu6tfzi2i401crrq1/diff\",\n                \"WorkDir\": \"/var/lib/docker/overlay2/1wdzjbdhqu6tfzi2i401crrq1/work\"\n            },\n            \"Name\": \"overlay2\"\n        },\n        \"RootFS\": {\n            \"Type\": \"layers\",\n            \"Layers\": [\n                \"sha256:2d8834226313616cc27c8a08ca876096cf83f18090b5fa07fd65dba017ec9e5e\",\n                \"sha256:bc00e9265433bf61e2511b0692908e4dd29af19c1e95502c8a2a973e8f6f178c\",\n                \"sha256:f0619e923ce52f724f07145713f6b7dd8de97f6f1c18ac70dfd5c9dab3dddee9\",\n                \"sha256:ee25e8507093fbef25ae6f0dde330041130a3327c3f93739562cfbd43b4844db\",\n                \"sha256:219a2fa39458eda4a1a1a73727ef8172b60824f8e76af6d3dbf3a41b4c72be68\",\n                \"sha256:a4615f60a1e199d252bc572cb16534bd0f4e0c87fa67c666f120d9bf11b6182a\",\n                \"sha256:5e3df576073dd17048e8cf7754d6e94b26a56cd3cee0dbba9255a9d1408c46d5\"\n            ]\n        },\n        \"Metadata\": {\n            \"LastTagTime\": \"2026-11-12T06:35:37.413347803Z\"\n        }\n    }\n]\n",
+    "stderr": ""
+  },
+  {
+    "argv": [
+      "docker",
+      "run",
+      "--rm",
+      "--platform",
+      "linux/arm64",
+      "--network",
+      "none",
+      "--cpus",
+      "1",
+      "--memory",
+      "1g",
+      "--cap-drop",
+      "ALL",
+      "--security-opt",
+      "no-new-privileges",
+      "--mount",
+      "type=bind,src=/Users/shinmingliu/opcti/validation/phase0/legacy/runs/ft05-001/retained-inputs,dst=/bundle,readonly",
+      "--mount",
+      "type=bind,src=/Users/shinmingliu/opcti/validation/phase0/legacy/runs/ft05-001/retained-tools,dst=/tools,readonly",
+      "--env",
+      "FT05_MODE=promote",
+      "--mount",
+      "type=bind,src=/Users/shinmingliu/opcti/validation/phase0/legacy/runs/ft05-001/promote,dst=/export",
+      "--mount",
+      "type=bind,src=/Users/shinmingliu/opcti/validation/phase0/legacy/runs/ft05-001/active-repository,dst=/fixtures",
+      "sha256:d1a8771cc253da2038a74b793b13d6308ce3452b88c7481eaed074a43790324f",
+      "python3",
+      "/tools/worker.py"
+    ],
+    "returncode": 0,
+    "stdout": "{\"mode\": \"promote\", \"checks_passed\": true}\n",
+    "stderr": ""
+  },
+  {
+    "argv": [
+      "docker",
+      "run",
+      "--rm",
+      "--platform",
+      "linux/arm64",
+      "--network",
+      "none",
+      "--cpus",
+      "1",
+      "--memory",
+      "1g",
+      "--cap-drop",
+      "ALL",
+      "--security-opt",
+      "no-new-privileges",
+      "--mount",
+      "type=bind,src=/Users/shinmingliu/opcti/validation/phase0/legacy/runs/ft05-001/retained-inputs,dst=/bundle,readonly",
+      "--mount",
+      "type=bind,src=/Users/shinmingliu/opcti/validation/phase0/legacy/runs/ft05-001/retained-tools,dst=/tools,readonly",
+      "--env",
+      "FT05_MODE=protected",
+      "--mount",
+      "type=bind,src=/Users/shinmingliu/opcti/validation/phase0/legacy/runs/ft05-001/protected,dst=/export",
+      "--mount",
+      "type=bind,src=/Users/shinmingliu/opcti/validation/phase0/legacy/runs/ft05-001/captured-v1,dst=/fixtures,readonly",
+      "--mount",
+      "type=bind,src=/Users/shinmingliu/opcti/validation/phase0/legacy/runs/ft05-001/versions,dst=/versions,readonly",
+      "sha256:d1a8771cc253da2038a74b793b13d6308ce3452b88c7481eaed074a43790324f",
+      "python3",
+      "/tools/worker.py"
+    ],
+    "returncode": 0,
+    "stdout": "{\"mode\": \"protected\", \"checks_passed\": true}\n",
+    "stderr": ""
+  },
+  {
+    "argv": [
+      "docker",
+      "run",
+      "--rm",
+      "--platform",
+      "linux/arm64",
+      "--network",
+      "none",
+      "--cpus",
+      "1",
+      "--memory",
+      "1g",
+      "--cap-drop",
+      "ALL",
+      "--security-opt",
+      "no-new-privileges",
+      "--mount",
+      "type=bind,src=/Users/shinmingliu/opcti/validation/phase0/legacy/runs/ft05-001/retained-inputs,dst=/bundle,readonly",
+      "--mount",
+      "type=bind,src=/Users/shinmingliu/opcti/validation/phase0/legacy/runs/ft05-001/retained-tools,dst=/tools,readonly",
+      "--env",
+      "FT05_MODE=new-attempt",
+      "--mount",
+      "type=bind,src=/Users/shinmingliu/opcti/validation/phase0/legacy/runs/ft05-001/new-attempt,dst=/export",
+      "--mount",
+      "type=bind,src=/Users/shinmingliu/opcti/validation/phase0/legacy/runs/ft05-001/explicit-new-attempt-v2,dst=/fixtures,readonly",
+      "--mount",
+      "type=bind,src=/Users/shinmingliu/opcti/validation/phase0/legacy/runs/ft05-001/versions,dst=/versions,readonly",
+      "sha256:d1a8771cc253da2038a74b793b13d6308ce3452b88c7481eaed074a43790324f",
+      "python3",
+      "/tools/worker.py"
+    ],
+    "returncode": 0,
+    "stdout": "{\"mode\": \"new-attempt\", \"checks_passed\": true}\n",
+    "stderr": ""
+  },
+  {
+    "argv": [
+      "docker",
+      "image",
+      "save",
+      "-o",
+      "/Users/shinmingliu/opcti/validation/phase0/legacy/runs/ft05-001/runtime-image.tar",
+      "sha256:d1a8771cc253da2038a74b793b13d6308ce3452b88c7481eaed074a43790324f"
+    ],
+    "returncode": 0,
+    "stdout": "",
+    "stderr": ""
+  }
+]

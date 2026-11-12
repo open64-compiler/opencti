@@ -4,7 +4,7 @@
 
 ## Observed result and scope
 
-Follow-up: [FT04 deletion and source/baseline relocation](phase0-ft04-results.md) now verifies archive-only reopening for these same synthetic fixtures. The original capture observations and raw evidence below remain unchanged.
+Follow-up: [FT04 deletion and source/baseline relocation](phase0-ft04-results.md) now verifies archive-only reopening for these same synthetic fixtures. An [FT05 follow-up](phase0-ft05-results.md) verifies protected original-baseline replay after isolated promotion and documents the stock helper's mutable-master limitation. The original capture observations and raw evidence below remain unchanged.
 
 FT01, FT02 and FT03 now have observed legacy failures and independently verified legacy phase replay for a small synthetic regression fixture set. The reference capture ran on November 11 2026 at 2:57 PM America Los Angeles time, in Linux ARM64 Docker using GCC 13.3.0, Perl 5.38 and Bash with Korn-shell option loading. This is a real invocation of the stock CTI harness and compiler against deliberate failure cases, not a historical production archive or a test of an Open64 compiler defect.
 

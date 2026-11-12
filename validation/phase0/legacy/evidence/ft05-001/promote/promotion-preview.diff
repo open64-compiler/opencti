@@ -1,0 +1,5 @@
+--- baseline-v1
++++ candidate-v2
+@@ -1 +1 @@
+-expected
++actual

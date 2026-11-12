@@ -93,3 +93,30 @@ python3 validation/phase0/legacy/verify_ft04.py \
 Docker Desktop reports macOS bind sources with a `/host_mnt` prefix inside its VM. The verifier normalizes that prefix before checking exact source/backing paths and read-only flags. It verifies actual relocated paths rather than merely checking that original path strings were absent.
 
 FT04 passes for the captured synthetic regression subset. This does not establish production-suite dependency closure, shared external harness coverage, debugger attachment, checkpoint/restore, DSL or GPU replay. The retained runtime and earlier original evidence remain local; no existing framework file is modified.
+
+## FT05 promotion and preserved baseline experiment
+
+`run_ft05.py` uses the archived FT03 mismatch and isolated fixture copies to characterize stock remaster behavior and verify protected replay. Python 3.9 or newer and Docker are required. The initial image extension needs package-network access to install RCS; all three worker containers have networking disabled. No framework code changes are made.
+
+```sh
+python3 validation/phase0/legacy/run_ft05.py \
+  --capture validation/phase0/legacy/runs/run-002 \
+  --output validation/phase0/legacy/runs/new-ft05-run
+```
+
+The output directory must be new. The runner verifies/loads the captured runtime, extends it with RCS and records the derived image ID. It reconstructs the captured v1 fixture tree from the original archive, then creates a separate writable repository copy. A validation-only diff previews v1 `expected` to v2 `actual` without changing the baseline. The actual legacy `remaster-test.pl -scm RCS` helper then promotes only the repository copy, preserving revisions 1.1 and 1.2 in a local RCS history. No repository service or remote push is used. The helper's `-trace` flag is not a general dry-run mechanism; do not use it to protect real masters.
+
+The unprotected workspace's old master link now sees v2 and compares successfully. This is an intentional control: the stock mutable-master path does not satisfy FT05's stronger immutability guarantee. A separate container reopens the original archived failure with v1 mounted read-only at its original `/fixtures` path and still obtains `DiffPgmOut`. A separate alternate-baseline session explicitly selects v2 and passes without promotion; the original session is compared again against v1 and still fails. A direct write to v1 must raise `EROFS`. A third container compiles, links, executes and compares a new explicitly v2 attempt successfully.
+
+The captured v1 inputs, original capture and sandbox repository after its one deliberate promotion must remain unchanged by protected/alternate/new-attempt replay. Each mode compares its full framework regular-file inventory before and after execution. Session archives retain the original scripts, environment, outputs and master links. Only new sandbox directories are exposed to the workers; containers are removed automatically. The host's backing files remain administratively mutable: read-only mounts are a worker boundary, not an implemented native immutable artifact store.
+
+The reference is `runs/ft05-001/`; `evidence/ft05-001/` contains approximately 177 KB of compact review material. The roughly 588 MB derived runtime archive stays ignored/local. Keep its exact bytes with the evidence for future replay. Verify either full or compact evidence with:
+
+```sh
+python3 validation/phase0/legacy/verify_ft05.py \
+  validation/phase0/legacy/evidence/ft05-001
+```
+
+Verification rechecks file digests, archive-to-fixture identities, old/new baseline bytes, six comparison outcomes, actual read-only mount flags, RCS recovery and 24 saved FT03 recipe/environment files. The compact evidence retains the exact worker used for the run. Read the [FT05 report](../../../doc/guide/phase0-ft05-results.md) for the legacy overwrite limitation and native acceptance boundaries.
+
+This covers synthetic snapshot replay and the local RCS helper, not CGI/dashboard previews, the web alternate-master action, SVN/ClearCase helpers, test enrollment, or peer approval. DA12 and native promotion acceptance remain open. No live master, framework file or pre-existing case-collision change is modified.
