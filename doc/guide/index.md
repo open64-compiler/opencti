@@ -6,6 +6,7 @@ These guides describe the code imported at commit `8c3d603`, rather than a curre
 
 ## Start here
 
+- [FT07 shared support results](phase0-ft07-results.md): archive-only harness/header/filter and symlink recovery after deleting sandbox inputs and work, with preserved-object replay and an explicit rebuild.
 - [FT06 mounted dependency results](phase0-ft06-results.md): pre-run compiler/runtime/input/comparator snapshots, same-path mutations and named prerequisite rejection.
 - [FT05 baseline preservation results](phase0-ft05-results.md): isolated stock promotion, mutable-master control and protected replay against the original baseline.
 - [FT04 deletion and relocation results](phase0-ft04-results.md): archive-only reopening, changed source/master backing paths, negative controls and interactive phase replay.

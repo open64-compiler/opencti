@@ -1,0 +1,28 @@
+{
+  "origin": "original-pre-run-hook",
+  "argv": [
+    "/usr/bin/gcc",
+    "-O0",
+    "-fPIC",
+    "-DFT07_BUILD_MODE=\"native64\"",
+    "-I/deps/headers",
+    "-I/deps/harness",
+    "-c",
+    "/deps/harness/support.c",
+    "-o",
+    "/unit-support/support.o"
+  ],
+  "cti_options": {
+    "CC": "/usr/bin/gcc",
+    "CC_OPTIONS": "",
+    "DATA_MODE": "+DD64",
+    "DATA_MODE_FLAG": "",
+    "OPT_LEVEL": "0",
+    "CTI_OPT_SIGN": "-"
+  },
+  "returncode": 0,
+  "stdout": "",
+  "stderr": "",
+  "compiler_version": "gcc (Ubuntu 13.3.0-6ubuntu2~24.04.1) 13.3.0\nCopyright (C) 2023 Free Software Foundation, Inc.\nThis is free software; see the source for copying conditions.  There is NO\nwarranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.\n\n",
+  "object_sha256": "d0d9860241c55142b77020d91e75c5edd92fb47543c7cfd449ac69b0847a5035"
+}

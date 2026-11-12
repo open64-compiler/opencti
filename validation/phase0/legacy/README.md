@@ -153,3 +153,34 @@ The full audit checks 4,897 recorded file hashes and 2,380 archived dependency f
 Captured GCC, TM and loader diagnostic whitespace is preserved verbatim through narrowly scoped Git attributes so review/checkout does not invalidate the evidence digests.
 
 Read the [FT06 report](../../../doc/guide/phase0-ft06-results.md) for the stock workspace's missing dependency-snapshot behavior, comparator path configuration and platform-image boundary. This is synthetic preservation evidence, not a native artifact/retention implementation, concurrent-host-writer test, production suite, dashboard or GPU/DSL acceptance. Original captures and live framework/fixtures remain unchanged.
+
+## FT07 shared support and symlink closure experiment
+
+`run_ft07.py` captures two synthetic C cases sharing a support object built by a real stock-TM pre-run hook. Their source/header/filter links cross the leaf directory and declared dependency roots. Python 3.9 or newer and Docker are required. The compiler/interpreters/system tools come from the exact retained ARM64 platform image; no network or package build is needed. The existing framework is unchanged.
+
+```sh
+python3 validation/phase0/legacy/run_ft07.py \
+  --capture validation/phase0/legacy/runs/run-002 \
+  --output validation/phase0/legacy/runs/new-ft07-run
+```
+
+The output directory must be new. Source, shared harness, headers and filters are archived before TM. The original hook executes once, building `/unit-support/support.o` outside the leaf workspace with recorded compiler/data-mode settings; both cases use it. The comparison filter normalizes a process ID, leaving one deliberate output mismatch and one passing peer. Generated support products, hook invocation/count, build log and exact recipe are archived with the real failed workspace.
+
+The runner then deletes only its new sandbox source/harness/header/filter/product directories and captured-work tree. It removes the capture container and verifies that it cannot be inspected, eliminating that container's private scratch as a replay dependency. Earlier captures and live fixtures/framework remain untouched. Dependency archives are extracted into new backing directories and mounted at compatible container destinations, preserving modes and relative/absolute links.
+
+Ordinary replay mounts all five reconstructed roots read-only and uses the original support object without rerunning the hook. Ten phases cover the archived failing binary and independent compile/link/run/compare for both cases. A separate writable support copy deletes its object, executes the saved build recipe explicitly and records reconstructed provenance before repeating the primary phases. No hook is executed for discovery or automatic materialization.
+
+Four missing-root controls and a source/work-only control must report incomplete closure before any phase executes. Three additional controls bypass validation preflight to characterize stock behavior: missing header produces `CompileErr`, missing support object produces `LinkErr`, and missing filter produces `FilterInternalError`. All 11 experiment containers have no network or host/controller/Docker-socket mounts and are removed after export.
+
+The reference is `runs/ft07-002/`, with approximately 701 KB of compact evidence in `evidence/ft07-002/`. All small dependency/product, failure and session archives are included. The earlier platform archive remains ignored/local; its digest is recorded and it is required for actual replay. No new compiler/runtime archive is added. The earlier `ft07-001` exercised the same cases without native timestamps around Docker requests; `ft07-002` supports the clock-aware ordering audit.
+
+```sh
+python3 validation/phase0/legacy/verify_ft07.py \
+  validation/phase0/legacy/evidence/ft07-002
+```
+
+The verifier checks archive contents/modes/link targets and content identities; ten resolved link edges and consumed file hashes; six deleted sandbox roots; all 11 actual mount maps and capture-container absence; ten preserved-object phases; five explicit-build/replay steps; five incomplete-closure controls; three legacy error controls; and 24 unchanged recipe/environment files across replay and rebuild. It checks the original object as ELF64/AArch64 and distinguishes its provenance from an explicit rebuild even when deterministic object bytes match. Ordering comparisons keep native and Docker VM clocks separate.
+
+The captured TM diagnostic file retains its original whitespace through a file-specific Git attribute, preserving its recorded checksum.
+
+This exercises explicit `PRE_RUN_HOOKS` and external `OUTPUT_FILTERS` with a C support object. It does not qualify implicit `TEST_AUXMODDIR`/`buildAuxiliaryModules.pl`, Fortran modules, arbitrary historical harnesses, dashboard or GPU/DSL workflows. Native snapshot/retention/concurrency service acceptance and peer review remain open. See the [FT07 report](../../../doc/guide/phase0-ft07-results.md).

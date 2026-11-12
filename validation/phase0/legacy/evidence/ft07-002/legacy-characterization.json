@@ -1,0 +1,7 @@
+{
+  "scope": "Observed synthetic shared-harness workspace",
+  "shared_support_object_in_legacy_work_archive": false,
+  "external_hooks_headers_filters_in_legacy_work_archive": false,
+  "observed_gap": "Stock work recipes and symlinks refer to shared support products, header and filter paths outside the work archive. Validation captures pre-run dependency archives and actual hook products separately.",
+  "discovery_hooks_executed": false
+}

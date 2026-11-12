@@ -1,0 +1,37 @@
+{
+  "suite": {
+    "source_archive": "/Users/shinmingliu/opcti/validation/phase0/legacy/runs/ft07-002/retained-inputs/suite.tar.gz",
+    "source_archive_sha256": "fe7f64f2e9a1b9c871ea562471ddca6cc22ce28c3ab4ecc35bb1463531190dda",
+    "new_host_path": "/Users/shinmingliu/opcti/validation/phase0/legacy/runs/ft07-002/reconstructed/suite",
+    "destination": "/fixtures",
+    "id": "1e57a04d06ab4f2fa411c851020fb9e0b7a06f8f55d0f89e1b9bf64a30b4a237"
+  },
+  "harness": {
+    "source_archive": "/Users/shinmingliu/opcti/validation/phase0/legacy/runs/ft07-002/retained-inputs/harness.tar.gz",
+    "source_archive_sha256": "53c7ec6b7eac2002262b14d958cabc96dc3de15c91c162d759320d199c0e7d20",
+    "new_host_path": "/Users/shinmingliu/opcti/validation/phase0/legacy/runs/ft07-002/reconstructed/harness",
+    "destination": "/deps/harness",
+    "id": "4b4861486242e137d0af9854d40abc0edbd9cbc13e3d6392af4d458d7c9e83a7"
+  },
+  "headers": {
+    "source_archive": "/Users/shinmingliu/opcti/validation/phase0/legacy/runs/ft07-002/retained-inputs/headers.tar.gz",
+    "source_archive_sha256": "09f30e9be54aa6bfdc746a3b108ab65dd883f362bff7563fdc067c010a0c6d3c",
+    "new_host_path": "/Users/shinmingliu/opcti/validation/phase0/legacy/runs/ft07-002/reconstructed/headers",
+    "destination": "/deps/headers",
+    "id": "13e29830c62d2db7952418f3ab2094e29cf78c230c4737229d3530b6145b00ee"
+  },
+  "filters": {
+    "source_archive": "/Users/shinmingliu/opcti/validation/phase0/legacy/runs/ft07-002/retained-inputs/filters.tar.gz",
+    "source_archive_sha256": "08121481fe4630536ebc7403c5bdb531bc7db9381db76e1aead1ee901b1cba71",
+    "new_host_path": "/Users/shinmingliu/opcti/validation/phase0/legacy/runs/ft07-002/reconstructed/filters",
+    "destination": "/deps/filters",
+    "id": "a62a5e1726f0f035afa5264b5110c092ae0204974c03e207d5b3a5f14ef6c137"
+  },
+  "products": {
+    "source_archive": "/Users/shinmingliu/opcti/validation/phase0/legacy/runs/ft07-002/retained-inputs/products.tar.gz",
+    "source_archive_sha256": "614a46f137897ce2d05caa41bd2c24516ddca44b3bdbb3902a15a7c201323ea7",
+    "new_host_path": "/Users/shinmingliu/opcti/validation/phase0/legacy/runs/ft07-002/reconstructed/products",
+    "destination": "/unit-support",
+    "id": "7eca10350f97f32fafc0656164dbb7e7de8e3eaead1c6bfa1873f2861431b323"
+  }
+}

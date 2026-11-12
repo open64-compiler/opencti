@@ -1,0 +1,30 @@
+{
+  "deleted_paths": [
+    {
+      "path": "/Users/shinmingliu/opcti/validation/phase0/legacy/runs/ft07-002/original-locations/suite",
+      "exists_after": false
+    },
+    {
+      "path": "/Users/shinmingliu/opcti/validation/phase0/legacy/runs/ft07-002/original-locations/harness",
+      "exists_after": false
+    },
+    {
+      "path": "/Users/shinmingliu/opcti/validation/phase0/legacy/runs/ft07-002/original-locations/headers",
+      "exists_after": false
+    },
+    {
+      "path": "/Users/shinmingliu/opcti/validation/phase0/legacy/runs/ft07-002/original-locations/filters",
+      "exists_after": false
+    },
+    {
+      "path": "/Users/shinmingliu/opcti/validation/phase0/legacy/runs/ft07-002/original-locations/products",
+      "exists_after": false
+    },
+    {
+      "path": "/Users/shinmingliu/opcti/validation/phase0/legacy/runs/ft07-002/capture/original",
+      "exists_after": false
+    }
+  ],
+  "deleted_capture_container": "e16ce73184c1b1835c449df9b69cb69448da08093cc3d8fd6f76cc24583fad15",
+  "boundary": "Only fresh FT07 sandbox sources, support products and captured work; earlier evidence/live framework untouched"
+}

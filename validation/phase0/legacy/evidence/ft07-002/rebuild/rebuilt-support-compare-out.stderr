@@ -1,0 +1,2 @@
+FT07_FILTER_A
+Unescaped left brace in regex is passed through in regex; marked by <-- HERE in m/\${ <-- HERE (\w+)}/ at /opt/cti/Scripts/utils/../drivers/lib/readTmConfigFile.pm line 198.

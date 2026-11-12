@@ -4,3 +4,5 @@ evidence/ft04-002/positive/debug-shell.log -text whitespace=cr-at-eol
 evidence/ft06-002/**/*.compiler-log -text whitespace=-blank-at-eol,-blank-at-eof
 evidence/ft06-002/capture/tm.stderr -text whitespace=-blank-at-eol,-blank-at-eof
 evidence/ft06-002/replay/loader-trace.stderr -text whitespace=-blank-at-eol,-blank-at-eof
+# Stock TM diagnostic bytes in the FT07 capture are part of its evidence digest.
+evidence/ft07-002/capture/tm.stderr -text whitespace=-blank-at-eol,-blank-at-eof
