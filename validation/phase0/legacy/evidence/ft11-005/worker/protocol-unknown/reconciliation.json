@@ -1,0 +1,27 @@
+{
+  "schema": "phase0-ft11-validation-only",
+  "tests": [
+    {
+      "test": "Protocol/Probe/test.c",
+      "unit_id": "1",
+      "expectation": null,
+      "observed_message_tag": "FutureResultV99",
+      "effective_legacy_tag": "FutureResultV99",
+      "legacy_label": null,
+      "status": "unmapped",
+      "acceptance_status": "unmapped",
+      "expectation_matches_tag": null,
+      "result_file_present": true,
+      "cancellation_marker_present": false
+    }
+  ],
+  "enumerated": 1,
+  "counts": {
+    "unmapped": 1
+  },
+  "acceptance_counts": {
+    "unmapped": 1
+  },
+  "all_passed": false,
+  "warning": "CompileErr is a failure tag, not proof of a compiler defect; incomplete and unmapped never pass"
+}

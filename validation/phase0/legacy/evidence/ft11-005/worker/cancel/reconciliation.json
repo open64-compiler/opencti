@@ -1,0 +1,40 @@
+{
+  "schema": "phase0-ft11-validation-only",
+  "tests": [
+    {
+      "test": "Regression/Partial/a_complete.c",
+      "unit_id": "1",
+      "expectation": "normal success before interruption",
+      "observed_message_tag": "SuccessExec",
+      "effective_legacy_tag": "Cancelled",
+      "legacy_label": "CANCELLED TESTS",
+      "status": "cancelled",
+      "acceptance_status": "cancelled",
+      "expectation_matches_tag": null,
+      "result_file_present": true,
+      "cancellation_marker_present": true
+    },
+    {
+      "test": "Regression/Partial/z_wait.c",
+      "unit_id": "1",
+      "expectation": "controlled wait, no successful completion expected",
+      "observed_message_tag": null,
+      "effective_legacy_tag": "Cancelled",
+      "legacy_label": "CANCELLED TESTS",
+      "status": "cancelled",
+      "acceptance_status": "cancelled",
+      "expectation_matches_tag": null,
+      "result_file_present": true,
+      "cancellation_marker_present": true
+    }
+  ],
+  "enumerated": 2,
+  "counts": {
+    "cancelled": 2
+  },
+  "acceptance_counts": {
+    "cancelled": 2
+  },
+  "all_passed": false,
+  "warning": "CompileErr is a failure tag, not proof of a compiler defect; incomplete and unmapped never pass"
+}

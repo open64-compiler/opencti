@@ -155,7 +155,7 @@ Put the expected raw output in `Masters/sample.out`. Empty output requires a pre
 | Expected compiler rejection | `CT_NEG=true`, normally no runtime step; successful compilation is a failure |
 | Exact diagnostic check | `CT_DIFF=true`, global comparison gate enabled, matching `.err` master or `ERROR_MASTER_EMPTY=true` |
 | Runtime correctness | Compile/link/run status and output master; optional filters/qualifiers |
-| Expected runtime failure | `RUN_TESTS_NEG=true`, with runtime exit checking configured as intended |
+| Expected runtime failure | `RUN_TESTS_NEG=true` with exit checking; unexpected zero exits can be falsely reported successful by the outer script (see FT11 below) |
 | Several sources form one test | `.list` or unit `tmconfig.list`; one verdict for the combined test |
 
 Before enrollment in a campaign, run the unit with `TESTS=sample.c`, `CLEAN=false`, and a fresh work directory. Inspect the emitted compiler command, runtime output, and result; then run the wider unit. Confirm both the expected successful behavior and that a deliberately wrong result would be detected when developing a new oracle.
@@ -380,6 +380,10 @@ The worker launcher restores the submitted `TMEnv` from the shared run directory
 `recordTestResult.pm` reconciles expected tests with observed results and can classify absent outcomes as `Missing`. Not every total-loss path becomes a normal `Missing` record: absent result files can also produce a process warning/error. `Cancelled`, copy-back failures, driver errors, and comparison errors are separate from compiler defects.
 
 `SuccessExec` is the shared successful tag. Negative tests can legitimately succeed because the compiler or executable failed as expected. A result model must retain expectation and actual phase outcome separately. The complete declared tags live in [TestResultTypes.conf](../../conf/TestResultTypes.conf) and the [generated reference](reference.md).
+
+The [FT11 experiment](phase0-ft11-results.md) demonstrates a negative-runtime false pass: the generated run script writes `ExecBadPass` for unexpected status zero but exits with that zero; the outer meta-script replaces it with `SuccessExec`. A direct SIGTERM replay also yields 143/`ExecErr` at the phase layer and 1/`LimitInternalError` at the meta-script layer. Preserve raw tags, expectations and process/phase outcomes independently. TM exit zero does not establish a passing or complete run.
+
+Cancellation markers override every enumerated test in a unit, including a previously recorded success. An absent individual result in an existing unit result file becomes `Missing`; an absent whole-unit result can instead leave an initial running summary after a warning. Unknown imported tags increment failure counts but are omitted from named summary buckets. These are observed legacy behaviors to expose explicitly during migration; the validation helper preserves the original messages alongside reconciliation diagnostics.
 
 For the application run-hook path, the generated outer wrapper checks `compare.results` but does not explicitly propagate the hook process's exit status before those checks. The normal application make path checks make's status. Preserve the intended correctness contract during modernization, and characterize this difference rather than copying it into a new runner accidentally.
 

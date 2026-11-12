@@ -1,0 +1,10 @@
+{
+  "argv": [
+    "bash",
+    "./z_wait.run.sh"
+  ],
+  "cwd": "/phase-signal-session/z_wait",
+  "environment_overrides": {
+    "FT11_READY": "/export/absent/ready"
+  }
+}

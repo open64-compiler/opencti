@@ -1,0 +1,8 @@
+{
+  "environment": {
+    "PERL_HASH_SEED": "12",
+    "PERL_PERTURB_KEYS": "0"
+  },
+  "probe_order": "a_complete.c z_wait.c",
+  "reason": "stock regression driver iterates unsorted hash keys"
+}

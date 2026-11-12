@@ -1,0 +1,7 @@
+INFO: You are not in a view for this run.
+In local run mode
+[Thu Nov 12 20:36:32 2026 UTC] Now counting tests ...
+[Thu Nov 12 20:36:32 2026 UTC] Total units = 1
+[Thu Nov 12 20:36:32 2026 UTC] Total tests = 2
+The metadriver failed for unit 1:Regression/Partial
+Preserving messages dir: /export/partial/work/TMmsgs

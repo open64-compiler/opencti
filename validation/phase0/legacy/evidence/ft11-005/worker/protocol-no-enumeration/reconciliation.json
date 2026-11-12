@@ -1,0 +1,9 @@
+{
+  "schema": "phase0-ft11-validation-only",
+  "tests": [],
+  "enumerated": 0,
+  "counts": {},
+  "acceptance_counts": {},
+  "all_passed": false,
+  "warning": "CompileErr is a failure tag, not proof of a compiler defect; incomplete and unmapped never pass"
+}

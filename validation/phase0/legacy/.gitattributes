@@ -18,3 +18,8 @@ evidence/ft09-001/debug-default/interactive-shell.log -text whitespace=cr-at-eol
 evidence/ft10-003/**/data/objects/* -text whitespace=-blank-at-eol,-blank-at-eof
 evidence/ft10-003/**/data/quarantine/* -text whitespace=-blank-at-eol,-blank-at-eof
 evidence/ft10-003/**/metadata/ledger.sqlite -text
+# Exact FT11 stock diagnostics, summary whitespace and preserved work archives.
+evidence/ft11-005/worker/**/*.stderr -text whitespace=-blank-at-eol,-blank-at-eof
+evidence/ft11-005/worker/**/*.log -text whitespace=-blank-at-eol,-blank-at-eof
+evidence/ft11-005/worker/**/work.tar.gz -text
+evidence/ft11-005/worker/protocol-no-enumeration/log.errmsg -text whitespace=-blank-at-eof

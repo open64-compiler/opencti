@@ -1,0 +1,161 @@
+{
+  "schema": "phase0-ft11-validation-only",
+  "tests": [
+    {
+      "test": "Regression/Normal/e_bad_run.c",
+      "unit_id": "1",
+      "expectation": {
+        "description": "nonzero runtime expected, unexpectedly zero",
+        "required_tag": "ExecBadPass"
+      },
+      "observed_message_tag": "SuccessExec",
+      "effective_legacy_tag": "SuccessExec",
+      "legacy_label": "PASSES",
+      "status": "passed",
+      "acceptance_status": "expectation_mismatch",
+      "expectation_matches_tag": false,
+      "result_file_present": true,
+      "cancellation_marker_present": false
+    },
+    {
+      "test": "Regression/Normal/d_neg_run.c",
+      "unit_id": "1",
+      "expectation": {
+        "description": "nonzero runtime expected",
+        "required_tag": "SuccessExec"
+      },
+      "observed_message_tag": "SuccessExec",
+      "effective_legacy_tag": "SuccessExec",
+      "legacy_label": "PASSES",
+      "status": "passed",
+      "acceptance_status": "passed",
+      "expectation_matches_tag": true,
+      "result_file_present": true,
+      "cancellation_marker_present": false
+    },
+    {
+      "test": "Regression/Normal/f_compile_error.c",
+      "unit_id": "1",
+      "expectation": {
+        "description": "ordinary compile required",
+        "required_tag": "CompileErr"
+      },
+      "observed_message_tag": "CompileErr",
+      "effective_legacy_tag": "CompileErr",
+      "legacy_label": "COMPILATION FAILURES",
+      "status": "failed",
+      "acceptance_status": "failed",
+      "expectation_matches_tag": true,
+      "result_file_present": true,
+      "cancellation_marker_present": false
+    },
+    {
+      "test": "Regression/Normal/g_run_error.c",
+      "unit_id": "1",
+      "expectation": {
+        "description": "zero runtime required",
+        "required_tag": "ExecErr"
+      },
+      "observed_message_tag": "ExecErr",
+      "effective_legacy_tag": "ExecErr",
+      "legacy_label": "EXECUTION FAILURES",
+      "status": "failed",
+      "acceptance_status": "failed",
+      "expectation_matches_tag": true,
+      "result_file_present": true,
+      "cancellation_marker_present": false
+    },
+    {
+      "test": "Regression/Normal/c_bad_compile.c",
+      "unit_id": "1",
+      "expectation": {
+        "description": "compile rejection expected, unexpectedly accepted",
+        "required_tag": "CompileBadPass"
+      },
+      "observed_message_tag": "CompileBadPass",
+      "effective_legacy_tag": "CompileBadPass",
+      "legacy_label": "COMPILATION PASS FAILURES",
+      "status": "failed",
+      "acceptance_status": "failed",
+      "expectation_matches_tag": true,
+      "result_file_present": true,
+      "cancellation_marker_present": false
+    },
+    {
+      "test": "Regression/Normal/b_neg_compile.c",
+      "unit_id": "1",
+      "expectation": {
+        "description": "compile rejection expected",
+        "required_tag": "SuccessExec"
+      },
+      "observed_message_tag": "SuccessExec",
+      "effective_legacy_tag": "SuccessExec",
+      "legacy_label": "PASSES",
+      "status": "passed",
+      "acceptance_status": "passed",
+      "expectation_matches_tag": true,
+      "result_file_present": true,
+      "cancellation_marker_present": false
+    },
+    {
+      "test": "Regression/Normal/h_compare_error.c",
+      "unit_id": "1",
+      "expectation": {
+        "description": "comparator must execute",
+        "required_tag": "CompareInternalError"
+      },
+      "observed_message_tag": "CompareInternalError",
+      "effective_legacy_tag": "CompareInternalError",
+      "legacy_label": "COMPARE SCRIPT ERRORS",
+      "status": "failed",
+      "acceptance_status": "failed",
+      "expectation_matches_tag": true,
+      "result_file_present": true,
+      "cancellation_marker_present": false
+    },
+    {
+      "test": "Regression/Normal/i_diff.c",
+      "unit_id": "1",
+      "expectation": {
+        "description": "output must match baseline",
+        "required_tag": "DiffPgmOut"
+      },
+      "observed_message_tag": "DiffPgmOut",
+      "effective_legacy_tag": "DiffPgmOut",
+      "legacy_label": "OUTPUT DIFFERENCE FAILURES",
+      "status": "failed",
+      "acceptance_status": "failed",
+      "expectation_matches_tag": true,
+      "result_file_present": true,
+      "cancellation_marker_present": false
+    },
+    {
+      "test": "Regression/Normal/a_pass.c",
+      "unit_id": "1",
+      "expectation": {
+        "description": "normal success",
+        "required_tag": "SuccessExec"
+      },
+      "observed_message_tag": "SuccessExec",
+      "effective_legacy_tag": "SuccessExec",
+      "legacy_label": "PASSES",
+      "status": "passed",
+      "acceptance_status": "passed",
+      "expectation_matches_tag": true,
+      "result_file_present": true,
+      "cancellation_marker_present": false
+    }
+  ],
+  "enumerated": 9,
+  "counts": {
+    "passed": 4,
+    "failed": 5
+  },
+  "acceptance_counts": {
+    "expectation_mismatch": 1,
+    "passed": 3,
+    "failed": 5
+  },
+  "all_passed": false,
+  "warning": "CompileErr is a failure tag, not proof of a compiler defect; incomplete and unmapped never pass"
+}

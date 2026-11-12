@@ -1,0 +1,23 @@
+{
+  "argv": [
+    "perl",
+    "/opt/cti/bin/TM.pl",
+    "-nod",
+    "-nomail",
+    "-f",
+    "/fixtures/phase0.opt",
+    "-w",
+    "/export/absent/work",
+    "-l",
+    "/export/absent/summary.log",
+    "-x",
+    "SELECTIONS=Regression/Absent",
+    "run"
+  ],
+  "environment_overrides": {
+    "PERL_HASH_SEED": "12",
+    "PERL_PERTURB_KEYS": "0",
+    "FT11_READY": "/export/absent/ready"
+  },
+  "note": "FT11_READY is a fixture control variable, not retained by pruned legacy test .env files"
+}

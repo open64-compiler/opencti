@@ -1,0 +1,339 @@
+[
+  {
+    "name": "normal-tm",
+    "argv": [
+      "perl",
+      "/opt/cti/bin/TM.pl",
+      "-nod",
+      "-nomail",
+      "-f",
+      "/fixtures/phase0.opt",
+      "-w",
+      "/export/normal/work",
+      "-l",
+      "/export/normal/summary.log",
+      "-x",
+      "SELECTIONS=Regression/Normal",
+      "run"
+    ],
+    "returncode": 0,
+    "environment_overrides": {
+      "PERL_HASH_SEED": "12",
+      "PERL_PERTURB_KEYS": "0",
+      "FT11_READY": "/export/normal/ready"
+    }
+  },
+  {
+    "name": "partial-tm",
+    "argv": [
+      "perl",
+      "/opt/cti/bin/TM.pl",
+      "-nod",
+      "-nomail",
+      "-f",
+      "/fixtures/phase0.opt",
+      "-w",
+      "/export/partial/work",
+      "-l",
+      "/export/partial/summary.log",
+      "-x",
+      "SELECTIONS=Regression/Partial",
+      "run"
+    ],
+    "returncode": 0,
+    "environment_overrides": {
+      "PERL_HASH_SEED": "12",
+      "PERL_PERTURB_KEYS": "0",
+      "FT11_READY": "/export/partial/ready"
+    }
+  },
+  {
+    "name": "absent-tm",
+    "argv": [
+      "perl",
+      "/opt/cti/bin/TM.pl",
+      "-nod",
+      "-nomail",
+      "-f",
+      "/fixtures/phase0.opt",
+      "-w",
+      "/export/absent/work",
+      "-l",
+      "/export/absent/summary.log",
+      "-x",
+      "SELECTIONS=Regression/Absent",
+      "run"
+    ],
+    "returncode": 0,
+    "environment_overrides": {
+      "PERL_HASH_SEED": "12",
+      "PERL_PERTURB_KEYS": "0",
+      "FT11_READY": "/export/absent/ready"
+    }
+  },
+  {
+    "name": "cancel-tm",
+    "argv": [
+      "perl",
+      "/opt/cti/bin/TM.pl",
+      "-nod",
+      "-nomail",
+      "-f",
+      "/fixtures/phase0.opt",
+      "-w",
+      "/export/cancel/work",
+      "-l",
+      "/export/cancel/summary.log",
+      "-x",
+      "SELECTIONS=Regression/Partial",
+      "run"
+    ],
+    "returncode": 0,
+    "environment_overrides": {
+      "PERL_HASH_SEED": "12",
+      "PERL_PERTURB_KEYS": "0",
+      "FT11_READY": "/export/cancel/ready"
+    }
+  },
+  {
+    "name": "terminated-tm",
+    "argv": [
+      "perl",
+      "/opt/cti/bin/TM.pl",
+      "-nod",
+      "-nomail",
+      "-f",
+      "/fixtures/phase0.opt",
+      "-w",
+      "/export/terminated/work",
+      "-l",
+      "/export/terminated/summary.log",
+      "-x",
+      "SELECTIONS=Regression/Absent",
+      "run"
+    ],
+    "returncode": -15,
+    "environment_overrides": {
+      "PERL_HASH_SEED": "12",
+      "PERL_PERTURB_KEYS": "0",
+      "FT11_READY": "/export/terminated/ready"
+    }
+  },
+  {
+    "name": "phase-a_pass",
+    "argv": [
+      "bash",
+      "./a_pass.run.sh"
+    ],
+    "cwd": "/session",
+    "returncode": 0,
+    "result_tag": null
+  },
+  {
+    "name": "phase-b_neg_compile",
+    "argv": [
+      "bash",
+      "./b_neg_compile.compile.sh"
+    ],
+    "cwd": "/session",
+    "returncode": 0,
+    "result_tag": null
+  },
+  {
+    "name": "phase-c_bad_compile",
+    "argv": [
+      "bash",
+      "./c_bad_compile.compile.sh"
+    ],
+    "cwd": "/session",
+    "returncode": 1,
+    "result_tag": "CompileBadPass"
+  },
+  {
+    "name": "phase-d_neg_run",
+    "argv": [
+      "bash",
+      "./d_neg_run.run.sh"
+    ],
+    "cwd": "/session",
+    "returncode": 0,
+    "result_tag": null
+  },
+  {
+    "name": "phase-e_bad_run",
+    "argv": [
+      "bash",
+      "./e_bad_run.run.sh"
+    ],
+    "cwd": "/session",
+    "returncode": 0,
+    "result_tag": "ExecBadPass"
+  },
+  {
+    "name": "phase-f_compile_error",
+    "argv": [
+      "bash",
+      "./f_compile_error.compile.sh"
+    ],
+    "cwd": "/session",
+    "returncode": 1,
+    "result_tag": "CompileErr"
+  },
+  {
+    "name": "phase-g_run_error",
+    "argv": [
+      "bash",
+      "./g_run_error.run.sh"
+    ],
+    "cwd": "/session",
+    "returncode": 7,
+    "result_tag": "ExecErr"
+  },
+  {
+    "name": "phase-h_compare_error",
+    "argv": [
+      "bash",
+      "./h_compare_error.compare-out.sh"
+    ],
+    "cwd": "/session",
+    "returncode": 1,
+    "result_tag": "CompareInternalError"
+  },
+  {
+    "name": "phase-i_diff",
+    "argv": [
+      "bash",
+      "./i_diff.compare-out.sh"
+    ],
+    "cwd": "/session",
+    "returncode": 1,
+    "result_tag": "DiffPgmOut"
+  },
+  {
+    "name": "raw-neg-compile",
+    "argv": [
+      "gcc",
+      "-c",
+      "b_neg_compile.c",
+      "-o",
+      "/tmp/rejected.o"
+    ],
+    "cwd": "/session",
+    "returncode": 1
+  },
+  {
+    "name": "raw-neg-runtime",
+    "argv": [
+      "./d_neg_run"
+    ],
+    "cwd": "/session",
+    "returncode": 7
+  },
+  {
+    "name": "raw-unexpected-runtime-pass",
+    "argv": [
+      "./e_bad_run"
+    ],
+    "cwd": "/session",
+    "returncode": 0
+  },
+  {
+    "name": "phase-signal",
+    "argv": [
+      "bash",
+      "./z_wait.run.sh"
+    ],
+    "returncode": 143,
+    "target_signal": "SIGTERM",
+    "target_descendants": [
+      {
+        "pid": 1017,
+        "parent": 1016,
+        "cmdline": "./z_wait "
+      }
+    ],
+    "result_tag": "ExecErr"
+  },
+  {
+    "name": "meta-signal",
+    "argv": [
+      "bash",
+      "./z_wait.sh"
+    ],
+    "returncode": 1,
+    "target_signal": "SIGTERM",
+    "target_descendants": [
+      {
+        "pid": 1067,
+        "parent": 1066,
+        "cmdline": "./z_wait "
+      },
+      {
+        "pid": 1066,
+        "parent": 1059,
+        "cmdline": "/bin/bash ./z_wait.run.sh "
+      },
+      {
+        "pid": 1059,
+        "parent": 1021,
+        "cmdline": "/usr/local/bin/perl /opt/cti/Scripts/limit.pl -q -p -m1 ./z_wait.run.sh "
+      }
+    ],
+    "result_tag": "LimitInternalError"
+  },
+  {
+    "name": "protocol-missing-marker",
+    "argv": [
+      "perl",
+      "/tools/module_probe.pl",
+      "/export/protocol-missing-marker",
+      "missing-marker"
+    ],
+    "cwd": null,
+    "returncode": 0
+  },
+  {
+    "name": "protocol-unknown",
+    "argv": [
+      "perl",
+      "/tools/module_probe.pl",
+      "/export/protocol-unknown",
+      "unknown"
+    ],
+    "cwd": null,
+    "returncode": 0
+  },
+  {
+    "name": "protocol-reject-unknown",
+    "argv": [
+      "perl",
+      "/tools/module_probe.pl",
+      "/export/protocol-reject-unknown",
+      "reject-unknown"
+    ],
+    "cwd": null,
+    "returncode": 17
+  },
+  {
+    "name": "protocol-no-enumeration",
+    "argv": [
+      "perl",
+      "/tools/module_probe.pl",
+      "/export/protocol-no-enumeration",
+      "no-enumeration"
+    ],
+    "cwd": null,
+    "returncode": 0
+  },
+  {
+    "name": "protocol-unit-error",
+    "argv": [
+      "perl",
+      "/tools/module_probe.pl",
+      "/export/protocol-unit-error",
+      "unit-error"
+    ],
+    "cwd": null,
+    "returncode": 0
+  }
+]

@@ -1,0 +1,62 @@
+# Start time was Thu Nov 12 20:36:31 2026 on a891fbd213f5
+# TEST_WORK_DIR --> /export/normal/work
+# OPT_LEVEL     --> 0
+# DATA_MODE     --> +DD64
+# COMPILER_VERSION --> gcc-13.3.0
+# CTI_GROUPS    --> /fixtures/groups
+# REPOSITORY_TYPE --> SVN
+# OPTIONS_FILE--> /fixtures/phase0.opt
+# SELECTIONS  --> Regression/Normal
+# VIEW    --> None
+# DTM_POOL    --> Default
+# DTM_CPUARCH --> aarch64
+# DTM_PRIORITY--> 2
+# DISTRIBUTED_TM --> 
+# SEND_LOG    --> 
+# http://localhost/CTI/cgi-bin/get-log-file.cgi?log=/export/normal/summary.log
+# END OF HEADER
+
+# TOTAL TESTS=9,  PASS=4,  FAIL=5,  RUNNING=0
+
+#_________________________________________________________
+#  PASSES 
+#_________________________________________________________
+# Total Number of PASSES = 4
+Regression/Normal/a_pass.c
+Regression/Normal/b_neg_compile.c
+Regression/Normal/d_neg_run.c
+Regression/Normal/e_bad_run.c
+
+#_________________________________________________________
+#  COMPARE SCRIPT ERRORS 
+#_________________________________________________________
+# Total Number of COMPARE SCRIPT ERRORS = 1
+Regression/Normal/h_compare_error.c
+
+#_________________________________________________________
+#  COMPILATION FAILURES 
+#_________________________________________________________
+# Total Number of COMPILATION FAILURES = 1
+Regression/Normal/f_compile_error.c
+
+#_________________________________________________________
+#  COMPILATION PASS FAILURES 
+#_________________________________________________________
+# Total Number of COMPILATION PASS FAILURES = 1
+Regression/Normal/c_bad_compile.c
+
+#_________________________________________________________
+#  EXECUTION FAILURES 
+#_________________________________________________________
+# Total Number of EXECUTION FAILURES = 1
+Regression/Normal/g_run_error.c
+
+#_________________________________________________________
+#  OUTPUT DIFFERENCE FAILURES 
+#_________________________________________________________
+# Total Number of OUTPUT DIFFERENCE FAILURES = 1
+Regression/Normal/i_diff.c
+
+# TIME_TAKEN --> 00:00:01 [1794515792 - 1794515791]
+
+# End Time was Thu Nov 12 20:36:32 2026

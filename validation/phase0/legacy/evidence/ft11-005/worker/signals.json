@@ -1,0 +1,138 @@
+[
+  {
+    "case": "partial",
+    "signal": "SIGTERM",
+    "tm_pid": 543,
+    "scope": "unit descendants only",
+    "scheduler_marker_injected": false,
+    "descendants": [
+      {
+        "pid": 676,
+        "parent": 675,
+        "cmdline": "./z_wait "
+      },
+      {
+        "pid": 675,
+        "parent": 668,
+        "cmdline": "/bin/bash ./z_wait.run.sh "
+      },
+      {
+        "pid": 668,
+        "parent": 630,
+        "cmdline": "/usr/local/bin/perl /opt/cti/Scripts/limit.pl -q -p -m1 ./z_wait.run.sh "
+      },
+      {
+        "pid": 630,
+        "parent": 558,
+        "cmdline": "/bin/bash ./z_wait.sh "
+      },
+      {
+        "pid": 558,
+        "parent": 543,
+        "cmdline": "/usr/local/bin/perl -w /opt/cti/Scripts/drivers/meta-driver.pl -unit Regression/Partial -uid 1 "
+      }
+    ]
+  },
+  {
+    "case": "absent",
+    "signal": "SIGTERM",
+    "tm_pid": 677,
+    "scope": "unit descendants only",
+    "scheduler_marker_injected": false,
+    "descendants": [
+      {
+        "pid": 747,
+        "parent": 746,
+        "cmdline": "./z_wait "
+      },
+      {
+        "pid": 746,
+        "parent": 739,
+        "cmdline": "/bin/bash ./z_wait.run.sh "
+      },
+      {
+        "pid": 739,
+        "parent": 701,
+        "cmdline": "/usr/local/bin/perl /opt/cti/Scripts/limit.pl -q -p -m1 ./z_wait.run.sh "
+      },
+      {
+        "pid": 701,
+        "parent": 692,
+        "cmdline": "/bin/bash ./z_wait.sh "
+      },
+      {
+        "pid": 692,
+        "parent": 677,
+        "cmdline": "/usr/local/bin/perl -w /opt/cti/Scripts/drivers/meta-driver.pl -unit Regression/Absent -uid 1 "
+      }
+    ]
+  },
+  {
+    "case": "cancel",
+    "signal": "SIGTERM",
+    "tm_pid": 748,
+    "scope": "unit descendants only",
+    "scheduler_marker_injected": true,
+    "descendants": [
+      {
+        "pid": 881,
+        "parent": 880,
+        "cmdline": "./z_wait "
+      },
+      {
+        "pid": 880,
+        "parent": 873,
+        "cmdline": "/bin/bash ./z_wait.run.sh "
+      },
+      {
+        "pid": 873,
+        "parent": 835,
+        "cmdline": "/usr/local/bin/perl /opt/cti/Scripts/limit.pl -q -p -m1 ./z_wait.run.sh "
+      },
+      {
+        "pid": 835,
+        "parent": 763,
+        "cmdline": "/bin/bash ./z_wait.sh "
+      },
+      {
+        "pid": 763,
+        "parent": 748,
+        "cmdline": "/usr/local/bin/perl -w /opt/cti/Scripts/drivers/meta-driver.pl -unit Regression/Partial -uid 1 "
+      }
+    ]
+  },
+  {
+    "case": "terminated",
+    "signal": "SIGTERM",
+    "tm_pid": 882,
+    "scope": "whole TM process group",
+    "scheduler_marker_injected": false,
+    "descendants": [
+      {
+        "pid": 952,
+        "parent": 951,
+        "cmdline": "./z_wait "
+      },
+      {
+        "pid": 951,
+        "parent": 944,
+        "cmdline": "/bin/bash ./z_wait.run.sh "
+      },
+      {
+        "pid": 944,
+        "parent": 906,
+        "cmdline": "/usr/local/bin/perl /opt/cti/Scripts/limit.pl -q -p -m1 ./z_wait.run.sh "
+      },
+      {
+        "pid": 906,
+        "parent": 897,
+        "cmdline": "/bin/bash ./z_wait.sh "
+      },
+      {
+        "pid": 897,
+        "parent": 882,
+        "cmdline": "/usr/local/bin/perl -w /opt/cti/Scripts/drivers/meta-driver.pl -unit Regression/Absent -uid 1 "
+      }
+    ]
+  }
+]
