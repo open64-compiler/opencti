@@ -1,0 +1,4 @@
+. /fixtures/phase0.opt
+export SELECTIONS="Regression/FT12"
+export Regression_FT12_TESTS="mismatch.c"
+

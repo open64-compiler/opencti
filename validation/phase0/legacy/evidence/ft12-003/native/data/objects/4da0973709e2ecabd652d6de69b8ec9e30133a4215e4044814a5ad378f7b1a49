@@ -1,0 +1,29 @@
+# Start time was Thu Nov 12 21:26:14 2026 on acd9a216e321
+# TEST_WORK_DIR --> /lab/original/work/rerun.10.work
+# OPT_LEVEL     --> 0
+# DATA_MODE     --> +DD64
+# COMPILER_VERSION --> gcc-13.3.0
+# CTI_GROUPS    --> /fixtures/groups
+# REPOSITORY_TYPE --> SVN
+# OPTIONS_FILE--> /lab/original/work/rerun.10.opt
+# SELECTIONS  --> Regression/FT12
+# WRKROOT --> /lab/requested-root
+# DTM_POOL    --> review_pool:ft12-local
+# DTM_CPUARCH --> aarch64
+# DTM_PRIORITY--> 2
+# DISTRIBUTED_TM --> 
+# SEND_LOG    --> 
+# http://localhost/CTI/cgi-bin/get-log-file.cgi?log=/lab/original/work/rerun.10.log
+# END OF HEADER
+
+# TOTAL TESTS=1,  PASS=0,  FAIL=1,  RUNNING=0
+
+#_________________________________________________________
+#  COMPILATION FAILURES 
+#_________________________________________________________
+# Total Number of COMPILATION FAILURES = 1
+Regression/FT12/mismatch.c
+
+# TIME_TAKEN --> 00:00:00 [1794518774 - 1794518774]
+
+# End Time was Thu Nov 12 21:26:14 2026

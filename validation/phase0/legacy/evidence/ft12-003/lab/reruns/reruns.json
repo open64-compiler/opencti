@@ -1,0 +1,175 @@
+{
+  "attempts": [
+    {
+      "label": "rerun-a",
+      "workspace": "/lab/original/work/rerun.9.work",
+      "options": "/lab/original/work/rerun.9.opt",
+      "log": "/lab/original/work/rerun.9.log",
+      "cgi_pid": 9
+    },
+    {
+      "label": "rerun-b",
+      "workspace": "/lab/original/work/rerun.10.work",
+      "options": "/lab/original/work/rerun.10.opt",
+      "log": "/lab/original/work/rerun.10.log",
+      "cgi_pid": 10
+    }
+  ],
+  "overlap_verified": true,
+  "original_unit_unchanged": true,
+  "distinct_compile_script_inodes": true,
+  "unit_before": {
+    "mismatch": {
+      "sha256": "ea152216af65b0470cc69c207cec30c9da8d7abea0b79dad376d9735ee5eb38f",
+      "mode": 493
+    },
+    "mismatch.c": {
+      "link": "/fixtures/groups/Regression/FT12/Src/mismatch.c",
+      "mode": 493
+    },
+    "mismatch.compare-out.sh": {
+      "sha256": "d7ff082556c2ebe28a91964df7c9d75f5dba643090ab051a6125161af6ef796e",
+      "mode": 511
+    },
+    "mismatch.compile.sh": {
+      "sha256": "b155cd61d1ac921dabced6755f11699ae6e3ff644e806434cd755b31bf3aa2ec",
+      "mode": 511
+    },
+    "mismatch.env": {
+      "sha256": "9f492a4991b972ace2434fa7979bd9f8d51cf96c1f7742453347c1f99fd85e44",
+      "mode": 420
+    },
+    "mismatch.err": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "mode": 420
+    },
+    "mismatch.link.sh": {
+      "sha256": "bae857d7c92edd5cd011865178c132e44b9fc847b89c52a1d6bb05c83728fb28",
+      "mode": 511
+    },
+    "mismatch.o": {
+      "sha256": "ae98529b02f0c99731b08ed6160649e51f11e7186fe2d3ab1013dd31cf204e1d",
+      "mode": 420
+    },
+    "mismatch.out": {
+      "sha256": "be923db73e13585d932a109fb81435061a67e71c532e313a501d09c41c1b0ba2",
+      "mode": 420
+    },
+    "mismatch.out.diff": {
+      "sha256": "c57529ac65b31afa3fb0e1a7f4c6c2ce7ef8e2d7cfe996fdf3b2a873874b38bc",
+      "mode": 420
+    },
+    "mismatch.out.master": {
+      "link": "/fixtures/groups/Regression/FT12/Src/../Masters/mismatch.out",
+      "mode": 493
+    },
+    "mismatch.result": {
+      "sha256": "461325dffd71fed76022e3abcb471822b2b7da0bd0a45d623fd68d05e7fac465",
+      "mode": 420
+    },
+    "mismatch.run.sh": {
+      "sha256": "e71888275a733e1c2c5c22536e201c39eb72b4b7eb5dab90858b080902e10065",
+      "mode": 511
+    },
+    "mismatch.sh": {
+      "sha256": "a0c06d71147d00a9038612fb1b3df46e5f48f54ae700a60d0b8b46d4b027ecb3",
+      "mode": 511
+    },
+    "pass": {
+      "sha256": "cd5eef0ecab8d1786003e12b5872305b9477aef589af0475cecaa12e0326b55d",
+      "mode": 493
+    },
+    "pass.c": {
+      "link": "/fixtures/groups/Regression/FT12/Src/pass.c",
+      "mode": 493
+    },
+    "pass.compile.sh": {
+      "sha256": "ea2686f4ee3fd4298a0e685d15da715ac4f44f8fe4e21c24671a3ecc025a482f",
+      "mode": 511
+    },
+    "pass.env": {
+      "sha256": "d811803c4afe40ef05edd404e1d014a47f26172cec00db1f0301021c3ebe5ea6",
+      "mode": 420
+    },
+    "pass.err": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "mode": 420
+    },
+    "pass.link.sh": {
+      "sha256": "e7f2536058f5f102b6254913a946f4eeb59790d56d6e3271546e5c753dad61f8",
+      "mode": 511
+    },
+    "pass.o": {
+      "sha256": "d9067f3f404dd8f2f52ecbc7d1796a4f9d1b8134d8e9eba819dfa7db68db446e",
+      "mode": 420
+    },
+    "pass.out": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "mode": 420
+    },
+    "pass.result": {
+      "sha256": "9c2adf69a6681550697144f9a78631c58f8589faddce0528aa9d09d25b03c398",
+      "mode": 420
+    },
+    "pass.run.sh": {
+      "sha256": "76733aaadcd7e7a4226e789e5bae10bd8261b95dce557740a32cac308962390b",
+      "mode": 511
+    },
+    "pass.sh": {
+      "sha256": "c6c9ef81beee9c1c388c4131a140da6564c7738143f5cb6edd2f7a629e99afdc",
+      "mode": 511
+    },
+    "pass.tmconfig": {
+      "link": "/fixtures/groups/Regression/FT12/Src/pass.tmconfig",
+      "mode": 493
+    },
+    "runtime_error": {
+      "sha256": "77d679de6b424537442bebe1510c92c72bf75894f3398dc979a10f88e8b3ec43",
+      "mode": 493
+    },
+    "runtime_error.c": {
+      "link": "/fixtures/groups/Regression/FT12/Src/runtime_error.c",
+      "mode": 493
+    },
+    "runtime_error.compile.sh": {
+      "sha256": "0a870d7820bfa56e78ffe6fd1c7225cd01370e559f0193398f8f5d93f08a1006",
+      "mode": 511
+    },
+    "runtime_error.env": {
+      "sha256": "2657216a8dc8bba2e70e32b0f5c4e3f1a0ea08b8c162414d6e2eb61ff33e2899",
+      "mode": 420
+    },
+    "runtime_error.err": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "mode": 420
+    },
+    "runtime_error.link.sh": {
+      "sha256": "dd4801fe8b08e21358f503c0a98b6f2d2211d678831e554abba8cb8ba7711d5e",
+      "mode": 511
+    },
+    "runtime_error.o": {
+      "sha256": "dad3dac7b602b0010adba9d274eb246ec44ae4ed106d070f3a489c527b5b6b2a",
+      "mode": 420
+    },
+    "runtime_error.out": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "mode": 420
+    },
+    "runtime_error.result": {
+      "sha256": "5b4c1d5448279cdffaa6d232b0c71371ae4e53058210195a6a238959ee9d9c18",
+      "mode": 420
+    },
+    "runtime_error.run.sh": {
+      "sha256": "7b03930a797419787dcbe03812dda5a27c646403409fb618155120c96a14873c",
+      "mode": 511
+    },
+    "runtime_error.sh": {
+      "sha256": "b119363946ea324442c7d0b8340e11c2b216af1daf3be394396db88597a80f92",
+      "mode": 511
+    },
+    "runtime_error.tmconfig": {
+      "link": "/fixtures/groups/Regression/FT12/Src/runtime_error.tmconfig",
+      "mode": 493
+    }
+  }
+}

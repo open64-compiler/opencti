@@ -1,0 +1,30 @@
+# Start time was Thu Nov 12 21:26:20 2026 on 7c1d2cd8c03f
+# TEST_WORK_DIR --> /lab/original/work
+# OPT_LEVEL     --> 0
+# DATA_MODE     --> +DD64
+# COMPILER_VERSION --> gcc-13.3.0
+# CTI_GROUPS    --> /fixtures/groups
+# REPOSITORY_TYPE --> SVN
+# OPTIONS_FILE--> /fixtures/phase0.opt
+# SELECTIONS  --> Regression/FT12
+# TESTS       --> mismatch.c
+# VIEW    --> None
+# DTM_POOL    --> original_pool:ft12-original
+# DTM_CPUARCH --> aarch64
+# DTM_PRIORITY--> 2
+# DISTRIBUTED_TM --> 
+# SEND_LOG    --> 
+# http://localhost/CTI/cgi-bin/get-log-file.cgi?log=/lab/original/summary.log
+# END OF HEADER
+
+# TOTAL TESTS=1,  PASS=1,  FAIL=0,  RUNNING=0
+
+#_________________________________________________________
+#  PASSES 
+#_________________________________________________________
+# Total Number of PASSES = 1
+Regression/FT12/mismatch.c
+
+# TIME_TAKEN --> 00:00:01 [1794518781 - 1794518780]
+
+# End Time was Thu Nov 12 21:26:21 2026

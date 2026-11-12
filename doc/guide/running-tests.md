@@ -114,3 +114,9 @@ Read each generated script, change to its working directory, and run it with the
 | dTM jobs wait indefinitely | Pool/host status, OS/architecture matching, load monitors, SSH, and shared-path access |
 
 Some tests are compiler- or target-specific. A failure on a different compiler family or modern host is not by itself evidence of a new compiler defect.
+
+## Reruns and work-directory reuse
+
+The [FT12 experiment](phase0-ft12-results.md) records actual rerun preview/launch behavior. A preview creates `rerun.<pid>.opt` but executes no test; launch acknowledgement is separate from test completion. The CGI puts rerun work/log/options under the original work directory, so reusing that parent path can delete all of them even with `CLEAN=false`. Archive original and rerun evidence outside that execution hierarchy before reuse.
+
+Compare the original invocation and captured effective settings with the generated rerun command. The current header can omit `-x`, `-px` and the extra `-xf` file; the actual FT12 rerun loses a compiler flag and changes `DiffPgmOut` into `CompileErr`. Pool/view/source/master context and option differences must be explicit. Newly allocated native attempts must have distinct IDs and non-overlapping workspaces; changed debugging sessions and deliberate legacy reuse controls retain separate provenance.

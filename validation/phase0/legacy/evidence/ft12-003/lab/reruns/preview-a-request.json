@@ -1,0 +1,13 @@
+{
+  "parameters": {
+    "log": "/lab/original/summary.log",
+    "run_view": "None",
+    "run_wrkroot": "/lab/requested-root",
+    "dtm_pool": "review_pool:ft12-local",
+    "cti_groups": "/fixtures/groups",
+    "send_log": "",
+    "ck_DiffPgmOut_Regression/FT12/mismatch.c": "on",
+    "submit": "Preview it !"
+  },
+  "body": "log=%2Flab%2Foriginal%2Fsummary.log&run_view=None&run_wrkroot=%2Flab%2Frequested-root&dtm_pool=review_pool%3Aft12-local&cti_groups=%2Ffixtures%2Fgroups&send_log=&ck_DiffPgmOut_Regression%2FFT12%2Fmismatch.c=on&submit=Preview+it+%21"
+}

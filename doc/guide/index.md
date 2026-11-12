@@ -6,6 +6,7 @@ These guides describe the code imported at commit `8c3d603`, rather than a curre
 
 ## Start here
 
+- [FT12 reruns and workspace reuse](phase0-ft12-results.md): preview/attempt identity, lost legacy options, destructive reuse and pinned original-failure replay.
 - [FT11 result semantics](phase0-ft11-results.md): expected failures, partial/cancelled units, process status and an observed negative-runtime false pass.
 - [FT10 collection retry results](phase0-ft10-results.md): interrupted/corrupt transfers, duplicate events, bounded storage pressure and verified cleanup/pin guards.
 - [FT09 platform and debugger results](phase0-ft09-results.md): native target/image qualification, explicit incompatible decisions and real GDB attachment from an interactive shell.

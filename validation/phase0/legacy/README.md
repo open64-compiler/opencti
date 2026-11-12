@@ -303,3 +303,35 @@ Nine saved phase checks, three direct producer checks and two executable-signal 
 `ft11/reconcile.py` is a validation-only helper, not a production importer. It keeps expectations, original tags/labels, cancellation precedence and reconciliation status separate. The offline verifier audits raw archive contents as well as recorded summaries and commands. Six offline audit tests cover the reference, byte corruption, a rehashed contradictory runtime status, hiding the false-pass expectation mismatch, an unknown tag presented as a pass, and duplicate/unenumerated messages. Run `python3 -B -m unittest discover -s validation/phase0/legacy -p test_verify_ft11.py -v`. The reference `runs/ft11-005/` has 310 hashed files. Its 264,252-byte compact copy in `evidence/ft11-005/` has 145 hashes and retains five complete small work archives instead of expanded duplicate trees. The existing 586 MB runtime prerequisite remains ignored/local, with size/digest recorded. Exploratory runs 001–004 are not the passing reference.
 
 One restricted network-disabled container is removed after export. The full 2,654-entry framework identity, earlier captures, normal original workspace after private replay and source fixtures remain unchanged. Native importer/dashboard acceptance, live cancellation races, historical archives and GPU/DSL coverage remain open. See the [FT11 report](../../../doc/guide/phase0-ft11-results.md) for exact tags, counts, gaps and preservation policy boundaries.
+
+## FT12 reruns, workspace reuse and pinned original evidence
+
+`run_ft12.py` invokes the stock rerun CGI and TM against a new three-case regression. The existing ARM64 runtime, Python 3.9 or newer and Docker are required. Framework files/defaults remain unchanged. Each output must be new.
+
+```sh
+python3 -B validation/phase0/legacy/run_ft12.py \
+  --capture validation/phase0/legacy/runs/run-002 \
+  --output validation/phase0/legacy/runs/new-ft12-run
+
+python3 -B validation/phase0/legacy/verify_ft12.py \
+  validation/phase0/legacy/runs/new-ft12-run \
+  --compact-output validation/phase0/legacy/evidence/new-ft12-run
+
+python3 -B validation/phase0/legacy/verify_ft12.py \
+  validation/phase0/legacy/evidence/ft12-003
+
+python3 -B -m unittest discover -s validation/phase0/legacy \
+  -p test_verify_ft12.py -v
+```
+
+The original attempt records one pass, `ExecErr` and `DiffPgmOut`. Two actual CGI previews create distinct temporary options files without launching jobs or creating attempts. A validation entry wrapper redirects only the loaded `CTI_lib::Secure_Shell` value to a local-only transport seam; the deployed CGI file is unmodified. Two actual CGI reruns overlap behind a recorded release barrier, have separate work/log paths and compile-script inodes, and run only the selected mismatch. No SSH/dTM/web server, mail, ClearCase view or actual pool routing is used.
+
+The reruns expose a legacy configuration gap: TM uses lexical CLI/extra-file variables while its header generator reads different globals/environment names. The original log omits `-x`, `-px` and `OPTIONSFILE2`; the CGI loses `-DFT12_FLAG=17`, turning the original output mismatch into `CompileErr`. The preview/actual command, source options and archived effective environments retain that discrepancy. A fresh UUID workspace with explicitly restored settings reproduces `DiffPgmOut`; another distinct attempt adds an explicit success option and uses `CLEAN=true`. These execute the legacy backend under native validation orchestration; a native replacement adapter is unavailable.
+
+Before destructive controls, the native Mac controller reuses the retained FT10 Store implementation to pin pre-run inputs, exact work, summary and invocation for each attempt. Seven manifests reference twenty-one CAS objects, with immutable outcomes, parent links and verified runtime prerequisites. Neither native SQLite database nor the object store is mounted into a worker. A private debugging copy changes its own source and restores its own compiler flag, then passes four saved phases; rerun B and original fixtures remain unchanged.
+
+Two deliberately unsafe legacy controls reuse the original top-level path, first with `CLEAN=false` and then with a changed-options success under `CLEAN=true`. Old sentinels, original files and nested rerun histories disappear from the live work path. Their pinned copies remain complete and acknowledged. The native catalog records historical legacy paths explicitly, rejects three reused paths and two ancestor/descendant overlaps for new allocations, and supplies two fresh UUID workspaces. Preview files and changed sessions are not counted as executed attempts. Both unsafe controls are labeled as guard bypasses, not successful native isolation.
+
+Seven preservation checkpoints, pinned-object deletion refusal and an attempted original-outcome replacement check precede final recovery. A fresh worker reconstructs source/work solely from the original native objects and replays compile/link/run/compare: 0/0/0/1, `DiffPgmOut`, original output and master hash. Eight offline tests cover reference integrity, corruption, rehashed outcome/preview/checkpoint contradictions, post-deletion reservations, path aliases/overlap, unknown parents and distinct linked allocations.
+
+Reference: `runs/ft12-003/` has 289 hashed files. Its 815,693-byte compact copy in `evidence/ft12-003/` has 168 manifest entries, including closed ledgers, objects, exact work/session archives, CGI bytes and capture tools. Expanded work/recovery/session trees and duplicate transfer spools are omitted. Exploratory runs 001–002 and the existing 586 MB runtime remain ignored/local. All eight workers use the restricted network-disabled profile and are removed after export; all 2,654 deployed framework entries remain unchanged. DA11, production native reruns and real remote/view/historical/GPU/DSL coverage remain open. See the [FT12 report](../../../doc/guide/phase0-ft12-results.md).

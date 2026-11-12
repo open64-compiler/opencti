@@ -1,0 +1,92 @@
+<!--
+Copyright (C) 2011, Hewlett-Packard Development Company, L.P.
+All Rights Reserved.
+Open64 is free software; you can redistribute it and/or modify it under the
+terms of the GNU General Public License as published by the Free Software
+Foundation; either version 2 of the License, or (at your option) any later
+version. Distributed WITHOUT ANY WARRANTY; without even the implied warranty
+of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General
+Public License for more details.
+-->
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>FT12 reruns, workspace reuse and original failure preservation — OpenCTI</title><style>body{margin:0;background:#f4f6f8;color:#18232e;font:17px/1.6 system-ui,sans-serif}
+main{max-width:1050px;margin:auto;padding:2rem;background:white;min-height:100vh}
+a{color:#075ca8}nav{padding:.7rem 0;border-bottom:1px solid #ccd5dd}
+h1,h2,h3{line-height:1.25;scroll-margin-top:1rem}h2{margin-top:2rem}
+pre{padding:1rem;background:#eff3f7;overflow:auto;border:1px solid #d5dce3}
+code{font: .88em/1.5 ui-monospace,monospace;overflow-wrap:anywhere}
+table{border-collapse:collapse;width:100%;display:block;overflow:auto}
+th,td{padding:.6rem;border:1px solid #ccd5dd;text-align:left;vertical-align:top}
+th{background:#eff3f7}td:first-child{min-width:10rem}footer{border-top:1px solid #ccd5dd;margin-top:2rem;color:#52606b}
+@media(max-width:640px){main{padding:1rem}body{font-size:16px}}
+</style></head><body><main>
+<nav><a href="index.html">CTI documentation</a></nav>
+<h1 id="ft12-reruns-workspace-reuse-and-original-failure-preservation">FT12 reruns, workspace reuse and original failure preservation</h1>
+<p><a href="index.html">Documentation home</a> · <a href="failure-triage-acceptance.html#ft12-reruns-and-workspace-reuse">Acceptance scenarios</a> · <a href="dashboard-feature-ledger.html">Dashboard ledger</a> · <a href="../../validation/phase0/legacy/README.md">Validation instructions</a></p>
+<h2 id="observed-result-and-scope">Observed result and scope</h2>
+<p>FT12 now has an audited isolated reference, <code>ft12-003</code>, completed on 2026-11-12. Seven real legacy TM executions, two real CGI previews and eight private phase replays demonstrate preservation of the original failure through reruns, debugging edits, destructive work-path reuse and successful-run cleanup. Seven immutable attempt manifests and twenty-one content-addressed objects remain in a native Mac fixture store outside every worker mount. The original failed program is rebuilt, executed and compared from those objects after the live work paths have been replaced.</p>
+<p>The experiment also establishes two legacy gaps: the rerun CGI cannot recover command-line/extra-file settings omitted from TM&#x27;s log header, and its nested rerun paths are deleted when the original parent work directory is reused. These are characterized without fixing the existing framework. The new native catalog, reused FT10 collector and local transport are validation tools, not production scheduler/importer/dashboard services.</p>
+<p>Execution uses the retained Linux ARM64 image <code>sha256:a119c5e4a42dedbb5cdce10d448efce31b4054018bde56a4e476bc2c529fa62c</code>. Each of eight disposable containers has network disabled, one CPU, 1 GiB memory, all capabilities dropped and <code>no-new-privileges</code>. No packages or new images are built. The 2,654-entry deployed framework identity remains <code>1584e7b404a016da21ea8bd4a5c3ee2d30a1ee1424ece1d21deab627b00e1de2</code> before and after every worker. Earlier captures, approved fixtures and all 22 pre-existing filename-collision files remain unchanged.</p>
+<h2 id="original-failure-and-rerun-selection">Original failure and rerun selection</h2>
+<p>A new regression unit has three C cases: a deliberate output mismatch, a normal pass and a program returning 7. The original summary is TOTAL=3, PASS=1, FAIL=2, RUNNING=0; TM exits zero. Its immutable results retain <code>DiffPgmOut</code>, <code>SuccessExec</code> and <code>ExecErr</code> respectively. The comparison master is always the captured <code>approved\nflag=17\n</code> file, SHA-256 <code>8cebf09976c0a8f0f2113d643c0c9fe9d6fd0e47ad3e78540db32e795cc4adbd</code>.</p>
+<p>The original invocation deliberately uses <code>-px OPT_LEVEL=1</code>, an extra <code>-xf /fixtures/extra.opt</code>, and final <code>-x</code> options including <code>CC_OPTIONS=-DFT12_FLAG=17</code> and <code>OPT_LEVEL=0</code>. Captured <code>TMEnv</code>, pruned test environment, generated recipes and invocation record establish the effective settings, rather than assuming the header is complete.</p>
+<p>The fixture invokes the deployed <code>rerun_test.cgi</code> unchanged through a new validation entry wrapper. After loading <code>CTI_lib</code>, that wrapper redirects only its in-memory <code>Secure_Shell</code> value to a local transport adapter. The adapter accepts only the explicit <code>ft12-local</code> host/root/local-TM fixture command and executes Bash inside the network-disabled container. The actual CGI generates both preview and launch commands; no SSH connection, web server, dTM service, mail or ClearCase view is used.</p>
+<p>Two POST previews select only <code>Regression/FT12/mismatch.c</code>, request pool <code>review_pool:ft12-local</code>, view <code>None</code> and <code>WRKROOT=/lab/requested-root</code>. Each creates exactly one new <code>rerun.&lt;pid&gt;.opt</code>, no work/result directory or transport invocation. Neither is an executed attempt in the catalog or evidence ledger.</p>
+<p>Both generated options files contain:</p>
+<pre><code>. /fixtures/phase0.opt
+export SELECTIONS=&quot;Regression/FT12&quot;
+export Regression_FT12_TESTS=&quot;mismatch.c&quot;</code></pre>
+<p>The two launch requests run that selected test in distinct <code>rerun.&lt;pid&gt;.work</code> directories and log files under <code>/lab/original/work</code>. Their execution intervals overlap, verified by monotonic transport timestamps and a fixture release barrier. Their generated compile scripts have distinct filesystem inodes. The original unit artifacts remain unchanged during both requests. CGI return is a launch acknowledgement; the controller separately waits for actual background TM completion before snapshotting results.</p>
+<h2 id="configuration-fidelity-gap">Configuration fidelity gap</h2>
+<p>The stock <code>generateLogHeader</code> reads package globals <code>%::Xport</code>/<code>%::Pxport</code> and environment <code>XFILE</code>. <code>TM.pl</code> uses lexical <code>%Opt_Xport</code>/<code>%Opt_Pxport</code> and <code>$Opt_XFILE</code> without populating those header inputs. In this actual invocation, the summary contains no <code>-x</code>, <code>-px</code> or <code>OPTIONSFILE2</code> records. <code>gen_opt_tmp</code> consequently sources only the base options file, not the extra options or the final compiler flags.</p>
+<table><thead><tr><th>Property</th><th>Original attempt</th><th>Actual CGI reruns</th><th>Fresh explicit-options rerun</th></tr></thead><tbody>
+<tr><td>Selected tests</td><td>Mismatch, pass, runtime failure</td><td>Mismatch only</td><td>Mismatch only</td></tr>
+<tr><td>Effective compiler options</td><td><code>-DFT12_FLAG=17</code></td><td>Empty</td><td><code>-DFT12_FLAG=17</code></td></tr>
+<tr><td>Optimization/data mode</td><td><code>0</code>, <code>+DD64</code></td><td><code>0</code>, <code>+DD64</code></td><td><code>0</code>, <code>+DD64</code></td></tr>
+<tr><td>Pool context</td><td><code>original_pool:ft12-original</code></td><td>Requested <code>review_pool:ft12-local</code></td><td><code>original_pool:ft12-original</code></td></tr>
+<tr><td>Baseline reference</td><td>Captured master above</td><td>Same referenced master; comparison never reached</td><td>Same master, comparison executed</td></tr>
+<tr><td>Mismatch test outcome</td><td><code>DiffPgmOut</code></td><td><code>CompileErr</code>: <code>FT12_FLAG</code> undeclared</td><td><code>DiffPgmOut</code></td></tr>
+</tbody></table>
+<p>All executions are local; pool values and the selected transport host are configuration evidence, not proof of real pool routing. <code>WRKROOT</code> is restored into the rerun environment but does not relocate the CGI&#x27;s generated paths out of the original work directory. A named/non-None view and remote execution are not exercised.</p>
+<p>The native fixture&#x27;s fresh explicit-options rerun uses a reserved UUID workspace and the captured effective compiler flag, reproducing the original mismatch. This is a legacy execution backend under native validation orchestration; no replacement native language adapter exists. Importing only the summary header would not meet rerun fidelity. The original source/options, effective settings, CLI invocation, baseline identity and subsequent changes must remain available separately.</p>
+<h2 id="private-editing-and-attempt-identity">Private editing and attempt identity</h2>
+<p>A debugging session copies rerun A&#x27;s work and the complete source/master fixture tree into its own writable mounts. Its recorded ID is <code>ft12-debug-session-a</code>, with parent <code>ft12-rerun-a</code>; it is a changed session, not another imported original result.</p>
+<p>The session restores the missing compiler flag in its private <code>.env</code>, changes only its source copy to print <code>approved</code>, and executes the saved compile, link, run and compare scripts. All four return zero; actual output is <code>approved\nflag=17\n</code>. Source and environment before/after hashes identify both edits. Rerun B&#x27;s regular-file inventory and the original fixture inventory remain byte-identical before/after. The original and both failed CGI rerun manifests stay complete and acknowledged in the native store.</p>
+<p>Within this reference store, every actual TM execution has a different attempt ID and parent link. Descriptive legacy IDs are scoped to that experimental store; separate invocations create separate stores, not a global production attempt service. Three paths are recorded as observed legacy allocations: the original and its two nested CGI reruns. Two more attempts deliberately bypass native workspace guards to characterize unsafe legacy reuse. Two native validation allocations have fresh UUID directories outside that hierarchy. This distinction prevents the destructive controls from being misrepresented as isolated native attempts. Preview files and debugging sessions do not inflate the seven completed TM attempts.</p>
+<h2 id="workspace-replacement-and-cleanup">Workspace replacement and cleanup</h2>
+<p>The native Mac controller imports and verifies each finished attempt before the next destructive step. Each manifest requires four objects: pre-run input/source/master/options archive, exact work archive, summary and invocation provenance. The original runtime archive is a required verified local prerequisite. Filesystem objects and both SQLite catalogs stay outside <code>/lab</code> and are never mounted into a Docker worker.</p>
+<table><thead><tr><th>Control</th><th>Actual legacy effect</th><th>Preserved evidence</th></tr></thead><tbody>
+<tr><td>Reuse <code>/lab/original/work</code> with <code>CLEAN=false</code></td><td>TM renames the existing tree to <code>.clean</code>, removes it asynchronously, replaces messages/log and runs only the selected mismatch</td><td>Original three-test attempt and both nested CGI reruns remain pinned separately</td></tr>
+<tr><td>Reuse it again with <code>CLEAN=true</code> and explicit <code>-DFT12_GOOD=1</code></td><td>New selected test passes; old workspace is removed, and driver cleanup removes successful test sources, binary, recipes and marker</td><td>Original failures remain unchanged; the new success has its own manifest and explicit option delta</td></tr>
+<tr><td>Request a previously reserved path</td><td>Native fixture rejects three historical paths, even after legacy deletion</td><td>No execution is dispatched</td></tr>
+<tr><td>Request a parent or child overlapping a reserved path</td><td>Native fixture rejects both</td><td>No execution is dispatched</td></tr>
+<tr><td>Allocate fresh UUID workspaces</td><td>One explicit-options failure and a separate changed-options success execute at distinct paths</td><td>Both are linked to the original; neither overwrites its verdict</td></tr>
+<tr><td>Try to GC the original work object or replace its outcome with later success</td><td>FT10 store refuses pinned-object deletion and rejects <code>AttemptConflict</code></td><td>Original manifest remains authoritative</td></tr>
+</tbody></table>
+<p>Sentinel files and all old nested rerun paths are verified absent after replacement. The reused failure still reports <code>DiffPgmOut</code>; the changed-options success reports <code>SuccessExec</code> with TOTAL=1, PASS=1, FAIL=0. That success is caused by an explicit compile-option change, not baseline promotion. Approved master bytes never change.</p>
+<p>The native catalog persists workspace reservations after cleanup. It rejects exact reuse and parent/child overlap for new allocations and canonicalizes paths. Historical CGI paths are explicitly imported with <code>observed_legacy</code> policy, since they already have the unsafe ancestor relationship. This validation exception is not the policy for newly allocated workspaces. Eight offline tests additionally cover reuse after directory deletion, symlink aliases, unknown parent identities and distinct linked allocations.</p>
+<p>Seven preservation checkpoints verify every required object and runtime prerequisite and retain acknowledged complete states. After all reuse, successful cleanup and guard controls, a fresh worker mounts only copies reconstructed from the original pinned source/work objects. Its saved compile, link and execute phases return zero; comparison returns **1 / <code>DiffPgmOut</code>**, with the original <code>captured-failure\nflag=17\n</code> output and unchanged master hash. Replaying that copy does not alter the pinned evidence.</p>
+<h2 id="evidence-and-reproduction">Evidence and reproduction</h2>
+<p>Full local reference: <code>validation/phase0/legacy/runs/ft12-003/</code>, **289** hashed files. Compact review evidence: <code>validation/phase0/legacy/evidence/ft12-003/</code>, **815,693 bytes**, **168** manifest entries. Compact manifest SHA-256: <code>f3dcf6d1f7c184900b47c5f593b008ff3971be994876272610b02bc2885156e1</code>.</p>
+<p>The compact copy keeps seven exact small work archives, the changed debug-session archive, pre-run inputs, raw CGI request/response bytes, generated options, invocation/phase records, mount/image inventories, native manifests/receipts/checkpoints, closed SQLite ledgers and all twenty-one CAS objects. Expanded live/recovered/session work directories and duplicate transfer spools are omitted. Archives and pinned objects retain the actual failure state; the latest live work path is not used as its substitute. Exploratory <code>ft12-001</code> and <code>ft12-002</code> remain local and are not the final reference.</p>
+<p>No new runtime archive is created. The existing 586,248,192-byte prerequisite stays local/ignored, SHA-256 <code>8b69adc550862c611dd9f4b58a2126e6f82e94dc7a2c7781dfae3163418bf8a5</code>, and is verified before image loading and native acknowledgement. Compact review evidence alone does not supply that executable platform.</p>
+<pre><code>python3 -B validation/phase0/legacy/run_ft12.py \
+  --capture validation/phase0/legacy/runs/run-002 \
+  --output validation/phase0/legacy/runs/new-ft12-run
+
+python3 -B validation/phase0/legacy/verify_ft12.py \
+  validation/phase0/legacy/runs/new-ft12-run \
+  --compact-output validation/phase0/legacy/evidence/new-ft12-run
+
+python3 -B validation/phase0/legacy/verify_ft12.py \
+  validation/phase0/legacy/evidence/ft12-003
+
+python3 -B -m unittest discover -s validation/phase0/legacy \
+  -p test_verify_ft12.py -v</code></pre>
+<p>The offline audit verifies exact inventories/hashes, archive-derived outcomes and effective options, preview side effects without execution, actual concurrent CGI completions, original versus rerun configuration, session isolation, replacement/cleanup, catalog policy and rejected requests, SQLite integrity, manifest/event/receipt identities, all pinned objects and final original-failure replay. The eight tests pass, including deliberately rehashed contradictions so byte checks alone cannot hide an overwritten outcome, executed preview or missing original object.</p>
+<h2 id="remaining-acceptance">Remaining acceptance</h2>
+<p>This passes the isolated FT12 preservation characterization and validation guards, while exposing legacy rerun fidelity and hierarchy gaps. It does not pass DA11 dashboard navigation/history discovery, full production native rerun acceptance, live SSH/dTM/pool/view behavior, site-specific options, historical archives or GPU/DSL execution. There is no native replacement executor adapter to run yet; the two fresh native allocations deliberately use the stock legacy backend. Phase 0 remains incomplete; FT13 through FT19 remain unrun.</p>
+<p>Source evidence: <a href="../../www/cgi-bin/rerun_test.cgi">rerun CGI and `gen_opt_tmp`</a>, <a href="../../bin/TM.pl">TM option handling and top-level replacement</a>, <a href="../../Scripts/drivers/lib/recordTestResult.pm">header generation</a>, <a href="../../lib/CTI_lib.pm">CGI command launch/header parsing</a>, <a href="../../Scripts/drivers/lib/regressionDriver.pm">regression cleanup</a>, <a href="../../validation/phase0/legacy/ft10/collector.py">native collection fixture</a>.</p>
+<footer>Reconstructed from OpenCTI source, baseline 8c3d603. Generated by doc/tools/build_docs.py.</footer>
+</main></body></html>

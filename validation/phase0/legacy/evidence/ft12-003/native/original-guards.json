@@ -1,0 +1,8 @@
+{
+  "gc": {
+    "deleted": false,
+    "reason": "PinnedRequiredEvidence",
+    "sha256": "fc5c580c8d22910632c5bdfc3f93d41789d3056115472565679b28a80886a1db"
+  },
+  "outcome_replacement_rejected": "AttemptConflict: an imported attempt cannot change outcome or required objects"
+}

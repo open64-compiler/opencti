@@ -1,0 +1,1146 @@
+[
+  {
+    "label": "original-pinned-before-preview",
+    "objects": {
+      "016a202ba9651d2bb7280428de305fa560f25b6ab7003f7b3b5b67aa98eaecfd": "016a202ba9651d2bb7280428de305fa560f25b6ab7003f7b3b5b67aa98eaecfd",
+      "9ac13eac57671331cb06885d15d7282cb7eecbb3c2a2927f4448c67e8bff2a98": "9ac13eac57671331cb06885d15d7282cb7eecbb3c2a2927f4448c67e8bff2a98",
+      "d1ffc438b39b90cff1447ce8af714c16588539f7dd9b2d47e5f69a17ee4791ba": "d1ffc438b39b90cff1447ce8af714c16588539f7dd9b2d47e5f69a17ee4791ba",
+      "fc5c580c8d22910632c5bdfc3f93d41789d3056115472565679b28a80886a1db": "fc5c580c8d22910632c5bdfc3f93d41789d3056115472565679b28a80886a1db"
+    },
+    "states": [
+      {
+        "attempt_count": 1,
+        "unique_event_count": 1,
+        "attempt_id": "ft12-original",
+        "manifest_sha256": "71842f93946c346684e9b7511545f988d6e8b017ae933c74056caac25cd81948",
+        "test_outcome": {
+          "legacy_tags": {
+            "Regression/FT12/mismatch.c": "DiffPgmOut",
+            "Regression/FT12/pass.c": "SuccessExec",
+            "Regression/FT12/runtime_error.c": "ExecErr"
+          },
+          "tm_process_exit": 0
+        },
+        "preservation_state": "complete",
+        "required_objects": 4,
+        "verified_objects": [
+          "initial-inputs.tar.gz",
+          "work.tar.gz",
+          "summary.log",
+          "invocation.json"
+        ],
+        "missing_objects": [],
+        "corrupt_objects": [],
+        "local_prerequisites": [
+          {
+            "name": "runtime-image.tar",
+            "sha256": "8b69adc550862c611dd9f4b58a2126e6f82e94dc7a2c7781dfae3163418bf8a5",
+            "verified": true,
+            "status": "verified"
+          }
+        ],
+        "temporary_files": [],
+        "acknowledged": true,
+        "retention_pinned": true
+      }
+    ]
+  },
+  {
+    "label": "reruns-pinned-before-editing-and-reuse",
+    "objects": {
+      "016a202ba9651d2bb7280428de305fa560f25b6ab7003f7b3b5b67aa98eaecfd": "016a202ba9651d2bb7280428de305fa560f25b6ab7003f7b3b5b67aa98eaecfd",
+      "13b7b37f8833bd53a887e95a97f46471a28399aa1a1bbe37e3fe8d71191bc12b": "13b7b37f8833bd53a887e95a97f46471a28399aa1a1bbe37e3fe8d71191bc12b",
+      "3c1603c12078dcc01befea973b055699d43c23d543c7d1547d4d094fe42f38f0": "3c1603c12078dcc01befea973b055699d43c23d543c7d1547d4d094fe42f38f0",
+      "4da0973709e2ecabd652d6de69b8ec9e30133a4215e4044814a5ad378f7b1a49": "4da0973709e2ecabd652d6de69b8ec9e30133a4215e4044814a5ad378f7b1a49",
+      "9ac13eac57671331cb06885d15d7282cb7eecbb3c2a2927f4448c67e8bff2a98": "9ac13eac57671331cb06885d15d7282cb7eecbb3c2a2927f4448c67e8bff2a98",
+      "b43d6e27858118060a7f711c049e6f5a90a03412ff06a3c47092ac3f507939de": "b43d6e27858118060a7f711c049e6f5a90a03412ff06a3c47092ac3f507939de",
+      "d1ffc438b39b90cff1447ce8af714c16588539f7dd9b2d47e5f69a17ee4791ba": "d1ffc438b39b90cff1447ce8af714c16588539f7dd9b2d47e5f69a17ee4791ba",
+      "d5bd13091f6e6ec3e34d70328345a4699c60403115a45a6e0c1aa398d59815c2": "d5bd13091f6e6ec3e34d70328345a4699c60403115a45a6e0c1aa398d59815c2",
+      "fc5c580c8d22910632c5bdfc3f93d41789d3056115472565679b28a80886a1db": "fc5c580c8d22910632c5bdfc3f93d41789d3056115472565679b28a80886a1db"
+    },
+    "states": [
+      {
+        "attempt_count": 3,
+        "unique_event_count": 3,
+        "attempt_id": "ft12-original",
+        "manifest_sha256": "71842f93946c346684e9b7511545f988d6e8b017ae933c74056caac25cd81948",
+        "test_outcome": {
+          "legacy_tags": {
+            "Regression/FT12/mismatch.c": "DiffPgmOut",
+            "Regression/FT12/pass.c": "SuccessExec",
+            "Regression/FT12/runtime_error.c": "ExecErr"
+          },
+          "tm_process_exit": 0
+        },
+        "preservation_state": "complete",
+        "required_objects": 4,
+        "verified_objects": [
+          "initial-inputs.tar.gz",
+          "work.tar.gz",
+          "summary.log",
+          "invocation.json"
+        ],
+        "missing_objects": [],
+        "corrupt_objects": [],
+        "local_prerequisites": [
+          {
+            "name": "runtime-image.tar",
+            "sha256": "8b69adc550862c611dd9f4b58a2126e6f82e94dc7a2c7781dfae3163418bf8a5",
+            "verified": true,
+            "status": "verified"
+          }
+        ],
+        "temporary_files": [],
+        "acknowledged": true,
+        "retention_pinned": true
+      },
+      {
+        "attempt_count": 3,
+        "unique_event_count": 3,
+        "attempt_id": "ft12-rerun-a",
+        "manifest_sha256": "7e20996ca125c0288961de642fa8c0a631f8663f24a300ccc27dfccf6d820c24",
+        "test_outcome": {
+          "legacy_tags": {
+            "Regression/FT12/mismatch.c": "CompileErr"
+          },
+          "tm_process_exit": 0
+        },
+        "preservation_state": "complete",
+        "required_objects": 4,
+        "verified_objects": [
+          "initial-inputs.tar.gz",
+          "work.tar.gz",
+          "summary.log",
+          "invocation.json"
+        ],
+        "missing_objects": [],
+        "corrupt_objects": [],
+        "local_prerequisites": [
+          {
+            "name": "runtime-image.tar",
+            "sha256": "8b69adc550862c611dd9f4b58a2126e6f82e94dc7a2c7781dfae3163418bf8a5",
+            "verified": true,
+            "status": "verified"
+          }
+        ],
+        "temporary_files": [],
+        "acknowledged": true,
+        "retention_pinned": true
+      },
+      {
+        "attempt_count": 3,
+        "unique_event_count": 3,
+        "attempt_id": "ft12-rerun-b",
+        "manifest_sha256": "e2f05aa97b08110b4bcd5b26da317734cb7034057d72fd774fac001fe9f04311",
+        "test_outcome": {
+          "legacy_tags": {
+            "Regression/FT12/mismatch.c": "CompileErr"
+          },
+          "tm_process_exit": 0
+        },
+        "preservation_state": "complete",
+        "required_objects": 4,
+        "verified_objects": [
+          "initial-inputs.tar.gz",
+          "work.tar.gz",
+          "summary.log",
+          "invocation.json"
+        ],
+        "missing_objects": [],
+        "corrupt_objects": [],
+        "local_prerequisites": [
+          {
+            "name": "runtime-image.tar",
+            "sha256": "8b69adc550862c611dd9f4b58a2126e6f82e94dc7a2c7781dfae3163418bf8a5",
+            "verified": true,
+            "status": "verified"
+          }
+        ],
+        "temporary_files": [],
+        "acknowledged": true,
+        "retention_pinned": true
+      }
+    ]
+  },
+  {
+    "label": "after-private-session-edit-and-success",
+    "objects": {
+      "016a202ba9651d2bb7280428de305fa560f25b6ab7003f7b3b5b67aa98eaecfd": "016a202ba9651d2bb7280428de305fa560f25b6ab7003f7b3b5b67aa98eaecfd",
+      "13b7b37f8833bd53a887e95a97f46471a28399aa1a1bbe37e3fe8d71191bc12b": "13b7b37f8833bd53a887e95a97f46471a28399aa1a1bbe37e3fe8d71191bc12b",
+      "3c1603c12078dcc01befea973b055699d43c23d543c7d1547d4d094fe42f38f0": "3c1603c12078dcc01befea973b055699d43c23d543c7d1547d4d094fe42f38f0",
+      "4da0973709e2ecabd652d6de69b8ec9e30133a4215e4044814a5ad378f7b1a49": "4da0973709e2ecabd652d6de69b8ec9e30133a4215e4044814a5ad378f7b1a49",
+      "9ac13eac57671331cb06885d15d7282cb7eecbb3c2a2927f4448c67e8bff2a98": "9ac13eac57671331cb06885d15d7282cb7eecbb3c2a2927f4448c67e8bff2a98",
+      "b43d6e27858118060a7f711c049e6f5a90a03412ff06a3c47092ac3f507939de": "b43d6e27858118060a7f711c049e6f5a90a03412ff06a3c47092ac3f507939de",
+      "d1ffc438b39b90cff1447ce8af714c16588539f7dd9b2d47e5f69a17ee4791ba": "d1ffc438b39b90cff1447ce8af714c16588539f7dd9b2d47e5f69a17ee4791ba",
+      "d5bd13091f6e6ec3e34d70328345a4699c60403115a45a6e0c1aa398d59815c2": "d5bd13091f6e6ec3e34d70328345a4699c60403115a45a6e0c1aa398d59815c2",
+      "fc5c580c8d22910632c5bdfc3f93d41789d3056115472565679b28a80886a1db": "fc5c580c8d22910632c5bdfc3f93d41789d3056115472565679b28a80886a1db"
+    },
+    "states": [
+      {
+        "attempt_count": 3,
+        "unique_event_count": 3,
+        "attempt_id": "ft12-original",
+        "manifest_sha256": "71842f93946c346684e9b7511545f988d6e8b017ae933c74056caac25cd81948",
+        "test_outcome": {
+          "legacy_tags": {
+            "Regression/FT12/mismatch.c": "DiffPgmOut",
+            "Regression/FT12/pass.c": "SuccessExec",
+            "Regression/FT12/runtime_error.c": "ExecErr"
+          },
+          "tm_process_exit": 0
+        },
+        "preservation_state": "complete",
+        "required_objects": 4,
+        "verified_objects": [
+          "initial-inputs.tar.gz",
+          "work.tar.gz",
+          "summary.log",
+          "invocation.json"
+        ],
+        "missing_objects": [],
+        "corrupt_objects": [],
+        "local_prerequisites": [
+          {
+            "name": "runtime-image.tar",
+            "sha256": "8b69adc550862c611dd9f4b58a2126e6f82e94dc7a2c7781dfae3163418bf8a5",
+            "verified": true,
+            "status": "verified"
+          }
+        ],
+        "temporary_files": [],
+        "acknowledged": true,
+        "retention_pinned": true
+      },
+      {
+        "attempt_count": 3,
+        "unique_event_count": 3,
+        "attempt_id": "ft12-rerun-a",
+        "manifest_sha256": "7e20996ca125c0288961de642fa8c0a631f8663f24a300ccc27dfccf6d820c24",
+        "test_outcome": {
+          "legacy_tags": {
+            "Regression/FT12/mismatch.c": "CompileErr"
+          },
+          "tm_process_exit": 0
+        },
+        "preservation_state": "complete",
+        "required_objects": 4,
+        "verified_objects": [
+          "initial-inputs.tar.gz",
+          "work.tar.gz",
+          "summary.log",
+          "invocation.json"
+        ],
+        "missing_objects": [],
+        "corrupt_objects": [],
+        "local_prerequisites": [
+          {
+            "name": "runtime-image.tar",
+            "sha256": "8b69adc550862c611dd9f4b58a2126e6f82e94dc7a2c7781dfae3163418bf8a5",
+            "verified": true,
+            "status": "verified"
+          }
+        ],
+        "temporary_files": [],
+        "acknowledged": true,
+        "retention_pinned": true
+      },
+      {
+        "attempt_count": 3,
+        "unique_event_count": 3,
+        "attempt_id": "ft12-rerun-b",
+        "manifest_sha256": "e2f05aa97b08110b4bcd5b26da317734cb7034057d72fd774fac001fe9f04311",
+        "test_outcome": {
+          "legacy_tags": {
+            "Regression/FT12/mismatch.c": "CompileErr"
+          },
+          "tm_process_exit": 0
+        },
+        "preservation_state": "complete",
+        "required_objects": 4,
+        "verified_objects": [
+          "initial-inputs.tar.gz",
+          "work.tar.gz",
+          "summary.log",
+          "invocation.json"
+        ],
+        "missing_objects": [],
+        "corrupt_objects": [],
+        "local_prerequisites": [
+          {
+            "name": "runtime-image.tar",
+            "sha256": "8b69adc550862c611dd9f4b58a2126e6f82e94dc7a2c7781dfae3163418bf8a5",
+            "verified": true,
+            "status": "verified"
+          }
+        ],
+        "temporary_files": [],
+        "acknowledged": true,
+        "retention_pinned": true
+      }
+    ]
+  },
+  {
+    "label": "after-clean-false-top-level-replacement",
+    "objects": {
+      "016a202ba9651d2bb7280428de305fa560f25b6ab7003f7b3b5b67aa98eaecfd": "016a202ba9651d2bb7280428de305fa560f25b6ab7003f7b3b5b67aa98eaecfd",
+      "13b7b37f8833bd53a887e95a97f46471a28399aa1a1bbe37e3fe8d71191bc12b": "13b7b37f8833bd53a887e95a97f46471a28399aa1a1bbe37e3fe8d71191bc12b",
+      "33f9c579978953d79f1f49cd5d06fa6d077e3d686581b50bffd34acba9618fbf": "33f9c579978953d79f1f49cd5d06fa6d077e3d686581b50bffd34acba9618fbf",
+      "3c1603c12078dcc01befea973b055699d43c23d543c7d1547d4d094fe42f38f0": "3c1603c12078dcc01befea973b055699d43c23d543c7d1547d4d094fe42f38f0",
+      "4da0973709e2ecabd652d6de69b8ec9e30133a4215e4044814a5ad378f7b1a49": "4da0973709e2ecabd652d6de69b8ec9e30133a4215e4044814a5ad378f7b1a49",
+      "9ac13eac57671331cb06885d15d7282cb7eecbb3c2a2927f4448c67e8bff2a98": "9ac13eac57671331cb06885d15d7282cb7eecbb3c2a2927f4448c67e8bff2a98",
+      "b43d6e27858118060a7f711c049e6f5a90a03412ff06a3c47092ac3f507939de": "b43d6e27858118060a7f711c049e6f5a90a03412ff06a3c47092ac3f507939de",
+      "d1ffc438b39b90cff1447ce8af714c16588539f7dd9b2d47e5f69a17ee4791ba": "d1ffc438b39b90cff1447ce8af714c16588539f7dd9b2d47e5f69a17ee4791ba",
+      "d5bd13091f6e6ec3e34d70328345a4699c60403115a45a6e0c1aa398d59815c2": "d5bd13091f6e6ec3e34d70328345a4699c60403115a45a6e0c1aa398d59815c2",
+      "e0e8a76947f6241961cc85421e143eb47e43c78f90fe474f320c550318bd7b36": "e0e8a76947f6241961cc85421e143eb47e43c78f90fe474f320c550318bd7b36",
+      "ea9b6b9eb8c27976fd1e21d7f2fe0d1935c5fde3efd20229e8af264f67cde7cd": "ea9b6b9eb8c27976fd1e21d7f2fe0d1935c5fde3efd20229e8af264f67cde7cd",
+      "fc5c580c8d22910632c5bdfc3f93d41789d3056115472565679b28a80886a1db": "fc5c580c8d22910632c5bdfc3f93d41789d3056115472565679b28a80886a1db"
+    },
+    "states": [
+      {
+        "attempt_count": 4,
+        "unique_event_count": 4,
+        "attempt_id": "ft12-original",
+        "manifest_sha256": "71842f93946c346684e9b7511545f988d6e8b017ae933c74056caac25cd81948",
+        "test_outcome": {
+          "legacy_tags": {
+            "Regression/FT12/mismatch.c": "DiffPgmOut",
+            "Regression/FT12/pass.c": "SuccessExec",
+            "Regression/FT12/runtime_error.c": "ExecErr"
+          },
+          "tm_process_exit": 0
+        },
+        "preservation_state": "complete",
+        "required_objects": 4,
+        "verified_objects": [
+          "initial-inputs.tar.gz",
+          "work.tar.gz",
+          "summary.log",
+          "invocation.json"
+        ],
+        "missing_objects": [],
+        "corrupt_objects": [],
+        "local_prerequisites": [
+          {
+            "name": "runtime-image.tar",
+            "sha256": "8b69adc550862c611dd9f4b58a2126e6f82e94dc7a2c7781dfae3163418bf8a5",
+            "verified": true,
+            "status": "verified"
+          }
+        ],
+        "temporary_files": [],
+        "acknowledged": true,
+        "retention_pinned": true
+      },
+      {
+        "attempt_count": 4,
+        "unique_event_count": 4,
+        "attempt_id": "ft12-rerun-a",
+        "manifest_sha256": "7e20996ca125c0288961de642fa8c0a631f8663f24a300ccc27dfccf6d820c24",
+        "test_outcome": {
+          "legacy_tags": {
+            "Regression/FT12/mismatch.c": "CompileErr"
+          },
+          "tm_process_exit": 0
+        },
+        "preservation_state": "complete",
+        "required_objects": 4,
+        "verified_objects": [
+          "initial-inputs.tar.gz",
+          "work.tar.gz",
+          "summary.log",
+          "invocation.json"
+        ],
+        "missing_objects": [],
+        "corrupt_objects": [],
+        "local_prerequisites": [
+          {
+            "name": "runtime-image.tar",
+            "sha256": "8b69adc550862c611dd9f4b58a2126e6f82e94dc7a2c7781dfae3163418bf8a5",
+            "verified": true,
+            "status": "verified"
+          }
+        ],
+        "temporary_files": [],
+        "acknowledged": true,
+        "retention_pinned": true
+      },
+      {
+        "attempt_count": 4,
+        "unique_event_count": 4,
+        "attempt_id": "ft12-rerun-b",
+        "manifest_sha256": "e2f05aa97b08110b4bcd5b26da317734cb7034057d72fd774fac001fe9f04311",
+        "test_outcome": {
+          "legacy_tags": {
+            "Regression/FT12/mismatch.c": "CompileErr"
+          },
+          "tm_process_exit": 0
+        },
+        "preservation_state": "complete",
+        "required_objects": 4,
+        "verified_objects": [
+          "initial-inputs.tar.gz",
+          "work.tar.gz",
+          "summary.log",
+          "invocation.json"
+        ],
+        "missing_objects": [],
+        "corrupt_objects": [],
+        "local_prerequisites": [
+          {
+            "name": "runtime-image.tar",
+            "sha256": "8b69adc550862c611dd9f4b58a2126e6f82e94dc7a2c7781dfae3163418bf8a5",
+            "verified": true,
+            "status": "verified"
+          }
+        ],
+        "temporary_files": [],
+        "acknowledged": true,
+        "retention_pinned": true
+      },
+      {
+        "attempt_count": 4,
+        "unique_event_count": 4,
+        "attempt_id": "ft12-reuse-fail",
+        "manifest_sha256": "4f8dfdb02b39c133d0b9ca10cdfd00c95c16223be087f4acefb40dd455a31494",
+        "test_outcome": {
+          "legacy_tags": {
+            "Regression/FT12/mismatch.c": "DiffPgmOut"
+          },
+          "tm_process_exit": 0
+        },
+        "preservation_state": "complete",
+        "required_objects": 4,
+        "verified_objects": [
+          "initial-inputs.tar.gz",
+          "work.tar.gz",
+          "summary.log",
+          "invocation.json"
+        ],
+        "missing_objects": [],
+        "corrupt_objects": [],
+        "local_prerequisites": [
+          {
+            "name": "runtime-image.tar",
+            "sha256": "8b69adc550862c611dd9f4b58a2126e6f82e94dc7a2c7781dfae3163418bf8a5",
+            "verified": true,
+            "status": "verified"
+          }
+        ],
+        "temporary_files": [],
+        "acknowledged": true,
+        "retention_pinned": true
+      }
+    ]
+  },
+  {
+    "label": "after-clean-true-successful-replacement",
+    "objects": {
+      "016a202ba9651d2bb7280428de305fa560f25b6ab7003f7b3b5b67aa98eaecfd": "016a202ba9651d2bb7280428de305fa560f25b6ab7003f7b3b5b67aa98eaecfd",
+      "13b7b37f8833bd53a887e95a97f46471a28399aa1a1bbe37e3fe8d71191bc12b": "13b7b37f8833bd53a887e95a97f46471a28399aa1a1bbe37e3fe8d71191bc12b",
+      "33f9c579978953d79f1f49cd5d06fa6d077e3d686581b50bffd34acba9618fbf": "33f9c579978953d79f1f49cd5d06fa6d077e3d686581b50bffd34acba9618fbf",
+      "3c1603c12078dcc01befea973b055699d43c23d543c7d1547d4d094fe42f38f0": "3c1603c12078dcc01befea973b055699d43c23d543c7d1547d4d094fe42f38f0",
+      "3f384861d5da4bb64a24da69114495d09b16755fb0f54911473998f63082b555": "3f384861d5da4bb64a24da69114495d09b16755fb0f54911473998f63082b555",
+      "4da0973709e2ecabd652d6de69b8ec9e30133a4215e4044814a5ad378f7b1a49": "4da0973709e2ecabd652d6de69b8ec9e30133a4215e4044814a5ad378f7b1a49",
+      "7853a6d11c0b8f43038180159f037886ad343853faabc0f0b5941ae0c4650970": "7853a6d11c0b8f43038180159f037886ad343853faabc0f0b5941ae0c4650970",
+      "9ac13eac57671331cb06885d15d7282cb7eecbb3c2a2927f4448c67e8bff2a98": "9ac13eac57671331cb06885d15d7282cb7eecbb3c2a2927f4448c67e8bff2a98",
+      "9e6252840d1e82b709eb9f1dc96004303cef8bb836fcc1703258e8c42288577a": "9e6252840d1e82b709eb9f1dc96004303cef8bb836fcc1703258e8c42288577a",
+      "b43d6e27858118060a7f711c049e6f5a90a03412ff06a3c47092ac3f507939de": "b43d6e27858118060a7f711c049e6f5a90a03412ff06a3c47092ac3f507939de",
+      "d1ffc438b39b90cff1447ce8af714c16588539f7dd9b2d47e5f69a17ee4791ba": "d1ffc438b39b90cff1447ce8af714c16588539f7dd9b2d47e5f69a17ee4791ba",
+      "d5bd13091f6e6ec3e34d70328345a4699c60403115a45a6e0c1aa398d59815c2": "d5bd13091f6e6ec3e34d70328345a4699c60403115a45a6e0c1aa398d59815c2",
+      "e0e8a76947f6241961cc85421e143eb47e43c78f90fe474f320c550318bd7b36": "e0e8a76947f6241961cc85421e143eb47e43c78f90fe474f320c550318bd7b36",
+      "ea9b6b9eb8c27976fd1e21d7f2fe0d1935c5fde3efd20229e8af264f67cde7cd": "ea9b6b9eb8c27976fd1e21d7f2fe0d1935c5fde3efd20229e8af264f67cde7cd",
+      "fc5c580c8d22910632c5bdfc3f93d41789d3056115472565679b28a80886a1db": "fc5c580c8d22910632c5bdfc3f93d41789d3056115472565679b28a80886a1db"
+    },
+    "states": [
+      {
+        "attempt_count": 5,
+        "unique_event_count": 5,
+        "attempt_id": "ft12-original",
+        "manifest_sha256": "71842f93946c346684e9b7511545f988d6e8b017ae933c74056caac25cd81948",
+        "test_outcome": {
+          "legacy_tags": {
+            "Regression/FT12/mismatch.c": "DiffPgmOut",
+            "Regression/FT12/pass.c": "SuccessExec",
+            "Regression/FT12/runtime_error.c": "ExecErr"
+          },
+          "tm_process_exit": 0
+        },
+        "preservation_state": "complete",
+        "required_objects": 4,
+        "verified_objects": [
+          "initial-inputs.tar.gz",
+          "work.tar.gz",
+          "summary.log",
+          "invocation.json"
+        ],
+        "missing_objects": [],
+        "corrupt_objects": [],
+        "local_prerequisites": [
+          {
+            "name": "runtime-image.tar",
+            "sha256": "8b69adc550862c611dd9f4b58a2126e6f82e94dc7a2c7781dfae3163418bf8a5",
+            "verified": true,
+            "status": "verified"
+          }
+        ],
+        "temporary_files": [],
+        "acknowledged": true,
+        "retention_pinned": true
+      },
+      {
+        "attempt_count": 5,
+        "unique_event_count": 5,
+        "attempt_id": "ft12-rerun-a",
+        "manifest_sha256": "7e20996ca125c0288961de642fa8c0a631f8663f24a300ccc27dfccf6d820c24",
+        "test_outcome": {
+          "legacy_tags": {
+            "Regression/FT12/mismatch.c": "CompileErr"
+          },
+          "tm_process_exit": 0
+        },
+        "preservation_state": "complete",
+        "required_objects": 4,
+        "verified_objects": [
+          "initial-inputs.tar.gz",
+          "work.tar.gz",
+          "summary.log",
+          "invocation.json"
+        ],
+        "missing_objects": [],
+        "corrupt_objects": [],
+        "local_prerequisites": [
+          {
+            "name": "runtime-image.tar",
+            "sha256": "8b69adc550862c611dd9f4b58a2126e6f82e94dc7a2c7781dfae3163418bf8a5",
+            "verified": true,
+            "status": "verified"
+          }
+        ],
+        "temporary_files": [],
+        "acknowledged": true,
+        "retention_pinned": true
+      },
+      {
+        "attempt_count": 5,
+        "unique_event_count": 5,
+        "attempt_id": "ft12-rerun-b",
+        "manifest_sha256": "e2f05aa97b08110b4bcd5b26da317734cb7034057d72fd774fac001fe9f04311",
+        "test_outcome": {
+          "legacy_tags": {
+            "Regression/FT12/mismatch.c": "CompileErr"
+          },
+          "tm_process_exit": 0
+        },
+        "preservation_state": "complete",
+        "required_objects": 4,
+        "verified_objects": [
+          "initial-inputs.tar.gz",
+          "work.tar.gz",
+          "summary.log",
+          "invocation.json"
+        ],
+        "missing_objects": [],
+        "corrupt_objects": [],
+        "local_prerequisites": [
+          {
+            "name": "runtime-image.tar",
+            "sha256": "8b69adc550862c611dd9f4b58a2126e6f82e94dc7a2c7781dfae3163418bf8a5",
+            "verified": true,
+            "status": "verified"
+          }
+        ],
+        "temporary_files": [],
+        "acknowledged": true,
+        "retention_pinned": true
+      },
+      {
+        "attempt_count": 5,
+        "unique_event_count": 5,
+        "attempt_id": "ft12-reuse-fail",
+        "manifest_sha256": "4f8dfdb02b39c133d0b9ca10cdfd00c95c16223be087f4acefb40dd455a31494",
+        "test_outcome": {
+          "legacy_tags": {
+            "Regression/FT12/mismatch.c": "DiffPgmOut"
+          },
+          "tm_process_exit": 0
+        },
+        "preservation_state": "complete",
+        "required_objects": 4,
+        "verified_objects": [
+          "initial-inputs.tar.gz",
+          "work.tar.gz",
+          "summary.log",
+          "invocation.json"
+        ],
+        "missing_objects": [],
+        "corrupt_objects": [],
+        "local_prerequisites": [
+          {
+            "name": "runtime-image.tar",
+            "sha256": "8b69adc550862c611dd9f4b58a2126e6f82e94dc7a2c7781dfae3163418bf8a5",
+            "verified": true,
+            "status": "verified"
+          }
+        ],
+        "temporary_files": [],
+        "acknowledged": true,
+        "retention_pinned": true
+      },
+      {
+        "attempt_count": 5,
+        "unique_event_count": 5,
+        "attempt_id": "ft12-reuse-pass",
+        "manifest_sha256": "bb4545ec91900397a6a0553f0c2e70080aa651c6c5670f7e1763c0a9a4923f76",
+        "test_outcome": {
+          "legacy_tags": {
+            "Regression/FT12/mismatch.c": "SuccessExec"
+          },
+          "tm_process_exit": 0
+        },
+        "preservation_state": "complete",
+        "required_objects": 4,
+        "verified_objects": [
+          "initial-inputs.tar.gz",
+          "work.tar.gz",
+          "summary.log",
+          "invocation.json"
+        ],
+        "missing_objects": [],
+        "corrupt_objects": [],
+        "local_prerequisites": [
+          {
+            "name": "runtime-image.tar",
+            "sha256": "8b69adc550862c611dd9f4b58a2126e6f82e94dc7a2c7781dfae3163418bf8a5",
+            "verified": true,
+            "status": "verified"
+          }
+        ],
+        "temporary_files": [],
+        "acknowledged": true,
+        "retention_pinned": true
+      }
+    ]
+  },
+  {
+    "label": "after-distinct-safe-attempt-and-guard-controls",
+    "objects": {
+      "016a202ba9651d2bb7280428de305fa560f25b6ab7003f7b3b5b67aa98eaecfd": "016a202ba9651d2bb7280428de305fa560f25b6ab7003f7b3b5b67aa98eaecfd",
+      "13b7b37f8833bd53a887e95a97f46471a28399aa1a1bbe37e3fe8d71191bc12b": "13b7b37f8833bd53a887e95a97f46471a28399aa1a1bbe37e3fe8d71191bc12b",
+      "16ca4ef1774909a2767a1633f5ece676414a32a5f6323842dd02dfedc39b248b": "16ca4ef1774909a2767a1633f5ece676414a32a5f6323842dd02dfedc39b248b",
+      "33f9c579978953d79f1f49cd5d06fa6d077e3d686581b50bffd34acba9618fbf": "33f9c579978953d79f1f49cd5d06fa6d077e3d686581b50bffd34acba9618fbf",
+      "3c1603c12078dcc01befea973b055699d43c23d543c7d1547d4d094fe42f38f0": "3c1603c12078dcc01befea973b055699d43c23d543c7d1547d4d094fe42f38f0",
+      "3f384861d5da4bb64a24da69114495d09b16755fb0f54911473998f63082b555": "3f384861d5da4bb64a24da69114495d09b16755fb0f54911473998f63082b555",
+      "4da0973709e2ecabd652d6de69b8ec9e30133a4215e4044814a5ad378f7b1a49": "4da0973709e2ecabd652d6de69b8ec9e30133a4215e4044814a5ad378f7b1a49",
+      "4f1a49b5c0238a4c876db74595d6d1915bf285cca9605d3127e90c47fdcf44d6": "4f1a49b5c0238a4c876db74595d6d1915bf285cca9605d3127e90c47fdcf44d6",
+      "5887d8fd4b7727fad319320d1dc38169d051806e6217d07089341fd886a469b8": "5887d8fd4b7727fad319320d1dc38169d051806e6217d07089341fd886a469b8",
+      "7853a6d11c0b8f43038180159f037886ad343853faabc0f0b5941ae0c4650970": "7853a6d11c0b8f43038180159f037886ad343853faabc0f0b5941ae0c4650970",
+      "7c6a742f5a80de9c1da06f1d296be91da8655e39778d00b668fbe9dcc1d2ff09": "7c6a742f5a80de9c1da06f1d296be91da8655e39778d00b668fbe9dcc1d2ff09",
+      "91f68438f52ce7e08ebb29fc26ef13a409dcc3edce352f3a4f42afef9691aa53": "91f68438f52ce7e08ebb29fc26ef13a409dcc3edce352f3a4f42afef9691aa53",
+      "9ac13eac57671331cb06885d15d7282cb7eecbb3c2a2927f4448c67e8bff2a98": "9ac13eac57671331cb06885d15d7282cb7eecbb3c2a2927f4448c67e8bff2a98",
+      "9e6252840d1e82b709eb9f1dc96004303cef8bb836fcc1703258e8c42288577a": "9e6252840d1e82b709eb9f1dc96004303cef8bb836fcc1703258e8c42288577a",
+      "b43d6e27858118060a7f711c049e6f5a90a03412ff06a3c47092ac3f507939de": "b43d6e27858118060a7f711c049e6f5a90a03412ff06a3c47092ac3f507939de",
+      "d1ffc438b39b90cff1447ce8af714c16588539f7dd9b2d47e5f69a17ee4791ba": "d1ffc438b39b90cff1447ce8af714c16588539f7dd9b2d47e5f69a17ee4791ba",
+      "d5bd13091f6e6ec3e34d70328345a4699c60403115a45a6e0c1aa398d59815c2": "d5bd13091f6e6ec3e34d70328345a4699c60403115a45a6e0c1aa398d59815c2",
+      "e0e8a76947f6241961cc85421e143eb47e43c78f90fe474f320c550318bd7b36": "e0e8a76947f6241961cc85421e143eb47e43c78f90fe474f320c550318bd7b36",
+      "ea9b6b9eb8c27976fd1e21d7f2fe0d1935c5fde3efd20229e8af264f67cde7cd": "ea9b6b9eb8c27976fd1e21d7f2fe0d1935c5fde3efd20229e8af264f67cde7cd",
+      "ecd0e79775518446b000478f6d7263ddd548547e3ee153a32c727f04dc0a8687": "ecd0e79775518446b000478f6d7263ddd548547e3ee153a32c727f04dc0a8687",
+      "fc5c580c8d22910632c5bdfc3f93d41789d3056115472565679b28a80886a1db": "fc5c580c8d22910632c5bdfc3f93d41789d3056115472565679b28a80886a1db"
+    },
+    "states": [
+      {
+        "attempt_count": 7,
+        "unique_event_count": 7,
+        "attempt_id": "ft12-original",
+        "manifest_sha256": "71842f93946c346684e9b7511545f988d6e8b017ae933c74056caac25cd81948",
+        "test_outcome": {
+          "legacy_tags": {
+            "Regression/FT12/mismatch.c": "DiffPgmOut",
+            "Regression/FT12/pass.c": "SuccessExec",
+            "Regression/FT12/runtime_error.c": "ExecErr"
+          },
+          "tm_process_exit": 0
+        },
+        "preservation_state": "complete",
+        "required_objects": 4,
+        "verified_objects": [
+          "initial-inputs.tar.gz",
+          "work.tar.gz",
+          "summary.log",
+          "invocation.json"
+        ],
+        "missing_objects": [],
+        "corrupt_objects": [],
+        "local_prerequisites": [
+          {
+            "name": "runtime-image.tar",
+            "sha256": "8b69adc550862c611dd9f4b58a2126e6f82e94dc7a2c7781dfae3163418bf8a5",
+            "verified": true,
+            "status": "verified"
+          }
+        ],
+        "temporary_files": [],
+        "acknowledged": true,
+        "retention_pinned": true
+      },
+      {
+        "attempt_count": 7,
+        "unique_event_count": 7,
+        "attempt_id": "ft12-rerun-a",
+        "manifest_sha256": "7e20996ca125c0288961de642fa8c0a631f8663f24a300ccc27dfccf6d820c24",
+        "test_outcome": {
+          "legacy_tags": {
+            "Regression/FT12/mismatch.c": "CompileErr"
+          },
+          "tm_process_exit": 0
+        },
+        "preservation_state": "complete",
+        "required_objects": 4,
+        "verified_objects": [
+          "initial-inputs.tar.gz",
+          "work.tar.gz",
+          "summary.log",
+          "invocation.json"
+        ],
+        "missing_objects": [],
+        "corrupt_objects": [],
+        "local_prerequisites": [
+          {
+            "name": "runtime-image.tar",
+            "sha256": "8b69adc550862c611dd9f4b58a2126e6f82e94dc7a2c7781dfae3163418bf8a5",
+            "verified": true,
+            "status": "verified"
+          }
+        ],
+        "temporary_files": [],
+        "acknowledged": true,
+        "retention_pinned": true
+      },
+      {
+        "attempt_count": 7,
+        "unique_event_count": 7,
+        "attempt_id": "ft12-rerun-b",
+        "manifest_sha256": "e2f05aa97b08110b4bcd5b26da317734cb7034057d72fd774fac001fe9f04311",
+        "test_outcome": {
+          "legacy_tags": {
+            "Regression/FT12/mismatch.c": "CompileErr"
+          },
+          "tm_process_exit": 0
+        },
+        "preservation_state": "complete",
+        "required_objects": 4,
+        "verified_objects": [
+          "initial-inputs.tar.gz",
+          "work.tar.gz",
+          "summary.log",
+          "invocation.json"
+        ],
+        "missing_objects": [],
+        "corrupt_objects": [],
+        "local_prerequisites": [
+          {
+            "name": "runtime-image.tar",
+            "sha256": "8b69adc550862c611dd9f4b58a2126e6f82e94dc7a2c7781dfae3163418bf8a5",
+            "verified": true,
+            "status": "verified"
+          }
+        ],
+        "temporary_files": [],
+        "acknowledged": true,
+        "retention_pinned": true
+      },
+      {
+        "attempt_count": 7,
+        "unique_event_count": 7,
+        "attempt_id": "ft12-reuse-fail",
+        "manifest_sha256": "4f8dfdb02b39c133d0b9ca10cdfd00c95c16223be087f4acefb40dd455a31494",
+        "test_outcome": {
+          "legacy_tags": {
+            "Regression/FT12/mismatch.c": "DiffPgmOut"
+          },
+          "tm_process_exit": 0
+        },
+        "preservation_state": "complete",
+        "required_objects": 4,
+        "verified_objects": [
+          "initial-inputs.tar.gz",
+          "work.tar.gz",
+          "summary.log",
+          "invocation.json"
+        ],
+        "missing_objects": [],
+        "corrupt_objects": [],
+        "local_prerequisites": [
+          {
+            "name": "runtime-image.tar",
+            "sha256": "8b69adc550862c611dd9f4b58a2126e6f82e94dc7a2c7781dfae3163418bf8a5",
+            "verified": true,
+            "status": "verified"
+          }
+        ],
+        "temporary_files": [],
+        "acknowledged": true,
+        "retention_pinned": true
+      },
+      {
+        "attempt_count": 7,
+        "unique_event_count": 7,
+        "attempt_id": "ft12-reuse-pass",
+        "manifest_sha256": "bb4545ec91900397a6a0553f0c2e70080aa651c6c5670f7e1763c0a9a4923f76",
+        "test_outcome": {
+          "legacy_tags": {
+            "Regression/FT12/mismatch.c": "SuccessExec"
+          },
+          "tm_process_exit": 0
+        },
+        "preservation_state": "complete",
+        "required_objects": 4,
+        "verified_objects": [
+          "initial-inputs.tar.gz",
+          "work.tar.gz",
+          "summary.log",
+          "invocation.json"
+        ],
+        "missing_objects": [],
+        "corrupt_objects": [],
+        "local_prerequisites": [
+          {
+            "name": "runtime-image.tar",
+            "sha256": "8b69adc550862c611dd9f4b58a2126e6f82e94dc7a2c7781dfae3163418bf8a5",
+            "verified": true,
+            "status": "verified"
+          }
+        ],
+        "temporary_files": [],
+        "acknowledged": true,
+        "retention_pinned": true
+      },
+      {
+        "attempt_count": 7,
+        "unique_event_count": 7,
+        "attempt_id": "ft12-245a684371bd47c38ff5c62e6ed11fd2",
+        "manifest_sha256": "b645339ee3934e0313eba7c78874e952345eed00cd07aa3fb8554eb19e0db695",
+        "test_outcome": {
+          "legacy_tags": {
+            "Regression/FT12/mismatch.c": "DiffPgmOut"
+          },
+          "tm_process_exit": 0
+        },
+        "preservation_state": "complete",
+        "required_objects": 4,
+        "verified_objects": [
+          "initial-inputs.tar.gz",
+          "work.tar.gz",
+          "summary.log",
+          "invocation.json"
+        ],
+        "missing_objects": [],
+        "corrupt_objects": [],
+        "local_prerequisites": [
+          {
+            "name": "runtime-image.tar",
+            "sha256": "8b69adc550862c611dd9f4b58a2126e6f82e94dc7a2c7781dfae3163418bf8a5",
+            "verified": true,
+            "status": "verified"
+          }
+        ],
+        "temporary_files": [],
+        "acknowledged": true,
+        "retention_pinned": true
+      },
+      {
+        "attempt_count": 7,
+        "unique_event_count": 7,
+        "attempt_id": "ft12-93a48a21b5874ceda03585d6619c8a5c",
+        "manifest_sha256": "233d0086279a5d975dc4479e91498c77ea813e75fe8e64bcbc699de34251af6d",
+        "test_outcome": {
+          "legacy_tags": {
+            "Regression/FT12/mismatch.c": "SuccessExec"
+          },
+          "tm_process_exit": 0
+        },
+        "preservation_state": "complete",
+        "required_objects": 4,
+        "verified_objects": [
+          "initial-inputs.tar.gz",
+          "work.tar.gz",
+          "summary.log",
+          "invocation.json"
+        ],
+        "missing_objects": [],
+        "corrupt_objects": [],
+        "local_prerequisites": [
+          {
+            "name": "runtime-image.tar",
+            "sha256": "8b69adc550862c611dd9f4b58a2126e6f82e94dc7a2c7781dfae3163418bf8a5",
+            "verified": true,
+            "status": "verified"
+          }
+        ],
+        "temporary_files": [],
+        "acknowledged": true,
+        "retention_pinned": true
+      }
+    ]
+  },
+  {
+    "label": "original-failure-replayed-after-workspace-cleanup",
+    "objects": {
+      "016a202ba9651d2bb7280428de305fa560f25b6ab7003f7b3b5b67aa98eaecfd": "016a202ba9651d2bb7280428de305fa560f25b6ab7003f7b3b5b67aa98eaecfd",
+      "13b7b37f8833bd53a887e95a97f46471a28399aa1a1bbe37e3fe8d71191bc12b": "13b7b37f8833bd53a887e95a97f46471a28399aa1a1bbe37e3fe8d71191bc12b",
+      "16ca4ef1774909a2767a1633f5ece676414a32a5f6323842dd02dfedc39b248b": "16ca4ef1774909a2767a1633f5ece676414a32a5f6323842dd02dfedc39b248b",
+      "33f9c579978953d79f1f49cd5d06fa6d077e3d686581b50bffd34acba9618fbf": "33f9c579978953d79f1f49cd5d06fa6d077e3d686581b50bffd34acba9618fbf",
+      "3c1603c12078dcc01befea973b055699d43c23d543c7d1547d4d094fe42f38f0": "3c1603c12078dcc01befea973b055699d43c23d543c7d1547d4d094fe42f38f0",
+      "3f384861d5da4bb64a24da69114495d09b16755fb0f54911473998f63082b555": "3f384861d5da4bb64a24da69114495d09b16755fb0f54911473998f63082b555",
+      "4da0973709e2ecabd652d6de69b8ec9e30133a4215e4044814a5ad378f7b1a49": "4da0973709e2ecabd652d6de69b8ec9e30133a4215e4044814a5ad378f7b1a49",
+      "4f1a49b5c0238a4c876db74595d6d1915bf285cca9605d3127e90c47fdcf44d6": "4f1a49b5c0238a4c876db74595d6d1915bf285cca9605d3127e90c47fdcf44d6",
+      "5887d8fd4b7727fad319320d1dc38169d051806e6217d07089341fd886a469b8": "5887d8fd4b7727fad319320d1dc38169d051806e6217d07089341fd886a469b8",
+      "7853a6d11c0b8f43038180159f037886ad343853faabc0f0b5941ae0c4650970": "7853a6d11c0b8f43038180159f037886ad343853faabc0f0b5941ae0c4650970",
+      "7c6a742f5a80de9c1da06f1d296be91da8655e39778d00b668fbe9dcc1d2ff09": "7c6a742f5a80de9c1da06f1d296be91da8655e39778d00b668fbe9dcc1d2ff09",
+      "91f68438f52ce7e08ebb29fc26ef13a409dcc3edce352f3a4f42afef9691aa53": "91f68438f52ce7e08ebb29fc26ef13a409dcc3edce352f3a4f42afef9691aa53",
+      "9ac13eac57671331cb06885d15d7282cb7eecbb3c2a2927f4448c67e8bff2a98": "9ac13eac57671331cb06885d15d7282cb7eecbb3c2a2927f4448c67e8bff2a98",
+      "9e6252840d1e82b709eb9f1dc96004303cef8bb836fcc1703258e8c42288577a": "9e6252840d1e82b709eb9f1dc96004303cef8bb836fcc1703258e8c42288577a",
+      "b43d6e27858118060a7f711c049e6f5a90a03412ff06a3c47092ac3f507939de": "b43d6e27858118060a7f711c049e6f5a90a03412ff06a3c47092ac3f507939de",
+      "d1ffc438b39b90cff1447ce8af714c16588539f7dd9b2d47e5f69a17ee4791ba": "d1ffc438b39b90cff1447ce8af714c16588539f7dd9b2d47e5f69a17ee4791ba",
+      "d5bd13091f6e6ec3e34d70328345a4699c60403115a45a6e0c1aa398d59815c2": "d5bd13091f6e6ec3e34d70328345a4699c60403115a45a6e0c1aa398d59815c2",
+      "e0e8a76947f6241961cc85421e143eb47e43c78f90fe474f320c550318bd7b36": "e0e8a76947f6241961cc85421e143eb47e43c78f90fe474f320c550318bd7b36",
+      "ea9b6b9eb8c27976fd1e21d7f2fe0d1935c5fde3efd20229e8af264f67cde7cd": "ea9b6b9eb8c27976fd1e21d7f2fe0d1935c5fde3efd20229e8af264f67cde7cd",
+      "ecd0e79775518446b000478f6d7263ddd548547e3ee153a32c727f04dc0a8687": "ecd0e79775518446b000478f6d7263ddd548547e3ee153a32c727f04dc0a8687",
+      "fc5c580c8d22910632c5bdfc3f93d41789d3056115472565679b28a80886a1db": "fc5c580c8d22910632c5bdfc3f93d41789d3056115472565679b28a80886a1db"
+    },
+    "states": [
+      {
+        "attempt_count": 7,
+        "unique_event_count": 7,
+        "attempt_id": "ft12-original",
+        "manifest_sha256": "71842f93946c346684e9b7511545f988d6e8b017ae933c74056caac25cd81948",
+        "test_outcome": {
+          "legacy_tags": {
+            "Regression/FT12/mismatch.c": "DiffPgmOut",
+            "Regression/FT12/pass.c": "SuccessExec",
+            "Regression/FT12/runtime_error.c": "ExecErr"
+          },
+          "tm_process_exit": 0
+        },
+        "preservation_state": "complete",
+        "required_objects": 4,
+        "verified_objects": [
+          "initial-inputs.tar.gz",
+          "work.tar.gz",
+          "summary.log",
+          "invocation.json"
+        ],
+        "missing_objects": [],
+        "corrupt_objects": [],
+        "local_prerequisites": [
+          {
+            "name": "runtime-image.tar",
+            "sha256": "8b69adc550862c611dd9f4b58a2126e6f82e94dc7a2c7781dfae3163418bf8a5",
+            "verified": true,
+            "status": "verified"
+          }
+        ],
+        "temporary_files": [],
+        "acknowledged": true,
+        "retention_pinned": true
+      },
+      {
+        "attempt_count": 7,
+        "unique_event_count": 7,
+        "attempt_id": "ft12-rerun-a",
+        "manifest_sha256": "7e20996ca125c0288961de642fa8c0a631f8663f24a300ccc27dfccf6d820c24",
+        "test_outcome": {
+          "legacy_tags": {
+            "Regression/FT12/mismatch.c": "CompileErr"
+          },
+          "tm_process_exit": 0
+        },
+        "preservation_state": "complete",
+        "required_objects": 4,
+        "verified_objects": [
+          "initial-inputs.tar.gz",
+          "work.tar.gz",
+          "summary.log",
+          "invocation.json"
+        ],
+        "missing_objects": [],
+        "corrupt_objects": [],
+        "local_prerequisites": [
+          {
+            "name": "runtime-image.tar",
+            "sha256": "8b69adc550862c611dd9f4b58a2126e6f82e94dc7a2c7781dfae3163418bf8a5",
+            "verified": true,
+            "status": "verified"
+          }
+        ],
+        "temporary_files": [],
+        "acknowledged": true,
+        "retention_pinned": true
+      },
+      {
+        "attempt_count": 7,
+        "unique_event_count": 7,
+        "attempt_id": "ft12-rerun-b",
+        "manifest_sha256": "e2f05aa97b08110b4bcd5b26da317734cb7034057d72fd774fac001fe9f04311",
+        "test_outcome": {
+          "legacy_tags": {
+            "Regression/FT12/mismatch.c": "CompileErr"
+          },
+          "tm_process_exit": 0
+        },
+        "preservation_state": "complete",
+        "required_objects": 4,
+        "verified_objects": [
+          "initial-inputs.tar.gz",
+          "work.tar.gz",
+          "summary.log",
+          "invocation.json"
+        ],
+        "missing_objects": [],
+        "corrupt_objects": [],
+        "local_prerequisites": [
+          {
+            "name": "runtime-image.tar",
+            "sha256": "8b69adc550862c611dd9f4b58a2126e6f82e94dc7a2c7781dfae3163418bf8a5",
+            "verified": true,
+            "status": "verified"
+          }
+        ],
+        "temporary_files": [],
+        "acknowledged": true,
+        "retention_pinned": true
+      },
+      {
+        "attempt_count": 7,
+        "unique_event_count": 7,
+        "attempt_id": "ft12-reuse-fail",
+        "manifest_sha256": "4f8dfdb02b39c133d0b9ca10cdfd00c95c16223be087f4acefb40dd455a31494",
+        "test_outcome": {
+          "legacy_tags": {
+            "Regression/FT12/mismatch.c": "DiffPgmOut"
+          },
+          "tm_process_exit": 0
+        },
+        "preservation_state": "complete",
+        "required_objects": 4,
+        "verified_objects": [
+          "initial-inputs.tar.gz",
+          "work.tar.gz",
+          "summary.log",
+          "invocation.json"
+        ],
+        "missing_objects": [],
+        "corrupt_objects": [],
+        "local_prerequisites": [
+          {
+            "name": "runtime-image.tar",
+            "sha256": "8b69adc550862c611dd9f4b58a2126e6f82e94dc7a2c7781dfae3163418bf8a5",
+            "verified": true,
+            "status": "verified"
+          }
+        ],
+        "temporary_files": [],
+        "acknowledged": true,
+        "retention_pinned": true
+      },
+      {
+        "attempt_count": 7,
+        "unique_event_count": 7,
+        "attempt_id": "ft12-reuse-pass",
+        "manifest_sha256": "bb4545ec91900397a6a0553f0c2e70080aa651c6c5670f7e1763c0a9a4923f76",
+        "test_outcome": {
+          "legacy_tags": {
+            "Regression/FT12/mismatch.c": "SuccessExec"
+          },
+          "tm_process_exit": 0
+        },
+        "preservation_state": "complete",
+        "required_objects": 4,
+        "verified_objects": [
+          "initial-inputs.tar.gz",
+          "work.tar.gz",
+          "summary.log",
+          "invocation.json"
+        ],
+        "missing_objects": [],
+        "corrupt_objects": [],
+        "local_prerequisites": [
+          {
+            "name": "runtime-image.tar",
+            "sha256": "8b69adc550862c611dd9f4b58a2126e6f82e94dc7a2c7781dfae3163418bf8a5",
+            "verified": true,
+            "status": "verified"
+          }
+        ],
+        "temporary_files": [],
+        "acknowledged": true,
+        "retention_pinned": true
+      },
+      {
+        "attempt_count": 7,
+        "unique_event_count": 7,
+        "attempt_id": "ft12-245a684371bd47c38ff5c62e6ed11fd2",
+        "manifest_sha256": "b645339ee3934e0313eba7c78874e952345eed00cd07aa3fb8554eb19e0db695",
+        "test_outcome": {
+          "legacy_tags": {
+            "Regression/FT12/mismatch.c": "DiffPgmOut"
+          },
+          "tm_process_exit": 0
+        },
+        "preservation_state": "complete",
+        "required_objects": 4,
+        "verified_objects": [
+          "initial-inputs.tar.gz",
+          "work.tar.gz",
+          "summary.log",
+          "invocation.json"
+        ],
+        "missing_objects": [],
+        "corrupt_objects": [],
+        "local_prerequisites": [
+          {
+            "name": "runtime-image.tar",
+            "sha256": "8b69adc550862c611dd9f4b58a2126e6f82e94dc7a2c7781dfae3163418bf8a5",
+            "verified": true,
+            "status": "verified"
+          }
+        ],
+        "temporary_files": [],
+        "acknowledged": true,
+        "retention_pinned": true
+      },
+      {
+        "attempt_count": 7,
+        "unique_event_count": 7,
+        "attempt_id": "ft12-93a48a21b5874ceda03585d6619c8a5c",
+        "manifest_sha256": "233d0086279a5d975dc4479e91498c77ea813e75fe8e64bcbc699de34251af6d",
+        "test_outcome": {
+          "legacy_tags": {
+            "Regression/FT12/mismatch.c": "SuccessExec"
+          },
+          "tm_process_exit": 0
+        },
+        "preservation_state": "complete",
+        "required_objects": 4,
+        "verified_objects": [
+          "initial-inputs.tar.gz",
+          "work.tar.gz",
+          "summary.log",
+          "invocation.json"
+        ],
+        "missing_objects": [],
+        "corrupt_objects": [],
+        "local_prerequisites": [
+          {
+            "name": "runtime-image.tar",
+            "sha256": "8b69adc550862c611dd9f4b58a2126e6f82e94dc7a2c7781dfae3163418bf8a5",
+            "verified": true,
+            "status": "verified"
+          }
+        ],
+        "temporary_files": [],
+        "acknowledged": true,
+        "retention_pinned": true
+      }
+    ]
+  }
+]

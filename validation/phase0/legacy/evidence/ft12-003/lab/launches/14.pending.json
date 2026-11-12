@@ -1,0 +1,13 @@
+{
+  "pid": 14,
+  "argv": [
+    "/tools/local_launch.py",
+    "ft12-local",
+    "-l",
+    "root",
+    "PATH=$PATH:/usr/atria/bin:/bin:/usr/bin:/usr/ccs/bin:/usr/local/bin:.; export PATH; export CTI_GROUPS=/fixtures/groups; export WRKROOT=/lab/requested-root; /opt/cti/bin/TM.pl -nod -l /lab/original/work/rerun.10.log -w /lab/original/work/rerun.10.work -f /lab/original/work/rerun.10.opt  -x  DTM_POOL=review_pool:ft12-local -nomail clean run > /lab/original/work/rerun.10.out 2>&1"
+  ],
+  "command": "PATH=$PATH:/usr/atria/bin:/bin:/usr/bin:/usr/ccs/bin:/usr/local/bin:.; export PATH; export CTI_GROUPS=/fixtures/groups; export WRKROOT=/lab/requested-root; /opt/cti/bin/TM.pl -nod -l /lab/original/work/rerun.10.log -w /lab/original/work/rerun.10.work -f /lab/original/work/rerun.10.opt  -x  DTM_POOL=review_pool:ft12-local -nomail clean run > /lab/original/work/rerun.10.out 2>&1",
+  "transport": "validation-only local bash; no SSH connection",
+  "pending_monotonic_ns": 167666617200
+}

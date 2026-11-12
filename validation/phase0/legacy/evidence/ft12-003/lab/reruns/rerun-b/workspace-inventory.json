@@ -1,0 +1,62 @@
+{
+  "Regression/FT12/mismatch.c": {
+    "link": "/fixtures/groups/Regression/FT12/Src/mismatch.c",
+    "mode": 493
+  },
+  "Regression/FT12/mismatch.compare-out.sh": {
+    "sha256": "0a73bfb6cbc4694539cb064801abb22a5c063ad252352da37785e0ce3579f4a1",
+    "mode": 511
+  },
+  "Regression/FT12/mismatch.compile.sh": {
+    "sha256": "92ed31c495fab77d622d3b73dd3579fff6db84cc0c2da805d9a29f2939e63391",
+    "mode": 511
+  },
+  "Regression/FT12/mismatch.env": {
+    "sha256": "e27ef1243aaf63f431d64e0d5e1ff42fc6a9373da189cd0ab216c62c8a4b3217",
+    "mode": 420
+  },
+  "Regression/FT12/mismatch.err": {
+    "sha256": "7e67d77260f94aa1b30c54cf9257b54b06595140f597293a22509a3e9a9d0535",
+    "mode": 420
+  },
+  "Regression/FT12/mismatch.link.sh": {
+    "sha256": "b9c542285c4d9ea59b013b2f03f06b6efd784d1fda83545c0b98d3a34e8975fc",
+    "mode": 511
+  },
+  "Regression/FT12/mismatch.out.master": {
+    "link": "/fixtures/groups/Regression/FT12/Src/../Masters/mismatch.out",
+    "mode": 493
+  },
+  "Regression/FT12/mismatch.result": {
+    "sha256": "d6db9dab1c5704369bc9d46bf199a26f236c01e1164ef796f1ab9a00ed2829a0",
+    "mode": 420
+  },
+  "Regression/FT12/mismatch.run.sh": {
+    "sha256": "0b77f634ec22b3c89098835ecd335eb4867745e78dff1ba36922e9a131fac3f1",
+    "mode": 511
+  },
+  "Regression/FT12/mismatch.sh": {
+    "sha256": "054b053cfa4238c985df16f95ed81e3aabe1a9aeebd1353b4990ad5dd0ffb578",
+    "mode": 511
+  },
+  "TMEnv": {
+    "sha256": "c69a973ceaed9ef71cc867f4368b34b598032c972cf1d4384be1c117ea2b4dfd",
+    "mode": 420
+  },
+  "TMUnits": {
+    "sha256": "153e28a7fe257f7162f415d6c01a863f6968ff46ecacae71d607c68e2a8c93bf",
+    "mode": 420
+  },
+  "TMmsgs/enumfile.1": {
+    "sha256": "c79141ab9df59c8792fe5d891f342ffac2e213d9fd0e770019756b6f45c40f61",
+    "mode": 420
+  },
+  "TMmsgs/result.1": {
+    "sha256": "0dd06052737af23a3a2882c0f4587abb6deed3f1a91067776a811e77a3a04559",
+    "mode": 420
+  },
+  "log.header": {
+    "sha256": "2eb968870f7c6df99c9d01795834e34a887b95e21c56c0d2f2004e2de2025204",
+    "mode": 420
+  }
+}

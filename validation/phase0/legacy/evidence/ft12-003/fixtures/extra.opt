@@ -1,0 +1,2 @@
+export OPT_LEVEL=2
+export CC_OPTIONS=-DFT12_FLAG=3
