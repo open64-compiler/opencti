@@ -1,0 +1,17 @@
+{
+  "status": "pass",
+  "completed_utc": "2026-11-12T22:42:57.615131+00:00",
+  "sessions": 6,
+  "actual_interactive_shell": true,
+  "captured_cwd_and_environment": true,
+  "gdb_breakpoint_and_backtrace": true,
+  "source_and_work_isolation": true,
+  "stop_resume": true,
+  "container_deletion_recovery": true,
+  "application_generated_state_and_edit": true,
+  "read_only_baselines": true,
+  "case_distinct_linux_source_files": true,
+  "missing_credential_requires_inspection": true,
+  "missing_image_no_fallback": true,
+  "original_evidence_unchanged": true
+}

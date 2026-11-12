@@ -1,0 +1,2 @@
+# Preserve real PTY control bytes and CRLFs in the interactive CLI acceptance record.
+evidence/cli-001/interactive.log -text whitespace=cr-at-eol,-blank-at-eol,-blank-at-eof

@@ -126,3 +126,7 @@ Compare the original invocation and captured effective settings with the generat
 Check the actual interpreter, ELF loader, saved `.env`, source links, compiler/runtime/input/comparator and baseline before replay. The [FT13 experiment](phase0-ft13-results.md) finds that an existing script can fail kernel lookup because its interpreter/loader is absent, while a missing or dangling `.env` can still allow the saved run phase to return zero. Neither a script pathname, image ID nor process status alone proves a complete environment.
 
 Record missing roles and explicit reprovisioning references separately from the original test verdict. Verify matching captured content or compatible authorized access after restoration, then execute and record the phase. Credential references belong in evidence; credential values do not. FT13 exercises local synthetic provisioning and offline image restoration without changing the framework; production secret/resource integrations and historical imports remain separate acceptance work.
+
+## Open an interactive captured workspace
+
+The new [session CLI](debugging-sessions.md) opens supported captured failures in private Docker workspaces without changing the legacy framework or original evidence. Run `./tools/cti-session open --capture validation/phase0/legacy/evidence/ft09-001` from your terminal. It restores captured paths, enters the test directory and loads its saved `.env`. Use `list`, `attach`, `exec`, `stop` and `remove` for the private session lifecycle.

@@ -260,6 +260,8 @@ Shared support harnesses and mounted compilers are dependencies of the debugging
 
 A failed-test page provides access to the preserved sources, original evidence, scripts, baseline and mount/environment details. It offers Open debugging workspace, Recompile, Execute, Compare and Download triage bundle workflows. These actions use the saved attempt configuration by default. Replaying against a newer compiler or baseline is an explicit new session and retains a link to the original failure.
 
+The first [session-opening CLI](debugging-sessions.md) now implements private local Docker workspaces, captured path/environment restoration, interactive shells, reconnect/stop/remove and command execution for supported legacy captures or a versioned archive/mount specification. Real interactive GDB and independent source/work sessions are verified. The dashboard action and native terminal-window integration remain unimplemented; credential-backed captures require explicit inspection mode until authorized provisioning is integrated.
+
 The debugging workspace supports an interactive shell and, when configured, debugger attachment to a build with suitable symbols and backend capabilities. Interactive debugging is not a promise to checkpoint/restore the exact live process. For nondeterministic failures, preserving the environment and inputs makes investigation possible but does not guarantee the failure recurs.
 
 For a remote GPU failure, the Mac retains the bundle and can inspect sources, logs and IR offline. Execution/debug replay requiring the GPU is submitted to a compatible remote target using the saved environment and device requirements. It must not silently fall back to CPU execution or claim that the Mac reproduces the GPU environment.

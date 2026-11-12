@@ -1,0 +1,120 @@
+<!--
+Copyright (C) 2011, Hewlett-Packard Development Company, L.P.
+All Rights Reserved.
+Open64 is free software; you can redistribute it and/or modify it under the
+terms of the GNU General Public License as published by the Free Software
+Foundation; either version 2 of the License, or (at your option) any later
+version. Distributed WITHOUT ANY WARRANTY; without even the implied warranty
+of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General
+Public License for more details.
+-->
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Open a captured failure in an interactive Docker session — OpenCTI</title><style>body{margin:0;background:#f4f6f8;color:#18232e;font:17px/1.6 system-ui,sans-serif}
+main{max-width:1050px;margin:auto;padding:2rem;background:white;min-height:100vh}
+a{color:#075ca8}nav{padding:.7rem 0;border-bottom:1px solid #ccd5dd}
+h1,h2,h3{line-height:1.25;scroll-margin-top:1rem}h2{margin-top:2rem}
+pre{padding:1rem;background:#eff3f7;overflow:auto;border:1px solid #d5dce3}
+code{font: .88em/1.5 ui-monospace,monospace;overflow-wrap:anywhere}
+table{border-collapse:collapse;width:100%;display:block;overflow:auto}
+th,td{padding:.6rem;border:1px solid #ccd5dd;text-align:left;vertical-align:top}
+th{background:#eff3f7}td:first-child{min-width:10rem}footer{border-top:1px solid #ccd5dd;margin-top:2rem;color:#52606b}
+@media(max-width:640px){main{padding:1rem}body{font-size:16px}}
+</style></head><body><main>
+<nav><a href="index.html">CTI documentation</a></nav>
+<h1 id="open-a-captured-failure-in-an-interactive-docker-session">Open a captured failure in an interactive Docker session</h1>
+<p><a href="index.html">Documentation home</a> · <a href="modernization-plan.html">Modernization plan</a> · <a href="phase0-ft09-results.html">FT09 debugger evidence</a></p>
+<p>The session CLI implements the first user-facing part of the modernized triage workflow. Run it from your Terminal: it creates a private Docker workspace, enters the captured test directory and loads that test&#x27;s saved <code>.env</code>. You can use its original scripts and debugger directly. Exiting disconnects the shell while retaining the private session. The original framework and captured evidence are unchanged.</p>
+<p>Dashboard “Open terminal” wiring and automatic opening of a new macOS Terminal window are still future work. This CLI attaches in the terminal where you run it.</p>
+<h2 id="open-the-retained-debugger-example">Open the retained debugger example</h2>
+<p>From the repository root, with Docker running and Python 3.9 or newer available:</p>
+<pre><code>./tools/cti-session open \
+  --capture validation/phase0/legacy/evidence/ft09-001</code></pre>
+<p>The default native state directory is <code>~/Library/Application Support/OpenCTI/sessions</code> on macOS, or <code>$XDG_STATE_HOME/opencti/sessions</code> on Linux (default <code>~/.local/state/opencti/sessions</code>). A different location can be selected with <code>--state-dir</code> **before the subcommand**. Keep using the same state directory when reconnecting.</p>
+<p>The exact image must already be available, or have a matching retained archive. The FT09 metadata names the large local archive when present. If it moved or is unavailable at that location, supply it explicitly:</p>
+<pre><code>./tools/cti-session open \
+  --capture validation/phase0/legacy/evidence/ft09-001 \
+  --image-archive validation/phase0/legacy/runs/ft09-001/runtime-image.tar</code></pre>
+<p>Compact evidence does not include that large runtime. The CLI checks archive hashes before loading, requires the captured immutable image ID and native Docker execution architecture, and uses <code>--pull=never</code>. It installs no packages and does not select a newer image or automatic emulation.</p>
+<p>You arrive at a prompt resembling:</p>
+<pre><code>CTI debugging session &lt;session-id&gt;
+Working directory: /export/original/work/Regression/FT09
+cti[&lt;short-id&gt;]:/export/original/work/Regression/FT09$</code></pre>
+<p>This is a Linux shell inside Docker, displayed in your Mac terminal. It has already changed directory and sourced <code>debug_target.env</code>; for this fixture, <code>CC_OPTIONS</code> is <code>-g -O0 -fno-omit-frame-pointer -no-pie</code>.</p>
+<p>Inside the session:</p>
+<pre><code>pwd
+printf &#x27;%s\n&#x27; &quot;$CC_OPTIONS&quot;
+ls
+./debug_target.compile.sh
+./debug_target.link.sh
+./debug_target.run.sh
+gdb ./debug_target</code></pre>
+<p>The saved execution deliberately exits 7 and records <code>ExecErr</code>; reproducing that result is expected. In GDB you can use <code>break debug_checkpoint</code>, <code>run</code>, <code>print debug_value</code> and <code>bt</code>. Breakpoints and captured source/backtraces were verified under the default restricted profile. GDB may warn that it cannot disable ASLR; that warning did not prevent debugging in the qualified runtime. A live process from the original failure is not restored.</p>
+<p>The CLI does not invoke TM, build hooks, a generator or a test phase when opening. It restores the archived failed state and sources the selected test <code>.env</code> as Bash configuration. The supported captured environments contain settings; any executable commands in a custom saved environment execute when it is sourced. The captured image&#x27;s entrypoint is overridden by the session keeper, so it is not automatically executed either.</p>
+<h2 id="reconnect-and-manage-sessions">Reconnect and manage sessions</h2>
+<p>The CLI prints the full session ID. Use that ID for subsequent operations:</p>
+<pre><code>./tools/cti-session list
+./tools/cti-session attach &lt;session-id&gt;
+./tools/cti-session stop &lt;session-id&gt;
+./tools/cti-session attach &lt;session-id&gt;</code></pre>
+<p><code>attach</code> starts a stopped session and loads the current private saved environment. Each shell starts from that saved file; interactive exports from an earlier shell persist only if you save them yourself. Editing a source or <code>.env</code> changes your session, not the original captured attempt.</p>
+<p>Each new <code>open</code> creates new work/source volumes. <code>attach</code> reconnects the existing volumes without extracting over your changes. Even if its disposable container was deleted, <code>attach</code> can recreate the container from the pinned image and existing owned volumes. A missing volume is reported; the CLI does not overwrite it by pretending your edited session is a fresh capture.</p>
+<p>To discard a private session and its edits:</p>
+<pre><code>./tools/cti-session remove &lt;session-id&gt;</code></pre>
+<p><code>stop</code> retains the container/volumes; <code>remove</code> deletes that session&#x27;s labeled container, volumes and native cache. Neither deletes the original bundle or runtime image. Session edits live in case-sensitive Docker volumes; this first CLI does not export edited sessions into a portable native archive or protect them from external Docker volume pruning. The original native capture remains the durable source for opening a fresh session. Only declared volume contents survive container recreation; live processes, installed tools and files elsewhere in the container overlay are not restored. Debuggers and editors come from the selected image; the CLI does not install them.</p>
+<p>For automation, create without attaching and execute a command with the saved environment:</p>
+<pre><code>./tools/cti-session open \
+  --capture validation/phase0/legacy/evidence/ft09-001 \
+  --no-attach --json
+
+./tools/cti-session exec &lt;session-id&gt; -- pwd
+./tools/cti-session exec &lt;session-id&gt; -- ./debug_target.run.sh</code></pre>
+<p><code>exec</code> returns the command&#x27;s exit status, including the expected 7 above. <code>attach</code> requires a real terminal. An explicit repair mode is available if you broke your private environment:</p>
+<pre><code>./tools/cti-session exec --bare &lt;session-id&gt; -- cat debug_target.env
+./tools/cti-session attach --bare &lt;session-id&gt;</code></pre>
+<p><code>--bare</code> skips the saved environment deliberately and identifies the shell as repair mode; it is not a claim of original replay readiness.</p>
+<h2 id="existing-capture-formats">Existing capture formats</h2>
+<p>Automatic import currently supports these retained layouts in both full runs and compact review bundles:</p>
+<table><thead><tr><th>Capture</th><th>Selection / behavior</th></tr></thead><tbody>
+<tr><td>Original <code>run-002</code> / FT01–FT03</td><td>Select one environment with <code>--test</code>, e.g. <code>Regression/FT03/output_mismatch.c</code></td></tr>
+<tr><td>FT08 application capture</td><td>Restores failed source, generated files, work and read-only baseline; opens <code>FT08.env</code></td></tr>
+<tr><td>FT09 debugger capture</td><td>Restores source/work and captured GDB-capable runtime; opens <code>debug_target.env</code></td></tr>
+<tr><td>FT13 prerequisite capture</td><td>Restores compiler entry/runtime/input/comparator/source/work; requires explicit inspection mode for unresolved credentials</td></tr>
+</tbody></table>
+<p>Examples:</p>
+<pre><code>./tools/cti-session open \
+  --capture validation/phase0/legacy/evidence/run-002 \
+  --test Regression/FT03/output_mismatch.c
+
+./tools/cti-session open \
+  --capture validation/phase0/legacy/evidence/ft08-001
+
+./tools/cti-session open \
+  --capture validation/phase0/legacy/evidence/ft13-001 \
+  --inspection-only</code></pre>
+<p>FT13 declares <code>fixture://ft13/protected-access</code>. The CLI does not fabricate credentials or run the validation fixture&#x27;s provisioning code. Normal open reports the missing reference; <code>--inspection-only</code> explicitly permits examining retained files while reporting replay readiness false. Required shell, test directory and saved environment must still exist. Other acquired capture layouts need an explicit session specification until their importer is implemented.</p>
+<p>This first release targets local native Linux Docker execution. Remote/GPU workers, emulation, dashboard launch integration and external credential provisioning are not implemented. The image must contain <code>/usr/bin/python3</code> and <code>/bin/bash</code>; supported retained runtimes already do.</p>
+<h2 id="private-files-and-original-paths">Private files and original paths</h2>
+<p>Input archives are copied and verified in the native session cache. They are mounted read-only only for initialization. Source/work trees are materialized inside separate named Linux volumes, preserving case-distinct filenames, executable bits and declared symlinks. The live checkout, home directory, original evidence tree and Docker socket are never mounted into the debugging container.</p>
+<p>The original container-visible paths are restored. That lets absolute source links and saved recipes keep working even if the evidence moved on the Mac. Baseline volumes are mounted read-only, including <code>Masters</code> overlays beneath private writable source trees. Captured dependencies such as FT13&#x27;s mounted tool/runtime tree remain read-only. Changing another session&#x27;s source/work files cannot affect yours.</p>
+<p>Default containers use no network, one CPU, 1 GiB memory, all capabilities dropped, <code>no-new-privileges</code> and the default seccomp policy. No privileged mode, host PID namespace or automatic debugger-capability increase is used.</p>
+<p>Opening validates captured prerequisite content where declared. Reconnecting preserves intentional session edits and checks the shell/directory/environment rather than replacing them with the originals. The saved environment is the captured case&#x27;s pruned <code>.env</code>, not an invented reconstruction of unrecorded process state. Capture gaps cannot be filled by silently consulting the current repository or latest baseline.</p>
+<h2 id="portable-specification-for-additional-captures">Portable specification for additional captures</h2>
+<p><code>open --spec /path/to/session.json</code> accepts the versioned <code>cti-session/v1</code> JSON contract. This permits other harnesses and DSL phases without altering legacy drivers. A specification declares:</p>
+<ul>
+<li><code>attempt_id</code>, immutable <code>image.id</code> (<code>sha256:&lt;64 hex digits&gt;</code>) and <code>platform</code> (<code>linux/arm64</code> or <code>linux/amd64</code>). Optional image archive binding/hash/size supplies offline recovery.</li>
+<li><code>trees</code>: unique <code>id</code>, absolute container <code>destination</code>, <code>read_only</code>, and <code>source</code> with <code>archive</code>, SHA-256 and archive <code>prefix</code>.</li>
+<li><code>work_tree</code>, relative <code>test_directory</code> and relative saved <code>environment</code> filename.</li>
+<li>Optional file <code>requirements</code> with role, absolute path or work-directory-relative name, expected hash/executable/link properties and reprovisioning reference; optional <code>cpu_features</code>.</li>
+<li><code>external_requirements</code>, expressed as references and affected phases, rather than credential values.</li>
+</ul>
+<p>Archive paths are relative to the specification file unless absolute. Image tags, unsupported specification fields, reserved runtime mounts, arbitrary pre-existing volume/container IDs, nested writable trees, archive traversal, duplicate members, device/FIFO/hardlink members and undeclared escaping symlinks are rejected. Read-only baseline overlays beneath source trees are supported. The CLI assigns session IDs itself and creates a new per-session native directory and new volumes; it cannot initialize over an occupied volume.</p>
+<h2 id="validation-evidence">Validation evidence</h2>
+<p><a href="../../tools/cti-session">The CLI source</a> and <a href="../../tools/cti_session/cli.py">session implementation</a> are separate from the existing framework. Eleven unit tests cover schema, immutable images, archive/resource guards, input preservation and incomplete sessions. Six real sessions cover FT09 interactive Bash/GDB and isolation, stop/resume and container deletion, FT08 generated-state replay/editing, FT03 comparison/baseline protection, explicit FT13 inspection and case-distinct Linux sources through the portable specification. All test-created sessions are removed.</p>
+<p>Reproduce the checks:</p>
+<pre><code>python3 -B -m unittest discover -s tests/session_cli -v
+python3 -B validation/session-cli/run_validation.py \
+  --output validation/phase0/legacy/runs/new-session-cli-validation</code></pre>
+<p>The compact acceptance record and offline auditor are in <a href="../../validation/session-cli/README.md">validation/session-cli</a>. Dashboard acceptance remains open; this implements the session-opening CLI portion first.</p>
+<footer>Reconstructed from OpenCTI source, baseline 8c3d603. Generated by doc/tools/build_docs.py.</footer>
+</main></body></html>

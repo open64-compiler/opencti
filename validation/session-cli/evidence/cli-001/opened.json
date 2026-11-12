@@ -1,0 +1,98 @@
+[
+  {
+    "session_id": "1e651aa8e2d94a238604d2f61f4c9359",
+    "container": "cti-session-1e651aa8e2d94a238604d2f61f4c9359",
+    "cwd": "/export/original/work/Regression/FT09",
+    "environment": "/export/original/work/Regression/FT09/debug_target.env",
+    "readiness": {
+      "session_id": "1e651aa8e2d94a238604d2f61f4c9359",
+      "accepted": true,
+      "replay_ready": true,
+      "mode": "debugging",
+      "problems": [],
+      "cwd": "/export/original/work/Regression/FT09",
+      "saved_environment": "/export/original/work/Regression/FT09/debug_target.env"
+    }
+  },
+  {
+    "session_id": "ba9034e7ace4489387e9ec0c44d110db",
+    "container": "cti-session-ba9034e7ace4489387e9ec0c44d110db",
+    "cwd": "/export/original/work/Regression/FT09",
+    "environment": "/export/original/work/Regression/FT09/debug_target.env",
+    "readiness": {
+      "session_id": "ba9034e7ace4489387e9ec0c44d110db",
+      "accepted": true,
+      "replay_ready": true,
+      "mode": "debugging",
+      "problems": [],
+      "cwd": "/export/original/work/Regression/FT09",
+      "saved_environment": "/export/original/work/Regression/FT09/debug_target.env"
+    }
+  },
+  {
+    "session_id": "c18806d2dcc3483fb4e69a46d0a16057",
+    "container": "cti-session-c18806d2dcc3483fb4e69a46d0a16057",
+    "cwd": "/export/original/work/Applications/FT08",
+    "environment": "/export/original/work/Applications/FT08/FT08.env",
+    "readiness": {
+      "session_id": "c18806d2dcc3483fb4e69a46d0a16057",
+      "accepted": true,
+      "replay_ready": true,
+      "mode": "debugging",
+      "problems": [],
+      "cwd": "/export/original/work/Applications/FT08",
+      "saved_environment": "/export/original/work/Applications/FT08/FT08.env"
+    }
+  },
+  {
+    "session_id": "a2cd9cbd94534523910772e261d7ba9b",
+    "container": "cti-session-a2cd9cbd94534523910772e261d7ba9b",
+    "cwd": "/capture/original/work/Regression/FT03",
+    "environment": "/capture/original/work/Regression/FT03/output_mismatch.env",
+    "readiness": {
+      "session_id": "a2cd9cbd94534523910772e261d7ba9b",
+      "accepted": true,
+      "replay_ready": true,
+      "mode": "debugging",
+      "problems": [],
+      "cwd": "/capture/original/work/Regression/FT03",
+      "saved_environment": "/capture/original/work/Regression/FT03/output_mismatch.env"
+    }
+  },
+  {
+    "session_id": "08fd5b3a181c47528206c48e98d087e9",
+    "container": "cti-session-08fd5b3a181c47528206c48e98d087e9",
+    "cwd": "/export/original/work/Regression/FT13",
+    "environment": "/export/original/work/Regression/FT13/probe.env",
+    "readiness": {
+      "session_id": "08fd5b3a181c47528206c48e98d087e9",
+      "accepted": true,
+      "replay_ready": false,
+      "mode": "inspection",
+      "problems": [
+        {
+          "role": "external-access",
+          "detail": "Explicit authorized reprovisioning is required",
+          "reprovision_reference": "fixture://ft13/protected-access"
+        }
+      ],
+      "cwd": "/export/original/work/Regression/FT13",
+      "saved_environment": "/export/original/work/Regression/FT13/probe.env"
+    }
+  },
+  {
+    "session_id": "8e408c6be54a491e859fa27d5537fff8",
+    "container": "cti-session-8e408c6be54a491e859fa27d5537fff8",
+    "cwd": "/case-work/unit",
+    "environment": "/case-work/unit/test.env",
+    "readiness": {
+      "session_id": "8e408c6be54a491e859fa27d5537fff8",
+      "accepted": true,
+      "replay_ready": true,
+      "mode": "debugging",
+      "problems": [],
+      "cwd": "/case-work/unit",
+      "saved_environment": "/case-work/unit/test.env"
+    }
+  }
+]

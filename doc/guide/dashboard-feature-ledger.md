@@ -95,6 +95,8 @@ Feature IDs are stable review references. `DA` scenarios are defined below; `FT`
 
 DF38 extends the legacy workflow to containers/remote workers; the new completeness indicator and durable bundle are proposed requirements, not existing CGI features. DF34 is a management compatibility requirement via the existing CLI, not a claim that all CLI operations appear in `dTMState.php`.
 
+The [session-opening CLI](debugging-sessions.md) now provides a tested local terminal/command interface for supported captures and explicit session specifications. Private writable work/source volumes, saved environment/cwd, read-only baselines and GDB are verified. This implements the underlying CLI slice; dashboard click-to-terminal integration and the DA scenarios remain unrun.
+
 ## Fixture acquisition catalog
 
 These are specifications for evidence to acquire or construct in an isolated reference installation. The synthetic regression subset of FX03 and supporting container evidence for FX08 now exist under `validation/phase0/legacy`; the remaining fixture requirements are not yet acquired. Preserve raw archives and legacy outputs together with derived assertions. Label synthetic fixtures as synthetic and do not substitute them for historical coverage silently.
