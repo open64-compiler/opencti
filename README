@@ -39,3 +39,12 @@ these guides, with implementation behavior taking precedence over old prose.
 On case-insensitive filesystems, some OpenMP C/C++ test filenames collide.
 Use a case-sensitive filesystem for a complete test checkout. The Git object
 database retains the original files, even when the working tree cannot.
+
+Open a captured failure in a private Docker debugging session:
+
+    ./tools/cti-session open --capture validation/phase0/legacy/evidence/ft09-001
+
+The session CLI loads the saved test environment and opens a shell in the
+captured test directory. Original evidence is protected. See
+doc/guide/debugging-sessions.md for image prerequisites, supported captures,
+reconnecting, private workspace lifecycle and the portable session format.

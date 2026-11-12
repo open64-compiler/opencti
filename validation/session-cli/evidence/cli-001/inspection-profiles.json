@@ -1,0 +1,1057 @@
+[
+  {
+    "session_id": "1e651aa8e2d94a238604d2f61f4c9359",
+    "image": "sha256:747873867110897321865b8790204c0d42a9d51357dce8c3334f50c59d6e916c",
+    "profile": {
+      "Binds": null,
+      "ContainerIDFile": "",
+      "LogConfig": {
+        "Type": "json-file",
+        "Config": {}
+      },
+      "NetworkMode": "none",
+      "PortBindings": {},
+      "RestartPolicy": {
+        "Name": "no",
+        "MaximumRetryCount": 0
+      },
+      "AutoRemove": false,
+      "VolumeDriver": "",
+      "VolumesFrom": null,
+      "ConsoleSize": [
+        0,
+        0
+      ],
+      "CapAdd": null,
+      "CapDrop": [
+        "ALL"
+      ],
+      "CgroupnsMode": "private",
+      "Dns": null,
+      "DnsOptions": [],
+      "DnsSearch": [],
+      "ExtraHosts": null,
+      "GroupAdd": null,
+      "IpcMode": "private",
+      "Cgroup": "",
+      "Links": null,
+      "OomScoreAdj": 0,
+      "PidMode": "",
+      "Privileged": false,
+      "PublishAllPorts": false,
+      "ReadonlyRootfs": false,
+      "SecurityOpt": [
+        "no-new-privileges"
+      ],
+      "UTSMode": "",
+      "UsernsMode": "",
+      "ShmSize": 67108864,
+      "Runtime": "runc",
+      "Isolation": "",
+      "CpuShares": 0,
+      "Memory": 1073741824,
+      "NanoCpus": 1000000000,
+      "CgroupParent": "",
+      "BlkioWeight": 0,
+      "BlkioWeightDevice": [],
+      "BlkioDeviceReadBps": [],
+      "BlkioDeviceWriteBps": [],
+      "BlkioDeviceReadIOps": [],
+      "BlkioDeviceWriteIOps": [],
+      "CpuPeriod": 0,
+      "CpuQuota": 0,
+      "CpuRealtimePeriod": 0,
+      "CpuRealtimeRuntime": 0,
+      "CpusetCpus": "",
+      "CpusetMems": "",
+      "Devices": [],
+      "DeviceCgroupRules": null,
+      "DeviceRequests": null,
+      "MemoryReservation": 0,
+      "MemorySwap": 2147483648,
+      "MemorySwappiness": null,
+      "OomKillDisable": null,
+      "PidsLimit": null,
+      "Ulimits": [],
+      "CpuCount": 0,
+      "CpuPercent": 0,
+      "IOMaximumIOps": 0,
+      "IOMaximumBandwidth": 0,
+      "Mounts": [
+        {
+          "Type": "bind",
+          "Source": "/Users/shinmingliu/opcti/validation/phase0/legacy/runs/session-cli-005/state with spaces/1e651aa8e2d94a238604d2f61f4c9359/launch",
+          "Target": "/cti-launch",
+          "ReadOnly": true
+        },
+        {
+          "Type": "volume",
+          "Source": "cti-session-1e651aa8e2d94a238604d2f61f4c9359-source",
+          "Target": "/fixtures"
+        },
+        {
+          "Type": "volume",
+          "Source": "cti-session-1e651aa8e2d94a238604d2f61f4c9359-work",
+          "Target": "/export/original/work"
+        }
+      ],
+      "MaskedPaths": [
+        "/proc/acpi",
+        "/proc/asound",
+        "/proc/interrupts",
+        "/proc/kcore",
+        "/proc/keys",
+        "/proc/latency_stats",
+        "/proc/sched_debug",
+        "/proc/scsi",
+        "/proc/timer_list",
+        "/proc/timer_stats",
+        "/sys/devices/virtual/powercap",
+        "/sys/firmware"
+      ],
+      "ReadonlyPaths": [
+        "/proc/bus",
+        "/proc/fs",
+        "/proc/irq",
+        "/proc/sys",
+        "/proc/sysrq-trigger"
+      ]
+    },
+    "mounts": [
+      {
+        "Type": "bind",
+        "Source": "/Users/shinmingliu/opcti/validation/phase0/legacy/runs/session-cli-005/state with spaces/1e651aa8e2d94a238604d2f61f4c9359/launch",
+        "Destination": "/cti-launch",
+        "Mode": "",
+        "RW": false,
+        "Propagation": "rprivate"
+      },
+      {
+        "Type": "volume",
+        "Name": "cti-session-1e651aa8e2d94a238604d2f61f4c9359-source",
+        "Source": "/var/lib/docker/volumes/cti-session-1e651aa8e2d94a238604d2f61f4c9359-source/_data",
+        "Destination": "/fixtures",
+        "Driver": "local",
+        "Mode": "z",
+        "RW": true,
+        "Propagation": ""
+      },
+      {
+        "Type": "volume",
+        "Name": "cti-session-1e651aa8e2d94a238604d2f61f4c9359-work",
+        "Source": "/var/lib/docker/volumes/cti-session-1e651aa8e2d94a238604d2f61f4c9359-work/_data",
+        "Destination": "/export/original/work",
+        "Driver": "local",
+        "Mode": "z",
+        "RW": true,
+        "Propagation": ""
+      }
+    ],
+    "labels": {
+      "org.opencontainers.image.version": "24.04",
+      "org.opencti.session": "1e651aa8e2d94a238604d2f61f4c9359",
+      "org.opencti.session.store": "27c50232c05e2357ebaccaca8c7aecaabc791ebdccf46a72dacc408c03350e34"
+    },
+    "entrypoint": [
+      "/usr/bin/python3"
+    ]
+  },
+  {
+    "session_id": "ba9034e7ace4489387e9ec0c44d110db",
+    "image": "sha256:747873867110897321865b8790204c0d42a9d51357dce8c3334f50c59d6e916c",
+    "profile": {
+      "Binds": null,
+      "ContainerIDFile": "",
+      "LogConfig": {
+        "Type": "json-file",
+        "Config": {}
+      },
+      "NetworkMode": "none",
+      "PortBindings": {},
+      "RestartPolicy": {
+        "Name": "no",
+        "MaximumRetryCount": 0
+      },
+      "AutoRemove": false,
+      "VolumeDriver": "",
+      "VolumesFrom": null,
+      "ConsoleSize": [
+        0,
+        0
+      ],
+      "CapAdd": null,
+      "CapDrop": [
+        "ALL"
+      ],
+      "CgroupnsMode": "private",
+      "Dns": null,
+      "DnsOptions": [],
+      "DnsSearch": [],
+      "ExtraHosts": null,
+      "GroupAdd": null,
+      "IpcMode": "private",
+      "Cgroup": "",
+      "Links": null,
+      "OomScoreAdj": 0,
+      "PidMode": "",
+      "Privileged": false,
+      "PublishAllPorts": false,
+      "ReadonlyRootfs": false,
+      "SecurityOpt": [
+        "no-new-privileges"
+      ],
+      "UTSMode": "",
+      "UsernsMode": "",
+      "ShmSize": 67108864,
+      "Runtime": "runc",
+      "Isolation": "",
+      "CpuShares": 0,
+      "Memory": 1073741824,
+      "NanoCpus": 1000000000,
+      "CgroupParent": "",
+      "BlkioWeight": 0,
+      "BlkioWeightDevice": [],
+      "BlkioDeviceReadBps": [],
+      "BlkioDeviceWriteBps": [],
+      "BlkioDeviceReadIOps": [],
+      "BlkioDeviceWriteIOps": [],
+      "CpuPeriod": 0,
+      "CpuQuota": 0,
+      "CpuRealtimePeriod": 0,
+      "CpuRealtimeRuntime": 0,
+      "CpusetCpus": "",
+      "CpusetMems": "",
+      "Devices": [],
+      "DeviceCgroupRules": null,
+      "DeviceRequests": null,
+      "MemoryReservation": 0,
+      "MemorySwap": 2147483648,
+      "MemorySwappiness": null,
+      "OomKillDisable": null,
+      "PidsLimit": null,
+      "Ulimits": [],
+      "CpuCount": 0,
+      "CpuPercent": 0,
+      "IOMaximumIOps": 0,
+      "IOMaximumBandwidth": 0,
+      "Mounts": [
+        {
+          "Type": "bind",
+          "Source": "/Users/shinmingliu/opcti/validation/phase0/legacy/runs/session-cli-005/state with spaces/ba9034e7ace4489387e9ec0c44d110db/launch",
+          "Target": "/cti-launch",
+          "ReadOnly": true
+        },
+        {
+          "Type": "volume",
+          "Source": "cti-session-ba9034e7ace4489387e9ec0c44d110db-source",
+          "Target": "/fixtures"
+        },
+        {
+          "Type": "volume",
+          "Source": "cti-session-ba9034e7ace4489387e9ec0c44d110db-work",
+          "Target": "/export/original/work"
+        }
+      ],
+      "MaskedPaths": [
+        "/proc/acpi",
+        "/proc/asound",
+        "/proc/interrupts",
+        "/proc/kcore",
+        "/proc/keys",
+        "/proc/latency_stats",
+        "/proc/sched_debug",
+        "/proc/scsi",
+        "/proc/timer_list",
+        "/proc/timer_stats",
+        "/sys/devices/virtual/powercap",
+        "/sys/firmware"
+      ],
+      "ReadonlyPaths": [
+        "/proc/bus",
+        "/proc/fs",
+        "/proc/irq",
+        "/proc/sys",
+        "/proc/sysrq-trigger"
+      ]
+    },
+    "mounts": [
+      {
+        "Type": "volume",
+        "Name": "cti-session-ba9034e7ace4489387e9ec0c44d110db-source",
+        "Source": "/var/lib/docker/volumes/cti-session-ba9034e7ace4489387e9ec0c44d110db-source/_data",
+        "Destination": "/fixtures",
+        "Driver": "local",
+        "Mode": "z",
+        "RW": true,
+        "Propagation": ""
+      },
+      {
+        "Type": "volume",
+        "Name": "cti-session-ba9034e7ace4489387e9ec0c44d110db-work",
+        "Source": "/var/lib/docker/volumes/cti-session-ba9034e7ace4489387e9ec0c44d110db-work/_data",
+        "Destination": "/export/original/work",
+        "Driver": "local",
+        "Mode": "z",
+        "RW": true,
+        "Propagation": ""
+      },
+      {
+        "Type": "bind",
+        "Source": "/Users/shinmingliu/opcti/validation/phase0/legacy/runs/session-cli-005/state with spaces/ba9034e7ace4489387e9ec0c44d110db/launch",
+        "Destination": "/cti-launch",
+        "Mode": "",
+        "RW": false,
+        "Propagation": "rprivate"
+      }
+    ],
+    "labels": {
+      "org.opencontainers.image.version": "24.04",
+      "org.opencti.session": "ba9034e7ace4489387e9ec0c44d110db",
+      "org.opencti.session.store": "27c50232c05e2357ebaccaca8c7aecaabc791ebdccf46a72dacc408c03350e34"
+    },
+    "entrypoint": [
+      "/usr/bin/python3"
+    ]
+  },
+  {
+    "session_id": "c18806d2dcc3483fb4e69a46d0a16057",
+    "image": "sha256:a119c5e4a42dedbb5cdce10d448efce31b4054018bde56a4e476bc2c529fa62c",
+    "profile": {
+      "Binds": null,
+      "ContainerIDFile": "",
+      "LogConfig": {
+        "Type": "json-file",
+        "Config": {}
+      },
+      "NetworkMode": "none",
+      "PortBindings": {},
+      "RestartPolicy": {
+        "Name": "no",
+        "MaximumRetryCount": 0
+      },
+      "AutoRemove": false,
+      "VolumeDriver": "",
+      "VolumesFrom": null,
+      "ConsoleSize": [
+        0,
+        0
+      ],
+      "CapAdd": null,
+      "CapDrop": [
+        "ALL"
+      ],
+      "CgroupnsMode": "private",
+      "Dns": null,
+      "DnsOptions": [],
+      "DnsSearch": [],
+      "ExtraHosts": null,
+      "GroupAdd": null,
+      "IpcMode": "private",
+      "Cgroup": "",
+      "Links": null,
+      "OomScoreAdj": 0,
+      "PidMode": "",
+      "Privileged": false,
+      "PublishAllPorts": false,
+      "ReadonlyRootfs": false,
+      "SecurityOpt": [
+        "no-new-privileges"
+      ],
+      "UTSMode": "",
+      "UsernsMode": "",
+      "ShmSize": 67108864,
+      "Runtime": "runc",
+      "Isolation": "",
+      "CpuShares": 0,
+      "Memory": 1073741824,
+      "NanoCpus": 1000000000,
+      "CgroupParent": "",
+      "BlkioWeight": 0,
+      "BlkioWeightDevice": [],
+      "BlkioDeviceReadBps": [],
+      "BlkioDeviceWriteBps": [],
+      "BlkioDeviceReadIOps": [],
+      "BlkioDeviceWriteIOps": [],
+      "CpuPeriod": 0,
+      "CpuQuota": 0,
+      "CpuRealtimePeriod": 0,
+      "CpuRealtimeRuntime": 0,
+      "CpusetCpus": "",
+      "CpusetMems": "",
+      "Devices": [],
+      "DeviceCgroupRules": null,
+      "DeviceRequests": null,
+      "MemoryReservation": 0,
+      "MemorySwap": 2147483648,
+      "MemorySwappiness": null,
+      "OomKillDisable": null,
+      "PidsLimit": null,
+      "Ulimits": [],
+      "CpuCount": 0,
+      "CpuPercent": 0,
+      "IOMaximumIOps": 0,
+      "IOMaximumBandwidth": 0,
+      "Mounts": [
+        {
+          "Type": "bind",
+          "Source": "/Users/shinmingliu/opcti/validation/phase0/legacy/runs/session-cli-005/state with spaces/c18806d2dcc3483fb4e69a46d0a16057/launch",
+          "Target": "/cti-launch",
+          "ReadOnly": true
+        },
+        {
+          "Type": "volume",
+          "Source": "cti-session-c18806d2dcc3483fb4e69a46d0a16057-source",
+          "Target": "/fixtures"
+        },
+        {
+          "Type": "volume",
+          "Source": "cti-session-c18806d2dcc3483fb4e69a46d0a16057-baseline",
+          "Target": "/baseline",
+          "ReadOnly": true
+        },
+        {
+          "Type": "volume",
+          "Source": "cti-session-c18806d2dcc3483fb4e69a46d0a16057-work",
+          "Target": "/export/original/work"
+        }
+      ],
+      "MaskedPaths": [
+        "/proc/acpi",
+        "/proc/asound",
+        "/proc/interrupts",
+        "/proc/kcore",
+        "/proc/keys",
+        "/proc/latency_stats",
+        "/proc/sched_debug",
+        "/proc/scsi",
+        "/proc/timer_list",
+        "/proc/timer_stats",
+        "/sys/devices/virtual/powercap",
+        "/sys/firmware"
+      ],
+      "ReadonlyPaths": [
+        "/proc/bus",
+        "/proc/fs",
+        "/proc/irq",
+        "/proc/sys",
+        "/proc/sysrq-trigger"
+      ]
+    },
+    "mounts": [
+      {
+        "Type": "volume",
+        "Name": "cti-session-c18806d2dcc3483fb4e69a46d0a16057-work",
+        "Source": "/var/lib/docker/volumes/cti-session-c18806d2dcc3483fb4e69a46d0a16057-work/_data",
+        "Destination": "/export/original/work",
+        "Driver": "local",
+        "Mode": "z",
+        "RW": true,
+        "Propagation": ""
+      },
+      {
+        "Type": "bind",
+        "Source": "/Users/shinmingliu/opcti/validation/phase0/legacy/runs/session-cli-005/state with spaces/c18806d2dcc3483fb4e69a46d0a16057/launch",
+        "Destination": "/cti-launch",
+        "Mode": "",
+        "RW": false,
+        "Propagation": "rprivate"
+      },
+      {
+        "Type": "volume",
+        "Name": "cti-session-c18806d2dcc3483fb4e69a46d0a16057-source",
+        "Source": "/var/lib/docker/volumes/cti-session-c18806d2dcc3483fb4e69a46d0a16057-source/_data",
+        "Destination": "/fixtures",
+        "Driver": "local",
+        "Mode": "z",
+        "RW": true,
+        "Propagation": ""
+      },
+      {
+        "Type": "volume",
+        "Name": "cti-session-c18806d2dcc3483fb4e69a46d0a16057-baseline",
+        "Source": "/var/lib/docker/volumes/cti-session-c18806d2dcc3483fb4e69a46d0a16057-baseline/_data",
+        "Destination": "/baseline",
+        "Driver": "local",
+        "Mode": "z",
+        "RW": false,
+        "Propagation": ""
+      }
+    ],
+    "labels": {
+      "org.opencontainers.image.version": "24.04",
+      "org.opencti.session": "c18806d2dcc3483fb4e69a46d0a16057",
+      "org.opencti.session.store": "27c50232c05e2357ebaccaca8c7aecaabc791ebdccf46a72dacc408c03350e34"
+    },
+    "entrypoint": [
+      "/usr/bin/python3"
+    ]
+  },
+  {
+    "session_id": "a2cd9cbd94534523910772e261d7ba9b",
+    "image": "sha256:a119c5e4a42dedbb5cdce10d448efce31b4054018bde56a4e476bc2c529fa62c",
+    "profile": {
+      "Binds": null,
+      "ContainerIDFile": "",
+      "LogConfig": {
+        "Type": "json-file",
+        "Config": {}
+      },
+      "NetworkMode": "none",
+      "PortBindings": {},
+      "RestartPolicy": {
+        "Name": "no",
+        "MaximumRetryCount": 0
+      },
+      "AutoRemove": false,
+      "VolumeDriver": "",
+      "VolumesFrom": null,
+      "ConsoleSize": [
+        0,
+        0
+      ],
+      "CapAdd": null,
+      "CapDrop": [
+        "ALL"
+      ],
+      "CgroupnsMode": "private",
+      "Dns": null,
+      "DnsOptions": [],
+      "DnsSearch": [],
+      "ExtraHosts": null,
+      "GroupAdd": null,
+      "IpcMode": "private",
+      "Cgroup": "",
+      "Links": null,
+      "OomScoreAdj": 0,
+      "PidMode": "",
+      "Privileged": false,
+      "PublishAllPorts": false,
+      "ReadonlyRootfs": false,
+      "SecurityOpt": [
+        "no-new-privileges"
+      ],
+      "UTSMode": "",
+      "UsernsMode": "",
+      "ShmSize": 67108864,
+      "Runtime": "runc",
+      "Isolation": "",
+      "CpuShares": 0,
+      "Memory": 1073741824,
+      "NanoCpus": 1000000000,
+      "CgroupParent": "",
+      "BlkioWeight": 0,
+      "BlkioWeightDevice": [],
+      "BlkioDeviceReadBps": [],
+      "BlkioDeviceWriteBps": [],
+      "BlkioDeviceReadIOps": [],
+      "BlkioDeviceWriteIOps": [],
+      "CpuPeriod": 0,
+      "CpuQuota": 0,
+      "CpuRealtimePeriod": 0,
+      "CpuRealtimeRuntime": 0,
+      "CpusetCpus": "",
+      "CpusetMems": "",
+      "Devices": [],
+      "DeviceCgroupRules": null,
+      "DeviceRequests": null,
+      "MemoryReservation": 0,
+      "MemorySwap": 2147483648,
+      "MemorySwappiness": null,
+      "OomKillDisable": null,
+      "PidsLimit": null,
+      "Ulimits": [],
+      "CpuCount": 0,
+      "CpuPercent": 0,
+      "IOMaximumIOps": 0,
+      "IOMaximumBandwidth": 0,
+      "Mounts": [
+        {
+          "Type": "bind",
+          "Source": "/Users/shinmingliu/opcti/validation/phase0/legacy/runs/session-cli-005/state with spaces/a2cd9cbd94534523910772e261d7ba9b/launch",
+          "Target": "/cti-launch",
+          "ReadOnly": true
+        },
+        {
+          "Type": "volume",
+          "Source": "cti-session-a2cd9cbd94534523910772e261d7ba9b-source",
+          "Target": "/fixtures"
+        },
+        {
+          "Type": "volume",
+          "Source": "cti-session-a2cd9cbd94534523910772e261d7ba9b-work",
+          "Target": "/capture/original/work"
+        },
+        {
+          "Type": "volume",
+          "Source": "cti-session-a2cd9cbd94534523910772e261d7ba9b-baseline-0",
+          "Target": "/fixtures/groups/Regression/FT01/Masters",
+          "ReadOnly": true
+        },
+        {
+          "Type": "volume",
+          "Source": "cti-session-a2cd9cbd94534523910772e261d7ba9b-baseline-1",
+          "Target": "/fixtures/groups/Regression/FT02/Masters",
+          "ReadOnly": true
+        },
+        {
+          "Type": "volume",
+          "Source": "cti-session-a2cd9cbd94534523910772e261d7ba9b-baseline-2",
+          "Target": "/fixtures/groups/Regression/FT03/Masters",
+          "ReadOnly": true
+        }
+      ],
+      "MaskedPaths": [
+        "/proc/acpi",
+        "/proc/asound",
+        "/proc/interrupts",
+        "/proc/kcore",
+        "/proc/keys",
+        "/proc/latency_stats",
+        "/proc/sched_debug",
+        "/proc/scsi",
+        "/proc/timer_list",
+        "/proc/timer_stats",
+        "/sys/devices/virtual/powercap",
+        "/sys/firmware"
+      ],
+      "ReadonlyPaths": [
+        "/proc/bus",
+        "/proc/fs",
+        "/proc/irq",
+        "/proc/sys",
+        "/proc/sysrq-trigger"
+      ]
+    },
+    "mounts": [
+      {
+        "Type": "bind",
+        "Source": "/Users/shinmingliu/opcti/validation/phase0/legacy/runs/session-cli-005/state with spaces/a2cd9cbd94534523910772e261d7ba9b/launch",
+        "Destination": "/cti-launch",
+        "Mode": "",
+        "RW": false,
+        "Propagation": "rprivate"
+      },
+      {
+        "Type": "volume",
+        "Name": "cti-session-a2cd9cbd94534523910772e261d7ba9b-source",
+        "Source": "/var/lib/docker/volumes/cti-session-a2cd9cbd94534523910772e261d7ba9b-source/_data",
+        "Destination": "/fixtures",
+        "Driver": "local",
+        "Mode": "z",
+        "RW": true,
+        "Propagation": ""
+      },
+      {
+        "Type": "volume",
+        "Name": "cti-session-a2cd9cbd94534523910772e261d7ba9b-work",
+        "Source": "/var/lib/docker/volumes/cti-session-a2cd9cbd94534523910772e261d7ba9b-work/_data",
+        "Destination": "/capture/original/work",
+        "Driver": "local",
+        "Mode": "z",
+        "RW": true,
+        "Propagation": ""
+      },
+      {
+        "Type": "volume",
+        "Name": "cti-session-a2cd9cbd94534523910772e261d7ba9b-baseline-0",
+        "Source": "/var/lib/docker/volumes/cti-session-a2cd9cbd94534523910772e261d7ba9b-baseline-0/_data",
+        "Destination": "/fixtures/groups/Regression/FT01/Masters",
+        "Driver": "local",
+        "Mode": "z",
+        "RW": false,
+        "Propagation": ""
+      },
+      {
+        "Type": "volume",
+        "Name": "cti-session-a2cd9cbd94534523910772e261d7ba9b-baseline-1",
+        "Source": "/var/lib/docker/volumes/cti-session-a2cd9cbd94534523910772e261d7ba9b-baseline-1/_data",
+        "Destination": "/fixtures/groups/Regression/FT02/Masters",
+        "Driver": "local",
+        "Mode": "z",
+        "RW": false,
+        "Propagation": ""
+      },
+      {
+        "Type": "volume",
+        "Name": "cti-session-a2cd9cbd94534523910772e261d7ba9b-baseline-2",
+        "Source": "/var/lib/docker/volumes/cti-session-a2cd9cbd94534523910772e261d7ba9b-baseline-2/_data",
+        "Destination": "/fixtures/groups/Regression/FT03/Masters",
+        "Driver": "local",
+        "Mode": "z",
+        "RW": false,
+        "Propagation": ""
+      }
+    ],
+    "labels": {
+      "org.opencontainers.image.version": "24.04",
+      "org.opencti.session": "a2cd9cbd94534523910772e261d7ba9b",
+      "org.opencti.session.store": "27c50232c05e2357ebaccaca8c7aecaabc791ebdccf46a72dacc408c03350e34"
+    },
+    "entrypoint": [
+      "/usr/bin/python3"
+    ]
+  },
+  {
+    "session_id": "08fd5b3a181c47528206c48e98d087e9",
+    "image": "sha256:873ccd4bbd6101f6f8e46fd1a4502f2d0268edec40c4ae0476cdd24927337840",
+    "profile": {
+      "Binds": null,
+      "ContainerIDFile": "",
+      "LogConfig": {
+        "Type": "json-file",
+        "Config": {}
+      },
+      "NetworkMode": "none",
+      "PortBindings": {},
+      "RestartPolicy": {
+        "Name": "no",
+        "MaximumRetryCount": 0
+      },
+      "AutoRemove": false,
+      "VolumeDriver": "",
+      "VolumesFrom": null,
+      "ConsoleSize": [
+        0,
+        0
+      ],
+      "CapAdd": null,
+      "CapDrop": [
+        "ALL"
+      ],
+      "CgroupnsMode": "private",
+      "Dns": null,
+      "DnsOptions": [],
+      "DnsSearch": [],
+      "ExtraHosts": null,
+      "GroupAdd": null,
+      "IpcMode": "private",
+      "Cgroup": "",
+      "Links": null,
+      "OomScoreAdj": 0,
+      "PidMode": "",
+      "Privileged": false,
+      "PublishAllPorts": false,
+      "ReadonlyRootfs": false,
+      "SecurityOpt": [
+        "no-new-privileges"
+      ],
+      "UTSMode": "",
+      "UsernsMode": "",
+      "ShmSize": 67108864,
+      "Runtime": "runc",
+      "Isolation": "",
+      "CpuShares": 0,
+      "Memory": 1073741824,
+      "NanoCpus": 1000000000,
+      "CgroupParent": "",
+      "BlkioWeight": 0,
+      "BlkioWeightDevice": [],
+      "BlkioDeviceReadBps": [],
+      "BlkioDeviceWriteBps": [],
+      "BlkioDeviceReadIOps": [],
+      "BlkioDeviceWriteIOps": [],
+      "CpuPeriod": 0,
+      "CpuQuota": 0,
+      "CpuRealtimePeriod": 0,
+      "CpuRealtimeRuntime": 0,
+      "CpusetCpus": "",
+      "CpusetMems": "",
+      "Devices": [],
+      "DeviceCgroupRules": null,
+      "DeviceRequests": null,
+      "MemoryReservation": 0,
+      "MemorySwap": 2147483648,
+      "MemorySwappiness": null,
+      "OomKillDisable": null,
+      "PidsLimit": null,
+      "Ulimits": [],
+      "CpuCount": 0,
+      "CpuPercent": 0,
+      "IOMaximumIOps": 0,
+      "IOMaximumBandwidth": 0,
+      "Mounts": [
+        {
+          "Type": "bind",
+          "Source": "/Users/shinmingliu/opcti/validation/phase0/legacy/runs/session-cli-005/state with spaces/08fd5b3a181c47528206c48e98d087e9/launch",
+          "Target": "/cti-launch",
+          "ReadOnly": true
+        },
+        {
+          "Type": "volume",
+          "Source": "cti-session-08fd5b3a181c47528206c48e98d087e9-dependencies",
+          "Target": "/deps",
+          "ReadOnly": true
+        },
+        {
+          "Type": "volume",
+          "Source": "cti-session-08fd5b3a181c47528206c48e98d087e9-source",
+          "Target": "/fixtures"
+        },
+        {
+          "Type": "volume",
+          "Source": "cti-session-08fd5b3a181c47528206c48e98d087e9-work",
+          "Target": "/export/original/work"
+        },
+        {
+          "Type": "volume",
+          "Source": "cti-session-08fd5b3a181c47528206c48e98d087e9-baseline-0",
+          "Target": "/fixtures/groups/Regression/FT13/Masters",
+          "ReadOnly": true
+        }
+      ],
+      "MaskedPaths": [
+        "/proc/acpi",
+        "/proc/asound",
+        "/proc/interrupts",
+        "/proc/kcore",
+        "/proc/keys",
+        "/proc/latency_stats",
+        "/proc/sched_debug",
+        "/proc/scsi",
+        "/proc/timer_list",
+        "/proc/timer_stats",
+        "/sys/devices/virtual/powercap",
+        "/sys/firmware"
+      ],
+      "ReadonlyPaths": [
+        "/proc/bus",
+        "/proc/fs",
+        "/proc/irq",
+        "/proc/sys",
+        "/proc/sysrq-trigger"
+      ]
+    },
+    "mounts": [
+      {
+        "Type": "volume",
+        "Name": "cti-session-08fd5b3a181c47528206c48e98d087e9-baseline-0",
+        "Source": "/var/lib/docker/volumes/cti-session-08fd5b3a181c47528206c48e98d087e9-baseline-0/_data",
+        "Destination": "/fixtures/groups/Regression/FT13/Masters",
+        "Driver": "local",
+        "Mode": "z",
+        "RW": false,
+        "Propagation": ""
+      },
+      {
+        "Type": "bind",
+        "Source": "/Users/shinmingliu/opcti/validation/phase0/legacy/runs/session-cli-005/state with spaces/08fd5b3a181c47528206c48e98d087e9/launch",
+        "Destination": "/cti-launch",
+        "Mode": "",
+        "RW": false,
+        "Propagation": "rprivate"
+      },
+      {
+        "Type": "volume",
+        "Name": "cti-session-08fd5b3a181c47528206c48e98d087e9-dependencies",
+        "Source": "/var/lib/docker/volumes/cti-session-08fd5b3a181c47528206c48e98d087e9-dependencies/_data",
+        "Destination": "/deps",
+        "Driver": "local",
+        "Mode": "z",
+        "RW": false,
+        "Propagation": ""
+      },
+      {
+        "Type": "volume",
+        "Name": "cti-session-08fd5b3a181c47528206c48e98d087e9-source",
+        "Source": "/var/lib/docker/volumes/cti-session-08fd5b3a181c47528206c48e98d087e9-source/_data",
+        "Destination": "/fixtures",
+        "Driver": "local",
+        "Mode": "z",
+        "RW": true,
+        "Propagation": ""
+      },
+      {
+        "Type": "volume",
+        "Name": "cti-session-08fd5b3a181c47528206c48e98d087e9-work",
+        "Source": "/var/lib/docker/volumes/cti-session-08fd5b3a181c47528206c48e98d087e9-work/_data",
+        "Destination": "/export/original/work",
+        "Driver": "local",
+        "Mode": "z",
+        "RW": true,
+        "Propagation": ""
+      }
+    ],
+    "labels": {
+      "org.opencontainers.image.version": "24.04",
+      "org.opencti.phase0.ft13": "722d61db263b480e83b20f88b1b1cf00",
+      "org.opencti.session": "08fd5b3a181c47528206c48e98d087e9",
+      "org.opencti.session.store": "27c50232c05e2357ebaccaca8c7aecaabc791ebdccf46a72dacc408c03350e34"
+    },
+    "entrypoint": [
+      "/usr/bin/python3"
+    ]
+  },
+  {
+    "session_id": "8e408c6be54a491e859fa27d5537fff8",
+    "image": "sha256:a119c5e4a42dedbb5cdce10d448efce31b4054018bde56a4e476bc2c529fa62c",
+    "profile": {
+      "Binds": null,
+      "ContainerIDFile": "",
+      "LogConfig": {
+        "Type": "json-file",
+        "Config": {}
+      },
+      "NetworkMode": "none",
+      "PortBindings": {},
+      "RestartPolicy": {
+        "Name": "no",
+        "MaximumRetryCount": 0
+      },
+      "AutoRemove": false,
+      "VolumeDriver": "",
+      "VolumesFrom": null,
+      "ConsoleSize": [
+        0,
+        0
+      ],
+      "CapAdd": null,
+      "CapDrop": [
+        "ALL"
+      ],
+      "CgroupnsMode": "private",
+      "Dns": null,
+      "DnsOptions": [],
+      "DnsSearch": [],
+      "ExtraHosts": null,
+      "GroupAdd": null,
+      "IpcMode": "private",
+      "Cgroup": "",
+      "Links": null,
+      "OomScoreAdj": 0,
+      "PidMode": "",
+      "Privileged": false,
+      "PublishAllPorts": false,
+      "ReadonlyRootfs": false,
+      "SecurityOpt": [
+        "no-new-privileges"
+      ],
+      "UTSMode": "",
+      "UsernsMode": "",
+      "ShmSize": 67108864,
+      "Runtime": "runc",
+      "Isolation": "",
+      "CpuShares": 0,
+      "Memory": 1073741824,
+      "NanoCpus": 1000000000,
+      "CgroupParent": "",
+      "BlkioWeight": 0,
+      "BlkioWeightDevice": [],
+      "BlkioDeviceReadBps": [],
+      "BlkioDeviceWriteBps": [],
+      "BlkioDeviceReadIOps": [],
+      "BlkioDeviceWriteIOps": [],
+      "CpuPeriod": 0,
+      "CpuQuota": 0,
+      "CpuRealtimePeriod": 0,
+      "CpuRealtimeRuntime": 0,
+      "CpusetCpus": "",
+      "CpusetMems": "",
+      "Devices": [],
+      "DeviceCgroupRules": null,
+      "DeviceRequests": null,
+      "MemoryReservation": 0,
+      "MemorySwap": 2147483648,
+      "MemorySwappiness": null,
+      "OomKillDisable": null,
+      "PidsLimit": null,
+      "Ulimits": [],
+      "CpuCount": 0,
+      "CpuPercent": 0,
+      "IOMaximumIOps": 0,
+      "IOMaximumBandwidth": 0,
+      "Mounts": [
+        {
+          "Type": "bind",
+          "Source": "/Users/shinmingliu/opcti/validation/phase0/legacy/runs/session-cli-005/state with spaces/8e408c6be54a491e859fa27d5537fff8/launch",
+          "Target": "/cti-launch",
+          "ReadOnly": true
+        },
+        {
+          "Type": "volume",
+          "Source": "cti-session-8e408c6be54a491e859fa27d5537fff8-work",
+          "Target": "/case-work"
+        },
+        {
+          "Type": "volume",
+          "Source": "cti-session-8e408c6be54a491e859fa27d5537fff8-source",
+          "Target": "/case-source"
+        },
+        {
+          "Type": "volume",
+          "Source": "cti-session-8e408c6be54a491e859fa27d5537fff8-baseline",
+          "Target": "/case-baseline",
+          "ReadOnly": true
+        }
+      ],
+      "MaskedPaths": [
+        "/proc/acpi",
+        "/proc/asound",
+        "/proc/interrupts",
+        "/proc/kcore",
+        "/proc/keys",
+        "/proc/latency_stats",
+        "/proc/sched_debug",
+        "/proc/scsi",
+        "/proc/timer_list",
+        "/proc/timer_stats",
+        "/sys/devices/virtual/powercap",
+        "/sys/firmware"
+      ],
+      "ReadonlyPaths": [
+        "/proc/bus",
+        "/proc/fs",
+        "/proc/irq",
+        "/proc/sys",
+        "/proc/sysrq-trigger"
+      ]
+    },
+    "mounts": [
+      {
+        "Type": "volume",
+        "Name": "cti-session-8e408c6be54a491e859fa27d5537fff8-source",
+        "Source": "/var/lib/docker/volumes/cti-session-8e408c6be54a491e859fa27d5537fff8-source/_data",
+        "Destination": "/case-source",
+        "Driver": "local",
+        "Mode": "z",
+        "RW": true,
+        "Propagation": ""
+      },
+      {
+        "Type": "volume",
+        "Name": "cti-session-8e408c6be54a491e859fa27d5537fff8-baseline",
+        "Source": "/var/lib/docker/volumes/cti-session-8e408c6be54a491e859fa27d5537fff8-baseline/_data",
+        "Destination": "/case-baseline",
+        "Driver": "local",
+        "Mode": "z",
+        "RW": false,
+        "Propagation": ""
+      },
+      {
+        "Type": "bind",
+        "Source": "/Users/shinmingliu/opcti/validation/phase0/legacy/runs/session-cli-005/state with spaces/8e408c6be54a491e859fa27d5537fff8/launch",
+        "Destination": "/cti-launch",
+        "Mode": "",
+        "RW": false,
+        "Propagation": "rprivate"
+      },
+      {
+        "Type": "volume",
+        "Name": "cti-session-8e408c6be54a491e859fa27d5537fff8-work",
+        "Source": "/var/lib/docker/volumes/cti-session-8e408c6be54a491e859fa27d5537fff8-work/_data",
+        "Destination": "/case-work",
+        "Driver": "local",
+        "Mode": "z",
+        "RW": true,
+        "Propagation": ""
+      }
+    ],
+    "labels": {
+      "org.opencontainers.image.version": "24.04",
+      "org.opencti.session": "8e408c6be54a491e859fa27d5537fff8",
+      "org.opencti.session.store": "27c50232c05e2357ebaccaca8c7aecaabc791ebdccf46a72dacc408c03350e34"
+    },
+    "entrypoint": [
+      "/usr/bin/python3"
+    ]
+  }
+]

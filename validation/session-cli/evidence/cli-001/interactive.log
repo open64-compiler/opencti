@@ -1,0 +1,37 @@
+stty cols 200
+printf 'CTI_INTERACTIVE=%s\nCTI_PWD=%s\nCTI_FLAGS=%s\n' "$-" "$PWD" "$CC_OPTIONS"
+gdb --nx --nh --batch -q -ex 'break debug_checkpoint' -ex run -ex 'print debug_value' -ex bt ./debug_target
+printf 'CTI_DEBUGGER_EXIT=%s\n' "$?"
+exit
+stty cols 200
+printf 'CTI_INTERACTIVE=%s\nCTI_PWD=%s\nCTI_FLAGS=%s\n' "$-" "$PWD" "$CC_OPTIONS"
+gdb --nx --nh --batch -q -ex 'break debug_checkpoint' -ex run -ex 'print debug_value' -ex bt ./debug_target
+printf 'CTI_DEBUGGER_EXIT=%s\n' "$?"
+exit
+CTI debugging session ba9034e7ace4489387e9ec0c44d110db
+Working directory: /export/original/work/Regression/FT09
+Exit disconnects this shell; the session and private files remain.
+[?2004hcti[ba9034e7]:/export/original/work/Regression/FT09$ stty cols 200
+[?2004l[?2004hcti[ba9034e7]:/export/original/work/Regression/FT09$ printf 'CTI_INTERACTIVE=%s\nCTI_PWD=%s\nCTI_FLAGS=%s\n' "$-" "$PWD" "$CC_OPTIONS"
+[?2004lCTI_INTERACTIVE=himBHs
+CTI_PWD=/export/original/work/Regression/FT09
+CTI_FLAGS=-g -O0 -fno-omit-frame-pointer -no-pie
+[?2004hcti[ba9034e7]:/export/original/work/Regression/FT09$ gdb --nx --nh --batch -q -ex 'break debug_checkpoint' -ex run -ex 'print debug_value' -ex bt ./debug_target [A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Kt
+[?2004lBreakpoint 1 at 0x4007e8: file debug_target.c, line 8.
+warning: Error disabling address space randomization: Operation not permitted
+[Thread debugging using libthread_db enabled]
+Using host libthread_db library "/lib/aarch64-linux-gnu/libthread_db.so.1".
+
+Breakpoint 1, debug_checkpoint () at debug_target.c:8
+8	    return debug_value + 1;
+$1 = 41
+#0  debug_checkpoint () at debug_target.c:8
+#1  0x0000000000400888 in main (argc=1, argv=0xffffc7599d18) at debug_target.c:17
+[?2004hcti[ba9034e7]:/export/original/work/Regression/FT09$ printf 'CTI_DEBUGGER_EXIT=%s\n' "$?"
+[?2004lCTI_DEBUGGER_EXIT=0
+[?2004hcti[ba9034e7]:/export/original/work/Regression/FT09$ exit
+[?2004lexit
+
+[1mWhat's next:[0m
+    Try Docker Debug for seamless, persistent debugging tools in any container or image → [36mdocker debug cti-session-ba9034e7ace4489387e9ec0c44d110db[0m
+    Learn more at https://docs.docker.com/go/debug-cli/

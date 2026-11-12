@@ -1,0 +1,708 @@
+[
+  {
+    "argv": [
+      "/Applications/Xcode.app/Contents/Developer/usr/bin/python3",
+      "-B",
+      "/Users/shinmingliu/opcti/tools/cti-session",
+      "--state-dir",
+      "/Users/shinmingliu/opcti/validation/phase0/legacy/runs/session-cli-005/state with spaces",
+      "open",
+      "--capture",
+      "/Users/shinmingliu/opcti/validation/phase0/legacy/evidence/ft09-001",
+      "--no-attach",
+      "--json"
+    ],
+    "returncode": 0,
+    "stdout": "{\"session_id\": \"1e651aa8e2d94a238604d2f61f4c9359\", \"container\": \"cti-session-1e651aa8e2d94a238604d2f61f4c9359\", \"cwd\": \"/export/original/work/Regression/FT09\", \"environment\": \"/export/original/work/Regression/FT09/debug_target.env\", \"readiness\": {\"session_id\": \"1e651aa8e2d94a238604d2f61f4c9359\", \"accepted\": true, \"replay_ready\": true, \"mode\": \"debugging\", \"problems\": [], \"cwd\": \"/export/original/work/Regression/FT09\", \"saved_environment\": \"/export/original/work/Regression/FT09/debug_target.env\"}}\n",
+    "stderr": ""
+  },
+  {
+    "argv": [
+      "docker",
+      "container",
+      "inspect",
+      "cti-session-1e651aa8e2d94a238604d2f61f4c9359"
+    ],
+    "returncode": 0,
+    "stdout": "[\n    {\n        \"Id\": \"c5f0110586f5b2576285d8d1a61652d0019edc445770ad2d186793a3e092b642\",\n        \"Created\": \"2026-11-12T22:42:49.838448758Z\",\n        \"Path\": \"/usr/bin/python3\",\n        \"Args\": [\n            \"/cti-launch/runtime.py\",\n            \"serve\"\n        ],\n        \"State\": {\n            \"Status\": \"running\",\n            \"Running\": true,\n            \"Paused\": false,\n            \"Restarting\": false,\n            \"OOMKilled\": false,\n            \"Dead\": false,\n            \"Pid\": 29337,\n            \"ExitCode\": 0,\n            \"Error\": \"\",\n            \"StartedAt\": \"2026-11-12T22:42:49.877901758Z\",\n            \"FinishedAt\": \"0001-01-01T00:00:00Z\"\n        },\n        \"Image\": \"sha256:747873867110897321865b8790204c0d42a9d51357dce8c3334f50c59d6e916c\",\n        \"ResolvConfPath\": \"/var/lib/docker/containers/c5f0110586f5b2576285d8d1a61652d0019edc445770ad2d186793a3e092b642/resolv.conf\",\n        \"HostnamePath\": \"/var/lib/docker/containers/c5f0110586f5b2576285d8d1a61652d0019edc445770ad2d186793a3e092b642/hostname\",\n        \"HostsPath\": \"/var/lib/docker/containers/c5f0110586f5b2576285d8d1a61652d0019edc445770ad2d186793a3e092b642/hosts\",\n        \"LogPath\": \"/var/lib/docker/containers/c5f0110586f5b2576285d8d1a61652d0019edc445770ad2d186793a3e092b642/c5f0110586f5b2576285d8d1a61652d0019edc445770ad2d186793a3e092b642-json.log\",\n        \"Name\": \"/cti-session-1e651aa8e2d94a238604d2f61f4c9359\",\n        \"RestartCount\": 0,\n        \"Driver\": \"overlay2\",\n        \"Platform\": \"linux\",\n        \"MountLabel\": \"\",\n        \"ProcessLabel\": \"\",\n        \"AppArmorProfile\": \"\",\n        \"ExecIDs\": null,\n        \"HostConfig\": {\n            \"Binds\": null,\n            \"ContainerIDFile\": \"\",\n            \"LogConfig\": {\n                \"Type\": \"json-file\",\n                \"Config\": {}\n            },\n            \"NetworkMode\": \"none\",\n            \"PortBindings\": {},\n            \"RestartPolicy\": {\n                \"Name\": \"no\",\n                \"MaximumRetryCount\": 0\n            },\n            \"AutoRemove\": false,\n            \"VolumeDriver\": \"\",\n            \"VolumesFrom\": null,\n            \"ConsoleSize\": [\n                0,\n                0\n            ],\n            \"CapAdd\": null,\n            \"CapDrop\": [\n                \"ALL\"\n            ],\n            \"CgroupnsMode\": \"private\",\n            \"Dns\": null,\n            \"DnsOptions\": [],\n            \"DnsSearch\": [],\n            \"ExtraHosts\": null,\n            \"GroupAdd\": null,\n            \"IpcMode\": \"private\",\n            \"Cgroup\": \"\",\n            \"Links\": null,\n            \"OomScoreAdj\": 0,\n            \"PidMode\": \"\",\n            \"Privileged\": false,\n            \"PublishAllPorts\": false,\n            \"ReadonlyRootfs\": false,\n            \"SecurityOpt\": [\n                \"no-new-privileges\"\n            ],\n            \"UTSMode\": \"\",\n            \"UsernsMode\": \"\",\n            \"ShmSize\": 67108864,\n            \"Runtime\": \"runc\",\n            \"Isolation\": \"\",\n            \"CpuShares\": 0,\n            \"Memory\": 1073741824,\n            \"NanoCpus\": 1000000000,\n            \"CgroupParent\": \"\",\n            \"BlkioWeight\": 0,\n            \"BlkioWeightDevice\": [],\n            \"BlkioDeviceReadBps\": [],\n            \"BlkioDeviceWriteBps\": [],\n            \"BlkioDeviceReadIOps\": [],\n            \"BlkioDeviceWriteIOps\": [],\n            \"CpuPeriod\": 0,\n            \"CpuQuota\": 0,\n            \"CpuRealtimePeriod\": 0,\n            \"CpuRealtimeRuntime\": 0,\n            \"CpusetCpus\": \"\",\n            \"CpusetMems\": \"\",\n            \"Devices\": [],\n            \"DeviceCgroupRules\": null,\n            \"DeviceRequests\": null,\n            \"MemoryReservation\": 0,\n            \"MemorySwap\": 2147483648,\n            \"MemorySwappiness\": null,\n            \"OomKillDisable\": null,\n            \"PidsLimit\": null,\n            \"Ulimits\": [],\n            \"CpuCount\": 0,\n            \"CpuPercent\": 0,\n            \"IOMaximumIOps\": 0,\n            \"IOMaximumBandwidth\": 0,\n            \"Mounts\": [\n                {\n                    \"Type\": \"bind\",\n                    \"Source\": \"/Users/shinmingliu/opcti/validation/phase0/legacy/runs/session-cli-005/state with spaces/1e651aa8e2d94a238604d2f61f4c9359/launch\",\n                    \"Target\": \"/cti-launch\",\n                    \"ReadOnly\": true\n                },\n                {\n                    \"Type\": \"volume\",\n                    \"Source\": \"cti-session-1e651aa8e2d94a238604d2f61f4c9359-source\",\n                    \"Target\": \"/fixtures\"\n                },\n                {\n                    \"Type\": \"volume\",\n                    \"Source\": \"cti-session-1e651aa8e2d94a238604d2f61f4c9359-work\",\n                    \"Target\": \"/export/original/work\"\n                }\n            ],\n            \"MaskedPaths\": [\n                \"/proc/acpi\",\n                \"/proc/asound\",\n                \"/proc/interrupts\",\n                \"/proc/kcore\",\n                \"/proc/keys\",\n                \"/proc/latency_stats\",\n                \"/proc/sched_debug\",\n                \"/proc/scsi\",\n                \"/proc/timer_list\",\n                \"/proc/timer_stats\",\n                \"/sys/devices/virtual/powercap\",\n                \"/sys/firmware\"\n            ],\n            \"ReadonlyPaths\": [\n                \"/proc/bus\",\n                \"/proc/fs\",\n                \"/proc/irq\",\n                \"/proc/sys\",\n                \"/proc/sysrq-trigger\"\n            ]\n        },\n        \"GraphDriver\": {\n            \"Data\": {\n                \"ID\": \"c5f0110586f5b2576285d8d1a61652d0019edc445770ad2d186793a3e092b642\",\n                \"LowerDir\": \"/var/lib/docker/overlay2/fa36d3357729e745f0ff9b02162da8c3f495b291dfdace7db20b1dc0beefcb0b-init/diff:/var/lib/docker/overlay2/qe060ivzuj600czqdq7r6i31q/diff:/var/lib/docker/overlay2/1wdzjbdhqu6tfzi2i401crrq1/diff:/var/lib/docker/overlay2/ttri2xu5n18wwohwi38tooeik/diff:/var/lib/docker/overlay2/os4d819slnpizlvcm8g13nv3a/diff:/var/lib/docker/overlay2/eac0fiqi2yu7zsw9xnen2hz18/diff:/var/lib/docker/overlay2/dj9xzqgejlnfjccxc2pdbh4ky/diff:/var/lib/docker/overlay2/jrgrxuvb8pkc0dbik46t9mjwc/diff:/var/lib/docker/overlay2/45b9d819b5b52e3f6876c7b987dcf6a2689fa57a81ed6f264c428e6c77388b17/diff\",\n                \"MergedDir\": \"/var/lib/docker/overlay2/fa36d3357729e745f0ff9b02162da8c3f495b291dfdace7db20b1dc0beefcb0b/merged\",\n                \"UpperDir\": \"/var/lib/docker/overlay2/fa36d3357729e745f0ff9b02162da8c3f495b291dfdace7db20b1dc0beefcb0b/diff\",\n                \"WorkDir\": \"/var/lib/docker/overlay2/fa36d3357729e745f0ff9b02162da8c3f495b291dfdace7db20b1dc0beefcb0b/work\"\n            },\n            \"Name\": \"overlay2\"\n        },\n        \"Mounts\": [\n            {\n                \"Type\": \"bind\",\n                \"Source\": \"/Users/shinmingliu/opcti/validation/phase0/legacy/runs/session-cli-005/state with spaces/1e651aa8e2d94a238604d2f61f4c9359/launch\",\n                \"Destination\": \"/cti-launch\",\n                \"Mode\": \"\",\n                \"RW\": false,\n                \"Propagation\": \"rprivate\"\n            },\n            {\n                \"Type\": \"volume\",\n                \"Name\": \"cti-session-1e651aa8e2d94a238604d2f61f4c9359-source\",\n                \"Source\": \"/var/lib/docker/volumes/cti-session-1e651aa8e2d94a238604d2f61f4c9359-source/_data\",\n                \"Destination\": \"/fixtures\",\n                \"Driver\": \"local\",\n                \"Mode\": \"z\",\n                \"RW\": true,\n                \"Propagation\": \"\"\n            },\n            {\n                \"Type\": \"volume\",\n                \"Name\": \"cti-session-1e651aa8e2d94a238604d2f61f4c9359-work\",\n                \"Source\": \"/var/lib/docker/volumes/cti-session-1e651aa8e2d94a238604d2f61f4c9359-work/_data\",\n                \"Destination\": \"/export/original/work\",\n                \"Driver\": \"local\",\n                \"Mode\": \"z\",\n                \"RW\": true,\n                \"Propagation\": \"\"\n            }\n        ],\n        \"Config\": {\n            \"Hostname\": \"c5f0110586f5\",\n            \"Domainname\": \"\",\n            \"User\": \"\",\n            \"AttachStdin\": false,\n            \"AttachStdout\": true,\n            \"AttachStderr\": true,\n            \"Tty\": false,\n            \"OpenStdin\": false,\n            \"StdinOnce\": false,\n            \"Env\": [\n                \"PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin\",\n                \"DEBIAN_FRONTEND=noninteractive\",\n                \"CTI_HOME=/opt/cti\",\n                \"CTI_PERL=/usr/bin/perl\",\n                \"CTI_SHELL=/bin/bash\"\n            ],\n            \"Cmd\": [\n                \"/cti-launch/runtime.py\",\n                \"serve\"\n            ],\n            \"Image\": \"sha256:747873867110897321865b8790204c0d42a9d51357dce8c3334f50c59d6e916c\",\n            \"Volumes\": null,\n            \"WorkingDir\": \"/capture\",\n            \"Entrypoint\": [\n                \"/usr/bin/python3\"\n            ],\n            \"Labels\": {\n                \"org.opencontainers.image.version\": \"24.04\",\n                \"org.opencti.session\": \"1e651aa8e2d94a238604d2f61f4c9359\",\n                \"org.opencti.session.store\": \"27c50232c05e2357ebaccaca8c7aecaabc791ebdccf46a72dacc408c03350e34\"\n            },\n            \"StopTimeout\": 1\n        },\n        \"NetworkSettings\": {\n            \"SandboxID\": \"6a7e2a0a61d816543ed1a7e78fd3a2b5843b80b7687eb97200fea1f2566b819c\",\n            \"SandboxKey\": \"/var/run/docker/netns/6a7e2a0a61d8\",\n            \"Ports\": {},\n            \"Networks\": {\n                \"none\": {\n                    \"IPAMConfig\": null,\n                    \"Links\": null,\n                    \"Aliases\": null,\n                    \"DriverOpts\": null,\n                    \"GwPriority\": 0,\n                    \"NetworkID\": \"db469be2416af8289efb850ec787ddcb5266451b56691319d8bd80134baf0452\",\n                    \"EndpointID\": \"2c855e14bf829e6c9d8a6b5aeed4135ad3886ffd559dd23cc0bf0b45c9b529b8\",\n                    \"Gateway\": \"\",\n                    \"IPAddress\": \"\",\n                    \"MacAddress\": \"\",\n                    \"IPPrefixLen\": 0,\n                    \"IPv6Gateway\": \"\",\n                    \"GlobalIPv6Address\": \"\",\n                    \"GlobalIPv6PrefixLen\": 0,\n                    \"DNSNames\": null\n                }\n            }\n        }\n    }\n]\n",
+    "stderr": ""
+  },
+  {
+    "argv": [
+      "/Applications/Xcode.app/Contents/Developer/usr/bin/python3",
+      "-B",
+      "/Users/shinmingliu/opcti/tools/cti-session",
+      "--state-dir",
+      "/Users/shinmingliu/opcti/validation/phase0/legacy/runs/session-cli-005/state with spaces",
+      "open",
+      "--capture",
+      "/Users/shinmingliu/opcti/validation/phase0/legacy/evidence/ft09-001",
+      "--no-attach",
+      "--json"
+    ],
+    "returncode": 0,
+    "stdout": "{\"session_id\": \"ba9034e7ace4489387e9ec0c44d110db\", \"container\": \"cti-session-ba9034e7ace4489387e9ec0c44d110db\", \"cwd\": \"/export/original/work/Regression/FT09\", \"environment\": \"/export/original/work/Regression/FT09/debug_target.env\", \"readiness\": {\"session_id\": \"ba9034e7ace4489387e9ec0c44d110db\", \"accepted\": true, \"replay_ready\": true, \"mode\": \"debugging\", \"problems\": [], \"cwd\": \"/export/original/work/Regression/FT09\", \"saved_environment\": \"/export/original/work/Regression/FT09/debug_target.env\"}}\n",
+    "stderr": ""
+  },
+  {
+    "argv": [
+      "docker",
+      "container",
+      "inspect",
+      "cti-session-ba9034e7ace4489387e9ec0c44d110db"
+    ],
+    "returncode": 0,
+    "stdout": "[\n    {\n        \"Id\": \"473e4c4ba02e5f66a5665d3aff3806b8cbb7c3aed46e083794ad779ed52a3d31\",\n        \"Created\": \"2026-11-12T22:42:50.5233853Z\",\n        \"Path\": \"/usr/bin/python3\",\n        \"Args\": [\n            \"/cti-launch/runtime.py\",\n            \"serve\"\n        ],\n        \"State\": {\n            \"Status\": \"running\",\n            \"Running\": true,\n            \"Paused\": false,\n            \"Restarting\": false,\n            \"OOMKilled\": false,\n            \"Dead\": false,\n            \"Pid\": 29491,\n            \"ExitCode\": 0,\n            \"Error\": \"\",\n            \"StartedAt\": \"2026-11-12T22:42:50.566800008Z\",\n            \"FinishedAt\": \"0001-01-01T00:00:00Z\"\n        },\n        \"Image\": \"sha256:747873867110897321865b8790204c0d42a9d51357dce8c3334f50c59d6e916c\",\n        \"ResolvConfPath\": \"/var/lib/docker/containers/473e4c4ba02e5f66a5665d3aff3806b8cbb7c3aed46e083794ad779ed52a3d31/resolv.conf\",\n        \"HostnamePath\": \"/var/lib/docker/containers/473e4c4ba02e5f66a5665d3aff3806b8cbb7c3aed46e083794ad779ed52a3d31/hostname\",\n        \"HostsPath\": \"/var/lib/docker/containers/473e4c4ba02e5f66a5665d3aff3806b8cbb7c3aed46e083794ad779ed52a3d31/hosts\",\n        \"LogPath\": \"/var/lib/docker/containers/473e4c4ba02e5f66a5665d3aff3806b8cbb7c3aed46e083794ad779ed52a3d31/473e4c4ba02e5f66a5665d3aff3806b8cbb7c3aed46e083794ad779ed52a3d31-json.log\",\n        \"Name\": \"/cti-session-ba9034e7ace4489387e9ec0c44d110db\",\n        \"RestartCount\": 0,\n        \"Driver\": \"overlay2\",\n        \"Platform\": \"linux\",\n        \"MountLabel\": \"\",\n        \"ProcessLabel\": \"\",\n        \"AppArmorProfile\": \"\",\n        \"ExecIDs\": null,\n        \"HostConfig\": {\n            \"Binds\": null,\n            \"ContainerIDFile\": \"\",\n            \"LogConfig\": {\n                \"Type\": \"json-file\",\n                \"Config\": {}\n            },\n            \"NetworkMode\": \"none\",\n            \"PortBindings\": {},\n            \"RestartPolicy\": {\n                \"Name\": \"no\",\n                \"MaximumRetryCount\": 0\n            },\n            \"AutoRemove\": false,\n            \"VolumeDriver\": \"\",\n            \"VolumesFrom\": null,\n            \"ConsoleSize\": [\n                0,\n                0\n            ],\n            \"CapAdd\": null,\n            \"CapDrop\": [\n                \"ALL\"\n            ],\n            \"CgroupnsMode\": \"private\",\n            \"Dns\": null,\n            \"DnsOptions\": [],\n            \"DnsSearch\": [],\n            \"ExtraHosts\": null,\n            \"GroupAdd\": null,\n            \"IpcMode\": \"private\",\n            \"Cgroup\": \"\",\n            \"Links\": null,\n            \"OomScoreAdj\": 0,\n            \"PidMode\": \"\",\n            \"Privileged\": false,\n            \"PublishAllPorts\": false,\n            \"ReadonlyRootfs\": false,\n            \"SecurityOpt\": [\n                \"no-new-privileges\"\n            ],\n            \"UTSMode\": \"\",\n            \"UsernsMode\": \"\",\n            \"ShmSize\": 67108864,\n            \"Runtime\": \"runc\",\n            \"Isolation\": \"\",\n            \"CpuShares\": 0,\n            \"Memory\": 1073741824,\n            \"NanoCpus\": 1000000000,\n            \"CgroupParent\": \"\",\n            \"BlkioWeight\": 0,\n            \"BlkioWeightDevice\": [],\n            \"BlkioDeviceReadBps\": [],\n            \"BlkioDeviceWriteBps\": [],\n            \"BlkioDeviceReadIOps\": [],\n            \"BlkioDeviceWriteIOps\": [],\n            \"CpuPeriod\": 0,\n            \"CpuQuota\": 0,\n            \"CpuRealtimePeriod\": 0,\n            \"CpuRealtimeRuntime\": 0,\n            \"CpusetCpus\": \"\",\n            \"CpusetMems\": \"\",\n            \"Devices\": [],\n            \"DeviceCgroupRules\": null,\n            \"DeviceRequests\": null,\n            \"MemoryReservation\": 0,\n            \"MemorySwap\": 2147483648,\n            \"MemorySwappiness\": null,\n            \"OomKillDisable\": null,\n            \"PidsLimit\": null,\n            \"Ulimits\": [],\n            \"CpuCount\": 0,\n            \"CpuPercent\": 0,\n            \"IOMaximumIOps\": 0,\n            \"IOMaximumBandwidth\": 0,\n            \"Mounts\": [\n                {\n                    \"Type\": \"bind\",\n                    \"Source\": \"/Users/shinmingliu/opcti/validation/phase0/legacy/runs/session-cli-005/state with spaces/ba9034e7ace4489387e9ec0c44d110db/launch\",\n                    \"Target\": \"/cti-launch\",\n                    \"ReadOnly\": true\n                },\n                {\n                    \"Type\": \"volume\",\n                    \"Source\": \"cti-session-ba9034e7ace4489387e9ec0c44d110db-source\",\n                    \"Target\": \"/fixtures\"\n                },\n                {\n                    \"Type\": \"volume\",\n                    \"Source\": \"cti-session-ba9034e7ace4489387e9ec0c44d110db-work\",\n                    \"Target\": \"/export/original/work\"\n                }\n            ],\n            \"MaskedPaths\": [\n                \"/proc/acpi\",\n                \"/proc/asound\",\n                \"/proc/interrupts\",\n                \"/proc/kcore\",\n                \"/proc/keys\",\n                \"/proc/latency_stats\",\n                \"/proc/sched_debug\",\n                \"/proc/scsi\",\n                \"/proc/timer_list\",\n                \"/proc/timer_stats\",\n                \"/sys/devices/virtual/powercap\",\n                \"/sys/firmware\"\n            ],\n            \"ReadonlyPaths\": [\n                \"/proc/bus\",\n                \"/proc/fs\",\n                \"/proc/irq\",\n                \"/proc/sys\",\n                \"/proc/sysrq-trigger\"\n            ]\n        },\n        \"GraphDriver\": {\n            \"Data\": {\n                \"ID\": \"473e4c4ba02e5f66a5665d3aff3806b8cbb7c3aed46e083794ad779ed52a3d31\",\n                \"LowerDir\": \"/var/lib/docker/overlay2/39d2e00472188a02b797c42698831a0605bf9a2769a7d28eecf92e46429b0f7e-init/diff:/var/lib/docker/overlay2/qe060ivzuj600czqdq7r6i31q/diff:/var/lib/docker/overlay2/1wdzjbdhqu6tfzi2i401crrq1/diff:/var/lib/docker/overlay2/ttri2xu5n18wwohwi38tooeik/diff:/var/lib/docker/overlay2/os4d819slnpizlvcm8g13nv3a/diff:/var/lib/docker/overlay2/eac0fiqi2yu7zsw9xnen2hz18/diff:/var/lib/docker/overlay2/dj9xzqgejlnfjccxc2pdbh4ky/diff:/var/lib/docker/overlay2/jrgrxuvb8pkc0dbik46t9mjwc/diff:/var/lib/docker/overlay2/45b9d819b5b52e3f6876c7b987dcf6a2689fa57a81ed6f264c428e6c77388b17/diff\",\n                \"MergedDir\": \"/var/lib/docker/overlay2/39d2e00472188a02b797c42698831a0605bf9a2769a7d28eecf92e46429b0f7e/merged\",\n                \"UpperDir\": \"/var/lib/docker/overlay2/39d2e00472188a02b797c42698831a0605bf9a2769a7d28eecf92e46429b0f7e/diff\",\n                \"WorkDir\": \"/var/lib/docker/overlay2/39d2e00472188a02b797c42698831a0605bf9a2769a7d28eecf92e46429b0f7e/work\"\n            },\n            \"Name\": \"overlay2\"\n        },\n        \"Mounts\": [\n            {\n                \"Type\": \"volume\",\n                \"Name\": \"cti-session-ba9034e7ace4489387e9ec0c44d110db-source\",\n                \"Source\": \"/var/lib/docker/volumes/cti-session-ba9034e7ace4489387e9ec0c44d110db-source/_data\",\n                \"Destination\": \"/fixtures\",\n                \"Driver\": \"local\",\n                \"Mode\": \"z\",\n                \"RW\": true,\n                \"Propagation\": \"\"\n            },\n            {\n                \"Type\": \"volume\",\n                \"Name\": \"cti-session-ba9034e7ace4489387e9ec0c44d110db-work\",\n                \"Source\": \"/var/lib/docker/volumes/cti-session-ba9034e7ace4489387e9ec0c44d110db-work/_data\",\n                \"Destination\": \"/export/original/work\",\n                \"Driver\": \"local\",\n                \"Mode\": \"z\",\n                \"RW\": true,\n                \"Propagation\": \"\"\n            },\n            {\n                \"Type\": \"bind\",\n                \"Source\": \"/Users/shinmingliu/opcti/validation/phase0/legacy/runs/session-cli-005/state with spaces/ba9034e7ace4489387e9ec0c44d110db/launch\",\n                \"Destination\": \"/cti-launch\",\n                \"Mode\": \"\",\n                \"RW\": false,\n                \"Propagation\": \"rprivate\"\n            }\n        ],\n        \"Config\": {\n            \"Hostname\": \"473e4c4ba02e\",\n            \"Domainname\": \"\",\n            \"User\": \"\",\n            \"AttachStdin\": false,\n            \"AttachStdout\": true,\n            \"AttachStderr\": true,\n            \"Tty\": false,\n            \"OpenStdin\": false,\n            \"StdinOnce\": false,\n            \"Env\": [\n                \"PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin\",\n                \"DEBIAN_FRONTEND=noninteractive\",\n                \"CTI_HOME=/opt/cti\",\n                \"CTI_PERL=/usr/bin/perl\",\n                \"CTI_SHELL=/bin/bash\"\n            ],\n            \"Cmd\": [\n                \"/cti-launch/runtime.py\",\n                \"serve\"\n            ],\n            \"Image\": \"sha256:747873867110897321865b8790204c0d42a9d51357dce8c3334f50c59d6e916c\",\n            \"Volumes\": null,\n            \"WorkingDir\": \"/capture\",\n            \"Entrypoint\": [\n                \"/usr/bin/python3\"\n            ],\n            \"Labels\": {\n                \"org.opencontainers.image.version\": \"24.04\",\n                \"org.opencti.session\": \"ba9034e7ace4489387e9ec0c44d110db\",\n                \"org.opencti.session.store\": \"27c50232c05e2357ebaccaca8c7aecaabc791ebdccf46a72dacc408c03350e34\"\n            },\n            \"StopTimeout\": 1\n        },\n        \"NetworkSettings\": {\n            \"SandboxID\": \"4c7d5675bc359a9eec517e71d08fea51e957a2f8e021118124e2b19cd6dad77c\",\n            \"SandboxKey\": \"/var/run/docker/netns/4c7d5675bc35\",\n            \"Ports\": {},\n            \"Networks\": {\n                \"none\": {\n                    \"IPAMConfig\": null,\n                    \"Links\": null,\n                    \"Aliases\": null,\n                    \"DriverOpts\": null,\n                    \"GwPriority\": 0,\n                    \"NetworkID\": \"db469be2416af8289efb850ec787ddcb5266451b56691319d8bd80134baf0452\",\n                    \"EndpointID\": \"f54e423619700f201a4e3bdf1acd586d99b7e0c876677ee3874a70fd154a2a29\",\n                    \"Gateway\": \"\",\n                    \"IPAddress\": \"\",\n                    \"MacAddress\": \"\",\n                    \"IPPrefixLen\": 0,\n                    \"IPv6Gateway\": \"\",\n                    \"GlobalIPv6Address\": \"\",\n                    \"GlobalIPv6PrefixLen\": 0,\n                    \"DNSNames\": null\n                }\n            }\n        }\n    }\n]\n",
+    "stderr": ""
+  },
+  {
+    "argv": [
+      "/Applications/Xcode.app/Contents/Developer/usr/bin/python3",
+      "-B",
+      "/Users/shinmingliu/opcti/tools/cti-session",
+      "--state-dir",
+      "/Users/shinmingliu/opcti/validation/phase0/legacy/runs/session-cli-005/state with spaces",
+      "exec",
+      "1e651aa8e2d94a238604d2f61f4c9359",
+      "--",
+      "python3",
+      "-c",
+      "import os,json;print(json.dumps({\"cwd\":os.getcwd(),\"cc\":os.environ[\"CC_OPTIONS\"]}))"
+    ],
+    "returncode": 0,
+    "stdout": "{\"cwd\": \"/export/original/work/Regression/FT09\", \"cc\": \"-g -O0 -fno-omit-frame-pointer -no-pie\"}\n",
+    "stderr": ""
+  },
+  {
+    "argv": [
+      "/Applications/Xcode.app/Contents/Developer/usr/bin/python3",
+      "-B",
+      "/Users/shinmingliu/opcti/tools/cti-session",
+      "--state-dir",
+      "/Users/shinmingliu/opcti/validation/phase0/legacy/runs/session-cli-005/state with spaces",
+      "exec",
+      "ba9034e7ace4489387e9ec0c44d110db",
+      "--",
+      "python3",
+      "-c",
+      "import os,json;print(json.dumps({\"cwd\":os.getcwd(),\"cc\":os.environ[\"CC_OPTIONS\"]}))"
+    ],
+    "returncode": 0,
+    "stdout": "{\"cwd\": \"/export/original/work/Regression/FT09\", \"cc\": \"-g -O0 -fno-omit-frame-pointer -no-pie\"}\n",
+    "stderr": ""
+  },
+  {
+    "argv": [
+      "/Applications/Xcode.app/Contents/Developer/usr/bin/python3",
+      "-B",
+      "/Users/shinmingliu/opcti/tools/cti-session",
+      "--state-dir",
+      "/Users/shinmingliu/opcti/validation/phase0/legacy/runs/session-cli-005/state with spaces",
+      "exec",
+      "1e651aa8e2d94a238604d2f61f4c9359",
+      "--",
+      "python3",
+      "-c",
+      "from pathlib import Path;Path(\"session-note\").write_text(\"A only\");p=Path(\"debug_target.c\");p.write_text(p.read_text()+\"\\n/* private A edit */\\n\")"
+    ],
+    "returncode": 0,
+    "stdout": "",
+    "stderr": ""
+  },
+  {
+    "argv": [
+      "/Applications/Xcode.app/Contents/Developer/usr/bin/python3",
+      "-B",
+      "/Users/shinmingliu/opcti/tools/cti-session",
+      "--state-dir",
+      "/Users/shinmingliu/opcti/validation/phase0/legacy/runs/session-cli-005/state with spaces",
+      "exec",
+      "ba9034e7ace4489387e9ec0c44d110db",
+      "--",
+      "cat",
+      "debug_target.c"
+    ],
+    "returncode": 0,
+    "stdout": "#include <stdio.h>\n#include <string.h>\n#include <unistd.h>\n\nvolatile int debug_value = 41;\n\n__attribute__((noinline)) int debug_checkpoint(void) {\n    return debug_value + 1;\n}\n\nint main(int argc, char **argv) {\n    if (argc == 2 && strcmp(argv[1], \"--wait\") == 0) {\n        printf(\"FT09_ATTACH_READY pid=%ld\\n\", (long)getpid());\n        fflush(stdout);\n        while (debug_value == 41) usleep(10000);\n    }\n    printf(\"value=%d\\n\", debug_checkpoint());\n    return 7;\n}\n",
+    "stderr": ""
+  },
+  {
+    "argv": [
+      "/Applications/Xcode.app/Contents/Developer/usr/bin/python3",
+      "-B",
+      "/Users/shinmingliu/opcti/tools/cti-session",
+      "--state-dir",
+      "/Users/shinmingliu/opcti/validation/phase0/legacy/runs/session-cli-005/state with spaces",
+      "exec",
+      "ba9034e7ace4489387e9ec0c44d110db",
+      "--",
+      "./debug_target.run.sh"
+    ],
+    "returncode": 7,
+    "stdout": "",
+    "stderr": ""
+  },
+  {
+    "argv": [
+      "/Applications/Xcode.app/Contents/Developer/usr/bin/python3",
+      "-B",
+      "/Users/shinmingliu/opcti/tools/cti-session",
+      "--state-dir",
+      "/Users/shinmingliu/opcti/validation/phase0/legacy/runs/session-cli-005/state with spaces",
+      "exec",
+      "ba9034e7ace4489387e9ec0c44d110db",
+      "--",
+      "cat",
+      "debug_target.result"
+    ],
+    "returncode": 0,
+    "stdout": "ExecErr\n",
+    "stderr": ""
+  },
+  {
+    "argv": [
+      "/Applications/Xcode.app/Contents/Developer/usr/bin/python3",
+      "-B",
+      "/Users/shinmingliu/opcti/tools/cti-session",
+      "--state-dir",
+      "/Users/shinmingliu/opcti/validation/phase0/legacy/runs/session-cli-005/state with spaces",
+      "stop",
+      "1e651aa8e2d94a238604d2f61f4c9359"
+    ],
+    "returncode": 0,
+    "stdout": "Stopped; private files retained. Reconnect with attach 1e651aa8e2d94a238604d2f61f4c9359\n",
+    "stderr": ""
+  },
+  {
+    "argv": [
+      "/Applications/Xcode.app/Contents/Developer/usr/bin/python3",
+      "-B",
+      "/Users/shinmingliu/opcti/tools/cti-session",
+      "--state-dir",
+      "/Users/shinmingliu/opcti/validation/phase0/legacy/runs/session-cli-005/state with spaces",
+      "exec",
+      "1e651aa8e2d94a238604d2f61f4c9359",
+      "--",
+      "cat",
+      "session-note"
+    ],
+    "returncode": 0,
+    "stdout": "A only",
+    "stderr": ""
+  },
+  {
+    "argv": [
+      "docker",
+      "container",
+      "rm",
+      "-f",
+      "cti-session-1e651aa8e2d94a238604d2f61f4c9359"
+    ],
+    "returncode": 0,
+    "stdout": "cti-session-1e651aa8e2d94a238604d2f61f4c9359\n",
+    "stderr": ""
+  },
+  {
+    "argv": [
+      "/Applications/Xcode.app/Contents/Developer/usr/bin/python3",
+      "-B",
+      "/Users/shinmingliu/opcti/tools/cti-session",
+      "--state-dir",
+      "/Users/shinmingliu/opcti/validation/phase0/legacy/runs/session-cli-005/state with spaces",
+      "exec",
+      "1e651aa8e2d94a238604d2f61f4c9359",
+      "--",
+      "cat",
+      "session-note"
+    ],
+    "returncode": 0,
+    "stdout": "A only",
+    "stderr": ""
+  },
+  {
+    "argv": [
+      "/Applications/Xcode.app/Contents/Developer/usr/bin/python3",
+      "-B",
+      "/Users/shinmingliu/opcti/tools/cti-session",
+      "--state-dir",
+      "/Users/shinmingliu/opcti/validation/phase0/legacy/runs/session-cli-005/state with spaces",
+      "exec",
+      "1e651aa8e2d94a238604d2f61f4c9359",
+      "--",
+      "cat",
+      "debug_target.c"
+    ],
+    "returncode": 0,
+    "stdout": "#include <stdio.h>\n#include <string.h>\n#include <unistd.h>\n\nvolatile int debug_value = 41;\n\n__attribute__((noinline)) int debug_checkpoint(void) {\n    return debug_value + 1;\n}\n\nint main(int argc, char **argv) {\n    if (argc == 2 && strcmp(argv[1], \"--wait\") == 0) {\n        printf(\"FT09_ATTACH_READY pid=%ld\\n\", (long)getpid());\n        fflush(stdout);\n        while (debug_value == 41) usleep(10000);\n    }\n    printf(\"value=%d\\n\", debug_checkpoint());\n    return 7;\n}\n\n/* private A edit */\n",
+    "stderr": ""
+  },
+  {
+    "argv": [
+      "/Applications/Xcode.app/Contents/Developer/usr/bin/python3",
+      "-B",
+      "/Users/shinmingliu/opcti/tools/cti-session",
+      "--state-dir",
+      "/Users/shinmingliu/opcti/validation/phase0/legacy/runs/session-cli-005/state with spaces",
+      "open",
+      "--capture",
+      "/Users/shinmingliu/opcti/validation/phase0/legacy/evidence/ft08-001",
+      "--no-attach",
+      "--json"
+    ],
+    "returncode": 0,
+    "stdout": "{\"session_id\": \"c18806d2dcc3483fb4e69a46d0a16057\", \"container\": \"cti-session-c18806d2dcc3483fb4e69a46d0a16057\", \"cwd\": \"/export/original/work/Applications/FT08\", \"environment\": \"/export/original/work/Applications/FT08/FT08.env\", \"readiness\": {\"session_id\": \"c18806d2dcc3483fb4e69a46d0a16057\", \"accepted\": true, \"replay_ready\": true, \"mode\": \"debugging\", \"problems\": [], \"cwd\": \"/export/original/work/Applications/FT08\", \"saved_environment\": \"/export/original/work/Applications/FT08/FT08.env\"}}\n",
+    "stderr": ""
+  },
+  {
+    "argv": [
+      "docker",
+      "container",
+      "inspect",
+      "cti-session-c18806d2dcc3483fb4e69a46d0a16057"
+    ],
+    "returncode": 0,
+    "stdout": "[\n    {\n        \"Id\": \"450d2e42f883018e06059aff5b3c6892d658318eb9e4b02d2d9c2b204d5983cc\",\n        \"Created\": \"2026-11-12T22:42:52.966805718Z\",\n        \"Path\": \"/usr/bin/python3\",\n        \"Args\": [\n            \"/cti-launch/runtime.py\",\n            \"serve\"\n        ],\n        \"State\": {\n            \"Status\": \"running\",\n            \"Running\": true,\n            \"Paused\": false,\n            \"Restarting\": false,\n            \"OOMKilled\": false,\n            \"Dead\": false,\n            \"Pid\": 30019,\n            \"ExitCode\": 0,\n            \"Error\": \"\",\n            \"StartedAt\": \"2026-11-12T22:42:53.018047509Z\",\n            \"FinishedAt\": \"0001-01-01T00:00:00Z\"\n        },\n        \"Image\": \"sha256:a119c5e4a42dedbb5cdce10d448efce31b4054018bde56a4e476bc2c529fa62c\",\n        \"ResolvConfPath\": \"/var/lib/docker/containers/450d2e42f883018e06059aff5b3c6892d658318eb9e4b02d2d9c2b204d5983cc/resolv.conf\",\n        \"HostnamePath\": \"/var/lib/docker/containers/450d2e42f883018e06059aff5b3c6892d658318eb9e4b02d2d9c2b204d5983cc/hostname\",\n        \"HostsPath\": \"/var/lib/docker/containers/450d2e42f883018e06059aff5b3c6892d658318eb9e4b02d2d9c2b204d5983cc/hosts\",\n        \"LogPath\": \"/var/lib/docker/containers/450d2e42f883018e06059aff5b3c6892d658318eb9e4b02d2d9c2b204d5983cc/450d2e42f883018e06059aff5b3c6892d658318eb9e4b02d2d9c2b204d5983cc-json.log\",\n        \"Name\": \"/cti-session-c18806d2dcc3483fb4e69a46d0a16057\",\n        \"RestartCount\": 0,\n        \"Driver\": \"overlay2\",\n        \"Platform\": \"linux\",\n        \"MountLabel\": \"\",\n        \"ProcessLabel\": \"\",\n        \"AppArmorProfile\": \"\",\n        \"ExecIDs\": null,\n        \"HostConfig\": {\n            \"Binds\": null,\n            \"ContainerIDFile\": \"\",\n            \"LogConfig\": {\n                \"Type\": \"json-file\",\n                \"Config\": {}\n            },\n            \"NetworkMode\": \"none\",\n            \"PortBindings\": {},\n            \"RestartPolicy\": {\n                \"Name\": \"no\",\n                \"MaximumRetryCount\": 0\n            },\n            \"AutoRemove\": false,\n            \"VolumeDriver\": \"\",\n            \"VolumesFrom\": null,\n            \"ConsoleSize\": [\n                0,\n                0\n            ],\n            \"CapAdd\": null,\n            \"CapDrop\": [\n                \"ALL\"\n            ],\n            \"CgroupnsMode\": \"private\",\n            \"Dns\": null,\n            \"DnsOptions\": [],\n            \"DnsSearch\": [],\n            \"ExtraHosts\": null,\n            \"GroupAdd\": null,\n            \"IpcMode\": \"private\",\n            \"Cgroup\": \"\",\n            \"Links\": null,\n            \"OomScoreAdj\": 0,\n            \"PidMode\": \"\",\n            \"Privileged\": false,\n            \"PublishAllPorts\": false,\n            \"ReadonlyRootfs\": false,\n            \"SecurityOpt\": [\n                \"no-new-privileges\"\n            ],\n            \"UTSMode\": \"\",\n            \"UsernsMode\": \"\",\n            \"ShmSize\": 67108864,\n            \"Runtime\": \"runc\",\n            \"Isolation\": \"\",\n            \"CpuShares\": 0,\n            \"Memory\": 1073741824,\n            \"NanoCpus\": 1000000000,\n            \"CgroupParent\": \"\",\n            \"BlkioWeight\": 0,\n            \"BlkioWeightDevice\": [],\n            \"BlkioDeviceReadBps\": [],\n            \"BlkioDeviceWriteBps\": [],\n            \"BlkioDeviceReadIOps\": [],\n            \"BlkioDeviceWriteIOps\": [],\n            \"CpuPeriod\": 0,\n            \"CpuQuota\": 0,\n            \"CpuRealtimePeriod\": 0,\n            \"CpuRealtimeRuntime\": 0,\n            \"CpusetCpus\": \"\",\n            \"CpusetMems\": \"\",\n            \"Devices\": [],\n            \"DeviceCgroupRules\": null,\n            \"DeviceRequests\": null,\n            \"MemoryReservation\": 0,\n            \"MemorySwap\": 2147483648,\n            \"MemorySwappiness\": null,\n            \"OomKillDisable\": null,\n            \"PidsLimit\": null,\n            \"Ulimits\": [],\n            \"CpuCount\": 0,\n            \"CpuPercent\": 0,\n            \"IOMaximumIOps\": 0,\n            \"IOMaximumBandwidth\": 0,\n            \"Mounts\": [\n                {\n                    \"Type\": \"bind\",\n                    \"Source\": \"/Users/shinmingliu/opcti/validation/phase0/legacy/runs/session-cli-005/state with spaces/c18806d2dcc3483fb4e69a46d0a16057/launch\",\n                    \"Target\": \"/cti-launch\",\n                    \"ReadOnly\": true\n                },\n                {\n                    \"Type\": \"volume\",\n                    \"Source\": \"cti-session-c18806d2dcc3483fb4e69a46d0a16057-source\",\n                    \"Target\": \"/fixtures\"\n                },\n                {\n                    \"Type\": \"volume\",\n                    \"Source\": \"cti-session-c18806d2dcc3483fb4e69a46d0a16057-baseline\",\n                    \"Target\": \"/baseline\",\n                    \"ReadOnly\": true\n                },\n                {\n                    \"Type\": \"volume\",\n                    \"Source\": \"cti-session-c18806d2dcc3483fb4e69a46d0a16057-work\",\n                    \"Target\": \"/export/original/work\"\n                }\n            ],\n            \"MaskedPaths\": [\n                \"/proc/acpi\",\n                \"/proc/asound\",\n                \"/proc/interrupts\",\n                \"/proc/kcore\",\n                \"/proc/keys\",\n                \"/proc/latency_stats\",\n                \"/proc/sched_debug\",\n                \"/proc/scsi\",\n                \"/proc/timer_list\",\n                \"/proc/timer_stats\",\n                \"/sys/devices/virtual/powercap\",\n                \"/sys/firmware\"\n            ],\n            \"ReadonlyPaths\": [\n                \"/proc/bus\",\n                \"/proc/fs\",\n                \"/proc/irq\",\n                \"/proc/sys\",\n                \"/proc/sysrq-trigger\"\n            ]\n        },\n        \"GraphDriver\": {\n            \"Data\": {\n                \"ID\": \"450d2e42f883018e06059aff5b3c6892d658318eb9e4b02d2d9c2b204d5983cc\",\n                \"LowerDir\": \"/var/lib/docker/overlay2/6e837f3a52e79ce732fc2a7200b6b2b3dcc17409b3759f3b8df93b8d1243416b-init/diff:/var/lib/docker/overlay2/1wdzjbdhqu6tfzi2i401crrq1/diff:/var/lib/docker/overlay2/ttri2xu5n18wwohwi38tooeik/diff:/var/lib/docker/overlay2/os4d819slnpizlvcm8g13nv3a/diff:/var/lib/docker/overlay2/eac0fiqi2yu7zsw9xnen2hz18/diff:/var/lib/docker/overlay2/dj9xzqgejlnfjccxc2pdbh4ky/diff:/var/lib/docker/overlay2/jrgrxuvb8pkc0dbik46t9mjwc/diff:/var/lib/docker/overlay2/45b9d819b5b52e3f6876c7b987dcf6a2689fa57a81ed6f264c428e6c77388b17/diff\",\n                \"MergedDir\": \"/var/lib/docker/overlay2/6e837f3a52e79ce732fc2a7200b6b2b3dcc17409b3759f3b8df93b8d1243416b/merged\",\n                \"UpperDir\": \"/var/lib/docker/overlay2/6e837f3a52e79ce732fc2a7200b6b2b3dcc17409b3759f3b8df93b8d1243416b/diff\",\n                \"WorkDir\": \"/var/lib/docker/overlay2/6e837f3a52e79ce732fc2a7200b6b2b3dcc17409b3759f3b8df93b8d1243416b/work\"\n            },\n            \"Name\": \"overlay2\"\n        },\n        \"Mounts\": [\n            {\n                \"Type\": \"volume\",\n                \"Name\": \"cti-session-c18806d2dcc3483fb4e69a46d0a16057-work\",\n                \"Source\": \"/var/lib/docker/volumes/cti-session-c18806d2dcc3483fb4e69a46d0a16057-work/_data\",\n                \"Destination\": \"/export/original/work\",\n                \"Driver\": \"local\",\n                \"Mode\": \"z\",\n                \"RW\": true,\n                \"Propagation\": \"\"\n            },\n            {\n                \"Type\": \"bind\",\n                \"Source\": \"/Users/shinmingliu/opcti/validation/phase0/legacy/runs/session-cli-005/state with spaces/c18806d2dcc3483fb4e69a46d0a16057/launch\",\n                \"Destination\": \"/cti-launch\",\n                \"Mode\": \"\",\n                \"RW\": false,\n                \"Propagation\": \"rprivate\"\n            },\n            {\n                \"Type\": \"volume\",\n                \"Name\": \"cti-session-c18806d2dcc3483fb4e69a46d0a16057-source\",\n                \"Source\": \"/var/lib/docker/volumes/cti-session-c18806d2dcc3483fb4e69a46d0a16057-source/_data\",\n                \"Destination\": \"/fixtures\",\n                \"Driver\": \"local\",\n                \"Mode\": \"z\",\n                \"RW\": true,\n                \"Propagation\": \"\"\n            },\n            {\n                \"Type\": \"volume\",\n                \"Name\": \"cti-session-c18806d2dcc3483fb4e69a46d0a16057-baseline\",\n                \"Source\": \"/var/lib/docker/volumes/cti-session-c18806d2dcc3483fb4e69a46d0a16057-baseline/_data\",\n                \"Destination\": \"/baseline\",\n                \"Driver\": \"local\",\n                \"Mode\": \"z\",\n                \"RW\": false,\n                \"Propagation\": \"\"\n            }\n        ],\n        \"Config\": {\n            \"Hostname\": \"450d2e42f883\",\n            \"Domainname\": \"\",\n            \"User\": \"\",\n            \"AttachStdin\": false,\n            \"AttachStdout\": true,\n            \"AttachStderr\": true,\n            \"Tty\": false,\n            \"OpenStdin\": false,\n            \"StdinOnce\": false,\n            \"Env\": [\n                \"PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin\",\n                \"DEBIAN_FRONTEND=noninteractive\",\n                \"CTI_HOME=/opt/cti\",\n                \"CTI_PERL=/usr/bin/perl\",\n                \"CTI_SHELL=/bin/bash\"\n            ],\n            \"Cmd\": [\n                \"/cti-launch/runtime.py\",\n                \"serve\"\n            ],\n            \"Image\": \"sha256:a119c5e4a42dedbb5cdce10d448efce31b4054018bde56a4e476bc2c529fa62c\",\n            \"Volumes\": null,\n            \"WorkingDir\": \"/capture\",\n            \"Entrypoint\": [\n                \"/usr/bin/python3\"\n            ],\n            \"Labels\": {\n                \"org.opencontainers.image.version\": \"24.04\",\n                \"org.opencti.session\": \"c18806d2dcc3483fb4e69a46d0a16057\",\n                \"org.opencti.session.store\": \"27c50232c05e2357ebaccaca8c7aecaabc791ebdccf46a72dacc408c03350e34\"\n            },\n            \"StopTimeout\": 1\n        },\n        \"NetworkSettings\": {\n            \"SandboxID\": \"e278bc811c46d6e3414e8d814df60ff14c3249c7a590abfe506a5f20d35c6890\",\n            \"SandboxKey\": \"/var/run/docker/netns/e278bc811c46\",\n            \"Ports\": {},\n            \"Networks\": {\n                \"none\": {\n                    \"IPAMConfig\": null,\n                    \"Links\": null,\n                    \"Aliases\": null,\n                    \"DriverOpts\": null,\n                    \"GwPriority\": 0,\n                    \"NetworkID\": \"db469be2416af8289efb850ec787ddcb5266451b56691319d8bd80134baf0452\",\n                    \"EndpointID\": \"1698c0ef730dfe5bb10c474968ba35e6e6ea33f46cc4b4a24f2e3e7336e48e51\",\n                    \"Gateway\": \"\",\n                    \"IPAddress\": \"\",\n                    \"MacAddress\": \"\",\n                    \"IPPrefixLen\": 0,\n                    \"IPv6Gateway\": \"\",\n                    \"GlobalIPv6Address\": \"\",\n                    \"GlobalIPv6PrefixLen\": 0,\n                    \"DNSNames\": null\n                }\n            }\n        }\n    }\n]\n",
+    "stderr": ""
+  },
+  {
+    "argv": [
+      "/Applications/Xcode.app/Contents/Developer/usr/bin/python3",
+      "-B",
+      "/Users/shinmingliu/opcti/tools/cti-session",
+      "--state-dir",
+      "/Users/shinmingliu/opcti/validation/phase0/legacy/runs/session-cli-005/state with spaces",
+      "exec",
+      "c18806d2dcc3483fb4e69a46d0a16057",
+      "--",
+      "cat",
+      "/fixtures/groups/Applications/FT08/Src/generated/build-config.json"
+    ],
+    "returncode": 0,
+    "stdout": "{\n  \"message\": \"captured-failure\",\n  \"generation\": 1,\n  \"source_root\": \"/fixtures/groups/Applications/FT08/Src\",\n  \"generator\": \"/fixtures/groups/Applications/FT08/Src/generate.py\"\n}\n",
+    "stderr": ""
+  },
+  {
+    "argv": [
+      "/Applications/Xcode.app/Contents/Developer/usr/bin/python3",
+      "-B",
+      "/Users/shinmingliu/opcti/tools/cti-session",
+      "--state-dir",
+      "/Users/shinmingliu/opcti/validation/phase0/legacy/runs/session-cli-005/state with spaces",
+      "exec",
+      "c18806d2dcc3483fb4e69a46d0a16057",
+      "--",
+      "python3",
+      "-c",
+      "import json;from pathlib import Path;p=Path('/fixtures/groups/Applications/FT08/Src')/\"settings.json\";v=json.loads(p.read_text());v[\"message\"]=\"approved\";p.write_text(json.dumps(v))"
+    ],
+    "returncode": 0,
+    "stdout": "",
+    "stderr": ""
+  },
+  {
+    "argv": [
+      "/Applications/Xcode.app/Contents/Developer/usr/bin/python3",
+      "-B",
+      "/Users/shinmingliu/opcti/tools/cti-session",
+      "--state-dir",
+      "/Users/shinmingliu/opcti/validation/phase0/legacy/runs/session-cli-005/state with spaces",
+      "exec",
+      "c18806d2dcc3483fb4e69a46d0a16057",
+      "--",
+      "./FT08.compile.sh"
+    ],
+    "returncode": 0,
+    "stdout": "",
+    "stderr": ""
+  },
+  {
+    "argv": [
+      "/Applications/Xcode.app/Contents/Developer/usr/bin/python3",
+      "-B",
+      "/Users/shinmingliu/opcti/tools/cti-session",
+      "--state-dir",
+      "/Users/shinmingliu/opcti/validation/phase0/legacy/runs/session-cli-005/state with spaces",
+      "exec",
+      "c18806d2dcc3483fb4e69a46d0a16057",
+      "--",
+      "./FT08.run.sh"
+    ],
+    "returncode": 0,
+    "stdout": "",
+    "stderr": ""
+  },
+  {
+    "argv": [
+      "/Applications/Xcode.app/Contents/Developer/usr/bin/python3",
+      "-B",
+      "/Users/shinmingliu/opcti/tools/cti-session",
+      "--state-dir",
+      "/Users/shinmingliu/opcti/validation/phase0/legacy/runs/session-cli-005/state with spaces",
+      "exec",
+      "c18806d2dcc3483fb4e69a46d0a16057",
+      "--",
+      "cat",
+      "actual.out"
+    ],
+    "returncode": 0,
+    "stdout": "approved\n",
+    "stderr": ""
+  },
+  {
+    "argv": [
+      "/Applications/Xcode.app/Contents/Developer/usr/bin/python3",
+      "-B",
+      "/Users/shinmingliu/opcti/tools/cti-session",
+      "--state-dir",
+      "/Users/shinmingliu/opcti/validation/phase0/legacy/runs/session-cli-005/state with spaces",
+      "exec",
+      "c18806d2dcc3483fb4e69a46d0a16057",
+      "--",
+      "python3",
+      "-c",
+      "from pathlib import Path;Path(\"/baseline/approved.out\").write_text(\"unsafe\")"
+    ],
+    "returncode": 1,
+    "stdout": "",
+    "stderr": "Traceback (most recent call last):\n  File \"<string>\", line 1, in <module>\n  File \"/usr/lib/python3.12/pathlib.py\", line 1049, in write_text\n    with self.open(mode='w', encoding=encoding, errors=errors, newline=newline) as f:\n         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/usr/lib/python3.12/pathlib.py\", line 1015, in open\n    return io.open(self, mode, buffering, encoding, errors, newline)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nOSError: [Errno 30] Read-only file system: '/baseline/approved.out'\n"
+  },
+  {
+    "argv": [
+      "/Applications/Xcode.app/Contents/Developer/usr/bin/python3",
+      "-B",
+      "/Users/shinmingliu/opcti/tools/cti-session",
+      "--state-dir",
+      "/Users/shinmingliu/opcti/validation/phase0/legacy/runs/session-cli-005/state with spaces",
+      "open",
+      "--capture",
+      "/Users/shinmingliu/opcti/validation/phase0/legacy/evidence/run-002",
+      "--test",
+      "Regression/FT03/output_mismatch.c",
+      "--no-attach",
+      "--json"
+    ],
+    "returncode": 0,
+    "stdout": "{\"session_id\": \"a2cd9cbd94534523910772e261d7ba9b\", \"container\": \"cti-session-a2cd9cbd94534523910772e261d7ba9b\", \"cwd\": \"/capture/original/work/Regression/FT03\", \"environment\": \"/capture/original/work/Regression/FT03/output_mismatch.env\", \"readiness\": {\"session_id\": \"a2cd9cbd94534523910772e261d7ba9b\", \"accepted\": true, \"replay_ready\": true, \"mode\": \"debugging\", \"problems\": [], \"cwd\": \"/capture/original/work/Regression/FT03\", \"saved_environment\": \"/capture/original/work/Regression/FT03/output_mismatch.env\"}}\n",
+    "stderr": ""
+  },
+  {
+    "argv": [
+      "docker",
+      "container",
+      "inspect",
+      "cti-session-a2cd9cbd94534523910772e261d7ba9b"
+    ],
+    "returncode": 0,
+    "stdout": "[\n    {\n        \"Id\": \"d7b011730713ea032b5fb9f8105243b9141cb3a4676c12b10ce9989a88798627\",\n        \"Created\": \"2026-11-12T22:42:54.738141135Z\",\n        \"Path\": \"/usr/bin/python3\",\n        \"Args\": [\n            \"/cti-launch/runtime.py\",\n            \"serve\"\n        ],\n        \"State\": {\n            \"Status\": \"running\",\n            \"Running\": true,\n            \"Paused\": false,\n            \"Restarting\": false,\n            \"OOMKilled\": false,\n            \"Dead\": false,\n            \"Pid\": 30341,\n            \"ExitCode\": 0,\n            \"Error\": \"\",\n            \"StartedAt\": \"2026-11-12T22:42:54.775871385Z\",\n            \"FinishedAt\": \"0001-01-01T00:00:00Z\"\n        },\n        \"Image\": \"sha256:a119c5e4a42dedbb5cdce10d448efce31b4054018bde56a4e476bc2c529fa62c\",\n        \"ResolvConfPath\": \"/var/lib/docker/containers/d7b011730713ea032b5fb9f8105243b9141cb3a4676c12b10ce9989a88798627/resolv.conf\",\n        \"HostnamePath\": \"/var/lib/docker/containers/d7b011730713ea032b5fb9f8105243b9141cb3a4676c12b10ce9989a88798627/hostname\",\n        \"HostsPath\": \"/var/lib/docker/containers/d7b011730713ea032b5fb9f8105243b9141cb3a4676c12b10ce9989a88798627/hosts\",\n        \"LogPath\": \"/var/lib/docker/containers/d7b011730713ea032b5fb9f8105243b9141cb3a4676c12b10ce9989a88798627/d7b011730713ea032b5fb9f8105243b9141cb3a4676c12b10ce9989a88798627-json.log\",\n        \"Name\": \"/cti-session-a2cd9cbd94534523910772e261d7ba9b\",\n        \"RestartCount\": 0,\n        \"Driver\": \"overlay2\",\n        \"Platform\": \"linux\",\n        \"MountLabel\": \"\",\n        \"ProcessLabel\": \"\",\n        \"AppArmorProfile\": \"\",\n        \"ExecIDs\": null,\n        \"HostConfig\": {\n            \"Binds\": null,\n            \"ContainerIDFile\": \"\",\n            \"LogConfig\": {\n                \"Type\": \"json-file\",\n                \"Config\": {}\n            },\n            \"NetworkMode\": \"none\",\n            \"PortBindings\": {},\n            \"RestartPolicy\": {\n                \"Name\": \"no\",\n                \"MaximumRetryCount\": 0\n            },\n            \"AutoRemove\": false,\n            \"VolumeDriver\": \"\",\n            \"VolumesFrom\": null,\n            \"ConsoleSize\": [\n                0,\n                0\n            ],\n            \"CapAdd\": null,\n            \"CapDrop\": [\n                \"ALL\"\n            ],\n            \"CgroupnsMode\": \"private\",\n            \"Dns\": null,\n            \"DnsOptions\": [],\n            \"DnsSearch\": [],\n            \"ExtraHosts\": null,\n            \"GroupAdd\": null,\n            \"IpcMode\": \"private\",\n            \"Cgroup\": \"\",\n            \"Links\": null,\n            \"OomScoreAdj\": 0,\n            \"PidMode\": \"\",\n            \"Privileged\": false,\n            \"PublishAllPorts\": false,\n            \"ReadonlyRootfs\": false,\n            \"SecurityOpt\": [\n                \"no-new-privileges\"\n            ],\n            \"UTSMode\": \"\",\n            \"UsernsMode\": \"\",\n            \"ShmSize\": 67108864,\n            \"Runtime\": \"runc\",\n            \"Isolation\": \"\",\n            \"CpuShares\": 0,\n            \"Memory\": 1073741824,\n            \"NanoCpus\": 1000000000,\n            \"CgroupParent\": \"\",\n            \"BlkioWeight\": 0,\n            \"BlkioWeightDevice\": [],\n            \"BlkioDeviceReadBps\": [],\n            \"BlkioDeviceWriteBps\": [],\n            \"BlkioDeviceReadIOps\": [],\n            \"BlkioDeviceWriteIOps\": [],\n            \"CpuPeriod\": 0,\n            \"CpuQuota\": 0,\n            \"CpuRealtimePeriod\": 0,\n            \"CpuRealtimeRuntime\": 0,\n            \"CpusetCpus\": \"\",\n            \"CpusetMems\": \"\",\n            \"Devices\": [],\n            \"DeviceCgroupRules\": null,\n            \"DeviceRequests\": null,\n            \"MemoryReservation\": 0,\n            \"MemorySwap\": 2147483648,\n            \"MemorySwappiness\": null,\n            \"OomKillDisable\": null,\n            \"PidsLimit\": null,\n            \"Ulimits\": [],\n            \"CpuCount\": 0,\n            \"CpuPercent\": 0,\n            \"IOMaximumIOps\": 0,\n            \"IOMaximumBandwidth\": 0,\n            \"Mounts\": [\n                {\n                    \"Type\": \"bind\",\n                    \"Source\": \"/Users/shinmingliu/opcti/validation/phase0/legacy/runs/session-cli-005/state with spaces/a2cd9cbd94534523910772e261d7ba9b/launch\",\n                    \"Target\": \"/cti-launch\",\n                    \"ReadOnly\": true\n                },\n                {\n                    \"Type\": \"volume\",\n                    \"Source\": \"cti-session-a2cd9cbd94534523910772e261d7ba9b-source\",\n                    \"Target\": \"/fixtures\"\n                },\n                {\n                    \"Type\": \"volume\",\n                    \"Source\": \"cti-session-a2cd9cbd94534523910772e261d7ba9b-work\",\n                    \"Target\": \"/capture/original/work\"\n                },\n                {\n                    \"Type\": \"volume\",\n                    \"Source\": \"cti-session-a2cd9cbd94534523910772e261d7ba9b-baseline-0\",\n                    \"Target\": \"/fixtures/groups/Regression/FT01/Masters\",\n                    \"ReadOnly\": true\n                },\n                {\n                    \"Type\": \"volume\",\n                    \"Source\": \"cti-session-a2cd9cbd94534523910772e261d7ba9b-baseline-1\",\n                    \"Target\": \"/fixtures/groups/Regression/FT02/Masters\",\n                    \"ReadOnly\": true\n                },\n                {\n                    \"Type\": \"volume\",\n                    \"Source\": \"cti-session-a2cd9cbd94534523910772e261d7ba9b-baseline-2\",\n                    \"Target\": \"/fixtures/groups/Regression/FT03/Masters\",\n                    \"ReadOnly\": true\n                }\n            ],\n            \"MaskedPaths\": [\n                \"/proc/acpi\",\n                \"/proc/asound\",\n                \"/proc/interrupts\",\n                \"/proc/kcore\",\n                \"/proc/keys\",\n                \"/proc/latency_stats\",\n                \"/proc/sched_debug\",\n                \"/proc/scsi\",\n                \"/proc/timer_list\",\n                \"/proc/timer_stats\",\n                \"/sys/devices/virtual/powercap\",\n                \"/sys/firmware\"\n            ],\n            \"ReadonlyPaths\": [\n                \"/proc/bus\",\n                \"/proc/fs\",\n                \"/proc/irq\",\n                \"/proc/sys\",\n                \"/proc/sysrq-trigger\"\n            ]\n        },\n        \"GraphDriver\": {\n            \"Data\": {\n                \"ID\": \"d7b011730713ea032b5fb9f8105243b9141cb3a4676c12b10ce9989a88798627\",\n                \"LowerDir\": \"/var/lib/docker/overlay2/6ddd251f4cf38521044e678e817b6d0310a4f81b4b61a9c96f7c5a9ebf03c487-init/diff:/var/lib/docker/overlay2/1wdzjbdhqu6tfzi2i401crrq1/diff:/var/lib/docker/overlay2/ttri2xu5n18wwohwi38tooeik/diff:/var/lib/docker/overlay2/os4d819slnpizlvcm8g13nv3a/diff:/var/lib/docker/overlay2/eac0fiqi2yu7zsw9xnen2hz18/diff:/var/lib/docker/overlay2/dj9xzqgejlnfjccxc2pdbh4ky/diff:/var/lib/docker/overlay2/jrgrxuvb8pkc0dbik46t9mjwc/diff:/var/lib/docker/overlay2/45b9d819b5b52e3f6876c7b987dcf6a2689fa57a81ed6f264c428e6c77388b17/diff\",\n                \"MergedDir\": \"/var/lib/docker/overlay2/6ddd251f4cf38521044e678e817b6d0310a4f81b4b61a9c96f7c5a9ebf03c487/merged\",\n                \"UpperDir\": \"/var/lib/docker/overlay2/6ddd251f4cf38521044e678e817b6d0310a4f81b4b61a9c96f7c5a9ebf03c487/diff\",\n                \"WorkDir\": \"/var/lib/docker/overlay2/6ddd251f4cf38521044e678e817b6d0310a4f81b4b61a9c96f7c5a9ebf03c487/work\"\n            },\n            \"Name\": \"overlay2\"\n        },\n        \"Mounts\": [\n            {\n                \"Type\": \"bind\",\n                \"Source\": \"/Users/shinmingliu/opcti/validation/phase0/legacy/runs/session-cli-005/state with spaces/a2cd9cbd94534523910772e261d7ba9b/launch\",\n                \"Destination\": \"/cti-launch\",\n                \"Mode\": \"\",\n                \"RW\": false,\n                \"Propagation\": \"rprivate\"\n            },\n            {\n                \"Type\": \"volume\",\n                \"Name\": \"cti-session-a2cd9cbd94534523910772e261d7ba9b-source\",\n                \"Source\": \"/var/lib/docker/volumes/cti-session-a2cd9cbd94534523910772e261d7ba9b-source/_data\",\n                \"Destination\": \"/fixtures\",\n                \"Driver\": \"local\",\n                \"Mode\": \"z\",\n                \"RW\": true,\n                \"Propagation\": \"\"\n            },\n            {\n                \"Type\": \"volume\",\n                \"Name\": \"cti-session-a2cd9cbd94534523910772e261d7ba9b-work\",\n                \"Source\": \"/var/lib/docker/volumes/cti-session-a2cd9cbd94534523910772e261d7ba9b-work/_data\",\n                \"Destination\": \"/capture/original/work\",\n                \"Driver\": \"local\",\n                \"Mode\": \"z\",\n                \"RW\": true,\n                \"Propagation\": \"\"\n            },\n            {\n                \"Type\": \"volume\",\n                \"Name\": \"cti-session-a2cd9cbd94534523910772e261d7ba9b-baseline-0\",\n                \"Source\": \"/var/lib/docker/volumes/cti-session-a2cd9cbd94534523910772e261d7ba9b-baseline-0/_data\",\n                \"Destination\": \"/fixtures/groups/Regression/FT01/Masters\",\n                \"Driver\": \"local\",\n                \"Mode\": \"z\",\n                \"RW\": false,\n                \"Propagation\": \"\"\n            },\n            {\n                \"Type\": \"volume\",\n                \"Name\": \"cti-session-a2cd9cbd94534523910772e261d7ba9b-baseline-1\",\n                \"Source\": \"/var/lib/docker/volumes/cti-session-a2cd9cbd94534523910772e261d7ba9b-baseline-1/_data\",\n                \"Destination\": \"/fixtures/groups/Regression/FT02/Masters\",\n                \"Driver\": \"local\",\n                \"Mode\": \"z\",\n                \"RW\": false,\n                \"Propagation\": \"\"\n            },\n            {\n                \"Type\": \"volume\",\n                \"Name\": \"cti-session-a2cd9cbd94534523910772e261d7ba9b-baseline-2\",\n                \"Source\": \"/var/lib/docker/volumes/cti-session-a2cd9cbd94534523910772e261d7ba9b-baseline-2/_data\",\n                \"Destination\": \"/fixtures/groups/Regression/FT03/Masters\",\n                \"Driver\": \"local\",\n                \"Mode\": \"z\",\n                \"RW\": false,\n                \"Propagation\": \"\"\n            }\n        ],\n        \"Config\": {\n            \"Hostname\": \"d7b011730713\",\n            \"Domainname\": \"\",\n            \"User\": \"\",\n            \"AttachStdin\": false,\n            \"AttachStdout\": true,\n            \"AttachStderr\": true,\n            \"Tty\": false,\n            \"OpenStdin\": false,\n            \"StdinOnce\": false,\n            \"Env\": [\n                \"PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin\",\n                \"DEBIAN_FRONTEND=noninteractive\",\n                \"CTI_HOME=/opt/cti\",\n                \"CTI_PERL=/usr/bin/perl\",\n                \"CTI_SHELL=/bin/bash\"\n            ],\n            \"Cmd\": [\n                \"/cti-launch/runtime.py\",\n                \"serve\"\n            ],\n            \"Image\": \"sha256:a119c5e4a42dedbb5cdce10d448efce31b4054018bde56a4e476bc2c529fa62c\",\n            \"Volumes\": null,\n            \"WorkingDir\": \"/capture\",\n            \"Entrypoint\": [\n                \"/usr/bin/python3\"\n            ],\n            \"Labels\": {\n                \"org.opencontainers.image.version\": \"24.04\",\n                \"org.opencti.session\": \"a2cd9cbd94534523910772e261d7ba9b\",\n                \"org.opencti.session.store\": \"27c50232c05e2357ebaccaca8c7aecaabc791ebdccf46a72dacc408c03350e34\"\n            },\n            \"StopTimeout\": 1\n        },\n        \"NetworkSettings\": {\n            \"SandboxID\": \"723cc22d3a55cd420ee3a8d2da87c2cf7fa12fc08a039f7516235c805a11f1f4\",\n            \"SandboxKey\": \"/var/run/docker/netns/723cc22d3a55\",\n            \"Ports\": {},\n            \"Networks\": {\n                \"none\": {\n                    \"IPAMConfig\": null,\n                    \"Links\": null,\n                    \"Aliases\": null,\n                    \"DriverOpts\": null,\n                    \"GwPriority\": 0,\n                    \"NetworkID\": \"db469be2416af8289efb850ec787ddcb5266451b56691319d8bd80134baf0452\",\n                    \"EndpointID\": \"bb5195fdaf9fab843473bfcff8327d57b1d3cfd111025d616ec9be46c93ed568\",\n                    \"Gateway\": \"\",\n                    \"IPAddress\": \"\",\n                    \"MacAddress\": \"\",\n                    \"IPPrefixLen\": 0,\n                    \"IPv6Gateway\": \"\",\n                    \"GlobalIPv6Address\": \"\",\n                    \"GlobalIPv6PrefixLen\": 0,\n                    \"DNSNames\": null\n                }\n            }\n        }\n    }\n]\n",
+    "stderr": ""
+  },
+  {
+    "argv": [
+      "/Applications/Xcode.app/Contents/Developer/usr/bin/python3",
+      "-B",
+      "/Users/shinmingliu/opcti/tools/cti-session",
+      "--state-dir",
+      "/Users/shinmingliu/opcti/validation/phase0/legacy/runs/session-cli-005/state with spaces",
+      "exec",
+      "a2cd9cbd94534523910772e261d7ba9b",
+      "--",
+      "./output_mismatch.compare-out.sh"
+    ],
+    "returncode": 1,
+    "stdout": "",
+    "stderr": "Unescaped left brace in regex is passed through in regex; marked by <-- HERE in m/\\${ <-- HERE (\\w+)}/ at /opt/cti/Scripts/utils/../drivers/lib/readTmConfigFile.pm line 198.\n"
+  },
+  {
+    "argv": [
+      "/Applications/Xcode.app/Contents/Developer/usr/bin/python3",
+      "-B",
+      "/Users/shinmingliu/opcti/tools/cti-session",
+      "--state-dir",
+      "/Users/shinmingliu/opcti/validation/phase0/legacy/runs/session-cli-005/state with spaces",
+      "exec",
+      "a2cd9cbd94534523910772e261d7ba9b",
+      "--",
+      "cat",
+      "output_mismatch.result"
+    ],
+    "returncode": 0,
+    "stdout": "DiffPgmOut\n",
+    "stderr": ""
+  },
+  {
+    "argv": [
+      "/Applications/Xcode.app/Contents/Developer/usr/bin/python3",
+      "-B",
+      "/Users/shinmingliu/opcti/tools/cti-session",
+      "--state-dir",
+      "/Users/shinmingliu/opcti/validation/phase0/legacy/runs/session-cli-005/state with spaces",
+      "exec",
+      "a2cd9cbd94534523910772e261d7ba9b",
+      "--",
+      "python3",
+      "-c",
+      "from pathlib import Path;Path('/fixtures/groups/Regression/FT03/Masters/output_mismatch.out').write_text(\"unsafe\")"
+    ],
+    "returncode": 1,
+    "stdout": "",
+    "stderr": "Traceback (most recent call last):\n  File \"<string>\", line 1, in <module>\n  File \"/usr/lib/python3.12/pathlib.py\", line 1049, in write_text\n    with self.open(mode='w', encoding=encoding, errors=errors, newline=newline) as f:\n         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/usr/lib/python3.12/pathlib.py\", line 1015, in open\n    return io.open(self, mode, buffering, encoding, errors, newline)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nOSError: [Errno 30] Read-only file system: '/fixtures/groups/Regression/FT03/Masters/output_mismatch.out'\n"
+  },
+  {
+    "argv": [
+      "/Applications/Xcode.app/Contents/Developer/usr/bin/python3",
+      "-B",
+      "/Users/shinmingliu/opcti/tools/cti-session",
+      "--state-dir",
+      "/Users/shinmingliu/opcti/validation/phase0/legacy/runs/session-cli-005/state with spaces",
+      "open",
+      "--capture",
+      "/Users/shinmingliu/opcti/validation/phase0/legacy/evidence/ft13-001",
+      "--no-attach",
+      "--json"
+    ],
+    "returncode": 2,
+    "stdout": "",
+    "stderr": "cti-session: Replay requires explicit external reprovisioning: fixture://ft13/protected-access. Use --inspection-only to examine retained files without claiming replay readiness.\n"
+  },
+  {
+    "argv": [
+      "/Applications/Xcode.app/Contents/Developer/usr/bin/python3",
+      "-B",
+      "/Users/shinmingliu/opcti/tools/cti-session",
+      "--state-dir",
+      "/Users/shinmingliu/opcti/validation/phase0/legacy/runs/session-cli-005/state with spaces",
+      "open",
+      "--capture",
+      "/Users/shinmingliu/opcti/validation/phase0/legacy/evidence/ft13-001",
+      "--inspection-only",
+      "--no-attach",
+      "--json"
+    ],
+    "returncode": 0,
+    "stdout": "{\"session_id\": \"08fd5b3a181c47528206c48e98d087e9\", \"container\": \"cti-session-08fd5b3a181c47528206c48e98d087e9\", \"cwd\": \"/export/original/work/Regression/FT13\", \"environment\": \"/export/original/work/Regression/FT13/probe.env\", \"readiness\": {\"session_id\": \"08fd5b3a181c47528206c48e98d087e9\", \"accepted\": true, \"replay_ready\": false, \"mode\": \"inspection\", \"problems\": [{\"role\": \"external-access\", \"detail\": \"Explicit authorized reprovisioning is required\", \"reprovision_reference\": \"fixture://ft13/protected-access\"}], \"cwd\": \"/export/original/work/Regression/FT13\", \"saved_environment\": \"/export/original/work/Regression/FT13/probe.env\"}}\n",
+    "stderr": ""
+  },
+  {
+    "argv": [
+      "docker",
+      "container",
+      "inspect",
+      "cti-session-08fd5b3a181c47528206c48e98d087e9"
+    ],
+    "returncode": 0,
+    "stdout": "[\n    {\n        \"Id\": \"f5f4a951e15135af9f68e2beebc585ec2083c004c668ba5a7d354dada511e6da\",\n        \"Created\": \"2026-11-12T22:42:56.043458344Z\",\n        \"Path\": \"/usr/bin/python3\",\n        \"Args\": [\n            \"/cti-launch/runtime.py\",\n            \"serve\"\n        ],\n        \"State\": {\n            \"Status\": \"running\",\n            \"Running\": true,\n            \"Paused\": false,\n            \"Restarting\": false,\n            \"OOMKilled\": false,\n            \"Dead\": false,\n            \"Pid\": 30570,\n            \"ExitCode\": 0,\n            \"Error\": \"\",\n            \"StartedAt\": \"2026-11-12T22:42:56.082529344Z\",\n            \"FinishedAt\": \"0001-01-01T00:00:00Z\"\n        },\n        \"Image\": \"sha256:873ccd4bbd6101f6f8e46fd1a4502f2d0268edec40c4ae0476cdd24927337840\",\n        \"ResolvConfPath\": \"/var/lib/docker/containers/f5f4a951e15135af9f68e2beebc585ec2083c004c668ba5a7d354dada511e6da/resolv.conf\",\n        \"HostnamePath\": \"/var/lib/docker/containers/f5f4a951e15135af9f68e2beebc585ec2083c004c668ba5a7d354dada511e6da/hostname\",\n        \"HostsPath\": \"/var/lib/docker/containers/f5f4a951e15135af9f68e2beebc585ec2083c004c668ba5a7d354dada511e6da/hosts\",\n        \"LogPath\": \"/var/lib/docker/containers/f5f4a951e15135af9f68e2beebc585ec2083c004c668ba5a7d354dada511e6da/f5f4a951e15135af9f68e2beebc585ec2083c004c668ba5a7d354dada511e6da-json.log\",\n        \"Name\": \"/cti-session-08fd5b3a181c47528206c48e98d087e9\",\n        \"RestartCount\": 0,\n        \"Driver\": \"overlay2\",\n        \"Platform\": \"linux\",\n        \"MountLabel\": \"\",\n        \"ProcessLabel\": \"\",\n        \"AppArmorProfile\": \"\",\n        \"ExecIDs\": null,\n        \"HostConfig\": {\n            \"Binds\": null,\n            \"ContainerIDFile\": \"\",\n            \"LogConfig\": {\n                \"Type\": \"json-file\",\n                \"Config\": {}\n            },\n            \"NetworkMode\": \"none\",\n            \"PortBindings\": {},\n            \"RestartPolicy\": {\n                \"Name\": \"no\",\n                \"MaximumRetryCount\": 0\n            },\n            \"AutoRemove\": false,\n            \"VolumeDriver\": \"\",\n            \"VolumesFrom\": null,\n            \"ConsoleSize\": [\n                0,\n                0\n            ],\n            \"CapAdd\": null,\n            \"CapDrop\": [\n                \"ALL\"\n            ],\n            \"CgroupnsMode\": \"private\",\n            \"Dns\": null,\n            \"DnsOptions\": [],\n            \"DnsSearch\": [],\n            \"ExtraHosts\": null,\n            \"GroupAdd\": null,\n            \"IpcMode\": \"private\",\n            \"Cgroup\": \"\",\n            \"Links\": null,\n            \"OomScoreAdj\": 0,\n            \"PidMode\": \"\",\n            \"Privileged\": false,\n            \"PublishAllPorts\": false,\n            \"ReadonlyRootfs\": false,\n            \"SecurityOpt\": [\n                \"no-new-privileges\"\n            ],\n            \"UTSMode\": \"\",\n            \"UsernsMode\": \"\",\n            \"ShmSize\": 67108864,\n            \"Runtime\": \"runc\",\n            \"Isolation\": \"\",\n            \"CpuShares\": 0,\n            \"Memory\": 1073741824,\n            \"NanoCpus\": 1000000000,\n            \"CgroupParent\": \"\",\n            \"BlkioWeight\": 0,\n            \"BlkioWeightDevice\": [],\n            \"BlkioDeviceReadBps\": [],\n            \"BlkioDeviceWriteBps\": [],\n            \"BlkioDeviceReadIOps\": [],\n            \"BlkioDeviceWriteIOps\": [],\n            \"CpuPeriod\": 0,\n            \"CpuQuota\": 0,\n            \"CpuRealtimePeriod\": 0,\n            \"CpuRealtimeRuntime\": 0,\n            \"CpusetCpus\": \"\",\n            \"CpusetMems\": \"\",\n            \"Devices\": [],\n            \"DeviceCgroupRules\": null,\n            \"DeviceRequests\": null,\n            \"MemoryReservation\": 0,\n            \"MemorySwap\": 2147483648,\n            \"MemorySwappiness\": null,\n            \"OomKillDisable\": null,\n            \"PidsLimit\": null,\n            \"Ulimits\": [],\n            \"CpuCount\": 0,\n            \"CpuPercent\": 0,\n            \"IOMaximumIOps\": 0,\n            \"IOMaximumBandwidth\": 0,\n            \"Mounts\": [\n                {\n                    \"Type\": \"bind\",\n                    \"Source\": \"/Users/shinmingliu/opcti/validation/phase0/legacy/runs/session-cli-005/state with spaces/08fd5b3a181c47528206c48e98d087e9/launch\",\n                    \"Target\": \"/cti-launch\",\n                    \"ReadOnly\": true\n                },\n                {\n                    \"Type\": \"volume\",\n                    \"Source\": \"cti-session-08fd5b3a181c47528206c48e98d087e9-dependencies\",\n                    \"Target\": \"/deps\",\n                    \"ReadOnly\": true\n                },\n                {\n                    \"Type\": \"volume\",\n                    \"Source\": \"cti-session-08fd5b3a181c47528206c48e98d087e9-source\",\n                    \"Target\": \"/fixtures\"\n                },\n                {\n                    \"Type\": \"volume\",\n                    \"Source\": \"cti-session-08fd5b3a181c47528206c48e98d087e9-work\",\n                    \"Target\": \"/export/original/work\"\n                },\n                {\n                    \"Type\": \"volume\",\n                    \"Source\": \"cti-session-08fd5b3a181c47528206c48e98d087e9-baseline-0\",\n                    \"Target\": \"/fixtures/groups/Regression/FT13/Masters\",\n                    \"ReadOnly\": true\n                }\n            ],\n            \"MaskedPaths\": [\n                \"/proc/acpi\",\n                \"/proc/asound\",\n                \"/proc/interrupts\",\n                \"/proc/kcore\",\n                \"/proc/keys\",\n                \"/proc/latency_stats\",\n                \"/proc/sched_debug\",\n                \"/proc/scsi\",\n                \"/proc/timer_list\",\n                \"/proc/timer_stats\",\n                \"/sys/devices/virtual/powercap\",\n                \"/sys/firmware\"\n            ],\n            \"ReadonlyPaths\": [\n                \"/proc/bus\",\n                \"/proc/fs\",\n                \"/proc/irq\",\n                \"/proc/sys\",\n                \"/proc/sysrq-trigger\"\n            ]\n        },\n        \"GraphDriver\": {\n            \"Data\": {\n                \"ID\": \"f5f4a951e15135af9f68e2beebc585ec2083c004c668ba5a7d354dada511e6da\",\n                \"LowerDir\": \"/var/lib/docker/overlay2/3958ff750cd3538155af23b449bf760f33814798275a7f6a31a719041eb31ec6-init/diff:/var/lib/docker/overlay2/xf2wi3idz7lcjkyq11c3jbdzs/diff:/var/lib/docker/overlay2/1wdzjbdhqu6tfzi2i401crrq1/diff:/var/lib/docker/overlay2/ttri2xu5n18wwohwi38tooeik/diff:/var/lib/docker/overlay2/os4d819slnpizlvcm8g13nv3a/diff:/var/lib/docker/overlay2/eac0fiqi2yu7zsw9xnen2hz18/diff:/var/lib/docker/overlay2/dj9xzqgejlnfjccxc2pdbh4ky/diff:/var/lib/docker/overlay2/jrgrxuvb8pkc0dbik46t9mjwc/diff:/var/lib/docker/overlay2/45b9d819b5b52e3f6876c7b987dcf6a2689fa57a81ed6f264c428e6c77388b17/diff\",\n                \"MergedDir\": \"/var/lib/docker/overlay2/3958ff750cd3538155af23b449bf760f33814798275a7f6a31a719041eb31ec6/merged\",\n                \"UpperDir\": \"/var/lib/docker/overlay2/3958ff750cd3538155af23b449bf760f33814798275a7f6a31a719041eb31ec6/diff\",\n                \"WorkDir\": \"/var/lib/docker/overlay2/3958ff750cd3538155af23b449bf760f33814798275a7f6a31a719041eb31ec6/work\"\n            },\n            \"Name\": \"overlay2\"\n        },\n        \"Mounts\": [\n            {\n                \"Type\": \"volume\",\n                \"Name\": \"cti-session-08fd5b3a181c47528206c48e98d087e9-baseline-0\",\n                \"Source\": \"/var/lib/docker/volumes/cti-session-08fd5b3a181c47528206c48e98d087e9-baseline-0/_data\",\n                \"Destination\": \"/fixtures/groups/Regression/FT13/Masters\",\n                \"Driver\": \"local\",\n                \"Mode\": \"z\",\n                \"RW\": false,\n                \"Propagation\": \"\"\n            },\n            {\n                \"Type\": \"bind\",\n                \"Source\": \"/Users/shinmingliu/opcti/validation/phase0/legacy/runs/session-cli-005/state with spaces/08fd5b3a181c47528206c48e98d087e9/launch\",\n                \"Destination\": \"/cti-launch\",\n                \"Mode\": \"\",\n                \"RW\": false,\n                \"Propagation\": \"rprivate\"\n            },\n            {\n                \"Type\": \"volume\",\n                \"Name\": \"cti-session-08fd5b3a181c47528206c48e98d087e9-dependencies\",\n                \"Source\": \"/var/lib/docker/volumes/cti-session-08fd5b3a181c47528206c48e98d087e9-dependencies/_data\",\n                \"Destination\": \"/deps\",\n                \"Driver\": \"local\",\n                \"Mode\": \"z\",\n                \"RW\": false,\n                \"Propagation\": \"\"\n            },\n            {\n                \"Type\": \"volume\",\n                \"Name\": \"cti-session-08fd5b3a181c47528206c48e98d087e9-source\",\n                \"Source\": \"/var/lib/docker/volumes/cti-session-08fd5b3a181c47528206c48e98d087e9-source/_data\",\n                \"Destination\": \"/fixtures\",\n                \"Driver\": \"local\",\n                \"Mode\": \"z\",\n                \"RW\": true,\n                \"Propagation\": \"\"\n            },\n            {\n                \"Type\": \"volume\",\n                \"Name\": \"cti-session-08fd5b3a181c47528206c48e98d087e9-work\",\n                \"Source\": \"/var/lib/docker/volumes/cti-session-08fd5b3a181c47528206c48e98d087e9-work/_data\",\n                \"Destination\": \"/export/original/work\",\n                \"Driver\": \"local\",\n                \"Mode\": \"z\",\n                \"RW\": true,\n                \"Propagation\": \"\"\n            }\n        ],\n        \"Config\": {\n            \"Hostname\": \"f5f4a951e151\",\n            \"Domainname\": \"\",\n            \"User\": \"\",\n            \"AttachStdin\": false,\n            \"AttachStdout\": true,\n            \"AttachStderr\": true,\n            \"Tty\": false,\n            \"OpenStdin\": false,\n            \"StdinOnce\": false,\n            \"Env\": [\n                \"PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin\",\n                \"DEBIAN_FRONTEND=noninteractive\",\n                \"CTI_HOME=/opt/cti\",\n                \"CTI_PERL=/usr/bin/perl\",\n                \"CTI_SHELL=/bin/bash\"\n            ],\n            \"Cmd\": [\n                \"/cti-launch/runtime.py\",\n                \"serve\"\n            ],\n            \"Image\": \"sha256:873ccd4bbd6101f6f8e46fd1a4502f2d0268edec40c4ae0476cdd24927337840\",\n            \"Volumes\": null,\n            \"WorkingDir\": \"/capture\",\n            \"Entrypoint\": [\n                \"/usr/bin/python3\"\n            ],\n            \"Labels\": {\n                \"org.opencontainers.image.version\": \"24.04\",\n                \"org.opencti.phase0.ft13\": \"722d61db263b480e83b20f88b1b1cf00\",\n                \"org.opencti.session\": \"08fd5b3a181c47528206c48e98d087e9\",\n                \"org.opencti.session.store\": \"27c50232c05e2357ebaccaca8c7aecaabc791ebdccf46a72dacc408c03350e34\"\n            },\n            \"StopTimeout\": 1\n        },\n        \"NetworkSettings\": {\n            \"SandboxID\": \"ae799cb632c4fbafd56d3bd5f14496ca4eafaf242e460db432553ee9f12fc223\",\n            \"SandboxKey\": \"/var/run/docker/netns/ae799cb632c4\",\n            \"Ports\": {},\n            \"Networks\": {\n                \"none\": {\n                    \"IPAMConfig\": null,\n                    \"Links\": null,\n                    \"Aliases\": null,\n                    \"DriverOpts\": null,\n                    \"GwPriority\": 0,\n                    \"NetworkID\": \"db469be2416af8289efb850ec787ddcb5266451b56691319d8bd80134baf0452\",\n                    \"EndpointID\": \"822ba21d5f66103ebbdd9408f8f73198a9e43f4ff21c0dc6d26d72da1cc9338d\",\n                    \"Gateway\": \"\",\n                    \"IPAddress\": \"\",\n                    \"MacAddress\": \"\",\n                    \"IPPrefixLen\": 0,\n                    \"IPv6Gateway\": \"\",\n                    \"GlobalIPv6Address\": \"\",\n                    \"GlobalIPv6PrefixLen\": 0,\n                    \"DNSNames\": null\n                }\n            }\n        }\n    }\n]\n",
+    "stderr": ""
+  },
+  {
+    "argv": [
+      "/Applications/Xcode.app/Contents/Developer/usr/bin/python3",
+      "-B",
+      "/Users/shinmingliu/opcti/tools/cti-session",
+      "--state-dir",
+      "/Users/shinmingliu/opcti/validation/phase0/legacy/runs/session-cli-005/state with spaces",
+      "exec",
+      "08fd5b3a181c47528206c48e98d087e9",
+      "--",
+      "pwd"
+    ],
+    "returncode": 0,
+    "stdout": "/export/original/work/Regression/FT13\n",
+    "stderr": "CTI: explicit inspection session; external replay requirements remain unresolved\n"
+  },
+  {
+    "argv": [
+      "/Applications/Xcode.app/Contents/Developer/usr/bin/python3",
+      "-B",
+      "/Users/shinmingliu/opcti/tools/cti-session",
+      "--state-dir",
+      "/Users/shinmingliu/opcti/validation/phase0/legacy/runs/session-cli-005/state with spaces",
+      "open",
+      "--spec",
+      "/Users/shinmingliu/opcti/validation/phase0/legacy/runs/session-cli-005/generic-capture/session.json",
+      "--no-attach",
+      "--json"
+    ],
+    "returncode": 0,
+    "stdout": "{\"session_id\": \"8e408c6be54a491e859fa27d5537fff8\", \"container\": \"cti-session-8e408c6be54a491e859fa27d5537fff8\", \"cwd\": \"/case-work/unit\", \"environment\": \"/case-work/unit/test.env\", \"readiness\": {\"session_id\": \"8e408c6be54a491e859fa27d5537fff8\", \"accepted\": true, \"replay_ready\": true, \"mode\": \"debugging\", \"problems\": [], \"cwd\": \"/case-work/unit\", \"saved_environment\": \"/case-work/unit/test.env\"}}\n",
+    "stderr": ""
+  },
+  {
+    "argv": [
+      "docker",
+      "container",
+      "inspect",
+      "cti-session-8e408c6be54a491e859fa27d5537fff8"
+    ],
+    "returncode": 0,
+    "stdout": "[\n    {\n        \"Id\": \"5a40875e523eb756a0ad4e92a554e1390e0379de1d757e6e9063339616cdbeda\",\n        \"Created\": \"2026-11-12T22:42:56.920644886Z\",\n        \"Path\": \"/usr/bin/python3\",\n        \"Args\": [\n            \"/cti-launch/runtime.py\",\n            \"serve\"\n        ],\n        \"State\": {\n            \"Status\": \"running\",\n            \"Running\": true,\n            \"Paused\": false,\n            \"Restarting\": false,\n            \"OOMKilled\": false,\n            \"Dead\": false,\n            \"Pid\": 30747,\n            \"ExitCode\": 0,\n            \"Error\": \"\",\n            \"StartedAt\": \"2026-11-12T22:42:56.970236344Z\",\n            \"FinishedAt\": \"0001-01-01T00:00:00Z\"\n        },\n        \"Image\": \"sha256:a119c5e4a42dedbb5cdce10d448efce31b4054018bde56a4e476bc2c529fa62c\",\n        \"ResolvConfPath\": \"/var/lib/docker/containers/5a40875e523eb756a0ad4e92a554e1390e0379de1d757e6e9063339616cdbeda/resolv.conf\",\n        \"HostnamePath\": \"/var/lib/docker/containers/5a40875e523eb756a0ad4e92a554e1390e0379de1d757e6e9063339616cdbeda/hostname\",\n        \"HostsPath\": \"/var/lib/docker/containers/5a40875e523eb756a0ad4e92a554e1390e0379de1d757e6e9063339616cdbeda/hosts\",\n        \"LogPath\": \"/var/lib/docker/containers/5a40875e523eb756a0ad4e92a554e1390e0379de1d757e6e9063339616cdbeda/5a40875e523eb756a0ad4e92a554e1390e0379de1d757e6e9063339616cdbeda-json.log\",\n        \"Name\": \"/cti-session-8e408c6be54a491e859fa27d5537fff8\",\n        \"RestartCount\": 0,\n        \"Driver\": \"overlay2\",\n        \"Platform\": \"linux\",\n        \"MountLabel\": \"\",\n        \"ProcessLabel\": \"\",\n        \"AppArmorProfile\": \"\",\n        \"ExecIDs\": null,\n        \"HostConfig\": {\n            \"Binds\": null,\n            \"ContainerIDFile\": \"\",\n            \"LogConfig\": {\n                \"Type\": \"json-file\",\n                \"Config\": {}\n            },\n            \"NetworkMode\": \"none\",\n            \"PortBindings\": {},\n            \"RestartPolicy\": {\n                \"Name\": \"no\",\n                \"MaximumRetryCount\": 0\n            },\n            \"AutoRemove\": false,\n            \"VolumeDriver\": \"\",\n            \"VolumesFrom\": null,\n            \"ConsoleSize\": [\n                0,\n                0\n            ],\n            \"CapAdd\": null,\n            \"CapDrop\": [\n                \"ALL\"\n            ],\n            \"CgroupnsMode\": \"private\",\n            \"Dns\": null,\n            \"DnsOptions\": [],\n            \"DnsSearch\": [],\n            \"ExtraHosts\": null,\n            \"GroupAdd\": null,\n            \"IpcMode\": \"private\",\n            \"Cgroup\": \"\",\n            \"Links\": null,\n            \"OomScoreAdj\": 0,\n            \"PidMode\": \"\",\n            \"Privileged\": false,\n            \"PublishAllPorts\": false,\n            \"ReadonlyRootfs\": false,\n            \"SecurityOpt\": [\n                \"no-new-privileges\"\n            ],\n            \"UTSMode\": \"\",\n            \"UsernsMode\": \"\",\n            \"ShmSize\": 67108864,\n            \"Runtime\": \"runc\",\n            \"Isolation\": \"\",\n            \"CpuShares\": 0,\n            \"Memory\": 1073741824,\n            \"NanoCpus\": 1000000000,\n            \"CgroupParent\": \"\",\n            \"BlkioWeight\": 0,\n            \"BlkioWeightDevice\": [],\n            \"BlkioDeviceReadBps\": [],\n            \"BlkioDeviceWriteBps\": [],\n            \"BlkioDeviceReadIOps\": [],\n            \"BlkioDeviceWriteIOps\": [],\n            \"CpuPeriod\": 0,\n            \"CpuQuota\": 0,\n            \"CpuRealtimePeriod\": 0,\n            \"CpuRealtimeRuntime\": 0,\n            \"CpusetCpus\": \"\",\n            \"CpusetMems\": \"\",\n            \"Devices\": [],\n            \"DeviceCgroupRules\": null,\n            \"DeviceRequests\": null,\n            \"MemoryReservation\": 0,\n            \"MemorySwap\": 2147483648,\n            \"MemorySwappiness\": null,\n            \"OomKillDisable\": null,\n            \"PidsLimit\": null,\n            \"Ulimits\": [],\n            \"CpuCount\": 0,\n            \"CpuPercent\": 0,\n            \"IOMaximumIOps\": 0,\n            \"IOMaximumBandwidth\": 0,\n            \"Mounts\": [\n                {\n                    \"Type\": \"bind\",\n                    \"Source\": \"/Users/shinmingliu/opcti/validation/phase0/legacy/runs/session-cli-005/state with spaces/8e408c6be54a491e859fa27d5537fff8/launch\",\n                    \"Target\": \"/cti-launch\",\n                    \"ReadOnly\": true\n                },\n                {\n                    \"Type\": \"volume\",\n                    \"Source\": \"cti-session-8e408c6be54a491e859fa27d5537fff8-work\",\n                    \"Target\": \"/case-work\"\n                },\n                {\n                    \"Type\": \"volume\",\n                    \"Source\": \"cti-session-8e408c6be54a491e859fa27d5537fff8-source\",\n                    \"Target\": \"/case-source\"\n                },\n                {\n                    \"Type\": \"volume\",\n                    \"Source\": \"cti-session-8e408c6be54a491e859fa27d5537fff8-baseline\",\n                    \"Target\": \"/case-baseline\",\n                    \"ReadOnly\": true\n                }\n            ],\n            \"MaskedPaths\": [\n                \"/proc/acpi\",\n                \"/proc/asound\",\n                \"/proc/interrupts\",\n                \"/proc/kcore\",\n                \"/proc/keys\",\n                \"/proc/latency_stats\",\n                \"/proc/sched_debug\",\n                \"/proc/scsi\",\n                \"/proc/timer_list\",\n                \"/proc/timer_stats\",\n                \"/sys/devices/virtual/powercap\",\n                \"/sys/firmware\"\n            ],\n            \"ReadonlyPaths\": [\n                \"/proc/bus\",\n                \"/proc/fs\",\n                \"/proc/irq\",\n                \"/proc/sys\",\n                \"/proc/sysrq-trigger\"\n            ]\n        },\n        \"GraphDriver\": {\n            \"Data\": {\n                \"ID\": \"5a40875e523eb756a0ad4e92a554e1390e0379de1d757e6e9063339616cdbeda\",\n                \"LowerDir\": \"/var/lib/docker/overlay2/2a46f1e1d5f6eec95c7d527b22d6454dddbd5f6078166b3697c422495cc4302b-init/diff:/var/lib/docker/overlay2/1wdzjbdhqu6tfzi2i401crrq1/diff:/var/lib/docker/overlay2/ttri2xu5n18wwohwi38tooeik/diff:/var/lib/docker/overlay2/os4d819slnpizlvcm8g13nv3a/diff:/var/lib/docker/overlay2/eac0fiqi2yu7zsw9xnen2hz18/diff:/var/lib/docker/overlay2/dj9xzqgejlnfjccxc2pdbh4ky/diff:/var/lib/docker/overlay2/jrgrxuvb8pkc0dbik46t9mjwc/diff:/var/lib/docker/overlay2/45b9d819b5b52e3f6876c7b987dcf6a2689fa57a81ed6f264c428e6c77388b17/diff\",\n                \"MergedDir\": \"/var/lib/docker/overlay2/2a46f1e1d5f6eec95c7d527b22d6454dddbd5f6078166b3697c422495cc4302b/merged\",\n                \"UpperDir\": \"/var/lib/docker/overlay2/2a46f1e1d5f6eec95c7d527b22d6454dddbd5f6078166b3697c422495cc4302b/diff\",\n                \"WorkDir\": \"/var/lib/docker/overlay2/2a46f1e1d5f6eec95c7d527b22d6454dddbd5f6078166b3697c422495cc4302b/work\"\n            },\n            \"Name\": \"overlay2\"\n        },\n        \"Mounts\": [\n            {\n                \"Type\": \"volume\",\n                \"Name\": \"cti-session-8e408c6be54a491e859fa27d5537fff8-source\",\n                \"Source\": \"/var/lib/docker/volumes/cti-session-8e408c6be54a491e859fa27d5537fff8-source/_data\",\n                \"Destination\": \"/case-source\",\n                \"Driver\": \"local\",\n                \"Mode\": \"z\",\n                \"RW\": true,\n                \"Propagation\": \"\"\n            },\n            {\n                \"Type\": \"volume\",\n                \"Name\": \"cti-session-8e408c6be54a491e859fa27d5537fff8-baseline\",\n                \"Source\": \"/var/lib/docker/volumes/cti-session-8e408c6be54a491e859fa27d5537fff8-baseline/_data\",\n                \"Destination\": \"/case-baseline\",\n                \"Driver\": \"local\",\n                \"Mode\": \"z\",\n                \"RW\": false,\n                \"Propagation\": \"\"\n            },\n            {\n                \"Type\": \"bind\",\n                \"Source\": \"/Users/shinmingliu/opcti/validation/phase0/legacy/runs/session-cli-005/state with spaces/8e408c6be54a491e859fa27d5537fff8/launch\",\n                \"Destination\": \"/cti-launch\",\n                \"Mode\": \"\",\n                \"RW\": false,\n                \"Propagation\": \"rprivate\"\n            },\n            {\n                \"Type\": \"volume\",\n                \"Name\": \"cti-session-8e408c6be54a491e859fa27d5537fff8-work\",\n                \"Source\": \"/var/lib/docker/volumes/cti-session-8e408c6be54a491e859fa27d5537fff8-work/_data\",\n                \"Destination\": \"/case-work\",\n                \"Driver\": \"local\",\n                \"Mode\": \"z\",\n                \"RW\": true,\n                \"Propagation\": \"\"\n            }\n        ],\n        \"Config\": {\n            \"Hostname\": \"5a40875e523e\",\n            \"Domainname\": \"\",\n            \"User\": \"\",\n            \"AttachStdin\": false,\n            \"AttachStdout\": true,\n            \"AttachStderr\": true,\n            \"Tty\": false,\n            \"OpenStdin\": false,\n            \"StdinOnce\": false,\n            \"Env\": [\n                \"PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin\",\n                \"DEBIAN_FRONTEND=noninteractive\",\n                \"CTI_HOME=/opt/cti\",\n                \"CTI_PERL=/usr/bin/perl\",\n                \"CTI_SHELL=/bin/bash\"\n            ],\n            \"Cmd\": [\n                \"/cti-launch/runtime.py\",\n                \"serve\"\n            ],\n            \"Image\": \"sha256:a119c5e4a42dedbb5cdce10d448efce31b4054018bde56a4e476bc2c529fa62c\",\n            \"Volumes\": null,\n            \"WorkingDir\": \"/capture\",\n            \"Entrypoint\": [\n                \"/usr/bin/python3\"\n            ],\n            \"Labels\": {\n                \"org.opencontainers.image.version\": \"24.04\",\n                \"org.opencti.session\": \"8e408c6be54a491e859fa27d5537fff8\",\n                \"org.opencti.session.store\": \"27c50232c05e2357ebaccaca8c7aecaabc791ebdccf46a72dacc408c03350e34\"\n            },\n            \"StopTimeout\": 1\n        },\n        \"NetworkSettings\": {\n            \"SandboxID\": \"9f72972c0196270d1dd6a220c170e18c331d50120c7f3e63ecd775a9d78bc98e\",\n            \"SandboxKey\": \"/var/run/docker/netns/9f72972c0196\",\n            \"Ports\": {},\n            \"Networks\": {\n                \"none\": {\n                    \"IPAMConfig\": null,\n                    \"Links\": null,\n                    \"Aliases\": null,\n                    \"DriverOpts\": null,\n                    \"GwPriority\": 0,\n                    \"NetworkID\": \"db469be2416af8289efb850ec787ddcb5266451b56691319d8bd80134baf0452\",\n                    \"EndpointID\": \"3226c135894f33f6a95302cf2aa42959728ebf67e15b24b0b6972598df2d62a0\",\n                    \"Gateway\": \"\",\n                    \"IPAddress\": \"\",\n                    \"MacAddress\": \"\",\n                    \"IPPrefixLen\": 0,\n                    \"IPv6Gateway\": \"\",\n                    \"GlobalIPv6Address\": \"\",\n                    \"GlobalIPv6PrefixLen\": 0,\n                    \"DNSNames\": null\n                }\n            }\n        }\n    }\n]\n",
+    "stderr": ""
+  },
+  {
+    "argv": [
+      "/Applications/Xcode.app/Contents/Developer/usr/bin/python3",
+      "-B",
+      "/Users/shinmingliu/opcti/tools/cti-session",
+      "--state-dir",
+      "/Users/shinmingliu/opcti/validation/phase0/legacy/runs/session-cli-005/state with spaces",
+      "exec",
+      "8e408c6be54a491e859fa27d5537fff8",
+      "--",
+      "cat",
+      "/case-source/Case.c",
+      "/case-source/case.c"
+    ],
+    "returncode": 0,
+    "stdout": "UPPER\nlower\n",
+    "stderr": ""
+  },
+  {
+    "argv": [
+      "/Applications/Xcode.app/Contents/Developer/usr/bin/python3",
+      "-B",
+      "/Users/shinmingliu/opcti/tools/cti-session",
+      "--state-dir",
+      "/Users/shinmingliu/opcti/validation/phase0/legacy/runs/session-cli-005/state with spaces",
+      "exec",
+      "8e408c6be54a491e859fa27d5537fff8",
+      "--",
+      "python3",
+      "-c",
+      "import os;print(os.environ[\"CAPTURED_FLAG\"])"
+    ],
+    "returncode": 0,
+    "stdout": "saved environment value\n",
+    "stderr": ""
+  },
+  {
+    "argv": [
+      "/Applications/Xcode.app/Contents/Developer/usr/bin/python3",
+      "-B",
+      "/Users/shinmingliu/opcti/tools/cti-session",
+      "--state-dir",
+      "/Users/shinmingliu/opcti/validation/phase0/legacy/runs/session-cli-005/state with spaces",
+      "exec",
+      "8e408c6be54a491e859fa27d5537fff8",
+      "--",
+      "python3",
+      "-c",
+      "from pathlib import Path;Path(\"/case-baseline/expected\").write_text(\"unsafe\")"
+    ],
+    "returncode": 1,
+    "stdout": "",
+    "stderr": "Traceback (most recent call last):\n  File \"<string>\", line 1, in <module>\n  File \"/usr/lib/python3.12/pathlib.py\", line 1049, in write_text\n    with self.open(mode='w', encoding=encoding, errors=errors, newline=newline) as f:\n         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/usr/lib/python3.12/pathlib.py\", line 1015, in open\n    return io.open(self, mode, buffering, encoding, errors, newline)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nOSError: [Errno 30] Read-only file system: '/case-baseline/expected'\n"
+  },
+  {
+    "argv": [
+      "/Applications/Xcode.app/Contents/Developer/usr/bin/python3",
+      "-B",
+      "/Users/shinmingliu/opcti/tools/cti-session",
+      "--state-dir",
+      "/Users/shinmingliu/opcti/validation/phase0/legacy/runs/session-cli-005/state with spaces",
+      "open",
+      "--spec",
+      "/Users/shinmingliu/opcti/validation/phase0/legacy/runs/session-cli-005/generic-capture/unavailable.json",
+      "--no-attach"
+    ],
+    "returncode": 2,
+    "stdout": "",
+    "stderr": "cti-session: Pinned image unavailable. Supply --image-archive with the retained verified image archive.\n"
+  },
+  {
+    "argv": [
+      "/Applications/Xcode.app/Contents/Developer/usr/bin/python3",
+      "-B",
+      "/Users/shinmingliu/opcti/tools/cti-session",
+      "--state-dir",
+      "/Users/shinmingliu/opcti/validation/phase0/legacy/runs/session-cli-005/state with spaces",
+      "remove",
+      "1e651aa8e2d94a238604d2f61f4c9359"
+    ],
+    "returncode": 0,
+    "stdout": "Removed private session 1e651aa8e2d94a238604d2f61f4c9359; original capture retained.\n",
+    "stderr": ""
+  },
+  {
+    "argv": [
+      "/Applications/Xcode.app/Contents/Developer/usr/bin/python3",
+      "-B",
+      "/Users/shinmingliu/opcti/tools/cti-session",
+      "--state-dir",
+      "/Users/shinmingliu/opcti/validation/phase0/legacy/runs/session-cli-005/state with spaces",
+      "remove",
+      "ba9034e7ace4489387e9ec0c44d110db"
+    ],
+    "returncode": 0,
+    "stdout": "Removed private session ba9034e7ace4489387e9ec0c44d110db; original capture retained.\n",
+    "stderr": ""
+  },
+  {
+    "argv": [
+      "/Applications/Xcode.app/Contents/Developer/usr/bin/python3",
+      "-B",
+      "/Users/shinmingliu/opcti/tools/cti-session",
+      "--state-dir",
+      "/Users/shinmingliu/opcti/validation/phase0/legacy/runs/session-cli-005/state with spaces",
+      "remove",
+      "c18806d2dcc3483fb4e69a46d0a16057"
+    ],
+    "returncode": 0,
+    "stdout": "Removed private session c18806d2dcc3483fb4e69a46d0a16057; original capture retained.\n",
+    "stderr": ""
+  },
+  {
+    "argv": [
+      "/Applications/Xcode.app/Contents/Developer/usr/bin/python3",
+      "-B",
+      "/Users/shinmingliu/opcti/tools/cti-session",
+      "--state-dir",
+      "/Users/shinmingliu/opcti/validation/phase0/legacy/runs/session-cli-005/state with spaces",
+      "remove",
+      "a2cd9cbd94534523910772e261d7ba9b"
+    ],
+    "returncode": 0,
+    "stdout": "Removed private session a2cd9cbd94534523910772e261d7ba9b; original capture retained.\n",
+    "stderr": ""
+  },
+  {
+    "argv": [
+      "/Applications/Xcode.app/Contents/Developer/usr/bin/python3",
+      "-B",
+      "/Users/shinmingliu/opcti/tools/cti-session",
+      "--state-dir",
+      "/Users/shinmingliu/opcti/validation/phase0/legacy/runs/session-cli-005/state with spaces",
+      "remove",
+      "08fd5b3a181c47528206c48e98d087e9"
+    ],
+    "returncode": 0,
+    "stdout": "Removed private session 08fd5b3a181c47528206c48e98d087e9; original capture retained.\n",
+    "stderr": ""
+  },
+  {
+    "argv": [
+      "/Applications/Xcode.app/Contents/Developer/usr/bin/python3",
+      "-B",
+      "/Users/shinmingliu/opcti/tools/cti-session",
+      "--state-dir",
+      "/Users/shinmingliu/opcti/validation/phase0/legacy/runs/session-cli-005/state with spaces",
+      "remove",
+      "8e408c6be54a491e859fa27d5537fff8"
+    ],
+    "returncode": 0,
+    "stdout": "Removed private session 8e408c6be54a491e859fa27d5537fff8; original capture retained.\n",
+    "stderr": ""
+  },
+  {
+    "argv": [
+      "/Applications/Xcode.app/Contents/Developer/usr/bin/python3",
+      "-B",
+      "/Users/shinmingliu/opcti/tools/cti-session",
+      "--state-dir",
+      "/Users/shinmingliu/opcti/validation/phase0/legacy/runs/session-cli-005/state with spaces",
+      "list",
+      "--json"
+    ],
+    "returncode": 0,
+    "stdout": "[]\n",
+    "stderr": ""
+  }
+]
