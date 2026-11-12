@@ -25,7 +25,43 @@ th{background:#eff3f7}td:first-child{min-width:10rem}footer{border-top:1px solid
 <h1 id="open-a-captured-failure-in-an-interactive-docker-session">Open a captured failure in an interactive Docker session</h1>
 <p><a href="index.html">Documentation home</a> · <a href="modernization-plan.html">Modernization plan</a> · <a href="phase0-ft09-results.html">FT09 debugger evidence</a></p>
 <p>The session CLI implements the first user-facing part of the modernized triage workflow. Run it from your Terminal: it creates a private Docker workspace, enters the captured test directory and loads that test&#x27;s saved <code>.env</code>. You can use its original scripts and debugger directly. Exiting disconnects the shell while retaining the private session. The original framework and captured evidence are unchanged.</p>
-<p>Dashboard “Open terminal” wiring and automatic opening of a new macOS Terminal window are still future work. This CLI attaches in the terminal where you run it.</p>
+<p>The CLI attaches in the terminal where you run it. The opt-in dashboard adapter below also opens a new macOS Terminal window when you click a registered failed case.</p>
+<h2 id="click-a-failure-to-open-terminal">Click a failure to open Terminal</h2>
+<p><code>tools/cti-dashboard</code> connects the existing dashboard to the session CLI. The failed-case name opens a fresh private Docker session; an adjacent **[details]** link retains the original artifact page. The case-details page also gains **Open preserved failure in Terminal**. Unregistered cases and unavailable or stale bindings keep their existing details links.</p>
+<p>Install the native URL handler once on your Mac, from the checkout you intend to keep using:</p>
+<pre><code>./tools/cti-dashboard install</code></pre>
+<p>This builds a local <code>~/Applications/OpenCTI Sessions.app</code> and registers <code>opencti-session://</code>. It stores the selected Python executable, checkout and registry locations. macOS or your browser may ask to open this app and allow it to control Terminal. These normal OS prompts are not bypassed. Use a browser that supports native application links, such as Safari or Chrome. If an embedded browser does not hand the link to macOS, open the page in your regular browser.</p>
+<p>Register a captured failure locally. For the retained debugger example:</p>
+<pre><code>./tools/cti-dashboard register \
+  --capture validation/phase0/legacy/evidence/ft09-001 \
+  --test Regression/FT09/debug_target.c \
+  --label &#x27;FT09 captured runtime failure&#x27;
+
+./tools/cti-dashboard page --output www/captured-failures.html</code></pre>
+<p>Open the generated local page in your browser and click the case. The default registration directory is <code>~/Library/Application Support/OpenCTI/dashboard</code>; <code>--registry PATH</code> before the subcommand selects another registry. The installer must use that same registry. Session files use the existing CLI&#x27;s default state directory, or the <code>--session-state PATH</code> selected during registration.</p>
+<p>Each click opens a new Terminal window and invokes <code>cti-session open</code>, which restores private source/work volumes, enters the preserved Docker test directory and loads its saved environment. Use the scripts and GDB as shown below. The printed session ID lets you reconnect later with <code>cti-session attach</code>; closing Terminal disconnects the shell and retains private edits. The dashboard does not run a test phase or change its original verdict.</p>
+<h3 id="enable-the-existing-cti-dashboard">Enable the existing CTI dashboard</h3>
+<p>Bind the exact dashboard deployment, original run-log query value and case name to a local capture. For example, replace the sample deployment with your actual CTI base URL:</p>
+<pre><code>./tools/cti-dashboard register \
+  --capture validation/phase0/legacy/evidence/ft09-001 \
+  --test Regression/FT09/debug_target.c \
+  --log /export/original/summary.log \
+  --dashboard-url https://cti.example/cti/
+
+./tools/cti-dashboard export --output www/session-links.json</code></pre>
+<p>The FT09 and FT01–FT03 importers recover the original summary-log digest from the captured archive. Other layouts or portable specifications must supply <code>--log-sha256</code> from the **original captured run log**, not a current file at a reused path. An explicit digest cannot override a different summary log found in the capture. The source log must remain available to the dashboard for identity checking; an archived capture can still be opened through the local page when the server log is gone.</p>
+<p>Deploy the three modified pages, <code>www/js/cti-sessions.js</code>, the new Python CGI <code>www/cgi-bin/cti-session-identity.cgi</code> and the exported catalog. Give the CGI process these deployment-specific environment settings, for example through its web-server configuration:</p>
+<pre><code>CTI_SESSION_LINKS_URL=/cti/session-links.json
+CTI_SESSION_LINKS_FILE=/absolute/deployed/cti/www/session-links.json</code></pre>
+<p>The web service needs Python 3 and read access to the catalog and the registered logs. Serve the catalog under the existing dashboard&#x27;s access controls. It includes dashboard log/test identities, their digests and opaque registration IDs; it excludes native capture paths, commands and private session contents. A shared deployment needs a user-scoped catalog/configuration because registrations belong to a particular Mac. Exporting a catalog does not enroll another person&#x27;s Mac.</p>
+<p>The browser verifies the deployment origin/path, log query and test name, and asks the read-only identity CGI to confirm the log&#x27;s SHA-256 against the captured run. A missing or replaced log withholds the Terminal link. The identity CGI reads only log paths from the administrator-configured catalog; request parameters cannot select files or run commands. Missing configuration, catalog, identity response or JavaScript leaves the original artifact navigation available. The adapter handles the legacy CGI&#x27;s plus-sign decoding and rejects duplicate log/test query parameters and ambiguous catalog bindings.</p>
+<h3 id="registration-lifecycle-and-rollback">Registration lifecycle and rollback</h3>
+<pre><code>./tools/cti-dashboard list
+./tools/cti-dashboard unregister &lt;registration-id&gt;</code></pre>
+<p>Unregistering revokes the link without deleting evidence or existing debugging sessions. Re-export the catalog and regenerate the local page after registrations change. The native handler accepts only <code>opencti-session://failure/&lt;64-hex-registration-id&gt;</code>; it never accepts browser-supplied paths, environment settings, image tags or shell commands. The registration pins the capture&#x27;s checksum index or portable-spec bytes. Modified specifications, changed input hashes, removed registrations and unknown IDs fail explicitly. Registration, generated output and native/session state are kept outside the original evidence.</p>
+<p>For portable captures use <code>register --spec PATH</code>; <code>--test</code> can supply the dashboard identity without being passed to the CLI&#x27;s spec opener. <code>--image-archive</code> and explicit <code>--inspection-only</code> are fixed local registration choices, not URL parameters. A capture requiring external authorization cannot be registered as replay-ready by silently creating credentials.</p>
+<p>Unset <code>CTI_SESSION_LINKS_URL</code> to disable the dashboard adapter; the three CGI pages return to their original navigation. Removing the generated catalog/page does not affect captures or sessions. The installer refuses to overwrite an existing application. For an updated checkout, moved checkout or new registry, install to a new app path with <code>install --app &quot;$HOME/Applications/OpenCTI Sessions-v2.app&quot;</code>; it explicitly selects that installation as the URL handler. Old applications can then be removed normally. The handler does not install a daemon or expose a network listener.</p>
+<p>The native app uses Apple&#x27;s <a href="https://developer.apple.com/library/archive/documentation/General/Reference/InfoPlistKeyReference/Articles/CoreFoundationKeys.html">URL type declarations</a> and <a href="https://developer.apple.com/documentation/coreservices/1447760-lssetdefaulthandlerforurlscheme">Launch Services URL-handler selection</a>.</p>
 <h2 id="open-the-retained-debugger-example">Open the retained debugger example</h2>
 <p>From the repository root, with Docker running and Python 3.9 or newer available:</p>
 <pre><code>./tools/cti-session open \
@@ -93,7 +129,7 @@ gdb ./debug_target</code></pre>
   --capture validation/phase0/legacy/evidence/ft13-001 \
   --inspection-only</code></pre>
 <p>FT13 declares <code>fixture://ft13/protected-access</code>. The CLI does not fabricate credentials or run the validation fixture&#x27;s provisioning code. Normal open reports the missing reference; <code>--inspection-only</code> explicitly permits examining retained files while reporting replay readiness false. Required shell, test directory and saved environment must still exist. Other acquired capture layouts need an explicit session specification until their importer is implemented.</p>
-<p>This first release targets local native Linux Docker execution. Remote/GPU workers, emulation, dashboard launch integration and external credential provisioning are not implemented. The image must contain <code>/usr/bin/python3</code> and <code>/bin/bash</code>; supported retained runtimes already do.</p>
+<p>This first release targets local native Linux Docker execution with an opt-in macOS dashboard launcher. Remote/GPU workers, emulation and external credential provisioning are not implemented. The image must contain <code>/usr/bin/python3</code> and <code>/bin/bash</code>; supported retained runtimes already do.</p>
 <h2 id="private-files-and-original-paths">Private files and original paths</h2>
 <p>Input archives are copied and verified in the native session cache. They are mounted read-only only for initialization. Source/work trees are materialized inside separate named Linux volumes, preserving case-distinct filenames, executable bits and declared symlinks. The live checkout, home directory, original evidence tree and Docker socket are never mounted into the debugging container.</p>
 <p>The original container-visible paths are restored. That lets absolute source links and saved recipes keep working even if the evidence moved on the Mac. Baseline volumes are mounted read-only, including <code>Masters</code> overlays beneath private writable source trees. Captured dependencies such as FT13&#x27;s mounted tool/runtime tree remain read-only. Changing another session&#x27;s source/work files cannot affect yours.</p>
@@ -115,6 +151,6 @@ gdb ./debug_target</code></pre>
 <pre><code>python3 -B -m unittest discover -s tests/session_cli -v
 python3 -B validation/session-cli/run_validation.py \
   --output validation/phase0/legacy/runs/new-session-cli-validation</code></pre>
-<p>The compact acceptance record and offline auditor are in <a href="../../validation/session-cli/README.md">validation/session-cli</a>. Dashboard acceptance remains open; this implements the session-opening CLI portion first.</p>
+<p>The CLI&#x27;s compact acceptance record and offline auditor are in <a href="../../validation/session-cli/README.md">validation/session-cli</a>. The additional <a href="../../validation/dashboard-session/README.md">dashboard/Terminal acceptance</a> covers the actual three CGI pages with the adapter enabled and disabled, run-log replacement/missing controls, a browser click into a native Terminal, interactive Docker cwd/TTY, saved flags, exit 7 and GDB. The original capture remains unchanged. This synthetic acceptance qualifies the click-to-Terminal slice; broader dashboard scenarios and production/site-specific deployments remain open.</p>
 <footer>Reconstructed from OpenCTI source, baseline 8c3d603. Generated by doc/tools/build_docs.py.</footer>
 </main></body></html>

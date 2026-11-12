@@ -48,3 +48,8 @@ The session CLI loads the saved test environment and opens a shell in the
 captured test directory. Original evidence is protected. See
 doc/guide/debugging-sessions.md for image prerequisites, supported captures,
 reconnecting, private workspace lifecycle and the portable session format.
+
+To open a new macOS Terminal window from a registered dashboard failure, use
+tools/cti-dashboard to install the local URL handler, register captures, and
+generate a local capture page or export dashboard bindings. The same guide
+documents opt-in legacy dashboard setup and original-run identity checks.

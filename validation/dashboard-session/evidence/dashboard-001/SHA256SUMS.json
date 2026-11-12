@@ -1,0 +1,9 @@
+{
+  "summary.json": "0f67bf766965a7386e01edf8ea847e83bb027cbf6ce5778d40ee52c404f27835",
+  "terminal-results.json": "f13b7f3422aa427f3dc23e209ad9d972f4f990a7209ebbf5551f2bb4993582b1",
+  "capture-before.json": "c75e8f95c7fa67d08bb5536d575b4ac63f4b9cd49d1017ae36c2df2d90c97b61",
+  "capture-after.json": "c75e8f95c7fa67d08bb5536d575b4ac63f4b9cd49d1017ae36c2df2d90c97b61",
+  "cgi-results.json": "e655132379f1f7cca1a0294170d7725127b30bd1c06e1f9b23b16c5fd2c13d80",
+  "identities-original.json": "e86974cd9d036a84dfed2afd21b30ab9ceb9a3f3d614b022916e961ffa8f3cc0",
+  "source-sha256.json": "413debfd990d4a36d66be7dff3d12fc8f494b55cd82148d915497ed2c4875f51"
+}

@@ -1,0 +1,51 @@
+{
+  "pages": [
+    {
+      "page": "show-failures.cgi",
+      "enabled": false,
+      "returncode": 0,
+      "case_link_present": true,
+      "adapter_present": false
+    },
+    {
+      "page": "show-failures.cgi",
+      "enabled": true,
+      "returncode": 0,
+      "case_link_present": true,
+      "adapter_present": true
+    },
+    {
+      "page": "get-log-file.cgi",
+      "enabled": false,
+      "returncode": 0,
+      "case_link_present": true,
+      "adapter_present": false
+    },
+    {
+      "page": "get-log-file.cgi",
+      "enabled": true,
+      "returncode": 0,
+      "case_link_present": true,
+      "adapter_present": true
+    },
+    {
+      "page": "chk_test_errors.cgi",
+      "enabled": false,
+      "returncode": 0,
+      "case_link_present": true,
+      "adapter_present": false
+    },
+    {
+      "page": "chk_test_errors.cgi",
+      "enabled": true,
+      "returncode": 0,
+      "case_link_present": true,
+      "adapter_present": true
+    }
+  ],
+  "image_framework_unchanged": true,
+  "framework_entries": 2654,
+  "reused_log_rejected": true,
+  "missing_log_rejected": true,
+  "original_log_restored": true
+}

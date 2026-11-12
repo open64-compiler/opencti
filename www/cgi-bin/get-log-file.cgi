@@ -61,6 +61,10 @@ sub display_page
   $html .= $q->start_html( -title=>'show log files',
                            -style=>{-src=>'../css/homepages-v5.css'},
                          );
+  if ($ENV{CTI_SESSION_LINKS_URL}) {
+    $html .= '<script defer src="../js/cti-sessions.js" data-catalog="' .
+      CGI::escapeHTML($ENV{CTI_SESSION_LINKS_URL}) . '"></script>';
+  }
   $html .= qq(<pre style="background-color: #FFFFFF; border-width: 0pt"><code>);
   $html .= qq(<b>) . qx(/bin/ls -ld $log) . qq(\n);
 

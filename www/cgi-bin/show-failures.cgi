@@ -179,6 +179,11 @@ sub display_page
 			-script => $CTI_lib::Usage_javascript,
                         -style=>{-src=>'../css/homepages-v5.css'},
                       );
+  # Opt-in native triage links; all existing case links remain the default.
+  if ($ENV{CTI_SESSION_LINKS_URL}) {
+    print '<script defer src="../js/cti-sessions.js" data-catalog="' .
+      CGI::escapeHTML($ENV{CTI_SESSION_LINKS_URL}) . '"></script>';
+  }
 
   unless (my $return = do $schedule) # read the schedule file; check for errors
     { if($@) { die "couldn't parse $schedule: $@"; }

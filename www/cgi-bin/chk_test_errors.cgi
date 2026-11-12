@@ -58,6 +58,10 @@ sub display_page
   print $q->start_html( -title=>'show files',
                         -style=>{-src=>'../css/homepages-v5.css'},
                       );
+  if ($ENV{CTI_SESSION_LINKS_URL}) {
+    print '<script defer src="../js/cti-sessions.js" data-catalog="' .
+      CGI::escapeHTML($ENV{CTI_SESSION_LINKS_URL}) . '"></script>';
+  }
 
   my $log_header = CTI_lib::get_log_header($logf);
   my $work_dir   = $log_header->{TEST_WORK_DIR} || '';
