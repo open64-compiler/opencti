@@ -1,0 +1,440 @@
+[
+  {
+    "label": "missing-shell-legacy-control",
+    "argv": [
+      "./probe.compile.sh"
+    ],
+    "cwd": "/sessions/missing-shell/work/Regression/FT13",
+    "process_started": false,
+    "returncode": null,
+    "errno": 2,
+    "requested_file_exists": true,
+    "phase": "compile",
+    "tag": null,
+    "output": "runtime-A|input-A|resource-A\n"
+  },
+  {
+    "label": "missing-shell-recovered",
+    "argv": [
+      "./probe.compile.sh"
+    ],
+    "cwd": "/sessions/missing-shell/work/Regression/FT13",
+    "process_started": true,
+    "returncode": 0,
+    "phase": "compile",
+    "tag": null,
+    "output": "runtime-A|input-A|resource-A\n"
+  },
+  {
+    "label": "missing-perl-legacy-control",
+    "argv": [
+      "./probe.compare-out.sh"
+    ],
+    "cwd": "/sessions/missing-perl/work/Regression/FT13",
+    "process_started": true,
+    "returncode": 1,
+    "phase": "compare-out",
+    "tag": "CompareInternalError",
+    "output": "runtime-A|input-A|resource-A\n"
+  },
+  {
+    "label": "missing-perl-recovered",
+    "argv": [
+      "./probe.compare-out.sh"
+    ],
+    "cwd": "/sessions/missing-perl/work/Regression/FT13",
+    "process_started": true,
+    "returncode": 1,
+    "phase": "compare-out",
+    "tag": "DiffPgmOut",
+    "output": "runtime-A|input-A|resource-A\n"
+  },
+  {
+    "label": "missing-elf-loader-legacy-control",
+    "argv": [
+      "./probe.run.sh"
+    ],
+    "cwd": "/sessions/missing-elf-loader/work/Regression/FT13",
+    "process_started": false,
+    "returncode": null,
+    "errno": 2,
+    "requested_file_exists": true,
+    "phase": "run",
+    "tag": null,
+    "output": "runtime-A|input-A|resource-A\n"
+  },
+  {
+    "label": "missing-elf-loader-recovered",
+    "argv": [
+      "./probe.run.sh"
+    ],
+    "cwd": "/sessions/missing-elf-loader/work/Regression/FT13",
+    "process_started": true,
+    "returncode": 0,
+    "phase": "run",
+    "tag": null,
+    "output": "runtime-A|input-A|resource-A\n"
+  },
+  {
+    "label": "missing-compiler-entry-legacy-control",
+    "argv": [
+      "./probe.compile.sh"
+    ],
+    "cwd": "/sessions/missing-compiler-entry/work/Regression/FT13",
+    "process_started": true,
+    "returncode": 1,
+    "phase": "compile",
+    "tag": "CompileErr",
+    "output": "runtime-A|input-A|resource-A\n"
+  },
+  {
+    "label": "missing-compiler-entry-recovered",
+    "argv": [
+      "./probe.compile.sh"
+    ],
+    "cwd": "/sessions/missing-compiler-entry/work/Regression/FT13",
+    "process_started": true,
+    "returncode": 0,
+    "phase": "compile",
+    "tag": null,
+    "output": "runtime-A|input-A|resource-A\n"
+  },
+  {
+    "label": "missing-runtime-legacy-control",
+    "argv": [
+      "./probe.run.sh"
+    ],
+    "cwd": "/sessions/missing-runtime/work/Regression/FT13",
+    "process_started": true,
+    "returncode": 127,
+    "phase": "run",
+    "tag": "ExecErr",
+    "output": "./probe: error while loading shared libraries: libft13.so: cannot open shared object file: No such file or directory\n"
+  },
+  {
+    "label": "missing-runtime-recovered",
+    "argv": [
+      "./probe.run.sh"
+    ],
+    "cwd": "/sessions/missing-runtime/work/Regression/FT13",
+    "process_started": true,
+    "returncode": 0,
+    "phase": "run",
+    "tag": null,
+    "output": "runtime-A|input-A|resource-A\n"
+  },
+  {
+    "label": "dangling-input-legacy-control",
+    "argv": [
+      "./probe.run.sh"
+    ],
+    "cwd": "/sessions/dangling-input/work/Regression/FT13",
+    "process_started": true,
+    "returncode": 11,
+    "phase": "run",
+    "tag": "ExecErr",
+    "output": ""
+  },
+  {
+    "label": "dangling-input-recovered",
+    "argv": [
+      "./probe.run.sh"
+    ],
+    "cwd": "/sessions/dangling-input/work/Regression/FT13",
+    "process_started": true,
+    "returncode": 0,
+    "phase": "run",
+    "tag": null,
+    "output": "runtime-A|input-A|resource-A\n"
+  },
+  {
+    "label": "missing-protected-resource-legacy-control",
+    "argv": [
+      "./probe.run.sh"
+    ],
+    "cwd": "/sessions/missing-protected-resource/work/Regression/FT13",
+    "process_started": true,
+    "returncode": 43,
+    "phase": "run",
+    "tag": "ExecErr",
+    "output": ""
+  },
+  {
+    "label": "missing-protected-resource-recovered",
+    "argv": [
+      "./probe.run.sh"
+    ],
+    "cwd": "/sessions/missing-protected-resource/work/Regression/FT13",
+    "process_started": true,
+    "returncode": 0,
+    "phase": "run",
+    "tag": null,
+    "output": "runtime-A|input-A|resource-A\n"
+  },
+  {
+    "label": "missing-credential-legacy-control",
+    "argv": [
+      "./probe.run.sh"
+    ],
+    "cwd": "/sessions/missing-credential/work/Regression/FT13",
+    "process_started": true,
+    "returncode": 41,
+    "phase": "run",
+    "tag": "ExecErr",
+    "output": ""
+  },
+  {
+    "label": "missing-credential-recovered",
+    "argv": [
+      "./probe.run.sh"
+    ],
+    "cwd": "/sessions/missing-credential/work/Regression/FT13",
+    "process_started": true,
+    "returncode": 0,
+    "phase": "run",
+    "tag": null,
+    "output": "runtime-A|input-A|resource-A\n"
+  },
+  {
+    "label": "invalid-credential-legacy-control",
+    "argv": [
+      "./probe.run.sh"
+    ],
+    "cwd": "/sessions/invalid-credential/work/Regression/FT13",
+    "process_started": true,
+    "returncode": 42,
+    "phase": "run",
+    "tag": "ExecErr",
+    "output": ""
+  },
+  {
+    "label": "invalid-credential-recovered",
+    "argv": [
+      "./probe.run.sh"
+    ],
+    "cwd": "/sessions/invalid-credential/work/Regression/FT13",
+    "process_started": true,
+    "returncode": 0,
+    "phase": "run",
+    "tag": null,
+    "output": "runtime-A|input-A|resource-A\n"
+  },
+  {
+    "label": "missing-comparator-legacy-control",
+    "argv": [
+      "./probe.compare-out.sh"
+    ],
+    "cwd": "/sessions/missing-comparator/work/Regression/FT13",
+    "process_started": true,
+    "returncode": 1,
+    "phase": "compare-out",
+    "tag": "CompareInternalError",
+    "output": "runtime-A|input-A|resource-A\n"
+  },
+  {
+    "label": "missing-comparator-recovered",
+    "argv": [
+      "./probe.compare-out.sh"
+    ],
+    "cwd": "/sessions/missing-comparator/work/Regression/FT13",
+    "process_started": true,
+    "returncode": 1,
+    "phase": "compare-out",
+    "tag": "DiffPgmOut",
+    "output": "runtime-A|input-A|resource-A\n"
+  },
+  {
+    "label": "missing-baseline-legacy-control",
+    "argv": [
+      "./probe.compare-out.sh"
+    ],
+    "cwd": "/sessions/missing-baseline/work/Regression/FT13",
+    "process_started": true,
+    "returncode": 1,
+    "phase": "compare-out",
+    "tag": "CompareInternalError",
+    "output": "runtime-A|input-A|resource-A\n"
+  },
+  {
+    "label": "missing-baseline-recovered",
+    "argv": [
+      "./probe.compare-out.sh"
+    ],
+    "cwd": "/sessions/missing-baseline/work/Regression/FT13",
+    "process_started": true,
+    "returncode": 1,
+    "phase": "compare-out",
+    "tag": "DiffPgmOut",
+    "output": "runtime-A|input-A|resource-A\n"
+  },
+  {
+    "label": "missing-saved-env-legacy-control",
+    "argv": [
+      "./probe.run.sh"
+    ],
+    "cwd": "/sessions/missing-saved-env/work/Regression/FT13",
+    "process_started": true,
+    "returncode": 0,
+    "phase": "run",
+    "tag": null,
+    "output": "runtime-A|input-A|resource-A\n"
+  },
+  {
+    "label": "missing-saved-env-recovered",
+    "argv": [
+      "./probe.run.sh"
+    ],
+    "cwd": "/sessions/missing-saved-env/work/Regression/FT13",
+    "process_started": true,
+    "returncode": 0,
+    "phase": "run",
+    "tag": null,
+    "output": "runtime-A|input-A|resource-A\n"
+  },
+  {
+    "label": "dangling-saved-env-legacy-control",
+    "argv": [
+      "./probe.run.sh"
+    ],
+    "cwd": "/sessions/dangling-saved-env/work/Regression/FT13",
+    "process_started": true,
+    "returncode": 0,
+    "phase": "run",
+    "tag": null,
+    "output": "runtime-A|input-A|resource-A\n"
+  },
+  {
+    "label": "dangling-saved-env-recovered",
+    "argv": [
+      "./probe.run.sh"
+    ],
+    "cwd": "/sessions/dangling-saved-env/work/Regression/FT13",
+    "process_started": true,
+    "returncode": 0,
+    "phase": "run",
+    "tag": null,
+    "output": "runtime-A|input-A|resource-A\n"
+  },
+  {
+    "label": "dangling-source-legacy-control",
+    "argv": [
+      "./probe.compile.sh"
+    ],
+    "cwd": "/sessions/dangling-source/work/Regression/FT13",
+    "process_started": true,
+    "returncode": 1,
+    "phase": "compile",
+    "tag": "CompileErr",
+    "output": "runtime-A|input-A|resource-A\n"
+  },
+  {
+    "label": "dangling-source-recovered",
+    "argv": [
+      "./probe.compile.sh"
+    ],
+    "cwd": "/sessions/dangling-source/work/Regression/FT13",
+    "process_started": true,
+    "returncode": 0,
+    "phase": "compile",
+    "tag": null,
+    "output": "runtime-A|input-A|resource-A\n"
+  },
+  {
+    "label": "changed-runtime-legacy-control",
+    "argv": [
+      "./probe.run.sh"
+    ],
+    "cwd": "/sessions/changed-runtime/work/Regression/FT13",
+    "process_started": true,
+    "returncode": 127,
+    "phase": "run",
+    "tag": "ExecErr",
+    "output": "./probe: error while loading shared libraries: /deps/runtime/libft13.so: file too short\n"
+  },
+  {
+    "label": "changed-runtime-recovered",
+    "argv": [
+      "./probe.run.sh"
+    ],
+    "cwd": "/sessions/changed-runtime/work/Regression/FT13",
+    "process_started": true,
+    "returncode": 0,
+    "phase": "run",
+    "tag": null,
+    "output": "runtime-A|input-A|resource-A\n"
+  },
+  {
+    "label": "missing-run-recipe-legacy-control",
+    "argv": [
+      "./probe.run.sh"
+    ],
+    "cwd": "/sessions/missing-run-recipe/work/Regression/FT13",
+    "process_started": false,
+    "returncode": null,
+    "errno": 2,
+    "requested_file_exists": false,
+    "phase": "run",
+    "tag": null,
+    "output": "runtime-A|input-A|resource-A\n"
+  },
+  {
+    "label": "missing-run-recipe-recovered",
+    "argv": [
+      "./probe.run.sh"
+    ],
+    "cwd": "/sessions/missing-run-recipe/work/Regression/FT13",
+    "process_started": true,
+    "returncode": 0,
+    "phase": "run",
+    "tag": null,
+    "output": "runtime-A|input-A|resource-A\n"
+  },
+  {
+    "label": "final-compile",
+    "argv": [
+      "./probe.compile.sh"
+    ],
+    "cwd": "/sessions/final-replay/work/Regression/FT13",
+    "process_started": true,
+    "returncode": 0,
+    "phase": "compile",
+    "tag": null,
+    "output": "runtime-A|input-A|resource-A\n"
+  },
+  {
+    "label": "final-link",
+    "argv": [
+      "./probe.link.sh"
+    ],
+    "cwd": "/sessions/final-replay/work/Regression/FT13",
+    "process_started": true,
+    "returncode": 0,
+    "phase": "link",
+    "tag": null,
+    "output": "runtime-A|input-A|resource-A\n"
+  },
+  {
+    "label": "final-run",
+    "argv": [
+      "./probe.run.sh"
+    ],
+    "cwd": "/sessions/final-replay/work/Regression/FT13",
+    "process_started": true,
+    "returncode": 0,
+    "phase": "run",
+    "tag": null,
+    "output": "runtime-A|input-A|resource-A\n"
+  },
+  {
+    "label": "final-compare-out",
+    "argv": [
+      "./probe.compare-out.sh"
+    ],
+    "cwd": "/sessions/final-replay/work/Regression/FT13",
+    "process_started": true,
+    "returncode": 1,
+    "phase": "compare-out",
+    "tag": "DiffPgmOut",
+    "output": "runtime-A|input-A|resource-A\n"
+  }
+]

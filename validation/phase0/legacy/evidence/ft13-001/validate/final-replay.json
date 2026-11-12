@@ -1,0 +1,5 @@
+{
+  "tag": "DiffPgmOut",
+  "output": "runtime-A|input-A|resource-A\n",
+  "baseline_sha256": "15b77b3a9db59dc48607e5b5b20d47db6eb67186e461569384023f01b3b09859"
+}

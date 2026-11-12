@@ -1,0 +1,20 @@
+{
+  "allowlisted_environment": {
+    "CTI_HOME": "/opt/cti",
+    "CTI_PERL": "/usr/bin/perl",
+    "CTI_SHELL": "/bin/bash",
+    "FT13_MODE": "capture",
+    "FT13_IMAGE_ID": "sha256:873ccd4bbd6101f6f8e46fd1a4502f2d0268edec40c4ae0476cdd24927337840"
+  },
+  "credential_reference": "fixture://ft13/protected-access",
+  "credential_values_in_environment": false,
+  "credential_values_retained": false,
+  "epochs": [
+    {
+      "epoch": 1,
+      "reason": "explicit-local-fixture-provisioning",
+      "credential_reference": "fixture://ft13/protected-access",
+      "value_retained": false
+    }
+  ]
+}

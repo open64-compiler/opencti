@@ -335,3 +335,35 @@ Two deliberately unsafe legacy controls reuse the original top-level path, first
 Seven preservation checkpoints, pinned-object deletion refusal and an attempted original-outcome replacement check precede final recovery. A fresh worker reconstructs source/work solely from the original native objects and replays compile/link/run/compare: 0/0/0/1, `DiffPgmOut`, original output and master hash. Eight offline tests cover reference integrity, corruption, rehashed outcome/preview/checkpoint contradictions, post-deletion reservations, path aliases/overlap, unknown parents and distinct linked allocations.
 
 Reference: `runs/ft12-003/` has 289 hashed files. Its 815,693-byte compact copy in `evidence/ft12-003/` has 168 manifest entries, including closed ledgers, objects, exact work/session archives, CGI bytes and capture tools. Expanded work/recovery/session trees and duplicate transfer spools are omitted. Exploratory runs 001–002 and the existing 586 MB runtime remain ignored/local. All eight workers use the restricted network-disabled profile and are removed after export; all 2,654 deployed framework entries remain unchanged. DA11, production native reruns and real remote/view/historical/GPU/DSL coverage remain open. See the [FT12 report](../../../doc/guide/phase0-ft12-results.md).
+
+## FT13 prerequisite availability and explicit recovery
+
+`run_ft13.py` captures a new stock regression with mounted compiler entry, shared runtime, input alias, protected-resource authorization fixture and comparator. It changes no framework/default files. Python 3.9 or newer, Docker and the retained original ARM64 runtime archive are required. Output directories must be new.
+
+```sh
+python3 -B validation/phase0/legacy/run_ft13.py \
+  --capture validation/phase0/legacy/runs/run-002 \
+  --output validation/phase0/legacy/runs/new-ft13-run
+
+python3 -B validation/phase0/legacy/verify_ft13.py \
+  validation/phase0/legacy/runs/new-ft13-run \
+  --compact-output validation/phase0/legacy/evidence/new-ft13-run
+
+python3 -B validation/phase0/legacy/verify_ft13.py \
+  validation/phase0/legacy/evidence/ft13-001
+
+python3 -B -m unittest discover -s validation/phase0/legacy \
+  -p test_verify_ft13.py -v
+```
+
+A uniquely labeled child image adds only an external fixture marker, installs no packages and keeps the same 2,654-entry deployed framework identity. The runner saves its archive before credentials exist, removes only that child after its workers are deleted, verifies failed `--pull=never` creation, hides the declared archive, rejects an impostor, restores the verified archive and explicitly loads the exact pinned child offline. The available shared base is never selected as fallback or deleted. The base alias and recovered child remain available locally.
+
+Twenty-one declared roles specify phase/path/content/executable/link requirements or a credential reprovisioning reference. Sixteen faults cover missing Bash/Perl/ELF loader, compiler entry, runtime, dangling input, protected resource, missing/rejected credential, comparator, baseline, missing/dangling saved environment, dangling source, incompatible runtime contents and absent recipe. Guarded faults dispatch no phase and retain the original `DiffPgmOut` verdict. Explicit unguarded controls record actual legacy codes/tags separately; sixteen affected-phase recoveries and a final four-phase replay verify restored behavior, including expected comparison failures.
+
+The legacy `.env` absence/dangling controls still return zero because the emitted run command works without the missing environment in this fixture. They remain blocked/incomplete in the validation gate. A baseline removed after generation produces `CompareInternalError`, unlike the `NoMasterOut` branch for a master already missing at generation time. Present scripts with missing Bash/ELF loader fail kernel lookup despite the script existing. These observations must not be normalized into complete replay readiness or a compiler defect.
+
+The local authorization fixture issues random values only inside an unmounted worker vault. Actual runtime consumption distinguishes missing/rejected credentials; recovery explicitly provisions new authorization epochs for the retained `fixture://ft13/protected-access` reference. No credential value/hash is retained. Worker inspection scans ordinary/decompressed evidence and environment for issued values; environment output is allowlisted. The protected resource is public synthetic data. No real secret manager, entitlement or production access-control service is tested.
+
+Reference `runs/ft13-001/` has 154 hashed files. The compact `evidence/ft13-001/` copy has 129 manifest entries and 541,085 regular-file bytes plus the relative input symlink. It retains exact original work/source/dependency archives, small mounted inputs, gates, fault/recovery diagnostics, image metadata, sanitized provisioning records and capture tools. Expanded original work, duplicate private inputs and the new 586,254,336-byte child runtime archive are omitted. That runtime and the original base archive stay ignored/local, with size/digests recorded; compact evidence alone cannot supply them.
+
+All three workers are removed after export. The raw and compact audits, nine offline tests and preservation checks pass. Existing framework, original FT13 capture/inputs and earlier evidence remain unchanged. Production resolution/provisioning, acquired historical archives, dashboard and remote/GPU/DSL acceptance remain open. See the [FT13 results](../../../doc/guide/phase0-ft13-results.md).

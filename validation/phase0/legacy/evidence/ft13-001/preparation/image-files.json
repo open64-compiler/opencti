@@ -1,0 +1,37 @@
+{
+  "shell": {
+    "path": "/bin/bash",
+    "sha256": "af955ef55333c8fc9c5aa50df91ad1a629d9a79a9afa125cd5e9629585f78015",
+    "resolved": "/usr/bin/bash"
+  },
+  "perl": {
+    "path": "/usr/bin/perl",
+    "sha256": "fb6349e1d854c8b832f46f456aeeb9060c6cbc27e4cfea8885766cef87e3db63",
+    "resolved": "/usr/bin/perl"
+  },
+  "gcc": {
+    "path": "/usr/bin/gcc",
+    "sha256": "a20520ee21543f243d40636a9181a142c45ecd989de31ab86b99a8ea5ada870d",
+    "resolved": "/usr/bin/aarch64-linux-gnu-gcc-13"
+  },
+  "cc1": {
+    "path": "/usr/libexec/gcc/aarch64-linux-gnu/13/cc1",
+    "sha256": "64edfe466dd55c4216c006e9fa237af012e4974281dd4d11640aacfc3b3693af",
+    "resolved": "/usr/libexec/gcc/aarch64-linux-gnu/13/cc1"
+  },
+  "assembler": {
+    "path": "/usr/bin/as",
+    "sha256": "1ffda50efb6d91b6b05ef933aced099595c36577594c0296c91161f2d13db374",
+    "resolved": "/usr/bin/aarch64-linux-gnu-as"
+  },
+  "linker": {
+    "path": "/usr/bin/ld",
+    "sha256": "1e4d3369b76845fa8e099b83513bf28f6f722e046f9b2cde1378c9e27f96d19c",
+    "resolved": "/usr/bin/aarch64-linux-gnu-ld.bfd"
+  },
+  "elf-loader": {
+    "path": "/lib/ld-linux-aarch64.so.1",
+    "sha256": "390027e5f45f236bd1838bc54bf464c5ff01d260ab9f8b415ea8276641bce505",
+    "resolved": "/usr/lib/aarch64-linux-gnu/ld-linux-aarch64.so.1"
+  }
+}
