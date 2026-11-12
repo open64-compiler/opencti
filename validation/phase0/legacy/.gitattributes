@@ -9,3 +9,8 @@ evidence/ft07-002/capture/tm.stderr -text whitespace=-blank-at-eol,-blank-at-eof
 # Preserve the writable-application capture's original TM diagnostic bytes.
 evidence/ft08-001/capture/tm.stderr -text whitespace=-blank-at-eol,-blank-at-eof
 evidence/ft08-001/capture/summary.log -text whitespace=-blank-at-eol,-blank-at-eof
+# Preserve exact FT09 diagnostics and the pseudo-terminal's CRLF bytes.
+evidence/ft09-001/capture/tm.stderr -text whitespace=-blank-at-eol,-blank-at-eof
+evidence/ft09-001/capture/elf-header.stdout -text whitespace=-blank-at-eol,-blank-at-eof
+evidence/ft09-001/debug-default/gdb.log -text whitespace=-blank-at-eol,-blank-at-eof
+evidence/ft09-001/debug-default/interactive-shell.log -text whitespace=cr-at-eol,-blank-at-eol,-blank-at-eof

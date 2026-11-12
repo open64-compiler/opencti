@@ -1,0 +1,18 @@
+{
+  "scenario": "FT09",
+  "hashed_files": 65,
+  "platform": "linux/arm64",
+  "data_mode_bits": 64,
+  "framework_entries_unchanged": 2654,
+  "compatibility_cases": 10,
+  "constructed_foreign_worker_cases": 4,
+  "rejected_cases": 8,
+  "explicit_changed_session_cases": 1,
+  "replay_phase_checks": 4,
+  "interactive_shell": true,
+  "debugger_attached": true,
+  "debug_profile": "default",
+  "saved_recipes_unchanged": 10,
+  "container_mount_maps_checked": 5,
+  "native_scheduler_and_debugger_service_acceptance": "open"
+}

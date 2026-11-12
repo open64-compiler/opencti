@@ -6,6 +6,7 @@ These guides describe the code imported at commit `8c3d603`, rather than a curre
 
 ## Start here
 
+- [FT09 platform and debugger results](phase0-ft09-results.md): native target/image qualification, explicit incompatible decisions and real GDB attachment from an interactive shell.
 - [FT08 writable source and session results](phase0-ft08-results.md): retained initial/generated failure state and two overlapping private debug sessions, with edits/builds only in A.
 - [FT07 shared support results](phase0-ft07-results.md): archive-only harness/header/filter and symlink recovery after deleting sandbox inputs and work, with preserved-object replay and an explicit rebuild.
 - [FT06 mounted dependency results](phase0-ft06-results.md): pre-run compiler/runtime/input/comparator snapshots, same-path mutations and named prerequisite rejection.

@@ -1,0 +1,12 @@
+{
+  "os": "linux",
+  "arch": "arm64",
+  "data_mode_bits": 64,
+  "image_id": "sha256:747873867110897321865b8790204c0d42a9d51357dce8c3334f50c59d6e916c",
+  "cpu_features": [
+    "fp",
+    "asimd"
+  ],
+  "gpu_backend": null,
+  "emulation_requested": false
+}

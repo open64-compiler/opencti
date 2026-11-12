@@ -1,0 +1,7 @@
+{
+  "os": "linux",
+  "arch": "arm64",
+  "data_mode_bits": 64,
+  "binary_sha256": "7f347e52a6c1254eb1d786f1455f4bbb0373b29dfc12a1ec1329b03787ea7fbd",
+  "source_sha256": "53f68d5eae72c66a615ea54e256747065ff9a95964ed9ca4a401549234a85734"
+}
