@@ -1,0 +1,271 @@
+{
+  "Id": "6a03293d013359a897267c3a7fd4d7939342fcf47adbb5cf7bae9b59fd5675db",
+  "Created": "2026-11-12T19:37:52.840007968Z",
+  "Path": "python3",
+  "Args": [
+    "/tools/pressure_worker.py"
+  ],
+  "State": {
+    "Status": "created",
+    "Running": false,
+    "Paused": false,
+    "Restarting": false,
+    "OOMKilled": false,
+    "Dead": false,
+    "Pid": 0,
+    "ExitCode": 0,
+    "Error": "",
+    "StartedAt": "0001-01-01T00:00:00Z",
+    "FinishedAt": "0001-01-01T00:00:00Z"
+  },
+  "Image": "sha256:a119c5e4a42dedbb5cdce10d448efce31b4054018bde56a4e476bc2c529fa62c",
+  "ResolvConfPath": "",
+  "HostnamePath": "",
+  "HostsPath": "",
+  "LogPath": "",
+  "Name": "/cti-ft10-a7247b5e25b9",
+  "RestartCount": 0,
+  "Driver": "overlay2",
+  "Platform": "linux",
+  "MountLabel": "",
+  "ProcessLabel": "",
+  "AppArmorProfile": "",
+  "ExecIDs": null,
+  "HostConfig": {
+    "Binds": null,
+    "ContainerIDFile": "",
+    "LogConfig": {
+      "Type": "json-file",
+      "Config": {}
+    },
+    "NetworkMode": "none",
+    "PortBindings": {},
+    "RestartPolicy": {
+      "Name": "no",
+      "MaximumRetryCount": 0
+    },
+    "AutoRemove": false,
+    "VolumeDriver": "",
+    "VolumesFrom": null,
+    "ConsoleSize": [
+      0,
+      0
+    ],
+    "CapAdd": null,
+    "CapDrop": [
+      "ALL"
+    ],
+    "CgroupnsMode": "private",
+    "Dns": null,
+    "DnsOptions": [],
+    "DnsSearch": [],
+    "ExtraHosts": null,
+    "GroupAdd": null,
+    "IpcMode": "private",
+    "Cgroup": "",
+    "Links": null,
+    "OomScoreAdj": 0,
+    "PidMode": "",
+    "Privileged": false,
+    "PublishAllPorts": false,
+    "ReadonlyRootfs": false,
+    "SecurityOpt": [
+      "no-new-privileges"
+    ],
+    "Tmpfs": {
+      "/pressure": "rw,size=1m,nosuid,nodev,noexec"
+    },
+    "UTSMode": "",
+    "UsernsMode": "",
+    "ShmSize": 67108864,
+    "Runtime": "runc",
+    "Isolation": "",
+    "CpuShares": 0,
+    "Memory": 1073741824,
+    "NanoCpus": 1000000000,
+    "CgroupParent": "",
+    "BlkioWeight": 0,
+    "BlkioWeightDevice": [],
+    "BlkioDeviceReadBps": [],
+    "BlkioDeviceWriteBps": [],
+    "BlkioDeviceReadIOps": [],
+    "BlkioDeviceWriteIOps": [],
+    "CpuPeriod": 0,
+    "CpuQuota": 0,
+    "CpuRealtimePeriod": 0,
+    "CpuRealtimeRuntime": 0,
+    "CpusetCpus": "",
+    "CpusetMems": "",
+    "Devices": [],
+    "DeviceCgroupRules": null,
+    "DeviceRequests": null,
+    "MemoryReservation": 0,
+    "MemorySwap": 2147483648,
+    "MemorySwappiness": null,
+    "OomKillDisable": false,
+    "PidsLimit": null,
+    "Ulimits": [],
+    "CpuCount": 0,
+    "CpuPercent": 0,
+    "IOMaximumIOps": 0,
+    "IOMaximumBandwidth": 0,
+    "Mounts": [
+      {
+        "Type": "bind",
+        "Source": "/Users/shinmingliu/opcti/validation/phase0/legacy/runs/ft10-003/retained-tools",
+        "Target": "/tools",
+        "ReadOnly": true
+      },
+      {
+        "Type": "bind",
+        "Source": "/Users/shinmingliu/opcti/validation/phase0/legacy/runs/ft10-003/config",
+        "Target": "/metadata",
+        "ReadOnly": true
+      },
+      {
+        "Type": "bind",
+        "Source": "/Users/shinmingliu/opcti/validation/phase0/legacy/runs/ft10-003/pressure-source/objects",
+        "Target": "/source",
+        "ReadOnly": true
+      },
+      {
+        "Type": "bind",
+        "Source": "/Users/shinmingliu/opcti/validation/phase0/legacy/runs/run-002/runtime-image.tar",
+        "Target": "/prereq/runtime-image.tar",
+        "ReadOnly": true
+      },
+      {
+        "Type": "bind",
+        "Source": "/Users/shinmingliu/opcti/validation/phase0/legacy/runs/ft10-003/pressure",
+        "Target": "/export"
+      }
+    ],
+    "MaskedPaths": [
+      "/proc/acpi",
+      "/proc/asound",
+      "/proc/interrupts",
+      "/proc/kcore",
+      "/proc/keys",
+      "/proc/latency_stats",
+      "/proc/sched_debug",
+      "/proc/scsi",
+      "/proc/timer_list",
+      "/proc/timer_stats",
+      "/sys/devices/virtual/powercap",
+      "/sys/firmware"
+    ],
+    "ReadonlyPaths": [
+      "/proc/bus",
+      "/proc/fs",
+      "/proc/irq",
+      "/proc/sys",
+      "/proc/sysrq-trigger"
+    ]
+  },
+  "GraphDriver": {
+    "Data": {
+      "ID": "6a03293d013359a897267c3a7fd4d7939342fcf47adbb5cf7bae9b59fd5675db",
+      "LowerDir": "/var/lib/docker/overlay2/30fc7c96cfba787add0d828c5864d8b893ec8b630a6e2a41bbd60d77ba57bbd4-init/diff:/var/lib/docker/overlay2/1wdzjbdhqu6tfzi2i401crrq1/diff:/var/lib/docker/overlay2/ttri2xu5n18wwohwi38tooeik/diff:/var/lib/docker/overlay2/os4d819slnpizlvcm8g13nv3a/diff:/var/lib/docker/overlay2/eac0fiqi2yu7zsw9xnen2hz18/diff:/var/lib/docker/overlay2/dj9xzqgejlnfjccxc2pdbh4ky/diff:/var/lib/docker/overlay2/jrgrxuvb8pkc0dbik46t9mjwc/diff:/var/lib/docker/overlay2/45b9d819b5b52e3f6876c7b987dcf6a2689fa57a81ed6f264c428e6c77388b17/diff",
+      "MergedDir": "/var/lib/docker/overlay2/30fc7c96cfba787add0d828c5864d8b893ec8b630a6e2a41bbd60d77ba57bbd4/merged",
+      "UpperDir": "/var/lib/docker/overlay2/30fc7c96cfba787add0d828c5864d8b893ec8b630a6e2a41bbd60d77ba57bbd4/diff",
+      "WorkDir": "/var/lib/docker/overlay2/30fc7c96cfba787add0d828c5864d8b893ec8b630a6e2a41bbd60d77ba57bbd4/work"
+    },
+    "Name": "overlay2"
+  },
+  "Mounts": [
+    {
+      "Type": "bind",
+      "Source": "/Users/shinmingliu/opcti/validation/phase0/legacy/runs/ft10-003/retained-tools",
+      "Destination": "/tools",
+      "Mode": "",
+      "RW": false,
+      "Propagation": "rprivate"
+    },
+    {
+      "Type": "bind",
+      "Source": "/Users/shinmingliu/opcti/validation/phase0/legacy/runs/ft10-003/config",
+      "Destination": "/metadata",
+      "Mode": "",
+      "RW": false,
+      "Propagation": "rprivate"
+    },
+    {
+      "Type": "bind",
+      "Source": "/Users/shinmingliu/opcti/validation/phase0/legacy/runs/ft10-003/pressure-source/objects",
+      "Destination": "/source",
+      "Mode": "",
+      "RW": false,
+      "Propagation": "rprivate"
+    },
+    {
+      "Type": "bind",
+      "Source": "/Users/shinmingliu/opcti/validation/phase0/legacy/runs/run-002/runtime-image.tar",
+      "Destination": "/prereq/runtime-image.tar",
+      "Mode": "",
+      "RW": false,
+      "Propagation": "rprivate"
+    },
+    {
+      "Type": "bind",
+      "Source": "/Users/shinmingliu/opcti/validation/phase0/legacy/runs/ft10-003/pressure",
+      "Destination": "/export",
+      "Mode": "",
+      "RW": true,
+      "Propagation": "rprivate"
+    }
+  ],
+  "Config": {
+    "Hostname": "6a03293d0133",
+    "Domainname": "",
+    "User": "",
+    "AttachStdin": false,
+    "AttachStdout": true,
+    "AttachStderr": true,
+    "Tty": false,
+    "OpenStdin": false,
+    "StdinOnce": false,
+    "Env": [
+      "PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin",
+      "DEBIAN_FRONTEND=noninteractive",
+      "CTI_HOME=/opt/cti",
+      "CTI_PERL=/usr/bin/perl",
+      "CTI_SHELL=/bin/bash"
+    ],
+    "Cmd": [
+      "python3",
+      "/tools/pressure_worker.py"
+    ],
+    "Image": "sha256:a119c5e4a42dedbb5cdce10d448efce31b4054018bde56a4e476bc2c529fa62c",
+    "Volumes": null,
+    "WorkingDir": "/capture",
+    "Entrypoint": null,
+    "Labels": {
+      "org.opencontainers.image.version": "24.04"
+    },
+    "StopTimeout": 1
+  },
+  "NetworkSettings": {
+    "SandboxID": "",
+    "SandboxKey": "",
+    "Ports": {},
+    "Networks": {
+      "none": {
+        "IPAMConfig": null,
+        "Links": null,
+        "Aliases": null,
+        "DriverOpts": null,
+        "GwPriority": 0,
+        "NetworkID": "",
+        "EndpointID": "",
+        "Gateway": "",
+        "IPAddress": "",
+        "MacAddress": "",
+        "IPPrefixLen": 0,
+        "IPv6Gateway": "",
+        "GlobalIPv6Address": "",
+        "GlobalIPv6PrefixLen": 0,
+        "DNSNames": null
+      }
+    }
+  }
+}

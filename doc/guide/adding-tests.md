@@ -42,6 +42,8 @@ For `sample.c`, place an empty `Masters/sample.out`. CTI's regression output pad
 
 For a compile-only test, add `RUN_TESTS=false` to its `.tmconfig`; also set `LINK_TESTS=false` if no link step is intended. A negative compile test uses `CT_NEG=true`. To compare diagnostics, enable `CT_DIFF=true` and provide the appropriate `.err` master, or use `ERROR_MASTER_EMPTY=true` if an empty diagnostic master is intended.
 
+For negative runtime tests, configure `RUN_TESTS_NEG=true` and runtime exit checking, then verify a deliberately unexpected zero exit as well as the expected rejection. The [FT11 capture](phase0-ft11-results.md) finds that the legacy outer script can overwrite `ExecBadPass` with `SuccessExec` when the run phase exits zero. A final pass alone is insufficient to validate this oracle.
+
 For multi-source tests, create `Src/<name>.list` listing source files, or a unit-level `tmconfig.list` with records such as:
 
 ```text

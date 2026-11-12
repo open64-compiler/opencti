@@ -1,0 +1,332 @@
+{
+  "framework": {
+    "id": "1584e7b404a016da21ea8bd4a5c3ee2d30a1ee1424ece1d21deab627b00e1de2",
+    "files": 2654
+  },
+  "framework_unchanged": true,
+  "original_workspace_unchanged_after_replay": true,
+  "inventory": {
+    "os": "linux",
+    "arch": "arm64",
+    "uname": [
+      "Linux",
+      "a891fbd213f5",
+      "6.12.76-linuxkit",
+      "#1 SMP Fri May 29 10:00:01 UTC 2026",
+      "aarch64",
+      "aarch64"
+    ],
+    "data_modes": [
+      64
+    ],
+    "cpu_features": [
+      "aes",
+      "afp",
+      "asimd",
+      "asimddp",
+      "asimdfhm",
+      "asimdhp",
+      "asimdrdm",
+      "atomics",
+      "bf16",
+      "bti",
+      "cpuid",
+      "crc32",
+      "dcpodp",
+      "dcpop",
+      "dit",
+      "ebf16",
+      "evtstrm",
+      "fcma",
+      "flagm",
+      "flagm2",
+      "fp",
+      "fphp",
+      "frint",
+      "i8mm",
+      "ilrcpc",
+      "jscvt",
+      "lrcpc",
+      "paca",
+      "pacg",
+      "pmull",
+      "sb",
+      "sha1",
+      "sha2",
+      "sha3",
+      "sha512",
+      "uscat"
+    ],
+    "verified_gpu_backends": [],
+    "gpu_observation": "No GPU backend qualified by this CPU-only fixture",
+    "selected_image_id": "sha256:a119c5e4a42dedbb5cdce10d448efce31b4054018bde56a4e476bc2c529fa62c",
+    "tools": {
+      "gcc": {
+        "available": true,
+        "returncode": 0,
+        "output": "gcc (Ubuntu 13.3.0-6ubuntu2~24.04.1) 13.3.0\nCopyright (C) 2023 Free Software Foundation, Inc.\nThis is free software; see the source for copying conditions.  There is NO\nwarranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.\n\n"
+      },
+      "gdb": {
+        "available": false
+      },
+      "bash": {
+        "available": true,
+        "returncode": 0,
+        "output": "GNU bash, version 5.2.21(1)-release (aarch64-unknown-linux-gnu)\nCopyright (C) 2022 Free Software Foundation, Inc.\nLicense GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>\n\nThis is free software; you are free to change and redistribute it.\nThere is NO WARRANTY, to the extent permitted by law.\n"
+      },
+      "perl": {
+        "available": true,
+        "returncode": 0,
+        "output": "\nThis is perl 5, version 38, subversion 2 (v5.38.2) built for aarch64-linux-gnu-thread-multi\n(with 68 registered patches, see perl -V for more detail)\n\nCopyright 1987-2023, Larry Wall\n\nPerl may be copied only under the terms of either the Artistic License or the\nGNU General Public License, which may be found in the Perl 5 source kit.\n\nComplete documentation for Perl, including FAQ lists, should be found on\nthis system using \"man perl\" or \"perldoc perl\".  If you have access to the\nInternet, point your browser at https://www.perl.org/, the Perl Home Page.\n\n"
+      }
+    },
+    "process_status": "Name:\tpython3\nUmask:\t0022\nState:\tR (running)\nTgid:\t1\nNgid:\t0\nPid:\t1\nPPid:\t0\nTracerPid:\t0\nUid:\t0\t0\t0\t0\nGid:\t0\t0\t0\t0\nFDSize:\t64\nGroups:\t0 \nNStgid:\t1\nNSpid:\t1\nNSpgid:\t1\nNSsid:\t1\nKthread:\t0\nVmPeak:\t   31828 kB\nVmSize:\t   31424 kB\nVmLck:\t       0 kB\nVmPin:\t       0 kB\nVmHWM:\t   24556 kB\nVmRSS:\t   24556 kB\nRssAnon:\t   15460 kB\nRssFile:\t    9096 kB\nRssShmem:\t       0 kB\nVmData:\t   16204 kB\nVmStk:\t     132 kB\nVmExe:\t    6200 kB\nVmLib:\t    7200 kB\nVmPTE:\t      96 kB\nVmSwap:\t       0 kB\nHugetlbPages:\t       0 kB\nCoreDumping:\t0\nTHP_enabled:\t1\nuntag_mask:\t0xffffffffffffff\nThreads:\t1\nSigQ:\t14/31726\nSigPnd:\t0000000000000000\nShdPnd:\t0000000000000000\nSigBlk:\t0000000000000000\nSigIgn:\t0000000001001000\nSigCgt:\t0000000000000002\nCapInh:\t0000000000000000\nCapPrm:\t0000000000000000\nCapEff:\t0000000000000000\nCapBnd:\t0000000000000000\nCapAmb:\t0000000000000000\nNoNewPrivs:\t1\nSeccomp:\t2\nSeccomp_filters:\t1\nSpeculation_Store_Bypass:\tvulnerable\nSpeculationIndirectBranch:\tunknown\nCpus_allowed:\t3ffff\nCpus_allowed_list:\t0-17\nMems_allowed:\t1\nMems_allowed_list:\t0\nvoluntary_ctxt_switches:\t1404\nnonvoluntary_ctxt_switches:\t381\n",
+    "ptrace_scope": "unavailable"
+  },
+  "registry": {
+    "SuccessExec": {
+      "label": "PASSES",
+      "properties": []
+    },
+    "DriverInternalError": {
+      "label": "DRIVER SCRIPT ERRORS",
+      "properties": []
+    },
+    "CompareInternalError": {
+      "label": "COMPARE SCRIPT ERRORS",
+      "properties": []
+    },
+    "FilterInternalError": {
+      "label": "FILTER SCRIPT ERRORS",
+      "properties": []
+    },
+    "ScriptInternalError": {
+      "label": "MISC SCRIPT ERRORS",
+      "properties": []
+    },
+    "PreRunHookError": {
+      "label": "PRERUNHOOK ERRORS",
+      "properties": []
+    },
+    "PostRunHookError": {
+      "label": "POSTRUNHOOK ERRORS",
+      "properties": []
+    },
+    "NoMasterOut": {
+      "label": "NO MASTER OUT FAILURES",
+      "properties": []
+    },
+    "NoMasterErr": {
+      "label": "NO MASTER ERR FAILURES",
+      "properties": []
+    },
+    "CompileErr": {
+      "label": "COMPILATION FAILURES",
+      "properties": [
+        "CT_TRIAGEABLE"
+      ]
+    },
+    "CompileBadPass": {
+      "label": "COMPILATION PASS FAILURES",
+      "properties": [
+        "CT_TRIAGEABLE"
+      ]
+    },
+    "LinkErr": {
+      "label": "LINKING FAILURES",
+      "properties": [
+        "CT_TRIAGEABLE"
+      ]
+    },
+    "LinkBadPass": {
+      "label": "LINK PASS FAILURES",
+      "properties": [
+        "CT_TRIAGEABLE"
+      ]
+    },
+    "AssembleErr": {
+      "label": "ASSEMBLER FAILURES",
+      "properties": []
+    },
+    "ExecErr": {
+      "label": "EXECUTION FAILURES",
+      "properties": [
+        "RT_TRIAGEABLE"
+      ]
+    },
+    "ExecBadPass": {
+      "label": "EXECUTION PASS FAILURES",
+      "properties": [
+        "RT_TRIAGEABLE"
+      ]
+    },
+    "DiffCcLdMsg": {
+      "label": "COMPILER or LINKER DIFFERENCE FAILURES",
+      "properties": [
+        "CT_TRIAGEABLE"
+      ]
+    },
+    "DiffAsLdMsg": {
+      "label": "ASSEMBLER or LINKER DIFFERENCE FAILURES",
+      "properties": []
+    },
+    "DiffAsMsg": {
+      "label": "ASSEMBLER DIFFERENCE FAILURES",
+      "properties": []
+    },
+    "DiffPgmOut": {
+      "label": "OUTPUT DIFFERENCE FAILURES",
+      "properties": [
+        "RT_TRIAGEABLE"
+      ]
+    },
+    "LongCompilation": {
+      "label": "LONG COMPILATION FAILURES",
+      "properties": []
+    },
+    "LongLinking": {
+      "label": "LONG LINKING FAILURES",
+      "properties": []
+    },
+    "LongExec": {
+      "label": "LONG EXECUTION FAILURES",
+      "properties": []
+    },
+    "LongCompare": {
+      "label": "TIMEOUT COMPARE FAILURES",
+      "properties": []
+    },
+    "LongIterationHook": {
+      "label": "LONG ITERATION HOOK SCRIPT FAILURES",
+      "properties": []
+    },
+    "LongHook": {
+      "label": "LONG HOOK SCRIPT FAILURES",
+      "properties": []
+    },
+    "DiffCycDecMsg": {
+      "label": "CYCLE COUNT DECREASE FAILURES",
+      "properties": [
+        "RT_TRIAGEABLE"
+      ]
+    },
+    "DiffCycIncMsg": {
+      "label": "CYCLE COUNT INCREASE FAILURES",
+      "properties": [
+        "RT_TRIAGEABLE"
+      ]
+    },
+    "EmptyCycleMaster": {
+      "label": "EMPTY CYCLE COUNT MASTER",
+      "properties": []
+    },
+    "ScriptTestFailure": {
+      "label": "SCRIPT TEST FAILURES",
+      "properties": []
+    },
+    "LongScriptTest": {
+      "label": "LONG SCRIPT TESTS",
+      "properties": []
+    },
+    "DebugDriverRun": {
+      "label": "DRIVER RUNS STUBBED OUT FOR DEBUGGING PURPOSES",
+      "properties": []
+    },
+    "UnknownUnitOrGroup": {
+      "label": "INACCESSIBLE OR UNKNOWN GROUPS/UNITS",
+      "properties": []
+    },
+    "GdbDiffPgmOut": {
+      "label": "GDB OUTPUT DIFFERENCE FAILURES",
+      "properties": []
+    },
+    "Missing": {
+      "label": "MISSING TEST FAILURES",
+      "properties": []
+    },
+    "PfyDiffMsg": {
+      "label": "PURIFY MESSAGE DIFFERENCE FAILURES",
+      "properties": []
+    },
+    "PfyDiffSum": {
+      "label": "PURIFY SUMMARY DIFFERENCE FAILURES",
+      "properties": []
+    },
+    "Cancelled": {
+      "label": "CANCELLED TESTS",
+      "properties": []
+    },
+    "DwdMsg": {
+      "label": "DWD MESSAGE FAILURES",
+      "properties": []
+    },
+    "DwdFail": {
+      "label": "DWD RUN FAILURES",
+      "properties": []
+    },
+    "CopyFailNoDisk": {
+      "label": "INSUFFICIENT DISK SPACE FAILURES",
+      "properties": []
+    },
+    "CopyFailUnknown": {
+      "label": "RESULT COPY FAILURES",
+      "properties": []
+    },
+    "CadviseFail": {
+      "label": "CADVISE FAILURE",
+      "properties": []
+    },
+    "CadviseOutputDiff": {
+      "label": "CADVISE OUTPUT DIFFERENCE FAILURE",
+      "properties": []
+    },
+    "CadviseNoMasterOutput": {
+      "label": "CADVISE NO MASTER FAILURE",
+      "properties": []
+    },
+    "DocDiffFail": {
+      "label": "DOC DIFFERENCE FAILURE",
+      "properties": []
+    },
+    "LimitInternalError": {
+      "label": "LIMIT SCRIPT ERROR",
+      "properties": []
+    },
+    "PreprocPathDiffFail": {
+      "label": "PREPROCESSING PATH DIFFERENCE FAILURE",
+      "properties": []
+    }
+  },
+  "counts": {
+    "normal": {
+      "passed": 4,
+      "failed": 5
+    },
+    "partial": {
+      "passed": 1,
+      "missing": 1
+    },
+    "absent": {
+      "incomplete_unit": 1
+    },
+    "cancel": {
+      "cancelled": 2
+    },
+    "terminated": {
+      "incomplete_unit": 1
+    },
+    "protocol-missing-marker": {
+      "failed": 1
+    },
+    "protocol-unknown": {
+      "unmapped": 1
+    },
+    "protocol-reject-unknown": {
+      "incomplete_unit": 1
+    },
+    "protocol-no-enumeration": {},
+    "protocol-unit-error": {
+      "failed": 1
+    }
+  }
+}

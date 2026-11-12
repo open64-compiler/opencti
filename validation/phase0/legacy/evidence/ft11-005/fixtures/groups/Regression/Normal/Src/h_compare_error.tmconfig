@@ -1,0 +1,2 @@
+OUTPUT_COMPARE=true
+OUTPUT_COMPARE_SCRIPT=../../../../fixtures/broken-compare.sh

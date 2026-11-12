@@ -1,0 +1,45 @@
+{
+  "scenario": "FT11",
+  "status": "pass_for_isolated_legacy_result_semantics_fixture",
+  "finished_utc": "2026-11-12T20:36:40.201620+00:00",
+  "image_id": "sha256:a119c5e4a42dedbb5cdce10d448efce31b4054018bde56a4e476bc2c529fa62c",
+  "framework_unchanged": true,
+  "earlier_capture_unchanged": true,
+  "fixture_unchanged": true,
+  "tm_runs": 5,
+  "legacy_negative_runtime_false_pass_observed": true,
+  "cancellation_delivery": "injected scheduler marker plus actual unit SIGTERM",
+  "native_importer_or_dashboard_implemented": false,
+  "counts": {
+    "normal": {
+      "passed": 4,
+      "failed": 5
+    },
+    "partial": {
+      "passed": 1,
+      "missing": 1
+    },
+    "absent": {
+      "incomplete_unit": 1
+    },
+    "cancel": {
+      "cancelled": 2
+    },
+    "terminated": {
+      "incomplete_unit": 1
+    },
+    "protocol-missing-marker": {
+      "failed": 1
+    },
+    "protocol-unknown": {
+      "unmapped": 1
+    },
+    "protocol-reject-unknown": {
+      "incomplete_unit": 1
+    },
+    "protocol-no-enumeration": {},
+    "protocol-unit-error": {
+      "failed": 1
+    }
+  }
+}

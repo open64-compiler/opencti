@@ -1,0 +1,91 @@
+<!--
+Copyright (C) 2011, Hewlett-Packard Development Company, L.P.
+All Rights Reserved.
+Open64 is free software; you can redistribute it and/or modify it under the
+terms of the GNU General Public License as published by the Free Software
+Foundation; either version 2 of the License, or (at your option) any later
+version. Distributed WITHOUT ANY WARRANTY; without even the implied warranty
+of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General
+Public License for more details.
+-->
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>FT11 expected failures, partial results and process status — OpenCTI</title><style>body{margin:0;background:#f4f6f8;color:#18232e;font:17px/1.6 system-ui,sans-serif}
+main{max-width:1050px;margin:auto;padding:2rem;background:white;min-height:100vh}
+a{color:#075ca8}nav{padding:.7rem 0;border-bottom:1px solid #ccd5dd}
+h1,h2,h3{line-height:1.25;scroll-margin-top:1rem}h2{margin-top:2rem}
+pre{padding:1rem;background:#eff3f7;overflow:auto;border:1px solid #d5dce3}
+code{font: .88em/1.5 ui-monospace,monospace;overflow-wrap:anywhere}
+table{border-collapse:collapse;width:100%;display:block;overflow:auto}
+th,td{padding:.6rem;border:1px solid #ccd5dd;text-align:left;vertical-align:top}
+th{background:#eff3f7}td:first-child{min-width:10rem}footer{border-top:1px solid #ccd5dd;margin-top:2rem;color:#52606b}
+@media(max-width:640px){main{padding:1rem}body{font-size:16px}}
+</style></head><body><main>
+<nav><a href="index.html">CTI documentation</a></nav>
+<h1 id="ft11-expected-failures-partial-results-and-process-status">FT11 expected failures, partial results and process status</h1>
+<p><a href="index.html">Documentation home</a> · <a href="failure-triage-acceptance.html#ft11-expected-failures-partial-tests-and-process-exit-status">Acceptance scenarios</a> · <a href="dashboard-feature-ledger.html">Dashboard ledger</a> · <a href="../../validation/phase0/legacy/README.md">Validation tools</a></p>
+<h2 id="observed-result-and-scope">Observed result and scope</h2>
+<p>FT11 now has an audited synthetic legacy characterization: five actual stock TM invocations, nine saved phase-script checks, three direct compiler/program checks, two signal replay checks and five stock result-module probes. The reference is <code>ft11-005</code>, completed on 2026-11-12. It verifies that result tags, expectations, enumeration, process status and collection completeness must be retained separately.</p>
+<p>It also exposes a legacy negative-runtime false pass. With <code>RUN_TESTS_NEG=true</code>, a program returning zero writes <code>ExecBadPass</code> but its phase script exits zero. The outer generated script overwrites that marker with <code>SuccessExec</code>. The reference preserves the incorrect legacy pass and reports an explicit expectation mismatch; it does not change the framework or declare this behavior acceptable for a replacement.</p>
+<p>All work uses disposable Linux ARM64 copies. The existing runtime image is <code>sha256:a119c5e4a42dedbb5cdce10d448efce31b4054018bde56a4e476bc2c529fa62c</code>. No packages are installed and no new image is built. The full deployed framework inventory remains unchanged: 2,654 files/links/modes, identity <code>1584e7b404a016da21ea8bd4a5c3ee2d30a1ee1424ece1d21deab627b00e1de2</code>. Earlier failure captures and the 22 pre-existing Mac filename-collision changes remain untouched.</p>
+<p>The Python reconciliation helper is validation-only. It is not a deployed native importer, scheduler or dashboard. Cancellation delivery uses an explicitly injected scheduler-format marker alongside actual unit-process termination; no live dTM server or <code>dtm_cancel</code> network command is exercised.</p>
+<h2 id="expected-and-observed-normal-unit-outcomes">Expected and observed normal-unit outcomes</h2>
+<p>One real regression unit contains these nine C cases. Test-local <code>.tmconfig</code> files record the expectations, while initial fixtures, baseline files, generated scripts, pruned environments, compiler diagnostics, executable files, per-test markers, enumeration and result messages are retained.</p>
+<table><thead><tr><th>Case</th><th>Expectation/configuration</th><th>Saved phase exit and marker</th><th>Final legacy TM tag</th></tr></thead><tbody>
+<tr><td><code>a_pass.c</code></td><td>Ordinary zero-exit program</td><td>Run: 0, no failure marker</td><td><code>SuccessExec</code></td></tr>
+<tr><td><code>b_neg_compile.c</code></td><td><code>CT_NEG=true</code>, deliberate compile rejection</td><td>Compile: 0, no failure marker; direct GCC: 1</td><td><code>SuccessExec</code></td></tr>
+<tr><td><code>c_bad_compile.c</code></td><td><code>CT_NEG=true</code>, program unexpectedly compiles</td><td>Compile: 1, <code>CompileBadPass</code></td><td><code>CompileBadPass</code></td></tr>
+<tr><td><code>d_neg_run.c</code></td><td><code>RUN_TESTS_NEG=true</code>, program exits 7</td><td>Run: 0, no failure marker; direct program: 7</td><td><code>SuccessExec</code></td></tr>
+<tr><td><code>e_bad_run.c</code></td><td><code>RUN_TESTS_NEG=true</code>, program unexpectedly exits 0</td><td>Run: 0, <code>ExecBadPass</code>; direct program: 0</td><td>**<code>SuccessExec</code> — expectation mismatch**</td></tr>
+<tr><td><code>f_compile_error.c</code></td><td>Ordinary compile, deliberate rejection</td><td>Compile: 1, <code>CompileErr</code></td><td><code>CompileErr</code></td></tr>
+<tr><td><code>g_run_error.c</code></td><td>Ordinary program exits 7</td><td>Run: 7, <code>ExecErr</code></td><td><code>ExecErr</code></td></tr>
+<tr><td><code>h_compare_error.c</code></td><td>Fixture comparator deliberately exits 2</td><td>Compare wrapper: 1, <code>CompareInternalError</code></td><td><code>CompareInternalError</code></td></tr>
+<tr><td><code>i_diff.c</code></td><td>Actual output differs from the master</td><td>Compare wrapper: 1, <code>DiffPgmOut</code></td><td><code>DiffPgmOut</code></td></tr>
+</tbody></table>
+<p>TM itself exits **0**, while its summary reports **TOTAL=9, PASS=4, FAIL=5, RUNNING=0**. Independent expectation reconciliation retains those original counts and reports three valid passes, five recorded failures and one expectation mismatch. It does not silently rewrite the original <code>SuccessExec</code> message to <code>ExecBadPass</code>, or present the extra pass as a valid expected rejection.</p>
+<p>The defect follows directly from <code>regressionDriver.pm</code>&#x27;s generated negative-runtime status check (<code>exit $RET</code> when <code>RET=0</code>) and <code>generateMetaScript.pm</code>&#x27;s final unconditional <code>SuccessExec</code> after zero-return phases. Correctly rejected negative compiles and nonzero negative executions are distinct successful tests; a nonzero compiler/program status alone cannot decide the test verdict. <code>CompileErr</code> identifies a failed compile, not its root cause: this fixture deliberately supplies invalid source and proves no compiler defect.</p>
+<h2 id="partial-results-cancellation-and-whole-unit-loss">Partial results, cancellation and whole-unit loss</h2>
+<p>The stock regression driver uses unsorted Perl hash keys. The fixture probes and records a fixed <code>PERL_HASH_SEED</code> with <code>PERL_PERTURB_KEYS=0</code> so the two-test unit completes <code>a_complete.c</code> before <code>z_wait.c</code> signals readiness and waits. Enumeration and execution use the same controlled process environment. No framework ordering code changes.</p>
+<p>Fixtures set the supported <code>DTM_USE_REAL_WORKDIR=true</code> option. This keeps in-progress artifacts/messages in the new export workspace when the unit is interrupted; the default scratch/copy-back path could lose their visibility before copy-back. This experiment does not qualify preservation through that default path. Each run has its own work directory and log. Before each invocation, <code>execution.json</code> records explicit hash-order and <code>FT11_READY</code> readiness-path overrides; signal replays have matching invocation records. The readiness variable is a fixture control dependency and is not stored in the legacy pruned <code>.env</code> file. Reproduction must restore this recorded override.</p>
+<table><thead><tr><th>Actual interruption</th><th>Raw evidence</th><th>Legacy summary/process</th><th>Validation reconciliation</th></tr></thead><tbody>
+<tr><td>Terminate unit descendants after the first result</td><td>Two enumerated tests, one <code>SuccessExec</code> result, no cancellation marker</td><td>TOTAL=2, PASS=1, FAIL=1, RUNNING=0; TM exit 0</td><td>One pass and one <code>Missing</code></td></tr>
+<tr><td>Same interruption plus scheduler-format <code>dtm_cancel.1</code></td><td>Earlier success message remains, cancellation marker present</td><td>TOTAL=2, PASS=0, FAIL=2, RUNNING=0; TM exit 0</td><td>Both tests <code>Cancelled</code>; raw earlier success retained separately</td></tr>
+<tr><td>Terminate a one-test unit before any result</td><td>Enumeration and work present, no <code>result.1</code></td><td>Warning claims empty/skipped unit; summary remains TOTAL=1, PASS=0, FAIL=0, RUNNING=1; TM exit 0</td><td>One incomplete whole-unit outcome, no invented <code>Missing</code> message</td></tr>
+<tr><td>Terminate the entire TM process group</td><td>Enumeration and work present, no result/cancellation marker</td><td>Python return code -15; initial RUNNING=1 summary is unchanged</td><td>Interrupted/incomplete evidence; no inferred scheduler cancellation</td></tr>
+</tbody></table>
+<p>The controller records descendant PIDs/commands and signal scope. It terminates only the worker&#x27;s disposable TM process group or descendants. A signal by itself is not a legacy <code>Cancelled</code> result. The cancellation path applies to every enumerated test in the unit, even an already recorded success; the validation record keeps the raw observation and effective legacy classification as separate fields.</p>
+<p>An additional stock-module fixture omits both enumeration and result files. It emits <code>PROCESS ERROR</code>; forcing final log generation counts one anonymous failure with “Some of the tests did not run.” This differs from both a missing individual result and the real TM whole-unit-loss path, which returns before refreshing its summary. The module fixtures use synthetic headers and do not qualify log timing/duration fields.</p>
+<h2 id="exit-status-has-several-layers">Exit status has several layers</h2>
+<p>Two private copies replay the exact interrupted test recipes after capture. Killing only the waiting executable with SIGTERM produces **143 / <code>ExecErr</code>** from its generated run script. Repeating under the full generated meta-script produces **1 / <code>LimitInternalError</code>**: the wrapper reserves status 143 for that limit error and overwrites the phase marker. This is observed legacy classification, not proof that the limit helper was actually defective.</p>
+<p>Keep the process invocation, signal target, phase status/tag, outer status/tag, TM exit and final messages together. Python&#x27;s -15 for a directly signalled process and a shell recipe&#x27;s 143 are different representations/layers. Neither should be treated as a universal cancellation or compiler-failure mapping. Private replay changes neither the captured normal workspace nor the framework; originals are archived independently.</p>
+<h2 id="unknown-tags-and-driver-errors">Unknown tags and driver errors</h2>
+<p>Five isolated protocol probes invoke the deployed stock <code>recordTestResult.pm</code> without modifying it:</p>
+<table><thead><tr><th>Probe</th><th>Observed stock behavior</th><th>Validation result</th></tr></thead><tbody>
+<tr><td>Missing individual <code>.result</code> marker through <code>readAndRecordTestResult</code></td><td>Defaults to <code>DriverInternalError</code> and records it</td><td>Driver error with original label</td></tr>
+<tr><td>Unit-level <code>UNIT ... DriverInternalError</code> message</td><td>Expands the unit tag across its enumeration</td><td>Driver error, distinct from compile/compare failures</td></tr>
+<tr><td>Imported <code>FutureResultV99</code> raw message</td><td>Counts FAIL=1, but no named bucket/test appears in the summary</td><td>Original tag retained, null known label, explicit <code>unmapped</code>; never pass</td></tr>
+<tr><td>Attempt to write that tag through the stock recording API</td><td>Rejects it as illegal, exits 17</td><td>Rejection retained, no successful result invented</td></tr>
+<tr><td>No enumeration or result</td><td>Process error plus anonymous final failure when explicitly finalized</td><td>No fabricated identity or pass</td></tr>
+</tbody></table>
+<p>The imported unknown message is a deliberately constructed compatibility fixture, not a tag emitted by a stock driver. The helper retains registry labels/properties for known tags, expected identities, raw messages, cancellation precedence and missing-unit state. It rejects duplicate enumeration/results and unenumerated messages rather than silently selecting one. Future ingestion needs to retain malformed/unmapped source evidence visibly, with a separate diagnostic path; this strict fixture does not implement that service.</p>
+<h2 id="evidence-and-reproduction">Evidence and reproduction</h2>
+<p>Full local reference: <code>validation/phase0/legacy/runs/ft11-005/</code>. Compact review evidence: <code>validation/phase0/legacy/evidence/ft11-005/</code>, **264,252 bytes**. The compact manifest contains **145** hashes; the raw manifest has **310**. Its manifest digest is <code>e42daf5e88cff72ccc849baba7ca1fed18f2549085bf041938d0811191936c70</code>.</p>
+<p>Five small <code>work.tar.gz</code> files preserve the exact original work trees, including incomplete nested test directories, recipes, binary products, outputs, symlink targets and TM messages. Fixtures and masters are included separately. The compact package removes duplicate expanded work trees, not the captured work archives. It also retains exact worker/helper source, host/image/mount inventories, live summary snapshots, command/signal records, raw diagnostics, module fixtures and per-test reconciliation. Earlier exploratory <code>ft11-001</code> through <code>ft11-004</code> runs remain local and are not the passing reference.</p>
+<p>The original 586,248,192-byte runtime archive remains local/ignored, with SHA-256 <code>8b69adc550862c611dd9f4b58a2126e6f82e94dc7a2c7781dfae3163418bf8a5</code> recorded as an execution prerequisite. The runner verifies it before loading the immutable image ID. Compact review evidence alone does not supply the executable platform.</p>
+<pre><code>python3 -B validation/phase0/legacy/run_ft11.py \
+  --capture validation/phase0/legacy/runs/run-002 \
+  --output validation/phase0/legacy/runs/new-ft11-run
+
+python3 -B validation/phase0/legacy/verify_ft11.py \
+  validation/phase0/legacy/runs/new-ft11-run \
+  --compact-output validation/phase0/legacy/evidence/new-ft11-run
+
+python3 -B validation/phase0/legacy/verify_ft11.py \
+  validation/phase0/legacy/evidence/ft11-005</code></pre>
+<p>The offline verifier checks exact file inventories/hashes, raw archive reconciliation, registry labels, literal expected outcomes, the false-pass discrepancy, original totals, partial/cancel precedence, absent-unit summaries, phase/signal/process codes, unknown-tag behavior, mount/capability limits and unchanged framework identity. Six offline audit tests pass, including rehashed contradictory status/expectation/unknown-result controls and ambiguous-message rejection. Execution uses one network-disabled worker with one CPU, 1 GiB memory, all capabilities dropped and <code>no-new-privileges</code>; only its new export directory is writable on the host. The worker is removed after export.</p>
+<h2 id="remaining-acceptance">Remaining acceptance</h2>
+<p>This characterizes the synthetic FT11 legacy subset and demonstrates explicit reconciliation of its gaps. It does not pass native replacement acceptance or DA01/DA02 dashboard scenarios. A replacement must detect the negative-runtime unexpected pass, retain the original legacy message, distinguish process status from verdict, expose incomplete/unknown outcomes and avoid losing cancelled-unit history. A successful expected rejection need not acquire the same retention policy as an actual failure, but expectation and outcome evidence must survive import.</p>
+<p>Live dTM cancellation races, dashboard cancellation controls, default scratch/copy-back interruption recovery, historical archives, remote workers and GPU/DSL execution remain open. FT12 through FT19 remain unrun; phase 0 is not complete.</p>
+<p>Source evidence: <a href="../../Scripts/drivers/lib/regressionDriver.pm">regression phase generation</a>, <a href="../../Scripts/drivers/lib/generateMetaScript.pm">outer meta-script generation</a>, <a href="../../Scripts/drivers/lib/generateCompareScript.pm">comparison protocol</a>, <a href="../../Scripts/drivers/lib/recordTestResult.pm">enumeration/result/cancellation reconciliation</a>, <a href="../../bin/TM.pl">local TM scheduling</a>, <a href="../../Scripts/drivers/lib/metaDriver.pm">work-directory selection/copy-back</a>, <a href="../../conf/TestResultTypes.conf">declared result registry</a>.</p>
+<footer>Reconstructed from OpenCTI source, baseline 8c3d603. Generated by doc/tools/build_docs.py.</footer>
+</main></body></html>

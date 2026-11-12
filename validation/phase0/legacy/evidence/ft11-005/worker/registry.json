@@ -1,0 +1,214 @@
+{
+  "SuccessExec": {
+    "label": "PASSES",
+    "properties": []
+  },
+  "DriverInternalError": {
+    "label": "DRIVER SCRIPT ERRORS",
+    "properties": []
+  },
+  "CompareInternalError": {
+    "label": "COMPARE SCRIPT ERRORS",
+    "properties": []
+  },
+  "FilterInternalError": {
+    "label": "FILTER SCRIPT ERRORS",
+    "properties": []
+  },
+  "ScriptInternalError": {
+    "label": "MISC SCRIPT ERRORS",
+    "properties": []
+  },
+  "PreRunHookError": {
+    "label": "PRERUNHOOK ERRORS",
+    "properties": []
+  },
+  "PostRunHookError": {
+    "label": "POSTRUNHOOK ERRORS",
+    "properties": []
+  },
+  "NoMasterOut": {
+    "label": "NO MASTER OUT FAILURES",
+    "properties": []
+  },
+  "NoMasterErr": {
+    "label": "NO MASTER ERR FAILURES",
+    "properties": []
+  },
+  "CompileErr": {
+    "label": "COMPILATION FAILURES",
+    "properties": [
+      "CT_TRIAGEABLE"
+    ]
+  },
+  "CompileBadPass": {
+    "label": "COMPILATION PASS FAILURES",
+    "properties": [
+      "CT_TRIAGEABLE"
+    ]
+  },
+  "LinkErr": {
+    "label": "LINKING FAILURES",
+    "properties": [
+      "CT_TRIAGEABLE"
+    ]
+  },
+  "LinkBadPass": {
+    "label": "LINK PASS FAILURES",
+    "properties": [
+      "CT_TRIAGEABLE"
+    ]
+  },
+  "AssembleErr": {
+    "label": "ASSEMBLER FAILURES",
+    "properties": []
+  },
+  "ExecErr": {
+    "label": "EXECUTION FAILURES",
+    "properties": [
+      "RT_TRIAGEABLE"
+    ]
+  },
+  "ExecBadPass": {
+    "label": "EXECUTION PASS FAILURES",
+    "properties": [
+      "RT_TRIAGEABLE"
+    ]
+  },
+  "DiffCcLdMsg": {
+    "label": "COMPILER or LINKER DIFFERENCE FAILURES",
+    "properties": [
+      "CT_TRIAGEABLE"
+    ]
+  },
+  "DiffAsLdMsg": {
+    "label": "ASSEMBLER or LINKER DIFFERENCE FAILURES",
+    "properties": []
+  },
+  "DiffAsMsg": {
+    "label": "ASSEMBLER DIFFERENCE FAILURES",
+    "properties": []
+  },
+  "DiffPgmOut": {
+    "label": "OUTPUT DIFFERENCE FAILURES",
+    "properties": [
+      "RT_TRIAGEABLE"
+    ]
+  },
+  "LongCompilation": {
+    "label": "LONG COMPILATION FAILURES",
+    "properties": []
+  },
+  "LongLinking": {
+    "label": "LONG LINKING FAILURES",
+    "properties": []
+  },
+  "LongExec": {
+    "label": "LONG EXECUTION FAILURES",
+    "properties": []
+  },
+  "LongCompare": {
+    "label": "TIMEOUT COMPARE FAILURES",
+    "properties": []
+  },
+  "LongIterationHook": {
+    "label": "LONG ITERATION HOOK SCRIPT FAILURES",
+    "properties": []
+  },
+  "LongHook": {
+    "label": "LONG HOOK SCRIPT FAILURES",
+    "properties": []
+  },
+  "DiffCycDecMsg": {
+    "label": "CYCLE COUNT DECREASE FAILURES",
+    "properties": [
+      "RT_TRIAGEABLE"
+    ]
+  },
+  "DiffCycIncMsg": {
+    "label": "CYCLE COUNT INCREASE FAILURES",
+    "properties": [
+      "RT_TRIAGEABLE"
+    ]
+  },
+  "EmptyCycleMaster": {
+    "label": "EMPTY CYCLE COUNT MASTER",
+    "properties": []
+  },
+  "ScriptTestFailure": {
+    "label": "SCRIPT TEST FAILURES",
+    "properties": []
+  },
+  "LongScriptTest": {
+    "label": "LONG SCRIPT TESTS",
+    "properties": []
+  },
+  "DebugDriverRun": {
+    "label": "DRIVER RUNS STUBBED OUT FOR DEBUGGING PURPOSES",
+    "properties": []
+  },
+  "UnknownUnitOrGroup": {
+    "label": "INACCESSIBLE OR UNKNOWN GROUPS/UNITS",
+    "properties": []
+  },
+  "GdbDiffPgmOut": {
+    "label": "GDB OUTPUT DIFFERENCE FAILURES",
+    "properties": []
+  },
+  "Missing": {
+    "label": "MISSING TEST FAILURES",
+    "properties": []
+  },
+  "PfyDiffMsg": {
+    "label": "PURIFY MESSAGE DIFFERENCE FAILURES",
+    "properties": []
+  },
+  "PfyDiffSum": {
+    "label": "PURIFY SUMMARY DIFFERENCE FAILURES",
+    "properties": []
+  },
+  "Cancelled": {
+    "label": "CANCELLED TESTS",
+    "properties": []
+  },
+  "DwdMsg": {
+    "label": "DWD MESSAGE FAILURES",
+    "properties": []
+  },
+  "DwdFail": {
+    "label": "DWD RUN FAILURES",
+    "properties": []
+  },
+  "CopyFailNoDisk": {
+    "label": "INSUFFICIENT DISK SPACE FAILURES",
+    "properties": []
+  },
+  "CopyFailUnknown": {
+    "label": "RESULT COPY FAILURES",
+    "properties": []
+  },
+  "CadviseFail": {
+    "label": "CADVISE FAILURE",
+    "properties": []
+  },
+  "CadviseOutputDiff": {
+    "label": "CADVISE OUTPUT DIFFERENCE FAILURE",
+    "properties": []
+  },
+  "CadviseNoMasterOutput": {
+    "label": "CADVISE NO MASTER FAILURE",
+    "properties": []
+  },
+  "DocDiffFail": {
+    "label": "DOC DIFFERENCE FAILURE",
+    "properties": []
+  },
+  "LimitInternalError": {
+    "label": "LIMIT SCRIPT ERROR",
+    "properties": []
+  },
+  "PreprocPathDiffFail": {
+    "label": "PREPROCESSING PATH DIFFERENCE FAILURE",
+    "properties": []
+  }
+}

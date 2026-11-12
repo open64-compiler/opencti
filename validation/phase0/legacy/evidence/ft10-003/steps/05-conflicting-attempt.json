@@ -1,0 +1,3 @@
+{
+  "error": "AttemptConflict: an imported attempt cannot change outcome or required objects"
+}

@@ -72,6 +72,8 @@ At the same level, this environment value takes precedence over the `tmconfig` a
 | `UNIT_DRIVER` | Selected by groups/units; global default `/bin/false` |
 | `CTI_REPORT_PASSES` | Include pass details; default false |
 
+The [FT11 capture](phase0-ft11-results.md) exposes a `RUN_TESTS_NEG=true` limitation: an unexpectedly zero-exit program can end as `SuccessExec` because the outer script overwrites `ExecBadPass`. Inspect expected and actual phase outcomes as well as the final tag. TM process exit zero also does not prove that tests passed or finished.
+
 The [generated catalog](reference.md) contains the complete declared test-level names and result types. Its descriptions are copied from the configuration metadata and can contain historical language. The configuration files remain authoritative for declared keys; driver code determines actual behavior.
 
 `conf/SavedOptions.conf` adds environment names captured for reproduction. Test-level customizable options are also saved, except entries explicitly excluded by `conf/UnsavedOptions.conf`.

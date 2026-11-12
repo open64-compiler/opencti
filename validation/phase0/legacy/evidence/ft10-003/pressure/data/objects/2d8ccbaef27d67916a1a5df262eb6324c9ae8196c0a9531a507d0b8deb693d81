@@ -1,0 +1,11 @@
+SOURCE=/fixtures/groups/Applications/FT08/Src
+.PHONY: compile validate run compare
+compile:
+	/usr/bin/python3 $(SOURCE)/generate.py
+	$(CC) $(EXTRA_FLAGS) $(EXTRA_CFLAGS) -I$(SOURCE)/generated -c $(SOURCE)/generated/generated.c -o generated.o
+	$(CC) $(EXTRA_FLAGS) -o app generated.o $(EXTRA_LIBS)
+run:
+	./app > actual.out
+compare:
+	/usr/bin/python3 $(SOURCE)/compare.py actual.out /baseline/approved.out compare.results
+validate: run compare

@@ -1,0 +1,35 @@
+# Start time was Thu Nov 12 20:36:32 2026 on a891fbd213f5
+# TEST_WORK_DIR --> /export/partial/work
+# OPT_LEVEL     --> 0
+# DATA_MODE     --> +DD64
+# COMPILER_VERSION --> gcc-13.3.0
+# CTI_GROUPS    --> /fixtures/groups
+# REPOSITORY_TYPE --> SVN
+# OPTIONS_FILE--> /fixtures/phase0.opt
+# SELECTIONS  --> Regression/Partial
+# VIEW    --> None
+# DTM_POOL    --> Default
+# DTM_CPUARCH --> aarch64
+# DTM_PRIORITY--> 2
+# DISTRIBUTED_TM --> 
+# SEND_LOG    --> 
+# http://localhost/CTI/cgi-bin/get-log-file.cgi?log=/export/partial/summary.log
+# END OF HEADER
+
+# TOTAL TESTS=2,  PASS=1,  FAIL=1,  RUNNING=0
+
+#_________________________________________________________
+#  PASSES 
+#_________________________________________________________
+# Total Number of PASSES = 1
+Regression/Partial/a_complete.c
+
+#_________________________________________________________
+#  MISSING TEST FAILURES 
+#_________________________________________________________
+# Total Number of MISSING TEST FAILURES = 1
+Regression/Partial/z_wait.c
+
+# TIME_TAKEN --> 00:00:00 [1794515792 - 1794515792]
+
+# End Time was Thu Nov 12 20:36:32 2026

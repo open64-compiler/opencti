@@ -1,0 +1,41 @@
+{
+  "Regression/Normal/a_pass.c": {
+    "description": "normal success",
+    "required_tag": "SuccessExec"
+  },
+  "Regression/Normal/b_neg_compile.c": {
+    "description": "compile rejection expected",
+    "required_tag": "SuccessExec"
+  },
+  "Regression/Normal/c_bad_compile.c": {
+    "description": "compile rejection expected, unexpectedly accepted",
+    "required_tag": "CompileBadPass"
+  },
+  "Regression/Normal/d_neg_run.c": {
+    "description": "nonzero runtime expected",
+    "required_tag": "SuccessExec"
+  },
+  "Regression/Normal/e_bad_run.c": {
+    "description": "nonzero runtime expected, unexpectedly zero",
+    "required_tag": "ExecBadPass"
+  },
+  "Regression/Normal/f_compile_error.c": {
+    "description": "ordinary compile required",
+    "required_tag": "CompileErr"
+  },
+  "Regression/Normal/g_run_error.c": {
+    "description": "zero runtime required",
+    "required_tag": "ExecErr"
+  },
+  "Regression/Normal/h_compare_error.c": {
+    "description": "comparator must execute",
+    "required_tag": "CompareInternalError"
+  },
+  "Regression/Normal/i_diff.c": {
+    "description": "output must match baseline",
+    "required_tag": "DiffPgmOut"
+  },
+  "Regression/Partial/z_wait.c": "controlled wait, no successful completion expected",
+  "Regression/Partial/a_complete.c": "normal success before interruption",
+  "Regression/Absent/z_wait.c": "controlled wait, no successful completion expected"
+}
