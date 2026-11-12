@@ -1,0 +1,10 @@
+{
+  "original_sources": "/Users/shinmingliu/opcti/validation/phase0/legacy/runs/ft04-002/original-locations/sources",
+  "original_baselines": "/Users/shinmingliu/opcti/validation/phase0/legacy/runs/ft04-002/original-locations/baselines",
+  "relocated_sources": "/Users/shinmingliu/opcti/validation/phase0/legacy/runs/ft04-002/relocated-snapshots/source-v1",
+  "relocated_baselines": "/Users/shinmingliu/opcti/validation/phase0/legacy/runs/ft04-002/relocated-snapshots/baseline-v1",
+  "original_locations_now_sentinels": true,
+  "deleted_container": "cti-ft04-4f5b9c11437b-discarded-container",
+  "deleted_volume": "cti-ft04-4f5b9c11437b-discarded-work",
+  "recorded_original_capture_container_absent": "30ca03ca897a"
+}

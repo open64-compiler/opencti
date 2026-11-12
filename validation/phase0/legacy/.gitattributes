@@ -1,0 +1,2 @@
+# Preserve the captured pseudo-terminal bytes, including its CRLF line endings.
+evidence/ft04-002/positive/debug-shell.log -text whitespace=cr-at-eol

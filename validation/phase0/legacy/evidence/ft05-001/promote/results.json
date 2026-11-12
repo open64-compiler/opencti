@@ -1,0 +1,77 @@
+{
+  "mode": "promote",
+  "records": [
+    {
+      "name": "legacy-before",
+      "argv": [
+        "bash",
+        "./output_mismatch.compare-out.sh"
+      ],
+      "cwd": "/sessions/legacy-unpinned/original/work/Regression/FT03",
+      "returncode": 1,
+      "tag": "DiffPgmOut",
+      "master_sha256": "1ea7a9b77da8c725742658e48d686d50bdaaf7f8b0289b1061adec3d249e5071"
+    },
+    {
+      "name": "legacy-remaster-apply",
+      "argv": [
+        "perl",
+        "/opt/cti/bin/www/remaster-test.pl",
+        "-type",
+        "out",
+        "-dir",
+        "/sessions/legacy-unpinned/original/work",
+        "-scm",
+        "RCS",
+        "-cti_groups",
+        "/fixtures/groups",
+        "-user",
+        "phase0-ft05",
+        "-comment",
+        "FT05 isolated promotion expected to actual",
+        "Regression/FT03/output_mismatch.c"
+      ],
+      "cwd": null,
+      "returncode": 0
+    },
+    {
+      "name": "rcs-history",
+      "argv": [
+        "rlog",
+        "/fixtures/groups/Regression/FT03/Masters/output_mismatch.out"
+      ],
+      "cwd": null,
+      "returncode": 0
+    },
+    {
+      "name": "rcs-version-one",
+      "argv": [
+        "co",
+        "-p1.1",
+        "/fixtures/groups/Regression/FT03/Masters/output_mismatch.out"
+      ],
+      "cwd": null,
+      "returncode": 0
+    },
+    {
+      "name": "legacy-unpinned-after",
+      "argv": [
+        "bash",
+        "./output_mismatch.compare-out.sh"
+      ],
+      "cwd": "/sessions/legacy-unpinned/original/work/Regression/FT03",
+      "returncode": 0,
+      "tag": null,
+      "master_sha256": "6485b059becfc9a1e0a457fe126326e43302c75a3d8ecfb93c6f8af8978b5b1a"
+    }
+  ],
+  "outcome": {
+    "legacy_in_place_link_changes_oracle": true,
+    "preview_mutated_baseline": false,
+    "preview_kind": "validation-only unified diff; not a claimed stock helper preview",
+    "old_baseline_sha256": "1ea7a9b77da8c725742658e48d686d50bdaaf7f8b0289b1061adec3d249e5071",
+    "new_baseline_sha256": "6485b059becfc9a1e0a457fe126326e43302c75a3d8ecfb93c6f8af8978b5b1a"
+  },
+  "framework_files_unchanged": true,
+  "mountinfo": "140 89 0:63 / / rw,relatime - overlay overlay rw,lowerdir=/var/lib/docker/overlay2/l/44AFBODYZCDLPLQTEHYWNX2275:/var/lib/docker/overlay2/l/FZJCJ7NS7DNLB3QLYLVGGW3QBY:/var/lib/docker/overlay2/l/QJD5A3P7KSU72QZAIS5PIEVRV3:/var/lib/docker/overlay2/l/TYQEKSSORHHOSEEMJ5R7YBXIOK:/var/lib/docker/overlay2/l/ATUUTYKPL3IP5SFKTW4A2PNWG2:/var/lib/docker/overlay2/l/QU4SGSAYYC3DG7YI2BUSCYY7H6:/var/lib/docker/overlay2/l/3KCQMCMHWIBOFS3SS6PWCCDST3:/var/lib/docker/overlay2/l/EYRDWAKQDDQYGH4RM4CX7A45QW:/var/lib/docker/overlay2/l/TNWS7OECUR4RVDBV32SYIO6UPS,upperdir=/var/lib/docker/overlay2/f0913ff24b8ea6b261385f4d31295cf49b0cdb82dd0ddbd7d2dd02506a00453f/diff,workdir=/var/lib/docker/overlay2/f0913ff24b8ea6b261385f4d31295cf49b0cdb82dd0ddbd7d2dd02506a00453f/work\n142 140 0:72 / /proc rw,nosuid,nodev,noexec,relatime - proc proc rw\n143 140 0:73 / /dev rw,nosuid - tmpfs tmpfs rw,size=65536k,mode=755\n144 143 0:74 / /dev/pts rw,nosuid,noexec,relatime - devpts devpts rw,gid=5,mode=620,ptmxmode=666\n145 140 0:75 / /sys ro,nosuid,nodev,noexec,relatime - sysfs sysfs ro\n146 145 0:40 / /sys/fs/cgroup ro,nosuid,nodev,noexec,relatime - cgroup2 cgroup rw\n147 143 0:70 / /dev/mqueue rw,nosuid,nodev,noexec,relatime - mqueue mqueue rw\n148 143 0:76 / /dev/shm rw,nosuid,nodev,noexec,relatime - tmpfs shm rw,size=65536k\n149 140 0:44 /shinmingliu/opcti/validation/phase0/legacy/runs/ft05-001/retained-inputs /bundle ro,nosuid,nodev,relatime - fakeowner /run/host_mark/Users rw,fakeowner\n150 140 0:44 /shinmingliu/opcti/validation/phase0/legacy/runs/ft05-001/retained-tools /tools ro,nosuid,nodev,relatime - fakeowner /run/host_mark/Users rw,fakeowner\n151 140 0:44 /shinmingliu/opcti/validation/phase0/legacy/runs/ft05-001/promote /export rw,nosuid,nodev,relatime - fakeowner /run/host_mark/Users rw,fakeowner\n152 140 0:44 /shinmingliu/opcti/validation/phase0/legacy/runs/ft05-001/active-repository /fixtures rw,nosuid,nodev,relatime - fakeowner /run/host_mark/Users rw,fakeowner\n153 140 254:1 /docker/containers/d7e2e6e372142fa42119c53022638d4a2fc92bc2721cbcfdca17d85f9afc3744/resolv.conf /etc/resolv.conf rw,relatime - ext4 /dev/vda1 rw,discard\n154 140 254:1 /docker/containers/d7e2e6e372142fa42119c53022638d4a2fc92bc2721cbcfdca17d85f9afc3744/hostname /etc/hostname rw,relatime - ext4 /dev/vda1 rw,discard\n155 140 254:1 /docker/containers/d7e2e6e372142fa42119c53022638d4a2fc92bc2721cbcfdca17d85f9afc3744/hosts /etc/hosts rw,relatime - ext4 /dev/vda1 rw,discard\n90 142 0:72 /bus /proc/bus ro,nosuid,nodev,noexec,relatime - proc proc rw\n91 142 0:72 /fs /proc/fs ro,nosuid,nodev,noexec,relatime - proc proc rw\n92 142 0:72 /irq /proc/irq ro,nosuid,nodev,noexec,relatime - proc proc rw\n93 142 0:72 /sys /proc/sys ro,nosuid,nodev,noexec,relatime - proc proc rw\n94 142 0:72 /sysrq-trigger /proc/sysrq-trigger ro,nosuid,nodev,noexec,relatime - proc proc rw\n95 142 0:73 /null /proc/interrupts rw,nosuid - tmpfs tmpfs rw,size=65536k,mode=755\n96 142 0:73 /null /proc/kcore rw,nosuid - tmpfs tmpfs rw,size=65536k,mode=755\n97 142 0:73 /null /proc/keys rw,nosuid - tmpfs tmpfs rw,size=65536k,mode=755\n98 142 0:77 / /proc/scsi ro,relatime - tmpfs tmpfs ro\n99 142 0:73 /null /proc/timer_list rw,nosuid - tmpfs tmpfs rw,size=65536k,mode=755\n100 145 0:78 / /sys/firmware ro,relatime - tmpfs tmpfs ro\n"
+}

@@ -1,0 +1,75 @@
+<!--
+Copyright (C) 2011, Hewlett-Packard Development Company, L.P.
+All Rights Reserved.
+Open64 is free software; you can redistribute it and/or modify it under the
+terms of the GNU General Public License as published by the Free Software
+Foundation; either version 2 of the License, or (at your option) any later
+version. Distributed WITHOUT ANY WARRANTY; without even the implied warranty
+of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General
+Public License for more details.
+-->
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Phase 0 FT05 baseline promotion and preserved failure results — OpenCTI</title><style>body{margin:0;background:#f4f6f8;color:#18232e;font:17px/1.6 system-ui,sans-serif}
+main{max-width:1050px;margin:auto;padding:2rem;background:white;min-height:100vh}
+a{color:#075ca8}nav{padding:.7rem 0;border-bottom:1px solid #ccd5dd}
+h1,h2,h3{line-height:1.25;scroll-margin-top:1rem}h2{margin-top:2rem}
+pre{padding:1rem;background:#eff3f7;overflow:auto;border:1px solid #d5dce3}
+code{font: .88em/1.5 ui-monospace,monospace;overflow-wrap:anywhere}
+table{border-collapse:collapse;width:100%;display:block;overflow:auto}
+th,td{padding:.6rem;border:1px solid #ccd5dd;text-align:left;vertical-align:top}
+th{background:#eff3f7}td:first-child{min-width:10rem}footer{border-top:1px solid #ccd5dd;margin-top:2rem;color:#52606b}
+@media(max-width:640px){main{padding:1rem}body{font-size:16px}}
+</style></head><body><main>
+<nav><a href="index.html">CTI documentation</a></nav>
+<h1 id="phase-0-ft05-baseline-promotion-and-preserved-failure-results">Phase 0 FT05 baseline promotion and preserved failure results</h1>
+<p><a href="index.html">Documentation home</a> · <a href="phase0-legacy-capture.html">Original FT01 through FT03 capture</a> · <a href="failure-triage-acceptance.html">Failure triage scenarios</a></p>
+<h2 id="result-and-scope">Result and scope</h2>
+<p>FT05&#x27;s isolated snapshot-replay checks passed for the synthetic FT03 output mismatch. Promoting a separate sandbox baseline from <code>expected</code> to <code>actual</code> did not change the original captured baseline or the protected failure&#x27;s <code>DiffPgmOut</code> result. A separate alternate-baseline session and a new attempt explicitly using the promoted baseline passed. The reference run completed on November 11 2026 at 10:35 PM America Los Angeles time.</p>
+<p>The legacy control exposed an important limitation: stock <code>bin/www/remaster-test.pl</code> overwrites the active master, and a captured workspace whose master link still points to that mutable path changes from a mismatch to a successful comparison. The existing framework therefore does not itself guarantee FT05 immutability. This experiment verifies the stronger preservation contract by restoring the saved baseline into a separate read-only mount. It adds no production promotion service and does not close the native promotion or peer-review gates.</p>
+<h2 id="isolation-and-method">Isolation and method</h2>
+<p>The original <code>runs/run-002</code> capture, its retained archives, the live fixtures and the framework checkout were not modified. The runner verified the retained runtime/evidence archive digests and restored their saved bytes. All writable promotion targets were copies under a new ignored <code>runs/ft05-001</code> sandbox.</p>
+<p>A derived Linux ARM64 runtime adds the packaged RCS utilities to the retained legacy image. Its layer list extends the retained image&#x27;s layers; no framework code is changed. RCS provides a local repository history for the stock helper without contacting SVN, ClearCase, Git remotes or any production repository. The three experiment containers have no network, dropped capabilities, no Docker socket, no live checkout mount and only their new output directories plus the required sandbox input mounts. They are removed automatically after execution. The full <code>/opt/cti</code> regular-file digest inventory is compared before and after each worker mode.</p>
+<p>The captured FT03 work contains the original comparison script and a master symlink to <code>/fixtures/groups/Regression/FT03/Src/../Masters/output_mismatch.out</code>. Three separate modes restore copies of that archived work:</p>
+<ol>
+<li>**Legacy promotion control:** mount a writable fixture repository copy at <code>/fixtures</code>; compare against v1, generate a validation-only diff, then invoke the actual stock helper with <code>-scm RCS</code>, explicit user/comment, work directory and fixture root. Verify the changed master and recover the old bytes with <code>co -p1.1</code>. Compare the same workspace again through its unchanged master link.</li>
+<li>**Protected captured attempt:** mount a different copy of the archived v1 inputs read-only at <code>/fixtures</code>, after the promotion has completed. The unchanged comparison script must reproduce the original mismatch. In a separate session copy, explicitly select the retained v2 file by retargeting only that session&#x27;s master link; compare successfully, then repeat the original session&#x27;s v1 comparison. An attempted write to the protected master must be rejected.</li>
+<li>**Explicit v2 attempt:** mount another fixture copy containing the promoted master read-only, restore another work session and run the original compile, link, execution and comparison scripts. This is a new validation attempt, with a different baseline digest, rather than a rewrite of the captured failure&#x27;s record.</li>
+</ol>
+<p>All source/configuration files in these fixture copies match the original archive; only the promotion repository&#x27;s FT03 master and local RCS history differ. The protected and alternate sessions cannot access that writable repository. The saved phase scripts and environment files in the exported FT03 sessions match the original capture byte for byte.</p>
+<h2 id="observations">Observations</h2>
+<p>Baseline v1 contains <code>expected\n</code>, SHA-256 <code>1ea7a9b77da8c725742658e48d686d50bdaaf7f8b0289b1061adec3d249e5071</code>. Baseline v2 contains <code>actual\n</code>, SHA-256 <code>6485b059becfc9a1e0a457fe126326e43302c75a3d8ecfb93c6f8af8978b5b1a</code>. RCS revisions 1.1 and 1.2 retain the old and promoted bytes in the isolated repository.</p>
+<table><thead><tr><th>Check</th><th>Observed result</th></tr></thead><tbody>
+<tr><td>Original legacy comparison against v1</td><td>Exit 1, <code>DiffPgmOut</code></td></tr>
+<tr><td>Validation-only preview</td><td>Diff shows <code>expected</code> replaced by <code>actual</code>; baseline digest unchanged and no RCS directory created</td></tr>
+<tr><td>Stock remaster helper apply</td><td>Exit 0; sandbox master now contains v2; original v1 recovered from RCS</td></tr>
+<tr><td>Unprotected legacy workspace after apply</td><td>Exit 0 through its existing master link: the mutable path changes the oracle</td></tr>
+<tr><td>Protected captured attempt after apply</td><td>Exit 1, <code>DiffPgmOut</code>, still using v1</td></tr>
+<tr><td>Separate alternate-baseline session</td><td>Exit 0 using v2; neither the protected baseline nor promoted repository changes</td></tr>
+<tr><td>Protected original after alternate inspection</td><td>Exit 1, <code>DiffPgmOut</code>, still using v1</td></tr>
+<tr><td>Write to protected baseline</td><td>Rejected with errno 30 (<code>EROFS</code>); v1 bytes unchanged</td></tr>
+<tr><td>New explicit v2 attempt</td><td>Compile, link, run and compare all exit 0</td></tr>
+<tr><td>Preservation audit</td><td>Original capture and captured fixture snapshot unchanged; 24 exported FT03 recipe/environment files match the original capture</td></tr>
+</tbody></table>
+<p>The validation-only preview is a Python unified diff, not a demonstrated legacy web preview. The stock helper&#x27;s <code>-trace</code> flag is not a general dry run; the RCS apply path performs writes. This experiment deliberately invokes the real helper only against the disposable repository copy.</p>
+<h2 id="evidence-and-repeatability">Evidence and repeatability</h2>
+<p>See the <a href="../../validation/phase0/legacy/README.md">experiment instructions</a> for the invocation and verification commands. The new tools are <a href="../../validation/phase0/legacy/run_ft05.py">run_ft05.py</a>, the <a href="../../validation/phase0/legacy/ft05/worker.py">worker</a>, the <a href="../../validation/phase0/legacy/ft05/Dockerfile">RCS image extension</a>, and <a href="../../validation/phase0/legacy/verify_ft05.py">verify_ft05.py</a>.</p>
+<table><thead><tr><th>Evidence</th><th>Review purpose</th></tr></thead><tbody>
+<tr><td><a href="../../validation/phase0/legacy/evidence/ft05-001/summary.json">Summary</a></td><td>Scoped result, base/derived image identities and open acceptance limits</td></tr>
+<tr><td><a href="../../validation/phase0/legacy/evidence/ft05-001/docker-transcript.json">Docker transcript</a></td><td>Image loading/build, three isolated worker invocations, mount paths and successful exits</td></tr>
+<tr><td><a href="../../validation/phase0/legacy/evidence/ft05-001/promote/results.json">Promotion results</a></td><td>Stock helper arguments, before/after comparisons, RCS recovery and baseline digests</td></tr>
+<tr><td><a href="../../validation/phase0/legacy/evidence/ft05-001/promote/promotion-preview.diff">Preview diff</a></td><td>Exact candidate baseline change</td></tr>
+<tr><td><a href="../../validation/phase0/legacy/evidence/ft05-001/promote/rcs-history.log">RCS history</a></td><td>Sandbox revisions and promotion comment</td></tr>
+<tr><td><a href="../../validation/phase0/legacy/evidence/ft05-001/protected/results.json">Protected results</a></td><td>v1/v2/v1 comparison sequence, read-only mountinfo and rejected write</td></tr>
+<tr><td><a href="../../validation/phase0/legacy/evidence/ft05-001/new-attempt/results.json">Explicit new attempt</a></td><td>Successful independent phases and promoted baseline identity</td></tr>
+<tr><td><a href="../../validation/phase0/legacy/evidence/ft05-001/protected/session-evidence.tar.gz">Protected session archive</a></td><td>Separate original-baseline and alternate-baseline workspaces, scripts, outputs and master links</td></tr>
+<tr><td><a href="../../validation/phase0/legacy/evidence/ft05-001/verification.json">Verification</a></td><td>Six comparison assertions, recipe identities, baseline bytes and open native gate</td></tr>
+<tr><td><a href="../../validation/phase0/legacy/evidence/ft05-001/SHA256SUMS.json">Review checksums</a></td><td>Compact evidence digests; raw-run checksums and large-artifact manifest are retained separately</td></tr>
+</tbody></table>
+<p>The full reference is <code>validation/phase0/legacy/runs/ft05-001/</code>. Compact review evidence is approximately 177 KB, including the original small work archive, captured/promoted fixture copies, exact worker snapshot and three session archives. The derived runtime archive is 588,090,880 bytes and remains local under the ignored runs directory. Its digest and image identity are recorded; the compact bundle alone does not contain the runtime needed to execute the scripts.</p>
+<h2 id="modernization-consequence-and-remaining-gates">Modernization consequence and remaining gates</h2>
+<p>Capture the consumed master bytes and digest before allowing any mutable remaster operation. Keep that snapshot independent of the active suite repository. Reopening a failure must mount its captured version at the saved container path; resolving a link against today&#x27;s active master is insufficient. Baseline publication and explicit alternate-version comparison should create separately identified results while retaining the original failure and oracle.</p>
+<p>Read-only Docker mounts enforce this boundary against these test processes. They do not establish a native artifact store&#x27;s retention policy or prevent a host administrator from editing backing files. Content verification, immutable object identity and promotion provenance remain requirements for the future native service.</p>
+<p>No CGI/dashboard preview, alternate-master action, user/comment validation UI, dashboard baseline labeling or test enrollment was exercised. DA12 remains not run; this local helper test is partial support for FX05 and DF26 only. SVN/ClearCase variants, owner/reviewer approval, production historical cases and a native promotion implementation remain open. FT06 through FT19 retain their previous not-run status. The existing framework remains unchanged.</p>
+<footer>Reconstructed from OpenCTI source, baseline 8c3d603. Generated by doc/tools/build_docs.py.</footer>
+</main></body></html>

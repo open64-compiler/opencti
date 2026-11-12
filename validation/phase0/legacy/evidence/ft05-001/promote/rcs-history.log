@@ -1,0 +1,21 @@
+
+RCS file: /fixtures/groups/Regression/FT03/Masters/RCS/output_mismatch.out,v
+Working file: /fixtures/groups/Regression/FT03/Masters/output_mismatch.out
+head: 1.2
+branch:
+locks: strict
+access list:
+symbolic names:
+keyword substitution: kv
+total revisions: 2;	selected revisions: 2
+description:
+initial checkin
+----------------------------
+revision 1.2
+date: 2026/11/12 06:35:46;  author: root;  state: Exp;  lines: +1 -1
+Automatically remastered/created by /opt/cti/bin/www/remaster-test.pl [initiated by: phase0-ft05] - FT05 isolated promotion expected to actual
+----------------------------
+revision 1.1
+date: 2026/11/12 06:35:46;  author: root;  state: Exp;
+Initial revision
+=============================================================================

@@ -4,6 +4,8 @@
 
 ## Observed result and scope
 
+Follow-up: [FT04 deletion and source/baseline relocation](phase0-ft04-results.md) now verifies archive-only reopening for these same synthetic fixtures. An [FT05 follow-up](phase0-ft05-results.md) verifies protected original-baseline replay after isolated promotion and documents the stock helper's mutable-master limitation. The original capture observations and raw evidence below remain unchanged.
+
 FT01, FT02 and FT03 now have observed legacy failures and independently verified legacy phase replay for a small synthetic regression fixture set. The reference capture ran on November 11 2026 at 2:57 PM America Los Angeles time, in Linux ARM64 Docker using GCC 13.3.0, Perl 5.38 and Bash with Korn-shell option loading. This is a real invocation of the stock CTI harness and compiler against deliberate failure cases, not a historical production archive or a test of an Open64 compiler defect.
 
 The source was exported directly from Git commit `8c3d603797129d32e90532c830b3cdabbc5e4b17`, bypassing the Mac working tree's filename collisions. The container image ID is `sha256:a119c5e4a42dedbb5cdce10d448efce31b4054018bde56a4e476bc2c529fa62c`. Full package versions and the precise commands are retained in the evidence.
@@ -59,6 +61,6 @@ The unmodified Perl code emits warnings about historical regular expressions and
 
 An exploratory run inherited `COMPILER_VERSION=opencc` and `DTM_CPUARCH=x86_64` from defaults. The reference run corrects those labels in external options to `gcc-13.3.0` and `aarch64`; its original diagnostics are not overwritten. This demonstrates why actual tool provenance and displayed configuration must both be checked.
 
-The assertions and original-image retention support FT01 through FT03 legacy characterization for these synthetic cases. They do not pass the replacement/native adapter gates, DA06's actual dashboard navigation, broader FX03 shared-harness coverage, or FT04's destructive mount relocation/volume deletion requirement. No mounted compiler was changed, no GPU/DSL job was run, and no historical known-failure cache or live CGI/dTM dashboard was acquired. Human review/signoff remains open.
+The assertions and original-image retention support FT01 through FT03 legacy characterization for these synthetic cases. They do not pass the replacement/native adapter gates, DA06's actual dashboard navigation, broader FX03 shared-harness coverage, or broader suite relocation requirements. The subsequent FT04 report separately covers deletion and relocation for this synthetic subset. No mounted compiler was changed, no GPU/DSL job was run, and no historical known-failure cache or live CGI/dTM dashboard was acquired. Human review/signoff remains open.
 
-Next phase 0 evidence should exercise the real failure drilldown in an isolated dashboard, extend dependency capture to a shared support harness, and perform the explicit FT04 relocation experiment when its implementation gate is taken up. All other unexecuted scenarios retain their previous not-run status.
+Next phase 0 evidence should exercise the real failure drilldown in an isolated dashboard, extend dependency capture to a shared support harness, and review the now-recorded FT04 relocation evidence before expanding it to more suites. All other unexecuted scenarios retain their previous not-run status.
