@@ -1,0 +1,29 @@
+# Start time was Thu Nov 12 21:58:51 2026 on df0458c45336
+# TEST_WORK_DIR --> /export/original/work
+# OPT_LEVEL     --> 0
+# DATA_MODE     --> +DD64
+# COMPILER_VERSION --> gcc-13.3.0
+# CTI_GROUPS    --> /fixtures/groups
+# REPOSITORY_TYPE --> SVN
+# OPTIONS_FILE--> /fixtures/phase0.opt
+# SELECTIONS  --> Regression/FT13
+# VIEW    --> None
+# DTM_POOL    --> Default
+# DTM_CPUARCH --> aarch64
+# DTM_PRIORITY--> 2
+# DISTRIBUTED_TM --> 
+# SEND_LOG    --> 
+# http://localhost/CTI/cgi-bin/get-log-file.cgi?log=/export/original/summary.log
+# END OF HEADER
+
+# TOTAL TESTS=1,  PASS=0,  FAIL=1,  RUNNING=0
+
+#_________________________________________________________
+#  OUTPUT DIFFERENCE FAILURES 
+#_________________________________________________________
+# Total Number of OUTPUT DIFFERENCE FAILURES = 1
+Regression/FT13/probe.c
+
+# TIME_TAKEN --> 00:00:00 [1794520731 - 1794520731]
+
+# End Time was Thu Nov 12 21:58:51 2026

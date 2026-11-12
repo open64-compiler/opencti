@@ -1,0 +1,245 @@
+[
+  {
+    "role": "shell",
+    "kind": "image-file",
+    "path": "/bin/bash",
+    "sha256": "af955ef55333c8fc9c5aa50df91ad1a629d9a79a9afa125cd5e9629585f78015",
+    "executable": true,
+    "phases": [
+      "compile",
+      "link",
+      "run",
+      "compare-out"
+    ],
+    "reprovision_reference": "pinned-image:sha256:873ccd4bbd6101f6f8e46fd1a4502f2d0268edec40c4ae0476cdd24927337840#/bin/bash"
+  },
+  {
+    "role": "perl",
+    "kind": "image-file",
+    "path": "/usr/bin/perl",
+    "sha256": "fb6349e1d854c8b832f46f456aeeb9060c6cbc27e4cfea8885766cef87e3db63",
+    "executable": true,
+    "phases": [
+      "compare-out"
+    ],
+    "reprovision_reference": "pinned-image:sha256:873ccd4bbd6101f6f8e46fd1a4502f2d0268edec40c4ae0476cdd24927337840#/usr/bin/perl"
+  },
+  {
+    "role": "gcc",
+    "kind": "image-file",
+    "path": "/usr/bin/gcc",
+    "sha256": "a20520ee21543f243d40636a9181a142c45ecd989de31ab86b99a8ea5ada870d",
+    "executable": true,
+    "phases": [
+      "compile",
+      "link"
+    ],
+    "reprovision_reference": "pinned-image:sha256:873ccd4bbd6101f6f8e46fd1a4502f2d0268edec40c4ae0476cdd24927337840#/usr/bin/gcc"
+  },
+  {
+    "role": "cc1",
+    "kind": "image-file",
+    "path": "/usr/libexec/gcc/aarch64-linux-gnu/13/cc1",
+    "sha256": "64edfe466dd55c4216c006e9fa237af012e4974281dd4d11640aacfc3b3693af",
+    "executable": true,
+    "phases": [
+      "compile"
+    ],
+    "reprovision_reference": "pinned-image:sha256:873ccd4bbd6101f6f8e46fd1a4502f2d0268edec40c4ae0476cdd24927337840#/usr/libexec/gcc/aarch64-linux-gnu/13/cc1"
+  },
+  {
+    "role": "assembler",
+    "kind": "image-file",
+    "path": "/usr/bin/as",
+    "sha256": "1ffda50efb6d91b6b05ef933aced099595c36577594c0296c91161f2d13db374",
+    "executable": true,
+    "phases": [
+      "compile"
+    ],
+    "reprovision_reference": "pinned-image:sha256:873ccd4bbd6101f6f8e46fd1a4502f2d0268edec40c4ae0476cdd24927337840#/usr/bin/as"
+  },
+  {
+    "role": "linker",
+    "kind": "image-file",
+    "path": "/usr/bin/ld",
+    "sha256": "1e4d3369b76845fa8e099b83513bf28f6f722e046f9b2cde1378c9e27f96d19c",
+    "executable": true,
+    "phases": [
+      "link"
+    ],
+    "reprovision_reference": "pinned-image:sha256:873ccd4bbd6101f6f8e46fd1a4502f2d0268edec40c4ae0476cdd24927337840#/usr/bin/ld"
+  },
+  {
+    "role": "elf-loader",
+    "kind": "image-file",
+    "path": "/lib/ld-linux-aarch64.so.1",
+    "sha256": "390027e5f45f236bd1838bc54bf464c5ff01d260ab9f8b415ea8276641bce505",
+    "executable": true,
+    "phases": [
+      "compile",
+      "link",
+      "run",
+      "compare-out"
+    ],
+    "reprovision_reference": "pinned-image:sha256:873ccd4bbd6101f6f8e46fd1a4502f2d0268edec40c4ae0476cdd24927337840#/lib/ld-linux-aarch64.so.1"
+  },
+  {
+    "role": "compiler-entry",
+    "kind": "file",
+    "phases": [
+      "compile",
+      "link"
+    ],
+    "executable": true,
+    "reprovision_reference": "captured-prerequisite:compiler-entry",
+    "sha256": "abfb23383e49d8fa9c8c3efa261d20e3c9044a89830466e63a7813c08631a74c",
+    "path": "/deps/compiler/cc"
+  },
+  {
+    "role": "runtime",
+    "kind": "file",
+    "phases": [
+      "link",
+      "run"
+    ],
+    "executable": false,
+    "reprovision_reference": "captured-prerequisite:runtime",
+    "sha256": "b09d932a056a882176760c5985af6b969e0203a8e393c0e1d00c11760c58c928",
+    "path": "/deps/runtime/libft13.so"
+  },
+  {
+    "role": "input",
+    "kind": "file",
+    "phases": [
+      "run"
+    ],
+    "executable": false,
+    "reprovision_reference": "captured-prerequisite:input",
+    "sha256": "09bfa8b1f83e1596cd6b0043a4d4e60bd49b59013fb991f55396f9632c262e15",
+    "path": "/deps/inputs/current.txt",
+    "link_target": "dataset.txt"
+  },
+  {
+    "role": "protected-resource",
+    "kind": "file",
+    "phases": [
+      "run"
+    ],
+    "executable": false,
+    "reprovision_reference": "captured-prerequisite:protected-resource",
+    "sha256": "e7c252220679cc89f77edabc0e3110fc1e2fb5c461299b99dc5c0981e5379eb3",
+    "path": "/deps/protected/reference.txt"
+  },
+  {
+    "role": "comparator",
+    "kind": "file",
+    "phases": [
+      "compare-out"
+    ],
+    "executable": true,
+    "reprovision_reference": "captured-prerequisite:comparator",
+    "sha256": "b34e1e47dec3c562963f42e3f83aa95668ab19c660c59699fdd313757d1e8db6",
+    "path": "/deps/comparator/compare.pl"
+  },
+  {
+    "role": "baseline",
+    "kind": "file",
+    "phases": [
+      "compare-out"
+    ],
+    "executable": false,
+    "reprovision_reference": "captured-prerequisite:baseline",
+    "sha256": "15b77b3a9db59dc48607e5b5b20d47db6eb67186e461569384023f01b3b09859",
+    "path": "/fixtures/groups/Regression/FT13/Masters/probe.out"
+  },
+  {
+    "role": "source",
+    "kind": "saved-work",
+    "relative": "probe.c",
+    "sha256": "64dceb4ed7f23641c92d954ff8ee6aeeb6ad7ebbb682292341c82a0f03cc0d4b",
+    "phases": [
+      "compile"
+    ],
+    "executable": false,
+    "reprovision_reference": "captured-work:probe.c",
+    "link_target": "/fixtures/groups/Regression/FT13/Src/probe.c"
+  },
+  {
+    "role": "saved-env",
+    "kind": "saved-work",
+    "relative": "probe.env",
+    "sha256": "5748c4375e94e747e5544f61140730d702d76f9487c9b668ad8db1e8ceb52ad2",
+    "phases": [
+      "compile",
+      "link",
+      "run",
+      "compare-out"
+    ],
+    "executable": false,
+    "reprovision_reference": "captured-work:probe.env"
+  },
+  {
+    "role": "binary",
+    "kind": "saved-work",
+    "relative": "probe",
+    "sha256": "c9e52f797d6f7b266924652fb0c914e0b809aec5df15203ca055acf714432440",
+    "phases": [
+      "run"
+    ],
+    "executable": true,
+    "reprovision_reference": "captured-work:probe"
+  },
+  {
+    "role": "recipe-compile",
+    "kind": "saved-work",
+    "relative": "probe.compile.sh",
+    "sha256": "0bdbc90bd5883ec491f93d00ea1763d4b6ebb5e00a98c52acc19e74ecfe11280",
+    "phases": [
+      "compile"
+    ],
+    "executable": true,
+    "reprovision_reference": "captured-work:probe.compile.sh"
+  },
+  {
+    "role": "recipe-link",
+    "kind": "saved-work",
+    "relative": "probe.link.sh",
+    "sha256": "2223dfed243915974434dbc1aac54ccedfd0de67d4a548a18107beeeff1f36bb",
+    "phases": [
+      "link"
+    ],
+    "executable": true,
+    "reprovision_reference": "captured-work:probe.link.sh"
+  },
+  {
+    "role": "recipe-run",
+    "kind": "saved-work",
+    "relative": "probe.run.sh",
+    "sha256": "ffc889196c076dc9421281775513c8ac2cf4c716f525f00fcfa3faf4402a3b1d",
+    "phases": [
+      "run"
+    ],
+    "executable": true,
+    "reprovision_reference": "captured-work:probe.run.sh"
+  },
+  {
+    "role": "recipe-compare-out",
+    "kind": "saved-work",
+    "relative": "probe.compare-out.sh",
+    "sha256": "2bf0f8b623446fdd9bde75021f3dd347639cfa42a262c87e1e67c856df7d5b1f",
+    "phases": [
+      "compare-out"
+    ],
+    "executable": true,
+    "reprovision_reference": "captured-work:probe.compare-out.sh"
+  },
+  {
+    "role": "credential",
+    "kind": "credential",
+    "phases": [
+      "run"
+    ],
+    "reprovision_reference": "fixture://ft13/protected-access",
+    "secret_value_retained": false
+  }
+]

@@ -6,6 +6,7 @@ These guides describe the code imported at commit `8c3d603`, rather than a curre
 
 ## Start here
 
+- [FT13 prerequisite availability](phase0-ft13-results.md): missing images/interpreters/dependencies, explicit recovery, dangling imports and credential references without retained values.
 - [FT12 reruns and workspace reuse](phase0-ft12-results.md): preview/attempt identity, lost legacy options, destructive reuse and pinned original-failure replay.
 - [FT11 result semantics](phase0-ft11-results.md): expected failures, partial/cancelled units, process status and an observed negative-runtime false pass.
 - [FT10 collection retry results](phase0-ft10-results.md): interrupted/corrupt transfers, duplicate events, bounded storage pressure and verified cleanup/pin guards.

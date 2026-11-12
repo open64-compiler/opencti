@@ -1,0 +1,102 @@
+<!--
+Copyright (C) 2011, Hewlett-Packard Development Company, L.P.
+All Rights Reserved.
+Open64 is free software; you can redistribute it and/or modify it under the
+terms of the GNU General Public License as published by the Free Software
+Foundation; either version 2 of the License, or (at your option) any later
+version. Distributed WITHOUT ANY WARRANTY; without even the implied warranty
+of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General
+Public License for more details.
+-->
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>FT13 missing prerequisites and explicit reprovisioning — OpenCTI</title><style>body{margin:0;background:#f4f6f8;color:#18232e;font:17px/1.6 system-ui,sans-serif}
+main{max-width:1050px;margin:auto;padding:2rem;background:white;min-height:100vh}
+a{color:#075ca8}nav{padding:.7rem 0;border-bottom:1px solid #ccd5dd}
+h1,h2,h3{line-height:1.25;scroll-margin-top:1rem}h2{margin-top:2rem}
+pre{padding:1rem;background:#eff3f7;overflow:auto;border:1px solid #d5dce3}
+code{font: .88em/1.5 ui-monospace,monospace;overflow-wrap:anywhere}
+table{border-collapse:collapse;width:100%;display:block;overflow:auto}
+th,td{padding:.6rem;border:1px solid #ccd5dd;text-align:left;vertical-align:top}
+th{background:#eff3f7}td:first-child{min-width:10rem}footer{border-top:1px solid #ccd5dd;margin-top:2rem;color:#52606b}
+@media(max-width:640px){main{padding:1rem}body{font-size:16px}}
+</style></head><body><main>
+<nav><a href="index.html">CTI documentation</a></nav>
+<h1 id="ft13-missing-prerequisites-and-explicit-reprovisioning">FT13 missing prerequisites and explicit reprovisioning</h1>
+<p><a href="index.html">Documentation home</a> · <a href="failure-triage-acceptance.html#ft13-missing-image-interpreter-or-reprovisioned-prerequisite">Acceptance scenarios</a> · <a href="dashboard-feature-ledger.html">Dashboard ledger</a> · <a href="../../validation/phase0/legacy/README.md">Validation instructions</a></p>
+<h2 id="observed-result-and-scope">Observed result and scope</h2>
+<p>FT13 now has an audited isolated reference, <code>ft13-001</code>, completed on 2026-11-12. Six actual image-availability steps and sixteen actual dependency faults distinguish unavailable replay prerequisites from the captured test verdict. Every guarded fault blocks dispatch with a named dependency and reprovisioning reference. Explicit recovery permits twenty phase executions, including four expected output-comparison failures. Final compile/link/run/compare returns 0/0/0/1 and reproduces the original <code>DiffPgmOut</code>, output and baseline.</p>
+<p>The availability helper is a validation fixture, not a production prerequisite/credential service. Deliberate unguarded legacy controls are recorded separately so their behavior cannot be mistaken for successful guarded dispatch. The existing framework is unchanged: all 2,654 file/link/mode entries retain identity <code>1584e7b404a016da21ea8bd4a5c3ee2d30a1ee1424ece1d21deab627b00e1de2</code> before and after each worker. Earlier captures, sealed original FT13 work/inputs and all 22 pre-existing filename-collision changes remain unchanged.</p>
+<p>The original synthetic C regression consumes a mounted runtime, input symlink and an authorized resource through that runtime, then deliberately differs from its master. Actual output is <code>runtime-A|input-A|resource-A\n</code>; original TM exits zero with one failed test. Its source, master, compiler-entry wrapper, runtime source/library, comparator, inputs, generated recipes, pruned environment, executable and messages are retained independently of replay sessions.</p>
+<h2 id="image-absence-and-offline-recovery">Image absence and offline recovery</h2>
+<p>A uniquely labeled child of the retained ARM64 runtime adds only <code>/opt/phase0/ft13-marker.json</code>, outside the framework. It installs no packages and changes no legacy code/configuration. The child ID is <code>sha256:873ccd4bbd6101f6f8e46fd1a4502f2d0268edec40c4ae0476cdd24927337840</code>; its base remains <code>sha256:a119c5e4a42dedbb5cdce10d448efce31b4054018bde56a4e476bc2c529fa62c</code>. The archive is saved before any ephemeral credential is provisioned.</p>
+<p>Only this run&#x27;s labeled child image is removed, after its preparation/capture containers are deleted. The shared base image remains available and is never selected as fallback.</p>
+<table><thead><tr><th>Availability step</th><th>Observed decision</th></tr></thead><tbody>
+<tr><td>Child image and verified local archive present</td><td>Ready</td></tr>
+<tr><td>Child removed, archive present</td><td>Blocked: <code>MissingPinnedImage</code>; recovery reference identifies the verified archive</td></tr>
+<tr><td>Both child and declared archive path absent</td><td>Blocked: <code>MissingPinnedImage</code>, <code>MissingImageArchive</code></td></tr>
+<tr><td>Declared archive replaced with an impostor</td><td>Blocked: <code>ImageArchiveIdentityMismatch</code> as well as missing image</td></tr>
+<tr><td>Correct archive restored, child still absent</td><td>Still blocked; a pathname alone does not provision the image</td></tr>
+<tr><td>Explicit verified archive load</td><td>Required image ID available again; ready without pulling</td></tr>
+</tbody></table>
+<p>A separate raw <code>docker create --pull=never</code> for the absent child fails with “No such image”; no container is created. It does not run on the available base. The archive path is hidden/replaced only within the new experiment directory, then restored byte-for-byte. No original runtime archive or shared image is removed or changed. The runner requires the retained archive&#x27;s size/hash as well as the selected image ID before claiming this fixture ready.</p>
+<p>The restored child and its archive remain local for future replay. This tests the local Docker engine with an available shared base, not a separate empty image store or a remote registry outage. The archive includes the child layers; no download/package operation is part of recovery.</p>
+<h2 id="declared-phase-prerequisites">Declared phase prerequisites</h2>
+<p>The manifest declares twenty-one roles, with affected phases, exact paths or saved-work-relative names, expected content hashes, executable/link requirements and reprovisioning references. It covers Bash, Perl, the ELF loader, image-resident GCC/front end/assembler/linker, mounted compiler entry, runtime, input link, protected resource, comparator, baseline, saved source/environment/binary, four recipes and a credential reference.</p>
+<p>The mounted compiler entry explicitly invokes image-resident <code>/usr/bin/gcc</code>; this is not a new relocated full compiler distribution. FT06 provides that earlier closure experiment. Here the actual image-resident tool files are checked as well as the mounted entry. When that entry is removed, the available system GCC is not chosen as fallback.</p>
+<p>The child image stays selected throughout dependency testing. Availability is still checked inside its running disposable copy: an image ID does not prove that an interpreter, loader, mount or referenced file is usable. Each case reconstructs a fresh writable work copy; only new private fixture/dependency copies are writable. Bash, Perl and loader faults affect only the container filesystem, with matching bytes restored before continuing.</p>
+<h2 id="missing-state-observations-and-recovery">Missing-state observations and recovery</h2>
+<p>All sixteen guarded probes are blocked with <code>incomplete_prerequisites</code>, the affected role/path and its reprovisioning reference. Original verdict remains <code>DiffPgmOut</code>. The table shows the separate unguarded direct saved-script controls; these intentionally bypass the new gate and do not change the captured original evidence.</p>
+<table><thead><tr><th>Fault / affected phase</th><th>Unguarded legacy observation</th><th>Guarded recovery</th></tr></thead><tbody>
+<tr><td>Bash missing / compile</td><td>Kernel <code>ENOENT</code> (2); script file exists but process cannot start</td><td>Restore matching interpreter; compile 0</td></tr>
+<tr><td>Perl missing / compare</td><td>1, <code>CompareInternalError</code></td><td>Restore matching interpreter; compare 1, <code>DiffPgmOut</code></td></tr>
+<tr><td>ELF loader missing / run</td><td>Kernel <code>ENOENT</code> (2); script file exists but process cannot start</td><td>Restore matching loader; run 0</td></tr>
+<tr><td>Mounted compiler entry missing / compile</td><td>1, <code>CompileErr</code></td><td>Restore matching entry; compile 0</td></tr>
+<tr><td>Mounted runtime missing / run</td><td>Loader failure 127, <code>ExecErr</code></td><td>Restore captured library; run 0</td></tr>
+<tr><td>Input target missing, alias dangling / run</td><td>11, <code>ExecErr</code></td><td>Restore captured input/link closure; run 0</td></tr>
+<tr><td>Protected resource missing / run</td><td>43, <code>ExecErr</code></td><td>Restore matching resource; run 0</td></tr>
+<tr><td>Credential absent / run</td><td>41, <code>ExecErr</code></td><td>Explicit new authorization provision; run 0</td></tr>
+<tr><td>Credential rejected / run</td><td>42, <code>ExecErr</code></td><td>Explicit new authorization provision; run 0</td></tr>
+<tr><td>Comparator missing / compare</td><td>1, <code>CompareInternalError</code></td><td>Restore captured comparator; compare 1, <code>DiffPgmOut</code></td></tr>
+<tr><td>Baseline removed after recipe generation / compare</td><td>1, <code>CompareInternalError</code></td><td>Restore captured baseline; compare 1, <code>DiffPgmOut</code></td></tr>
+<tr><td>Saved <code>.env</code> absent / run</td><td>**0, no failure marker**</td><td>Restore captured environment; run 0</td></tr>
+<tr><td>Saved <code>.env</code> changed to dangling link / run</td><td>**0, no failure marker**</td><td>Restore captured environment; run 0</td></tr>
+<tr><td>Saved source alias dangling / compile</td><td>1, <code>CompileErr</code></td><td>Restore matching source target; compile 0</td></tr>
+<tr><td>Runtime exists with wrong contents / run</td><td>Loader failure 127, <code>ExecErr</code></td><td>Reject content mismatch, restore captured library; run 0</td></tr>
+<tr><td>Run recipe absent / run</td><td>Kernel <code>ENOENT</code> (2); requested file itself is absent</td><td>Restore original recipe; run 0</td></tr>
+</tbody></table>
+<p>The kernel errors for a present script differ from a missing recipe: the evidence records both errno and whether the requested file exists. The gate identifies the actual interpreter/loader role instead of claiming that the retained script is absent. Compiler/runtime/compare failure tags from the unguarded controls are not treated as compiler defects or substituted for the original output mismatch.</p>
+<p>Two observations qualify existing reproduction guidance:</p>
+<ul>
+<li>Generated scripts source <code>. ./probe.env 2&gt;/dev/null</code> without an explicit failure check. In this fixture, the run command and input arguments are already emitted and the binary has a runtime search path, so both absent and dangling <code>.env</code> controls still run and return zero. This does not establish a complete reproduction environment. The validation gate blocks both states and historical-style imports remain incomplete until repaired.</li>
+<li><code>generateCompareScript</code> emits the <code>NoMasterOut</code> existence check when it cannot locate a master at generation time. This master initially exists, so the saved script uses <code>probe.out.master</code> without that check. Removing its target later makes the comparator fail and yields <code>CompareInternalError</code>, not <code>NoMasterOut</code>. FT03&#x27;s initial missing-master observation and this later-deletion observation are different paths.</li>
+</ul>
+<p>After every fault, matching captured bytes or compatible explicitly authorized state are restored and the affected phase is executed. Compare returning 1/<code>DiffPgmOut</code> is the expected restored behavior, not a failed recovery. A final fresh session executes all four phases and reproduces the original output. Sealed original archives, source/master/dependency copies and earlier captures are checked unchanged.</p>
+<h2 id="credential-reprovisioning-without-retained-values">Credential reprovisioning without retained values</h2>
+<p>The required reference is <code>fixture://ft13/protected-access</code>. Each worker provisions a random ephemeral provider/credential pair only inside <code>/run/ft13-vault</code>, outside every bind mount, image archive and captured work/input tree. The mounted runtime independently checks that authorization before reading the protected fixture resource; absent and wrong credentials produce different actual exit codes. The validation gate checks authorization rather than merely accepting a credential pathname.</p>
+<p>Removing/rejecting the credential is followed by an explicit new authorization epoch, not retrieval of the original secret from evidence. Three validation-worker epochs record reasons and the reprovisioning reference only. No credential value or credential hash is written to the manifest, options, saved environment, transcript or archive. Before export, the worker scans ordinary evidence bytes, decompressed work members and its environment for all issued values and asserts none were retained. The environment report includes only an explicit allowlist of CTI/mode/image fields.</p>
+<p>This is a local synthetic authorization fixture; the resource bytes are public test data and are retained. No real credential, license server, external secret manager, entitlement renewal or production access-control boundary is exercised. A real external prerequisite needs its own authorized reprovisioning integration; the reference is not an implemented service for it.</p>
+<h2 id="evidence-and-reproduction">Evidence and reproduction</h2>
+<p>Full local reference: <code>validation/phase0/legacy/runs/ft13-001/</code>, **154** hashed files including the child runtime archive. Compact review copy: <code>validation/phase0/legacy/evidence/ft13-001/</code>, **129** manifest entries, **541,085 bytes of regular files plus one relative input symlink**. Compact manifest SHA-256: <code>d9f0f70f9e0b86fc096387e77a14dc2d50d602339ef61e0aec067deeb63eaf8b</code>.</p>
+<p>Compact evidence includes original work/input archives and small mounted dependencies, exact capture/gate tools, all gates and raw legacy/recovery commands, sanitized environment/credential-epoch records, original/final outputs, image build marker/layer metadata, image-removal/load transcripts, mount inventories and preservation checks. Expanded original work and duplicate writable private input trees are omitted. The declared input link is preserved alongside its archived closure.</p>
+<p>The new child runtime archive is **586,254,336 bytes**, SHA-256 <code>55760d672000f4243e6cee8550b204cdd66cc11008ac97eee53a5a2e7abfa05d</code>; it stays local/ignored. The original 586,248,192-byte base archive remains unchanged and local. Both are named with sizes/digests in the large-artifact metadata. Compact review evidence alone does not supply the executable platform images.</p>
+<pre><code>python3 -B validation/phase0/legacy/run_ft13.py \
+  --capture validation/phase0/legacy/runs/run-002 \
+  --output validation/phase0/legacy/runs/new-ft13-run
+
+python3 -B validation/phase0/legacy/verify_ft13.py \
+  validation/phase0/legacy/runs/new-ft13-run \
+  --compact-output validation/phase0/legacy/evidence/new-ft13-run
+
+python3 -B validation/phase0/legacy/verify_ft13.py \
+  validation/phase0/legacy/evidence/ft13-001
+
+python3 -B -m unittest discover -s validation/phase0/legacy \
+  -p test_verify_ft13.py -v</code></pre>
+<p>The offline audit checks actual child-only image removal, failed no-pull creation, archive states and reload, all sixteen blocked dispatches, sixteen explicit raw legacy attempts, twenty guarded recovery phases, exact codes/tags, prerequisite references, known readable/executable/link identities, sanitized credential metadata, final original mismatch and unchanged framework/input/capture identities. Nine offline tests cover corruption, rehashed false readiness/fallback/success claims, a credential value inserted into metadata, executable/content/link checks, a same-size corrupt archive and actual authorization states.</p>
+<p>Three workers are removed after export. Each uses the restricted network-disabled profile, one CPU, 1 GiB memory, all capabilities dropped and <code>no-new-privileges</code>. The base image and reprovisioned child remain available; no shared runtime is deleted.</p>
+<h2 id="remaining-acceptance">Remaining acceptance</h2>
+<p>This passes the synthetic FT13 availability/recovery characterization and validation-only guards. Production prerequisite resolution, authenticated secret provisioning, historical archives, dashboard presentation, alternate systems/interpreters and remote/GPU/DSL execution remain open. Historical-style dangling links here are controlled copies, not an acquired production archive. FT14 through FT19 remain unrun; phase 0 is not complete.</p>
+<p>Source evidence: <a href="../../Scripts/drivers/lib/emitScriptUtils.pm">saved-script preamble</a>, <a href="../../Scripts/drivers/lib/generateCompareScript.pm">comparison generation</a>, <a href="../../Scripts/drivers/lib/regressionDriver.pm">regression phases</a>, <a href="../../Scripts/drivers/lib/savedOptions.pm">saved-option handling</a>, <a href="../../validation/phase0/legacy/ft13/readiness.py">validation readiness helper</a>, <a href="../../validation/phase0/legacy/ft13/runtime.c">credential-consuming fixture runtime</a>.</p>
+<footer>Reconstructed from OpenCTI source, baseline 8c3d603. Generated by doc/tools/build_docs.py.</footer>
+</main></body></html>

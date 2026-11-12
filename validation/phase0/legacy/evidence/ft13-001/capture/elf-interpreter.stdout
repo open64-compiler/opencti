@@ -1,0 +1,39 @@
+
+Elf file type is DYN (Position-Independent Executable file)
+Entry point 0x900
+There are 9 program headers, starting at offset 64
+
+Program Headers:
+  Type           Offset             VirtAddr           PhysAddr
+                 FileSiz            MemSiz              Flags  Align
+  PHDR           0x0000000000000040 0x0000000000000040 0x0000000000000040
+                 0x00000000000001f8 0x00000000000001f8  R      0x8
+  INTERP         0x0000000000000238 0x0000000000000238 0x0000000000000238
+                 0x000000000000001b 0x000000000000001b  R      0x1
+      [Requesting program interpreter: /lib/ld-linux-aarch64.so.1]
+  LOAD           0x0000000000000000 0x0000000000000000 0x0000000000000000
+                 0x0000000000000c74 0x0000000000000c74  R E    0x10000
+  LOAD           0x000000000000fd20 0x000000000001fd20 0x000000000001fd20
+                 0x00000000000002f0 0x00000000000002f8  RW     0x10000
+  DYNAMIC        0x000000000000fd30 0x000000000001fd30 0x000000000001fd30
+                 0x0000000000000220 0x0000000000000220  RW     0x8
+  NOTE           0x0000000000000254 0x0000000000000254 0x0000000000000254
+                 0x0000000000000044 0x0000000000000044  R      0x4
+  GNU_EH_FRAME   0x0000000000000b84 0x0000000000000b84 0x0000000000000b84
+                 0x000000000000003c 0x000000000000003c  R      0x4
+  GNU_STACK      0x0000000000000000 0x0000000000000000 0x0000000000000000
+                 0x0000000000000000 0x0000000000000000  RW     0x10
+  GNU_RELRO      0x000000000000fd20 0x000000000001fd20 0x000000000001fd20
+                 0x00000000000002e0 0x00000000000002e0  R      0x1
+
+ Section to Segment mapping:
+  Segment Sections...
+   00     
+   01     .interp 
+   02     .interp .note.gnu.build-id .note.ABI-tag .gnu.hash .dynsym .dynstr .gnu.version .gnu.version_r .rela.dyn .rela.plt .init .plt .text .fini .rodata .eh_frame_hdr .eh_frame 
+   03     .init_array .fini_array .dynamic .got .data .bss 
+   04     .dynamic 
+   05     .note.gnu.build-id .note.ABI-tag 
+   06     .eh_frame_hdr 
+   07     
+   08     .init_array .fini_array .dynamic .got 

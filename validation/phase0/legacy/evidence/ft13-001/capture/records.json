@@ -1,0 +1,32 @@
+[
+  {
+    "label": "tm",
+    "argv": [
+      "perl",
+      "/opt/cti/bin/TM.pl",
+      "-nod",
+      "-nomail",
+      "-f",
+      "/fixtures/phase0.opt",
+      "-w",
+      "/export/original/work",
+      "-l",
+      "/export/original/summary.log",
+      "run"
+    ],
+    "cwd": null,
+    "process_started": true,
+    "returncode": 0
+  },
+  {
+    "label": "elf-interpreter",
+    "argv": [
+      "readelf",
+      "-l",
+      "./probe"
+    ],
+    "cwd": "/export/original/work/Regression/FT13",
+    "process_started": true,
+    "returncode": 0
+  }
+]

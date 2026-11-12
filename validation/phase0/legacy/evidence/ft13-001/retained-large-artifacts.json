@@ -1,0 +1,14 @@
+{
+  "runtime-image.tar": {
+    "image_id": "sha256:873ccd4bbd6101f6f8e46fd1a4502f2d0268edec40c4ae0476cdd24927337840",
+    "sha256": "55760d672000f4243e6cee8550b204cdd66cc11008ac97eee53a5a2e7abfa05d",
+    "bytes": 586254336,
+    "namespace": "722d61db263b480e83b20f88b1b1cf00"
+  },
+  "base-runtime-image.tar": {
+    "source": "/Users/shinmingliu/opcti/validation/phase0/legacy/runs/run-002/runtime-image.tar",
+    "sha256": "8b69adc550862c611dd9f4b58a2126e6f82e94dc7a2c7781dfae3163418bf8a5",
+    "bytes": 586248192,
+    "image_id": "sha256:a119c5e4a42dedbb5cdce10d448efce31b4054018bde56a4e476bc2c529fa62c"
+  }
+}

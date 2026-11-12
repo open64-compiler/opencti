@@ -1,0 +1,102 @@
+[
+  {
+    "case": "ready-before-isolated-removal",
+    "inspected_image_id": "sha256:873ccd4bbd6101f6f8e46fd1a4502f2d0268edec40c4ae0476cdd24927337840",
+    "decision": {
+      "status": "ready",
+      "dispatch_phase": true,
+      "reasons": [],
+      "fallback_image_selected": false,
+      "reprovision_reference": "verified-local-image-archive:55760d672000f4243e6cee8550b204cdd66cc11008ac97eee53a5a2e7abfa05d"
+    },
+    "test_phases_executed": 0
+  },
+  {
+    "case": "missing-image-with-recovery-archive",
+    "inspected_image_id": null,
+    "decision": {
+      "status": "blocked",
+      "dispatch_phase": false,
+      "reasons": [
+        {
+          "code": "MissingPinnedImage",
+          "required": "sha256:873ccd4bbd6101f6f8e46fd1a4502f2d0268edec40c4ae0476cdd24927337840"
+        }
+      ],
+      "fallback_image_selected": false,
+      "reprovision_reference": "verified-local-image-archive:55760d672000f4243e6cee8550b204cdd66cc11008ac97eee53a5a2e7abfa05d"
+    },
+    "test_phases_executed": 0
+  },
+  {
+    "case": "missing-image-and-archive",
+    "inspected_image_id": null,
+    "decision": {
+      "status": "blocked",
+      "dispatch_phase": false,
+      "reasons": [
+        {
+          "code": "MissingPinnedImage",
+          "required": "sha256:873ccd4bbd6101f6f8e46fd1a4502f2d0268edec40c4ae0476cdd24927337840"
+        },
+        {
+          "code": "MissingImageArchive",
+          "required_sha256": "55760d672000f4243e6cee8550b204cdd66cc11008ac97eee53a5a2e7abfa05d"
+        }
+      ],
+      "fallback_image_selected": false,
+      "reprovision_reference": "verified-local-image-archive:55760d672000f4243e6cee8550b204cdd66cc11008ac97eee53a5a2e7abfa05d"
+    },
+    "test_phases_executed": 0
+  },
+  {
+    "case": "wrong-archive-at-declared-path",
+    "inspected_image_id": null,
+    "decision": {
+      "status": "blocked",
+      "dispatch_phase": false,
+      "reasons": [
+        {
+          "code": "MissingPinnedImage",
+          "required": "sha256:873ccd4bbd6101f6f8e46fd1a4502f2d0268edec40c4ae0476cdd24927337840"
+        },
+        {
+          "code": "ImageArchiveIdentityMismatch",
+          "required_sha256": "55760d672000f4243e6cee8550b204cdd66cc11008ac97eee53a5a2e7abfa05d"
+        }
+      ],
+      "fallback_image_selected": false,
+      "reprovision_reference": "verified-local-image-archive:55760d672000f4243e6cee8550b204cdd66cc11008ac97eee53a5a2e7abfa05d"
+    },
+    "test_phases_executed": 0
+  },
+  {
+    "case": "archive-reprovisioned-image-still-absent",
+    "inspected_image_id": null,
+    "decision": {
+      "status": "blocked",
+      "dispatch_phase": false,
+      "reasons": [
+        {
+          "code": "MissingPinnedImage",
+          "required": "sha256:873ccd4bbd6101f6f8e46fd1a4502f2d0268edec40c4ae0476cdd24927337840"
+        }
+      ],
+      "fallback_image_selected": false,
+      "reprovision_reference": "verified-local-image-archive:55760d672000f4243e6cee8550b204cdd66cc11008ac97eee53a5a2e7abfa05d"
+    },
+    "test_phases_executed": 0
+  },
+  {
+    "case": "pinned-image-reprovisioned-offline",
+    "inspected_image_id": "sha256:873ccd4bbd6101f6f8e46fd1a4502f2d0268edec40c4ae0476cdd24927337840",
+    "decision": {
+      "status": "ready",
+      "dispatch_phase": true,
+      "reasons": [],
+      "fallback_image_selected": false,
+      "reprovision_reference": "verified-local-image-archive:55760d672000f4243e6cee8550b204cdd66cc11008ac97eee53a5a2e7abfa05d"
+    },
+    "test_phases_executed": 0
+  }
+]

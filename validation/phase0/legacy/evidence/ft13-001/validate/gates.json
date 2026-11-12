@@ -1,0 +1,3688 @@
+[
+  {
+    "label": "missing-shell-blocked",
+    "gate": {
+      "phase": "compile",
+      "status": "blocked",
+      "dispatch_phase": false,
+      "checked": [
+        {
+          "role": "shell",
+          "reference": "pinned-image:sha256:873ccd4bbd6101f6f8e46fd1a4502f2d0268edec40c4ae0476cdd24927337840#/bin/bash",
+          "path": "/bin/bash",
+          "available_and_compatible": false
+        },
+        {
+          "role": "gcc",
+          "reference": "pinned-image:sha256:873ccd4bbd6101f6f8e46fd1a4502f2d0268edec40c4ae0476cdd24927337840#/usr/bin/gcc",
+          "path": "/usr/bin/gcc",
+          "available_and_compatible": true
+        },
+        {
+          "role": "cc1",
+          "reference": "pinned-image:sha256:873ccd4bbd6101f6f8e46fd1a4502f2d0268edec40c4ae0476cdd24927337840#/usr/libexec/gcc/aarch64-linux-gnu/13/cc1",
+          "path": "/usr/libexec/gcc/aarch64-linux-gnu/13/cc1",
+          "available_and_compatible": true
+        },
+        {
+          "role": "assembler",
+          "reference": "pinned-image:sha256:873ccd4bbd6101f6f8e46fd1a4502f2d0268edec40c4ae0476cdd24927337840#/usr/bin/as",
+          "path": "/usr/bin/as",
+          "available_and_compatible": true
+        },
+        {
+          "role": "elf-loader",
+          "reference": "pinned-image:sha256:873ccd4bbd6101f6f8e46fd1a4502f2d0268edec40c4ae0476cdd24927337840#/lib/ld-linux-aarch64.so.1",
+          "path": "/lib/ld-linux-aarch64.so.1",
+          "available_and_compatible": true
+        },
+        {
+          "role": "compiler-entry",
+          "reference": "captured-prerequisite:compiler-entry",
+          "path": "/deps/compiler/cc",
+          "available_and_compatible": true
+        },
+        {
+          "role": "source",
+          "reference": "captured-work:probe.c",
+          "path": "/sessions/missing-shell/work/Regression/FT13/probe.c",
+          "available_and_compatible": true
+        },
+        {
+          "role": "saved-env",
+          "reference": "captured-work:probe.env",
+          "path": "/sessions/missing-shell/work/Regression/FT13/probe.env",
+          "available_and_compatible": true
+        },
+        {
+          "role": "recipe-compile",
+          "reference": "captured-work:probe.compile.sh",
+          "path": "/sessions/missing-shell/work/Regression/FT13/probe.compile.sh",
+          "available_and_compatible": true
+        }
+      ],
+      "reasons": [
+        {
+          "code": "MissingDependency",
+          "role": "shell",
+          "reference": "pinned-image:sha256:873ccd4bbd6101f6f8e46fd1a4502f2d0268edec40c4ae0476cdd24927337840#/bin/bash",
+          "path": "/bin/bash"
+        }
+      ],
+      "silent_fallback": false,
+      "original_test_outcome": "DiffPgmOut",
+      "preservation": "incomplete_prerequisites"
+    },
+    "guard_bypassed": false
+  },
+  {
+    "label": "missing-shell-legacy-control",
+    "gate": {
+      "phase": "compile",
+      "status": "blocked",
+      "dispatch_phase": false,
+      "checked": [
+        {
+          "role": "shell",
+          "reference": "pinned-image:sha256:873ccd4bbd6101f6f8e46fd1a4502f2d0268edec40c4ae0476cdd24927337840#/bin/bash",
+          "path": "/bin/bash",
+          "available_and_compatible": false
+        },
+        {
+          "role": "gcc",
+          "reference": "pinned-image:sha256:873ccd4bbd6101f6f8e46fd1a4502f2d0268edec40c4ae0476cdd24927337840#/usr/bin/gcc",
+          "path": "/usr/bin/gcc",
+          "available_and_compatible": true
+        },
+        {
+          "role": "cc1",
+          "reference": "pinned-image:sha256:873ccd4bbd6101f6f8e46fd1a4502f2d0268edec40c4ae0476cdd24927337840#/usr/libexec/gcc/aarch64-linux-gnu/13/cc1",
+          "path": "/usr/libexec/gcc/aarch64-linux-gnu/13/cc1",
+          "available_and_compatible": true
+        },
+        {
+          "role": "assembler",
+          "reference": "pinned-image:sha256:873ccd4bbd6101f6f8e46fd1a4502f2d0268edec40c4ae0476cdd24927337840#/usr/bin/as",
+          "path": "/usr/bin/as",
+          "available_and_compatible": true
+        },
+        {
+          "role": "elf-loader",
+          "reference": "pinned-image:sha256:873ccd4bbd6101f6f8e46fd1a4502f2d0268edec40c4ae0476cdd24927337840#/lib/ld-linux-aarch64.so.1",
+          "path": "/lib/ld-linux-aarch64.so.1",
+          "available_and_compatible": true
+        },
+        {
+          "role": "compiler-entry",
+          "reference": "captured-prerequisite:compiler-entry",
+          "path": "/deps/compiler/cc",
+          "available_and_compatible": true
+        },
+        {
+          "role": "source",
+          "reference": "captured-work:probe.c",
+          "path": "/sessions/missing-shell/work/Regression/FT13/probe.c",
+          "available_and_compatible": true
+        },
+        {
+          "role": "saved-env",
+          "reference": "captured-work:probe.env",
+          "path": "/sessions/missing-shell/work/Regression/FT13/probe.env",
+          "available_and_compatible": true
+        },
+        {
+          "role": "recipe-compile",
+          "reference": "captured-work:probe.compile.sh",
+          "path": "/sessions/missing-shell/work/Regression/FT13/probe.compile.sh",
+          "available_and_compatible": true
+        }
+      ],
+      "reasons": [
+        {
+          "code": "MissingDependency",
+          "role": "shell",
+          "reference": "pinned-image:sha256:873ccd4bbd6101f6f8e46fd1a4502f2d0268edec40c4ae0476cdd24927337840#/bin/bash",
+          "path": "/bin/bash"
+        }
+      ],
+      "silent_fallback": false,
+      "original_test_outcome": "DiffPgmOut",
+      "preservation": "incomplete_prerequisites"
+    },
+    "guard_bypassed": true
+  },
+  {
+    "label": "missing-shell-recovered",
+    "gate": {
+      "phase": "compile",
+      "status": "ready",
+      "dispatch_phase": true,
+      "checked": [
+        {
+          "role": "shell",
+          "reference": "pinned-image:sha256:873ccd4bbd6101f6f8e46fd1a4502f2d0268edec40c4ae0476cdd24927337840#/bin/bash",
+          "path": "/bin/bash",
+          "available_and_compatible": true
+        },
+        {
+          "role": "gcc",
+          "reference": "pinned-image:sha256:873ccd4bbd6101f6f8e46fd1a4502f2d0268edec40c4ae0476cdd24927337840#/usr/bin/gcc",
+          "path": "/usr/bin/gcc",
+          "available_and_compatible": true
+        },
+        {
+          "role": "cc1",
+          "reference": "pinned-image:sha256:873ccd4bbd6101f6f8e46fd1a4502f2d0268edec40c4ae0476cdd24927337840#/usr/libexec/gcc/aarch64-linux-gnu/13/cc1",
+          "path": "/usr/libexec/gcc/aarch64-linux-gnu/13/cc1",
+          "available_and_compatible": true
+        },
+        {
+          "role": "assembler",
+          "reference": "pinned-image:sha256:873ccd4bbd6101f6f8e46fd1a4502f2d0268edec40c4ae0476cdd24927337840#/usr/bin/as",
+          "path": "/usr/bin/as",
+          "available_and_compatible": true
+        },
+        {
+          "role": "elf-loader",
+          "reference": "pinned-image:sha256:873ccd4bbd6101f6f8e46fd1a4502f2d0268edec40c4ae0476cdd24927337840#/lib/ld-linux-aarch64.so.1",
+          "path": "/lib/ld-linux-aarch64.so.1",
+          "available_and_compatible": true
+        },
+        {
+          "role": "compiler-entry",
+          "reference": "captured-prerequisite:compiler-entry",
+          "path": "/deps/compiler/cc",
+          "available_and_compatible": true
+        },
+        {
+          "role": "source",
+          "reference": "captured-work:probe.c",
+          "path": "/sessions/missing-shell/work/Regression/FT13/probe.c",
+          "available_and_compatible": true
+        },
+        {
+          "role": "saved-env",
+          "reference": "captured-work:probe.env",
+          "path": "/sessions/missing-shell/work/Regression/FT13/probe.env",
+          "available_and_compatible": true
+        },
+        {
+          "role": "recipe-compile",
+          "reference": "captured-work:probe.compile.sh",
+          "path": "/sessions/missing-shell/work/Regression/FT13/probe.compile.sh",
+          "available_and_compatible": true
+        }
+      ],
+      "reasons": [],
+      "silent_fallback": false,
+      "original_test_outcome": "DiffPgmOut",
+      "preservation": "declared_prerequisites_available"
+    },
+    "guard_bypassed": false
+  },
+  {
+    "label": "missing-perl-blocked",
+    "gate": {
+      "phase": "compare-out",
+      "status": "blocked",
+      "dispatch_phase": false,
+      "checked": [
+        {
+          "role": "shell",
+          "reference": "pinned-image:sha256:873ccd4bbd6101f6f8e46fd1a4502f2d0268edec40c4ae0476cdd24927337840#/bin/bash",
+          "path": "/bin/bash",
+          "available_and_compatible": true
+        },
+        {
+          "role": "perl",
+          "reference": "pinned-image:sha256:873ccd4bbd6101f6f8e46fd1a4502f2d0268edec40c4ae0476cdd24927337840#/usr/bin/perl",
+          "path": "/usr/bin/perl",
+          "available_and_compatible": false
+        },
+        {
+          "role": "elf-loader",
+          "reference": "pinned-image:sha256:873ccd4bbd6101f6f8e46fd1a4502f2d0268edec40c4ae0476cdd24927337840#/lib/ld-linux-aarch64.so.1",
+          "path": "/lib/ld-linux-aarch64.so.1",
+          "available_and_compatible": true
+        },
+        {
+          "role": "comparator",
+          "reference": "captured-prerequisite:comparator",
+          "path": "/deps/comparator/compare.pl",
+          "available_and_compatible": true
+        },
+        {
+          "role": "baseline",
+          "reference": "captured-prerequisite:baseline",
+          "path": "/fixtures/groups/Regression/FT13/Masters/probe.out",
+          "available_and_compatible": true
+        },
+        {
+          "role": "saved-env",
+          "reference": "captured-work:probe.env",
+          "path": "/sessions/missing-perl/work/Regression/FT13/probe.env",
+          "available_and_compatible": true
+        },
+        {
+          "role": "recipe-compare-out",
+          "reference": "captured-work:probe.compare-out.sh",
+          "path": "/sessions/missing-perl/work/Regression/FT13/probe.compare-out.sh",
+          "available_and_compatible": true
+        }
+      ],
+      "reasons": [
+        {
+          "code": "MissingDependency",
+          "role": "perl",
+          "reference": "pinned-image:sha256:873ccd4bbd6101f6f8e46fd1a4502f2d0268edec40c4ae0476cdd24927337840#/usr/bin/perl",
+          "path": "/usr/bin/perl"
+        }
+      ],
+      "silent_fallback": false,
+      "original_test_outcome": "DiffPgmOut",
+      "preservation": "incomplete_prerequisites"
+    },
+    "guard_bypassed": false
+  },
+  {
+    "label": "missing-perl-legacy-control",
+    "gate": {
+      "phase": "compare-out",
+      "status": "blocked",
+      "dispatch_phase": false,
+      "checked": [
+        {
+          "role": "shell",
+          "reference": "pinned-image:sha256:873ccd4bbd6101f6f8e46fd1a4502f2d0268edec40c4ae0476cdd24927337840#/bin/bash",
+          "path": "/bin/bash",
+          "available_and_compatible": true
+        },
+        {
+          "role": "perl",
+          "reference": "pinned-image:sha256:873ccd4bbd6101f6f8e46fd1a4502f2d0268edec40c4ae0476cdd24927337840#/usr/bin/perl",
+          "path": "/usr/bin/perl",
+          "available_and_compatible": false
+        },
+        {
+          "role": "elf-loader",
+          "reference": "pinned-image:sha256:873ccd4bbd6101f6f8e46fd1a4502f2d0268edec40c4ae0476cdd24927337840#/lib/ld-linux-aarch64.so.1",
+          "path": "/lib/ld-linux-aarch64.so.1",
+          "available_and_compatible": true
+        },
+        {
+          "role": "comparator",
+          "reference": "captured-prerequisite:comparator",
+          "path": "/deps/comparator/compare.pl",
+          "available_and_compatible": true
+        },
+        {
+          "role": "baseline",
+          "reference": "captured-prerequisite:baseline",
+          "path": "/fixtures/groups/Regression/FT13/Masters/probe.out",
+          "available_and_compatible": true
+        },
+        {
+          "role": "saved-env",
+          "reference": "captured-work:probe.env",
+          "path": "/sessions/missing-perl/work/Regression/FT13/probe.env",
+          "available_and_compatible": true
+        },
+        {
+          "role": "recipe-compare-out",
+          "reference": "captured-work:probe.compare-out.sh",
+          "path": "/sessions/missing-perl/work/Regression/FT13/probe.compare-out.sh",
+          "available_and_compatible": true
+        }
+      ],
+      "reasons": [
+        {
+          "code": "MissingDependency",
+          "role": "perl",
+          "reference": "pinned-image:sha256:873ccd4bbd6101f6f8e46fd1a4502f2d0268edec40c4ae0476cdd24927337840#/usr/bin/perl",
+          "path": "/usr/bin/perl"
+        }
+      ],
+      "silent_fallback": false,
+      "original_test_outcome": "DiffPgmOut",
+      "preservation": "incomplete_prerequisites"
+    },
+    "guard_bypassed": true
+  },
+  {
+    "label": "missing-perl-recovered",
+    "gate": {
+      "phase": "compare-out",
+      "status": "ready",
+      "dispatch_phase": true,
+      "checked": [
+        {
+          "role": "shell",
+          "reference": "pinned-image:sha256:873ccd4bbd6101f6f8e46fd1a4502f2d0268edec40c4ae0476cdd24927337840#/bin/bash",
+          "path": "/bin/bash",
+          "available_and_compatible": true
+        },
+        {
+          "role": "perl",
+          "reference": "pinned-image:sha256:873ccd4bbd6101f6f8e46fd1a4502f2d0268edec40c4ae0476cdd24927337840#/usr/bin/perl",
+          "path": "/usr/bin/perl",
+          "available_and_compatible": true
+        },
+        {
+          "role": "elf-loader",
+          "reference": "pinned-image:sha256:873ccd4bbd6101f6f8e46fd1a4502f2d0268edec40c4ae0476cdd24927337840#/lib/ld-linux-aarch64.so.1",
+          "path": "/lib/ld-linux-aarch64.so.1",
+          "available_and_compatible": true
+        },
+        {
+          "role": "comparator",
+          "reference": "captured-prerequisite:comparator",
+          "path": "/deps/comparator/compare.pl",
+          "available_and_compatible": true
+        },
+        {
+          "role": "baseline",
+          "reference": "captured-prerequisite:baseline",
+          "path": "/fixtures/groups/Regression/FT13/Masters/probe.out",
+          "available_and_compatible": true
+        },
+        {
+          "role": "saved-env",
+          "reference": "captured-work:probe.env",
+          "path": "/sessions/missing-perl/work/Regression/FT13/probe.env",
+          "available_and_compatible": true
+        },
+        {
+          "role": "recipe-compare-out",
+          "reference": "captured-work:probe.compare-out.sh",
+          "path": "/sessions/missing-perl/work/Regression/FT13/probe.compare-out.sh",
+          "available_and_compatible": true
+        }
+      ],
+      "reasons": [],
+      "silent_fallback": false,
+      "original_test_outcome": "DiffPgmOut",
+      "preservation": "declared_prerequisites_available"
+    },
+    "guard_bypassed": false
+  },
+  {
+    "label": "missing-elf-loader-blocked",
+    "gate": {
+      "phase": "run",
+      "status": "blocked",
+      "dispatch_phase": false,
+      "checked": [
+        {
+          "role": "shell",
+          "reference": "pinned-image:sha256:873ccd4bbd6101f6f8e46fd1a4502f2d0268edec40c4ae0476cdd24927337840#/bin/bash",
+          "path": "/bin/bash",
+          "available_and_compatible": true
+        },
+        {
+          "role": "elf-loader",
+          "reference": "pinned-image:sha256:873ccd4bbd6101f6f8e46fd1a4502f2d0268edec40c4ae0476cdd24927337840#/lib/ld-linux-aarch64.so.1",
+          "path": "/lib/ld-linux-aarch64.so.1",
+          "available_and_compatible": false
+        },
+        {
+          "role": "runtime",
+          "reference": "captured-prerequisite:runtime",
+          "path": "/deps/runtime/libft13.so",
+          "available_and_compatible": true
+        },
+        {
+          "role": "input",
+          "reference": "captured-prerequisite:input",
+          "path": "/deps/inputs/current.txt",
+          "available_and_compatible": true
+        },
+        {
+          "role": "protected-resource",
+          "reference": "captured-prerequisite:protected-resource",
+          "path": "/deps/protected/reference.txt",
+          "available_and_compatible": true
+        },
+        {
+          "role": "saved-env",
+          "reference": "captured-work:probe.env",
+          "path": "/sessions/missing-elf-loader/work/Regression/FT13/probe.env",
+          "available_and_compatible": true
+        },
+        {
+          "role": "binary",
+          "reference": "captured-work:probe",
+          "path": "/sessions/missing-elf-loader/work/Regression/FT13/probe",
+          "available_and_compatible": true
+        },
+        {
+          "role": "recipe-run",
+          "reference": "captured-work:probe.run.sh",
+          "path": "/sessions/missing-elf-loader/work/Regression/FT13/probe.run.sh",
+          "available_and_compatible": true
+        },
+        {
+          "role": "credential",
+          "reference": "fixture://ft13/protected-access",
+          "access": "authorized",
+          "available_and_compatible": true
+        }
+      ],
+      "reasons": [
+        {
+          "code": "MissingDependency",
+          "role": "elf-loader",
+          "reference": "pinned-image:sha256:873ccd4bbd6101f6f8e46fd1a4502f2d0268edec40c4ae0476cdd24927337840#/lib/ld-linux-aarch64.so.1",
+          "path": "/lib/ld-linux-aarch64.so.1"
+        }
+      ],
+      "silent_fallback": false,
+      "original_test_outcome": "DiffPgmOut",
+      "preservation": "incomplete_prerequisites"
+    },
+    "guard_bypassed": false
+  },
+  {
+    "label": "missing-elf-loader-legacy-control",
+    "gate": {
+      "phase": "run",
+      "status": "blocked",
+      "dispatch_phase": false,
+      "checked": [
+        {
+          "role": "shell",
+          "reference": "pinned-image:sha256:873ccd4bbd6101f6f8e46fd1a4502f2d0268edec40c4ae0476cdd24927337840#/bin/bash",
+          "path": "/bin/bash",
+          "available_and_compatible": true
+        },
+        {
+          "role": "elf-loader",
+          "reference": "pinned-image:sha256:873ccd4bbd6101f6f8e46fd1a4502f2d0268edec40c4ae0476cdd24927337840#/lib/ld-linux-aarch64.so.1",
+          "path": "/lib/ld-linux-aarch64.so.1",
+          "available_and_compatible": false
+        },
+        {
+          "role": "runtime",
+          "reference": "captured-prerequisite:runtime",
+          "path": "/deps/runtime/libft13.so",
+          "available_and_compatible": true
+        },
+        {
+          "role": "input",
+          "reference": "captured-prerequisite:input",
+          "path": "/deps/inputs/current.txt",
+          "available_and_compatible": true
+        },
+        {
+          "role": "protected-resource",
+          "reference": "captured-prerequisite:protected-resource",
+          "path": "/deps/protected/reference.txt",
+          "available_and_compatible": true
+        },
+        {
+          "role": "saved-env",
+          "reference": "captured-work:probe.env",
+          "path": "/sessions/missing-elf-loader/work/Regression/FT13/probe.env",
+          "available_and_compatible": true
+        },
+        {
+          "role": "binary",
+          "reference": "captured-work:probe",
+          "path": "/sessions/missing-elf-loader/work/Regression/FT13/probe",
+          "available_and_compatible": true
+        },
+        {
+          "role": "recipe-run",
+          "reference": "captured-work:probe.run.sh",
+          "path": "/sessions/missing-elf-loader/work/Regression/FT13/probe.run.sh",
+          "available_and_compatible": true
+        },
+        {
+          "role": "credential",
+          "reference": "fixture://ft13/protected-access",
+          "access": "authorized",
+          "available_and_compatible": true
+        }
+      ],
+      "reasons": [
+        {
+          "code": "MissingDependency",
+          "role": "elf-loader",
+          "reference": "pinned-image:sha256:873ccd4bbd6101f6f8e46fd1a4502f2d0268edec40c4ae0476cdd24927337840#/lib/ld-linux-aarch64.so.1",
+          "path": "/lib/ld-linux-aarch64.so.1"
+        }
+      ],
+      "silent_fallback": false,
+      "original_test_outcome": "DiffPgmOut",
+      "preservation": "incomplete_prerequisites"
+    },
+    "guard_bypassed": true
+  },
+  {
+    "label": "missing-elf-loader-recovered",
+    "gate": {
+      "phase": "run",
+      "status": "ready",
+      "dispatch_phase": true,
+      "checked": [
+        {
+          "role": "shell",
+          "reference": "pinned-image:sha256:873ccd4bbd6101f6f8e46fd1a4502f2d0268edec40c4ae0476cdd24927337840#/bin/bash",
+          "path": "/bin/bash",
+          "available_and_compatible": true
+        },
+        {
+          "role": "elf-loader",
+          "reference": "pinned-image:sha256:873ccd4bbd6101f6f8e46fd1a4502f2d0268edec40c4ae0476cdd24927337840#/lib/ld-linux-aarch64.so.1",
+          "path": "/lib/ld-linux-aarch64.so.1",
+          "available_and_compatible": true
+        },
+        {
+          "role": "runtime",
+          "reference": "captured-prerequisite:runtime",
+          "path": "/deps/runtime/libft13.so",
+          "available_and_compatible": true
+        },
+        {
+          "role": "input",
+          "reference": "captured-prerequisite:input",
+          "path": "/deps/inputs/current.txt",
+          "available_and_compatible": true
+        },
+        {
+          "role": "protected-resource",
+          "reference": "captured-prerequisite:protected-resource",
+          "path": "/deps/protected/reference.txt",
+          "available_and_compatible": true
+        },
+        {
+          "role": "saved-env",
+          "reference": "captured-work:probe.env",
+          "path": "/sessions/missing-elf-loader/work/Regression/FT13/probe.env",
+          "available_and_compatible": true
+        },
+        {
+          "role": "binary",
+          "reference": "captured-work:probe",
+          "path": "/sessions/missing-elf-loader/work/Regression/FT13/probe",
+          "available_and_compatible": true
+        },
+        {
+          "role": "recipe-run",
+          "reference": "captured-work:probe.run.sh",
+          "path": "/sessions/missing-elf-loader/work/Regression/FT13/probe.run.sh",
+          "available_and_compatible": true
+        },
+        {
+          "role": "credential",
+          "reference": "fixture://ft13/protected-access",
+          "access": "authorized",
+          "available_and_compatible": true
+        }
+      ],
+      "reasons": [],
+      "silent_fallback": false,
+      "original_test_outcome": "DiffPgmOut",
+      "preservation": "declared_prerequisites_available"
+    },
+    "guard_bypassed": false
+  },
+  {
+    "label": "missing-compiler-entry-blocked",
+    "gate": {
+      "phase": "compile",
+      "status": "blocked",
+      "dispatch_phase": false,
+      "checked": [
+        {
+          "role": "shell",
+          "reference": "pinned-image:sha256:873ccd4bbd6101f6f8e46fd1a4502f2d0268edec40c4ae0476cdd24927337840#/bin/bash",
+          "path": "/bin/bash",
+          "available_and_compatible": true
+        },
+        {
+          "role": "gcc",
+          "reference": "pinned-image:sha256:873ccd4bbd6101f6f8e46fd1a4502f2d0268edec40c4ae0476cdd24927337840#/usr/bin/gcc",
+          "path": "/usr/bin/gcc",
+          "available_and_compatible": true
+        },
+        {
+          "role": "cc1",
+          "reference": "pinned-image:sha256:873ccd4bbd6101f6f8e46fd1a4502f2d0268edec40c4ae0476cdd24927337840#/usr/libexec/gcc/aarch64-linux-gnu/13/cc1",
+          "path": "/usr/libexec/gcc/aarch64-linux-gnu/13/cc1",
+          "available_and_compatible": true
+        },
+        {
+          "role": "assembler",
+          "reference": "pinned-image:sha256:873ccd4bbd6101f6f8e46fd1a4502f2d0268edec40c4ae0476cdd24927337840#/usr/bin/as",
+          "path": "/usr/bin/as",
+          "available_and_compatible": true
+        },
+        {
+          "role": "elf-loader",
+          "reference": "pinned-image:sha256:873ccd4bbd6101f6f8e46fd1a4502f2d0268edec40c4ae0476cdd24927337840#/lib/ld-linux-aarch64.so.1",
+          "path": "/lib/ld-linux-aarch64.so.1",
+          "available_and_compatible": true
+        },
+        {
+          "role": "compiler-entry",
+          "reference": "captured-prerequisite:compiler-entry",
+          "path": "/deps/compiler/cc",
+          "available_and_compatible": false
+        },
+        {
+          "role": "source",
+          "reference": "captured-work:probe.c",
+          "path": "/sessions/missing-compiler-entry/work/Regression/FT13/probe.c",
+          "available_and_compatible": true
+        },
+        {
+          "role": "saved-env",
+          "reference": "captured-work:probe.env",
+          "path": "/sessions/missing-compiler-entry/work/Regression/FT13/probe.env",
+          "available_and_compatible": true
+        },
+        {
+          "role": "recipe-compile",
+          "reference": "captured-work:probe.compile.sh",
+          "path": "/sessions/missing-compiler-entry/work/Regression/FT13/probe.compile.sh",
+          "available_and_compatible": true
+        }
+      ],
+      "reasons": [
+        {
+          "code": "MissingDependency",
+          "role": "compiler-entry",
+          "reference": "captured-prerequisite:compiler-entry",
+          "path": "/deps/compiler/cc"
+        }
+      ],
+      "silent_fallback": false,
+      "original_test_outcome": "DiffPgmOut",
+      "preservation": "incomplete_prerequisites"
+    },
+    "guard_bypassed": false
+  },
+  {
+    "label": "missing-compiler-entry-legacy-control",
+    "gate": {
+      "phase": "compile",
+      "status": "blocked",
+      "dispatch_phase": false,
+      "checked": [
+        {
+          "role": "shell",
+          "reference": "pinned-image:sha256:873ccd4bbd6101f6f8e46fd1a4502f2d0268edec40c4ae0476cdd24927337840#/bin/bash",
+          "path": "/bin/bash",
+          "available_and_compatible": true
+        },
+        {
+          "role": "gcc",
+          "reference": "pinned-image:sha256:873ccd4bbd6101f6f8e46fd1a4502f2d0268edec40c4ae0476cdd24927337840#/usr/bin/gcc",
+          "path": "/usr/bin/gcc",
+          "available_and_compatible": true
+        },
+        {
+          "role": "cc1",
+          "reference": "pinned-image:sha256:873ccd4bbd6101f6f8e46fd1a4502f2d0268edec40c4ae0476cdd24927337840#/usr/libexec/gcc/aarch64-linux-gnu/13/cc1",
+          "path": "/usr/libexec/gcc/aarch64-linux-gnu/13/cc1",
+          "available_and_compatible": true
+        },
+        {
+          "role": "assembler",
+          "reference": "pinned-image:sha256:873ccd4bbd6101f6f8e46fd1a4502f2d0268edec40c4ae0476cdd24927337840#/usr/bin/as",
+          "path": "/usr/bin/as",
+          "available_and_compatible": true
+        },
+        {
+          "role": "elf-loader",
+          "reference": "pinned-image:sha256:873ccd4bbd6101f6f8e46fd1a4502f2d0268edec40c4ae0476cdd24927337840#/lib/ld-linux-aarch64.so.1",
+          "path": "/lib/ld-linux-aarch64.so.1",
+          "available_and_compatible": true
+        },
+        {
+          "role": "compiler-entry",
+          "reference": "captured-prerequisite:compiler-entry",
+          "path": "/deps/compiler/cc",
+          "available_and_compatible": false
+        },
+        {
+          "role": "source",
+          "reference": "captured-work:probe.c",
+          "path": "/sessions/missing-compiler-entry/work/Regression/FT13/probe.c",
+          "available_and_compatible": true
+        },
+        {
+          "role": "saved-env",
+          "reference": "captured-work:probe.env",
+          "path": "/sessions/missing-compiler-entry/work/Regression/FT13/probe.env",
+          "available_and_compatible": true
+        },
+        {
+          "role": "recipe-compile",
+          "reference": "captured-work:probe.compile.sh",
+          "path": "/sessions/missing-compiler-entry/work/Regression/FT13/probe.compile.sh",
+          "available_and_compatible": true
+        }
+      ],
+      "reasons": [
+        {
+          "code": "MissingDependency",
+          "role": "compiler-entry",
+          "reference": "captured-prerequisite:compiler-entry",
+          "path": "/deps/compiler/cc"
+        }
+      ],
+      "silent_fallback": false,
+      "original_test_outcome": "DiffPgmOut",
+      "preservation": "incomplete_prerequisites"
+    },
+    "guard_bypassed": true
+  },
+  {
+    "label": "missing-compiler-entry-recovered",
+    "gate": {
+      "phase": "compile",
+      "status": "ready",
+      "dispatch_phase": true,
+      "checked": [
+        {
+          "role": "shell",
+          "reference": "pinned-image:sha256:873ccd4bbd6101f6f8e46fd1a4502f2d0268edec40c4ae0476cdd24927337840#/bin/bash",
+          "path": "/bin/bash",
+          "available_and_compatible": true
+        },
+        {
+          "role": "gcc",
+          "reference": "pinned-image:sha256:873ccd4bbd6101f6f8e46fd1a4502f2d0268edec40c4ae0476cdd24927337840#/usr/bin/gcc",
+          "path": "/usr/bin/gcc",
+          "available_and_compatible": true
+        },
+        {
+          "role": "cc1",
+          "reference": "pinned-image:sha256:873ccd4bbd6101f6f8e46fd1a4502f2d0268edec40c4ae0476cdd24927337840#/usr/libexec/gcc/aarch64-linux-gnu/13/cc1",
+          "path": "/usr/libexec/gcc/aarch64-linux-gnu/13/cc1",
+          "available_and_compatible": true
+        },
+        {
+          "role": "assembler",
+          "reference": "pinned-image:sha256:873ccd4bbd6101f6f8e46fd1a4502f2d0268edec40c4ae0476cdd24927337840#/usr/bin/as",
+          "path": "/usr/bin/as",
+          "available_and_compatible": true
+        },
+        {
+          "role": "elf-loader",
+          "reference": "pinned-image:sha256:873ccd4bbd6101f6f8e46fd1a4502f2d0268edec40c4ae0476cdd24927337840#/lib/ld-linux-aarch64.so.1",
+          "path": "/lib/ld-linux-aarch64.so.1",
+          "available_and_compatible": true
+        },
+        {
+          "role": "compiler-entry",
+          "reference": "captured-prerequisite:compiler-entry",
+          "path": "/deps/compiler/cc",
+          "available_and_compatible": true
+        },
+        {
+          "role": "source",
+          "reference": "captured-work:probe.c",
+          "path": "/sessions/missing-compiler-entry/work/Regression/FT13/probe.c",
+          "available_and_compatible": true
+        },
+        {
+          "role": "saved-env",
+          "reference": "captured-work:probe.env",
+          "path": "/sessions/missing-compiler-entry/work/Regression/FT13/probe.env",
+          "available_and_compatible": true
+        },
+        {
+          "role": "recipe-compile",
+          "reference": "captured-work:probe.compile.sh",
+          "path": "/sessions/missing-compiler-entry/work/Regression/FT13/probe.compile.sh",
+          "available_and_compatible": true
+        }
+      ],
+      "reasons": [],
+      "silent_fallback": false,
+      "original_test_outcome": "DiffPgmOut",
+      "preservation": "declared_prerequisites_available"
+    },
+    "guard_bypassed": false
+  },
+  {
+    "label": "missing-runtime-blocked",
+    "gate": {
+      "phase": "run",
+      "status": "blocked",
+      "dispatch_phase": false,
+      "checked": [
+        {
+          "role": "shell",
+          "reference": "pinned-image:sha256:873ccd4bbd6101f6f8e46fd1a4502f2d0268edec40c4ae0476cdd24927337840#/bin/bash",
+          "path": "/bin/bash",
+          "available_and_compatible": true
+        },
+        {
+          "role": "elf-loader",
+          "reference": "pinned-image:sha256:873ccd4bbd6101f6f8e46fd1a4502f2d0268edec40c4ae0476cdd24927337840#/lib/ld-linux-aarch64.so.1",
+          "path": "/lib/ld-linux-aarch64.so.1",
+          "available_and_compatible": true
+        },
+        {
+          "role": "runtime",
+          "reference": "captured-prerequisite:runtime",
+          "path": "/deps/runtime/libft13.so",
+          "available_and_compatible": false
+        },
+        {
+          "role": "input",
+          "reference": "captured-prerequisite:input",
+          "path": "/deps/inputs/current.txt",
+          "available_and_compatible": true
+        },
+        {
+          "role": "protected-resource",
+          "reference": "captured-prerequisite:protected-resource",
+          "path": "/deps/protected/reference.txt",
+          "available_and_compatible": true
+        },
+        {
+          "role": "saved-env",
+          "reference": "captured-work:probe.env",
+          "path": "/sessions/missing-runtime/work/Regression/FT13/probe.env",
+          "available_and_compatible": true
+        },
+        {
+          "role": "binary",
+          "reference": "captured-work:probe",
+          "path": "/sessions/missing-runtime/work/Regression/FT13/probe",
+          "available_and_compatible": true
+        },
+        {
+          "role": "recipe-run",
+          "reference": "captured-work:probe.run.sh",
+          "path": "/sessions/missing-runtime/work/Regression/FT13/probe.run.sh",
+          "available_and_compatible": true
+        },
+        {
+          "role": "credential",
+          "reference": "fixture://ft13/protected-access",
+          "access": "authorized",
+          "available_and_compatible": true
+        }
+      ],
+      "reasons": [
+        {
+          "code": "MissingDependency",
+          "role": "runtime",
+          "reference": "captured-prerequisite:runtime",
+          "path": "/deps/runtime/libft13.so"
+        }
+      ],
+      "silent_fallback": false,
+      "original_test_outcome": "DiffPgmOut",
+      "preservation": "incomplete_prerequisites"
+    },
+    "guard_bypassed": false
+  },
+  {
+    "label": "missing-runtime-legacy-control",
+    "gate": {
+      "phase": "run",
+      "status": "blocked",
+      "dispatch_phase": false,
+      "checked": [
+        {
+          "role": "shell",
+          "reference": "pinned-image:sha256:873ccd4bbd6101f6f8e46fd1a4502f2d0268edec40c4ae0476cdd24927337840#/bin/bash",
+          "path": "/bin/bash",
+          "available_and_compatible": true
+        },
+        {
+          "role": "elf-loader",
+          "reference": "pinned-image:sha256:873ccd4bbd6101f6f8e46fd1a4502f2d0268edec40c4ae0476cdd24927337840#/lib/ld-linux-aarch64.so.1",
+          "path": "/lib/ld-linux-aarch64.so.1",
+          "available_and_compatible": true
+        },
+        {
+          "role": "runtime",
+          "reference": "captured-prerequisite:runtime",
+          "path": "/deps/runtime/libft13.so",
+          "available_and_compatible": false
+        },
+        {
+          "role": "input",
+          "reference": "captured-prerequisite:input",
+          "path": "/deps/inputs/current.txt",
+          "available_and_compatible": true
+        },
+        {
+          "role": "protected-resource",
+          "reference": "captured-prerequisite:protected-resource",
+          "path": "/deps/protected/reference.txt",
+          "available_and_compatible": true
+        },
+        {
+          "role": "saved-env",
+          "reference": "captured-work:probe.env",
+          "path": "/sessions/missing-runtime/work/Regression/FT13/probe.env",
+          "available_and_compatible": true
+        },
+        {
+          "role": "binary",
+          "reference": "captured-work:probe",
+          "path": "/sessions/missing-runtime/work/Regression/FT13/probe",
+          "available_and_compatible": true
+        },
+        {
+          "role": "recipe-run",
+          "reference": "captured-work:probe.run.sh",
+          "path": "/sessions/missing-runtime/work/Regression/FT13/probe.run.sh",
+          "available_and_compatible": true
+        },
+        {
+          "role": "credential",
+          "reference": "fixture://ft13/protected-access",
+          "access": "authorized",
+          "available_and_compatible": true
+        }
+      ],
+      "reasons": [
+        {
+          "code": "MissingDependency",
+          "role": "runtime",
+          "reference": "captured-prerequisite:runtime",
+          "path": "/deps/runtime/libft13.so"
+        }
+      ],
+      "silent_fallback": false,
+      "original_test_outcome": "DiffPgmOut",
+      "preservation": "incomplete_prerequisites"
+    },
+    "guard_bypassed": true
+  },
+  {
+    "label": "missing-runtime-recovered",
+    "gate": {
+      "phase": "run",
+      "status": "ready",
+      "dispatch_phase": true,
+      "checked": [
+        {
+          "role": "shell",
+          "reference": "pinned-image:sha256:873ccd4bbd6101f6f8e46fd1a4502f2d0268edec40c4ae0476cdd24927337840#/bin/bash",
+          "path": "/bin/bash",
+          "available_and_compatible": true
+        },
+        {
+          "role": "elf-loader",
+          "reference": "pinned-image:sha256:873ccd4bbd6101f6f8e46fd1a4502f2d0268edec40c4ae0476cdd24927337840#/lib/ld-linux-aarch64.so.1",
+          "path": "/lib/ld-linux-aarch64.so.1",
+          "available_and_compatible": true
+        },
+        {
+          "role": "runtime",
+          "reference": "captured-prerequisite:runtime",
+          "path": "/deps/runtime/libft13.so",
+          "available_and_compatible": true
+        },
+        {
+          "role": "input",
+          "reference": "captured-prerequisite:input",
+          "path": "/deps/inputs/current.txt",
+          "available_and_compatible": true
+        },
+        {
+          "role": "protected-resource",
+          "reference": "captured-prerequisite:protected-resource",
+          "path": "/deps/protected/reference.txt",
+          "available_and_compatible": true
+        },
+        {
+          "role": "saved-env",
+          "reference": "captured-work:probe.env",
+          "path": "/sessions/missing-runtime/work/Regression/FT13/probe.env",
+          "available_and_compatible": true
+        },
+        {
+          "role": "binary",
+          "reference": "captured-work:probe",
+          "path": "/sessions/missing-runtime/work/Regression/FT13/probe",
+          "available_and_compatible": true
+        },
+        {
+          "role": "recipe-run",
+          "reference": "captured-work:probe.run.sh",
+          "path": "/sessions/missing-runtime/work/Regression/FT13/probe.run.sh",
+          "available_and_compatible": true
+        },
+        {
+          "role": "credential",
+          "reference": "fixture://ft13/protected-access",
+          "access": "authorized",
+          "available_and_compatible": true
+        }
+      ],
+      "reasons": [],
+      "silent_fallback": false,
+      "original_test_outcome": "DiffPgmOut",
+      "preservation": "declared_prerequisites_available"
+    },
+    "guard_bypassed": false
+  },
+  {
+    "label": "dangling-input-blocked",
+    "gate": {
+      "phase": "run",
+      "status": "blocked",
+      "dispatch_phase": false,
+      "checked": [
+        {
+          "role": "shell",
+          "reference": "pinned-image:sha256:873ccd4bbd6101f6f8e46fd1a4502f2d0268edec40c4ae0476cdd24927337840#/bin/bash",
+          "path": "/bin/bash",
+          "available_and_compatible": true
+        },
+        {
+          "role": "elf-loader",
+          "reference": "pinned-image:sha256:873ccd4bbd6101f6f8e46fd1a4502f2d0268edec40c4ae0476cdd24927337840#/lib/ld-linux-aarch64.so.1",
+          "path": "/lib/ld-linux-aarch64.so.1",
+          "available_and_compatible": true
+        },
+        {
+          "role": "runtime",
+          "reference": "captured-prerequisite:runtime",
+          "path": "/deps/runtime/libft13.so",
+          "available_and_compatible": true
+        },
+        {
+          "role": "input",
+          "reference": "captured-prerequisite:input",
+          "path": "/deps/inputs/current.txt",
+          "available_and_compatible": false
+        },
+        {
+          "role": "protected-resource",
+          "reference": "captured-prerequisite:protected-resource",
+          "path": "/deps/protected/reference.txt",
+          "available_and_compatible": true
+        },
+        {
+          "role": "saved-env",
+          "reference": "captured-work:probe.env",
+          "path": "/sessions/dangling-input/work/Regression/FT13/probe.env",
+          "available_and_compatible": true
+        },
+        {
+          "role": "binary",
+          "reference": "captured-work:probe",
+          "path": "/sessions/dangling-input/work/Regression/FT13/probe",
+          "available_and_compatible": true
+        },
+        {
+          "role": "recipe-run",
+          "reference": "captured-work:probe.run.sh",
+          "path": "/sessions/dangling-input/work/Regression/FT13/probe.run.sh",
+          "available_and_compatible": true
+        },
+        {
+          "role": "credential",
+          "reference": "fixture://ft13/protected-access",
+          "access": "authorized",
+          "available_and_compatible": true
+        }
+      ],
+      "reasons": [
+        {
+          "code": "DanglingDependencyLink",
+          "role": "input",
+          "reference": "captured-prerequisite:input",
+          "path": "/deps/inputs/current.txt"
+        }
+      ],
+      "silent_fallback": false,
+      "original_test_outcome": "DiffPgmOut",
+      "preservation": "incomplete_prerequisites"
+    },
+    "guard_bypassed": false
+  },
+  {
+    "label": "dangling-input-legacy-control",
+    "gate": {
+      "phase": "run",
+      "status": "blocked",
+      "dispatch_phase": false,
+      "checked": [
+        {
+          "role": "shell",
+          "reference": "pinned-image:sha256:873ccd4bbd6101f6f8e46fd1a4502f2d0268edec40c4ae0476cdd24927337840#/bin/bash",
+          "path": "/bin/bash",
+          "available_and_compatible": true
+        },
+        {
+          "role": "elf-loader",
+          "reference": "pinned-image:sha256:873ccd4bbd6101f6f8e46fd1a4502f2d0268edec40c4ae0476cdd24927337840#/lib/ld-linux-aarch64.so.1",
+          "path": "/lib/ld-linux-aarch64.so.1",
+          "available_and_compatible": true
+        },
+        {
+          "role": "runtime",
+          "reference": "captured-prerequisite:runtime",
+          "path": "/deps/runtime/libft13.so",
+          "available_and_compatible": true
+        },
+        {
+          "role": "input",
+          "reference": "captured-prerequisite:input",
+          "path": "/deps/inputs/current.txt",
+          "available_and_compatible": false
+        },
+        {
+          "role": "protected-resource",
+          "reference": "captured-prerequisite:protected-resource",
+          "path": "/deps/protected/reference.txt",
+          "available_and_compatible": true
+        },
+        {
+          "role": "saved-env",
+          "reference": "captured-work:probe.env",
+          "path": "/sessions/dangling-input/work/Regression/FT13/probe.env",
+          "available_and_compatible": true
+        },
+        {
+          "role": "binary",
+          "reference": "captured-work:probe",
+          "path": "/sessions/dangling-input/work/Regression/FT13/probe",
+          "available_and_compatible": true
+        },
+        {
+          "role": "recipe-run",
+          "reference": "captured-work:probe.run.sh",
+          "path": "/sessions/dangling-input/work/Regression/FT13/probe.run.sh",
+          "available_and_compatible": true
+        },
+        {
+          "role": "credential",
+          "reference": "fixture://ft13/protected-access",
+          "access": "authorized",
+          "available_and_compatible": true
+        }
+      ],
+      "reasons": [
+        {
+          "code": "DanglingDependencyLink",
+          "role": "input",
+          "reference": "captured-prerequisite:input",
+          "path": "/deps/inputs/current.txt"
+        }
+      ],
+      "silent_fallback": false,
+      "original_test_outcome": "DiffPgmOut",
+      "preservation": "incomplete_prerequisites"
+    },
+    "guard_bypassed": true
+  },
+  {
+    "label": "dangling-input-recovered",
+    "gate": {
+      "phase": "run",
+      "status": "ready",
+      "dispatch_phase": true,
+      "checked": [
+        {
+          "role": "shell",
+          "reference": "pinned-image:sha256:873ccd4bbd6101f6f8e46fd1a4502f2d0268edec40c4ae0476cdd24927337840#/bin/bash",
+          "path": "/bin/bash",
+          "available_and_compatible": true
+        },
+        {
+          "role": "elf-loader",
+          "reference": "pinned-image:sha256:873ccd4bbd6101f6f8e46fd1a4502f2d0268edec40c4ae0476cdd24927337840#/lib/ld-linux-aarch64.so.1",
+          "path": "/lib/ld-linux-aarch64.so.1",
+          "available_and_compatible": true
+        },
+        {
+          "role": "runtime",
+          "reference": "captured-prerequisite:runtime",
+          "path": "/deps/runtime/libft13.so",
+          "available_and_compatible": true
+        },
+        {
+          "role": "input",
+          "reference": "captured-prerequisite:input",
+          "path": "/deps/inputs/current.txt",
+          "available_and_compatible": true
+        },
+        {
+          "role": "protected-resource",
+          "reference": "captured-prerequisite:protected-resource",
+          "path": "/deps/protected/reference.txt",
+          "available_and_compatible": true
+        },
+        {
+          "role": "saved-env",
+          "reference": "captured-work:probe.env",
+          "path": "/sessions/dangling-input/work/Regression/FT13/probe.env",
+          "available_and_compatible": true
+        },
+        {
+          "role": "binary",
+          "reference": "captured-work:probe",
+          "path": "/sessions/dangling-input/work/Regression/FT13/probe",
+          "available_and_compatible": true
+        },
+        {
+          "role": "recipe-run",
+          "reference": "captured-work:probe.run.sh",
+          "path": "/sessions/dangling-input/work/Regression/FT13/probe.run.sh",
+          "available_and_compatible": true
+        },
+        {
+          "role": "credential",
+          "reference": "fixture://ft13/protected-access",
+          "access": "authorized",
+          "available_and_compatible": true
+        }
+      ],
+      "reasons": [],
+      "silent_fallback": false,
+      "original_test_outcome": "DiffPgmOut",
+      "preservation": "declared_prerequisites_available"
+    },
+    "guard_bypassed": false
+  },
+  {
+    "label": "missing-protected-resource-blocked",
+    "gate": {
+      "phase": "run",
+      "status": "blocked",
+      "dispatch_phase": false,
+      "checked": [
+        {
+          "role": "shell",
+          "reference": "pinned-image:sha256:873ccd4bbd6101f6f8e46fd1a4502f2d0268edec40c4ae0476cdd24927337840#/bin/bash",
+          "path": "/bin/bash",
+          "available_and_compatible": true
+        },
+        {
+          "role": "elf-loader",
+          "reference": "pinned-image:sha256:873ccd4bbd6101f6f8e46fd1a4502f2d0268edec40c4ae0476cdd24927337840#/lib/ld-linux-aarch64.so.1",
+          "path": "/lib/ld-linux-aarch64.so.1",
+          "available_and_compatible": true
+        },
+        {
+          "role": "runtime",
+          "reference": "captured-prerequisite:runtime",
+          "path": "/deps/runtime/libft13.so",
+          "available_and_compatible": true
+        },
+        {
+          "role": "input",
+          "reference": "captured-prerequisite:input",
+          "path": "/deps/inputs/current.txt",
+          "available_and_compatible": true
+        },
+        {
+          "role": "protected-resource",
+          "reference": "captured-prerequisite:protected-resource",
+          "path": "/deps/protected/reference.txt",
+          "available_and_compatible": false
+        },
+        {
+          "role": "saved-env",
+          "reference": "captured-work:probe.env",
+          "path": "/sessions/missing-protected-resource/work/Regression/FT13/probe.env",
+          "available_and_compatible": true
+        },
+        {
+          "role": "binary",
+          "reference": "captured-work:probe",
+          "path": "/sessions/missing-protected-resource/work/Regression/FT13/probe",
+          "available_and_compatible": true
+        },
+        {
+          "role": "recipe-run",
+          "reference": "captured-work:probe.run.sh",
+          "path": "/sessions/missing-protected-resource/work/Regression/FT13/probe.run.sh",
+          "available_and_compatible": true
+        },
+        {
+          "role": "credential",
+          "reference": "fixture://ft13/protected-access",
+          "access": "authorized",
+          "available_and_compatible": true
+        }
+      ],
+      "reasons": [
+        {
+          "code": "MissingDependency",
+          "role": "protected-resource",
+          "reference": "captured-prerequisite:protected-resource",
+          "path": "/deps/protected/reference.txt"
+        }
+      ],
+      "silent_fallback": false,
+      "original_test_outcome": "DiffPgmOut",
+      "preservation": "incomplete_prerequisites"
+    },
+    "guard_bypassed": false
+  },
+  {
+    "label": "missing-protected-resource-legacy-control",
+    "gate": {
+      "phase": "run",
+      "status": "blocked",
+      "dispatch_phase": false,
+      "checked": [
+        {
+          "role": "shell",
+          "reference": "pinned-image:sha256:873ccd4bbd6101f6f8e46fd1a4502f2d0268edec40c4ae0476cdd24927337840#/bin/bash",
+          "path": "/bin/bash",
+          "available_and_compatible": true
+        },
+        {
+          "role": "elf-loader",
+          "reference": "pinned-image:sha256:873ccd4bbd6101f6f8e46fd1a4502f2d0268edec40c4ae0476cdd24927337840#/lib/ld-linux-aarch64.so.1",
+          "path": "/lib/ld-linux-aarch64.so.1",
+          "available_and_compatible": true
+        },
+        {
+          "role": "runtime",
+          "reference": "captured-prerequisite:runtime",
+          "path": "/deps/runtime/libft13.so",
+          "available_and_compatible": true
+        },
+        {
+          "role": "input",
+          "reference": "captured-prerequisite:input",
+          "path": "/deps/inputs/current.txt",
+          "available_and_compatible": true
+        },
+        {
+          "role": "protected-resource",
+          "reference": "captured-prerequisite:protected-resource",
+          "path": "/deps/protected/reference.txt",
+          "available_and_compatible": false
+        },
+        {
+          "role": "saved-env",
+          "reference": "captured-work:probe.env",
+          "path": "/sessions/missing-protected-resource/work/Regression/FT13/probe.env",
+          "available_and_compatible": true
+        },
+        {
+          "role": "binary",
+          "reference": "captured-work:probe",
+          "path": "/sessions/missing-protected-resource/work/Regression/FT13/probe",
+          "available_and_compatible": true
+        },
+        {
+          "role": "recipe-run",
+          "reference": "captured-work:probe.run.sh",
+          "path": "/sessions/missing-protected-resource/work/Regression/FT13/probe.run.sh",
+          "available_and_compatible": true
+        },
+        {
+          "role": "credential",
+          "reference": "fixture://ft13/protected-access",
+          "access": "authorized",
+          "available_and_compatible": true
+        }
+      ],
+      "reasons": [
+        {
+          "code": "MissingDependency",
+          "role": "protected-resource",
+          "reference": "captured-prerequisite:protected-resource",
+          "path": "/deps/protected/reference.txt"
+        }
+      ],
+      "silent_fallback": false,
+      "original_test_outcome": "DiffPgmOut",
+      "preservation": "incomplete_prerequisites"
+    },
+    "guard_bypassed": true
+  },
+  {
+    "label": "missing-protected-resource-recovered",
+    "gate": {
+      "phase": "run",
+      "status": "ready",
+      "dispatch_phase": true,
+      "checked": [
+        {
+          "role": "shell",
+          "reference": "pinned-image:sha256:873ccd4bbd6101f6f8e46fd1a4502f2d0268edec40c4ae0476cdd24927337840#/bin/bash",
+          "path": "/bin/bash",
+          "available_and_compatible": true
+        },
+        {
+          "role": "elf-loader",
+          "reference": "pinned-image:sha256:873ccd4bbd6101f6f8e46fd1a4502f2d0268edec40c4ae0476cdd24927337840#/lib/ld-linux-aarch64.so.1",
+          "path": "/lib/ld-linux-aarch64.so.1",
+          "available_and_compatible": true
+        },
+        {
+          "role": "runtime",
+          "reference": "captured-prerequisite:runtime",
+          "path": "/deps/runtime/libft13.so",
+          "available_and_compatible": true
+        },
+        {
+          "role": "input",
+          "reference": "captured-prerequisite:input",
+          "path": "/deps/inputs/current.txt",
+          "available_and_compatible": true
+        },
+        {
+          "role": "protected-resource",
+          "reference": "captured-prerequisite:protected-resource",
+          "path": "/deps/protected/reference.txt",
+          "available_and_compatible": true
+        },
+        {
+          "role": "saved-env",
+          "reference": "captured-work:probe.env",
+          "path": "/sessions/missing-protected-resource/work/Regression/FT13/probe.env",
+          "available_and_compatible": true
+        },
+        {
+          "role": "binary",
+          "reference": "captured-work:probe",
+          "path": "/sessions/missing-protected-resource/work/Regression/FT13/probe",
+          "available_and_compatible": true
+        },
+        {
+          "role": "recipe-run",
+          "reference": "captured-work:probe.run.sh",
+          "path": "/sessions/missing-protected-resource/work/Regression/FT13/probe.run.sh",
+          "available_and_compatible": true
+        },
+        {
+          "role": "credential",
+          "reference": "fixture://ft13/protected-access",
+          "access": "authorized",
+          "available_and_compatible": true
+        }
+      ],
+      "reasons": [],
+      "silent_fallback": false,
+      "original_test_outcome": "DiffPgmOut",
+      "preservation": "declared_prerequisites_available"
+    },
+    "guard_bypassed": false
+  },
+  {
+    "label": "missing-credential-blocked",
+    "gate": {
+      "phase": "run",
+      "status": "blocked",
+      "dispatch_phase": false,
+      "checked": [
+        {
+          "role": "shell",
+          "reference": "pinned-image:sha256:873ccd4bbd6101f6f8e46fd1a4502f2d0268edec40c4ae0476cdd24927337840#/bin/bash",
+          "path": "/bin/bash",
+          "available_and_compatible": true
+        },
+        {
+          "role": "elf-loader",
+          "reference": "pinned-image:sha256:873ccd4bbd6101f6f8e46fd1a4502f2d0268edec40c4ae0476cdd24927337840#/lib/ld-linux-aarch64.so.1",
+          "path": "/lib/ld-linux-aarch64.so.1",
+          "available_and_compatible": true
+        },
+        {
+          "role": "runtime",
+          "reference": "captured-prerequisite:runtime",
+          "path": "/deps/runtime/libft13.so",
+          "available_and_compatible": true
+        },
+        {
+          "role": "input",
+          "reference": "captured-prerequisite:input",
+          "path": "/deps/inputs/current.txt",
+          "available_and_compatible": true
+        },
+        {
+          "role": "protected-resource",
+          "reference": "captured-prerequisite:protected-resource",
+          "path": "/deps/protected/reference.txt",
+          "available_and_compatible": true
+        },
+        {
+          "role": "saved-env",
+          "reference": "captured-work:probe.env",
+          "path": "/sessions/missing-credential/work/Regression/FT13/probe.env",
+          "available_and_compatible": true
+        },
+        {
+          "role": "binary",
+          "reference": "captured-work:probe",
+          "path": "/sessions/missing-credential/work/Regression/FT13/probe",
+          "available_and_compatible": true
+        },
+        {
+          "role": "recipe-run",
+          "reference": "captured-work:probe.run.sh",
+          "path": "/sessions/missing-credential/work/Regression/FT13/probe.run.sh",
+          "available_and_compatible": true
+        },
+        {
+          "role": "credential",
+          "reference": "fixture://ft13/protected-access",
+          "access": "missing",
+          "available_and_compatible": false
+        }
+      ],
+      "reasons": [
+        {
+          "code": "MissingCredential",
+          "role": "credential",
+          "reference": "fixture://ft13/protected-access",
+          "access": "missing"
+        }
+      ],
+      "silent_fallback": false,
+      "original_test_outcome": "DiffPgmOut",
+      "preservation": "incomplete_prerequisites"
+    },
+    "guard_bypassed": false
+  },
+  {
+    "label": "missing-credential-legacy-control",
+    "gate": {
+      "phase": "run",
+      "status": "blocked",
+      "dispatch_phase": false,
+      "checked": [
+        {
+          "role": "shell",
+          "reference": "pinned-image:sha256:873ccd4bbd6101f6f8e46fd1a4502f2d0268edec40c4ae0476cdd24927337840#/bin/bash",
+          "path": "/bin/bash",
+          "available_and_compatible": true
+        },
+        {
+          "role": "elf-loader",
+          "reference": "pinned-image:sha256:873ccd4bbd6101f6f8e46fd1a4502f2d0268edec40c4ae0476cdd24927337840#/lib/ld-linux-aarch64.so.1",
+          "path": "/lib/ld-linux-aarch64.so.1",
+          "available_and_compatible": true
+        },
+        {
+          "role": "runtime",
+          "reference": "captured-prerequisite:runtime",
+          "path": "/deps/runtime/libft13.so",
+          "available_and_compatible": true
+        },
+        {
+          "role": "input",
+          "reference": "captured-prerequisite:input",
+          "path": "/deps/inputs/current.txt",
+          "available_and_compatible": true
+        },
+        {
+          "role": "protected-resource",
+          "reference": "captured-prerequisite:protected-resource",
+          "path": "/deps/protected/reference.txt",
+          "available_and_compatible": true
+        },
+        {
+          "role": "saved-env",
+          "reference": "captured-work:probe.env",
+          "path": "/sessions/missing-credential/work/Regression/FT13/probe.env",
+          "available_and_compatible": true
+        },
+        {
+          "role": "binary",
+          "reference": "captured-work:probe",
+          "path": "/sessions/missing-credential/work/Regression/FT13/probe",
+          "available_and_compatible": true
+        },
+        {
+          "role": "recipe-run",
+          "reference": "captured-work:probe.run.sh",
+          "path": "/sessions/missing-credential/work/Regression/FT13/probe.run.sh",
+          "available_and_compatible": true
+        },
+        {
+          "role": "credential",
+          "reference": "fixture://ft13/protected-access",
+          "access": "missing",
+          "available_and_compatible": false
+        }
+      ],
+      "reasons": [
+        {
+          "code": "MissingCredential",
+          "role": "credential",
+          "reference": "fixture://ft13/protected-access",
+          "access": "missing"
+        }
+      ],
+      "silent_fallback": false,
+      "original_test_outcome": "DiffPgmOut",
+      "preservation": "incomplete_prerequisites"
+    },
+    "guard_bypassed": true
+  },
+  {
+    "label": "missing-credential-recovered",
+    "gate": {
+      "phase": "run",
+      "status": "ready",
+      "dispatch_phase": true,
+      "checked": [
+        {
+          "role": "shell",
+          "reference": "pinned-image:sha256:873ccd4bbd6101f6f8e46fd1a4502f2d0268edec40c4ae0476cdd24927337840#/bin/bash",
+          "path": "/bin/bash",
+          "available_and_compatible": true
+        },
+        {
+          "role": "elf-loader",
+          "reference": "pinned-image:sha256:873ccd4bbd6101f6f8e46fd1a4502f2d0268edec40c4ae0476cdd24927337840#/lib/ld-linux-aarch64.so.1",
+          "path": "/lib/ld-linux-aarch64.so.1",
+          "available_and_compatible": true
+        },
+        {
+          "role": "runtime",
+          "reference": "captured-prerequisite:runtime",
+          "path": "/deps/runtime/libft13.so",
+          "available_and_compatible": true
+        },
+        {
+          "role": "input",
+          "reference": "captured-prerequisite:input",
+          "path": "/deps/inputs/current.txt",
+          "available_and_compatible": true
+        },
+        {
+          "role": "protected-resource",
+          "reference": "captured-prerequisite:protected-resource",
+          "path": "/deps/protected/reference.txt",
+          "available_and_compatible": true
+        },
+        {
+          "role": "saved-env",
+          "reference": "captured-work:probe.env",
+          "path": "/sessions/missing-credential/work/Regression/FT13/probe.env",
+          "available_and_compatible": true
+        },
+        {
+          "role": "binary",
+          "reference": "captured-work:probe",
+          "path": "/sessions/missing-credential/work/Regression/FT13/probe",
+          "available_and_compatible": true
+        },
+        {
+          "role": "recipe-run",
+          "reference": "captured-work:probe.run.sh",
+          "path": "/sessions/missing-credential/work/Regression/FT13/probe.run.sh",
+          "available_and_compatible": true
+        },
+        {
+          "role": "credential",
+          "reference": "fixture://ft13/protected-access",
+          "access": "authorized",
+          "available_and_compatible": true
+        }
+      ],
+      "reasons": [],
+      "silent_fallback": false,
+      "original_test_outcome": "DiffPgmOut",
+      "preservation": "declared_prerequisites_available"
+    },
+    "guard_bypassed": false
+  },
+  {
+    "label": "invalid-credential-blocked",
+    "gate": {
+      "phase": "run",
+      "status": "blocked",
+      "dispatch_phase": false,
+      "checked": [
+        {
+          "role": "shell",
+          "reference": "pinned-image:sha256:873ccd4bbd6101f6f8e46fd1a4502f2d0268edec40c4ae0476cdd24927337840#/bin/bash",
+          "path": "/bin/bash",
+          "available_and_compatible": true
+        },
+        {
+          "role": "elf-loader",
+          "reference": "pinned-image:sha256:873ccd4bbd6101f6f8e46fd1a4502f2d0268edec40c4ae0476cdd24927337840#/lib/ld-linux-aarch64.so.1",
+          "path": "/lib/ld-linux-aarch64.so.1",
+          "available_and_compatible": true
+        },
+        {
+          "role": "runtime",
+          "reference": "captured-prerequisite:runtime",
+          "path": "/deps/runtime/libft13.so",
+          "available_and_compatible": true
+        },
+        {
+          "role": "input",
+          "reference": "captured-prerequisite:input",
+          "path": "/deps/inputs/current.txt",
+          "available_and_compatible": true
+        },
+        {
+          "role": "protected-resource",
+          "reference": "captured-prerequisite:protected-resource",
+          "path": "/deps/protected/reference.txt",
+          "available_and_compatible": true
+        },
+        {
+          "role": "saved-env",
+          "reference": "captured-work:probe.env",
+          "path": "/sessions/invalid-credential/work/Regression/FT13/probe.env",
+          "available_and_compatible": true
+        },
+        {
+          "role": "binary",
+          "reference": "captured-work:probe",
+          "path": "/sessions/invalid-credential/work/Regression/FT13/probe",
+          "available_and_compatible": true
+        },
+        {
+          "role": "recipe-run",
+          "reference": "captured-work:probe.run.sh",
+          "path": "/sessions/invalid-credential/work/Regression/FT13/probe.run.sh",
+          "available_and_compatible": true
+        },
+        {
+          "role": "credential",
+          "reference": "fixture://ft13/protected-access",
+          "access": "rejected",
+          "available_and_compatible": false
+        }
+      ],
+      "reasons": [
+        {
+          "code": "CredentialRejected",
+          "role": "credential",
+          "reference": "fixture://ft13/protected-access",
+          "access": "rejected"
+        }
+      ],
+      "silent_fallback": false,
+      "original_test_outcome": "DiffPgmOut",
+      "preservation": "incomplete_prerequisites"
+    },
+    "guard_bypassed": false
+  },
+  {
+    "label": "invalid-credential-legacy-control",
+    "gate": {
+      "phase": "run",
+      "status": "blocked",
+      "dispatch_phase": false,
+      "checked": [
+        {
+          "role": "shell",
+          "reference": "pinned-image:sha256:873ccd4bbd6101f6f8e46fd1a4502f2d0268edec40c4ae0476cdd24927337840#/bin/bash",
+          "path": "/bin/bash",
+          "available_and_compatible": true
+        },
+        {
+          "role": "elf-loader",
+          "reference": "pinned-image:sha256:873ccd4bbd6101f6f8e46fd1a4502f2d0268edec40c4ae0476cdd24927337840#/lib/ld-linux-aarch64.so.1",
+          "path": "/lib/ld-linux-aarch64.so.1",
+          "available_and_compatible": true
+        },
+        {
+          "role": "runtime",
+          "reference": "captured-prerequisite:runtime",
+          "path": "/deps/runtime/libft13.so",
+          "available_and_compatible": true
+        },
+        {
+          "role": "input",
+          "reference": "captured-prerequisite:input",
+          "path": "/deps/inputs/current.txt",
+          "available_and_compatible": true
+        },
+        {
+          "role": "protected-resource",
+          "reference": "captured-prerequisite:protected-resource",
+          "path": "/deps/protected/reference.txt",
+          "available_and_compatible": true
+        },
+        {
+          "role": "saved-env",
+          "reference": "captured-work:probe.env",
+          "path": "/sessions/invalid-credential/work/Regression/FT13/probe.env",
+          "available_and_compatible": true
+        },
+        {
+          "role": "binary",
+          "reference": "captured-work:probe",
+          "path": "/sessions/invalid-credential/work/Regression/FT13/probe",
+          "available_and_compatible": true
+        },
+        {
+          "role": "recipe-run",
+          "reference": "captured-work:probe.run.sh",
+          "path": "/sessions/invalid-credential/work/Regression/FT13/probe.run.sh",
+          "available_and_compatible": true
+        },
+        {
+          "role": "credential",
+          "reference": "fixture://ft13/protected-access",
+          "access": "rejected",
+          "available_and_compatible": false
+        }
+      ],
+      "reasons": [
+        {
+          "code": "CredentialRejected",
+          "role": "credential",
+          "reference": "fixture://ft13/protected-access",
+          "access": "rejected"
+        }
+      ],
+      "silent_fallback": false,
+      "original_test_outcome": "DiffPgmOut",
+      "preservation": "incomplete_prerequisites"
+    },
+    "guard_bypassed": true
+  },
+  {
+    "label": "invalid-credential-recovered",
+    "gate": {
+      "phase": "run",
+      "status": "ready",
+      "dispatch_phase": true,
+      "checked": [
+        {
+          "role": "shell",
+          "reference": "pinned-image:sha256:873ccd4bbd6101f6f8e46fd1a4502f2d0268edec40c4ae0476cdd24927337840#/bin/bash",
+          "path": "/bin/bash",
+          "available_and_compatible": true
+        },
+        {
+          "role": "elf-loader",
+          "reference": "pinned-image:sha256:873ccd4bbd6101f6f8e46fd1a4502f2d0268edec40c4ae0476cdd24927337840#/lib/ld-linux-aarch64.so.1",
+          "path": "/lib/ld-linux-aarch64.so.1",
+          "available_and_compatible": true
+        },
+        {
+          "role": "runtime",
+          "reference": "captured-prerequisite:runtime",
+          "path": "/deps/runtime/libft13.so",
+          "available_and_compatible": true
+        },
+        {
+          "role": "input",
+          "reference": "captured-prerequisite:input",
+          "path": "/deps/inputs/current.txt",
+          "available_and_compatible": true
+        },
+        {
+          "role": "protected-resource",
+          "reference": "captured-prerequisite:protected-resource",
+          "path": "/deps/protected/reference.txt",
+          "available_and_compatible": true
+        },
+        {
+          "role": "saved-env",
+          "reference": "captured-work:probe.env",
+          "path": "/sessions/invalid-credential/work/Regression/FT13/probe.env",
+          "available_and_compatible": true
+        },
+        {
+          "role": "binary",
+          "reference": "captured-work:probe",
+          "path": "/sessions/invalid-credential/work/Regression/FT13/probe",
+          "available_and_compatible": true
+        },
+        {
+          "role": "recipe-run",
+          "reference": "captured-work:probe.run.sh",
+          "path": "/sessions/invalid-credential/work/Regression/FT13/probe.run.sh",
+          "available_and_compatible": true
+        },
+        {
+          "role": "credential",
+          "reference": "fixture://ft13/protected-access",
+          "access": "authorized",
+          "available_and_compatible": true
+        }
+      ],
+      "reasons": [],
+      "silent_fallback": false,
+      "original_test_outcome": "DiffPgmOut",
+      "preservation": "declared_prerequisites_available"
+    },
+    "guard_bypassed": false
+  },
+  {
+    "label": "missing-comparator-blocked",
+    "gate": {
+      "phase": "compare-out",
+      "status": "blocked",
+      "dispatch_phase": false,
+      "checked": [
+        {
+          "role": "shell",
+          "reference": "pinned-image:sha256:873ccd4bbd6101f6f8e46fd1a4502f2d0268edec40c4ae0476cdd24927337840#/bin/bash",
+          "path": "/bin/bash",
+          "available_and_compatible": true
+        },
+        {
+          "role": "perl",
+          "reference": "pinned-image:sha256:873ccd4bbd6101f6f8e46fd1a4502f2d0268edec40c4ae0476cdd24927337840#/usr/bin/perl",
+          "path": "/usr/bin/perl",
+          "available_and_compatible": true
+        },
+        {
+          "role": "elf-loader",
+          "reference": "pinned-image:sha256:873ccd4bbd6101f6f8e46fd1a4502f2d0268edec40c4ae0476cdd24927337840#/lib/ld-linux-aarch64.so.1",
+          "path": "/lib/ld-linux-aarch64.so.1",
+          "available_and_compatible": true
+        },
+        {
+          "role": "comparator",
+          "reference": "captured-prerequisite:comparator",
+          "path": "/deps/comparator/compare.pl",
+          "available_and_compatible": false
+        },
+        {
+          "role": "baseline",
+          "reference": "captured-prerequisite:baseline",
+          "path": "/fixtures/groups/Regression/FT13/Masters/probe.out",
+          "available_and_compatible": true
+        },
+        {
+          "role": "saved-env",
+          "reference": "captured-work:probe.env",
+          "path": "/sessions/missing-comparator/work/Regression/FT13/probe.env",
+          "available_and_compatible": true
+        },
+        {
+          "role": "recipe-compare-out",
+          "reference": "captured-work:probe.compare-out.sh",
+          "path": "/sessions/missing-comparator/work/Regression/FT13/probe.compare-out.sh",
+          "available_and_compatible": true
+        }
+      ],
+      "reasons": [
+        {
+          "code": "MissingDependency",
+          "role": "comparator",
+          "reference": "captured-prerequisite:comparator",
+          "path": "/deps/comparator/compare.pl"
+        }
+      ],
+      "silent_fallback": false,
+      "original_test_outcome": "DiffPgmOut",
+      "preservation": "incomplete_prerequisites"
+    },
+    "guard_bypassed": false
+  },
+  {
+    "label": "missing-comparator-legacy-control",
+    "gate": {
+      "phase": "compare-out",
+      "status": "blocked",
+      "dispatch_phase": false,
+      "checked": [
+        {
+          "role": "shell",
+          "reference": "pinned-image:sha256:873ccd4bbd6101f6f8e46fd1a4502f2d0268edec40c4ae0476cdd24927337840#/bin/bash",
+          "path": "/bin/bash",
+          "available_and_compatible": true
+        },
+        {
+          "role": "perl",
+          "reference": "pinned-image:sha256:873ccd4bbd6101f6f8e46fd1a4502f2d0268edec40c4ae0476cdd24927337840#/usr/bin/perl",
+          "path": "/usr/bin/perl",
+          "available_and_compatible": true
+        },
+        {
+          "role": "elf-loader",
+          "reference": "pinned-image:sha256:873ccd4bbd6101f6f8e46fd1a4502f2d0268edec40c4ae0476cdd24927337840#/lib/ld-linux-aarch64.so.1",
+          "path": "/lib/ld-linux-aarch64.so.1",
+          "available_and_compatible": true
+        },
+        {
+          "role": "comparator",
+          "reference": "captured-prerequisite:comparator",
+          "path": "/deps/comparator/compare.pl",
+          "available_and_compatible": false
+        },
+        {
+          "role": "baseline",
+          "reference": "captured-prerequisite:baseline",
+          "path": "/fixtures/groups/Regression/FT13/Masters/probe.out",
+          "available_and_compatible": true
+        },
+        {
+          "role": "saved-env",
+          "reference": "captured-work:probe.env",
+          "path": "/sessions/missing-comparator/work/Regression/FT13/probe.env",
+          "available_and_compatible": true
+        },
+        {
+          "role": "recipe-compare-out",
+          "reference": "captured-work:probe.compare-out.sh",
+          "path": "/sessions/missing-comparator/work/Regression/FT13/probe.compare-out.sh",
+          "available_and_compatible": true
+        }
+      ],
+      "reasons": [
+        {
+          "code": "MissingDependency",
+          "role": "comparator",
+          "reference": "captured-prerequisite:comparator",
+          "path": "/deps/comparator/compare.pl"
+        }
+      ],
+      "silent_fallback": false,
+      "original_test_outcome": "DiffPgmOut",
+      "preservation": "incomplete_prerequisites"
+    },
+    "guard_bypassed": true
+  },
+  {
+    "label": "missing-comparator-recovered",
+    "gate": {
+      "phase": "compare-out",
+      "status": "ready",
+      "dispatch_phase": true,
+      "checked": [
+        {
+          "role": "shell",
+          "reference": "pinned-image:sha256:873ccd4bbd6101f6f8e46fd1a4502f2d0268edec40c4ae0476cdd24927337840#/bin/bash",
+          "path": "/bin/bash",
+          "available_and_compatible": true
+        },
+        {
+          "role": "perl",
+          "reference": "pinned-image:sha256:873ccd4bbd6101f6f8e46fd1a4502f2d0268edec40c4ae0476cdd24927337840#/usr/bin/perl",
+          "path": "/usr/bin/perl",
+          "available_and_compatible": true
+        },
+        {
+          "role": "elf-loader",
+          "reference": "pinned-image:sha256:873ccd4bbd6101f6f8e46fd1a4502f2d0268edec40c4ae0476cdd24927337840#/lib/ld-linux-aarch64.so.1",
+          "path": "/lib/ld-linux-aarch64.so.1",
+          "available_and_compatible": true
+        },
+        {
+          "role": "comparator",
+          "reference": "captured-prerequisite:comparator",
+          "path": "/deps/comparator/compare.pl",
+          "available_and_compatible": true
+        },
+        {
+          "role": "baseline",
+          "reference": "captured-prerequisite:baseline",
+          "path": "/fixtures/groups/Regression/FT13/Masters/probe.out",
+          "available_and_compatible": true
+        },
+        {
+          "role": "saved-env",
+          "reference": "captured-work:probe.env",
+          "path": "/sessions/missing-comparator/work/Regression/FT13/probe.env",
+          "available_and_compatible": true
+        },
+        {
+          "role": "recipe-compare-out",
+          "reference": "captured-work:probe.compare-out.sh",
+          "path": "/sessions/missing-comparator/work/Regression/FT13/probe.compare-out.sh",
+          "available_and_compatible": true
+        }
+      ],
+      "reasons": [],
+      "silent_fallback": false,
+      "original_test_outcome": "DiffPgmOut",
+      "preservation": "declared_prerequisites_available"
+    },
+    "guard_bypassed": false
+  },
+  {
+    "label": "missing-baseline-blocked",
+    "gate": {
+      "phase": "compare-out",
+      "status": "blocked",
+      "dispatch_phase": false,
+      "checked": [
+        {
+          "role": "shell",
+          "reference": "pinned-image:sha256:873ccd4bbd6101f6f8e46fd1a4502f2d0268edec40c4ae0476cdd24927337840#/bin/bash",
+          "path": "/bin/bash",
+          "available_and_compatible": true
+        },
+        {
+          "role": "perl",
+          "reference": "pinned-image:sha256:873ccd4bbd6101f6f8e46fd1a4502f2d0268edec40c4ae0476cdd24927337840#/usr/bin/perl",
+          "path": "/usr/bin/perl",
+          "available_and_compatible": true
+        },
+        {
+          "role": "elf-loader",
+          "reference": "pinned-image:sha256:873ccd4bbd6101f6f8e46fd1a4502f2d0268edec40c4ae0476cdd24927337840#/lib/ld-linux-aarch64.so.1",
+          "path": "/lib/ld-linux-aarch64.so.1",
+          "available_and_compatible": true
+        },
+        {
+          "role": "comparator",
+          "reference": "captured-prerequisite:comparator",
+          "path": "/deps/comparator/compare.pl",
+          "available_and_compatible": true
+        },
+        {
+          "role": "baseline",
+          "reference": "captured-prerequisite:baseline",
+          "path": "/fixtures/groups/Regression/FT13/Masters/probe.out",
+          "available_and_compatible": false
+        },
+        {
+          "role": "saved-env",
+          "reference": "captured-work:probe.env",
+          "path": "/sessions/missing-baseline/work/Regression/FT13/probe.env",
+          "available_and_compatible": true
+        },
+        {
+          "role": "recipe-compare-out",
+          "reference": "captured-work:probe.compare-out.sh",
+          "path": "/sessions/missing-baseline/work/Regression/FT13/probe.compare-out.sh",
+          "available_and_compatible": true
+        }
+      ],
+      "reasons": [
+        {
+          "code": "MissingDependency",
+          "role": "baseline",
+          "reference": "captured-prerequisite:baseline",
+          "path": "/fixtures/groups/Regression/FT13/Masters/probe.out"
+        }
+      ],
+      "silent_fallback": false,
+      "original_test_outcome": "DiffPgmOut",
+      "preservation": "incomplete_prerequisites"
+    },
+    "guard_bypassed": false
+  },
+  {
+    "label": "missing-baseline-legacy-control",
+    "gate": {
+      "phase": "compare-out",
+      "status": "blocked",
+      "dispatch_phase": false,
+      "checked": [
+        {
+          "role": "shell",
+          "reference": "pinned-image:sha256:873ccd4bbd6101f6f8e46fd1a4502f2d0268edec40c4ae0476cdd24927337840#/bin/bash",
+          "path": "/bin/bash",
+          "available_and_compatible": true
+        },
+        {
+          "role": "perl",
+          "reference": "pinned-image:sha256:873ccd4bbd6101f6f8e46fd1a4502f2d0268edec40c4ae0476cdd24927337840#/usr/bin/perl",
+          "path": "/usr/bin/perl",
+          "available_and_compatible": true
+        },
+        {
+          "role": "elf-loader",
+          "reference": "pinned-image:sha256:873ccd4bbd6101f6f8e46fd1a4502f2d0268edec40c4ae0476cdd24927337840#/lib/ld-linux-aarch64.so.1",
+          "path": "/lib/ld-linux-aarch64.so.1",
+          "available_and_compatible": true
+        },
+        {
+          "role": "comparator",
+          "reference": "captured-prerequisite:comparator",
+          "path": "/deps/comparator/compare.pl",
+          "available_and_compatible": true
+        },
+        {
+          "role": "baseline",
+          "reference": "captured-prerequisite:baseline",
+          "path": "/fixtures/groups/Regression/FT13/Masters/probe.out",
+          "available_and_compatible": false
+        },
+        {
+          "role": "saved-env",
+          "reference": "captured-work:probe.env",
+          "path": "/sessions/missing-baseline/work/Regression/FT13/probe.env",
+          "available_and_compatible": true
+        },
+        {
+          "role": "recipe-compare-out",
+          "reference": "captured-work:probe.compare-out.sh",
+          "path": "/sessions/missing-baseline/work/Regression/FT13/probe.compare-out.sh",
+          "available_and_compatible": true
+        }
+      ],
+      "reasons": [
+        {
+          "code": "MissingDependency",
+          "role": "baseline",
+          "reference": "captured-prerequisite:baseline",
+          "path": "/fixtures/groups/Regression/FT13/Masters/probe.out"
+        }
+      ],
+      "silent_fallback": false,
+      "original_test_outcome": "DiffPgmOut",
+      "preservation": "incomplete_prerequisites"
+    },
+    "guard_bypassed": true
+  },
+  {
+    "label": "missing-baseline-recovered",
+    "gate": {
+      "phase": "compare-out",
+      "status": "ready",
+      "dispatch_phase": true,
+      "checked": [
+        {
+          "role": "shell",
+          "reference": "pinned-image:sha256:873ccd4bbd6101f6f8e46fd1a4502f2d0268edec40c4ae0476cdd24927337840#/bin/bash",
+          "path": "/bin/bash",
+          "available_and_compatible": true
+        },
+        {
+          "role": "perl",
+          "reference": "pinned-image:sha256:873ccd4bbd6101f6f8e46fd1a4502f2d0268edec40c4ae0476cdd24927337840#/usr/bin/perl",
+          "path": "/usr/bin/perl",
+          "available_and_compatible": true
+        },
+        {
+          "role": "elf-loader",
+          "reference": "pinned-image:sha256:873ccd4bbd6101f6f8e46fd1a4502f2d0268edec40c4ae0476cdd24927337840#/lib/ld-linux-aarch64.so.1",
+          "path": "/lib/ld-linux-aarch64.so.1",
+          "available_and_compatible": true
+        },
+        {
+          "role": "comparator",
+          "reference": "captured-prerequisite:comparator",
+          "path": "/deps/comparator/compare.pl",
+          "available_and_compatible": true
+        },
+        {
+          "role": "baseline",
+          "reference": "captured-prerequisite:baseline",
+          "path": "/fixtures/groups/Regression/FT13/Masters/probe.out",
+          "available_and_compatible": true
+        },
+        {
+          "role": "saved-env",
+          "reference": "captured-work:probe.env",
+          "path": "/sessions/missing-baseline/work/Regression/FT13/probe.env",
+          "available_and_compatible": true
+        },
+        {
+          "role": "recipe-compare-out",
+          "reference": "captured-work:probe.compare-out.sh",
+          "path": "/sessions/missing-baseline/work/Regression/FT13/probe.compare-out.sh",
+          "available_and_compatible": true
+        }
+      ],
+      "reasons": [],
+      "silent_fallback": false,
+      "original_test_outcome": "DiffPgmOut",
+      "preservation": "declared_prerequisites_available"
+    },
+    "guard_bypassed": false
+  },
+  {
+    "label": "missing-saved-env-blocked",
+    "gate": {
+      "phase": "run",
+      "status": "blocked",
+      "dispatch_phase": false,
+      "checked": [
+        {
+          "role": "shell",
+          "reference": "pinned-image:sha256:873ccd4bbd6101f6f8e46fd1a4502f2d0268edec40c4ae0476cdd24927337840#/bin/bash",
+          "path": "/bin/bash",
+          "available_and_compatible": true
+        },
+        {
+          "role": "elf-loader",
+          "reference": "pinned-image:sha256:873ccd4bbd6101f6f8e46fd1a4502f2d0268edec40c4ae0476cdd24927337840#/lib/ld-linux-aarch64.so.1",
+          "path": "/lib/ld-linux-aarch64.so.1",
+          "available_and_compatible": true
+        },
+        {
+          "role": "runtime",
+          "reference": "captured-prerequisite:runtime",
+          "path": "/deps/runtime/libft13.so",
+          "available_and_compatible": true
+        },
+        {
+          "role": "input",
+          "reference": "captured-prerequisite:input",
+          "path": "/deps/inputs/current.txt",
+          "available_and_compatible": true
+        },
+        {
+          "role": "protected-resource",
+          "reference": "captured-prerequisite:protected-resource",
+          "path": "/deps/protected/reference.txt",
+          "available_and_compatible": true
+        },
+        {
+          "role": "saved-env",
+          "reference": "captured-work:probe.env",
+          "path": "/sessions/missing-saved-env/work/Regression/FT13/probe.env",
+          "available_and_compatible": false
+        },
+        {
+          "role": "binary",
+          "reference": "captured-work:probe",
+          "path": "/sessions/missing-saved-env/work/Regression/FT13/probe",
+          "available_and_compatible": true
+        },
+        {
+          "role": "recipe-run",
+          "reference": "captured-work:probe.run.sh",
+          "path": "/sessions/missing-saved-env/work/Regression/FT13/probe.run.sh",
+          "available_and_compatible": true
+        },
+        {
+          "role": "credential",
+          "reference": "fixture://ft13/protected-access",
+          "access": "authorized",
+          "available_and_compatible": true
+        }
+      ],
+      "reasons": [
+        {
+          "code": "MissingDependency",
+          "role": "saved-env",
+          "reference": "captured-work:probe.env",
+          "path": "/sessions/missing-saved-env/work/Regression/FT13/probe.env"
+        }
+      ],
+      "silent_fallback": false,
+      "original_test_outcome": "DiffPgmOut",
+      "preservation": "incomplete_prerequisites"
+    },
+    "guard_bypassed": false
+  },
+  {
+    "label": "missing-saved-env-legacy-control",
+    "gate": {
+      "phase": "run",
+      "status": "blocked",
+      "dispatch_phase": false,
+      "checked": [
+        {
+          "role": "shell",
+          "reference": "pinned-image:sha256:873ccd4bbd6101f6f8e46fd1a4502f2d0268edec40c4ae0476cdd24927337840#/bin/bash",
+          "path": "/bin/bash",
+          "available_and_compatible": true
+        },
+        {
+          "role": "elf-loader",
+          "reference": "pinned-image:sha256:873ccd4bbd6101f6f8e46fd1a4502f2d0268edec40c4ae0476cdd24927337840#/lib/ld-linux-aarch64.so.1",
+          "path": "/lib/ld-linux-aarch64.so.1",
+          "available_and_compatible": true
+        },
+        {
+          "role": "runtime",
+          "reference": "captured-prerequisite:runtime",
+          "path": "/deps/runtime/libft13.so",
+          "available_and_compatible": true
+        },
+        {
+          "role": "input",
+          "reference": "captured-prerequisite:input",
+          "path": "/deps/inputs/current.txt",
+          "available_and_compatible": true
+        },
+        {
+          "role": "protected-resource",
+          "reference": "captured-prerequisite:protected-resource",
+          "path": "/deps/protected/reference.txt",
+          "available_and_compatible": true
+        },
+        {
+          "role": "saved-env",
+          "reference": "captured-work:probe.env",
+          "path": "/sessions/missing-saved-env/work/Regression/FT13/probe.env",
+          "available_and_compatible": false
+        },
+        {
+          "role": "binary",
+          "reference": "captured-work:probe",
+          "path": "/sessions/missing-saved-env/work/Regression/FT13/probe",
+          "available_and_compatible": true
+        },
+        {
+          "role": "recipe-run",
+          "reference": "captured-work:probe.run.sh",
+          "path": "/sessions/missing-saved-env/work/Regression/FT13/probe.run.sh",
+          "available_and_compatible": true
+        },
+        {
+          "role": "credential",
+          "reference": "fixture://ft13/protected-access",
+          "access": "authorized",
+          "available_and_compatible": true
+        }
+      ],
+      "reasons": [
+        {
+          "code": "MissingDependency",
+          "role": "saved-env",
+          "reference": "captured-work:probe.env",
+          "path": "/sessions/missing-saved-env/work/Regression/FT13/probe.env"
+        }
+      ],
+      "silent_fallback": false,
+      "original_test_outcome": "DiffPgmOut",
+      "preservation": "incomplete_prerequisites"
+    },
+    "guard_bypassed": true
+  },
+  {
+    "label": "missing-saved-env-recovered",
+    "gate": {
+      "phase": "run",
+      "status": "ready",
+      "dispatch_phase": true,
+      "checked": [
+        {
+          "role": "shell",
+          "reference": "pinned-image:sha256:873ccd4bbd6101f6f8e46fd1a4502f2d0268edec40c4ae0476cdd24927337840#/bin/bash",
+          "path": "/bin/bash",
+          "available_and_compatible": true
+        },
+        {
+          "role": "elf-loader",
+          "reference": "pinned-image:sha256:873ccd4bbd6101f6f8e46fd1a4502f2d0268edec40c4ae0476cdd24927337840#/lib/ld-linux-aarch64.so.1",
+          "path": "/lib/ld-linux-aarch64.so.1",
+          "available_and_compatible": true
+        },
+        {
+          "role": "runtime",
+          "reference": "captured-prerequisite:runtime",
+          "path": "/deps/runtime/libft13.so",
+          "available_and_compatible": true
+        },
+        {
+          "role": "input",
+          "reference": "captured-prerequisite:input",
+          "path": "/deps/inputs/current.txt",
+          "available_and_compatible": true
+        },
+        {
+          "role": "protected-resource",
+          "reference": "captured-prerequisite:protected-resource",
+          "path": "/deps/protected/reference.txt",
+          "available_and_compatible": true
+        },
+        {
+          "role": "saved-env",
+          "reference": "captured-work:probe.env",
+          "path": "/sessions/missing-saved-env/work/Regression/FT13/probe.env",
+          "available_and_compatible": true
+        },
+        {
+          "role": "binary",
+          "reference": "captured-work:probe",
+          "path": "/sessions/missing-saved-env/work/Regression/FT13/probe",
+          "available_and_compatible": true
+        },
+        {
+          "role": "recipe-run",
+          "reference": "captured-work:probe.run.sh",
+          "path": "/sessions/missing-saved-env/work/Regression/FT13/probe.run.sh",
+          "available_and_compatible": true
+        },
+        {
+          "role": "credential",
+          "reference": "fixture://ft13/protected-access",
+          "access": "authorized",
+          "available_and_compatible": true
+        }
+      ],
+      "reasons": [],
+      "silent_fallback": false,
+      "original_test_outcome": "DiffPgmOut",
+      "preservation": "declared_prerequisites_available"
+    },
+    "guard_bypassed": false
+  },
+  {
+    "label": "dangling-saved-env-blocked",
+    "gate": {
+      "phase": "run",
+      "status": "blocked",
+      "dispatch_phase": false,
+      "checked": [
+        {
+          "role": "shell",
+          "reference": "pinned-image:sha256:873ccd4bbd6101f6f8e46fd1a4502f2d0268edec40c4ae0476cdd24927337840#/bin/bash",
+          "path": "/bin/bash",
+          "available_and_compatible": true
+        },
+        {
+          "role": "elf-loader",
+          "reference": "pinned-image:sha256:873ccd4bbd6101f6f8e46fd1a4502f2d0268edec40c4ae0476cdd24927337840#/lib/ld-linux-aarch64.so.1",
+          "path": "/lib/ld-linux-aarch64.so.1",
+          "available_and_compatible": true
+        },
+        {
+          "role": "runtime",
+          "reference": "captured-prerequisite:runtime",
+          "path": "/deps/runtime/libft13.so",
+          "available_and_compatible": true
+        },
+        {
+          "role": "input",
+          "reference": "captured-prerequisite:input",
+          "path": "/deps/inputs/current.txt",
+          "available_and_compatible": true
+        },
+        {
+          "role": "protected-resource",
+          "reference": "captured-prerequisite:protected-resource",
+          "path": "/deps/protected/reference.txt",
+          "available_and_compatible": true
+        },
+        {
+          "role": "saved-env",
+          "reference": "captured-work:probe.env",
+          "path": "/sessions/dangling-saved-env/work/Regression/FT13/probe.env",
+          "available_and_compatible": false
+        },
+        {
+          "role": "binary",
+          "reference": "captured-work:probe",
+          "path": "/sessions/dangling-saved-env/work/Regression/FT13/probe",
+          "available_and_compatible": true
+        },
+        {
+          "role": "recipe-run",
+          "reference": "captured-work:probe.run.sh",
+          "path": "/sessions/dangling-saved-env/work/Regression/FT13/probe.run.sh",
+          "available_and_compatible": true
+        },
+        {
+          "role": "credential",
+          "reference": "fixture://ft13/protected-access",
+          "access": "authorized",
+          "available_and_compatible": true
+        }
+      ],
+      "reasons": [
+        {
+          "code": "DanglingDependencyLink",
+          "role": "saved-env",
+          "reference": "captured-work:probe.env",
+          "path": "/sessions/dangling-saved-env/work/Regression/FT13/probe.env"
+        }
+      ],
+      "silent_fallback": false,
+      "original_test_outcome": "DiffPgmOut",
+      "preservation": "incomplete_prerequisites"
+    },
+    "guard_bypassed": false
+  },
+  {
+    "label": "dangling-saved-env-legacy-control",
+    "gate": {
+      "phase": "run",
+      "status": "blocked",
+      "dispatch_phase": false,
+      "checked": [
+        {
+          "role": "shell",
+          "reference": "pinned-image:sha256:873ccd4bbd6101f6f8e46fd1a4502f2d0268edec40c4ae0476cdd24927337840#/bin/bash",
+          "path": "/bin/bash",
+          "available_and_compatible": true
+        },
+        {
+          "role": "elf-loader",
+          "reference": "pinned-image:sha256:873ccd4bbd6101f6f8e46fd1a4502f2d0268edec40c4ae0476cdd24927337840#/lib/ld-linux-aarch64.so.1",
+          "path": "/lib/ld-linux-aarch64.so.1",
+          "available_and_compatible": true
+        },
+        {
+          "role": "runtime",
+          "reference": "captured-prerequisite:runtime",
+          "path": "/deps/runtime/libft13.so",
+          "available_and_compatible": true
+        },
+        {
+          "role": "input",
+          "reference": "captured-prerequisite:input",
+          "path": "/deps/inputs/current.txt",
+          "available_and_compatible": true
+        },
+        {
+          "role": "protected-resource",
+          "reference": "captured-prerequisite:protected-resource",
+          "path": "/deps/protected/reference.txt",
+          "available_and_compatible": true
+        },
+        {
+          "role": "saved-env",
+          "reference": "captured-work:probe.env",
+          "path": "/sessions/dangling-saved-env/work/Regression/FT13/probe.env",
+          "available_and_compatible": false
+        },
+        {
+          "role": "binary",
+          "reference": "captured-work:probe",
+          "path": "/sessions/dangling-saved-env/work/Regression/FT13/probe",
+          "available_and_compatible": true
+        },
+        {
+          "role": "recipe-run",
+          "reference": "captured-work:probe.run.sh",
+          "path": "/sessions/dangling-saved-env/work/Regression/FT13/probe.run.sh",
+          "available_and_compatible": true
+        },
+        {
+          "role": "credential",
+          "reference": "fixture://ft13/protected-access",
+          "access": "authorized",
+          "available_and_compatible": true
+        }
+      ],
+      "reasons": [
+        {
+          "code": "DanglingDependencyLink",
+          "role": "saved-env",
+          "reference": "captured-work:probe.env",
+          "path": "/sessions/dangling-saved-env/work/Regression/FT13/probe.env"
+        }
+      ],
+      "silent_fallback": false,
+      "original_test_outcome": "DiffPgmOut",
+      "preservation": "incomplete_prerequisites"
+    },
+    "guard_bypassed": true
+  },
+  {
+    "label": "dangling-saved-env-recovered",
+    "gate": {
+      "phase": "run",
+      "status": "ready",
+      "dispatch_phase": true,
+      "checked": [
+        {
+          "role": "shell",
+          "reference": "pinned-image:sha256:873ccd4bbd6101f6f8e46fd1a4502f2d0268edec40c4ae0476cdd24927337840#/bin/bash",
+          "path": "/bin/bash",
+          "available_and_compatible": true
+        },
+        {
+          "role": "elf-loader",
+          "reference": "pinned-image:sha256:873ccd4bbd6101f6f8e46fd1a4502f2d0268edec40c4ae0476cdd24927337840#/lib/ld-linux-aarch64.so.1",
+          "path": "/lib/ld-linux-aarch64.so.1",
+          "available_and_compatible": true
+        },
+        {
+          "role": "runtime",
+          "reference": "captured-prerequisite:runtime",
+          "path": "/deps/runtime/libft13.so",
+          "available_and_compatible": true
+        },
+        {
+          "role": "input",
+          "reference": "captured-prerequisite:input",
+          "path": "/deps/inputs/current.txt",
+          "available_and_compatible": true
+        },
+        {
+          "role": "protected-resource",
+          "reference": "captured-prerequisite:protected-resource",
+          "path": "/deps/protected/reference.txt",
+          "available_and_compatible": true
+        },
+        {
+          "role": "saved-env",
+          "reference": "captured-work:probe.env",
+          "path": "/sessions/dangling-saved-env/work/Regression/FT13/probe.env",
+          "available_and_compatible": true
+        },
+        {
+          "role": "binary",
+          "reference": "captured-work:probe",
+          "path": "/sessions/dangling-saved-env/work/Regression/FT13/probe",
+          "available_and_compatible": true
+        },
+        {
+          "role": "recipe-run",
+          "reference": "captured-work:probe.run.sh",
+          "path": "/sessions/dangling-saved-env/work/Regression/FT13/probe.run.sh",
+          "available_and_compatible": true
+        },
+        {
+          "role": "credential",
+          "reference": "fixture://ft13/protected-access",
+          "access": "authorized",
+          "available_and_compatible": true
+        }
+      ],
+      "reasons": [],
+      "silent_fallback": false,
+      "original_test_outcome": "DiffPgmOut",
+      "preservation": "declared_prerequisites_available"
+    },
+    "guard_bypassed": false
+  },
+  {
+    "label": "dangling-source-blocked",
+    "gate": {
+      "phase": "compile",
+      "status": "blocked",
+      "dispatch_phase": false,
+      "checked": [
+        {
+          "role": "shell",
+          "reference": "pinned-image:sha256:873ccd4bbd6101f6f8e46fd1a4502f2d0268edec40c4ae0476cdd24927337840#/bin/bash",
+          "path": "/bin/bash",
+          "available_and_compatible": true
+        },
+        {
+          "role": "gcc",
+          "reference": "pinned-image:sha256:873ccd4bbd6101f6f8e46fd1a4502f2d0268edec40c4ae0476cdd24927337840#/usr/bin/gcc",
+          "path": "/usr/bin/gcc",
+          "available_and_compatible": true
+        },
+        {
+          "role": "cc1",
+          "reference": "pinned-image:sha256:873ccd4bbd6101f6f8e46fd1a4502f2d0268edec40c4ae0476cdd24927337840#/usr/libexec/gcc/aarch64-linux-gnu/13/cc1",
+          "path": "/usr/libexec/gcc/aarch64-linux-gnu/13/cc1",
+          "available_and_compatible": true
+        },
+        {
+          "role": "assembler",
+          "reference": "pinned-image:sha256:873ccd4bbd6101f6f8e46fd1a4502f2d0268edec40c4ae0476cdd24927337840#/usr/bin/as",
+          "path": "/usr/bin/as",
+          "available_and_compatible": true
+        },
+        {
+          "role": "elf-loader",
+          "reference": "pinned-image:sha256:873ccd4bbd6101f6f8e46fd1a4502f2d0268edec40c4ae0476cdd24927337840#/lib/ld-linux-aarch64.so.1",
+          "path": "/lib/ld-linux-aarch64.so.1",
+          "available_and_compatible": true
+        },
+        {
+          "role": "compiler-entry",
+          "reference": "captured-prerequisite:compiler-entry",
+          "path": "/deps/compiler/cc",
+          "available_and_compatible": true
+        },
+        {
+          "role": "source",
+          "reference": "captured-work:probe.c",
+          "path": "/sessions/dangling-source/work/Regression/FT13/probe.c",
+          "available_and_compatible": false
+        },
+        {
+          "role": "saved-env",
+          "reference": "captured-work:probe.env",
+          "path": "/sessions/dangling-source/work/Regression/FT13/probe.env",
+          "available_and_compatible": true
+        },
+        {
+          "role": "recipe-compile",
+          "reference": "captured-work:probe.compile.sh",
+          "path": "/sessions/dangling-source/work/Regression/FT13/probe.compile.sh",
+          "available_and_compatible": true
+        }
+      ],
+      "reasons": [
+        {
+          "code": "DanglingDependencyLink",
+          "role": "source",
+          "reference": "captured-work:probe.c",
+          "path": "/sessions/dangling-source/work/Regression/FT13/probe.c"
+        }
+      ],
+      "silent_fallback": false,
+      "original_test_outcome": "DiffPgmOut",
+      "preservation": "incomplete_prerequisites"
+    },
+    "guard_bypassed": false
+  },
+  {
+    "label": "dangling-source-legacy-control",
+    "gate": {
+      "phase": "compile",
+      "status": "blocked",
+      "dispatch_phase": false,
+      "checked": [
+        {
+          "role": "shell",
+          "reference": "pinned-image:sha256:873ccd4bbd6101f6f8e46fd1a4502f2d0268edec40c4ae0476cdd24927337840#/bin/bash",
+          "path": "/bin/bash",
+          "available_and_compatible": true
+        },
+        {
+          "role": "gcc",
+          "reference": "pinned-image:sha256:873ccd4bbd6101f6f8e46fd1a4502f2d0268edec40c4ae0476cdd24927337840#/usr/bin/gcc",
+          "path": "/usr/bin/gcc",
+          "available_and_compatible": true
+        },
+        {
+          "role": "cc1",
+          "reference": "pinned-image:sha256:873ccd4bbd6101f6f8e46fd1a4502f2d0268edec40c4ae0476cdd24927337840#/usr/libexec/gcc/aarch64-linux-gnu/13/cc1",
+          "path": "/usr/libexec/gcc/aarch64-linux-gnu/13/cc1",
+          "available_and_compatible": true
+        },
+        {
+          "role": "assembler",
+          "reference": "pinned-image:sha256:873ccd4bbd6101f6f8e46fd1a4502f2d0268edec40c4ae0476cdd24927337840#/usr/bin/as",
+          "path": "/usr/bin/as",
+          "available_and_compatible": true
+        },
+        {
+          "role": "elf-loader",
+          "reference": "pinned-image:sha256:873ccd4bbd6101f6f8e46fd1a4502f2d0268edec40c4ae0476cdd24927337840#/lib/ld-linux-aarch64.so.1",
+          "path": "/lib/ld-linux-aarch64.so.1",
+          "available_and_compatible": true
+        },
+        {
+          "role": "compiler-entry",
+          "reference": "captured-prerequisite:compiler-entry",
+          "path": "/deps/compiler/cc",
+          "available_and_compatible": true
+        },
+        {
+          "role": "source",
+          "reference": "captured-work:probe.c",
+          "path": "/sessions/dangling-source/work/Regression/FT13/probe.c",
+          "available_and_compatible": false
+        },
+        {
+          "role": "saved-env",
+          "reference": "captured-work:probe.env",
+          "path": "/sessions/dangling-source/work/Regression/FT13/probe.env",
+          "available_and_compatible": true
+        },
+        {
+          "role": "recipe-compile",
+          "reference": "captured-work:probe.compile.sh",
+          "path": "/sessions/dangling-source/work/Regression/FT13/probe.compile.sh",
+          "available_and_compatible": true
+        }
+      ],
+      "reasons": [
+        {
+          "code": "DanglingDependencyLink",
+          "role": "source",
+          "reference": "captured-work:probe.c",
+          "path": "/sessions/dangling-source/work/Regression/FT13/probe.c"
+        }
+      ],
+      "silent_fallback": false,
+      "original_test_outcome": "DiffPgmOut",
+      "preservation": "incomplete_prerequisites"
+    },
+    "guard_bypassed": true
+  },
+  {
+    "label": "dangling-source-recovered",
+    "gate": {
+      "phase": "compile",
+      "status": "ready",
+      "dispatch_phase": true,
+      "checked": [
+        {
+          "role": "shell",
+          "reference": "pinned-image:sha256:873ccd4bbd6101f6f8e46fd1a4502f2d0268edec40c4ae0476cdd24927337840#/bin/bash",
+          "path": "/bin/bash",
+          "available_and_compatible": true
+        },
+        {
+          "role": "gcc",
+          "reference": "pinned-image:sha256:873ccd4bbd6101f6f8e46fd1a4502f2d0268edec40c4ae0476cdd24927337840#/usr/bin/gcc",
+          "path": "/usr/bin/gcc",
+          "available_and_compatible": true
+        },
+        {
+          "role": "cc1",
+          "reference": "pinned-image:sha256:873ccd4bbd6101f6f8e46fd1a4502f2d0268edec40c4ae0476cdd24927337840#/usr/libexec/gcc/aarch64-linux-gnu/13/cc1",
+          "path": "/usr/libexec/gcc/aarch64-linux-gnu/13/cc1",
+          "available_and_compatible": true
+        },
+        {
+          "role": "assembler",
+          "reference": "pinned-image:sha256:873ccd4bbd6101f6f8e46fd1a4502f2d0268edec40c4ae0476cdd24927337840#/usr/bin/as",
+          "path": "/usr/bin/as",
+          "available_and_compatible": true
+        },
+        {
+          "role": "elf-loader",
+          "reference": "pinned-image:sha256:873ccd4bbd6101f6f8e46fd1a4502f2d0268edec40c4ae0476cdd24927337840#/lib/ld-linux-aarch64.so.1",
+          "path": "/lib/ld-linux-aarch64.so.1",
+          "available_and_compatible": true
+        },
+        {
+          "role": "compiler-entry",
+          "reference": "captured-prerequisite:compiler-entry",
+          "path": "/deps/compiler/cc",
+          "available_and_compatible": true
+        },
+        {
+          "role": "source",
+          "reference": "captured-work:probe.c",
+          "path": "/sessions/dangling-source/work/Regression/FT13/probe.c",
+          "available_and_compatible": true
+        },
+        {
+          "role": "saved-env",
+          "reference": "captured-work:probe.env",
+          "path": "/sessions/dangling-source/work/Regression/FT13/probe.env",
+          "available_and_compatible": true
+        },
+        {
+          "role": "recipe-compile",
+          "reference": "captured-work:probe.compile.sh",
+          "path": "/sessions/dangling-source/work/Regression/FT13/probe.compile.sh",
+          "available_and_compatible": true
+        }
+      ],
+      "reasons": [],
+      "silent_fallback": false,
+      "original_test_outcome": "DiffPgmOut",
+      "preservation": "declared_prerequisites_available"
+    },
+    "guard_bypassed": false
+  },
+  {
+    "label": "changed-runtime-blocked",
+    "gate": {
+      "phase": "run",
+      "status": "blocked",
+      "dispatch_phase": false,
+      "checked": [
+        {
+          "role": "shell",
+          "reference": "pinned-image:sha256:873ccd4bbd6101f6f8e46fd1a4502f2d0268edec40c4ae0476cdd24927337840#/bin/bash",
+          "path": "/bin/bash",
+          "available_and_compatible": true
+        },
+        {
+          "role": "elf-loader",
+          "reference": "pinned-image:sha256:873ccd4bbd6101f6f8e46fd1a4502f2d0268edec40c4ae0476cdd24927337840#/lib/ld-linux-aarch64.so.1",
+          "path": "/lib/ld-linux-aarch64.so.1",
+          "available_and_compatible": true
+        },
+        {
+          "role": "runtime",
+          "reference": "captured-prerequisite:runtime",
+          "path": "/deps/runtime/libft13.so",
+          "available_and_compatible": false
+        },
+        {
+          "role": "input",
+          "reference": "captured-prerequisite:input",
+          "path": "/deps/inputs/current.txt",
+          "available_and_compatible": true
+        },
+        {
+          "role": "protected-resource",
+          "reference": "captured-prerequisite:protected-resource",
+          "path": "/deps/protected/reference.txt",
+          "available_and_compatible": true
+        },
+        {
+          "role": "saved-env",
+          "reference": "captured-work:probe.env",
+          "path": "/sessions/changed-runtime/work/Regression/FT13/probe.env",
+          "available_and_compatible": true
+        },
+        {
+          "role": "binary",
+          "reference": "captured-work:probe",
+          "path": "/sessions/changed-runtime/work/Regression/FT13/probe",
+          "available_and_compatible": true
+        },
+        {
+          "role": "recipe-run",
+          "reference": "captured-work:probe.run.sh",
+          "path": "/sessions/changed-runtime/work/Regression/FT13/probe.run.sh",
+          "available_and_compatible": true
+        },
+        {
+          "role": "credential",
+          "reference": "fixture://ft13/protected-access",
+          "access": "authorized",
+          "available_and_compatible": true
+        }
+      ],
+      "reasons": [
+        {
+          "code": "DependencyIdentityMismatch",
+          "role": "runtime",
+          "reference": "captured-prerequisite:runtime",
+          "path": "/deps/runtime/libft13.so"
+        }
+      ],
+      "silent_fallback": false,
+      "original_test_outcome": "DiffPgmOut",
+      "preservation": "incomplete_prerequisites"
+    },
+    "guard_bypassed": false
+  },
+  {
+    "label": "changed-runtime-legacy-control",
+    "gate": {
+      "phase": "run",
+      "status": "blocked",
+      "dispatch_phase": false,
+      "checked": [
+        {
+          "role": "shell",
+          "reference": "pinned-image:sha256:873ccd4bbd6101f6f8e46fd1a4502f2d0268edec40c4ae0476cdd24927337840#/bin/bash",
+          "path": "/bin/bash",
+          "available_and_compatible": true
+        },
+        {
+          "role": "elf-loader",
+          "reference": "pinned-image:sha256:873ccd4bbd6101f6f8e46fd1a4502f2d0268edec40c4ae0476cdd24927337840#/lib/ld-linux-aarch64.so.1",
+          "path": "/lib/ld-linux-aarch64.so.1",
+          "available_and_compatible": true
+        },
+        {
+          "role": "runtime",
+          "reference": "captured-prerequisite:runtime",
+          "path": "/deps/runtime/libft13.so",
+          "available_and_compatible": false
+        },
+        {
+          "role": "input",
+          "reference": "captured-prerequisite:input",
+          "path": "/deps/inputs/current.txt",
+          "available_and_compatible": true
+        },
+        {
+          "role": "protected-resource",
+          "reference": "captured-prerequisite:protected-resource",
+          "path": "/deps/protected/reference.txt",
+          "available_and_compatible": true
+        },
+        {
+          "role": "saved-env",
+          "reference": "captured-work:probe.env",
+          "path": "/sessions/changed-runtime/work/Regression/FT13/probe.env",
+          "available_and_compatible": true
+        },
+        {
+          "role": "binary",
+          "reference": "captured-work:probe",
+          "path": "/sessions/changed-runtime/work/Regression/FT13/probe",
+          "available_and_compatible": true
+        },
+        {
+          "role": "recipe-run",
+          "reference": "captured-work:probe.run.sh",
+          "path": "/sessions/changed-runtime/work/Regression/FT13/probe.run.sh",
+          "available_and_compatible": true
+        },
+        {
+          "role": "credential",
+          "reference": "fixture://ft13/protected-access",
+          "access": "authorized",
+          "available_and_compatible": true
+        }
+      ],
+      "reasons": [
+        {
+          "code": "DependencyIdentityMismatch",
+          "role": "runtime",
+          "reference": "captured-prerequisite:runtime",
+          "path": "/deps/runtime/libft13.so"
+        }
+      ],
+      "silent_fallback": false,
+      "original_test_outcome": "DiffPgmOut",
+      "preservation": "incomplete_prerequisites"
+    },
+    "guard_bypassed": true
+  },
+  {
+    "label": "changed-runtime-recovered",
+    "gate": {
+      "phase": "run",
+      "status": "ready",
+      "dispatch_phase": true,
+      "checked": [
+        {
+          "role": "shell",
+          "reference": "pinned-image:sha256:873ccd4bbd6101f6f8e46fd1a4502f2d0268edec40c4ae0476cdd24927337840#/bin/bash",
+          "path": "/bin/bash",
+          "available_and_compatible": true
+        },
+        {
+          "role": "elf-loader",
+          "reference": "pinned-image:sha256:873ccd4bbd6101f6f8e46fd1a4502f2d0268edec40c4ae0476cdd24927337840#/lib/ld-linux-aarch64.so.1",
+          "path": "/lib/ld-linux-aarch64.so.1",
+          "available_and_compatible": true
+        },
+        {
+          "role": "runtime",
+          "reference": "captured-prerequisite:runtime",
+          "path": "/deps/runtime/libft13.so",
+          "available_and_compatible": true
+        },
+        {
+          "role": "input",
+          "reference": "captured-prerequisite:input",
+          "path": "/deps/inputs/current.txt",
+          "available_and_compatible": true
+        },
+        {
+          "role": "protected-resource",
+          "reference": "captured-prerequisite:protected-resource",
+          "path": "/deps/protected/reference.txt",
+          "available_and_compatible": true
+        },
+        {
+          "role": "saved-env",
+          "reference": "captured-work:probe.env",
+          "path": "/sessions/changed-runtime/work/Regression/FT13/probe.env",
+          "available_and_compatible": true
+        },
+        {
+          "role": "binary",
+          "reference": "captured-work:probe",
+          "path": "/sessions/changed-runtime/work/Regression/FT13/probe",
+          "available_and_compatible": true
+        },
+        {
+          "role": "recipe-run",
+          "reference": "captured-work:probe.run.sh",
+          "path": "/sessions/changed-runtime/work/Regression/FT13/probe.run.sh",
+          "available_and_compatible": true
+        },
+        {
+          "role": "credential",
+          "reference": "fixture://ft13/protected-access",
+          "access": "authorized",
+          "available_and_compatible": true
+        }
+      ],
+      "reasons": [],
+      "silent_fallback": false,
+      "original_test_outcome": "DiffPgmOut",
+      "preservation": "declared_prerequisites_available"
+    },
+    "guard_bypassed": false
+  },
+  {
+    "label": "missing-run-recipe-blocked",
+    "gate": {
+      "phase": "run",
+      "status": "blocked",
+      "dispatch_phase": false,
+      "checked": [
+        {
+          "role": "shell",
+          "reference": "pinned-image:sha256:873ccd4bbd6101f6f8e46fd1a4502f2d0268edec40c4ae0476cdd24927337840#/bin/bash",
+          "path": "/bin/bash",
+          "available_and_compatible": true
+        },
+        {
+          "role": "elf-loader",
+          "reference": "pinned-image:sha256:873ccd4bbd6101f6f8e46fd1a4502f2d0268edec40c4ae0476cdd24927337840#/lib/ld-linux-aarch64.so.1",
+          "path": "/lib/ld-linux-aarch64.so.1",
+          "available_and_compatible": true
+        },
+        {
+          "role": "runtime",
+          "reference": "captured-prerequisite:runtime",
+          "path": "/deps/runtime/libft13.so",
+          "available_and_compatible": true
+        },
+        {
+          "role": "input",
+          "reference": "captured-prerequisite:input",
+          "path": "/deps/inputs/current.txt",
+          "available_and_compatible": true
+        },
+        {
+          "role": "protected-resource",
+          "reference": "captured-prerequisite:protected-resource",
+          "path": "/deps/protected/reference.txt",
+          "available_and_compatible": true
+        },
+        {
+          "role": "saved-env",
+          "reference": "captured-work:probe.env",
+          "path": "/sessions/missing-run-recipe/work/Regression/FT13/probe.env",
+          "available_and_compatible": true
+        },
+        {
+          "role": "binary",
+          "reference": "captured-work:probe",
+          "path": "/sessions/missing-run-recipe/work/Regression/FT13/probe",
+          "available_and_compatible": true
+        },
+        {
+          "role": "recipe-run",
+          "reference": "captured-work:probe.run.sh",
+          "path": "/sessions/missing-run-recipe/work/Regression/FT13/probe.run.sh",
+          "available_and_compatible": false
+        },
+        {
+          "role": "credential",
+          "reference": "fixture://ft13/protected-access",
+          "access": "authorized",
+          "available_and_compatible": true
+        }
+      ],
+      "reasons": [
+        {
+          "code": "MissingDependency",
+          "role": "recipe-run",
+          "reference": "captured-work:probe.run.sh",
+          "path": "/sessions/missing-run-recipe/work/Regression/FT13/probe.run.sh"
+        }
+      ],
+      "silent_fallback": false,
+      "original_test_outcome": "DiffPgmOut",
+      "preservation": "incomplete_prerequisites"
+    },
+    "guard_bypassed": false
+  },
+  {
+    "label": "missing-run-recipe-legacy-control",
+    "gate": {
+      "phase": "run",
+      "status": "blocked",
+      "dispatch_phase": false,
+      "checked": [
+        {
+          "role": "shell",
+          "reference": "pinned-image:sha256:873ccd4bbd6101f6f8e46fd1a4502f2d0268edec40c4ae0476cdd24927337840#/bin/bash",
+          "path": "/bin/bash",
+          "available_and_compatible": true
+        },
+        {
+          "role": "elf-loader",
+          "reference": "pinned-image:sha256:873ccd4bbd6101f6f8e46fd1a4502f2d0268edec40c4ae0476cdd24927337840#/lib/ld-linux-aarch64.so.1",
+          "path": "/lib/ld-linux-aarch64.so.1",
+          "available_and_compatible": true
+        },
+        {
+          "role": "runtime",
+          "reference": "captured-prerequisite:runtime",
+          "path": "/deps/runtime/libft13.so",
+          "available_and_compatible": true
+        },
+        {
+          "role": "input",
+          "reference": "captured-prerequisite:input",
+          "path": "/deps/inputs/current.txt",
+          "available_and_compatible": true
+        },
+        {
+          "role": "protected-resource",
+          "reference": "captured-prerequisite:protected-resource",
+          "path": "/deps/protected/reference.txt",
+          "available_and_compatible": true
+        },
+        {
+          "role": "saved-env",
+          "reference": "captured-work:probe.env",
+          "path": "/sessions/missing-run-recipe/work/Regression/FT13/probe.env",
+          "available_and_compatible": true
+        },
+        {
+          "role": "binary",
+          "reference": "captured-work:probe",
+          "path": "/sessions/missing-run-recipe/work/Regression/FT13/probe",
+          "available_and_compatible": true
+        },
+        {
+          "role": "recipe-run",
+          "reference": "captured-work:probe.run.sh",
+          "path": "/sessions/missing-run-recipe/work/Regression/FT13/probe.run.sh",
+          "available_and_compatible": false
+        },
+        {
+          "role": "credential",
+          "reference": "fixture://ft13/protected-access",
+          "access": "authorized",
+          "available_and_compatible": true
+        }
+      ],
+      "reasons": [
+        {
+          "code": "MissingDependency",
+          "role": "recipe-run",
+          "reference": "captured-work:probe.run.sh",
+          "path": "/sessions/missing-run-recipe/work/Regression/FT13/probe.run.sh"
+        }
+      ],
+      "silent_fallback": false,
+      "original_test_outcome": "DiffPgmOut",
+      "preservation": "incomplete_prerequisites"
+    },
+    "guard_bypassed": true
+  },
+  {
+    "label": "missing-run-recipe-recovered",
+    "gate": {
+      "phase": "run",
+      "status": "ready",
+      "dispatch_phase": true,
+      "checked": [
+        {
+          "role": "shell",
+          "reference": "pinned-image:sha256:873ccd4bbd6101f6f8e46fd1a4502f2d0268edec40c4ae0476cdd24927337840#/bin/bash",
+          "path": "/bin/bash",
+          "available_and_compatible": true
+        },
+        {
+          "role": "elf-loader",
+          "reference": "pinned-image:sha256:873ccd4bbd6101f6f8e46fd1a4502f2d0268edec40c4ae0476cdd24927337840#/lib/ld-linux-aarch64.so.1",
+          "path": "/lib/ld-linux-aarch64.so.1",
+          "available_and_compatible": true
+        },
+        {
+          "role": "runtime",
+          "reference": "captured-prerequisite:runtime",
+          "path": "/deps/runtime/libft13.so",
+          "available_and_compatible": true
+        },
+        {
+          "role": "input",
+          "reference": "captured-prerequisite:input",
+          "path": "/deps/inputs/current.txt",
+          "available_and_compatible": true
+        },
+        {
+          "role": "protected-resource",
+          "reference": "captured-prerequisite:protected-resource",
+          "path": "/deps/protected/reference.txt",
+          "available_and_compatible": true
+        },
+        {
+          "role": "saved-env",
+          "reference": "captured-work:probe.env",
+          "path": "/sessions/missing-run-recipe/work/Regression/FT13/probe.env",
+          "available_and_compatible": true
+        },
+        {
+          "role": "binary",
+          "reference": "captured-work:probe",
+          "path": "/sessions/missing-run-recipe/work/Regression/FT13/probe",
+          "available_and_compatible": true
+        },
+        {
+          "role": "recipe-run",
+          "reference": "captured-work:probe.run.sh",
+          "path": "/sessions/missing-run-recipe/work/Regression/FT13/probe.run.sh",
+          "available_and_compatible": true
+        },
+        {
+          "role": "credential",
+          "reference": "fixture://ft13/protected-access",
+          "access": "authorized",
+          "available_and_compatible": true
+        }
+      ],
+      "reasons": [],
+      "silent_fallback": false,
+      "original_test_outcome": "DiffPgmOut",
+      "preservation": "declared_prerequisites_available"
+    },
+    "guard_bypassed": false
+  },
+  {
+    "label": "final-compile",
+    "gate": {
+      "phase": "compile",
+      "status": "ready",
+      "dispatch_phase": true,
+      "checked": [
+        {
+          "role": "shell",
+          "reference": "pinned-image:sha256:873ccd4bbd6101f6f8e46fd1a4502f2d0268edec40c4ae0476cdd24927337840#/bin/bash",
+          "path": "/bin/bash",
+          "available_and_compatible": true
+        },
+        {
+          "role": "gcc",
+          "reference": "pinned-image:sha256:873ccd4bbd6101f6f8e46fd1a4502f2d0268edec40c4ae0476cdd24927337840#/usr/bin/gcc",
+          "path": "/usr/bin/gcc",
+          "available_and_compatible": true
+        },
+        {
+          "role": "cc1",
+          "reference": "pinned-image:sha256:873ccd4bbd6101f6f8e46fd1a4502f2d0268edec40c4ae0476cdd24927337840#/usr/libexec/gcc/aarch64-linux-gnu/13/cc1",
+          "path": "/usr/libexec/gcc/aarch64-linux-gnu/13/cc1",
+          "available_and_compatible": true
+        },
+        {
+          "role": "assembler",
+          "reference": "pinned-image:sha256:873ccd4bbd6101f6f8e46fd1a4502f2d0268edec40c4ae0476cdd24927337840#/usr/bin/as",
+          "path": "/usr/bin/as",
+          "available_and_compatible": true
+        },
+        {
+          "role": "elf-loader",
+          "reference": "pinned-image:sha256:873ccd4bbd6101f6f8e46fd1a4502f2d0268edec40c4ae0476cdd24927337840#/lib/ld-linux-aarch64.so.1",
+          "path": "/lib/ld-linux-aarch64.so.1",
+          "available_and_compatible": true
+        },
+        {
+          "role": "compiler-entry",
+          "reference": "captured-prerequisite:compiler-entry",
+          "path": "/deps/compiler/cc",
+          "available_and_compatible": true
+        },
+        {
+          "role": "source",
+          "reference": "captured-work:probe.c",
+          "path": "/sessions/final-replay/work/Regression/FT13/probe.c",
+          "available_and_compatible": true
+        },
+        {
+          "role": "saved-env",
+          "reference": "captured-work:probe.env",
+          "path": "/sessions/final-replay/work/Regression/FT13/probe.env",
+          "available_and_compatible": true
+        },
+        {
+          "role": "recipe-compile",
+          "reference": "captured-work:probe.compile.sh",
+          "path": "/sessions/final-replay/work/Regression/FT13/probe.compile.sh",
+          "available_and_compatible": true
+        }
+      ],
+      "reasons": [],
+      "silent_fallback": false,
+      "original_test_outcome": "DiffPgmOut",
+      "preservation": "declared_prerequisites_available"
+    },
+    "guard_bypassed": false
+  },
+  {
+    "label": "final-link",
+    "gate": {
+      "phase": "link",
+      "status": "ready",
+      "dispatch_phase": true,
+      "checked": [
+        {
+          "role": "shell",
+          "reference": "pinned-image:sha256:873ccd4bbd6101f6f8e46fd1a4502f2d0268edec40c4ae0476cdd24927337840#/bin/bash",
+          "path": "/bin/bash",
+          "available_and_compatible": true
+        },
+        {
+          "role": "gcc",
+          "reference": "pinned-image:sha256:873ccd4bbd6101f6f8e46fd1a4502f2d0268edec40c4ae0476cdd24927337840#/usr/bin/gcc",
+          "path": "/usr/bin/gcc",
+          "available_and_compatible": true
+        },
+        {
+          "role": "linker",
+          "reference": "pinned-image:sha256:873ccd4bbd6101f6f8e46fd1a4502f2d0268edec40c4ae0476cdd24927337840#/usr/bin/ld",
+          "path": "/usr/bin/ld",
+          "available_and_compatible": true
+        },
+        {
+          "role": "elf-loader",
+          "reference": "pinned-image:sha256:873ccd4bbd6101f6f8e46fd1a4502f2d0268edec40c4ae0476cdd24927337840#/lib/ld-linux-aarch64.so.1",
+          "path": "/lib/ld-linux-aarch64.so.1",
+          "available_and_compatible": true
+        },
+        {
+          "role": "compiler-entry",
+          "reference": "captured-prerequisite:compiler-entry",
+          "path": "/deps/compiler/cc",
+          "available_and_compatible": true
+        },
+        {
+          "role": "runtime",
+          "reference": "captured-prerequisite:runtime",
+          "path": "/deps/runtime/libft13.so",
+          "available_and_compatible": true
+        },
+        {
+          "role": "saved-env",
+          "reference": "captured-work:probe.env",
+          "path": "/sessions/final-replay/work/Regression/FT13/probe.env",
+          "available_and_compatible": true
+        },
+        {
+          "role": "recipe-link",
+          "reference": "captured-work:probe.link.sh",
+          "path": "/sessions/final-replay/work/Regression/FT13/probe.link.sh",
+          "available_and_compatible": true
+        }
+      ],
+      "reasons": [],
+      "silent_fallback": false,
+      "original_test_outcome": "DiffPgmOut",
+      "preservation": "declared_prerequisites_available"
+    },
+    "guard_bypassed": false
+  },
+  {
+    "label": "final-run",
+    "gate": {
+      "phase": "run",
+      "status": "ready",
+      "dispatch_phase": true,
+      "checked": [
+        {
+          "role": "shell",
+          "reference": "pinned-image:sha256:873ccd4bbd6101f6f8e46fd1a4502f2d0268edec40c4ae0476cdd24927337840#/bin/bash",
+          "path": "/bin/bash",
+          "available_and_compatible": true
+        },
+        {
+          "role": "elf-loader",
+          "reference": "pinned-image:sha256:873ccd4bbd6101f6f8e46fd1a4502f2d0268edec40c4ae0476cdd24927337840#/lib/ld-linux-aarch64.so.1",
+          "path": "/lib/ld-linux-aarch64.so.1",
+          "available_and_compatible": true
+        },
+        {
+          "role": "runtime",
+          "reference": "captured-prerequisite:runtime",
+          "path": "/deps/runtime/libft13.so",
+          "available_and_compatible": true
+        },
+        {
+          "role": "input",
+          "reference": "captured-prerequisite:input",
+          "path": "/deps/inputs/current.txt",
+          "available_and_compatible": true
+        },
+        {
+          "role": "protected-resource",
+          "reference": "captured-prerequisite:protected-resource",
+          "path": "/deps/protected/reference.txt",
+          "available_and_compatible": true
+        },
+        {
+          "role": "saved-env",
+          "reference": "captured-work:probe.env",
+          "path": "/sessions/final-replay/work/Regression/FT13/probe.env",
+          "available_and_compatible": true
+        },
+        {
+          "role": "binary",
+          "reference": "captured-work:probe",
+          "path": "/sessions/final-replay/work/Regression/FT13/probe",
+          "available_and_compatible": true
+        },
+        {
+          "role": "recipe-run",
+          "reference": "captured-work:probe.run.sh",
+          "path": "/sessions/final-replay/work/Regression/FT13/probe.run.sh",
+          "available_and_compatible": true
+        },
+        {
+          "role": "credential",
+          "reference": "fixture://ft13/protected-access",
+          "access": "authorized",
+          "available_and_compatible": true
+        }
+      ],
+      "reasons": [],
+      "silent_fallback": false,
+      "original_test_outcome": "DiffPgmOut",
+      "preservation": "declared_prerequisites_available"
+    },
+    "guard_bypassed": false
+  },
+  {
+    "label": "final-compare-out",
+    "gate": {
+      "phase": "compare-out",
+      "status": "ready",
+      "dispatch_phase": true,
+      "checked": [
+        {
+          "role": "shell",
+          "reference": "pinned-image:sha256:873ccd4bbd6101f6f8e46fd1a4502f2d0268edec40c4ae0476cdd24927337840#/bin/bash",
+          "path": "/bin/bash",
+          "available_and_compatible": true
+        },
+        {
+          "role": "perl",
+          "reference": "pinned-image:sha256:873ccd4bbd6101f6f8e46fd1a4502f2d0268edec40c4ae0476cdd24927337840#/usr/bin/perl",
+          "path": "/usr/bin/perl",
+          "available_and_compatible": true
+        },
+        {
+          "role": "elf-loader",
+          "reference": "pinned-image:sha256:873ccd4bbd6101f6f8e46fd1a4502f2d0268edec40c4ae0476cdd24927337840#/lib/ld-linux-aarch64.so.1",
+          "path": "/lib/ld-linux-aarch64.so.1",
+          "available_and_compatible": true
+        },
+        {
+          "role": "comparator",
+          "reference": "captured-prerequisite:comparator",
+          "path": "/deps/comparator/compare.pl",
+          "available_and_compatible": true
+        },
+        {
+          "role": "baseline",
+          "reference": "captured-prerequisite:baseline",
+          "path": "/fixtures/groups/Regression/FT13/Masters/probe.out",
+          "available_and_compatible": true
+        },
+        {
+          "role": "saved-env",
+          "reference": "captured-work:probe.env",
+          "path": "/sessions/final-replay/work/Regression/FT13/probe.env",
+          "available_and_compatible": true
+        },
+        {
+          "role": "recipe-compare-out",
+          "reference": "captured-work:probe.compare-out.sh",
+          "path": "/sessions/final-replay/work/Regression/FT13/probe.compare-out.sh",
+          "available_and_compatible": true
+        }
+      ],
+      "reasons": [],
+      "silent_fallback": false,
+      "original_test_outcome": "DiffPgmOut",
+      "preservation": "declared_prerequisites_available"
+    },
+    "guard_bypassed": false
+  }
+]
