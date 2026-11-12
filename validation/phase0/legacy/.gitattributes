@@ -23,3 +23,13 @@ evidence/ft11-005/worker/**/*.stderr -text whitespace=-blank-at-eol,-blank-at-eo
 evidence/ft11-005/worker/**/*.log -text whitespace=-blank-at-eol,-blank-at-eof
 evidence/ft11-005/worker/**/work.tar.gz -text
 evidence/ft11-005/worker/protocol-no-enumeration/log.errmsg -text whitespace=-blank-at-eof
+
+# Preserve FT12 CGI HTTP/diagnostic bytes, work snapshots and native store objects.
+evidence/ft12-003/lab/**/*.stdout -text whitespace=cr-at-eol,-blank-at-eol,-blank-at-eof
+evidence/ft12-003/lab/**/*.stderr -text whitespace=-blank-at-eol,-blank-at-eof
+evidence/ft12-003/lab/**/*.log -text whitespace=-blank-at-eol,-blank-at-eof
+evidence/ft12-003/**/*.tar.gz -text
+evidence/ft12-003/native/data/objects/* -text whitespace=-blank-at-eol,-blank-at-eof
+evidence/ft12-003/**/*.sqlite -text
+# gen_opt_tmp intentionally ends its captured options files with a blank line.
+evidence/ft12-003/lab/reruns/**/*.opt -text whitespace=-blank-at-eof

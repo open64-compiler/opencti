@@ -1,0 +1,37 @@
+[
+  {
+    "attempt_id": "ft12-245a684371bd47c38ff5c62e6ed11fd2",
+    "parent_attempt_id": "ft12-original",
+    "workspace": "/Users/shinmingliu/opcti/validation/phase0/legacy/runs/ft12-003/lab/native-allocated/ft12-245a684371bd47c38ff5c62e6ed11fd2/work",
+    "state": "executed",
+    "origin": "isolated_allocation"
+  },
+  {
+    "attempt_id": "ft12-93a48a21b5874ceda03585d6619c8a5c",
+    "parent_attempt_id": "ft12-original",
+    "workspace": "/Users/shinmingliu/opcti/validation/phase0/legacy/runs/ft12-003/lab/native-allocated/ft12-93a48a21b5874ceda03585d6619c8a5c/work",
+    "state": "executed",
+    "origin": "isolated_allocation"
+  },
+  {
+    "attempt_id": "ft12-original",
+    "parent_attempt_id": null,
+    "workspace": "/Users/shinmingliu/opcti/validation/phase0/legacy/runs/ft12-003/lab/original/work",
+    "state": "executed",
+    "origin": "observed_legacy"
+  },
+  {
+    "attempt_id": "ft12-rerun-a",
+    "parent_attempt_id": "ft12-original",
+    "workspace": "/Users/shinmingliu/opcti/validation/phase0/legacy/runs/ft12-003/lab/original/work/rerun.9.work",
+    "state": "executed",
+    "origin": "observed_legacy"
+  },
+  {
+    "attempt_id": "ft12-rerun-b",
+    "parent_attempt_id": "ft12-original",
+    "workspace": "/Users/shinmingliu/opcti/validation/phase0/legacy/runs/ft12-003/lab/original/work/rerun.10.work",
+    "state": "executed",
+    "origin": "observed_legacy"
+  }
+]

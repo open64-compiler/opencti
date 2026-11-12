@@ -1,0 +1,121 @@
+{
+  "session_id": "ft12-debug-session-a",
+  "parent_attempt": "ft12-rerun-a",
+  "changed_source_before": "7aa192a3582ef72b84ebe6dc13a913319319bb0943a3d8538c5ce90fc9547fb7",
+  "changed_env_before": "db6411b02029eeb27568f16145951c10bc6383b305373756e28e594eef2f02bb",
+  "changed_env_after": "a0862df6c106cdf4f2fae3c586b98b3bd7950eca12deec3027e351fda88ec84f",
+  "changed_source_after": "979096004fec439293ef90ce2ff42c59db6910c06e4cb3549474785b3b6d51b3",
+  "actual": "approved\nflag=17\n",
+  "source": {
+    "extra.opt": {
+      "sha256": "158fdd3aa2c83f3dcb657e8090a1df329c322f178249da32fc8db2c3dbc222fb",
+      "mode": 420
+    },
+    "groups/Regression/FT12/Masters/mismatch.out": {
+      "sha256": "8cebf09976c0a8f0f2113d643c0c9fe9d6fd0e47ad3e78540db32e795cc4adbd",
+      "mode": 420
+    },
+    "groups/Regression/FT12/Src/mismatch.c": {
+      "sha256": "979096004fec439293ef90ce2ff42c59db6910c06e4cb3549474785b3b6d51b3",
+      "mode": 420
+    },
+    "groups/Regression/FT12/Src/pass.c": {
+      "sha256": "2ad75d95660563887d8d3f1d0ae1dcf18c2379cbd83a5c72f5ab276351ee6949",
+      "mode": 420
+    },
+    "groups/Regression/FT12/Src/pass.tmconfig": {
+      "sha256": "1a20664f318c7d0c4a29df2244f816699f4e9b51ca358cc580df9e4ce55467e9",
+      "mode": 420
+    },
+    "groups/Regression/FT12/Src/runtime_error.c": {
+      "sha256": "e341c722d325011613e6dc95bad2a1da0c5d3efe9d7105647eea8a35812fbcf1",
+      "mode": 420
+    },
+    "groups/Regression/FT12/Src/runtime_error.tmconfig": {
+      "sha256": "1a20664f318c7d0c4a29df2244f816699f4e9b51ca358cc580df9e4ce55467e9",
+      "mode": 420
+    },
+    "groups/Regression/tmconfig": {
+      "sha256": "f6928df33124f543ef969eaf58b7f5cf5079aa0d40a4e336f0beab93bef4e785",
+      "mode": 420
+    },
+    "phase0.opt": {
+      "sha256": "1c4e5fe6d79364b1320acbe3d3955e67667da66bf312aa37989c4a6e5bccd694",
+      "mode": 420
+    }
+  },
+  "work": {
+    "Regression/FT12/mismatch": {
+      "sha256": "3e3abd4c708bf500c67652c645caac1302d0f128dc86fa61a4776001baebefb1",
+      "mode": 493
+    },
+    "Regression/FT12/mismatch.c": {
+      "link": "/fixtures/groups/Regression/FT12/Src/mismatch.c",
+      "mode": 493
+    },
+    "Regression/FT12/mismatch.compare-out.sh": {
+      "sha256": "0a73bfb6cbc4694539cb064801abb22a5c063ad252352da37785e0ce3579f4a1",
+      "mode": 511
+    },
+    "Regression/FT12/mismatch.compile.sh": {
+      "sha256": "92ed31c495fab77d622d3b73dd3579fff6db84cc0c2da805d9a29f2939e63391",
+      "mode": 511
+    },
+    "Regression/FT12/mismatch.env": {
+      "sha256": "a0862df6c106cdf4f2fae3c586b98b3bd7950eca12deec3027e351fda88ec84f",
+      "mode": 420
+    },
+    "Regression/FT12/mismatch.err": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "mode": 420
+    },
+    "Regression/FT12/mismatch.link.sh": {
+      "sha256": "b9c542285c4d9ea59b013b2f03f06b6efd784d1fda83545c0b98d3a34e8975fc",
+      "mode": 511
+    },
+    "Regression/FT12/mismatch.o": {
+      "sha256": "aa82e2b11cf3b9a4a71edde99340e74b16c9d9790669c2ef23cad14e329696a3",
+      "mode": 420
+    },
+    "Regression/FT12/mismatch.out": {
+      "sha256": "8cebf09976c0a8f0f2113d643c0c9fe9d6fd0e47ad3e78540db32e795cc4adbd",
+      "mode": 420
+    },
+    "Regression/FT12/mismatch.out.diff": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "mode": 420
+    },
+    "Regression/FT12/mismatch.out.master": {
+      "link": "/fixtures/groups/Regression/FT12/Src/../Masters/mismatch.out",
+      "mode": 493
+    },
+    "Regression/FT12/mismatch.run.sh": {
+      "sha256": "0b77f634ec22b3c89098835ecd335eb4867745e78dff1ba36922e9a131fac3f1",
+      "mode": 511
+    },
+    "Regression/FT12/mismatch.sh": {
+      "sha256": "054b053cfa4238c985df16f95ed81e3aabe1a9aeebd1353b4990ad5dd0ffb578",
+      "mode": 511
+    },
+    "TMEnv": {
+      "sha256": "c82dfeed7644f3d40a6522b0ef6772284564bf0668090a89de519085763c6e99",
+      "mode": 420
+    },
+    "TMUnits": {
+      "sha256": "153e28a7fe257f7162f415d6c01a863f6968ff46ecacae71d607c68e2a8c93bf",
+      "mode": 420
+    },
+    "TMmsgs/enumfile.1": {
+      "sha256": "c79141ab9df59c8792fe5d891f342ffac2e213d9fd0e770019756b6f45c40f61",
+      "mode": 420
+    },
+    "TMmsgs/result.1": {
+      "sha256": "0dd06052737af23a3a2882c0f4587abb6deed3f1a91067776a811e77a3a04559",
+      "mode": 420
+    },
+    "log.header": {
+      "sha256": "fc6a6b22a35b50f9b0733000920d7d7b2d96b7a504c21d2b90938b44fd01c6d2",
+      "mode": 420
+    }
+  }
+}

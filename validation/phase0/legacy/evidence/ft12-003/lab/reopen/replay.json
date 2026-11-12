@@ -1,0 +1,6 @@
+{
+  "parent_attempt": "ft12-original",
+  "tag": "DiffPgmOut",
+  "actual": "captured-failure\nflag=17\n",
+  "master_sha256": "8cebf09976c0a8f0f2113d643c0c9fe9d6fd0e47ad3e78540db32e795cc4adbd"
+}

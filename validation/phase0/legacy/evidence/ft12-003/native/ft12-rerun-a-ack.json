@@ -1,0 +1,50 @@
+{
+  "accepted": true,
+  "receipt": {
+    "attempt_id": "ft12-rerun-a",
+    "manifest_sha256": "7e20996ca125c0288961de642fa8c0a631f8663f24a300ccc27dfccf6d820c24",
+    "object_hashes": [
+      "016a202ba9651d2bb7280428de305fa560f25b6ab7003f7b3b5b67aa98eaecfd",
+      "13b7b37f8833bd53a887e95a97f46471a28399aa1a1bbe37e3fe8d71191bc12b",
+      "3c1603c12078dcc01befea973b055699d43c23d543c7d1547d4d094fe42f38f0",
+      "b43d6e27858118060a7f711c049e6f5a90a03412ff06a3c47092ac3f507939de"
+    ],
+    "prerequisite_hashes": [
+      "8b69adc550862c611dd9f4b58a2126e6f82e94dc7a2c7781dfae3163418bf8a5"
+    ],
+    "receipt_sha256": "c96a3b2bc4082af93687d0f29d0f1b8ea7c4553961d5bfc9fa882185211a160f"
+  },
+  "status": {
+    "attempt_count": 2,
+    "unique_event_count": 2,
+    "attempt_id": "ft12-rerun-a",
+    "manifest_sha256": "7e20996ca125c0288961de642fa8c0a631f8663f24a300ccc27dfccf6d820c24",
+    "test_outcome": {
+      "legacy_tags": {
+        "Regression/FT12/mismatch.c": "CompileErr"
+      },
+      "tm_process_exit": 0
+    },
+    "preservation_state": "complete",
+    "required_objects": 4,
+    "verified_objects": [
+      "initial-inputs.tar.gz",
+      "work.tar.gz",
+      "summary.log",
+      "invocation.json"
+    ],
+    "missing_objects": [],
+    "corrupt_objects": [],
+    "local_prerequisites": [
+      {
+        "name": "runtime-image.tar",
+        "sha256": "8b69adc550862c611dd9f4b58a2126e6f82e94dc7a2c7781dfae3163418bf8a5",
+        "verified": true,
+        "status": "verified"
+      }
+    ],
+    "temporary_files": [],
+    "acknowledged": true,
+    "retention_pinned": true
+  }
+}

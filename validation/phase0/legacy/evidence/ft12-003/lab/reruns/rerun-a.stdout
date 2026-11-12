@@ -1,0 +1,29 @@
+Set-Cookie: dtm_pool_ck=review_pool%3Aft12-local; path=/; expires=Wed, 10 Feb 2027 21:26:13 GMT
+Date: Thu, 12 Nov 2026 21:26:13 GMT
+Content-Type: text/html; charset=ISO-8859-1
+
+<!DOCTYPE html
+	PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+	 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en-US" xml:lang="en-US">
+<head>
+<title>start re-run tests</title>
+<link rel="stylesheet" type="text/css" href="../css/homepages-v5.css" />
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+</head>
+<body>
+<pre><code>/usr/bin/python3 /tools/local_launch.py ft12-local -l root "PATH=\$PATH:/usr/atria/bin:/bin:/usr/bin:/usr/ccs/bin:/usr/local/bin:.; export PATH; export CTI_GROUPS=/fixtures/groups; export WRKROOT=/lab/requested-root; /opt/cti/bin/TM.pl -nod -l /lab/original/work/rerun.9.log -w /lab/original/work/rerun.9.work -f /lab/original/work/rerun.9.opt  -x  DTM_POOL=review_pool:ft12-local -nomail clean run > /lab/original/work/rerun.9.out 2>&1" 2>&1
+
+No rerun mail was sent out.
+
+The rerun is just started with the following files:
+
+Original log  :  /lab/original/summary.log
+Options file  :  /lab/original/work/rerun.9.opt
+Log file:        /lab/original/work/rerun.9.log
+Work dir:        /lab/original/work/rerun.9.work
+TM output:       /lab/original/work/rerun.9.out
+
+For results please check at:<br><a href="get-log-file.cgi?log=/lab/original/work/rerun.9.log">get-log-file.cgi?log=/lab/original/work/rerun.9.log</a><br></code></pre>
+</body>
+</html>

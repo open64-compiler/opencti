@@ -310,6 +310,10 @@ Run-level precedence is defaults, `-px`, user options, extra options, CLI-derive
 
 A `run` replaces an existing work tree even if `CLEAN=false`; driver-level cleanup is a separate behavior. The outer TM process normally exits zero after a completed run with failing tests. Automation must consume the recorded verdicts and summary, rather than treating process completion as test success.
 
+The [FT12 capture](phase0-ft12-results.md) shows that `rerun_test.cgi` preview creates a temporary options file without executing a job. Actual rerun options, work and logs use PID-based names under the original work directory; `WRKROOT` is an environment setting and does not move those generated paths. Reusing the parent directory can therefore delete its rerun history. Native preservation must keep attempt objects outside every disposable execution hierarchy.
+
+The same capture finds that the header omits CLI/extra-file settings: `TM.pl` uses lexical `%Opt_Xport`, `%Opt_Pxport` and `$Opt_XFILE`, while `generateLogHeader` reads `%::Xport`, `%::Pxport` and environment `XFILE`. The CGI can lose effective compiler flags and reproduce a different failure. Preserve the complete invocation, source options and effective environment; header-derived rerun commands alone are insufficient. The validation-native catalog/store demonstrate guarded fresh allocations and original recovery without changing these legacy behaviors.
+
 The web forms reuse schedules and launch/report tools. The legacy add-test and check-in helpers still contain SVN/ClearCase assumptions. They do not supply a Git-native enrollment transaction. For this checkout, maintain sources and enrollment files in Git and review the resulting diff.
 
 Operational details: [running tests](running-tests.md), [scheduling](scheduling.md), [known failures](known-failures.md), [addtest.pl](../../bin/www/addtest.pl), [start_tests.cgi](../../www/cgi-bin/start_tests.cgi).

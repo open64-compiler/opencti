@@ -1,0 +1,125 @@
+{
+  "mode": "reopen",
+  "framework": {
+    "id": "1584e7b404a016da21ea8bd4a5c3ee2d30a1ee1424ece1d21deab627b00e1de2",
+    "files": 2654
+  },
+  "framework_unchanged": true,
+  "records": [
+    {
+      "name": "compile",
+      "argv": [
+        "bash",
+        "./mismatch.compile.sh"
+      ],
+      "cwd": "/session/Regression/FT12",
+      "returncode": 0
+    },
+    {
+      "name": "link",
+      "argv": [
+        "bash",
+        "./mismatch.link.sh"
+      ],
+      "cwd": "/session/Regression/FT12",
+      "returncode": 0
+    },
+    {
+      "name": "run",
+      "argv": [
+        "bash",
+        "./mismatch.run.sh"
+      ],
+      "cwd": "/session/Regression/FT12",
+      "returncode": 0
+    },
+    {
+      "name": "compare-out",
+      "argv": [
+        "bash",
+        "./mismatch.compare-out.sh"
+      ],
+      "cwd": "/session/Regression/FT12",
+      "returncode": 1
+    }
+  ],
+  "inventory": {
+    "os": "linux",
+    "arch": "arm64",
+    "uname": [
+      "Linux",
+      "1218f15e32ed",
+      "6.12.76-linuxkit",
+      "#1 SMP Fri May 29 10:00:01 UTC 2026",
+      "aarch64",
+      "aarch64"
+    ],
+    "data_modes": [
+      64
+    ],
+    "cpu_features": [
+      "aes",
+      "afp",
+      "asimd",
+      "asimddp",
+      "asimdfhm",
+      "asimdhp",
+      "asimdrdm",
+      "atomics",
+      "bf16",
+      "bti",
+      "cpuid",
+      "crc32",
+      "dcpodp",
+      "dcpop",
+      "dit",
+      "ebf16",
+      "evtstrm",
+      "fcma",
+      "flagm",
+      "flagm2",
+      "fp",
+      "fphp",
+      "frint",
+      "i8mm",
+      "ilrcpc",
+      "jscvt",
+      "lrcpc",
+      "paca",
+      "pacg",
+      "pmull",
+      "sb",
+      "sha1",
+      "sha2",
+      "sha3",
+      "sha512",
+      "uscat"
+    ],
+    "verified_gpu_backends": [],
+    "gpu_observation": "No GPU backend qualified by this CPU-only fixture",
+    "selected_image_id": "sha256:a119c5e4a42dedbb5cdce10d448efce31b4054018bde56a4e476bc2c529fa62c",
+    "tools": {
+      "gcc": {
+        "available": true,
+        "returncode": 0,
+        "output": "gcc (Ubuntu 13.3.0-6ubuntu2~24.04.1) 13.3.0\nCopyright (C) 2023 Free Software Foundation, Inc.\nThis is free software; see the source for copying conditions.  There is NO\nwarranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.\n\n"
+      },
+      "gdb": {
+        "available": false
+      },
+      "bash": {
+        "available": true,
+        "returncode": 0,
+        "output": "GNU bash, version 5.2.21(1)-release (aarch64-unknown-linux-gnu)\nCopyright (C) 2022 Free Software Foundation, Inc.\nLicense GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>\n\nThis is free software; you are free to change and redistribute it.\nThere is NO WARRANTY, to the extent permitted by law.\n"
+      },
+      "perl": {
+        "available": true,
+        "returncode": 0,
+        "output": "\nThis is perl 5, version 38, subversion 2 (v5.38.2) built for aarch64-linux-gnu-thread-multi\n(with 68 registered patches, see perl -V for more detail)\n\nCopyright 1987-2023, Larry Wall\n\nPerl may be copied only under the terms of either the Artistic License or the\nGNU General Public License, which may be found in the Perl 5 source kit.\n\nComplete documentation for Perl, including FAQ lists, should be found on\nthis system using \"man perl\" or \"perldoc perl\".  If you have access to the\nInternet, point your browser at https://www.perl.org/, the Perl Home Page.\n\n"
+      }
+    },
+    "process_status": "Name:\tpython3\nUmask:\t0022\nState:\tR (running)\nTgid:\t1\nNgid:\t0\nPid:\t1\nPPid:\t0\nTracerPid:\t0\nUid:\t0\t0\t0\t0\nGid:\t0\t0\t0\t0\nFDSize:\t64\nGroups:\t0 \nNStgid:\t1\nNSpid:\t1\nNSpgid:\t1\nNSsid:\t1\nKthread:\t0\nVmPeak:\t   31848 kB\nVmSize:\t   31444 kB\nVmLck:\t       0 kB\nVmPin:\t       0 kB\nVmHWM:\t   24480 kB\nVmRSS:\t   24480 kB\nRssAnon:\t   15312 kB\nRssFile:\t    9168 kB\nRssShmem:\t       0 kB\nVmData:\t   16224 kB\nVmStk:\t     132 kB\nVmExe:\t    6200 kB\nVmLib:\t    7200 kB\nVmPTE:\t      92 kB\nVmSwap:\t       0 kB\nHugetlbPages:\t       0 kB\nCoreDumping:\t0\nTHP_enabled:\t1\nuntag_mask:\t0xffffffffffffff\nThreads:\t1\nSigQ:\t0/31726\nSigPnd:\t0000000000000000\nShdPnd:\t0000000000000000\nSigBlk:\t0000000000000000\nSigIgn:\t0000000001001000\nSigCgt:\t0000000000000002\nCapInh:\t0000000000000000\nCapPrm:\t0000000000000000\nCapEff:\t0000000000000000\nCapBnd:\t0000000000000000\nCapAmb:\t0000000000000000\nNoNewPrivs:\t1\nSeccomp:\t2\nSeccomp_filters:\t1\nSpeculation_Store_Bypass:\tvulnerable\nSpeculationIndirectBranch:\tunknown\nCpus_allowed:\t3ffff\nCpus_allowed_list:\t0-17\nMems_allowed:\t1\nMems_allowed_list:\t0\nvoluntary_ctxt_switches:\t107\nnonvoluntary_ctxt_switches:\t45\n",
+    "ptrace_scope": "unavailable"
+  },
+  "mountinfo": "139 88 0:63 / / rw,relatime - overlay overlay rw,lowerdir=/var/lib/docker/overlay2/l/4KLROCKXJORL2WCLSJOLSQ6USP:/var/lib/docker/overlay2/l/QJD5A3P7KSU72QZAIS5PIEVRV3:/var/lib/docker/overlay2/l/TYQEKSSORHHOSEEMJ5R7YBXIOK:/var/lib/docker/overlay2/l/ATUUTYKPL3IP5SFKTW4A2PNWG2:/var/lib/docker/overlay2/l/QU4SGSAYYC3DG7YI2BUSCYY7H6:/var/lib/docker/overlay2/l/3KCQMCMHWIBOFS3SS6PWCCDST3:/var/lib/docker/overlay2/l/EYRDWAKQDDQYGH4RM4CX7A45QW:/var/lib/docker/overlay2/l/TNWS7OECUR4RVDBV32SYIO6UPS,upperdir=/var/lib/docker/overlay2/63c7cad8b5859e61e905270a7fc084283516a7de3479a7d87e76a88c92d5d1a0/diff,workdir=/var/lib/docker/overlay2/63c7cad8b5859e61e905270a7fc084283516a7de3479a7d87e76a88c92d5d1a0/work\n141 139 0:72 / /proc rw,nosuid,nodev,noexec,relatime - proc proc rw\n142 139 0:73 / /dev rw,nosuid - tmpfs tmpfs rw,size=65536k,mode=755\n143 142 0:74 / /dev/pts rw,nosuid,noexec,relatime - devpts devpts rw,gid=5,mode=620,ptmxmode=666\n144 139 0:75 / /sys ro,nosuid,nodev,noexec,relatime - sysfs sysfs ro\n145 144 0:40 / /sys/fs/cgroup ro,nosuid,nodev,noexec,relatime - cgroup2 cgroup rw\n146 142 0:70 / /dev/mqueue rw,nosuid,nodev,noexec,relatime - mqueue mqueue rw\n147 142 0:76 / /dev/shm rw,nosuid,nodev,noexec,relatime - tmpfs shm rw,size=65536k\n148 139 0:46 /shinmingliu/opcti/validation/phase0/legacy/runs/ft12-003/retained-tools /tools ro,nosuid,nodev,relatime - fakeowner /run/host_mark/Users rw,fakeowner\n149 139 0:46 /shinmingliu/opcti/validation/phase0/legacy/runs/ft12-003/metadata /metadata ro,nosuid,nodev,relatime - fakeowner /run/host_mark/Users rw,fakeowner\n150 139 0:46 /shinmingliu/opcti/validation/phase0/legacy/runs/ft12-003/lab /lab rw,nosuid,nodev,relatime - fakeowner /run/host_mark/Users rw,fakeowner\n151 139 0:46 /shinmingliu/opcti/validation/phase0/legacy/runs/ft12-003/recovered/inputs/fixtures /fixtures ro,nosuid,nodev,relatime - fakeowner /run/host_mark/Users rw,fakeowner\n152 139 0:46 /shinmingliu/opcti/validation/phase0/legacy/runs/ft12-003/recovered/execution/work /session rw,nosuid,nodev,relatime - fakeowner /run/host_mark/Users rw,fakeowner\n153 139 254:1 /docker/containers/1218f15e32edb5e33178cb707f06e687c2b99b03c530d92cfa99748e5288a406/resolv.conf /etc/resolv.conf rw,relatime - ext4 /dev/vda1 rw,discard\n154 139 254:1 /docker/containers/1218f15e32edb5e33178cb707f06e687c2b99b03c530d92cfa99748e5288a406/hostname /etc/hostname rw,relatime - ext4 /dev/vda1 rw,discard\n155 139 254:1 /docker/containers/1218f15e32edb5e33178cb707f06e687c2b99b03c530d92cfa99748e5288a406/hosts /etc/hosts rw,relatime - ext4 /dev/vda1 rw,discard\n89 141 0:72 /bus /proc/bus ro,nosuid,nodev,noexec,relatime - proc proc rw\n90 141 0:72 /fs /proc/fs ro,nosuid,nodev,noexec,relatime - proc proc rw\n91 141 0:72 /irq /proc/irq ro,nosuid,nodev,noexec,relatime - proc proc rw\n92 141 0:72 /sys /proc/sys ro,nosuid,nodev,noexec,relatime - proc proc rw\n93 141 0:72 /sysrq-trigger /proc/sysrq-trigger ro,nosuid,nodev,noexec,relatime - proc proc rw\n94 141 0:73 /null /proc/interrupts rw,nosuid - tmpfs tmpfs rw,size=65536k,mode=755\n95 141 0:73 /null /proc/kcore rw,nosuid - tmpfs tmpfs rw,size=65536k,mode=755\n96 141 0:73 /null /proc/keys rw,nosuid - tmpfs tmpfs rw,size=65536k,mode=755\n97 141 0:77 / /proc/scsi ro,relatime - tmpfs tmpfs ro\n98 141 0:73 /null /proc/timer_list rw,nosuid - tmpfs tmpfs rw,size=65536k,mode=755\n99 144 0:78 / /sys/firmware ro,relatime - tmpfs tmpfs ro\n"
+}

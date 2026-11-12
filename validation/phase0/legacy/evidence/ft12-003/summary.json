@@ -1,0 +1,19 @@
+{
+  "scenario": "FT12",
+  "status": "pass_for_isolated_rerun_and_preservation_fixture",
+  "image_id": "sha256:a119c5e4a42dedbb5cdce10d448efce31b4054018bde56a4e476bc2c529fa62c",
+  "framework_unchanged": true,
+  "earlier_capture_unchanged": true,
+  "fixture_unchanged": true,
+  "tm_executions": 7,
+  "cgi_previews": 2,
+  "cgi_reruns": 2,
+  "containers": 8,
+  "private_replay_phases": 8,
+  "native_pinned_attempts": 7,
+  "native_reserved_workspaces": 5,
+  "native_executor_adapter_available": false,
+  "cgi_transport": "validation-only local seam; no SSH",
+  "native_production_services_implemented": false,
+  "finished_utc": "2026-11-12T21:26:29.179637+00:00"
+}

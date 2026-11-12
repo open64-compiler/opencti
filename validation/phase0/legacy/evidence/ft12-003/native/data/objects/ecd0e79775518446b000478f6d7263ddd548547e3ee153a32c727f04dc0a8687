@@ -1,0 +1,30 @@
+# Start time was Thu Nov 12 21:26:23 2026 on 669dd4dc2132
+# TEST_WORK_DIR --> /lab/native-allocated/ft12-245a684371bd47c38ff5c62e6ed11fd2/work
+# OPT_LEVEL     --> 0
+# DATA_MODE     --> +DD64
+# COMPILER_VERSION --> gcc-13.3.0
+# CTI_GROUPS    --> /fixtures/groups
+# REPOSITORY_TYPE --> SVN
+# OPTIONS_FILE--> /fixtures/phase0.opt
+# SELECTIONS  --> Regression/FT12
+# TESTS       --> mismatch.c
+# VIEW    --> None
+# DTM_POOL    --> original_pool:ft12-original
+# DTM_CPUARCH --> aarch64
+# DTM_PRIORITY--> 2
+# DISTRIBUTED_TM --> 
+# SEND_LOG    --> 
+# http://localhost/CTI/cgi-bin/get-log-file.cgi?log=/lab/native-allocated/ft12-245a684371bd47c38ff5c62e6ed11fd2/summary.log
+# END OF HEADER
+
+# TOTAL TESTS=1,  PASS=0,  FAIL=1,  RUNNING=0
+
+#_________________________________________________________
+#  OUTPUT DIFFERENCE FAILURES 
+#_________________________________________________________
+# Total Number of OUTPUT DIFFERENCE FAILURES = 1
+Regression/FT12/mismatch.c
+
+# TIME_TAKEN --> 00:00:00 [1794518783 - 1794518783]
+
+# End Time was Thu Nov 12 21:26:23 2026

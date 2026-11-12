@@ -1,0 +1,332 @@
+{
+  "same_workspace_requested": "/lab/original/work",
+  "previous_inventory": {
+    "Regression/FT12/mismatch": {
+      "sha256": "ea152216af65b0470cc69c207cec30c9da8d7abea0b79dad376d9735ee5eb38f",
+      "mode": 493
+    },
+    "Regression/FT12/mismatch.c": {
+      "link": "/fixtures/groups/Regression/FT12/Src/mismatch.c",
+      "mode": 493
+    },
+    "Regression/FT12/mismatch.compare-out.sh": {
+      "sha256": "d7ff082556c2ebe28a91964df7c9d75f5dba643090ab051a6125161af6ef796e",
+      "mode": 511
+    },
+    "Regression/FT12/mismatch.compile.sh": {
+      "sha256": "b155cd61d1ac921dabced6755f11699ae6e3ff644e806434cd755b31bf3aa2ec",
+      "mode": 511
+    },
+    "Regression/FT12/mismatch.env": {
+      "sha256": "9f492a4991b972ace2434fa7979bd9f8d51cf96c1f7742453347c1f99fd85e44",
+      "mode": 420
+    },
+    "Regression/FT12/mismatch.err": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "mode": 420
+    },
+    "Regression/FT12/mismatch.link.sh": {
+      "sha256": "bae857d7c92edd5cd011865178c132e44b9fc847b89c52a1d6bb05c83728fb28",
+      "mode": 511
+    },
+    "Regression/FT12/mismatch.o": {
+      "sha256": "ae98529b02f0c99731b08ed6160649e51f11e7186fe2d3ab1013dd31cf204e1d",
+      "mode": 420
+    },
+    "Regression/FT12/mismatch.out": {
+      "sha256": "be923db73e13585d932a109fb81435061a67e71c532e313a501d09c41c1b0ba2",
+      "mode": 420
+    },
+    "Regression/FT12/mismatch.out.diff": {
+      "sha256": "c57529ac65b31afa3fb0e1a7f4c6c2ce7ef8e2d7cfe996fdf3b2a873874b38bc",
+      "mode": 420
+    },
+    "Regression/FT12/mismatch.out.master": {
+      "link": "/fixtures/groups/Regression/FT12/Src/../Masters/mismatch.out",
+      "mode": 493
+    },
+    "Regression/FT12/mismatch.result": {
+      "sha256": "461325dffd71fed76022e3abcb471822b2b7da0bd0a45d623fd68d05e7fac465",
+      "mode": 420
+    },
+    "Regression/FT12/mismatch.run.sh": {
+      "sha256": "e71888275a733e1c2c5c22536e201c39eb72b4b7eb5dab90858b080902e10065",
+      "mode": 511
+    },
+    "Regression/FT12/mismatch.sh": {
+      "sha256": "a0c06d71147d00a9038612fb1b3df46e5f48f54ae700a60d0b8b46d4b027ecb3",
+      "mode": 511
+    },
+    "Regression/FT12/pass": {
+      "sha256": "cd5eef0ecab8d1786003e12b5872305b9477aef589af0475cecaa12e0326b55d",
+      "mode": 493
+    },
+    "Regression/FT12/pass.c": {
+      "link": "/fixtures/groups/Regression/FT12/Src/pass.c",
+      "mode": 493
+    },
+    "Regression/FT12/pass.compile.sh": {
+      "sha256": "ea2686f4ee3fd4298a0e685d15da715ac4f44f8fe4e21c24671a3ecc025a482f",
+      "mode": 511
+    },
+    "Regression/FT12/pass.env": {
+      "sha256": "d811803c4afe40ef05edd404e1d014a47f26172cec00db1f0301021c3ebe5ea6",
+      "mode": 420
+    },
+    "Regression/FT12/pass.err": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "mode": 420
+    },
+    "Regression/FT12/pass.link.sh": {
+      "sha256": "e7f2536058f5f102b6254913a946f4eeb59790d56d6e3271546e5c753dad61f8",
+      "mode": 511
+    },
+    "Regression/FT12/pass.o": {
+      "sha256": "d9067f3f404dd8f2f52ecbc7d1796a4f9d1b8134d8e9eba819dfa7db68db446e",
+      "mode": 420
+    },
+    "Regression/FT12/pass.out": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "mode": 420
+    },
+    "Regression/FT12/pass.result": {
+      "sha256": "9c2adf69a6681550697144f9a78631c58f8589faddce0528aa9d09d25b03c398",
+      "mode": 420
+    },
+    "Regression/FT12/pass.run.sh": {
+      "sha256": "76733aaadcd7e7a4226e789e5bae10bd8261b95dce557740a32cac308962390b",
+      "mode": 511
+    },
+    "Regression/FT12/pass.sh": {
+      "sha256": "c6c9ef81beee9c1c388c4131a140da6564c7738143f5cb6edd2f7a629e99afdc",
+      "mode": 511
+    },
+    "Regression/FT12/pass.tmconfig": {
+      "link": "/fixtures/groups/Regression/FT12/Src/pass.tmconfig",
+      "mode": 493
+    },
+    "Regression/FT12/runtime_error": {
+      "sha256": "77d679de6b424537442bebe1510c92c72bf75894f3398dc979a10f88e8b3ec43",
+      "mode": 493
+    },
+    "Regression/FT12/runtime_error.c": {
+      "link": "/fixtures/groups/Regression/FT12/Src/runtime_error.c",
+      "mode": 493
+    },
+    "Regression/FT12/runtime_error.compile.sh": {
+      "sha256": "0a870d7820bfa56e78ffe6fd1c7225cd01370e559f0193398f8f5d93f08a1006",
+      "mode": 511
+    },
+    "Regression/FT12/runtime_error.env": {
+      "sha256": "2657216a8dc8bba2e70e32b0f5c4e3f1a0ea08b8c162414d6e2eb61ff33e2899",
+      "mode": 420
+    },
+    "Regression/FT12/runtime_error.err": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "mode": 420
+    },
+    "Regression/FT12/runtime_error.link.sh": {
+      "sha256": "dd4801fe8b08e21358f503c0a98b6f2d2211d678831e554abba8cb8ba7711d5e",
+      "mode": 511
+    },
+    "Regression/FT12/runtime_error.o": {
+      "sha256": "dad3dac7b602b0010adba9d274eb246ec44ae4ed106d070f3a489c527b5b6b2a",
+      "mode": 420
+    },
+    "Regression/FT12/runtime_error.out": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "mode": 420
+    },
+    "Regression/FT12/runtime_error.result": {
+      "sha256": "5b4c1d5448279cdffaa6d232b0c71371ae4e53058210195a6a238959ee9d9c18",
+      "mode": 420
+    },
+    "Regression/FT12/runtime_error.run.sh": {
+      "sha256": "7b03930a797419787dcbe03812dda5a27c646403409fb618155120c96a14873c",
+      "mode": 511
+    },
+    "Regression/FT12/runtime_error.sh": {
+      "sha256": "b119363946ea324442c7d0b8340e11c2b216af1daf3be394396db88597a80f92",
+      "mode": 511
+    },
+    "Regression/FT12/runtime_error.tmconfig": {
+      "link": "/fixtures/groups/Regression/FT12/Src/runtime_error.tmconfig",
+      "mode": 493
+    },
+    "TMEnv": {
+      "sha256": "fc081b01f4ea4fc1a75323db675c3d85428a9106d23403704f1116b7277857ad",
+      "mode": 420
+    },
+    "TMUnits": {
+      "sha256": "153e28a7fe257f7162f415d6c01a863f6968ff46ecacae71d607c68e2a8c93bf",
+      "mode": 420
+    },
+    "TMmsgs/enumfile.1": {
+      "sha256": "5106fa2e0a75ace3719a9cecc546e2141ea325a61aeb91eb811b4a58da629db9",
+      "mode": 420
+    },
+    "TMmsgs/result.1": {
+      "sha256": "a91f102fce130aef19020ea37858744504b20332908de53d4ba769126ec70cd6",
+      "mode": 420
+    },
+    "log.header": {
+      "sha256": "f56729f309349d454d052d3652b87aca795bf97f01042ba7b07241f44509f975",
+      "mode": 420
+    },
+    "rerun.10.log": {
+      "sha256": "4da0973709e2ecabd652d6de69b8ec9e30133a4215e4044814a5ad378f7b1a49",
+      "mode": 420
+    },
+    "rerun.10.opt": {
+      "sha256": "a2de9db69df177d8b4beb46dcf8bd291ca9476c50d94d3f3213ccc0d552bbd2a",
+      "mode": 420
+    },
+    "rerun.10.out": {
+      "sha256": "a280afa0938335b64e1b0d34226d50952b40db217bfa6854a5ff86f869c07cf9",
+      "mode": 420
+    },
+    "rerun.10.work/Regression/FT12/mismatch.c": {
+      "link": "/fixtures/groups/Regression/FT12/Src/mismatch.c",
+      "mode": 493
+    },
+    "rerun.10.work/Regression/FT12/mismatch.compare-out.sh": {
+      "sha256": "0a73bfb6cbc4694539cb064801abb22a5c063ad252352da37785e0ce3579f4a1",
+      "mode": 511
+    },
+    "rerun.10.work/Regression/FT12/mismatch.compile.sh": {
+      "sha256": "92ed31c495fab77d622d3b73dd3579fff6db84cc0c2da805d9a29f2939e63391",
+      "mode": 511
+    },
+    "rerun.10.work/Regression/FT12/mismatch.env": {
+      "sha256": "e27ef1243aaf63f431d64e0d5e1ff42fc6a9373da189cd0ab216c62c8a4b3217",
+      "mode": 420
+    },
+    "rerun.10.work/Regression/FT12/mismatch.err": {
+      "sha256": "7e67d77260f94aa1b30c54cf9257b54b06595140f597293a22509a3e9a9d0535",
+      "mode": 420
+    },
+    "rerun.10.work/Regression/FT12/mismatch.link.sh": {
+      "sha256": "b9c542285c4d9ea59b013b2f03f06b6efd784d1fda83545c0b98d3a34e8975fc",
+      "mode": 511
+    },
+    "rerun.10.work/Regression/FT12/mismatch.out.master": {
+      "link": "/fixtures/groups/Regression/FT12/Src/../Masters/mismatch.out",
+      "mode": 493
+    },
+    "rerun.10.work/Regression/FT12/mismatch.result": {
+      "sha256": "d6db9dab1c5704369bc9d46bf199a26f236c01e1164ef796f1ab9a00ed2829a0",
+      "mode": 420
+    },
+    "rerun.10.work/Regression/FT12/mismatch.run.sh": {
+      "sha256": "0b77f634ec22b3c89098835ecd335eb4867745e78dff1ba36922e9a131fac3f1",
+      "mode": 511
+    },
+    "rerun.10.work/Regression/FT12/mismatch.sh": {
+      "sha256": "054b053cfa4238c985df16f95ed81e3aabe1a9aeebd1353b4990ad5dd0ffb578",
+      "mode": 511
+    },
+    "rerun.10.work/TMEnv": {
+      "sha256": "c69a973ceaed9ef71cc867f4368b34b598032c972cf1d4384be1c117ea2b4dfd",
+      "mode": 420
+    },
+    "rerun.10.work/TMUnits": {
+      "sha256": "153e28a7fe257f7162f415d6c01a863f6968ff46ecacae71d607c68e2a8c93bf",
+      "mode": 420
+    },
+    "rerun.10.work/TMmsgs/enumfile.1": {
+      "sha256": "c79141ab9df59c8792fe5d891f342ffac2e213d9fd0e770019756b6f45c40f61",
+      "mode": 420
+    },
+    "rerun.10.work/TMmsgs/result.1": {
+      "sha256": "0dd06052737af23a3a2882c0f4587abb6deed3f1a91067776a811e77a3a04559",
+      "mode": 420
+    },
+    "rerun.10.work/log.header": {
+      "sha256": "2eb968870f7c6df99c9d01795834e34a887b95e21c56c0d2f2004e2de2025204",
+      "mode": 420
+    },
+    "rerun.7.opt": {
+      "sha256": "a2de9db69df177d8b4beb46dcf8bd291ca9476c50d94d3f3213ccc0d552bbd2a",
+      "mode": 420
+    },
+    "rerun.8.opt": {
+      "sha256": "a2de9db69df177d8b4beb46dcf8bd291ca9476c50d94d3f3213ccc0d552bbd2a",
+      "mode": 420
+    },
+    "rerun.9.log": {
+      "sha256": "3c1603c12078dcc01befea973b055699d43c23d543c7d1547d4d094fe42f38f0",
+      "mode": 420
+    },
+    "rerun.9.opt": {
+      "sha256": "a2de9db69df177d8b4beb46dcf8bd291ca9476c50d94d3f3213ccc0d552bbd2a",
+      "mode": 420
+    },
+    "rerun.9.out": {
+      "sha256": "cb2c1ebf66cebbc92534976903c0960d96d41351a6520f277ef8eafca0718bfb",
+      "mode": 420
+    },
+    "rerun.9.work/Regression/FT12/mismatch.c": {
+      "link": "/fixtures/groups/Regression/FT12/Src/mismatch.c",
+      "mode": 493
+    },
+    "rerun.9.work/Regression/FT12/mismatch.compare-out.sh": {
+      "sha256": "0a73bfb6cbc4694539cb064801abb22a5c063ad252352da37785e0ce3579f4a1",
+      "mode": 511
+    },
+    "rerun.9.work/Regression/FT12/mismatch.compile.sh": {
+      "sha256": "92ed31c495fab77d622d3b73dd3579fff6db84cc0c2da805d9a29f2939e63391",
+      "mode": 511
+    },
+    "rerun.9.work/Regression/FT12/mismatch.env": {
+      "sha256": "db6411b02029eeb27568f16145951c10bc6383b305373756e28e594eef2f02bb",
+      "mode": 420
+    },
+    "rerun.9.work/Regression/FT12/mismatch.err": {
+      "sha256": "7e67d77260f94aa1b30c54cf9257b54b06595140f597293a22509a3e9a9d0535",
+      "mode": 420
+    },
+    "rerun.9.work/Regression/FT12/mismatch.link.sh": {
+      "sha256": "b9c542285c4d9ea59b013b2f03f06b6efd784d1fda83545c0b98d3a34e8975fc",
+      "mode": 511
+    },
+    "rerun.9.work/Regression/FT12/mismatch.out.master": {
+      "link": "/fixtures/groups/Regression/FT12/Src/../Masters/mismatch.out",
+      "mode": 493
+    },
+    "rerun.9.work/Regression/FT12/mismatch.result": {
+      "sha256": "d6db9dab1c5704369bc9d46bf199a26f236c01e1164ef796f1ab9a00ed2829a0",
+      "mode": 420
+    },
+    "rerun.9.work/Regression/FT12/mismatch.run.sh": {
+      "sha256": "0b77f634ec22b3c89098835ecd335eb4867745e78dff1ba36922e9a131fac3f1",
+      "mode": 511
+    },
+    "rerun.9.work/Regression/FT12/mismatch.sh": {
+      "sha256": "054b053cfa4238c985df16f95ed81e3aabe1a9aeebd1353b4990ad5dd0ffb578",
+      "mode": 511
+    },
+    "rerun.9.work/TMEnv": {
+      "sha256": "c82dfeed7644f3d40a6522b0ef6772284564bf0668090a89de519085763c6e99",
+      "mode": 420
+    },
+    "rerun.9.work/TMUnits": {
+      "sha256": "153e28a7fe257f7162f415d6c01a863f6968ff46ecacae71d607c68e2a8c93bf",
+      "mode": 420
+    },
+    "rerun.9.work/TMmsgs/enumfile.1": {
+      "sha256": "c79141ab9df59c8792fe5d891f342ffac2e213d9fd0e770019756b6f45c40f61",
+      "mode": 420
+    },
+    "rerun.9.work/TMmsgs/result.1": {
+      "sha256": "0dd06052737af23a3a2882c0f4587abb6deed3f1a91067776a811e77a3a04559",
+      "mode": 420
+    },
+    "rerun.9.work/log.header": {
+      "sha256": "fc6a6b22a35b50f9b0733000920d7d7b2d96b7a504c21d2b90938b44fd01c6d2",
+      "mode": 420
+    }
+  },
+  "old_sentinel_absent": true,
+  "old_rerun_paths_absent": true,
+  "clean": false
+}

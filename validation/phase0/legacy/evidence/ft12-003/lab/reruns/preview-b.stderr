@@ -1,0 +1,2 @@
+CGI::Pretty is DEPRECATED and will be removed in a future release. Please see https://github.com/leejo/CGI.pm/issues/162 for more information at /usr/share/perl5/CGI/Pretty.pm line 20.
+[Thu Nov 12 21:26:13 2026] cgi_entry.pl: CGI::param called in list context from /opt/cti/www/cgi-bin/rerun_test.cgi line 70, this can lead to vulnerabilities. See the warning in "Fetching the value or values of a single named parameter" at /usr/share/perl5/CGI.pm line 416.

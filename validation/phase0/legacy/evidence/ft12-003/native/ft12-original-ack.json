@@ -1,0 +1,52 @@
+{
+  "accepted": true,
+  "receipt": {
+    "attempt_id": "ft12-original",
+    "manifest_sha256": "71842f93946c346684e9b7511545f988d6e8b017ae933c74056caac25cd81948",
+    "object_hashes": [
+      "016a202ba9651d2bb7280428de305fa560f25b6ab7003f7b3b5b67aa98eaecfd",
+      "9ac13eac57671331cb06885d15d7282cb7eecbb3c2a2927f4448c67e8bff2a98",
+      "d1ffc438b39b90cff1447ce8af714c16588539f7dd9b2d47e5f69a17ee4791ba",
+      "fc5c580c8d22910632c5bdfc3f93d41789d3056115472565679b28a80886a1db"
+    ],
+    "prerequisite_hashes": [
+      "8b69adc550862c611dd9f4b58a2126e6f82e94dc7a2c7781dfae3163418bf8a5"
+    ],
+    "receipt_sha256": "e8f66575a411a10badc1b7ff3a34a5f7231c5e8f8cd5f3c028d753525b0188c8"
+  },
+  "status": {
+    "attempt_count": 1,
+    "unique_event_count": 1,
+    "attempt_id": "ft12-original",
+    "manifest_sha256": "71842f93946c346684e9b7511545f988d6e8b017ae933c74056caac25cd81948",
+    "test_outcome": {
+      "legacy_tags": {
+        "Regression/FT12/mismatch.c": "DiffPgmOut",
+        "Regression/FT12/pass.c": "SuccessExec",
+        "Regression/FT12/runtime_error.c": "ExecErr"
+      },
+      "tm_process_exit": 0
+    },
+    "preservation_state": "complete",
+    "required_objects": 4,
+    "verified_objects": [
+      "initial-inputs.tar.gz",
+      "work.tar.gz",
+      "summary.log",
+      "invocation.json"
+    ],
+    "missing_objects": [],
+    "corrupt_objects": [],
+    "local_prerequisites": [
+      {
+        "name": "runtime-image.tar",
+        "sha256": "8b69adc550862c611dd9f4b58a2126e6f82e94dc7a2c7781dfae3163418bf8a5",
+        "verified": true,
+        "status": "verified"
+      }
+    ],
+    "temporary_files": [],
+    "acknowledged": true,
+    "retention_pinned": true
+  }
+}

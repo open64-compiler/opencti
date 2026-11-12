@@ -1,0 +1,361 @@
+[
+  {
+    "event_id": "ft12-original-completion",
+    "manifest": {
+      "schema": "phase0-ft12-validation-only",
+      "attempt_id": "ft12-original",
+      "parent_attempt_id": null,
+      "execution_kind": "original_legacy_run",
+      "workspace": "/lab/original/work",
+      "log": "/lab/original/summary.log",
+      "baseline": {
+        "container_path": "/fixtures/groups/Regression/FT12/Masters/mismatch.out",
+        "sha256": "8cebf09976c0a8f0f2113d643c0c9fe9d6fd0e47ad3e78540db32e795cc4adbd"
+      },
+      "test_outcome": {
+        "legacy_tags": {
+          "Regression/FT12/runtime_error.c": "ExecErr",
+          "Regression/FT12/mismatch.c": "DiffPgmOut",
+          "Regression/FT12/pass.c": "SuccessExec"
+        },
+        "tm_process_exit": 0
+      },
+      "objects": [
+        {
+          "name": "initial-inputs.tar.gz",
+          "sha256": "016a202ba9651d2bb7280428de305fa560f25b6ab7003f7b3b5b67aa98eaecfd",
+          "bytes": 1301
+        },
+        {
+          "name": "work.tar.gz",
+          "sha256": "fc5c580c8d22910632c5bdfc3f93d41789d3056115472565679b28a80886a1db",
+          "bytes": 18322
+        },
+        {
+          "name": "summary.log",
+          "sha256": "d1ffc438b39b90cff1447ce8af714c16588539f7dd9b2d47e5f69a17ee4791ba",
+          "bytes": 1377
+        },
+        {
+          "name": "invocation.json",
+          "sha256": "9ac13eac57671331cb06885d15d7282cb7eecbb3c2a2927f4448c67e8bff2a98",
+          "bytes": 7973
+        }
+      ],
+      "local_prerequisites": [
+        {
+          "name": "runtime-image.tar",
+          "sha256": "8b69adc550862c611dd9f4b58a2126e6f82e94dc7a2c7781dfae3163418bf8a5",
+          "bytes": 586248192,
+          "image_id": "sha256:a119c5e4a42dedbb5cdce10d448efce31b4054018bde56a4e476bc2c529fa62c"
+        }
+      ]
+    }
+  },
+  {
+    "event_id": "ft12-rerun-a-completion",
+    "manifest": {
+      "schema": "phase0-ft12-validation-only",
+      "attempt_id": "ft12-rerun-a",
+      "parent_attempt_id": "ft12-original",
+      "execution_kind": "stock_cgi_legacy_rerun",
+      "workspace": "/lab/original/work/rerun.9.work",
+      "log": "/lab/original/work/rerun.9.log",
+      "baseline": {
+        "container_path": "/fixtures/groups/Regression/FT12/Masters/mismatch.out",
+        "sha256": "8cebf09976c0a8f0f2113d643c0c9fe9d6fd0e47ad3e78540db32e795cc4adbd"
+      },
+      "test_outcome": {
+        "legacy_tags": {
+          "Regression/FT12/mismatch.c": "CompileErr"
+        },
+        "tm_process_exit": 0
+      },
+      "objects": [
+        {
+          "name": "initial-inputs.tar.gz",
+          "sha256": "016a202ba9651d2bb7280428de305fa560f25b6ab7003f7b3b5b67aa98eaecfd",
+          "bytes": 1301
+        },
+        {
+          "name": "work.tar.gz",
+          "sha256": "13b7b37f8833bd53a887e95a97f46471a28399aa1a1bbe37e3fe8d71191bc12b",
+          "bytes": 5008
+        },
+        {
+          "name": "summary.log",
+          "sha256": "3c1603c12078dcc01befea973b055699d43c23d543c7d1547d4d094fe42f38f0",
+          "bytes": 954
+        },
+        {
+          "name": "invocation.json",
+          "sha256": "b43d6e27858118060a7f711c049e6f5a90a03412ff06a3c47092ac3f507939de",
+          "bytes": 7858
+        }
+      ],
+      "local_prerequisites": [
+        {
+          "name": "runtime-image.tar",
+          "sha256": "8b69adc550862c611dd9f4b58a2126e6f82e94dc7a2c7781dfae3163418bf8a5",
+          "bytes": 586248192,
+          "image_id": "sha256:a119c5e4a42dedbb5cdce10d448efce31b4054018bde56a4e476bc2c529fa62c"
+        }
+      ]
+    }
+  },
+  {
+    "event_id": "ft12-rerun-b-completion",
+    "manifest": {
+      "schema": "phase0-ft12-validation-only",
+      "attempt_id": "ft12-rerun-b",
+      "parent_attempt_id": "ft12-original",
+      "execution_kind": "stock_cgi_legacy_rerun",
+      "workspace": "/lab/original/work/rerun.10.work",
+      "log": "/lab/original/work/rerun.10.log",
+      "baseline": {
+        "container_path": "/fixtures/groups/Regression/FT12/Masters/mismatch.out",
+        "sha256": "8cebf09976c0a8f0f2113d643c0c9fe9d6fd0e47ad3e78540db32e795cc4adbd"
+      },
+      "test_outcome": {
+        "legacy_tags": {
+          "Regression/FT12/mismatch.c": "CompileErr"
+        },
+        "tm_process_exit": 0
+      },
+      "objects": [
+        {
+          "name": "initial-inputs.tar.gz",
+          "sha256": "016a202ba9651d2bb7280428de305fa560f25b6ab7003f7b3b5b67aa98eaecfd",
+          "bytes": 1301
+        },
+        {
+          "name": "work.tar.gz",
+          "sha256": "d5bd13091f6e6ec3e34d70328345a4699c60403115a45a6e0c1aa398d59815c2",
+          "bytes": 4968
+        },
+        {
+          "name": "summary.log",
+          "sha256": "4da0973709e2ecabd652d6de69b8ec9e30133a4215e4044814a5ad378f7b1a49",
+          "bytes": 957
+        },
+        {
+          "name": "invocation.json",
+          "sha256": "b43d6e27858118060a7f711c049e6f5a90a03412ff06a3c47092ac3f507939de",
+          "bytes": 7858
+        }
+      ],
+      "local_prerequisites": [
+        {
+          "name": "runtime-image.tar",
+          "sha256": "8b69adc550862c611dd9f4b58a2126e6f82e94dc7a2c7781dfae3163418bf8a5",
+          "bytes": 586248192,
+          "image_id": "sha256:a119c5e4a42dedbb5cdce10d448efce31b4054018bde56a4e476bc2c529fa62c"
+        }
+      ]
+    }
+  },
+  {
+    "event_id": "ft12-reuse-fail-completion",
+    "manifest": {
+      "schema": "phase0-ft12-validation-only",
+      "attempt_id": "ft12-reuse-fail",
+      "parent_attempt_id": "ft12-original",
+      "execution_kind": "unsafe_legacy_reuse_control",
+      "workspace": "/lab/original/work",
+      "log": "/lab/original/summary.log",
+      "baseline": {
+        "container_path": "/fixtures/groups/Regression/FT12/Masters/mismatch.out",
+        "sha256": "8cebf09976c0a8f0f2113d643c0c9fe9d6fd0e47ad3e78540db32e795cc4adbd"
+      },
+      "test_outcome": {
+        "legacy_tags": {
+          "Regression/FT12/mismatch.c": "DiffPgmOut"
+        },
+        "tm_process_exit": 0
+      },
+      "objects": [
+        {
+          "name": "initial-inputs.tar.gz",
+          "sha256": "016a202ba9651d2bb7280428de305fa560f25b6ab7003f7b3b5b67aa98eaecfd",
+          "bytes": 1301
+        },
+        {
+          "name": "work.tar.gz",
+          "sha256": "33f9c579978953d79f1f49cd5d06fa6d077e3d686581b50bffd34acba9618fbf",
+          "bytes": 8471
+        },
+        {
+          "name": "summary.log",
+          "sha256": "ea9b6b9eb8c27976fd1e21d7f2fe0d1935c5fde3efd20229e8af264f67cde7cd",
+          "bytes": 957
+        },
+        {
+          "name": "invocation.json",
+          "sha256": "e0e8a76947f6241961cc85421e143eb47e43c78f90fe474f320c550318bd7b36",
+          "bytes": 7953
+        }
+      ],
+      "local_prerequisites": [
+        {
+          "name": "runtime-image.tar",
+          "sha256": "8b69adc550862c611dd9f4b58a2126e6f82e94dc7a2c7781dfae3163418bf8a5",
+          "bytes": 586248192,
+          "image_id": "sha256:a119c5e4a42dedbb5cdce10d448efce31b4054018bde56a4e476bc2c529fa62c"
+        }
+      ]
+    }
+  },
+  {
+    "event_id": "ft12-reuse-pass-completion",
+    "manifest": {
+      "schema": "phase0-ft12-validation-only",
+      "attempt_id": "ft12-reuse-pass",
+      "parent_attempt_id": "ft12-original",
+      "execution_kind": "unsafe_legacy_reuse_control",
+      "workspace": "/lab/original/work",
+      "log": "/lab/original/summary.log",
+      "baseline": {
+        "container_path": "/fixtures/groups/Regression/FT12/Masters/mismatch.out",
+        "sha256": "8cebf09976c0a8f0f2113d643c0c9fe9d6fd0e47ad3e78540db32e795cc4adbd"
+      },
+      "test_outcome": {
+        "legacy_tags": {
+          "Regression/FT12/mismatch.c": "SuccessExec"
+        },
+        "tm_process_exit": 0
+      },
+      "objects": [
+        {
+          "name": "initial-inputs.tar.gz",
+          "sha256": "016a202ba9651d2bb7280428de305fa560f25b6ab7003f7b3b5b67aa98eaecfd",
+          "bytes": 1301
+        },
+        {
+          "name": "work.tar.gz",
+          "sha256": "3f384861d5da4bb64a24da69114495d09b16755fb0f54911473998f63082b555",
+          "bytes": 3015
+        },
+        {
+          "name": "summary.log",
+          "sha256": "7853a6d11c0b8f43038180159f037886ad343853faabc0f0b5941ae0c4650970",
+          "bytes": 917
+        },
+        {
+          "name": "invocation.json",
+          "sha256": "9e6252840d1e82b709eb9f1dc96004303cef8bb836fcc1703258e8c42288577a",
+          "bytes": 7965
+        }
+      ],
+      "local_prerequisites": [
+        {
+          "name": "runtime-image.tar",
+          "sha256": "8b69adc550862c611dd9f4b58a2126e6f82e94dc7a2c7781dfae3163418bf8a5",
+          "bytes": 586248192,
+          "image_id": "sha256:a119c5e4a42dedbb5cdce10d448efce31b4054018bde56a4e476bc2c529fa62c"
+        }
+      ]
+    }
+  },
+  {
+    "event_id": "ft12-245a684371bd47c38ff5c62e6ed11fd2-completion",
+    "manifest": {
+      "schema": "phase0-ft12-validation-only",
+      "attempt_id": "ft12-245a684371bd47c38ff5c62e6ed11fd2",
+      "parent_attempt_id": "ft12-original",
+      "execution_kind": "native_validation_allocation_with_legacy_backend",
+      "workspace": "/lab/native-allocated/ft12-245a684371bd47c38ff5c62e6ed11fd2/work",
+      "log": "/lab/native-allocated/ft12-245a684371bd47c38ff5c62e6ed11fd2/summary.log",
+      "baseline": {
+        "container_path": "/fixtures/groups/Regression/FT12/Masters/mismatch.out",
+        "sha256": "8cebf09976c0a8f0f2113d643c0c9fe9d6fd0e47ad3e78540db32e795cc4adbd"
+      },
+      "test_outcome": {
+        "legacy_tags": {
+          "Regression/FT12/mismatch.c": "DiffPgmOut"
+        },
+        "tm_process_exit": 0
+      },
+      "objects": [
+        {
+          "name": "initial-inputs.tar.gz",
+          "sha256": "016a202ba9651d2bb7280428de305fa560f25b6ab7003f7b3b5b67aa98eaecfd",
+          "bytes": 1301
+        },
+        {
+          "name": "work.tar.gz",
+          "sha256": "16ca4ef1774909a2767a1633f5ece676414a32a5f6323842dd02dfedc39b248b",
+          "bytes": 8469
+        },
+        {
+          "name": "summary.log",
+          "sha256": "ecd0e79775518446b000478f6d7263ddd548547e3ee153a32c727f04dc0a8687",
+          "bytes": 1049
+        },
+        {
+          "name": "invocation.json",
+          "sha256": "91f68438f52ce7e08ebb29fc26ef13a409dcc3edce352f3a4f42afef9691aa53",
+          "bytes": 8043
+        }
+      ],
+      "local_prerequisites": [
+        {
+          "name": "runtime-image.tar",
+          "sha256": "8b69adc550862c611dd9f4b58a2126e6f82e94dc7a2c7781dfae3163418bf8a5",
+          "bytes": 586248192,
+          "image_id": "sha256:a119c5e4a42dedbb5cdce10d448efce31b4054018bde56a4e476bc2c529fa62c"
+        }
+      ]
+    }
+  },
+  {
+    "event_id": "ft12-93a48a21b5874ceda03585d6619c8a5c-completion",
+    "manifest": {
+      "schema": "phase0-ft12-validation-only",
+      "attempt_id": "ft12-93a48a21b5874ceda03585d6619c8a5c",
+      "parent_attempt_id": "ft12-original",
+      "execution_kind": "native_validation_allocation_with_legacy_backend",
+      "workspace": "/lab/native-allocated/ft12-93a48a21b5874ceda03585d6619c8a5c/work",
+      "log": "/lab/native-allocated/ft12-93a48a21b5874ceda03585d6619c8a5c/summary.log",
+      "baseline": {
+        "container_path": "/fixtures/groups/Regression/FT12/Masters/mismatch.out",
+        "sha256": "8cebf09976c0a8f0f2113d643c0c9fe9d6fd0e47ad3e78540db32e795cc4adbd"
+      },
+      "test_outcome": {
+        "legacy_tags": {
+          "Regression/FT12/mismatch.c": "SuccessExec"
+        },
+        "tm_process_exit": 0
+      },
+      "objects": [
+        {
+          "name": "initial-inputs.tar.gz",
+          "sha256": "016a202ba9651d2bb7280428de305fa560f25b6ab7003f7b3b5b67aa98eaecfd",
+          "bytes": 1301
+        },
+        {
+          "name": "work.tar.gz",
+          "sha256": "5887d8fd4b7727fad319320d1dc38169d051806e6217d07089341fd886a469b8",
+          "bytes": 3061
+        },
+        {
+          "name": "summary.log",
+          "sha256": "7c6a742f5a80de9c1da06f1d296be91da8655e39778d00b668fbe9dcc1d2ff09",
+          "bytes": 1009
+        },
+        {
+          "name": "invocation.json",
+          "sha256": "4f1a49b5c0238a4c876db74595d6d1915bf285cca9605d3127e90c47fdcf44d6",
+          "bytes": 8056
+        }
+      ],
+      "local_prerequisites": [
+        {
+          "name": "runtime-image.tar",
+          "sha256": "8b69adc550862c611dd9f4b58a2126e6f82e94dc7a2c7781dfae3163418bf8a5",
+          "bytes": 586248192,
+          "image_id": "sha256:a119c5e4a42dedbb5cdce10d448efce31b4054018bde56a4e476bc2c529fa62c"
+        }
+      ]
+    }
+  }
+]
