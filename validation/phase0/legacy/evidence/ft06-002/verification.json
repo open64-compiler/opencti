@@ -1,0 +1,14 @@
+{
+  "scenario": "FT06",
+  "hashed_files": 4897,
+  "dependency_roles": 5,
+  "archived_dependency_files_checked": 2380,
+  "pre_run_identity_verified": true,
+  "phase_checks": 6,
+  "legacy_sensitivity_controls": 5,
+  "missing_controls": 5,
+  "identity_mismatch_controls": 1,
+  "saved_recipes_unchanged": 6,
+  "container_mount_maps_checked": 13,
+  "native_artifact_service_acceptance": "open"
+}

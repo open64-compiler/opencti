@@ -1,0 +1,8 @@
+{
+  "runtime-image.tar": {
+    "local_path": "/Users/shinmingliu/opcti/validation/phase0/legacy/runs/run-002/runtime-image.tar",
+    "bytes": 586248192,
+    "sha256": "8b69adc550862c611dd9f4b58a2126e6f82e94dc7a2c7781dfae3163418bf8a5",
+    "purpose": "Exact retained GCC/Perl/Python/make/platform image; excluded from compact evidence"
+  }
+}

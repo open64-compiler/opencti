@@ -1,0 +1,212 @@
+{
+  "source": {
+    "id": "46332a8f8e79bcc380b069ebbd696c8cf336f9be5d454d660a759b5360ba52b3",
+    "entries": [
+      {
+        "path": "groups/Applications/FT08/Src/Makefile",
+        "kind": "file",
+        "sha256": "2d8ccbaef27d67916a1a5df262eb6324c9ae8196c0a9531a507d0b8deb693d81",
+        "bytes": 442,
+        "mode": 420
+      },
+      {
+        "path": "groups/Applications/FT08/Src/compare.py",
+        "kind": "file",
+        "sha256": "49ee6308ac73e49c5789c2ed10a509379ead74067c7bbc61044256d2aaf00efa",
+        "bytes": 367,
+        "mode": 420
+      },
+      {
+        "path": "groups/Applications/FT08/Src/generate.py",
+        "kind": "file",
+        "sha256": "19dde9f2ee414b9754fbf110f73b98cc96c641d9623282334400f377cb9c3809",
+        "bytes": 960,
+        "mode": 420
+      },
+      {
+        "path": "groups/Applications/FT08/Src/generated/build-config.json",
+        "kind": "file",
+        "sha256": "3a372f3cf6dc0455f6a412481938dee238d5659c138d04d6270b5ca8065bdbce",
+        "bytes": 183,
+        "mode": 420
+      },
+      {
+        "path": "groups/Applications/FT08/Src/generated/generated.c",
+        "kind": "file",
+        "sha256": "f47c522c6470420b2dced6f885de97978b8f90f0dbce9a9de8397213fc507746",
+        "bytes": 91,
+        "mode": 420
+      },
+      {
+        "path": "groups/Applications/FT08/Src/generated/generated.h",
+        "kind": "file",
+        "sha256": "7936929c4769720c6c8115a11dd5e712e77684537dd236ae1beb0380b009406a",
+        "bytes": 40,
+        "mode": 420
+      },
+      {
+        "path": "groups/Applications/FT08/Src/settings.json",
+        "kind": "file",
+        "sha256": "67cb43753a56a1fdb561982202ed8c5c6cd34aa53cb0f99dfac4424eef7d811e",
+        "bytes": 55,
+        "mode": 420
+      },
+      {
+        "path": "groups/Applications/tmconfig",
+        "kind": "file",
+        "sha256": "19e651885b04ec3ae437ebc7a876526c31e2694d0baa300dbc991968fb50cdda",
+        "bytes": 75,
+        "mode": 420
+      },
+      {
+        "path": "phase0.opt",
+        "kind": "file",
+        "sha256": "00d9d8f519491073dc27208285876a88fbb7bc8d9efa77acb13674df03853dd1",
+        "bytes": 573,
+        "mode": 420
+      }
+    ]
+  },
+  "work": {
+    "id": "ec0c044c96017b56b1c0e191813a1424455c6b05c186a6096e44d20538147c54",
+    "entries": [
+      {
+        "path": "Applications/FT08/FT08.comp.err",
+        "kind": "file",
+        "sha256": "3e05e97fbbac986110a6048b19dac63a8a1d06da67ce3f0f63734b7033131e3f",
+        "bytes": 306,
+        "mode": 436
+      },
+      {
+        "path": "Applications/FT08/FT08.compile.sh",
+        "kind": "file",
+        "sha256": "f8862b42c0663ea903301b570bac373c8ba0c61c144f7427734bb6a0969c8c73",
+        "bytes": 1108,
+        "mode": 511
+      },
+      {
+        "path": "Applications/FT08/FT08.env",
+        "kind": "file",
+        "sha256": "f6c62a22c8152c78b2ff553a394fa4e7f0c59f1dcb8dc91b0c6034ea527e5e9c",
+        "bytes": 2363,
+        "mode": 436
+      },
+      {
+        "path": "Applications/FT08/FT08.result",
+        "kind": "file",
+        "sha256": "461325dffd71fed76022e3abcb471822b2b7da0bd0a45d623fd68d05e7fac465",
+        "bytes": 11,
+        "mode": 436
+      },
+      {
+        "path": "Applications/FT08/FT08.run.out",
+        "kind": "file",
+        "sha256": "da8aa73db9286bdf68620b8499e154217e7cf07d5443cc581c4a3e2cb804f583",
+        "bytes": 158,
+        "mode": 436
+      },
+      {
+        "path": "Applications/FT08/FT08.run.sh",
+        "kind": "file",
+        "sha256": "fa9b0b6f4203634a2b77d78bf78ead124b0a378bb34f825fa47182e91c0d1590",
+        "bytes": 1257,
+        "mode": 511
+      },
+      {
+        "path": "Applications/FT08/FT08.sh",
+        "kind": "file",
+        "sha256": "39d033b170f77f66185450a8a9ad67b3b6ee0b1df60739c1c001a1aab7a88e9c",
+        "bytes": 932,
+        "mode": 511
+      },
+      {
+        "path": "Applications/FT08/Makefile",
+        "kind": "link",
+        "target": "/fixtures/groups/Applications/FT08/Src/Makefile"
+      },
+      {
+        "path": "Applications/FT08/actual.out",
+        "kind": "file",
+        "sha256": "a9e1bee86c66bfc62ea9e3cbcc3db0d33e202f6df474de5874315e3efd28bd65",
+        "bytes": 17,
+        "mode": 436
+      },
+      {
+        "path": "Applications/FT08/app",
+        "kind": "file",
+        "sha256": "7630bec969146a87139da0ce1a05c3dd4efe12b81d60da540319d7343921cac4",
+        "bytes": 70320,
+        "mode": 509
+      },
+      {
+        "path": "Applications/FT08/compare.py",
+        "kind": "link",
+        "target": "/fixtures/groups/Applications/FT08/Src/compare.py"
+      },
+      {
+        "path": "Applications/FT08/compare.results",
+        "kind": "file",
+        "sha256": "cebb9e8e955596cd10e6aaa9375855099bc4c51d6bc5e87eafbaeb69cf83d1bc",
+        "bytes": 38,
+        "mode": 436
+      },
+      {
+        "path": "Applications/FT08/generate.py",
+        "kind": "link",
+        "target": "/fixtures/groups/Applications/FT08/Src/generate.py"
+      },
+      {
+        "path": "Applications/FT08/generated.o",
+        "kind": "file",
+        "sha256": "40cbc891251d53e0d26591b729aa95c8cd7128477f19e45e1b407f220f76bd6a",
+        "bytes": 1616,
+        "mode": 436
+      },
+      {
+        "path": "Applications/FT08/settings.json",
+        "kind": "link",
+        "target": "/fixtures/groups/Applications/FT08/Src/settings.json"
+      },
+      {
+        "path": "TMEnv",
+        "kind": "file",
+        "sha256": "d90aabcdf4c05103b78fb6245d3ccf300b43183e503423a5483c9924fe3dc724",
+        "bytes": 7229,
+        "mode": 420
+      },
+      {
+        "path": "TMUnits",
+        "kind": "file",
+        "sha256": "67fdca445b906d192c35bc7ca88dcf1ac7cf342577a7b8d1c8894dc98c578f56",
+        "bytes": 21,
+        "mode": 420
+      },
+      {
+        "path": "TMmsgs/enumfile.1",
+        "kind": "file",
+        "sha256": "134eb611f1744318fff7d138b6d6a80206d65e313f38742669a120a63fc94e3c",
+        "bytes": 18,
+        "mode": 420
+      },
+      {
+        "path": "TMmsgs/result.1",
+        "kind": "file",
+        "sha256": "fc7c8134043ea7fa823a2ac6c6f1bdbf0e483307abfa186e69d115c779d7a7a1",
+        "bytes": 29,
+        "mode": 436
+      },
+      {
+        "path": "log.header",
+        "kind": "file",
+        "sha256": "72c1c49a3c1c6e070dfb86afdf669b23b251d2ef61752f66ceb525f19c743f3e",
+        "bytes": 550,
+        "mode": 420
+      }
+    ]
+  },
+  "generated_files": {
+    "generated/build-config.json": "3a372f3cf6dc0455f6a412481938dee238d5659c138d04d6270b5ca8065bdbce",
+    "generated/generated.c": "f47c522c6470420b2dced6f885de97978b8f90f0dbce9a9de8397213fc507746",
+    "generated/generated.h": "7936929c4769720c6c8115a11dd5e712e77684537dd236ae1beb0380b009406a"
+  }
+}

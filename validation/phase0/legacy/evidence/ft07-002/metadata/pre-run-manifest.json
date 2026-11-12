@@ -1,0 +1,139 @@
+{
+  "suite": {
+    "id": "1e57a04d06ab4f2fa411c851020fb9e0b7a06f8f55d0f89e1b9bf64a30b4a237",
+    "entries": [
+      {
+        "path": "groups/Regression/FT07/Case/Masters/peer_probe.out",
+        "kind": "file",
+        "sha256": "dd5963fb43ec515452fcf540f4ccb2145c62cdc051eaea2b636085811d0b6799",
+        "bytes": 38,
+        "mode": 420
+      },
+      {
+        "path": "groups/Regression/FT07/Case/Masters/shared_probe.out",
+        "kind": "file",
+        "sha256": "15b77b3a9db59dc48607e5b5b20d47db6eb67186e461569384023f01b3b09859",
+        "bytes": 18,
+        "mode": 420
+      },
+      {
+        "path": "groups/Regression/FT07/Case/Src/header_alias.h",
+        "kind": "link",
+        "target": "/deps/headers/shared.h"
+      },
+      {
+        "path": "groups/Regression/FT07/Case/Src/peer_probe.c",
+        "kind": "link",
+        "target": "../../Shared/main.c"
+      },
+      {
+        "path": "groups/Regression/FT07/Case/Src/shared_probe.c",
+        "kind": "link",
+        "target": "../../Shared/main.c"
+      },
+      {
+        "path": "groups/Regression/FT07/Case/tmconfig",
+        "kind": "file",
+        "sha256": "58519c5d0eb2a6e544e1607ab6b19f1c5710454757cd76364182435e065964d9",
+        "bytes": 187,
+        "mode": 420
+      },
+      {
+        "path": "groups/Regression/FT07/Shared/main.c",
+        "kind": "file",
+        "sha256": "6be64725d3058835d3e91224f14f2e98759ff210d38a8cd3a76ec168e96b8cdd",
+        "bytes": 265,
+        "mode": 420
+      },
+      {
+        "path": "groups/Regression/FT07/Shared/normalize.py",
+        "kind": "link",
+        "target": "/deps/filters/normalize.py"
+      },
+      {
+        "path": "groups/Regression/FT07/tmconfig",
+        "kind": "file",
+        "sha256": "531513930b55bb389c0381636bc329c70fc248df2f6257a172ffabb74f75d413",
+        "bytes": 14,
+        "mode": 420
+      },
+      {
+        "path": "groups/Regression/tmconfig",
+        "kind": "file",
+        "sha256": "b4040222ef2ce18b77a9df40af6f779576faab556c69aac042c683edb6ac9973",
+        "bytes": 181,
+        "mode": 420
+      },
+      {
+        "path": "phase0.opt",
+        "kind": "file",
+        "sha256": "0aa3342ada4af1257c5803d7d13bdddd38d16d0134bf46f79fc2ed49fd8b8a4a",
+        "bytes": 576,
+        "mode": 420
+      }
+    ],
+    "destination": "/fixtures",
+    "original_host_path": "/Users/shinmingliu/opcti/validation/phase0/legacy/runs/ft07-002/original-locations/suite"
+  },
+  "harness": {
+    "id": "4b4861486242e137d0af9854d40abc0edbd9cbc13e3d6392af4d458d7c9e83a7",
+    "entries": [
+      {
+        "path": "build_support.py",
+        "kind": "file",
+        "sha256": "c10f2af4799fae1dcce371c258d8acfcd09c61ece500cecb07f2d62e56d25ea3",
+        "bytes": 1885,
+        "mode": 493
+      },
+      {
+        "path": "pre_run.py",
+        "kind": "file",
+        "sha256": "892e6c93ef40787675f326000bc764e1a04f1a63610a2c7a941aa3206a383ff2",
+        "bytes": 828,
+        "mode": 493
+      },
+      {
+        "path": "support-include.h",
+        "kind": "link",
+        "target": "../headers/shared.h"
+      },
+      {
+        "path": "support.c",
+        "kind": "file",
+        "sha256": "ecebff71da164e92720b17e1682bedce31e479013cad78d6bcc394e08f3b5799",
+        "bytes": 140,
+        "mode": 420
+      }
+    ],
+    "destination": "/deps/harness",
+    "original_host_path": "/Users/shinmingliu/opcti/validation/phase0/legacy/runs/ft07-002/original-locations/harness"
+  },
+  "headers": {
+    "id": "13e29830c62d2db7952418f3ab2094e29cf78c230c4737229d3530b6145b00ee",
+    "entries": [
+      {
+        "path": "shared.h",
+        "kind": "file",
+        "sha256": "00d5d63819c632996aaf927fa8a5dd9a3e2c7e3967a0357723e9fb9db8bbe2dc",
+        "bytes": 82,
+        "mode": 420
+      }
+    ],
+    "destination": "/deps/headers",
+    "original_host_path": "/Users/shinmingliu/opcti/validation/phase0/legacy/runs/ft07-002/original-locations/headers"
+  },
+  "filters": {
+    "id": "a62a5e1726f0f035afa5264b5110c092ae0204974c03e207d5b3a5f14ef6c137",
+    "entries": [
+      {
+        "path": "normalize.py",
+        "kind": "file",
+        "sha256": "e78370b25babffa3f5b9cd7959324e597f102088a416aae345978e2989d5f7bc",
+        "bytes": 261,
+        "mode": 493
+      }
+    ],
+    "destination": "/deps/filters",
+    "original_host_path": "/Users/shinmingliu/opcti/validation/phase0/legacy/runs/ft07-002/original-locations/filters"
+  }
+}

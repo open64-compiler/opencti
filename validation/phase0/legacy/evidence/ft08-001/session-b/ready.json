@@ -1,0 +1,14 @@
+{
+  "source_id": "46332a8f8e79bcc380b069ebbd696c8cf336f9be5d454d660a759b5360ba52b3",
+  "work_id": "ec0c044c96017b56b1c0e191813a1424455c6b05c186a6096e44d20538147c54",
+  "settings": {
+    "message": "captured-failure",
+    "generation": 1
+  },
+  "generated_files": {
+    "generated/build-config.json": "3a372f3cf6dc0455f6a412481938dee238d5659c138d04d6270b5ca8065bdbce",
+    "generated/generated.c": "f47c522c6470420b2dced6f885de97978b8f90f0dbce9a9de8397213fc507746",
+    "generated/generated.h": "7936929c4769720c6c8115a11dd5e712e77684537dd236ae1beb0380b009406a"
+  },
+  "generation_on_open": 1
+}

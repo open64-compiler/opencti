@@ -1,0 +1,209 @@
+{
+  "mode": "capture",
+  "records": [
+    {
+      "name": "tm",
+      "argv": [
+        "perl",
+        "/opt/cti/bin/TM.pl",
+        "-nod",
+        "-nomail",
+        "-f",
+        "/fixtures/phase0.opt",
+        "-w",
+        "/export/original/work",
+        "-l",
+        "/export/original/summary.log",
+        "run"
+      ],
+      "cwd": null,
+      "returncode": 0
+    }
+  ],
+  "framework_files_unchanged": true,
+  "mountinfo": "139 88 0:63 / / rw,relatime - overlay overlay rw,lowerdir=/var/lib/docker/overlay2/l/ATHSLSYDCLDVKBHQE2JVCME4BL:/var/lib/docker/overlay2/l/QJD5A3P7KSU72QZAIS5PIEVRV3:/var/lib/docker/overlay2/l/TYQEKSSORHHOSEEMJ5R7YBXIOK:/var/lib/docker/overlay2/l/ATUUTYKPL3IP5SFKTW4A2PNWG2:/var/lib/docker/overlay2/l/QU4SGSAYYC3DG7YI2BUSCYY7H6:/var/lib/docker/overlay2/l/3KCQMCMHWIBOFS3SS6PWCCDST3:/var/lib/docker/overlay2/l/EYRDWAKQDDQYGH4RM4CX7A45QW:/var/lib/docker/overlay2/l/TNWS7OECUR4RVDBV32SYIO6UPS,upperdir=/var/lib/docker/overlay2/19bb8d5c4155b344e87b0d93ec0bd13818d7a1a18bd11fc0fc4ed928415227ad/diff,workdir=/var/lib/docker/overlay2/19bb8d5c4155b344e87b0d93ec0bd13818d7a1a18bd11fc0fc4ed928415227ad/work\n141 139 0:72 / /proc rw,nosuid,nodev,noexec,relatime - proc proc rw\n142 139 0:73 / /dev rw,nosuid - tmpfs tmpfs rw,size=65536k,mode=755\n143 142 0:74 / /dev/pts rw,nosuid,noexec,relatime - devpts devpts rw,gid=5,mode=620,ptmxmode=666\n144 139 0:75 / /sys ro,nosuid,nodev,noexec,relatime - sysfs sysfs ro\n145 144 0:40 / /sys/fs/cgroup ro,nosuid,nodev,noexec,relatime - cgroup2 cgroup rw\n146 142 0:70 / /dev/mqueue rw,nosuid,nodev,noexec,relatime - mqueue mqueue rw\n147 142 0:76 / /dev/shm rw,nosuid,nodev,noexec,relatime - tmpfs shm rw,size=65536k\n148 139 0:44 /shinmingliu/opcti/validation/phase0/legacy/runs/ft07-002/original-locations/products /unit-support rw,nosuid,nodev,relatime - fakeowner /run/host_mark/Users rw,fakeowner\n149 139 0:44 /shinmingliu/opcti/validation/phase0/legacy/runs/ft07-002/metadata /metadata ro,nosuid,nodev,relatime - fakeowner /run/host_mark/Users rw,fakeowner\n150 139 0:44 /shinmingliu/opcti/validation/phase0/legacy/runs/ft07-002/capture /export rw,nosuid,nodev,relatime - fakeowner /run/host_mark/Users rw,fakeowner\n151 139 0:44 /shinmingliu/opcti/validation/phase0/legacy/runs/ft07-002/retained-tools /tools ro,nosuid,nodev,relatime - fakeowner /run/host_mark/Users rw,fakeowner\n152 139 0:44 /shinmingliu/opcti/validation/phase0/legacy/runs/ft07-002/retained-inputs /bundle ro,nosuid,nodev,relatime - fakeowner /run/host_mark/Users rw,fakeowner\n153 139 0:44 /shinmingliu/opcti/validation/phase0/legacy/runs/ft07-002/original-locations/suite /fixtures ro,nosuid,nodev,relatime - fakeowner /run/host_mark/Users rw,fakeowner\n154 139 0:44 /shinmingliu/opcti/validation/phase0/legacy/runs/ft07-002/original-locations/headers /deps/headers ro,nosuid,nodev,relatime - fakeowner /run/host_mark/Users rw,fakeowner\n155 139 0:44 /shinmingliu/opcti/validation/phase0/legacy/runs/ft07-002/original-locations/filters /deps/filters ro,nosuid,nodev,relatime - fakeowner /run/host_mark/Users rw,fakeowner\n156 139 0:44 /shinmingliu/opcti/validation/phase0/legacy/runs/ft07-002/original-locations/harness /deps/harness ro,nosuid,nodev,relatime - fakeowner /run/host_mark/Users rw,fakeowner\n157 139 254:1 /docker/containers/e16ce73184c1b1835c449df9b69cb69448da08093cc3d8fd6f76cc24583fad15/resolv.conf /etc/resolv.conf rw,relatime - ext4 /dev/vda1 rw,discard\n158 139 254:1 /docker/containers/e16ce73184c1b1835c449df9b69cb69448da08093cc3d8fd6f76cc24583fad15/hostname /etc/hostname rw,relatime - ext4 /dev/vda1 rw,discard\n159 139 254:1 /docker/containers/e16ce73184c1b1835c449df9b69cb69448da08093cc3d8fd6f76cc24583fad15/hosts /etc/hosts rw,relatime - ext4 /dev/vda1 rw,discard\n89 141 0:72 /bus /proc/bus ro,nosuid,nodev,noexec,relatime - proc proc rw\n90 141 0:72 /fs /proc/fs ro,nosuid,nodev,noexec,relatime - proc proc rw\n91 141 0:72 /irq /proc/irq ro,nosuid,nodev,noexec,relatime - proc proc rw\n92 141 0:72 /sys /proc/sys ro,nosuid,nodev,noexec,relatime - proc proc rw\n93 141 0:72 /sysrq-trigger /proc/sysrq-trigger ro,nosuid,nodev,noexec,relatime - proc proc rw\n94 141 0:73 /null /proc/interrupts rw,nosuid - tmpfs tmpfs rw,size=65536k,mode=755\n95 141 0:73 /null /proc/kcore rw,nosuid - tmpfs tmpfs rw,size=65536k,mode=755\n96 141 0:73 /null /proc/keys rw,nosuid - tmpfs tmpfs rw,size=65536k,mode=755\n97 141 0:77 / /proc/scsi ro,relatime - tmpfs tmpfs ro\n98 141 0:73 /null /proc/timer_list rw,nosuid - tmpfs tmpfs rw,size=65536k,mode=755\n99 144 0:78 / /sys/firmware ro,relatime - tmpfs tmpfs ro\n",
+  "tags": {
+    "shared_probe": "DiffPgmOut",
+    "peer_probe": "SuccessExec"
+  },
+  "initial_symlink_graph": [
+    {
+      "path": "/fixtures/groups/Regression/FT07/Case/Src/header_alias.h",
+      "target": "/deps/headers/shared.h",
+      "resolved": "/deps/headers/shared.h",
+      "sha256": "00d5d63819c632996aaf927fa8a5dd9a3e2c7e3967a0357723e9fb9db8bbe2dc",
+      "status": "resolved"
+    },
+    {
+      "path": "/fixtures/groups/Regression/FT07/Case/Src/peer_probe.c",
+      "target": "../../Shared/main.c",
+      "resolved": "/fixtures/groups/Regression/FT07/Shared/main.c",
+      "sha256": "6be64725d3058835d3e91224f14f2e98759ff210d38a8cd3a76ec168e96b8cdd",
+      "status": "resolved"
+    },
+    {
+      "path": "/fixtures/groups/Regression/FT07/Case/Src/shared_probe.c",
+      "target": "../../Shared/main.c",
+      "resolved": "/fixtures/groups/Regression/FT07/Shared/main.c",
+      "sha256": "6be64725d3058835d3e91224f14f2e98759ff210d38a8cd3a76ec168e96b8cdd",
+      "status": "resolved"
+    },
+    {
+      "path": "/fixtures/groups/Regression/FT07/Shared/normalize.py",
+      "target": "/deps/filters/normalize.py",
+      "resolved": "/deps/filters/normalize.py",
+      "sha256": "e78370b25babffa3f5b9cd7959324e597f102088a416aae345978e2989d5f7bc",
+      "status": "resolved"
+    },
+    {
+      "path": "/deps/harness/support-include.h",
+      "target": "../headers/shared.h",
+      "resolved": "/deps/headers/shared.h",
+      "sha256": "00d5d63819c632996aaf927fa8a5dd9a3e2c7e3967a0357723e9fb9db8bbe2dc",
+      "status": "resolved"
+    }
+  ],
+  "symlink_graph": [
+    {
+      "path": "/fixtures/groups/Regression/FT07/Case/Src/header_alias.h",
+      "target": "/deps/headers/shared.h",
+      "resolved": "/deps/headers/shared.h",
+      "sha256": "00d5d63819c632996aaf927fa8a5dd9a3e2c7e3967a0357723e9fb9db8bbe2dc",
+      "status": "resolved"
+    },
+    {
+      "path": "/fixtures/groups/Regression/FT07/Case/Src/peer_probe.c",
+      "target": "../../Shared/main.c",
+      "resolved": "/fixtures/groups/Regression/FT07/Shared/main.c",
+      "sha256": "6be64725d3058835d3e91224f14f2e98759ff210d38a8cd3a76ec168e96b8cdd",
+      "status": "resolved"
+    },
+    {
+      "path": "/fixtures/groups/Regression/FT07/Case/Src/shared_probe.c",
+      "target": "../../Shared/main.c",
+      "resolved": "/fixtures/groups/Regression/FT07/Shared/main.c",
+      "sha256": "6be64725d3058835d3e91224f14f2e98759ff210d38a8cd3a76ec168e96b8cdd",
+      "status": "resolved"
+    },
+    {
+      "path": "/fixtures/groups/Regression/FT07/Shared/normalize.py",
+      "target": "/deps/filters/normalize.py",
+      "resolved": "/deps/filters/normalize.py",
+      "sha256": "e78370b25babffa3f5b9cd7959324e597f102088a416aae345978e2989d5f7bc",
+      "status": "resolved"
+    },
+    {
+      "path": "/deps/harness/support-include.h",
+      "target": "../headers/shared.h",
+      "resolved": "/deps/headers/shared.h",
+      "sha256": "00d5d63819c632996aaf927fa8a5dd9a3e2c7e3967a0357723e9fb9db8bbe2dc",
+      "status": "resolved"
+    },
+    {
+      "path": "/export/original/work/Regression/FT07/Case/header_alias.h",
+      "target": "/fixtures/groups/Regression/FT07/Case/Src/header_alias.h",
+      "resolved": "/deps/headers/shared.h",
+      "sha256": "00d5d63819c632996aaf927fa8a5dd9a3e2c7e3967a0357723e9fb9db8bbe2dc",
+      "status": "resolved"
+    },
+    {
+      "path": "/export/original/work/Regression/FT07/Case/peer_probe.c",
+      "target": "/fixtures/groups/Regression/FT07/Case/Src/peer_probe.c",
+      "resolved": "/fixtures/groups/Regression/FT07/Shared/main.c",
+      "sha256": "6be64725d3058835d3e91224f14f2e98759ff210d38a8cd3a76ec168e96b8cdd",
+      "status": "resolved"
+    },
+    {
+      "path": "/export/original/work/Regression/FT07/Case/peer_probe.out.master",
+      "target": "/fixtures/groups/Regression/FT07/Case/Src/../Masters/peer_probe.out",
+      "resolved": "/fixtures/groups/Regression/FT07/Case/Masters/peer_probe.out",
+      "sha256": "dd5963fb43ec515452fcf540f4ccb2145c62cdc051eaea2b636085811d0b6799",
+      "status": "resolved"
+    },
+    {
+      "path": "/export/original/work/Regression/FT07/Case/shared_probe.c",
+      "target": "/fixtures/groups/Regression/FT07/Case/Src/shared_probe.c",
+      "resolved": "/fixtures/groups/Regression/FT07/Shared/main.c",
+      "sha256": "6be64725d3058835d3e91224f14f2e98759ff210d38a8cd3a76ec168e96b8cdd",
+      "status": "resolved"
+    },
+    {
+      "path": "/export/original/work/Regression/FT07/Case/shared_probe.out.master",
+      "target": "/fixtures/groups/Regression/FT07/Case/Src/../Masters/shared_probe.out",
+      "resolved": "/fixtures/groups/Regression/FT07/Case/Masters/shared_probe.out",
+      "sha256": "15b77b3a9db59dc48607e5b5b20d47db6eb67186e461569384023f01b3b09859",
+      "status": "resolved"
+    }
+  ],
+  "product": {
+    "id": "7eca10350f97f32fafc0656164dbb7e7de8e3eaead1c6bfa1873f2861431b323",
+    "entries": [
+      {
+        "path": "build.json",
+        "kind": "file",
+        "sha256": "8e9c18d406eae7a2f094edd86e91a973a702d65127c17b0ffd2e689f9857e6dc",
+        "bytes": 851,
+        "mode": 420
+      },
+      {
+        "path": "build.log",
+        "kind": "file",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0,
+        "mode": 420
+      },
+      {
+        "path": "hook-count",
+        "kind": "file",
+        "sha256": "4355a46b19d348dc2f57c046f8ef63d4538ebb936000f3c9ee954a27460dd865",
+        "bytes": 2,
+        "mode": 420
+      },
+      {
+        "path": "hook-invocation.json",
+        "kind": "file",
+        "sha256": "d52663779ec22faadf8b4fd044ee37ed5a25b7b1e295f9af29217738f6a92472",
+        "bytes": 195,
+        "mode": 420
+      },
+      {
+        "path": "support.o",
+        "kind": "file",
+        "sha256": "d0d9860241c55142b77020d91e75c5edd92fb47543c7cfd449ac69b0847a5035",
+        "bytes": 1680,
+        "mode": 420
+      }
+    ]
+  },
+  "build": {
+    "origin": "original-pre-run-hook",
+    "argv": [
+      "/usr/bin/gcc",
+      "-O0",
+      "-fPIC",
+      "-DFT07_BUILD_MODE=\"native64\"",
+      "-I/deps/headers",
+      "-I/deps/harness",
+      "-c",
+      "/deps/harness/support.c",
+      "-o",
+      "/unit-support/support.o"
+    ],
+    "cti_options": {
+      "CC": "/usr/bin/gcc",
+      "CC_OPTIONS": "",
+      "DATA_MODE": "+DD64",
+      "DATA_MODE_FLAG": "",
+      "OPT_LEVEL": "0",
+      "CTI_OPT_SIGN": "-"
+    },
+    "returncode": 0,
+    "stdout": "",
+    "stderr": "",
+    "compiler_version": "gcc (Ubuntu 13.3.0-6ubuntu2~24.04.1) 13.3.0\nCopyright (C) 2023 Free Software Foundation, Inc.\nThis is free software; see the source for copying conditions.  There is NO\nwarranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.\n\n",
+    "object_sha256": "d0d9860241c55142b77020d91e75c5edd92fb47543c7cfd449ac69b0847a5035"
+  },
+  "hook_count": 1,
+  "filtered_output": "pid=<pid>|support-A|header-A|native64\n",
+  "raw_output": "pid=174|support-A|header-A|native64\n"
+}

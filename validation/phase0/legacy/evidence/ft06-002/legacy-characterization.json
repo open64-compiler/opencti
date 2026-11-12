@@ -1,0 +1,11 @@
+{
+  "scope": "Observed generated stock legacy workspace for synthetic FT06",
+  "source_link": {
+    "path": "original/work/Regression/FT06/dependency_probe.c",
+    "target": "/fixtures/groups/Regression/FT06/Src/dependency_probe.c"
+  },
+  "dirty_header_in_leaf_workspace": false,
+  "dependency_directories_in_work_archive": false,
+  "gap": "Saved recipes reference external compiler, runtime, dataset, comparator and source/header mounts; stock work capture does not snapshot their bytes. FT06 validation provides that pre-run closure externally.",
+  "not_a_native_preservation_service": true
+}

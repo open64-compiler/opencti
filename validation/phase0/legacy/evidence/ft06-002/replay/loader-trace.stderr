@@ -1,0 +1,37 @@
+        45:	find library=libft06.so [0]; searching
+        45:	 search path=/deps/runtime		(RUNPATH from file ./dependency_probe)
+        45:	  trying file=/deps/runtime/libft06.so
+        45:	
+        45:	find library=libc.so.6 [0]; searching
+        45:	 search path=/deps/runtime		(RUNPATH from file ./dependency_probe)
+        45:	  trying file=/deps/runtime/libc.so.6
+        45:	 search cache=/etc/ld.so.cache
+        45:	  trying file=/lib/aarch64-linux-gnu/libc.so.6
+        45:	
+        45:	
+        45:	calling init: /lib/ld-linux-aarch64.so.1
+        45:	
+        45:	
+        45:	calling init: /lib/aarch64-linux-gnu/libc.so.6
+        45:	
+        45:	
+        45:	calling init: /deps/runtime/libft06.so
+        45:	
+        45:	
+        45:	initialize program: ./dependency_probe
+        45:	
+        45:	
+        45:	transferring control: ./dependency_probe
+        45:	
+        45:	
+        45:	calling fini:  [0]
+        45:	
+        45:	
+        45:	calling fini: /deps/runtime/libft06.so [0]
+        45:	
+        45:	
+        45:	calling fini: /lib/aarch64-linux-gnu/libc.so.6 [0]
+        45:	
+        45:	
+        45:	calling fini: /lib/ld-linux-aarch64.so.1 [0]
+        45:	

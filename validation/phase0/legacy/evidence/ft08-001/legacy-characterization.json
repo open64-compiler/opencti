@@ -1,0 +1,11 @@
+{
+  "scope": "Stock synthetic application driver",
+  "work_population": "CTI::treelink makes file symlinks back to the application source tree",
+  "generated_entry_points": [
+    "FT08.compile.sh invokes make compile",
+    "FT08.run.sh invokes make validate (execute plus compare)"
+  ],
+  "gap": "Copying only work directories does not isolate writes through source symlinks; private writable source and work backings are both required.",
+  "negative_control": "Disposable copied work directories sharing a disposable source reproduce the write-through leak",
+  "native_session_service_implemented": false
+}

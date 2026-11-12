@@ -120,3 +120,96 @@ python3 validation/phase0/legacy/verify_ft05.py \
 Verification rechecks file digests, archive-to-fixture identities, old/new baseline bytes, six comparison outcomes, actual read-only mount flags, RCS recovery and 24 saved FT03 recipe/environment files. The compact evidence retains the exact worker used for the run. Read the [FT05 report](../../../doc/guide/phase0-ft05-results.md) for the legacy overwrite limitation and native acceptance boundaries.
 
 This covers synthetic snapshot replay and the local RCS helper, not CGI/dashboard previews, the web alternate-master action, SVN/ClearCase helpers, test enrollment, or peer approval. DA12 and native promotion acceptance remain open. No live master, framework file or pre-existing case-collision change is modified.
+
+## FT06 mounted dependency preservation experiment
+
+`run_ft06.py` captures a new stock-framework failure whose GCC components, shared runtime, dataset and comparator are independently mounted. A fifth mount contains the suite, including a genuinely uncommitted header edit in an isolated fixture Git repository. Python 3.9 or newer, Git and Docker are required; the retained ARM64 runtime is loaded from the earlier capture. No package build or network access is needed. No existing framework source, configuration or test is changed.
+
+```sh
+python3 validation/phase0/legacy/run_ft06.py \
+  --capture validation/phase0/legacy/runs/run-002 \
+  --output validation/phase0/legacy/runs/new-ft06-run
+```
+
+The output directory must be new. Preparation copies the real GCC driver, helpers, assembler/linker, support files and C headers/sysroot into a sandbox compiler mount, and builds A/B versions of a small shared library. The compiler still depends on the exact retained image's executable loader and system libraries; its copied files are not a portable standalone toolchain.
+
+Before TM starts, each A directory is copied into a separate snapshot named by its content identity. The inventory includes bytes, file modes and link targets/resolved digests; Git metadata is excluded. The header's committed version, dirty patch and Git status are retained separately. All original execution mounts are the saved A objects read-only. TM produces an intentional output mismatch containing compiler/runtime/dataset/dirty-header A markers, and archives its failed workspace.
+
+Only after capture, the original sandbox compiler entry, library, input link, comparator and header are replaced by incompatible B contents at their unchanged host paths. A fresh replay container reconstructs the original destinations from A identities, runs the archived executable and comparison, deletes copied build outputs, and recompiles/links/runs/compares with the original scripts. GCC verbose logs and runtime loader tracing identify the selected mounted components.
+
+Five separate controls deliberately bypass snapshot preflight and substitute only one B mount each, demonstrating sensitivity to compiler, runtime, dataset, comparator and header changes. Five missing-mount controls and one wrong-compiler-identity control use preflight and must report the named prerequisite before any phase executes. This guard belongs to the validation tools; the stock framework is not claimed to implement it. Every worker is isolated, with networking disabled and only declared sandbox mounts; all 13 capture/replay/control containers are removed after evidence export.
+
+The successful reference is `runs/ft06-002/`. The first setup attempt, `ft06-001`, stopped before TM due to validation inventory handling of a directory symlink. Compact evidence in `evidence/ft06-002/` is approximately 2.21 MB, including the complete pre-run manifest, A/B change records, source patch, small dependency archives, changed B payloads, original/session archives, actual mount inspections and logs. The 38.7 MB compiler archive and earlier 586 MB runtime image remain local/ignored; their byte sizes and SHA-256 digests are recorded. Keep both archives to execute future replay; the compact bundle alone is for review.
+
+Verify full or compact evidence with:
+
+```sh
+python3 validation/phase0/legacy/verify_ft06.py \
+  validation/phase0/legacy/evidence/ft06-002
+```
+
+The full audit checks 4,897 recorded file hashes and 2,380 archived dependency files. Both audits verify pre-run identities, the A/B identity changes, all 13 container mount maps, six replay phase results, five sensitivity controls, five missing prerequisites, one identity rejection and six unchanged recipe/environment files. Compact verification checks the small dependency archives and the recorded compiler inventory; it does not pretend the omitted compiler/runtime archives are present.
+
+Captured GCC, TM and loader diagnostic whitespace is preserved verbatim through narrowly scoped Git attributes so review/checkout does not invalidate the evidence digests.
+
+Read the [FT06 report](../../../doc/guide/phase0-ft06-results.md) for the stock workspace's missing dependency-snapshot behavior, comparator path configuration and platform-image boundary. This is synthetic preservation evidence, not a native artifact/retention implementation, concurrent-host-writer test, production suite, dashboard or GPU/DSL acceptance. Original captures and live framework/fixtures remain unchanged.
+
+## FT07 shared support and symlink closure experiment
+
+`run_ft07.py` captures two synthetic C cases sharing a support object built by a real stock-TM pre-run hook. Their source/header/filter links cross the leaf directory and declared dependency roots. Python 3.9 or newer and Docker are required. The compiler/interpreters/system tools come from the exact retained ARM64 platform image; no network or package build is needed. The existing framework is unchanged.
+
+```sh
+python3 validation/phase0/legacy/run_ft07.py \
+  --capture validation/phase0/legacy/runs/run-002 \
+  --output validation/phase0/legacy/runs/new-ft07-run
+```
+
+The output directory must be new. Source, shared harness, headers and filters are archived before TM. The original hook executes once, building `/unit-support/support.o` outside the leaf workspace with recorded compiler/data-mode settings; both cases use it. The comparison filter normalizes a process ID, leaving one deliberate output mismatch and one passing peer. Generated support products, hook invocation/count, build log and exact recipe are archived with the real failed workspace.
+
+The runner then deletes only its new sandbox source/harness/header/filter/product directories and captured-work tree. It removes the capture container and verifies that it cannot be inspected, eliminating that container's private scratch as a replay dependency. Earlier captures and live fixtures/framework remain untouched. Dependency archives are extracted into new backing directories and mounted at compatible container destinations, preserving modes and relative/absolute links.
+
+Ordinary replay mounts all five reconstructed roots read-only and uses the original support object without rerunning the hook. Ten phases cover the archived failing binary and independent compile/link/run/compare for both cases. A separate writable support copy deletes its object, executes the saved build recipe explicitly and records reconstructed provenance before repeating the primary phases. No hook is executed for discovery or automatic materialization.
+
+Four missing-root controls and a source/work-only control must report incomplete closure before any phase executes. Three additional controls bypass validation preflight to characterize stock behavior: missing header produces `CompileErr`, missing support object produces `LinkErr`, and missing filter produces `FilterInternalError`. All 11 experiment containers have no network or host/controller/Docker-socket mounts and are removed after export.
+
+The reference is `runs/ft07-002/`, with approximately 701 KB of compact evidence in `evidence/ft07-002/`. All small dependency/product, failure and session archives are included. The earlier platform archive remains ignored/local; its digest is recorded and it is required for actual replay. No new compiler/runtime archive is added. The earlier `ft07-001` exercised the same cases without native timestamps around Docker requests; `ft07-002` supports the clock-aware ordering audit.
+
+```sh
+python3 validation/phase0/legacy/verify_ft07.py \
+  validation/phase0/legacy/evidence/ft07-002
+```
+
+The verifier checks archive contents/modes/link targets and content identities; ten resolved link edges and consumed file hashes; six deleted sandbox roots; all 11 actual mount maps and capture-container absence; ten preserved-object phases; five explicit-build/replay steps; five incomplete-closure controls; three legacy error controls; and 24 unchanged recipe/environment files across replay and rebuild. It checks the original object as ELF64/AArch64 and distinguishes its provenance from an explicit rebuild even when deterministic object bytes match. Ordering comparisons keep native and Docker VM clocks separate.
+
+The captured TM diagnostic file retains its original whitespace through a file-specific Git attribute, preserving its recorded checksum.
+
+This exercises explicit `PRE_RUN_HOOKS` and external `OUTPUT_FILTERS` with a C support object. It does not qualify implicit `TEST_AUXMODDIR`/`buildAuxiliaryModules.pl`, Fortran modules, arbitrary historical harnesses, dashboard or GPU/DSL workflows. Native snapshot/retention/concurrency service acceptance and peer review remain open. See the [FT07 report](../../../doc/guide/phase0-ft07-results.md).
+
+## FT08 writable application and independent debug sessions
+
+`run_ft08.py` captures a synthetic application using stock `application.pl`. Its Makefile generates C/header/build configuration into a private writable source tree, then produces a real baseline mismatch. Python 3.9 or newer and Docker are required. The exact earlier ARM64 platform image supplies GCC, make and interpreters; no network/package build or framework change is needed.
+
+```sh
+python3 validation/phase0/legacy/run_ft08.py \
+  --capture validation/phase0/legacy/runs/run-002 \
+  --output validation/phase0/legacy/runs/new-ft08-run
+```
+
+The output directory must be new. The runner archives initial inputs before TM, then executes from a separate writable source copy. The application driver makes work-to-source symlinks. Its generator advances the private source configuration from generation 0 to 1 and creates three files. The actual failed source and work trees are archived, preserving generated bytes, settings, executable/object, logs, phase scripts and links. The baseline is separate and read-only.
+
+Two containers then receive independent extractions of both failed source and failed work, with compatible `/fixtures` and `/work` destinations. Both mounts are writable in both containers; evidence and baseline mounts are read-only. The runner checks distinct regular-file inodes, not merely different directory names. Session B opens first and waits while A edits through a work-to-source link, removes a generated C file and explicitly compiles/runs. A reaches generation 2 and passes; B performs no phase and retains the captured generation-1 source/work bytes. Docker inspections prove B remains running across A's edit/build window. Opening a session never regenerates files.
+
+The stock generated compile script invokes `make compile` (generation, compilation and linking); its run script invokes `make validate` (execute and compare). The fixture's Makefile provides separate run/compare targets as well. No regression-style standalone comparison script is invented. A's changed source/work archives and successful comparison are session output; the original failure remains `DiffPgmOut`.
+
+A attempts writes to the approved baseline and sealed failure archive; both must return `EROFS`. A separate disposable control intentionally gives two copied workspaces one shared source tree and demonstrates the resulting configuration write-through leak. This illustrates why copying only work directories is insufficient; it is not an implemented native session-service rejection. All four experiment containers use disabled networking, dropped capabilities and only their declared sandbox mounts, and are removed after export.
+
+The reference is `runs/ft08-001/`; `evidence/ft08-001/` contains approximately 342 KB of compact review evidence. It includes initial/failed archives, A's changed archives, B observations, source/work inventories, inode checks, actual mounts/overlap records and diagnostics. The existing large platform archive remains ignored/local with its digest recorded; preserve it for actual replay.
+
+```sh
+python3 validation/phase0/legacy/verify_ft08.py \
+  validation/phase0/legacy/evidence/ft08-001
+```
+
+The full audit checks 174 file hashes. Both full and compact audits verify six initial input files, three generated files, 25 distinct A/B regular-file inode pairs, overlapping writable sessions, two successful A phases, zero B phases, original/B byte identities, two rejected writes, the shared-source hazard control, four unchanged phase/environment recipes and all four mount maps. The captured TM diagnostics retain their whitespace through file-specific Git attributes so evidence digests remain valid.
+
+This is synthetic application preservation evidence, not qualification of historical setup hooks/builds, arbitrary external source links, hostile host writers, native session/retention APIs, debugger attachment, dashboard or GPU/DSL workflows. Earlier captures, live fixtures/framework and all pre-existing filename-collision files remain untouched. See the [FT08 report](../../../doc/guide/phase0-ft08-results.md).

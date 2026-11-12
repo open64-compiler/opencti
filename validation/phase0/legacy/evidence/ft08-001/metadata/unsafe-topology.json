@@ -1,0 +1,6 @@
+{
+  "expected_guard_error": "SharedWritableBacking",
+  "role": "source",
+  "source_for_both_workspaces": "/Users/shinmingliu/opcti/validation/phase0/legacy/runs/ft08-001/unsafe-control/a/suite",
+  "guard_bypassed_only_for_disposable_negative_control": true
+}

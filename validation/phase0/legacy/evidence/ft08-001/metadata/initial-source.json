@@ -1,0 +1,47 @@
+{
+  "id": "dcd5eed538551a35c35a907ba20816c55852e6e26003c54e3924f7ead3d2b66b",
+  "entries": [
+    {
+      "path": "groups/Applications/FT08/Src/Makefile",
+      "kind": "file",
+      "sha256": "2d8ccbaef27d67916a1a5df262eb6324c9ae8196c0a9531a507d0b8deb693d81",
+      "bytes": 442,
+      "mode": 420
+    },
+    {
+      "path": "groups/Applications/FT08/Src/compare.py",
+      "kind": "file",
+      "sha256": "49ee6308ac73e49c5789c2ed10a509379ead74067c7bbc61044256d2aaf00efa",
+      "bytes": 367,
+      "mode": 420
+    },
+    {
+      "path": "groups/Applications/FT08/Src/generate.py",
+      "kind": "file",
+      "sha256": "19dde9f2ee414b9754fbf110f73b98cc96c641d9623282334400f377cb9c3809",
+      "bytes": 960,
+      "mode": 420
+    },
+    {
+      "path": "groups/Applications/FT08/Src/settings.json",
+      "kind": "file",
+      "sha256": "f038e94565bf475a7cd43ab8723c46cb10ae9ca3e091df78f66f64ac38df2ec4",
+      "bytes": 55,
+      "mode": 420
+    },
+    {
+      "path": "groups/Applications/tmconfig",
+      "kind": "file",
+      "sha256": "19e651885b04ec3ae437ebc7a876526c31e2694d0baa300dbc991968fb50cdda",
+      "bytes": 75,
+      "mode": 420
+    },
+    {
+      "path": "phase0.opt",
+      "kind": "file",
+      "sha256": "00d9d8f519491073dc27208285876a88fbb7bc8d9efa77acb13674df03853dd1",
+      "bytes": 573,
+      "mode": 420
+    }
+  ]
+}

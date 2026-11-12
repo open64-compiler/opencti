@@ -1,0 +1,54 @@
+{
+  "Id": "sha256:a119c5e4a42dedbb5cdce10d448efce31b4054018bde56a4e476bc2c529fa62c",
+  "RepoTags": [
+    "opencti:phase0-ft05-base",
+    "opencti:phase0-legacy-ft01-ft03"
+  ],
+  "RepoDigests": [],
+  "Comment": "buildkit.dockerfile.v0",
+  "Created": "2026-11-11T22:55:50.184648138Z",
+  "Config": {
+    "Env": [
+      "PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin",
+      "DEBIAN_FRONTEND=noninteractive",
+      "CTI_HOME=/opt/cti",
+      "CTI_PERL=/usr/bin/perl",
+      "CTI_SHELL=/bin/bash"
+    ],
+    "Cmd": [
+      "/bin/bash"
+    ],
+    "WorkingDir": "/capture",
+    "Labels": {
+      "org.opencontainers.image.version": "24.04"
+    },
+    "ArgsEscaped": true
+  },
+  "Architecture": "arm64",
+  "Os": "linux",
+  "Size": 574441591,
+  "GraphDriver": {
+    "Data": {
+      "LowerDir": "/var/lib/docker/overlay2/ttri2xu5n18wwohwi38tooeik/diff:/var/lib/docker/overlay2/os4d819slnpizlvcm8g13nv3a/diff:/var/lib/docker/overlay2/eac0fiqi2yu7zsw9xnen2hz18/diff:/var/lib/docker/overlay2/dj9xzqgejlnfjccxc2pdbh4ky/diff:/var/lib/docker/overlay2/jrgrxuvb8pkc0dbik46t9mjwc/diff:/var/lib/docker/overlay2/45b9d819b5b52e3f6876c7b987dcf6a2689fa57a81ed6f264c428e6c77388b17/diff",
+      "MergedDir": "/var/lib/docker/overlay2/1wdzjbdhqu6tfzi2i401crrq1/merged",
+      "UpperDir": "/var/lib/docker/overlay2/1wdzjbdhqu6tfzi2i401crrq1/diff",
+      "WorkDir": "/var/lib/docker/overlay2/1wdzjbdhqu6tfzi2i401crrq1/work"
+    },
+    "Name": "overlay2"
+  },
+  "RootFS": {
+    "Type": "layers",
+    "Layers": [
+      "sha256:2d8834226313616cc27c8a08ca876096cf83f18090b5fa07fd65dba017ec9e5e",
+      "sha256:bc00e9265433bf61e2511b0692908e4dd29af19c1e95502c8a2a973e8f6f178c",
+      "sha256:f0619e923ce52f724f07145713f6b7dd8de97f6f1c18ac70dfd5c9dab3dddee9",
+      "sha256:ee25e8507093fbef25ae6f0dde330041130a3327c3f93739562cfbd43b4844db",
+      "sha256:219a2fa39458eda4a1a1a73727ef8172b60824f8e76af6d3dbf3a41b4c72be68",
+      "sha256:a4615f60a1e199d252bc572cb16534bd0f4e0c87fa67c666f120d9bf11b6182a",
+      "sha256:5e3df576073dd17048e8cf7754d6e94b26a56cd3cee0dbba9255a9d1408c46d5"
+    ]
+  },
+  "Metadata": {
+    "LastTagTime": "2026-11-12T06:35:37.413347803Z"
+  }
+}

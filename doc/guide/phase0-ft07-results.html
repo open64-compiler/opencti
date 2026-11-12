@@ -1,0 +1,91 @@
+<!--
+Copyright (C) 2011, Hewlett-Packard Development Company, L.P.
+All Rights Reserved.
+Open64 is free software; you can redistribute it and/or modify it under the
+terms of the GNU General Public License as published by the Free Software
+Foundation; either version 2 of the License, or (at your option) any later
+version. Distributed WITHOUT ANY WARRANTY; without even the implied warranty
+of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General
+Public License for more details.
+-->
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Phase 0 FT07 shared support and symlink preservation results — OpenCTI</title><style>body{margin:0;background:#f4f6f8;color:#18232e;font:17px/1.6 system-ui,sans-serif}
+main{max-width:1050px;margin:auto;padding:2rem;background:white;min-height:100vh}
+a{color:#075ca8}nav{padding:.7rem 0;border-bottom:1px solid #ccd5dd}
+h1,h2,h3{line-height:1.25;scroll-margin-top:1rem}h2{margin-top:2rem}
+pre{padding:1rem;background:#eff3f7;overflow:auto;border:1px solid #d5dce3}
+code{font: .88em/1.5 ui-monospace,monospace;overflow-wrap:anywhere}
+table{border-collapse:collapse;width:100%;display:block;overflow:auto}
+th,td{padding:.6rem;border:1px solid #ccd5dd;text-align:left;vertical-align:top}
+th{background:#eff3f7}td:first-child{min-width:10rem}footer{border-top:1px solid #ccd5dd;margin-top:2rem;color:#52606b}
+@media(max-width:640px){main{padding:1rem}body{font-size:16px}}
+</style></head><body><main>
+<nav><a href="index.html">CTI documentation</a></nav>
+<h1 id="phase-0-ft07-shared-support-and-symlink-preservation-results">Phase 0 FT07 shared support and symlink preservation results</h1>
+<p><a href="index.html">Documentation home</a> · <a href="failure-triage-acceptance.html">Failure triage scenarios</a> · <a href="phase0-ft06-results.html">FT06 mounted dependencies</a></p>
+<h2 id="result-and-scope">Result and scope</h2>
+<p>FT07 passed automated checks for a synthetic C unit with two cases sharing a pre-run-built support object, an external header and an output filter. After deleting the original sandbox source/dependency directories, generated support directory and captured workspace, a fresh container restored only retained archives at new host locations. Ten preserved-object replay phases reproduced the original failing case and its passing peer. A separate explicit support rebuild also reproduced the failure. The reference finished on November 12 2026 at 9:40 AM America Los Angeles time.</p>
+<p>All changes are isolated validation tools, fixtures and evidence outside the existing framework. The stock framework, default configuration, approved tests/masters and earlier captures remain unchanged. This is evidence for a small shared C harness, not qualification of arbitrary historical harnesses or a native preservation service.</p>
+<h2 id="actual-shared-harness-and-consumed-dependencies">Actual shared harness and consumed dependencies</h2>
+<p>The external fixture selects the stock regression driver and <code>PRE_RUN_HOOKS</code>. TM calls a synthetic Python hook once before running the unit&#x27;s two cases. The hook compiles <code>/deps/harness/support.c</code> into <code>/unit-support/support.o</code>, outside the test workspace. Both generated link scripts reference that same object. Sources and the build recipe are retained together with the actual generated object, build output, hook invocation and compiler/data-mode options.</p>
+<p>The saved recipe records GCC 13.3.0, <code>-O0</code>, <code>-fPIC</code>, the <code>native64</code> build definition and header search paths. CTI&#x27;s <code>DATA_MODE</code> is <code>+DD64</code>; its resolved <code>DATA_MODE_FLAG</code> is empty for this ARM64 GCC fixture. The retained object is independently checked as little-endian ELF64/AArch64. The recipe records these actual settings rather than inventing a <code>-m64</code> flag.</p>
+<table><thead><tr><th>Dependency</th><th>Preserved relationship</th></tr></thead><tbody>
+<tr><td>Shared main source</td><td><code>Case/Src/shared_probe.c</code> and <code>peer_probe.c</code> are relative links to <code>../../Shared/main.c</code>, outside the leaf source directory</td></tr>
+<tr><td>Shared header</td><td><code>Case/Src/header_alias.h</code> is an absolute link to <code>/deps/headers/shared.h</code>; the generated work links to the alias</td></tr>
+<tr><td>Harness header alias</td><td><code>/deps/harness/support-include.h</code> links relatively to <code>../headers/shared.h</code>, crossing the declared dependency roots</td></tr>
+<tr><td>Output filter</td><td>The suite&#x27;s shared filter alias points absolutely to <code>/deps/filters/normalize.py</code>, outside the test directory</td></tr>
+<tr><td>Support object and recipe</td><td><code>/unit-support</code> retains the original <code>support.o</code>, compiler command/options, build log, provenance and hook-call count</td></tr>
+<tr><td>Original masters</td><td>Preserved inside the suite snapshot and mounted read-only during replay</td></tr>
+</tbody></table>
+<p>The five input symlinks and five generated-work links are resolved inside the capture container. Evidence records each literal link target, final container path and consumed file digest. The verifier also resolves those paths against the archived file/link graph, independently of the host&#x27;s <code>/fixtures</code> or <code>/deps</code> directories.</p>
+<p>The unchanged hook/filter locators prefix the framework utility directory. External fixture options use relative paths through that prefix to reach the declared mounts. No locator, driver, generated script or installed utility is patched. This exercises the explicit <code>PRE_RUN_HOOKS</code> path; it does not qualify the separate implicit <code>TEST_AUXMODDIR</code>/<code>buildAuxiliaryModules.pl</code> implementation.</p>
+<h2 id="failure-capture-deletion-and-reconstruction">Failure capture, deletion and reconstruction</h2>
+<p>Suite, harness, header and filter archives and their content/mode/link inventories are saved before TM starts. They are mounted read-only. The support directory is initially empty and writable for the real pre-run hook; its generated products and provenance are archived after the hook and test execution. No hook is run merely to discover dependencies or to populate missing evidence after deletion.</p>
+<p>Both cases print a process ID plus <code>support-A</code>, <code>header-A</code> and <code>native64</code>. The external filter normalizes only the process ID. The result is:</p>
+<pre><code>pid=&lt;pid&gt;|support-A|header-A|native64</code></pre>
+<p><code>shared_probe</code> compares that output against <code>approved-baseline</code> and records <code>DiffPgmOut</code>. <code>peer_probe</code> has the matching normalized master and records <code>SuccessExec</code>. TM reports two tests, one pass and one failure; its process returns 0. The failed workspace retains generated compile/link/run/compare scripts, raw and filtered outputs and source/master links.</p>
+<p>After archiving the actual failed workspace and support products, the controller removes all five original sandbox input/product directories and the original captured-work tree. The original capture container is removed and a later Docker inspection verifies it is absent, so its private TM scratch is unavailable too. This deletion affects only the newly created FT07 sandbox. No old <code>run-002</code> evidence, live source tree or existing Docker resource is deleted.</p>
+<p>Only archives survive this boundary. They are extracted at new native host locations, preserving relative/absolute links and executable modes. A fresh container mounts the reconstructed suite, harness, headers, filter and captured support products at their original container-visible destinations. All five mounts are read-only in ordinary replay; no former input/work path is mounted.</p>
+<p>The controller records native timestamps around Docker requests. Ordering checks compare native events to native request times and Docker timestamps only to other Docker timestamps, because the Mac and Docker Desktop VM clocks can differ slightly. Host/VM clock skew is not treated as evidence that capture occurred after launch.</p>
+<h2 id="checks-and-observations">Checks and observations</h2>
+<table><thead><tr><th>Check</th><th>Observed result</th></tr></thead><tbody>
+<tr><td>Actual pre-run build</td><td>Hook called once for the unit; one captured support object used by both cases</td></tr>
+<tr><td>Deleted state</td><td>Six sandbox roots absent; original capture container no longer inspectable</td></tr>
+<tr><td>Reconstructed closure</td><td>All ten link edges resolve to the original consumed file digests</td></tr>
+<tr><td>Preserved executable replay</td><td>Saved failing binary runs; original comparison again yields <code>DiffPgmOut</code></td></tr>
+<tr><td>Recompile using captured support</td><td>Primary compile/link/run/compare reproduce the mismatch; peer compile/link/run/compare succeed</td></tr>
+<tr><td>Filter behavior</td><td>Phase stderr identifies <code>FT07_FILTER_A</code>; saved raw output has a numeric PID and filtered output has <code>&lt;pid&gt;</code></td></tr>
+<tr><td>Hook-free reopening</td><td>Captured support identity unchanged, read-only mount used, hook count remains one; replay does not invoke TM or the pre-run hook</td></tr>
+<tr><td>Explicit support rebuild</td><td>Separate writable support copy deletes the copied object, executes the saved recipe with the original options and marks provenance <code>explicit-session-rebuild</code>; four primary phases again reproduce the failure</td></tr>
+<tr><td>Missing dependency guards</td><td>Missing harness, header, filter or products, and a source/work-only control, are rejected before any phase executes</td></tr>
+<tr><td>Legacy missing-header behavior</td><td>Without the guard, generated compilation returns 1 and <code>CompileErr</code></td></tr>
+<tr><td>Legacy missing-object behavior</td><td>Generated linking returns 1 and <code>LinkErr</code></td></tr>
+<tr><td>Legacy missing-filter behavior</td><td>Generated comparison returns 1 and <code>FilterInternalError</code></td></tr>
+<tr><td>Preservation</td><td>Reconstructed source/product snapshots unchanged; 24 recipe/environment files across replay and rebuild match the original archive</td></tr>
+</tbody></table>
+<p>The explicit rebuild does not replace or mutate the captured object. It uses a separate host directory mounted at the compatible <code>/unit-support</code> destination. Rebuilt bytes may match the original deterministic object; the session and build record still identify them as reconstructed products. The pre-run hook remains uncalled in that session as well.</p>
+<p>The source/work-only control retains the whole suite snapshot, which is more than the leaf workspace alone, yet it is still incomplete without the harness, header, filter and object roots. Dangling header/filter links are reported alongside the named missing prerequisites. Validation preflight supplies those early diagnostics; unchanged legacy scripts demonstrate their own phase errors in separate controls.</p>
+<h2 id="evidence-and-repeatability">Evidence and repeatability</h2>
+<p>The <a href="../../validation/phase0/legacy/README.md">experiment instructions</a> contain commands and isolation details. New tools are <a href="../../validation/phase0/legacy/run_ft07.py">run_ft07.py</a>, <a href="../../validation/phase0/legacy/ft07/closure.py">closure.py</a>, the <a href="../../validation/phase0/legacy/ft07/worker.py">worker</a>, the <a href="../../validation/phase0/legacy/ft07/build_support.py">support builder</a>, the <a href="../../validation/phase0/legacy/ft07/pre_run.py">pre-run hook</a>, the <a href="../../validation/phase0/legacy/ft07/normalize.py">filter</a> and <a href="../../validation/phase0/legacy/verify_ft07.py">verify_ft07.py</a>.</p>
+<table><thead><tr><th>Evidence</th><th>Review purpose</th></tr></thead><tbody>
+<tr><td><a href="../../validation/phase0/legacy/evidence/ft07-002/summary.json">Summary</a></td><td>Scoped result, image identity and open acceptance boundaries</td></tr>
+<tr><td><a href="../../validation/phase0/legacy/evidence/ft07-002/metadata/pre-run-manifest.json">Pre-run manifest</a></td><td>Input bytes, modes and links captured before TM</td></tr>
+<tr><td><a href="../../validation/phase0/legacy/evidence/ft07-002/metadata/manifest.json">Complete manifest</a></td><td>Adds the actual generated support products</td></tr>
+<tr><td><a href="../../validation/phase0/legacy/evidence/ft07-002/metadata/original-build.json">Original build</a></td><td>Exact compiler command, data-mode options, object digest and original provenance</td></tr>
+<tr><td><a href="../../validation/phase0/legacy/evidence/ft07-002/capture/results.json">Capture and link graph</a></td><td>One failed/one passed case, hook count, raw/filtered output and resolved links</td></tr>
+<tr><td><a href="../../validation/phase0/legacy/evidence/ft07-002/metadata/deletion.json">Deletion boundary</a></td><td>Six deleted native roots and original container identity</td></tr>
+<tr><td><a href="../../validation/phase0/legacy/evidence/ft07-002/metadata/reconstruction.json">Reconstruction map</a></td><td>Archive digests, new host paths and compatible destinations</td></tr>
+<tr><td><a href="../../validation/phase0/legacy/evidence/ft07-002/replay/results.json">Ordinary replay</a></td><td>Ten phase results, preserved support identity and hook-free replay</td></tr>
+<tr><td><a href="../../validation/phase0/legacy/evidence/ft07-002/rebuild/rebuilt-products.tar.gz">Explicit rebuild</a></td><td>Separate rebuilt object and provenance from the saved recipe</td></tr>
+<tr><td><a href="../../validation/phase0/legacy/evidence/ft07-002/leaf-only/results.json">Source/work-only control</a></td><td>Missing named roots and dangling links; zero executed phases</td></tr>
+<tr><td><a href="../../validation/phase0/legacy/evidence/ft07-002/docker-transcript.json">Lifecycle transcript</a></td><td>Runtime load, actual mounts, host request times, container removal and absence check</td></tr>
+<tr><td><a href="../../validation/phase0/legacy/evidence/ft07-002/verification.json">Verification</a></td><td>Dependency archives, link closure, build settings, phase outcomes and unchanged recipes</td></tr>
+<tr><td><a href="../../validation/phase0/legacy/evidence/ft07-002/SHA256SUMS.json">Checksums</a></td><td>Compact file digests; raw-run index retained separately</td></tr>
+</tbody></table>
+<p>The full reference is <code>validation/phase0/legacy/runs/ft07-002/</code>; compact review evidence is approximately 701 KB under <code>evidence/ft07-002/</code>. It includes all small input/product archives, failed work, replay/rebuild sessions, exact worker/hook/filter sources and diagnostic controls. The earlier 586 MB runtime archive remains local and ignored, with its digest recorded; compact review evidence alone does not supply the compiler/platform image. No new large compiler archive is created. <code>ft07-001</code> exercised the same cases without native Docker-request timing fields; <code>ft07-002</code> is the reference for the clock-aware ordering audit.</p>
+<h2 id="remaining-boundaries">Remaining boundaries</h2>
+<p>The experiment confirms that the legacy leaf workspace alone cannot preserve this shared dependency closure. It adds archive capture, closure validation and reconstructed mounts around the stock execution path, rather than claiming that those capabilities already exist as a native service.</p>
+<p>This is a synthetic C support object, header and filter test. Fortran modules, implicit auxiliary-module building, historical/shared-site harnesses, writable source-tree behavior, dashboard navigation and remote GPU/DSL workflows remain separate qualification work. Compiler/interpreter/system tools depend on the exact retained image. Native retention/concurrency controls and owner/reviewer approval remain open. A separate <a href="phase0-ft08-results.html">FT08 experiment</a> now verifies a writable application and generated-state preservation with overlapping private source/work sessions. FT09 through FT19 remain not run; phase 0 is not complete.</p>
+<footer>Reconstructed from OpenCTI source, baseline 8c3d603. Generated by doc/tools/build_docs.py.</footer>
+</main></body></html>

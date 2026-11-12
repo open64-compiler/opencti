@@ -1,0 +1,7 @@
+diff --git a/groups/Regression/FT06/Src/consumed.h b/groups/Regression/FT06/Src/consumed.h
+index cd03b6c..8edbcbc 100644
+--- a/groups/Regression/FT06/Src/consumed.h
++++ b/groups/Regression/FT06/Src/consumed.h
+@@ -1 +1 @@
+-#define CONSUMED_HEADER "committed-header"
++#define CONSUMED_HEADER "dirty-header-A"

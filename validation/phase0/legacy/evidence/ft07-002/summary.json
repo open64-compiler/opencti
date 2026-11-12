@@ -1,0 +1,24 @@
+{
+  "scenario": "FT07",
+  "status": "pass_for_synthetic_shared_C_harness_subset",
+  "image_id": "sha256:a119c5e4a42dedbb5cdce10d448efce31b4054018bde56a4e476bc2c529fa62c",
+  "finished_utc": "2026-11-12T17:40:10.100378+00:00",
+  "legacy_code_unchanged": true,
+  "earlier_capture_unchanged": true,
+  "original_sandbox_paths_absent": true,
+  "reconstructed_snapshots_unchanged": true,
+  "pre_run_hook_calls_original": 1,
+  "pre_run_hook_calls_replay": 0,
+  "test_cases_sharing_support": 2,
+  "preserved_product_replay_phase_checks": 10,
+  "explicit_support_rebuild": true,
+  "incomplete_closure_controls": 5,
+  "legacy_missing_dependency_controls": 3,
+  "native_artifact_service_implemented": false,
+  "limits": [
+    "Synthetic C object/header/filter closure, not arbitrary Fortran modules or historical suites",
+    "Compiler/interpreters/system tools retained in exact platform image",
+    "No implicit buildAuxiliaryModules.pl qualification, dashboard or GPU/DSL acceptance",
+    "Validation orchestration supplies snapshot/closure checks; peer/native acceptance open"
+  ]
+}
