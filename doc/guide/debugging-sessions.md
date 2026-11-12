@@ -35,6 +35,23 @@ Each click opens a new Terminal window and invokes `cti-session open`, which res
 
 ### Enable the existing CTI dashboard
 
+Dashboard deployment is configured by each organization for its proprietary server, private infrastructure or on-premises cloud. OpenCTI does not prescribe a shared dashboard hostname or deployment directory. The `{CONFIGURE_webserver}` and `{CONFIGURE_webroot}` tokens in an unconfigured checkout are installation inputs; configure an organization's deployment copy as described in [Installation](installation.md#configure-a-deployment-copy).
+
+The dashboard web service and the developer's Mac have separate roles. The server renders results and checks original log identity. The browser hands a registered failure ID to the Mac's native handler, which opens Terminal and Docker locally. The web server does not launch Terminal, receive the Mac's private session registry or require access to its Docker daemon.
+
+Configure these existing settings for each deployment:
+
+| Setting | Configured on | Meaning |
+| --- | --- | --- |
+| Legacy web host/root and CTI installation path | Organization's deployment copy, using `configure.pl` and its generated configuration | Site-owned web hostname, root and server filesystem layout; shipped placeholders are intentionally unconfigured |
+| `register --dashboard-url` | Developer's Mac | Browser-visible dashboard base URL, including the deployment prefix and trailing slash; behind a reverse proxy, use the externally visible origin/path |
+| `register --log` and `--test` | Developer's Mac | Exact log query value and failed-case name produced by that deployment; the log path identifies a server-side log, not a file that must exist at the same location on the Mac |
+| `CTI_SESSION_LINKS_URL` | CGI environment on the web service | Browser-visible, same-origin URL of the organization's user-scoped exported catalog |
+| `CTI_SESSION_LINKS_FILE` | CGI environment on the web service | Absolute path to that same catalog in the web service's filesystem namespace; for a containerized web service, use the path visible inside its container |
+| `--registry`, `--session-state`, `--image-archive` | Developer's Mac | Local registration, private session storage and retained image locations; keep these separate from server deployment paths and original evidence |
+
+The CGI environment settings are provided through the organization's web-server or service configuration. They are not new `configure.pl` prompts. Exported catalogs contain site-specific run identities and Mac-specific registration IDs; distribute them through the organization's existing deployment process and access controls. A shared service must select a catalog/configuration for the intended user. This adapter does not implement an automatic multi-user enrollment or catalog-selection service.
+
 Bind the exact dashboard deployment, original run-log query value and case name to a local capture. For example, replace the sample deployment with your actual CTI base URL:
 
 ```sh

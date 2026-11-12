@@ -14,6 +14,7 @@ There is no top-level compile/install target. Most CTI infrastructure runs direc
 | dTM | Java runtime; Perl with `XML::Simple`; SSH or configured remote shell; working native load monitor on each worker; shared installation/results paths |
 | Rebuilding dTM | JDK for Java sources, C compiler and pthread support for `loadd.c` |
 | Web interface | CGI-capable web server, Perl CGI dependencies including `CGI`, PHP for `dTMState.php` |
+| Optional dashboard-to-Terminal adapter | Python 3 on the web service; macOS, Python 3.9+, Docker and the native URL handler on each developer's Mac |
 | Documentation build | Python 3 standard library |
 
 The old README names Perl 5.8 and Linux/HP-UX. There is no current compatibility test matrix. The shipped `bin/gmake` explicitly rejects non-Linux hosts, and shell scripts contain `[[ ... ]]`; a generic POSIX `/bin/sh` is not sufficient for every path. macOS can be used to inspect the source and build these docs, but is not a verified test host.
@@ -66,5 +67,7 @@ Local execution does not contact dTM when `DISTRIBUTED_TM` is false. The stock c
 Use [the local run example](running-tests.md) to inspect settings before executing a small unit. Local runs need neither a running dTM server nor a web server. Do not start services simply to display the docs.
 
 ## Optional services
+
+Dashboard hostnames, web roots and deployed filesystem paths are organization-specific configuration for proprietary servers, private infrastructure or on-premises clouds. Keep the distributed source unconfigured and set these values in the organization's deployment copy. The optional [dashboard-to-Terminal setup](debugging-sessions.md#enable-the-existing-cti-dashboard) documents each server/Mac setting, same-origin catalogs, reverse-proxy URLs, user-scoped enrollment and rollback. Its `CTI_SESSION_LINKS_URL` and `CTI_SESSION_LINKS_FILE` settings belong to the web service's CGI environment; `configure.pl` does not prompt for them. No particular live server is required to build or review the package.
 
 For dTM worker definitions, native load monitors, Java rebuilding, and the web document root, continue with [distributed testing](distributed.md). For application dependencies, inspect the selected unit's `tmconfig`, `Src/Makefile.CTI`, and upstream installation notes.
