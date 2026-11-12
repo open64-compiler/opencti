@@ -1,0 +1,152 @@
+OpenCTI test-suite adoption and script preservation audit
+Reviewed 2026-11-11
+
+Conclusion
+The relevant project is OpenCTI (Common Test Infrastructure), registered
+locally at /Users/shinmingliu/opcti. Its existing adoption mechanisms should
+remain available during modernization: regression discovery, application
+make wrappers, the external script-suite driver, specialized setup/run/
+comparison hooks, and the legacy test-addition interface. Preserving these
+files alone does not establish that every external suite is runnable.
+
+Evidence and scope
+Repository HEAD: 14440d0e2e284f5a2c2650d74bc72ff9d8a51312.
+Framework baseline compared: 8c3d603.
+All 266 audited tracked entries are present and byte-identical to both HEAD
+and the framework baseline. They comprise 255 regular files and 11 symbolic
+links; 191 regular files have shebangs. All 11 links resolve on this host.
+Link hashes cover the link text, rather than the referenced file contents.
+
+The inventory covers Scripts/, bin/, lib/, conf/, cti_perf/,
+cti_regression/, www/, configure.pl, suite tmconfig files, Makefile.CTI /
+Makefile.perf wrappers and Perf/bin. It excludes the bundled upstream
+application sources, dTM Java and general documentation. This is a scoped
+infrastructure audit, not a count of all OpenCTI scripts or an archive audit.
+opencti-inventory.json contains each path, SHA-256, mode, interpreter line,
+link target, comparison result and the observed repository status.
+
+Existing working-tree changes in OpenMP cases, documentation and validation
+were observed and left untouched. No OpenCTI or Open64 files were modified.
+The separate Open64 GPU archive audit does not establish OpenCTI adoption
+compatibility and is not used as evidence for these conclusions.
+
+Preserved core entry points
+1. bin/TM.pl and bin/tm; Scripts/generateUnitList.pm; tmconfig hierarchy.
+   A unit has Src/. Parent CHILDREN lists enroll units in group selections;
+   direct unit selection can address a unit without parent enrollment.
+   Preserve hierarchical options, selectors, skips and enumeration behavior.
+
+2. Scripts/drivers/regression.pl and lib/regressionDriver.pm.
+   Preserve source-extension discovery, .list / tmconfig.list grouping,
+   auxiliary files, per-test options, negative compile cases, diagnostic and
+   output masters, qualifiers and result tags. The discovery and comparison
+   modules are part of the adoption contract, not optional implementation
+   detail that can be dropped when replacing a launcher.
+
+3. Scripts/drivers/application.pl and lib/applicationDriver.pm.
+   Applications/tmconfig selects this driver. MAKEWRAPPER selects a makefile;
+   normal execution invokes compile and validate. Success requires a zero
+   phase status and a present, empty compare.results. Preserve compiler and
+   language flags, libraries, setup hooks and application run generators.
+   Existing examples: Applications/gsl-1.14/Src/Makefile.CTI and
+   Applications/hmmer-2.3.2/Src/Makefile.CTI. Perf/tmconfig also selects this
+   driver with Makefile.perf, rather than a separate performance driver.
+
+4. Scripts/drivers/script-driver.pl and lib/scriptDriver.pm.
+   This is the direct adapter for externally scripted suites. Select it
+   through UNIT_DRIVER, provide SCRIPT_TEST_COLLECTION_HOOK and
+   SCRIPT_TEST_INVOKER, and retain output masters/comparison and CTI tags.
+   The collector receives the unit Src directory and prints test names.
+   The invoker receives the selected name in its test working directory.
+   Collector hooks resolve under Scripts/utils. Invokers also resolve there
+   unless their configured value begins with '.', which uses a local path.
+   Preserve TEST_AUXFILES, saved environments, per-test workspaces and the
+   emitted phase/compare/reproduction scripts as well as final result rows.
+
+Wrapped entry points and supporting dependencies
+- Application Makefile.CTI / Makefile.perf wrappers adapt existing upstream
+  build/check commands to the compile/validate/compare.results contract.
+- APPLICATION_SETUP_HOOKS and APPLICATION_RUN_HOOK support specialized
+  work-directory setup and generation of a run script. The latter receives
+  the unit name and output-script filename.
+- Scripts/utils/collector.sh, rts_invoker.sh and options_test helpers are
+  retained glue examples; their presence is not proof of current enrollment.
+- Scripts/drivers/lib/locateTools.pm requires executable driver/hook files.
+  Preserve executable permissions and relative layouts. The driverlib links
+  under utils/, utils/HPT/ and utils/codegen/ resolve to shared driver code.
+- bin/gmake is itself a wrapper: it only supports Linux and dispatches to
+  /usr/bin/gmake. Keeping its name without its platform contract is inadequate.
+
+Legacy and specialized material to retain with explicit prerequisites
+- bin/www/addtest.pl and www/cgi-bin/addtest.cgi are the historical test-add
+  interface. The script accepts sources, test settings, masters and remarks.
+  Its actual implementation rejects additions outside Regression. It is not
+  a general application/suite onboarding command.
+- The current addtest path calls SVN URL/check-in helpers in lib/CTI_lib.pm.
+  bin/www/checkin_files.sh and checkin_subtree.pl retain ClearCase-oriented
+  operations. The help text still mentions ClearCase while addtest's actual
+  source/master insertion path uses SVN. Preserve both, with clear labels.
+- Scripts/drivers/legacyTmUnitDriver.sh delegates to an external parent UTM
+  executable via 'UTM run'. Preserving this adapter does not supply UTM.
+- Perennial C/C++, Modena, RogueWave and SPEC helpers are retained suite-
+  specific integration material. For example buildPeren_CHarness.sh:120/123
+  and buildPeren_CPPHarness.sh:108 contain /path/to/TESTC++ placeholders;
+  buildRw_StdlibHarness.sh:109 expects external Lang/RogueWave content.
+  No deployed or supported status is inferred from these historical files.
+
+Adoption and portability gaps
+G1. No general Git-aware suite importer was found in the audited entry points.
+    addtest.pl:111-118 restricts additions to regression tests;
+    addtest.pl:465-472 and 490-498 require SVN repository lookup/check-in.
+    Git working-tree enrollment currently uses the documented manual unit,
+    tmconfig, wrapper/hook and CHILDREN workflow. A future importer must
+    preserve this contract and offer reviewable changes before applying them.
+
+G2. Native macOS execution is not established. Many Perl entry points use
+    /usr/local/bin/perl, absent on this host. bin/gmake:39-45 rejects non-Linux
+    and hardcodes /usr/bin/gmake, also absent here. lib/CTI_global.env still
+    contains CONFIGURE placeholders; configure.pl changes scripts in place.
+    Preserve an original copy and qualify a configured Linux environment or
+    an explicit portability layer before claiming operational compatibility.
+
+G3. Some suite dependencies are external or unresolved. Placeholder paths,
+    vendor harnesses, SDK tools and UTM need declared prerequisites. Keep
+    original helper variants and report unavailable dependencies per suite.
+    Do not count retained adapters as successfully adopted runnable suites.
+
+G4. Script-driver failure semantics need explicit preservation.
+    scriptDriver.pm:138-155 only propagates invoker failure when
+    RUN_TESTS_CHECK_EXIT is true; otherwise the generated invoker exits zero.
+    Preserve output comparison and confirm both status and oracle behavior.
+    The collection hook has no enforced time limit (lines 65-70), and
+    MULTIPLE_ITERATIONS is explicitly rejected (202-203). Enumeration invokes
+    collection, so it can execute arbitrary suite hook behavior.
+
+G5. Legacy preview is not a pure, no-write planner. addtest.pl:94-102 creates
+    a temporary directory before the regression workflow; gen_testlevel_tmconfig
+    directly writes configuration at 426-438. SVN repository lookup also
+    occurs before preview-aware check-in. These observations are static;
+    neither addtest nor its preview was executed during this audit.
+
+Preservation acceptance criteria for subsequent modernization
+- Keep original files, variants, executable modes and link structure; use
+  the attached hashes to detect changes in the audited baseline.
+- Keep all three adoption routes: regression discovery, application wrapper
+  integration and external script collection/invocation.
+- Preserve configuration precedence, parent enrollment, selectors, compiler/
+  flag propagation, negative tests, masters, result tags and reproduction
+  environments. A dashboard replacement alone does not satisfy this.
+- Exercise a small regression case, application wrapper and external scripted
+  case in isolated fixtures; include failing compile/run/compare paths,
+  collection failure, missing dependencies and invoker exit propagation.
+- Before replacing the add-test UI, demonstrate regression addition with
+  source, masters and settings; separately specify application and script-
+  suite onboarding, which the current addtest implementation does not supply.
+
+Validation limits
+Performed static source reads, SHA-256 inventory, link checks and Git byte
+comparisons only. No configuration, suite/importer execution, compiler/GPU
+build, repository mutation, permission escalation or cross-chat message was
+performed. All observations describe this local source snapshot; runtime
+adoption, archived-package preservation and future modernization remain to
+be qualified separately.
