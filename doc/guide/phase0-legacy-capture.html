@@ -1,0 +1,66 @@
+<!--
+Copyright (C) 2011, Hewlett-Packard Development Company, L.P.
+All Rights Reserved.
+Open64 is free software; you can redistribute it and/or modify it under the
+terms of the GNU General Public License as published by the Free Software
+Foundation; either version 2 of the License, or (at your option) any later
+version. Distributed WITHOUT ANY WARRANTY; without even the implied warranty
+of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General
+Public License for more details.
+-->
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Phase 0 legacy failure capture results — OpenCTI</title><style>body{margin:0;background:#f4f6f8;color:#18232e;font:17px/1.6 system-ui,sans-serif}
+main{max-width:1050px;margin:auto;padding:2rem;background:white;min-height:100vh}
+a{color:#075ca8}nav{padding:.7rem 0;border-bottom:1px solid #ccd5dd}
+h1,h2,h3{line-height:1.25;scroll-margin-top:1rem}h2{margin-top:2rem}
+pre{padding:1rem;background:#eff3f7;overflow:auto;border:1px solid #d5dce3}
+code{font: .88em/1.5 ui-monospace,monospace;overflow-wrap:anywhere}
+table{border-collapse:collapse;width:100%;display:block;overflow:auto}
+th,td{padding:.6rem;border:1px solid #ccd5dd;text-align:left;vertical-align:top}
+th{background:#eff3f7}td:first-child{min-width:10rem}footer{border-top:1px solid #ccd5dd;margin-top:2rem;color:#52606b}
+@media(max-width:640px){main{padding:1rem}body{font-size:16px}}
+</style></head><body><main>
+<nav><a href="index.html">CTI documentation</a></nav>
+<h1 id="phase-0-legacy-failure-capture-results">Phase 0 legacy failure capture results</h1>
+<p><a href="index.html">Documentation home</a> · <a href="dashboard-feature-ledger.html">Dashboard ledger</a> · <a href="failure-triage-acceptance.html">Acceptance scenarios</a></p>
+<h2 id="observed-result-and-scope">Observed result and scope</h2>
+<p>FT01, FT02 and FT03 now have observed legacy failures and independently verified legacy phase replay for a small synthetic regression fixture set. The reference capture ran on November 11 2026 at 2:57 PM America Los Angeles time, in Linux ARM64 Docker using GCC 13.3.0, Perl 5.38 and Bash with Korn-shell option loading. This is a real invocation of the stock CTI harness and compiler against deliberate failure cases, not a historical production archive or a test of an Open64 compiler defect.</p>
+<p>The source was exported directly from Git commit <code>8c3d603797129d32e90532c830b3cdabbc5e4b17</code>, bypassing the Mac working tree&#x27;s filename collisions. The container image ID is <code>sha256:a119c5e4a42dedbb5cdce10d448efce31b4054018bde56a4e476bc2c529fa62c</code>. Full package versions and the precise commands are retained in the evidence.</p>
+<table><thead><tr><th>Scenario</th><th>Original observation</th><th>Independent replay observation</th><th>Characterization status</th></tr></thead><tbody>
+<tr><td>FT01 compile failure</td><td>GCC rejects invalid C; stock harness records <code>CompileErr</code></td><td>Generated compile script returns 1 with <code>CompileErr</code>; corrected source in a session copy compiles with status 0</td><td>Observed and replay checked for this fixture</td></tr>
+<tr><td>FT02 runtime failure</td><td>Program prints <code>runtime failure</code>, exits 7; harness records <code>ExecErr</code></td><td>Captured executable exits 7 again; separate compile/link/run sequence succeeds at compile/link then exits 7 at run</td><td>Observed and replay checked for this fixture</td></tr>
+<tr><td>FT03 output mismatch</td><td>Program exits 0 and prints <code>actual</code>; master contains <code>expected</code>; harness records <code>DiffPgmOut</code></td><td>Generated compare script returns 1 for original output; corrected output returns 0 against the original master without compiling or executing again</td><td>Observed and replay checked for this fixture</td></tr>
+<tr><td>FT03 missing-master control</td><td>Normal program output with no master; harness records <code>NoMasterOut</code></td><td>Generated comparison returns 1 and records <code>NoMasterOut</code></td><td>Observed control; distinct from mismatch</td></tr>
+</tbody></table>
+<p>The summary reports <code>TOTAL TESTS=4, PASS=0, FAIL=4, RUNNING=0</code>. TM exits 0 even though all four tests fail, confirming why the test verdict must be read from results rather than the launcher process alone. Expected failures in this experiment are intentional fixture outcomes; the fixtures are not configured as CTI negative tests.</p>
+<h2 id="isolation-and-non-mutation-evidence">Isolation and non-mutation evidence</h2>
+<p>The Docker test and replay invocations expose no network or ports and mount only the experiment scripts/fixtures read-only plus a dedicated native Mac evidence directory read-write. They do not mount the Git working tree, user home, Docker socket, credentials or production baselines. Runtime containers use one CPU, 1 GiB memory, dropped capabilities and no-new-privileges. The image build alone uses network access to install packages.</p>
+<p>The copied deployment configures exactly <code>lib/CTI_global.env</code>, <code>dtm/lib/DTM_global.env</code> and <code>dtm/conf/dTM_conf.xml</code>. This is isolated installation configuration, not a driver patch. A complete archive comparison verifies all other tracked framework paths, bytes, types, modes and symlink destinations against the Git baseline. Bash is selected inside the image for legacy non-POSIX shell constructs, and packaged Perl is available at the legacy shebang path.</p>
+<p>No Java server, worker load daemon or web server is started. Compiler selection, master paths and small test-group enrollment live entirely in the external fixture tree. Default scratch execution and stock message/artifact copy-back are exercised; successful capture is not achieved by bypassing the meta-driver or replacing its verdict logic.</p>
+<h2 id="preserved-evidence-and-review-locations">Preserved evidence and review locations</h2>
+<p>The <a href="../../validation/phase0/legacy/README.md">experiment instructions</a>, <a href="../../validation/phase0/legacy/Dockerfile">Dockerfile</a>, <a href="../../validation/phase0/legacy/capture.py">capture driver</a>, <a href="../../validation/phase0/legacy/replay.py">replay driver</a>, <a href="../../validation/phase0/legacy/fixtures/phase0.opt">fixture options</a>, and <a href="../../validation/phase0/legacy/verify_evidence.py">verifier</a> make the experiment reviewable and repeatable. These are new validation tools outside the framework.</p>
+<table><thead><tr><th>Retained artifact</th><th>Contents and use</th></tr></thead><tbody>
+<tr><td><a href="../../validation/phase0/legacy/evidence/run-002/original-evidence.tar.gz">Original evidence archive</a></td><td>Original summary/launcher output, saved environment, generated compile/link/run/compare scripts, objects/executables, result messages and the exact source/master fixture tree; archive retains absolute source/master link destinations</td></tr>
+<tr><td><a href="../../validation/phase0/legacy/evidence/run-002/original-inventory.json">Original inventory</a></td><td>File modes, sizes/digests and symlink targets plus resolved source/master hashes at capture</td></tr>
+<tr><td><a href="../../validation/phase0/legacy/evidence/run-002/replay-evidence.tar.gz">Replay evidence archive</a></td><td>Separate writable session copies, phase transcripts, corrected source/output variants and original generated scripts</td></tr>
+<tr><td><a href="../../validation/phase0/legacy/evidence/run-002/replay-results.json">Replay results</a></td><td>Ten recorded phase checks, arguments, statuses/tags and executable hashes</td></tr>
+<tr><td><a href="../../validation/phase0/legacy/evidence/run-002/runtime.json">Runtime metadata</a></td><td>Compiler/Perl/shell versions and installed packages</td></tr>
+<tr><td><a href="../../validation/phase0/legacy/evidence/run-002/experiment.json">Experiment provenance</a></td><td>Source commit, image identity, UTC timestamps and container/mount invocations</td></tr>
+<tr><td><a href="../../validation/phase0/legacy/evidence/run-002/verification.json">Verification result</a></td><td>Hash verification, expected result assertions and exact framework deployment-change allowlist</td></tr>
+<tr><td><a href="../../validation/phase0/legacy/evidence/run-002/retained-large-artifacts.json">Large artifact manifest</a></td><td>Sizes/digests of locally retained runtime image, Git source archive and configured framework archive</td></tr>
+<tr><td><a href="../../validation/phase0/legacy/evidence/run-002/SHA256SUMS.json">Review evidence checksums</a></td><td>Digests for the compact review copies</td></tr>
+</tbody></table>
+<p>The complete reference capture is retained natively at <code>validation/phase0/legacy/runs/run-002/</code> in this workspace, approximately 597 MiB including the roughly 586 MB Docker image archive. That directory is ignored by Git. Compact review evidence is approximately 106 KB and is separate from the large runtime. Sharing the compact archives alone does not transfer the compiler/runtime; transfer the large retained files as well for full offline recovery.</p>
+<p>Source and baseline links inside the original work tree point into <code>/fixtures</code>, so simply opening the extracted work tree on macOS is insufficient for running it. Mount the captured fixture snapshot at the same container destination, restore/use the retained image, and work on a fresh writable session. The instructions show how. Neither script replay nor source correction edits the original evidence.</p>
+<h2 id="what-the-replay-checks-establish">What the replay checks establish</h2>
+<p>Capture runs stock <code>TM.pl -nod -nomail</code> with an external shell option file. The first container is automatically removed after its evidence is saved. A second container runs the generated phase scripts on independent copies, using the same pinned image and read-only fixture inputs. It verifies unchanged original file and resolved source/master hashes after all replay operations.</p>
+<p>The ten checks are original/corrected FT01 compilation; FT02 original execution, standalone recompile, and separate compile/link/run of a rebuilt executable; FT03 original/corrected comparison; and the missing-master control. Every generated phase script and <code>.env</code> is retained, including later-phase recipes not reached after an earlier failure. An FT01 executable is not fabricated when compilation fails. FT03 corrected comparison accepts a new output filename and does not require recompile or execution.</p>
+<p>A successful standalone compare does not write <code>SuccessExec</code> or clear an existing <code>.result</code> automatically. Replay clears only the copied session&#x27;s stale failure marker before each phase and records success as return 0 with no new failure marker. The lower-level diff utility returns 0 and emits a failure tag for mismatch; the generated compare wrapper turns that tag into a result and returns 1. This is a concrete compatibility contract to preserve.</p>
+<h2 id="findings-and-outstanding-gates">Findings and outstanding gates</h2>
+<p>The unmodified Perl code emits warnings about historical regular expressions and undefined machine lookup values under modern Perl. They are preserved in launcher logs. They did not prevent these fixtures from reaching the intended compiler/runtime/comparison failures. Do not extrapolate this to all drivers or treat warning suppression as a framework fix.</p>
+<p>An exploratory run inherited <code>COMPILER_VERSION=opencc</code> and <code>DTM_CPUARCH=x86_64</code> from defaults. The reference run corrects those labels in external options to <code>gcc-13.3.0</code> and <code>aarch64</code>; its original diagnostics are not overwritten. This demonstrates why actual tool provenance and displayed configuration must both be checked.</p>
+<p>The assertions and original-image retention support FT01 through FT03 legacy characterization for these synthetic cases. They do not pass the replacement/native adapter gates, DA06&#x27;s actual dashboard navigation, broader FX03 shared-harness coverage, or FT04&#x27;s destructive mount relocation/volume deletion requirement. No mounted compiler was changed, no GPU/DSL job was run, and no historical known-failure cache or live CGI/dTM dashboard was acquired. Human review/signoff remains open.</p>
+<p>Next phase 0 evidence should exercise the real failure drilldown in an isolated dashboard, extend dependency capture to a shared support harness, and perform the explicit FT04 relocation experiment when its implementation gate is taken up. All other unexecuted scenarios retain their previous not-run status.</p>
+<footer>Reconstructed from OpenCTI source, baseline 8c3d603. Generated by doc/tools/build_docs.py.</footer>
+</main></body></html>

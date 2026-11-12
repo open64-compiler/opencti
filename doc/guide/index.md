@@ -6,6 +6,8 @@ These guides describe the code imported at commit `8c3d603`, rather than a curre
 
 ## Start here
 
+- [Phase 0 legacy capture results](phase0-legacy-capture.md): real FT01 through FT03 failures, independent replay, raw evidence and isolation verification.
+
 - [Dashboard feature preservation ledger](dashboard-feature-ledger.md): phase 0 feature IDs, implementation evidence, fixture requirements and dashboard acceptance scenarios.
 - [Failure triage acceptance scenarios](failure-triage-acceptance.md): phase 0 characterization and Docker, mount, standalone replay, DSL and GPU preservation gates.
 

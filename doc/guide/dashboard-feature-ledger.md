@@ -6,7 +6,7 @@
 
 This ledger defines the observable dashboard workflows that must remain available while CTI modules are replaced. It is a phase 0 review artifact, not a claim that the legacy dashboard or a replacement has passed testing. The framework baseline is `8c3d603`; the documentation/review baseline is `850d2f0`. No application, CGI, driver, configuration, test source, baseline or scheduler is changed by this ledger.
 
-Every feature below has a source-traced implementation path and an acceptance-scenario assignment. Runtime characterization, reference captures, historical fixture acquisition and owner assignment are pending. A scenario specification is not an executable test or a passing result. No row is waived by default.
+Every feature below has a source-traced implementation path and an acceptance-scenario assignment. Dashboard runtime characterization, historical fixture acquisition and owner assignment are pending. A [new synthetic legacy capture](phase0-legacy-capture.md) provides real FT01 through FT03 failures and independent phase replay; it does not exercise the dashboard. A scenario specification is not an executable test or a passing result. No row is waived by default.
 
 The companion scenarios make preserved source, compile, execute and compare environments a mandatory compatibility contract. A failure-details screen that only shows logs does not close those requirements.
 
@@ -14,7 +14,7 @@ The companion scenarios make preserved source, compile, execute and compare envi
 
 Use these independent fields in the evidence record: source state (`traced` or `needs trace`), fixture state (`specified`, `acquired` or `verified`), legacy observation (`not run`, `observed` or `blocked`), replacement acceptance (`not run`, `pass`, `fail` or `blocked`), and disposition (`retain`, `delegate temporarily` or `approved change`). Do not collapse source tracing into a runtime pass.
 
-All legacy feature rows are source `traced`, fixtures `specified`, legacy `not run`, replacement `not run`, disposition `retain`. DF38 has traced legacy antecedents and a specified new requirement; its new behavior is not claimed to exist in the source. Scope exceptions and findings below qualify what was traced. Record actual results separately for each scenario/fixture/backend combination. No reference screenshots, production archives or successful replay bundles have yet been acquired for this ledger.
+All legacy feature rows are source `traced`, fixtures `specified`, legacy `not run`, replacement `not run`, disposition `retain`. DF38 has traced legacy antecedents and a specified new requirement; its new behavior is not claimed to exist in the source. Scope exceptions and findings below qualify what was traced. Record actual results separately for each scenario/fixture/backend combination. No reference dashboard screenshots or production archives have been acquired. A synthetic FT01 through FT03 legacy replay bundle now exists; this is a verified subset of fixture requirements, not a complete FX03/FX08 archive or a dashboard scenario pass.
 
 Owner roles are proposed responsibilities, not assignments to named people:
 
@@ -97,7 +97,7 @@ DF38 extends the legacy workflow to containers/remote workers; the new completen
 
 ## Fixture acquisition catalog
 
-These are specifications for evidence to acquire or construct in an isolated reference installation. They are not fixtures present in this repository. Preserve raw archives and legacy outputs together with derived assertions. Label synthetic fixtures as synthetic and do not substitute them for historical coverage silently.
+These are specifications for evidence to acquire or construct in an isolated reference installation. The synthetic regression subset of FX03 and supporting container evidence for FX08 now exist under `validation/phase0/legacy`; the remaining fixture requirements are not yet acquired. Preserve raw archives and legacy outputs together with derived assertions. Label synthetic fixtures as synthetic and do not substitute them for historical coverage silently.
 
 | Fixture ID | Required content | Scenario coverage |
 | --- | --- | --- |
@@ -188,6 +188,6 @@ Against the isolated FX06 service, enable/disable a host with person/reason, can
 
 For each run, record ledger/scenario IDs; fixture ID, origin and digest; legacy code revision and deployment configuration; candidate revision; backend/image/toolchain; clock/timezone; named owner/reviewer; exact controls/commands; expected and observed identities/counts; raw request/response and artifact references; before/after hashes for mutations; verdict; discrepancy/waiver decision; and rollback/delegation result. Snapshots of live results must preserve symlink targets or identify missing dependencies.
 
-Initial evidence record: source review complete for the mappings above; FX01 through FX10 not acquired; DA01 through DA16 not run; no replacement implementation exists. Human review of rarely used/custom site features remains open. Historic source links and ClearCase/SVN integrations may require a site-specific reference environment. The current Mac checkout's case collisions are not a valid full-suite execution fixture.
+Current evidence record: source review complete for the mappings above; a synthetic FT01 through FT03 subset of FX03 and supporting container evidence for FX08 are captured and verified as documented in the capture report. Full shared-harness/mount-relocation requirements for those fixtures remain open. Other fixture sets are not acquired; DA01 through DA16 remain not run; no replacement implementation exists. Human review of rarely used/custom site features remains open. Historic source links and ClearCase/SVN integrations may require a site-specific reference environment. The current Mac checkout's case collisions are not a valid full-suite execution fixture.
 
-Next work is to acquire one representative legacy archive plus a working isolated CGI/dTM environment, assign named owners, construct and verify the five-test oracle, and capture DA01/DA02/DA06 plus FT01 through FT03. Dynamic controls and mutation scenarios require their own isolated service/repository copies. Phase 0 as a whole remains open; this document only establishes its ledger and scenario specifications.
+Next work is to acquire one representative historical archive plus a working isolated CGI/dTM environment, assign named owners, construct and verify the five-test oracle, and capture DA01/DA02/DA06 using the observed legacy failures as a starting point. Dynamic controls and mutation scenarios require their own isolated service/repository copies. Phase 0 as a whole remains open; this document only establishes its ledger and scenario specifications.

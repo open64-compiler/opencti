@@ -1,0 +1,43 @@
+#0 building with "desktop-linux" instance using docker driver
+
+#1 [internal] load build definition from Dockerfile
+#1 transferring dockerfile: 797B done
+#1 DONE 0.0s
+
+#2 [internal] load metadata for docker.io/library/ubuntu:24.04
+#2 DONE 0.0s
+
+#3 [internal] load .dockerignore
+#3 transferring context: 2B done
+#3 DONE 0.0s
+
+#4 [1/7] FROM docker.io/library/ubuntu:24.04
+#4 DONE 0.0s
+
+#5 [internal] load build context
+#5 transferring context: 28.26MB 0.2s done
+#5 DONE 0.2s
+
+#6 [4/7] RUN mkdir -p /opt/cti /tmp/dTM && tar -xf /opt/legacy-source.tar -C /opt/cti     && rm /opt/legacy-source.tar
+#6 CACHED
+
+#7 [5/7] COPY configure_deployment.py /opt/phase0/configure_deployment.py
+#7 CACHED
+
+#8 [2/7] RUN apt-get update && apt-get install -y --no-install-recommends     bash perl ksh gcc g++ make cpio libxml-simple-perl libwww-perl     libmailtools-perl libcgi-pm-perl procps time file python3 ca-certificates     && rm -rf /var/lib/apt/lists/*     && ln -sf /bin/bash /bin/sh     && ln -s /usr/bin/perl /usr/local/bin/perl
+#8 CACHED
+
+#9 [6/7] RUN python3 /opt/phase0/configure_deployment.py
+#9 CACHED
+
+#10 [3/7] COPY legacy-source.tar /opt/legacy-source.tar
+#10 CACHED
+
+#11 [7/7] WORKDIR /capture
+#11 CACHED
+
+#12 exporting to image
+#12 exporting layers done
+#12 writing image sha256:a119c5e4a42dedbb5cdce10d448efce31b4054018bde56a4e476bc2c529fa62c done
+#12 naming to docker.io/library/opencti:phase0-legacy-ft01-ft03 done
+#12 DONE 0.0s

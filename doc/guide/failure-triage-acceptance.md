@@ -6,7 +6,7 @@
 
 A failed CTI test must retain a usable debugging environment containing the consumed test sources, compile/link commands, execute command, comparison command and original baseline, together with the dependencies needed to rerun those phases. Preserve the original failed state before cleanup. A fresh run that happens to fail similarly is not a replacement for that evidence.
 
-These scenarios specify how to characterize existing CTI and how to accept a replacement using Docker, native artifact storage and remote execution. They do not modify or run the existing framework. The source baseline is `8c3d603`; documentation baseline is `850d2f0`. All FT01 through FT19 scenarios are currently specified and not run. No bundle, container, compiler, GPU job or historical failure has been validated as replayable by creating this document.
+These scenarios specify how to characterize existing CTI and how to accept a replacement using Docker, native artifact storage and remote execution. They do not modify or run the existing framework. The source baseline is `8c3d603`; documentation baseline is `850d2f0`. FT01 through FT03 now have [observed legacy failures and independent replay evidence](phase0-legacy-capture.md) for synthetic regression fixtures, including a missing-master control. Replacement acceptance and human review remain open; FT04 through FT19 are not run. This does not validate a historical production failure or a GPU/DSL job.
 
 Separate two verdicts in every future execution record: the test outcome and preservation completeness. A test can fail with complete debugging evidence, or pass/fail with incomplete collection. A complete manifest with unavailable inputs is not complete preservation. Expected compiler/runtime rejection can be a successful test outcome and must not be mislabeled because the underlying process returned nonzero.
 
@@ -28,7 +28,7 @@ Legacy source links can depend on a moving checkout or external toolchain. The n
 
 ## Common fixture and procedure
 
-Use the [fixture catalog](dashboard-feature-ledger.md#fixture-acquisition-catalog): FX03 for original regression artifacts, FX05 for isolated mutations, FX08 for containers/mounts, FX09 for application/script suites, and FX10 for DSL/GPU cases. Every fixture is currently a specification awaiting acquisition/construction. Store actual evidence outside test source and approved-master trees, under a future artifact root chosen for the run. Do not run these destructive experiments on production workspaces, approved masters or live peer jobs.
+Use the [fixture catalog](dashboard-feature-ledger.md#fixture-acquisition-catalog): FX03 for original regression artifacts, FX05 for isolated mutations, FX08 for containers/mounts, FX09 for application/script suites, and FX10 for DSL/GPU cases. A synthetic regression subset of FX03 and supporting container evidence for FX08 are captured; their remaining coverage and the other fixtures await acquisition/construction. Store actual evidence outside test source and approved-master trees, under a future artifact root chosen for the run. Do not run these destructive experiments on production workspaces, approved masters or live peer jobs.
 
 Before a run, identify each source, dataset, baseline, compiler, runtime, hook/filter and shared harness input. Capture immutable content and the exact uncommitted changes, not just a Git branch name. Generate/retain the actual phase scripts and environment before phase execution. Materialize complete sources in case-sensitive Linux storage where case-distinct paths exist.
 
@@ -54,7 +54,7 @@ For every scenario retain the evidence record fields from the dashboard ledger, 
 
 ## Scenario registry and execution gates
 
-Owner roles are unassigned proposed roles from the feature ledger. Legacy characterization observes current behavior; replacement acceptance proves the proposed preservation contract. No source-mapped feature is considered runtime verified until its relevant scenario evidence is reviewed.
+Owner roles are unassigned proposed roles from the feature ledger. Legacy characterization observes current behavior; replacement acceptance proves the proposed preservation contract. No source-mapped feature is considered fully accepted until its relevant scenario evidence is reviewed. FT01 through FT03 have recorded automated legacy characterization and phase checks for the synthetic subset; their broader fixtures, replacement gates and peer signoff remain open.
 
 | Scenario | Acceptance objective | Owner role | Earliest required gate |
 | --- | --- | --- | --- |
@@ -236,6 +236,6 @@ Evidence: approved real fixture/phase specification, input/toolchain/oracle vers
 
 For each executed variant write expected and actual observations, including test verdict and preservation verdict, missing dependencies, exact evidence paths/digests, fixture provenance, named operator/reviewer, backend/image/compiler/device identity, timing, deviations and the decision on each deviation. A repeat execution gets its own evidence record; retain earlier failures rather than overwriting them with the final pass. Use `blocked` only with a concrete missing prerequisite; do not record unexecuted scenarios as passed or waived.
 
-Phase 0 starts with acquisition of FX03 and a live isolated reference environment, then legacy characterization of FT01 through FT03 and the corresponding DA06 drilldown. Resolve actual script names/arguments, environment saving, output padding, master qualifiers and copy-back behavior from those captures. Owners and executable automation can then be selected without changing production framework behavior.
+The local Linux Docker reference environment and a synthetic regression subset of FX03 have now produced FT01 through FT03 observations. Continue with the corresponding DA06 drilldown in an isolated dashboard and broader source/harness dependencies. Resolve actual script names/arguments, environment saving, output padding, master qualifiers and copy-back behavior from those captures. Owners and executable automation can then be selected without changing production framework behavior.
 
-Current outcome: source trace and scenario specifications exist; all 19 scenarios remain not run, fixture contents remain unacquired, and Docker/GPU/DSL replay gates are future requirements. Phase 0 is not complete. Its next evidence should be a real preserved legacy failure with verified source/harness dependencies and independent phase transcripts.
+Current outcome: source trace and scenario specifications exist; FT01 through FT03 have real stock-harness failure captures and ten independent phase checks on synthetic inputs, with unchanged original evidence. See the capture report for raw archives, exact statuses and limitations. FT04 through FT19, native replacement gates, dashboard navigation and GPU/DSL execution remain untested. Phase 0 is not complete; broader historical/shared-harness evidence and peer signoff are still needed.

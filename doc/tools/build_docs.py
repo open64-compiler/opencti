@@ -85,7 +85,7 @@ def inline(text):
         else:
             url = match.group(3)
             path, marker, fragment = url.partition('#')
-            if path.endswith('.md'):
+            if path.endswith('.md') and Path(path).name in {p.name for p in GUIDE.glob('*.md')}:
                 path = path[:-3] + '.html'
             out.append(f'<a href="{html.escape(path + marker + fragment, quote=True)}">{html.escape(match.group(2))}</a>')
         start = match.end()
