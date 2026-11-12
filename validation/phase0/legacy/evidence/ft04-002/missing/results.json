@@ -1,0 +1,25 @@
+{
+  "mode": "missing",
+  "mountinfo": "139 88 0:63 / / rw,relatime - overlay overlay rw,lowerdir=/var/lib/docker/overlay2/l/K6DFX2RWUNIUQ4XPQHCCJUKPJN:/var/lib/docker/overlay2/l/QJD5A3P7KSU72QZAIS5PIEVRV3:/var/lib/docker/overlay2/l/TYQEKSSORHHOSEEMJ5R7YBXIOK:/var/lib/docker/overlay2/l/ATUUTYKPL3IP5SFKTW4A2PNWG2:/var/lib/docker/overlay2/l/QU4SGSAYYC3DG7YI2BUSCYY7H6:/var/lib/docker/overlay2/l/3KCQMCMHWIBOFS3SS6PWCCDST3:/var/lib/docker/overlay2/l/EYRDWAKQDDQYGH4RM4CX7A45QW:/var/lib/docker/overlay2/l/TNWS7OECUR4RVDBV32SYIO6UPS,upperdir=/var/lib/docker/overlay2/e3d9ed6fc58cf17ab232c69abd39f5f092d51e635b69bfb92ed09a42950c4180/diff,workdir=/var/lib/docker/overlay2/e3d9ed6fc58cf17ab232c69abd39f5f092d51e635b69bfb92ed09a42950c4180/work\n141 139 0:72 / /proc rw,nosuid,nodev,noexec,relatime - proc proc rw\n142 139 0:73 / /dev rw,nosuid - tmpfs tmpfs rw,size=65536k,mode=755\n143 142 0:74 / /dev/pts rw,nosuid,noexec,relatime - devpts devpts rw,gid=5,mode=620,ptmxmode=666\n144 139 0:75 / /sys ro,nosuid,nodev,noexec,relatime - sysfs sysfs ro\n145 144 0:40 / /sys/fs/cgroup ro,nosuid,nodev,noexec,relatime - cgroup2 cgroup rw\n146 142 0:70 / /dev/mqueue rw,nosuid,nodev,noexec,relatime - mqueue mqueue rw\n147 142 0:76 / /dev/shm rw,nosuid,nodev,noexec,relatime - tmpfs shm rw,size=65536k\n148 139 254:1 /docker/volumes/cti-ft04-4f5b9c11437b-missing/_data /capture rw,relatime master:1 - ext4 /dev/vda1 rw,discard\n149 139 0:46 /shinmingliu/opcti/validation/phase0/legacy/runs/ft04-002/retained-inputs /bundle ro,nosuid,nodev,relatime - fakeowner /run/host_mark/Users rw,fakeowner\n150 139 0:46 /shinmingliu/opcti/validation/phase0/legacy/runs/ft04-002/retained-tools /tools ro,nosuid,nodev,relatime - fakeowner /run/host_mark/Users rw,fakeowner\n151 139 0:46 /shinmingliu/opcti/validation/phase0/legacy/runs/ft04-002/missing /export rw,nosuid,nodev,relatime - fakeowner /run/host_mark/Users rw,fakeowner\n152 139 254:1 /docker/containers/65eb5efaccd5416276b1335599732d247f1a35f2adc749177504214e7be6a8f9/resolv.conf /etc/resolv.conf rw,relatime - ext4 /dev/vda1 rw,discard\n153 139 254:1 /docker/containers/65eb5efaccd5416276b1335599732d247f1a35f2adc749177504214e7be6a8f9/hostname /etc/hostname rw,relatime - ext4 /dev/vda1 rw,discard\n154 139 254:1 /docker/containers/65eb5efaccd5416276b1335599732d247f1a35f2adc749177504214e7be6a8f9/hosts /etc/hosts rw,relatime - ext4 /dev/vda1 rw,discard\n89 141 0:72 /bus /proc/bus ro,nosuid,nodev,noexec,relatime - proc proc rw\n90 141 0:72 /fs /proc/fs ro,nosuid,nodev,noexec,relatime - proc proc rw\n91 141 0:72 /irq /proc/irq ro,nosuid,nodev,noexec,relatime - proc proc rw\n92 141 0:72 /sys /proc/sys ro,nosuid,nodev,noexec,relatime - proc proc rw\n93 141 0:72 /sysrq-trigger /proc/sysrq-trigger ro,nosuid,nodev,noexec,relatime - proc proc rw\n94 141 0:73 /null /proc/interrupts rw,nosuid - tmpfs tmpfs rw,size=65536k,mode=755\n95 141 0:73 /null /proc/kcore rw,nosuid - tmpfs tmpfs rw,size=65536k,mode=755\n96 141 0:73 /null /proc/keys rw,nosuid - tmpfs tmpfs rw,size=65536k,mode=755\n97 141 0:77 / /proc/scsi ro,relatime - tmpfs tmpfs ro\n98 141 0:73 /null /proc/timer_list rw,nosuid - tmpfs tmpfs rw,size=65536k,mode=755\n99 144 0:78 / /sys/firmware ro,relatime - tmpfs tmpfs ro\n",
+  "original_host_checkout_visible": false,
+  "docker_socket_visible": false,
+  "control_service_required": false,
+  "assertions": [
+    {
+      "argv": [
+        "bash",
+        "./runtime_error.compile.sh"
+      ],
+      "returncode": 1,
+      "tag": "CompileErr"
+    },
+    {
+      "argv": [
+        "bash",
+        "./output_mismatch.compare-out.sh"
+      ],
+      "returncode": 1,
+      "tag": "CompareInternalError"
+    }
+  ]
+}

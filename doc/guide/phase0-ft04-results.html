@@ -1,0 +1,72 @@
+<!--
+Copyright (C) 2011, Hewlett-Packard Development Company, L.P.
+All Rights Reserved.
+Open64 is free software; you can redistribute it and/or modify it under the
+terms of the GNU General Public License as published by the Free Software
+Foundation; either version 2 of the License, or (at your option) any later
+version. Distributed WITHOUT ANY WARRANTY; without even the implied warranty
+of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General
+Public License for more details.
+-->
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Phase 0 FT04 deletion and relocation results — OpenCTI</title><style>body{margin:0;background:#f4f6f8;color:#18232e;font:17px/1.6 system-ui,sans-serif}
+main{max-width:1050px;margin:auto;padding:2rem;background:white;min-height:100vh}
+a{color:#075ca8}nav{padding:.7rem 0;border-bottom:1px solid #ccd5dd}
+h1,h2,h3{line-height:1.25;scroll-margin-top:1rem}h2{margin-top:2rem}
+pre{padding:1rem;background:#eff3f7;overflow:auto;border:1px solid #d5dce3}
+code{font: .88em/1.5 ui-monospace,monospace;overflow-wrap:anywhere}
+table{border-collapse:collapse;width:100%;display:block;overflow:auto}
+th,td{padding:.6rem;border:1px solid #ccd5dd;text-align:left;vertical-align:top}
+th{background:#eff3f7}td:first-child{min-width:10rem}footer{border-top:1px solid #ccd5dd;margin-top:2rem;color:#52606b}
+@media(max-width:640px){main{padding:1rem}body{font-size:16px}}
+</style></head><body><main>
+<nav><a href="index.html">CTI documentation</a></nav>
+<h1 id="phase-0-ft04-deletion-and-relocation-results">Phase 0 FT04 deletion and relocation results</h1>
+<p><a href="index.html">Documentation home</a> · <a href="phase0-legacy-capture.html">Original FT01 through FT03 capture</a> · <a href="failure-triage-acceptance.html">Failure triage scenarios</a></p>
+<h2 id="result-and-scope">Result and scope</h2>
+<p>FT04 passed its automated deletion, source/baseline relocation, phase replay and interactive-shell checks for the captured synthetic FT01 through FT03 regression cases. The reference experiment finished on November 11 2026 at 10:14 PM America Los Angeles time. It restores the earlier retained Docker image and work evidence; it does not rebuild the framework or rerun TM to regenerate the original failure.</p>
+<p>All ten independent phase checks reproduced the original observations or their explicit corrected-session controls. Original <code>run-002</code> evidence and the relocated input snapshots remained unchanged. This is evidence for the archived synthetic subset, with peer signoff and broader suite/dependency coverage still open.</p>
+<h2 id="destructive-boundary-and-reconstructed-mounts">Destructive boundary and reconstructed mounts</h2>
+<p>The real framework checkout, live fixture directory and original <code>runs/run-002</code> capture remain untouched. Destructive actions operate only on archive reconstructions in a newly created sandbox and uniquely named experiment containers/volumes. The recorded original capture container, <code>30ca03ca897a</code>, was already removed by the original <code>--rm</code> capture and is verified absent.</p>
+<p>The test then seeds a disposable container and Linux work volume with a copy of the captured failure workspace, removes both, and verifies that Docker can no longer inspect them. This explicitly destroys available reconstruction state while preserving the retained archive. It is not claimed to be deletion of an original named volume, because the original capture did not create one.</p>
+<p>Source and baseline snapshots from the original archive are materialized separately, then physically moved to new host directories. The former directories receive deliberately wrong C sources and masters. In the positive replay, a fresh container mounts the relocated sources at <code>/fixtures</code> and each relocated master directory at its original <code>/fixtures/groups/Regression/&lt;unit&gt;/Masters</code> destination. All are read-only. A newly created Linux volume at <code>/capture</code> receives the archived original work; it is different from the deleted volume.</p>
+<p>No live repository root, original host capture, original fixture mount, old work volume, controller, dashboard, metadata database or Docker socket is exposed to this container. Networking is disabled. Container inspection records and <code>/proc/self/mountinfo</code> document the actual mounted sources and access modes. Docker Desktop&#x27;s <code>/host_mnt</code> source translation is normalized for exact path verification.</p>
+<h2 id="checks-and-observations">Checks and observations</h2>
+<table><thead><tr><th>Check</th><th>Observed result</th></tr></thead><tbody>
+<tr><td>Restore retained runtime</td><td>Verified <code>runtime-image.tar</code> digest, loaded the archive and used image <code>sha256:a119c5e4a42dedbb5cdce10d448efce31b4054018bde56a4e476bc2c529fa62c</code></td></tr>
+<tr><td>Delete disposable state</td><td>Seed container and work volume removed; subsequent Docker inspections failed as expected</td></tr>
+<tr><td>Relocate inputs</td><td>Nine retained fixture files matched the archived bytes at new locations; former source/master locations contained different sentinel data</td></tr>
+<tr><td>Missing-source control</td><td>With fixture mounts omitted, the FT02 compile script returned 1 and recorded <code>CompileErr</code></td></tr>
+<tr><td>Missing-baseline control</td><td>With fixture mounts omitted, the pre-generated FT03 comparison returned 1 and recorded <code>CompareInternalError</code></td></tr>
+<tr><td>FT01 replay</td><td>Original invalid source returned 1 with <code>CompileErr</code>; corrected source in a session compiled with status 0</td></tr>
+<tr><td>FT02 replay</td><td>Captured executable exited 7 with <code>ExecErr</code>; separate compile/link succeeded and rebuilt execution again exited 7</td></tr>
+<tr><td>FT03 replay</td><td>Original comparison returned 1 with <code>DiffPgmOut</code>; corrected output compared successfully against the original <code>expected</code> master</td></tr>
+<tr><td>Missing-master fixture</td><td>Originally absent-master case remained <code>NoMasterOut</code>; it was not conflated with the missing-baseline control above</td></tr>
+<tr><td>Interactive debugging shell</td><td>Bash ran through a pseudo-terminal with interactive flags <code>himBHs</code>; inspected source, original master and compile/run/compare scripts in the reconstructed workspace</td></tr>
+<tr><td>Integrity and cleanup</td><td>Original evidence and relocated snapshots unchanged; fresh experiment containers and work volumes removed after exporting evidence</td></tr>
+</tbody></table>
+<p>The missing-baseline control is a useful implementation distinction: the comparison script was generated when its master existed and relies on a symlink to that master. Losing its mounted target later produces an internal comparison error. A case whose master was absent during script generation has a different emitted guard and yields <code>NoMasterOut</code>. Both behaviors were preserved, not silently normalized into one failure.</p>
+<p>A real interactive shell was opened and inspected the failed environment, but no debugger attachment or live-process checkpoint was attempted. No exact recurrence guarantee is asserted for nondeterministic failures.</p>
+<h2 id="evidence-and-repeatability">Evidence and repeatability</h2>
+<p>The <a href="../../validation/phase0/legacy/README.md">experiment instructions</a> include the invocation and isolation model. New validation tools are <a href="../../validation/phase0/legacy/run_ft04.py">run_ft04.py</a>, <a href="../../validation/phase0/legacy/ft04_worker.py">ft04_worker.py</a>, and <a href="../../validation/phase0/legacy/verify_ft04.py">verify_ft04.py</a>; existing framework drivers and the earlier replay implementation are unchanged.</p>
+<table><thead><tr><th>Evidence</th><th>Review purpose</th></tr></thead><tbody>
+<tr><td><a href="../../validation/phase0/legacy/evidence/ft04-002/summary.json">Summary</a></td><td>Scoped result, retained image identity and preservation assertions</td></tr>
+<tr><td><a href="../../validation/phase0/legacy/evidence/ft04-002/docker-transcript.json">Docker lifecycle transcript</a></td><td>Image restoration, resource creation/deletion, absence checks and actual worker invocations</td></tr>
+<tr><td><a href="../../validation/phase0/legacy/evidence/ft04-002/relocation.json">Relocation record</a></td><td>Old/new host paths, sentinel replacement, deleted resource IDs and original capture-container absence</td></tr>
+<tr><td><a href="../../validation/phase0/legacy/evidence/ft04-002/deleted-container-inspect.json">Deleted-container inspection</a></td><td>Original sandbox mount locations and discarded work volume</td></tr>
+<tr><td><a href="../../validation/phase0/legacy/evidence/ft04-002/positive-container-inspect.json">Positive-container inspection</a></td><td>Actual relocated read-only mounts, fresh volume and network/capability configuration</td></tr>
+<tr><td><a href="../../validation/phase0/legacy/evidence/ft04-002/positive/results.json">Positive worker results</a></td><td>Phase results, mountinfo, unavailable host/control paths and interactive-shell flag assertion</td></tr>
+<tr><td><a href="../../validation/phase0/legacy/evidence/ft04-002/positive/debug-shell.log">Interactive shell transcript</a></td><td>Pseudo-terminal, working directory, captured source/master and original generated script inspection</td></tr>
+<tr><td><a href="../../validation/phase0/legacy/evidence/ft04-002/missing/results.json">Negative control results</a></td><td>Absent-input assertions and observed failure statuses</td></tr>
+<tr><td><a href="../../validation/phase0/legacy/evidence/ft04-002/positive/replay-evidence.tar.gz">Replay archive</a></td><td>Separate writable session work and logs; originals are kept in the retained input archive</td></tr>
+<tr><td><a href="../../validation/phase0/legacy/evidence/ft04-002/verification.json">Verification</a></td><td>File hashes, deletion observations, exact relocated mount paths and archive-to-snapshot byte comparisons</td></tr>
+<tr><td><a href="../../validation/phase0/legacy/evidence/ft04-002/SHA256SUMS.json">Review checksums</a></td><td>Digests for compact evidence; <code>raw-run-checksums.json</code> retains the complete local run&#x27;s index</td></tr>
+</tbody></table>
+<p>The full local result is <code>validation/phase0/legacy/runs/ft04-002/</code>, under the ignored runs directory. Compact review evidence is approximately 180 KB, including relocated/sentinel fixture copies and retained worker scripts. The existing large Docker runtime archive stays in the original local capture and is not duplicated in the review bundle.</p>
+<p>The current verifier additionally rechecks exact mount identities after accounting for Docker Desktop&#x27;s path prefix. This post-run audit is based on the saved Docker inspection records, not a change to the worker execution. The compact evidence retains the exact worker/replay script snapshots used by the reference run.</p>
+<h2 id="remaining-boundaries">Remaining boundaries</h2>
+<p>This establishes archive-based reopening and independent legacy phase replay under deletion and source/master relocation for the synthetic regression subset. It does not pass FT06&#x27;s independently mounted compiler/runtime replacement test, FT07 shared external harness closure, FT17 case-distinct fixture coverage, the complete FT18 dashboard workflow, or GPU/DSL/production-suite acceptance. The compiler and libraries in this test are retained inside the image rather than separately relocated toolchain mounts.</p>
+<p>The existing phase 0 framework remains unchanged. Human review, historical fixtures and the untested acceptance scenarios continue to be required before any production modernization cutover.</p>
+<footer>Reconstructed from OpenCTI source, baseline 8c3d603. Generated by doc/tools/build_docs.py.</footer>
+</main></body></html>

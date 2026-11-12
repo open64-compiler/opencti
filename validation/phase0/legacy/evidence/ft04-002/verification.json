@@ -1,0 +1,9 @@
+{
+  "ft04_subset_verified": true,
+  "hashed_files": 36,
+  "relocated_fixture_files": 9,
+  "phase_checks": 10,
+  "missing_input_controls": 2,
+  "interactive_shell": true,
+  "deleted_container_and_volume_verified": true
+}

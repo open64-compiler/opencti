@@ -1,0 +1,137 @@
+{
+  "original_unchanged": true,
+  "results": [
+    {
+      "name": "ft01-original-compile",
+      "cwd": "/capture/replay/ft01-original-compile",
+      "argv": [
+        "bash",
+        "./compile_error.compile.sh"
+      ],
+      "returncode": 1,
+      "result_tag": "CompileErr",
+      "expected_returncode": 1,
+      "expected_tag": "CompileErr",
+      "binary_before_sha256": null,
+      "binary_after_sha256": null
+    },
+    {
+      "name": "ft01-corrected-compile",
+      "cwd": "/capture/replay/ft01-corrected-compile",
+      "argv": [
+        "bash",
+        "./compile_error.compile.sh"
+      ],
+      "returncode": 0,
+      "result_tag": null,
+      "expected_returncode": 0,
+      "expected_tag": null,
+      "binary_before_sha256": null,
+      "binary_after_sha256": null
+    },
+    {
+      "name": "ft02-original-execute",
+      "cwd": "/capture/replay/ft02-original-execute",
+      "argv": [
+        "bash",
+        "./runtime_error.run.sh"
+      ],
+      "returncode": 7,
+      "result_tag": "ExecErr",
+      "expected_returncode": 7,
+      "expected_tag": "ExecErr",
+      "binary_before_sha256": "585adf4b08c170e4a7c67ec933145af6ddb65f553858a4b732396d5f40e727df",
+      "binary_after_sha256": "585adf4b08c170e4a7c67ec933145af6ddb65f553858a4b732396d5f40e727df"
+    },
+    {
+      "name": "ft02-recompile",
+      "cwd": "/capture/replay/ft02-recompile",
+      "argv": [
+        "bash",
+        "./runtime_error.compile.sh"
+      ],
+      "returncode": 0,
+      "result_tag": null,
+      "expected_returncode": 0,
+      "expected_tag": null,
+      "binary_before_sha256": "585adf4b08c170e4a7c67ec933145af6ddb65f553858a4b732396d5f40e727df",
+      "binary_after_sha256": "585adf4b08c170e4a7c67ec933145af6ddb65f553858a4b732396d5f40e727df"
+    },
+    {
+      "name": "ft02-rebuilt-compile",
+      "cwd": "/capture/replay/ft02-rebuilt-execute",
+      "argv": [
+        "bash",
+        "./runtime_error.compile.sh"
+      ],
+      "returncode": 0,
+      "result_tag": null,
+      "binary_sha256": "585adf4b08c170e4a7c67ec933145af6ddb65f553858a4b732396d5f40e727df"
+    },
+    {
+      "name": "ft02-rebuilt-link",
+      "cwd": "/capture/replay/ft02-rebuilt-execute",
+      "argv": [
+        "bash",
+        "./runtime_error.link.sh"
+      ],
+      "returncode": 0,
+      "result_tag": null,
+      "binary_sha256": "585adf4b08c170e4a7c67ec933145af6ddb65f553858a4b732396d5f40e727df"
+    },
+    {
+      "name": "ft02-rebuilt-run",
+      "cwd": "/capture/replay/ft02-rebuilt-execute",
+      "argv": [
+        "bash",
+        "./runtime_error.run.sh"
+      ],
+      "returncode": 7,
+      "result_tag": "ExecErr",
+      "binary_sha256": "585adf4b08c170e4a7c67ec933145af6ddb65f553858a4b732396d5f40e727df"
+    },
+    {
+      "name": "ft03-original-compare",
+      "cwd": "/capture/replay/ft03-original-compare",
+      "argv": [
+        "bash",
+        "./output_mismatch.compare-out.sh"
+      ],
+      "returncode": 1,
+      "result_tag": "DiffPgmOut",
+      "expected_returncode": 1,
+      "expected_tag": "DiffPgmOut",
+      "binary_before_sha256": "b582e76a1b2c18262c7ed8481f66aa89915faec1255f4d24a55dd9b428e5ff10",
+      "binary_after_sha256": "b582e76a1b2c18262c7ed8481f66aa89915faec1255f4d24a55dd9b428e5ff10"
+    },
+    {
+      "name": "ft03-corrected-compare",
+      "cwd": "/capture/replay/ft03-corrected-compare",
+      "argv": [
+        "bash",
+        "./output_mismatch.compare-out.sh",
+        "corrected.out"
+      ],
+      "returncode": 0,
+      "result_tag": null,
+      "expected_returncode": 0,
+      "expected_tag": null,
+      "binary_before_sha256": "b582e76a1b2c18262c7ed8481f66aa89915faec1255f4d24a55dd9b428e5ff10",
+      "binary_after_sha256": "b582e76a1b2c18262c7ed8481f66aa89915faec1255f4d24a55dd9b428e5ff10"
+    },
+    {
+      "name": "ft03-missing-master",
+      "cwd": "/capture/replay/ft03-missing-master",
+      "argv": [
+        "bash",
+        "./absent_master.compare-out.sh"
+      ],
+      "returncode": 1,
+      "result_tag": "NoMasterOut",
+      "expected_returncode": 1,
+      "expected_tag": "NoMasterOut",
+      "binary_before_sha256": "effcd3b264a265e38ca64654bb0c483c8e57dc64252ede3d789be927a13659a6",
+      "binary_after_sha256": "effcd3b264a265e38ca64654bb0c483c8e57dc64252ede3d789be927a13659a6"
+    }
+  ]
+}

@@ -64,3 +64,32 @@ bash ./output_mismatch.compare-out.sh
 The comparison deliberately returns 1 and creates `DiffPgmOut`. For the corrected-output check, write a new `corrected.out` containing `expected` and a newline, remove only the copied session's stale `.result`, and invoke `bash ./output_mismatch.compare-out.sh corrected.out`. Success returns 0 and leaves no new failure marker; standalone comparison does not itself write `SuccessExec`. Do not remove or rewrite original evidence or masters.
 
 The source fixtures are synthetic and fully supplied here. Broader suites can depend on unbundled harnesses, licenses, datasets, runtimes and mounted toolchains; this experiment does not establish their replay completeness.
+
+## FT04 deletion and relocation experiment
+
+`run_ft04.py` verifies archive-only reconstruction after removing disposable container/volume state and relocating source/baseline backing directories. Python 3.9 or newer and Docker are required. It never renames the real fixture checkout or the original `run-002` capture. All destructive actions are confined to a new sandbox and randomly named experiment resources.
+
+```sh
+python3 validation/phase0/legacy/run_ft04.py \
+  --capture validation/phase0/legacy/runs/run-002 \
+  --output validation/phase0/legacy/runs/new-ft04-run
+```
+
+The runner verifies and loads the retained runtime image archive rather than rebuilding or using a mutable tag. It checks that the recorded original capture container is absent. It then seeds an isolated disposable container/volume from the original evidence archive, deletes both and verifies their absence. This seeding does not rerun TM or create a new failure; it represents a disposable reconstruction of the previously captured work state.
+
+Sandbox source and baseline trees are physically moved to new locations. Former locations receive wrong sentinel sources and masters. Fresh containers restore original work from the archive into new Linux volumes. Only relocated source/baseline trees are mounted at the original container-visible paths. No live checkout, original capture directory, old volume, dashboard, database or Docker socket is mounted. Runtime networking is disabled.
+
+The positive worker repeats the ten independent phase checks and opens a real interactive Bash session through a pseudo-terminal to inspect sources, baseline and generated scripts. The negative control omits all fixture mounts; a formerly compilable source and the output comparison must fail. Captured source/baseline snapshots and original `run-002` evidence must remain unchanged. Experiment containers and named work volumes are removed after exporting evidence.
+
+The reference result is `runs/ft04-002/`; `evidence/ft04-002/` is its compact review collection. It includes deletion transcripts, before/after mount maps, relocated inputs, sentinel controls, replay results, interactive-shell transcript, checksums and verification output. The earlier `ft04-001` checked the same phase replay but used a noninteractive shell inspection; `ft04-002` is the reference for the interactive-shell requirement.
+
+Verify the full reference run with:
+
+```sh
+python3 validation/phase0/legacy/verify_ft04.py \
+  validation/phase0/legacy/runs/ft04-002
+```
+
+Docker Desktop reports macOS bind sources with a `/host_mnt` prefix inside its VM. The verifier normalizes that prefix before checking exact source/backing paths and read-only flags. It verifies actual relocated paths rather than merely checking that original path strings were absent.
+
+FT04 passes for the captured synthetic regression subset. This does not establish production-suite dependency closure, shared external harness coverage, debugger attachment, checkpoint/restore, DSL or GPU replay. The retained runtime and earlier original evidence remain local; no existing framework file is modified.

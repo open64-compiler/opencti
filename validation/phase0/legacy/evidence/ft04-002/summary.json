@@ -1,0 +1,18 @@
+{
+  "scenario": "FT04",
+  "status": "pass_for_synthetic_FT01_FT03_subset",
+  "finished_utc": "2026-11-12T06:14:30.484539+00:00",
+  "image_id": "sha256:a119c5e4a42dedbb5cdce10d448efce31b4054018bde56a4e476bc2c529fa62c",
+  "image_archive_sha256": "8b69adc550862c611dd9f4b58a2126e6f82e94dc7a2c7781dfae3163418bf8a5",
+  "original_capture_unchanged": true,
+  "relocated_snapshots_unchanged": true,
+  "original_container_and_disposable_volume_absent": true,
+  "old_locations_replaced_with_sentinels": true,
+  "fresh_container_replay_checks": 10,
+  "missing_inputs_negative_controls": 2,
+  "limits": [
+    "No production archive/shared external harness/GPU/DSL",
+    "No live process checkpoint or debugger attachment",
+    "Original run-002 remains untouched; deletion/relocation uses isolated archive reconstructions"
+  ]
+}

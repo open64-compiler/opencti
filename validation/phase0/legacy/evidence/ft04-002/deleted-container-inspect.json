@@ -1,0 +1,300 @@
+{
+  "Id": "52ec8d88dd672951932b01d0935801162e547c2b231d1294e4ad368207cd8ce8",
+  "Created": "2026-11-12T06:14:29.468610677Z",
+  "Path": "bash",
+  "Args": [
+    "-c",
+    "tar -xzf /bundle/original-evidence.tar.gz -C /old-work original && test -f /old-work/original/work/Regression/FT03/output_mismatch.result"
+  ],
+  "State": {
+    "Status": "exited",
+    "Running": false,
+    "Paused": false,
+    "Restarting": false,
+    "OOMKilled": false,
+    "Dead": false,
+    "Pid": 0,
+    "ExitCode": 0,
+    "Error": "",
+    "StartedAt": "2026-11-12T06:14:29.517096594Z",
+    "FinishedAt": "2026-11-12T06:14:29.57192876Z"
+  },
+  "Image": "sha256:a119c5e4a42dedbb5cdce10d448efce31b4054018bde56a4e476bc2c529fa62c",
+  "ResolvConfPath": "/var/lib/docker/containers/52ec8d88dd672951932b01d0935801162e547c2b231d1294e4ad368207cd8ce8/resolv.conf",
+  "HostnamePath": "/var/lib/docker/containers/52ec8d88dd672951932b01d0935801162e547c2b231d1294e4ad368207cd8ce8/hostname",
+  "HostsPath": "/var/lib/docker/containers/52ec8d88dd672951932b01d0935801162e547c2b231d1294e4ad368207cd8ce8/hosts",
+  "LogPath": "/var/lib/docker/containers/52ec8d88dd672951932b01d0935801162e547c2b231d1294e4ad368207cd8ce8/52ec8d88dd672951932b01d0935801162e547c2b231d1294e4ad368207cd8ce8-json.log",
+  "Name": "/cti-ft04-4f5b9c11437b-discarded-container",
+  "RestartCount": 0,
+  "Driver": "overlay2",
+  "Platform": "linux",
+  "MountLabel": "",
+  "ProcessLabel": "",
+  "AppArmorProfile": "",
+  "ExecIDs": null,
+  "HostConfig": {
+    "Binds": null,
+    "ContainerIDFile": "",
+    "LogConfig": {
+      "Type": "json-file",
+      "Config": {}
+    },
+    "NetworkMode": "none",
+    "PortBindings": {},
+    "RestartPolicy": {
+      "Name": "no",
+      "MaximumRetryCount": 0
+    },
+    "AutoRemove": false,
+    "VolumeDriver": "",
+    "VolumesFrom": null,
+    "ConsoleSize": [
+      0,
+      0
+    ],
+    "CapAdd": null,
+    "CapDrop": [
+      "ALL"
+    ],
+    "CgroupnsMode": "private",
+    "Dns": null,
+    "DnsOptions": [],
+    "DnsSearch": [],
+    "ExtraHosts": null,
+    "GroupAdd": null,
+    "IpcMode": "private",
+    "Cgroup": "",
+    "Links": null,
+    "OomScoreAdj": 0,
+    "PidMode": "",
+    "Privileged": false,
+    "PublishAllPorts": false,
+    "ReadonlyRootfs": false,
+    "SecurityOpt": [
+      "no-new-privileges"
+    ],
+    "UTSMode": "",
+    "UsernsMode": "",
+    "ShmSize": 67108864,
+    "Runtime": "runc",
+    "Isolation": "",
+    "CpuShares": 0,
+    "Memory": 1073741824,
+    "NanoCpus": 1000000000,
+    "CgroupParent": "",
+    "BlkioWeight": 0,
+    "BlkioWeightDevice": [],
+    "BlkioDeviceReadBps": [],
+    "BlkioDeviceWriteBps": [],
+    "BlkioDeviceReadIOps": [],
+    "BlkioDeviceWriteIOps": [],
+    "CpuPeriod": 0,
+    "CpuQuota": 0,
+    "CpuRealtimePeriod": 0,
+    "CpuRealtimeRuntime": 0,
+    "CpusetCpus": "",
+    "CpusetMems": "",
+    "Devices": [],
+    "DeviceCgroupRules": null,
+    "DeviceRequests": null,
+    "MemoryReservation": 0,
+    "MemorySwap": 2147483648,
+    "MemorySwappiness": null,
+    "OomKillDisable": null,
+    "PidsLimit": null,
+    "Ulimits": [],
+    "CpuCount": 0,
+    "CpuPercent": 0,
+    "IOMaximumIOps": 0,
+    "IOMaximumBandwidth": 0,
+    "Mounts": [
+      {
+        "Type": "bind",
+        "Source": "/Users/shinmingliu/opcti/validation/phase0/legacy/runs/ft04-002/original-locations/sources",
+        "Target": "/fixtures",
+        "ReadOnly": true
+      },
+      {
+        "Type": "bind",
+        "Source": "/Users/shinmingliu/opcti/validation/phase0/legacy/runs/ft04-002/original-locations/baselines/groups/Regression/FT01/Masters",
+        "Target": "/fixtures/groups/Regression/FT01/Masters",
+        "ReadOnly": true
+      },
+      {
+        "Type": "bind",
+        "Source": "/Users/shinmingliu/opcti/validation/phase0/legacy/runs/ft04-002/original-locations/baselines/groups/Regression/FT02/Masters",
+        "Target": "/fixtures/groups/Regression/FT02/Masters",
+        "ReadOnly": true
+      },
+      {
+        "Type": "bind",
+        "Source": "/Users/shinmingliu/opcti/validation/phase0/legacy/runs/ft04-002/original-locations/baselines/groups/Regression/FT03/Masters",
+        "Target": "/fixtures/groups/Regression/FT03/Masters",
+        "ReadOnly": true
+      },
+      {
+        "Type": "bind",
+        "Source": "/Users/shinmingliu/opcti/validation/phase0/legacy/runs/ft04-002/original-locations/baselines/groups/Regression/FT03NoMaster/Masters",
+        "Target": "/fixtures/groups/Regression/FT03NoMaster/Masters",
+        "ReadOnly": true
+      },
+      {
+        "Type": "volume",
+        "Source": "cti-ft04-4f5b9c11437b-discarded-work",
+        "Target": "/old-work"
+      },
+      {
+        "Type": "bind",
+        "Source": "/host_mnt/Users/shinmingliu/opcti/validation/phase0/legacy/runs/ft04-002/retained-inputs",
+        "Target": "/bundle",
+        "ReadOnly": true
+      }
+    ],
+    "MaskedPaths": [
+      "/proc/acpi",
+      "/proc/asound",
+      "/proc/interrupts",
+      "/proc/kcore",
+      "/proc/keys",
+      "/proc/latency_stats",
+      "/proc/sched_debug",
+      "/proc/scsi",
+      "/proc/timer_list",
+      "/proc/timer_stats",
+      "/sys/devices/virtual/powercap",
+      "/sys/firmware"
+    ],
+    "ReadonlyPaths": [
+      "/proc/bus",
+      "/proc/fs",
+      "/proc/irq",
+      "/proc/sys",
+      "/proc/sysrq-trigger"
+    ]
+  },
+  "GraphDriver": {
+    "Data": {
+      "ID": "52ec8d88dd672951932b01d0935801162e547c2b231d1294e4ad368207cd8ce8",
+      "LowerDir": "/var/lib/docker/overlay2/86d3e19cbf01ad0240b22dc876e27d9fe52d5a847f08b76e150d3f414bcdb630-init/diff:/var/lib/docker/overlay2/1wdzjbdhqu6tfzi2i401crrq1/diff:/var/lib/docker/overlay2/ttri2xu5n18wwohwi38tooeik/diff:/var/lib/docker/overlay2/os4d819slnpizlvcm8g13nv3a/diff:/var/lib/docker/overlay2/eac0fiqi2yu7zsw9xnen2hz18/diff:/var/lib/docker/overlay2/dj9xzqgejlnfjccxc2pdbh4ky/diff:/var/lib/docker/overlay2/jrgrxuvb8pkc0dbik46t9mjwc/diff:/var/lib/docker/overlay2/45b9d819b5b52e3f6876c7b987dcf6a2689fa57a81ed6f264c428e6c77388b17/diff",
+      "MergedDir": "/var/lib/docker/overlay2/86d3e19cbf01ad0240b22dc876e27d9fe52d5a847f08b76e150d3f414bcdb630/merged",
+      "UpperDir": "/var/lib/docker/overlay2/86d3e19cbf01ad0240b22dc876e27d9fe52d5a847f08b76e150d3f414bcdb630/diff",
+      "WorkDir": "/var/lib/docker/overlay2/86d3e19cbf01ad0240b22dc876e27d9fe52d5a847f08b76e150d3f414bcdb630/work"
+    },
+    "Name": "overlay2"
+  },
+  "Mounts": [
+    {
+      "Type": "bind",
+      "Source": "/Users/shinmingliu/opcti/validation/phase0/legacy/runs/ft04-002/original-locations/baselines/groups/Regression/FT03/Masters",
+      "Destination": "/fixtures/groups/Regression/FT03/Masters",
+      "Mode": "",
+      "RW": false,
+      "Propagation": "rprivate"
+    },
+    {
+      "Type": "bind",
+      "Source": "/Users/shinmingliu/opcti/validation/phase0/legacy/runs/ft04-002/original-locations/baselines/groups/Regression/FT03NoMaster/Masters",
+      "Destination": "/fixtures/groups/Regression/FT03NoMaster/Masters",
+      "Mode": "",
+      "RW": false,
+      "Propagation": "rprivate"
+    },
+    {
+      "Type": "volume",
+      "Name": "cti-ft04-4f5b9c11437b-discarded-work",
+      "Source": "/var/lib/docker/volumes/cti-ft04-4f5b9c11437b-discarded-work/_data",
+      "Destination": "/old-work",
+      "Driver": "local",
+      "Mode": "z",
+      "RW": true,
+      "Propagation": ""
+    },
+    {
+      "Type": "bind",
+      "Source": "/host_mnt/Users/shinmingliu/opcti/validation/phase0/legacy/runs/ft04-002/retained-inputs",
+      "Destination": "/bundle",
+      "Mode": "",
+      "RW": false,
+      "Propagation": "rprivate"
+    },
+    {
+      "Type": "bind",
+      "Source": "/Users/shinmingliu/opcti/validation/phase0/legacy/runs/ft04-002/original-locations/sources",
+      "Destination": "/fixtures",
+      "Mode": "",
+      "RW": false,
+      "Propagation": "rprivate"
+    },
+    {
+      "Type": "bind",
+      "Source": "/Users/shinmingliu/opcti/validation/phase0/legacy/runs/ft04-002/original-locations/baselines/groups/Regression/FT01/Masters",
+      "Destination": "/fixtures/groups/Regression/FT01/Masters",
+      "Mode": "",
+      "RW": false,
+      "Propagation": "rprivate"
+    },
+    {
+      "Type": "bind",
+      "Source": "/Users/shinmingliu/opcti/validation/phase0/legacy/runs/ft04-002/original-locations/baselines/groups/Regression/FT02/Masters",
+      "Destination": "/fixtures/groups/Regression/FT02/Masters",
+      "Mode": "",
+      "RW": false,
+      "Propagation": "rprivate"
+    }
+  ],
+  "Config": {
+    "Hostname": "52ec8d88dd67",
+    "Domainname": "",
+    "User": "",
+    "AttachStdin": false,
+    "AttachStdout": true,
+    "AttachStderr": true,
+    "Tty": false,
+    "OpenStdin": false,
+    "StdinOnce": false,
+    "Env": [
+      "PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin",
+      "DEBIAN_FRONTEND=noninteractive",
+      "CTI_HOME=/opt/cti",
+      "CTI_PERL=/usr/bin/perl",
+      "CTI_SHELL=/bin/bash"
+    ],
+    "Cmd": [
+      "bash",
+      "-c",
+      "tar -xzf /bundle/original-evidence.tar.gz -C /old-work original && test -f /old-work/original/work/Regression/FT03/output_mismatch.result"
+    ],
+    "Image": "sha256:a119c5e4a42dedbb5cdce10d448efce31b4054018bde56a4e476bc2c529fa62c",
+    "Volumes": null,
+    "WorkingDir": "/capture",
+    "Entrypoint": null,
+    "Labels": {
+      "org.opencontainers.image.version": "24.04"
+    },
+    "StopTimeout": 1
+  },
+  "NetworkSettings": {
+    "SandboxID": "",
+    "SandboxKey": "",
+    "Ports": {},
+    "Networks": {
+      "none": {
+        "IPAMConfig": null,
+        "Links": null,
+        "Aliases": null,
+        "DriverOpts": null,
+        "GwPriority": 0,
+        "NetworkID": "db469be2416af8289efb850ec787ddcb5266451b56691319d8bd80134baf0452",
+        "EndpointID": "",
+        "Gateway": "",
+        "IPAddress": "",
+        "MacAddress": "",
+        "IPPrefixLen": 0,
+        "IPv6Gateway": "",
+        "GlobalIPv6Address": "",
+        "GlobalIPv6PrefixLen": 0,
+        "DNSNames": null
+      }
+    }
+  }
+}

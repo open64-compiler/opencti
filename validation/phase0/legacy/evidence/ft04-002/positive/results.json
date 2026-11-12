@@ -1,0 +1,150 @@
+{
+  "mode": "positive",
+  "mountinfo": "139 88 0:63 / / rw,relatime - overlay overlay rw,lowerdir=/var/lib/docker/overlay2/l/6UKQFGHWU47C67PPDFGLWQXDCW:/var/lib/docker/overlay2/l/QJD5A3P7KSU72QZAIS5PIEVRV3:/var/lib/docker/overlay2/l/TYQEKSSORHHOSEEMJ5R7YBXIOK:/var/lib/docker/overlay2/l/ATUUTYKPL3IP5SFKTW4A2PNWG2:/var/lib/docker/overlay2/l/QU4SGSAYYC3DG7YI2BUSCYY7H6:/var/lib/docker/overlay2/l/3KCQMCMHWIBOFS3SS6PWCCDST3:/var/lib/docker/overlay2/l/EYRDWAKQDDQYGH4RM4CX7A45QW:/var/lib/docker/overlay2/l/TNWS7OECUR4RVDBV32SYIO6UPS,upperdir=/var/lib/docker/overlay2/2bc711795455fd905b23e94f8f88312eb89b73ef939276170da395b41c85b8ff/diff,workdir=/var/lib/docker/overlay2/2bc711795455fd905b23e94f8f88312eb89b73ef939276170da395b41c85b8ff/work\n141 139 0:72 / /proc rw,nosuid,nodev,noexec,relatime - proc proc rw\n142 139 0:73 / /dev rw,nosuid - tmpfs tmpfs rw,size=65536k,mode=755\n143 142 0:74 / /dev/pts rw,nosuid,noexec,relatime - devpts devpts rw,gid=5,mode=620,ptmxmode=666\n144 139 0:75 / /sys ro,nosuid,nodev,noexec,relatime - sysfs sysfs ro\n145 144 0:40 / /sys/fs/cgroup ro,nosuid,nodev,noexec,relatime - cgroup2 cgroup rw\n146 142 0:70 / /dev/mqueue rw,nosuid,nodev,noexec,relatime - mqueue mqueue rw\n147 142 0:76 / /dev/shm rw,nosuid,nodev,noexec,relatime - tmpfs shm rw,size=65536k\n148 139 0:46 /shinmingliu/opcti/validation/phase0/legacy/runs/ft04-002/retained-tools /tools ro,nosuid,nodev,relatime - fakeowner /run/host_mark/Users rw,fakeowner\n149 139 254:1 /docker/volumes/cti-ft04-4f5b9c11437b-positive/_data /capture rw,relatime master:1 - ext4 /dev/vda1 rw,discard\n150 139 0:46 /shinmingliu/opcti/validation/phase0/legacy/runs/ft04-002/retained-inputs /bundle ro,nosuid,nodev,relatime - fakeowner /run/host_mark/Users rw,fakeowner\n151 139 0:46 /shinmingliu/opcti/validation/phase0/legacy/runs/ft04-002/positive /export rw,nosuid,nodev,relatime - fakeowner /run/host_mark/Users rw,fakeowner\n152 139 0:46 /shinmingliu/opcti/validation/phase0/legacy/runs/ft04-002/relocated-snapshots/source-v1 /fixtures ro,nosuid,nodev,relatime - fakeowner /run/host_mark/Users rw,fakeowner\n153 139 254:1 /docker/containers/65a4e786c56d791750179989b78b5ba416ac223bd53a5c0d32879255b17168f2/resolv.conf /etc/resolv.conf rw,relatime - ext4 /dev/vda1 rw,discard\n154 139 254:1 /docker/containers/65a4e786c56d791750179989b78b5ba416ac223bd53a5c0d32879255b17168f2/hostname /etc/hostname rw,relatime - ext4 /dev/vda1 rw,discard\n155 139 254:1 /docker/containers/65a4e786c56d791750179989b78b5ba416ac223bd53a5c0d32879255b17168f2/hosts /etc/hosts rw,relatime - ext4 /dev/vda1 rw,discard\n156 152 0:46 /shinmingliu/opcti/validation/phase0/legacy/runs/ft04-002/relocated-snapshots/baseline-v1/groups/Regression/FT03NoMaster/Masters /fixtures/groups/Regression/FT03NoMaster/Masters ro,nosuid,nodev,relatime - fakeowner /run/host_mark/Users rw,fakeowner\n157 152 0:46 /shinmingliu/opcti/validation/phase0/legacy/runs/ft04-002/relocated-snapshots/baseline-v1/groups/Regression/FT01/Masters /fixtures/groups/Regression/FT01/Masters ro,nosuid,nodev,relatime - fakeowner /run/host_mark/Users rw,fakeowner\n158 152 0:46 /shinmingliu/opcti/validation/phase0/legacy/runs/ft04-002/relocated-snapshots/baseline-v1/groups/Regression/FT02/Masters /fixtures/groups/Regression/FT02/Masters ro,nosuid,nodev,relatime - fakeowner /run/host_mark/Users rw,fakeowner\n159 152 0:46 /shinmingliu/opcti/validation/phase0/legacy/runs/ft04-002/relocated-snapshots/baseline-v1/groups/Regression/FT03/Masters /fixtures/groups/Regression/FT03/Masters ro,nosuid,nodev,relatime - fakeowner /run/host_mark/Users rw,fakeowner\n89 141 0:72 /bus /proc/bus ro,nosuid,nodev,noexec,relatime - proc proc rw\n90 141 0:72 /fs /proc/fs ro,nosuid,nodev,noexec,relatime - proc proc rw\n91 141 0:72 /irq /proc/irq ro,nosuid,nodev,noexec,relatime - proc proc rw\n92 141 0:72 /sys /proc/sys ro,nosuid,nodev,noexec,relatime - proc proc rw\n93 141 0:72 /sysrq-trigger /proc/sysrq-trigger ro,nosuid,nodev,noexec,relatime - proc proc rw\n94 141 0:73 /null /proc/interrupts rw,nosuid - tmpfs tmpfs rw,size=65536k,mode=755\n95 141 0:73 /null /proc/kcore rw,nosuid - tmpfs tmpfs rw,size=65536k,mode=755\n96 141 0:73 /null /proc/keys rw,nosuid - tmpfs tmpfs rw,size=65536k,mode=755\n97 141 0:77 / /proc/scsi ro,relatime - tmpfs tmpfs ro\n98 141 0:73 /null /proc/timer_list rw,nosuid - tmpfs tmpfs rw,size=65536k,mode=755\n99 144 0:78 / /sys/firmware ro,relatime - tmpfs tmpfs ro\n",
+  "original_host_checkout_visible": false,
+  "docker_socket_visible": false,
+  "control_service_required": false,
+  "assertions": [
+    "ten_phase_checks_pass",
+    "original_evidence_unchanged",
+    "standalone_shell_inspection_pass"
+  ],
+  "replay": {
+    "original_unchanged": true,
+    "results": [
+      {
+        "name": "ft01-original-compile",
+        "cwd": "/capture/replay/ft01-original-compile",
+        "argv": [
+          "bash",
+          "./compile_error.compile.sh"
+        ],
+        "returncode": 1,
+        "result_tag": "CompileErr",
+        "expected_returncode": 1,
+        "expected_tag": "CompileErr",
+        "binary_before_sha256": null,
+        "binary_after_sha256": null
+      },
+      {
+        "name": "ft01-corrected-compile",
+        "cwd": "/capture/replay/ft01-corrected-compile",
+        "argv": [
+          "bash",
+          "./compile_error.compile.sh"
+        ],
+        "returncode": 0,
+        "result_tag": null,
+        "expected_returncode": 0,
+        "expected_tag": null,
+        "binary_before_sha256": null,
+        "binary_after_sha256": null
+      },
+      {
+        "name": "ft02-original-execute",
+        "cwd": "/capture/replay/ft02-original-execute",
+        "argv": [
+          "bash",
+          "./runtime_error.run.sh"
+        ],
+        "returncode": 7,
+        "result_tag": "ExecErr",
+        "expected_returncode": 7,
+        "expected_tag": "ExecErr",
+        "binary_before_sha256": "585adf4b08c170e4a7c67ec933145af6ddb65f553858a4b732396d5f40e727df",
+        "binary_after_sha256": "585adf4b08c170e4a7c67ec933145af6ddb65f553858a4b732396d5f40e727df"
+      },
+      {
+        "name": "ft02-recompile",
+        "cwd": "/capture/replay/ft02-recompile",
+        "argv": [
+          "bash",
+          "./runtime_error.compile.sh"
+        ],
+        "returncode": 0,
+        "result_tag": null,
+        "expected_returncode": 0,
+        "expected_tag": null,
+        "binary_before_sha256": "585adf4b08c170e4a7c67ec933145af6ddb65f553858a4b732396d5f40e727df",
+        "binary_after_sha256": "585adf4b08c170e4a7c67ec933145af6ddb65f553858a4b732396d5f40e727df"
+      },
+      {
+        "name": "ft02-rebuilt-compile",
+        "cwd": "/capture/replay/ft02-rebuilt-execute",
+        "argv": [
+          "bash",
+          "./runtime_error.compile.sh"
+        ],
+        "returncode": 0,
+        "result_tag": null,
+        "binary_sha256": "585adf4b08c170e4a7c67ec933145af6ddb65f553858a4b732396d5f40e727df"
+      },
+      {
+        "name": "ft02-rebuilt-link",
+        "cwd": "/capture/replay/ft02-rebuilt-execute",
+        "argv": [
+          "bash",
+          "./runtime_error.link.sh"
+        ],
+        "returncode": 0,
+        "result_tag": null,
+        "binary_sha256": "585adf4b08c170e4a7c67ec933145af6ddb65f553858a4b732396d5f40e727df"
+      },
+      {
+        "name": "ft02-rebuilt-run",
+        "cwd": "/capture/replay/ft02-rebuilt-execute",
+        "argv": [
+          "bash",
+          "./runtime_error.run.sh"
+        ],
+        "returncode": 7,
+        "result_tag": "ExecErr",
+        "binary_sha256": "585adf4b08c170e4a7c67ec933145af6ddb65f553858a4b732396d5f40e727df"
+      },
+      {
+        "name": "ft03-original-compare",
+        "cwd": "/capture/replay/ft03-original-compare",
+        "argv": [
+          "bash",
+          "./output_mismatch.compare-out.sh"
+        ],
+        "returncode": 1,
+        "result_tag": "DiffPgmOut",
+        "expected_returncode": 1,
+        "expected_tag": "DiffPgmOut",
+        "binary_before_sha256": "b582e76a1b2c18262c7ed8481f66aa89915faec1255f4d24a55dd9b428e5ff10",
+        "binary_after_sha256": "b582e76a1b2c18262c7ed8481f66aa89915faec1255f4d24a55dd9b428e5ff10"
+      },
+      {
+        "name": "ft03-corrected-compare",
+        "cwd": "/capture/replay/ft03-corrected-compare",
+        "argv": [
+          "bash",
+          "./output_mismatch.compare-out.sh",
+          "corrected.out"
+        ],
+        "returncode": 0,
+        "result_tag": null,
+        "expected_returncode": 0,
+        "expected_tag": null,
+        "binary_before_sha256": "b582e76a1b2c18262c7ed8481f66aa89915faec1255f4d24a55dd9b428e5ff10",
+        "binary_after_sha256": "b582e76a1b2c18262c7ed8481f66aa89915faec1255f4d24a55dd9b428e5ff10"
+      },
+      {
+        "name": "ft03-missing-master",
+        "cwd": "/capture/replay/ft03-missing-master",
+        "argv": [
+          "bash",
+          "./absent_master.compare-out.sh"
+        ],
+        "returncode": 1,
+        "result_tag": "NoMasterOut",
+        "expected_returncode": 1,
+        "expected_tag": "NoMasterOut",
+        "binary_before_sha256": "effcd3b264a265e38ca64654bb0c483c8e57dc64252ede3d789be927a13659a6",
+        "binary_after_sha256": "effcd3b264a265e38ca64654bb0c483c8e57dc64252ede3d789be927a13659a6"
+      }
+    ]
+  },
+  "interactive_shell_flags": "himBHs"
+}
