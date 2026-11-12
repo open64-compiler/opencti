@@ -244,3 +244,35 @@ python3 validation/phase0/legacy/verify_ft09.py \
 The full audit checks 65 file hashes, including the new image archive. Full and compact audits verify the framework identity, native target/data mode/features, ten compatibility cases, four replay phases, actual interactive attachment, ten unchanged recipe/environment files, five mount maps and the no-added-capability profile. Raw diagnostic/terminal bytes are preserved through scoped Git attributes; compact verification explicitly identifies the omitted runtime archive.
 
 This is synthetic native CPU/GCC evidence. Real heterogeneous workers, GPU capability execution, alternate ptrace policies, missing system-library sources, historical suites, debugger/dashboard services, native scheduling/retention and GPU/DSL acceptance remain open. See the [FT09 report](../../../doc/guide/phase0-ft09-results.md) for the actual supported and unsupported paths.
+
+## FT10 retry-safe evidence collection fixture
+
+`run_ft10.py` tests a validation-only collector around the real retained FT08 failure. It does not run a test, modify the framework or integrate a native production service. Python 3.9 or newer (SQLite/HTTP standard library) and Docker are required. The transport source binds only loopback. The existing ARM64 runtime is used only for a network-disabled bounded-storage control; no package build/network download is needed.
+
+```sh
+python3 validation/phase0/legacy/run_ft10.py \
+  --failure-capture validation/phase0/legacy/evidence/ft08-001 \
+  --runtime-capture validation/phase0/legacy/runs/run-002 \
+  --output validation/phase0/legacy/runs/new-ft10-run
+```
+
+The output must be new. Eleven required objects include actual initial source, saved recipes/build inputs, baseline, failed source/work and provenance. The existing native platform archive is a separately bound, required local prerequisite. A manifest fixes the imported attempt and original `DiffPgmOut` outcome. A native SQLite ledger deduplicates event/attempt identities, including concurrent duplicate deliveries and conflicting-outcome rejection.
+
+The loopback source cuts one HTTP response short and corrupts another full-size response. Collection resumes a 1,536-byte partial via HTTP Range, quarantines the bad digest, and keeps preservation incomplete until repaired. Injected Mac write pressure leaves a 1,024-byte staged provenance object; storage recovery resumes it. Atomic publication occurs only after complete size/hash verification. Partial files are not trusted objects. Every operation runs in a fresh Python process, re-reading persisted state.
+
+After a verified acknowledgement, the fixture deliberately corrupts an already collected baseline copy. Re-auditing invalidates that acknowledgement and blocks stale-receipt cleanup. Only the damaged object is fetched; all required objects and the retained image are verified again. Forged receipts are rejected, current receipt accepted, and only the disposable worker spool is removed. Local required objects remain pinned, and duplicate delivery/collection after worker cleanup uses no network fetch or new test attempt.
+
+A separate namespace loses its disposable source process/spool before acknowledgement. Four useful initial/recipe objects remain verified; seven objects stay missing and preservation remains incomplete/unacknowledged. Earlier reference captures are retained for audit, not silently used as fallback. Three isolated stores import the same original attempt; no test execution is launched.
+
+The actual storage control runs the same collector module against a 1 MiB Docker tmpfs. Ten objects are collected, then a filler exhausts the object volume. The kernel returns `ENOSPC`; metadata outside that volume records the failure, and publication/acknowledgement/cleanup stay blocked. Releasing only the filler allows the missing object to be collected and verified. Its recovered database and objects are exported natively before removing the container. The Mac's real filesystem is never filled. Whole metadata/host-volume exhaustion and power-loss durability are unqualified.
+
+The reference is `runs/ft10-003/`; compact evidence in `evidence/ft10-003/` is approximately 365 KB, including all three closed ledgers, objects/quarantine, requests, step states and exact tools. Earlier `ft10-001`/`ft10-002` are exploratory. No new runtime archive is created; the existing 586 MB prerequisite remains ignored/local, with digest recorded. Preserve that archive for actual execution/replay; review evidence alone does not provide it.
+
+```sh
+python3 validation/phase0/legacy/verify_ft10.py \
+  validation/phase0/legacy/evidence/ft10-003
+```
+
+The full audit checks 105 file hashes; both audits check SQLite integrity and unique attempt/event rows, all eleven complete main/pressure objects, the four-object incomplete loss store, fifteen HTTP requests and two resume offsets, wire/local corruption and two quarantines, actual/injected storage faults, stale/forged/absent cleanup acknowledgements, retention pins, restricted tmpfs mounts, framework identity and original failed-archive readback. The large native prerequisite is hashed when available; an omitted prerequisite is explicitly identified in compact review metadata.
+
+CAS and SQLite evidence bytes are preserved through scoped Git attributes. Legacy `CopyFailNoDisk`/`CopyFailUnknown` are source-traced separately; no legacy copy-back fault is injected and neither tag replaces the original test outcome here. Authenticated remote acknowledgements, SSH/GPU transport, production GC/retention, crash races and dashboard integration remain open. See the [FT10 report](../../../doc/guide/phase0-ft10-results.md).

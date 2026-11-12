@@ -1,0 +1,7 @@
+{
+  "authorized_by": "VerifiedAcknowledgement",
+  "receipt_sha256": "06c5a12c0eb98e3ce31d61621a6014ec6816efa4db718f133f6ebc1b8cf18647",
+  "worker_object_directory_absent": true,
+  "no_transfer_after_cleanup": true,
+  "local_required_objects_remain_pinned": true
+}

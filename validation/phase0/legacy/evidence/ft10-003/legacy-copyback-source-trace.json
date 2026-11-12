@@ -1,0 +1,17 @@
+{
+  "source": "Scripts/drivers/lib/metaDriver.pm",
+  "source_sha256": "f8286f9d97dc25c4ba6f3ac2f54852e06a2a4a4fbe2b8a623ce1187102f51e79",
+  "function": "cpioFiles",
+  "lines": [
+    448,
+    527
+  ],
+  "observations": [
+    "Stock copy-back invokes cpio -pmd and checks its exit status",
+    "On copy error, df available blocks equal to zero selects CopyFailNoDisk; other nonzero space selects CopyFailUnknown",
+    "For failed work-directory copy with zero available blocks, the partially created destination is removed; message copies use a different branch",
+    "Internal CTI_DEBUG_CPIO_FAIL_MSGS/WORKDIR/NOSPACE toggles exist but were not exercised here",
+    "This FT10 fixture tests a separate collection contract and never overwrites DiffPgmOut with a legacy copy-back tag"
+  ],
+  "runtime_characterization": "source trace only; no stock copy-back fault injection or framework edits"
+}

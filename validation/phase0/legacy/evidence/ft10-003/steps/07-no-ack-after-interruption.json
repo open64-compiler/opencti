@@ -1,0 +1,63 @@
+{
+  "accepted": false,
+  "reason": "IncompleteEvidence",
+  "status": {
+    "attempt_count": 1,
+    "unique_event_count": 1,
+    "attempt_id": "imported-ft08-001:Applications/FT08:original",
+    "manifest_sha256": "062592e70ed839180850e1e3ce379f4621ba4d0d01bbabcbb227a7ebc31bb5f4",
+    "test_outcome": {
+      "legacy_tag": "DiffPgmOut",
+      "source_capture": "ft08-001",
+      "test": "Applications/FT08",
+      "test_status": "failed",
+      "tm_process_exit": 0
+    },
+    "preservation_state": "incomplete",
+    "required_objects": 11,
+    "verified_objects": [
+      "initial-source.tar.gz",
+      "recipes/FT08.compile.sh",
+      "recipes/FT08.run.sh",
+      "recipes/FT08.env",
+      "recipes/Makefile",
+      "recipes/generate.py",
+      "recipes/compare.py",
+      "baseline/approved.out"
+    ],
+    "missing_objects": [
+      {
+        "name": "failed-work.tar.gz",
+        "sha256": "6faa377c3f331100e7826fcddabaa65c44ee19530c5d8f983efb4b9af0b10b0b",
+        "reason": "InterruptedTransfer"
+      },
+      {
+        "name": "failed-source.tar.gz",
+        "sha256": "847f7ff59a864e70f03da8daaa0d0e13068fafc42339ab3d0bfbebb47ce23ffd",
+        "reason": "NotCollected"
+      },
+      {
+        "name": "capture/results.json",
+        "sha256": "805711f6f2f9c371cbbe3ea71dbbeeb8aac66687d894f1de526f942314fc87c9",
+        "reason": "NotCollected"
+      }
+    ],
+    "corrupt_objects": [],
+    "local_prerequisites": [
+      {
+        "name": "runtime-image.tar",
+        "sha256": "8b69adc550862c611dd9f4b58a2126e6f82e94dc7a2c7781dfae3163418bf8a5",
+        "verified": false,
+        "status": "deferred_until_objects_complete"
+      }
+    ],
+    "temporary_files": [
+      {
+        "file": "6faa377c3f331100e7826fcddabaa65c44ee19530c5d8f983efb4b9af0b10b0b.part",
+        "bytes": 1536
+      }
+    ],
+    "acknowledged": false,
+    "retention_pinned": true
+  }
+}

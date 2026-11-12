@@ -1,0 +1,21 @@
+{
+  "scenario": "FT10",
+  "hashed_files": 105,
+  "required_objects": 11,
+  "imported_attempts_per_store": 1,
+  "unique_events_per_store": 1,
+  "concurrent_duplicate_deliveries": 2,
+  "source_framework_executions": 0,
+  "resumed_offsets": [
+    1536,
+    1024
+  ],
+  "quarantined_corrupt_objects": 2,
+  "main_state": "complete_and_acknowledged",
+  "lost_state": "incomplete_unacknowledged_4_of_11",
+  "real_tmpfs_enospc": true,
+  "stale_and_forged_cleanup_rejected": true,
+  "local_retention_pins_survive_worker_cleanup": true,
+  "runtime_prerequisite_available_to_this_verifier": true,
+  "native_production_service_acceptance": "open"
+}

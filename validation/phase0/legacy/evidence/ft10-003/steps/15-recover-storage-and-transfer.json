@@ -1,0 +1,46 @@
+{
+  "transferred_this_call": [
+    "capture/results.json"
+  ],
+  "status": {
+    "attempt_count": 1,
+    "unique_event_count": 1,
+    "attempt_id": "imported-ft08-001:Applications/FT08:original",
+    "manifest_sha256": "062592e70ed839180850e1e3ce379f4621ba4d0d01bbabcbb227a7ebc31bb5f4",
+    "test_outcome": {
+      "legacy_tag": "DiffPgmOut",
+      "source_capture": "ft08-001",
+      "test": "Applications/FT08",
+      "test_status": "failed",
+      "tm_process_exit": 0
+    },
+    "preservation_state": "complete",
+    "required_objects": 11,
+    "verified_objects": [
+      "initial-source.tar.gz",
+      "recipes/FT08.compile.sh",
+      "recipes/FT08.run.sh",
+      "recipes/FT08.env",
+      "recipes/Makefile",
+      "recipes/generate.py",
+      "recipes/compare.py",
+      "baseline/approved.out",
+      "failed-work.tar.gz",
+      "failed-source.tar.gz",
+      "capture/results.json"
+    ],
+    "missing_objects": [],
+    "corrupt_objects": [],
+    "local_prerequisites": [
+      {
+        "name": "runtime-image.tar",
+        "sha256": "8b69adc550862c611dd9f4b58a2126e6f82e94dc7a2c7781dfae3163418bf8a5",
+        "verified": true,
+        "status": "verified"
+      }
+    ],
+    "temporary_files": [],
+    "acknowledged": false,
+    "retention_pinned": true
+  }
+}

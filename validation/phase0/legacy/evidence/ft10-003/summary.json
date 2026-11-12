@@ -1,0 +1,32 @@
+{
+  "scenario": "FT10",
+  "status": "pass_for_isolated_collection_protocol_fixture",
+  "source_test_attempt": "imported-ft08-001:Applications/FT08:original",
+  "source_test_outcome": {
+    "legacy_tag": "DiffPgmOut",
+    "test_status": "failed",
+    "tm_process_exit": 0,
+    "source_capture": "ft08-001",
+    "test": "Applications/FT08"
+  },
+  "source_framework_test_executions_launched": 0,
+  "framework_unchanged": true,
+  "source_captures_unchanged": true,
+  "required_object_count": 11,
+  "main_attempt_rows": 1,
+  "main_unique_event_rows": 1,
+  "main_preservation_state": "complete",
+  "main_acknowledged": true,
+  "lost_preservation_state": "incomplete",
+  "lost_acknowledged": false,
+  "real_tmpfs_enospc": true,
+  "native_enospc_is_injected": true,
+  "native_production_collector_implemented": false,
+  "limits": [
+    "Loopback worker-spool fixture, not remote SSH/GPU/network integration",
+    "Real pressure is a 1 MiB Linux tmpfs object volume; Mac pressure is injected",
+    "Metadata stays outside pressured object volume; total metadata/host-disk exhaustion unqualified",
+    "Three isolated stores import the same retained failure; no tests rerun",
+    "No production authenticated acknowledgement/retention service or power-loss qualification"
+  ]
+}

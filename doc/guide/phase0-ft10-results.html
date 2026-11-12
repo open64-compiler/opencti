@@ -1,0 +1,94 @@
+<!--
+Copyright (C) 2011, Hewlett-Packard Development Company, L.P.
+All Rights Reserved.
+Open64 is free software; you can redistribute it and/or modify it under the
+terms of the GNU General Public License as published by the Free Software
+Foundation; either version 2 of the License, or (at your option) any later
+version. Distributed WITHOUT ANY WARRANTY; without even the implied warranty
+of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General
+Public License for more details.
+-->
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Phase 0 FT10 collection retry and storage-pressure results — OpenCTI</title><style>body{margin:0;background:#f4f6f8;color:#18232e;font:17px/1.6 system-ui,sans-serif}
+main{max-width:1050px;margin:auto;padding:2rem;background:white;min-height:100vh}
+a{color:#075ca8}nav{padding:.7rem 0;border-bottom:1px solid #ccd5dd}
+h1,h2,h3{line-height:1.25;scroll-margin-top:1rem}h2{margin-top:2rem}
+pre{padding:1rem;background:#eff3f7;overflow:auto;border:1px solid #d5dce3}
+code{font: .88em/1.5 ui-monospace,monospace;overflow-wrap:anywhere}
+table{border-collapse:collapse;width:100%;display:block;overflow:auto}
+th,td{padding:.6rem;border:1px solid #ccd5dd;text-align:left;vertical-align:top}
+th{background:#eff3f7}td:first-child{min-width:10rem}footer{border-top:1px solid #ccd5dd;margin-top:2rem;color:#52606b}
+@media(max-width:640px){main{padding:1rem}body{font-size:16px}}
+</style></head><body><main>
+<nav><a href="index.html">CTI documentation</a></nav>
+<h1 id="phase-0-ft10-collection-retry-and-storage-pressure-results">Phase 0 FT10 collection retry and storage-pressure results</h1>
+<p><a href="index.html">Documentation home</a> · <a href="failure-triage-acceptance.html">Failure triage scenarios</a> · <a href="phase0-ft08-results.html">FT08 source failure</a></p>
+<h2 id="result-and-scope">Result and scope</h2>
+<p>FT10 passed an isolated collection-protocol experiment using the real retained FT08 application failure. A Mac-local collector fixture recovered interrupted transfers, full-size corrupted bytes, destination-pressure errors and later corruption of an already verified local object. Duplicate events did not create additional imported attempts or overwrite the failure. Worker cleanup stayed blocked until fresh local verification and acknowledgement; the collected failure remained available after the disposable worker spool was removed.</p>
+<p>A separate lost-worker case retained useful initial inputs/recipes and the failed test outcome while reporting seven missing objects and incomplete preservation. A real 1 MiB Docker tmpfs exhaustion exercised the same collector write path with actual <code>ENOSPC</code>; releasing space allowed collection to finish. The reference is <code>ft10-003</code>, recorded on November 12 2026.</p>
+<p>These are validation-only Python/SQLite/filesystem fixtures outside the existing framework. They are not a production collection service, remote SSH/GPU integration or authenticated acknowledgement protocol. No framework test is executed by FT10, and no framework/default/test is changed. Original captures and approved masters remain untouched.</p>
+<h2 id="payload-identities-and-useful-partial-evidence">Payload, identities and useful partial evidence</h2>
+<p>The imported attempt has a stable identity, <code>imported-ft08-001:Applications/FT08:original</code>. Its outcome remains <code>DiffPgmOut</code>, test status failed and original TM process exit 0. The manifest fixes that outcome and eleven required logical objects:</p>
+<ul>
+<li>The actual pre-run initial source archive.</li>
+<li>Saved compile/run/environment recipes and the initial Makefile/generator/comparator inputs.</li>
+<li>The original baseline bytes.</li>
+<li>Actual failed work and generated-source archives.</li>
+<li>Original capture provenance.</li>
+</ul>
+<p>These are copies of previously verified FT08 bytes, not a regenerated failure. Initial inputs and saved recipes are deliberately collected first so a later failure can leave useful partial evidence. An existing native runtime archive is a separate required local prerequisite, verified by size/hash before completeness and acknowledgement; a pathname or image ID alone is insufficient.</p>
+<p>The manifest&#x27;s logical identity is independent of storage paths. SHA-256 object names and atomic publication separate trusted complete objects from <code>.part</code> files and quarantined corrupt data. SQLite records one imported attempt and one unique failure event in each isolated store. Repeating delivery, including two simultaneous deliveries and later process invocations, preserves that identity. Conflicting payloads for the same event or attempt are rejected rather than replacing <code>DiffPgmOut</code> with <code>SuccessExec</code>.</p>
+<p>Main, lost-worker and bounded-pressure stores are separate experimental namespaces importing the same retained attempt. Their existence is not three executions. Each collection operation starts a separate Python process; retries therefore re-read persisted SQLite/filesystem state rather than relying on an in-memory progress flag.</p>
+<h2 id="fault-sequence-and-observed-states">Fault sequence and observed states</h2>
+<p>The disposable source is a loopback-only HTTP process serving sandbox spool copies. It supports byte ranges and can cut a response short or corrupt its bytes once. The main collector and ledger run natively on the Mac. No remote host or production service is contacted.</p>
+<table><thead><tr><th>Step</th><th>Observed state and safety behavior</th></tr></thead><tbody>
+<tr><td>First event and concurrent duplicates</td><td>One attempt, one unique event; duplicates do not execute tests</td></tr>
+<tr><td>Truncated HTTP response</td><td>Only 1,536 of 8,619 declared failed-work bytes arrive; partial staging retained, object untrusted, preservation incomplete</td></tr>
+<tr><td>Interrupted collection acknowledgement/cleanup</td><td>Both denied; partial files do not count as complete objects</td></tr>
+<tr><td>Retry from a new process</td><td>HTTP <code>Range: bytes=1536-</code> resumes and verifies the original failed-work archive</td></tr>
+<tr><td>Full-size wire corruption</td><td>Failed-source payload has the right size but wrong digest; quarantined and named corrupt, with acknowledgement denied</td></tr>
+<tr><td>Injected Mac object-write pressure</td><td><code>ENOSPC</code> after 1,024 provenance bytes leaves an incomplete object; original test outcome unchanged</td></tr>
+<tr><td>Restore destination writes</td><td>HTTP range resumes at 1,024; all eleven objects and the existing runtime prerequisite verify locally</td></tr>
+<tr><td>Before acknowledgement</td><td>Local completeness alone still does not authorize worker cleanup</td></tr>
+<tr><td>Corrupt local CAS after a valid acknowledgement</td><td>Same-size baseline corruption is detected; acknowledgement is invalidated and the old receipt cannot authorize cleanup</td></tr>
+<tr><td>Repair</td><td>Only the damaged baseline object is fetched; valid objects are reused</td></tr>
+<tr><td>Fresh acknowledgement</td><td>Every required object and prerequisite is checked again; forged receipt rejected, matching current receipt accepted</td></tr>
+<tr><td>Worker cleanup</td><td>Only the new worker spool objects are deleted; the native store remains complete, acknowledged and pinned</td></tr>
+<tr><td>Duplicate/retry after worker cleanup</td><td>No network fetch or new attempt; locally verified evidence remains available</td></tr>
+</tbody></table>
+<p>The reference contains fifteen source requests and sixteen journal entries, including local corruption detection. Two corrupt objects are retained in quarantine. Range resumes at 1,536 and 1,024 are verified against both request logs and the collector journal. The original archive still contains <code>DiffPgmOut</code>, <code>captured-failure</code> output and the captured executable; no compiler, executable, TM or rerun API is launched during collection.</p>
+<h2 id="pins-acknowledgements-and-loss">Pins, acknowledgements and loss</h2>
+<p>The fixture&#x27;s garbage-collection API refuses to remove required local objects and the runtime prerequisite while their failure manifest remains pinned, including after successful acknowledgement. Worker-spool cleanup is a different operation. Its controller gate re-audits the local objects/prerequisites and compares the supplied receipt to the current authoritative ledger acknowledgement before deleting only its own disposable spool.</p>
+<p>This gate rejects missing, stale and forged receipts. It is a trusted local fixture, not proof of a secure remote wire protocol. The worker&#x27;s initial pin/inventory record is retained as historical setup evidence; no independent production worker reaper or retention-expiry daemon is implemented.</p>
+<p>For simulated permanent worker loss, a separate store collects only four objects: initial source plus compile/run/environment recipes. The source process is stopped and only that disposable spool is deleted before acknowledgement. Subsequent collection observes an unavailable source, keeps the four verified objects and lists seven missing objects. Test outcome remains failed, preservation remains incomplete, and acknowledgement/cleanup approval remain false.</p>
+<p>Earlier reference captures and the successful main store still exist for audit but are not configured as silent fallbacks for the loss namespace. A fresh test execution that might reproduce the problem is not used to replace the missing actual failed state. The experiment demonstrates honest incompleteness to the configured collector, not destruction of all copies on the Mac.</p>
+<h2 id="actual-bounded-storage-pressure">Actual bounded storage pressure</h2>
+<p>The Mac pressure step deliberately injects an <code>ENOSPC</code> write error; it does not fill the Mac filesystem. A separate network-disabled Linux container runs the identical retained collector module against a tmpfs limited to 1 MiB. It collects ten objects, fills that object volume until the kernel returns errno 28, then attempts the remaining failed-work object.</p>
+<p>With zero free object-volume bytes, collection cannot publish that object, acknowledgement and cleanup remain denied, and metadata persists outside the full volume. Removing only the disposable filler restores space. The collector fetches only the missing object, verifies the full manifest and read-only runtime prerequisite, and acknowledges successfully. The recovered store and its SQLite ledger are exported to the Mac before the container is removed.</p>
+<p>The container has no network, added capabilities, privileged mode, home/repository-root/Docker-socket mount or writable framework mount. Its full deployed framework identity matches the earlier 2,654-entry inventory before and after. This qualifies an object-volume quota fault and recovery path. Total metadata-volume exhaustion, whole-host disk exhaustion, power-loss durability and production storage reservations remain separate requirements.</p>
+<h2 id="legacy-copy-back-distinction">Legacy copy-back distinction</h2>
+<p>Source review of <a href="../../Scripts/drivers/lib/metaDriver.pm">`cpioFiles`</a> remains separate from the new collector fixture. Stock copy-back uses <code>cpio -pmd</code>; on error it checks available blocks reported by <code>df</code>. Zero available blocks select <code>CopyFailNoDisk</code>, otherwise <code>CopyFailUnknown</code>. For a failed work-directory copy with zero space, it removes the partial destination; the message-copy branch differs. Internal CPIO fault switches exist but were not exercised here.</p>
+<p>Those tags are not substituted for this experiment&#x27;s original <code>DiffPgmOut</code>. The new fixture records interrupted/corrupt/storage/unavailable collection separately from the test verdict. The <a href="../../validation/phase0/legacy/evidence/ft10-003/legacy-copyback-source-trace.json">source trace</a> records source identity, lines and the runtime-characterization boundary. No stock copy-back behavior is claimed to have acquired retry-safe collection automatically.</p>
+<h2 id="evidence-and-repeatability">Evidence and repeatability</h2>
+<p>See the <a href="../../validation/phase0/legacy/README.md">experiment instructions</a>. New tools are <a href="../../validation/phase0/legacy/run_ft10.py">run_ft10.py</a>, the <a href="../../validation/phase0/legacy/ft10/collector.py">collector fixture</a>, <a href="../../validation/phase0/legacy/ft10/source_server.py">loopback source</a>, <a href="../../validation/phase0/legacy/ft10/pressure_worker.py">bounded-pressure worker</a> and <a href="../../validation/phase0/legacy/verify_ft10.py">verify_ft10.py</a>.</p>
+<table><thead><tr><th>Evidence</th><th>Review purpose</th></tr></thead><tbody>
+<tr><td><a href="../../validation/phase0/legacy/evidence/ft10-003/summary.json">Summary</a></td><td>Scoped result, immutable outcome and incomplete-loss boundary</td></tr>
+<tr><td><a href="../../validation/phase0/legacy/evidence/ft10-003/config/event.json">Event/manifest</a></td><td>Stable identity, eleven required objects and local runtime prerequisite</td></tr>
+<tr><td><a href="../../validation/phase0/legacy/evidence/ft10-003/commands.json">Command history</a></td><td>Separate collector processes, duplicate/conflict deliveries and every state/decision</td></tr>
+<tr><td><a href="../../validation/phase0/legacy/evidence/ft10-003/source-http/requests.jsonl">Source requests</a></td><td>Actual truncation, corrupt bytes and range resumes</td></tr>
+<tr><td><a href="../../validation/phase0/legacy/evidence/ft10-003/steps/06-interrupted-transfer.json">Interrupted state</a></td><td>Partial staging, exact missing objects and unchanged test outcome</td></tr>
+<tr><td><a href="../../validation/phase0/legacy/evidence/ft10-003/steps/17b-stale-ack-after-corruption.json">Stale-ack rejection</a></td><td>Local corruption invalidates acknowledgement and blocks cleanup</td></tr>
+<tr><td><a href="../../validation/phase0/legacy/evidence/ft10-003/steps/22-verified-worker-cleanup.json">Verified cleanup</a></td><td>Fresh verification and current authoritative receipt</td></tr>
+<tr><td><a href="../../validation/phase0/legacy/evidence/ft10-003/steps/25-local-collection-after-worker-cleanup.json">After worker cleanup</a></td><td>Local completeness without another fetch/attempt</td></tr>
+<tr><td><a href="../../validation/phase0/legacy/evidence/ft10-003/steps/28-worker-lost-before-ack.json">Worker-loss state</a></td><td>Four useful objects, seven missing and incomplete preservation</td></tr>
+<tr><td><a href="../../validation/phase0/legacy/evidence/ft10-003/pressure/results.json">Actual ENOSPC</a></td><td>Kernel storage failure, denied acknowledgement/cleanup and recovery</td></tr>
+<tr><td><a href="../../validation/phase0/legacy/evidence/ft10-003/pressure/container-inspect.json">Pressure container</a></td><td>Actual 1 MiB tmpfs, restricted profile and read-only prerequisites</td></tr>
+<tr><td><a href="../../validation/phase0/legacy/evidence/ft10-003/verification.json">Verification</a></td><td>Database integrity, object hashes, faults, receipt/pin guards and archive readback</td></tr>
+<tr><td><a href="../../validation/phase0/legacy/evidence/ft10-003/SHA256SUMS.json">Checksums</a></td><td>Compact digests; raw index and large-prerequisite descriptor retained separately</td></tr>
+</tbody></table>
+<p>The full reference is <code>validation/phase0/legacy/runs/ft10-003/</code>; compact review evidence is approximately 365 KB under <code>evidence/ft10-003/</code>. It includes all three closed ledgers, collected/partial/quarantined objects, source logs, per-step states and exact collector code. No new runtime archive is created. The existing 586,248,192-byte platform archive remains local/ignored and is required for actual replay; its verified size/digest is recorded. Earlier <code>ft10-001</code> and <code>ft10-002</code> are exploratory predecessors; <code>ft10-003</code> includes stale-ack checking and corrected quarantined-transfer byte accounting.</p>
+<h2 id="remaining-gates">Remaining gates</h2>
+<p>The experiment establishes the retry/identity/integrity/retention contract for isolated copies. It does not integrate a native production collector, dashboard, remote SSH/GPU transport, authenticated acknowledgement or production retention policy. Metadata-reserve exhaustion, concurrent crash/cleanup races, power failures and real remote-volume loss remain unqualified. No runtime fault was injected into the legacy copy-back implementation. FT11 through FT19 remain not run; phase 0 is not complete.</p>
+<footer>Reconstructed from OpenCTI source, baseline 8c3d603. Generated by doc/tools/build_docs.py.</footer>
+</main></body></html>
