@@ -1,0 +1,27 @@
+{
+  "scenario": "FT09",
+  "finished_utc": "2026-11-12T18:32:00.043953+00:00",
+  "status": "pass_for_synthetic_native_platform_and_debugger_subset",
+  "base_image_id": "sha256:a119c5e4a42dedbb5cdce10d448efce31b4054018bde56a4e476bc2c529fa62c",
+  "image_id": "sha256:747873867110897321865b8790204c0d42a9d51357dce8c3334f50c59d6e916c",
+  "legacy_code_unchanged": true,
+  "earlier_capture_unchanged": true,
+  "new_capture_unchanged": true,
+  "fixture_unchanged": true,
+  "actual_platform": "linux/arm64",
+  "cpu_data_mode_bits": 64,
+  "compatibility_gate_cases": 10,
+  "descriptor_cases_are_not_live_foreign_workers": true,
+  "phase_replay_checks": 4,
+  "default_attachment_outcome": "attached_inspected_changed_and_detached",
+  "debugger_attachment_supported": true,
+  "selected_debug_profile": "default",
+  "privileged_or_host_pid_or_unconfined_seccomp_used": false,
+  "native_scheduler_or_capability_service_implemented": false,
+  "limits": [
+    "Foreign OS/architecture/data-mode/CPU-feature worker records are constructed gate tests, not live machines",
+    "GPU gate checks absence of a qualified backend, not GPU execution",
+    "Interactive GDB attaches to a new --wait invocation and changes process state, not the original exited process",
+    "No checkpoint/restore, performance equivalence, remote worker, GPU/DSL or native service acceptance"
+  ]
+}

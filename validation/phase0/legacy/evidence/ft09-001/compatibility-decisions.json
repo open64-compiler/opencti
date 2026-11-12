@@ -1,0 +1,1170 @@
+[
+  {
+    "case": "native-compatible",
+    "evidence_kind": "actual_derived_runtime_inventory",
+    "requirements": {
+      "os": "linux",
+      "arch": "arm64",
+      "data_mode_bits": 64,
+      "image_id": "sha256:747873867110897321865b8790204c0d42a9d51357dce8c3334f50c59d6e916c",
+      "cpu_features": [
+        "fp",
+        "asimd"
+      ],
+      "gpu_backend": null,
+      "emulation_requested": false
+    },
+    "worker": {
+      "os": "linux",
+      "arch": "arm64",
+      "uname": [
+        "Linux",
+        "3e6c7f082aca",
+        "6.12.76-linuxkit",
+        "#1 SMP Fri May 29 10:00:01 UTC 2026",
+        "aarch64",
+        "aarch64"
+      ],
+      "data_modes": [
+        64
+      ],
+      "cpu_features": [
+        "aes",
+        "afp",
+        "asimd",
+        "asimddp",
+        "asimdfhm",
+        "asimdhp",
+        "asimdrdm",
+        "atomics",
+        "bf16",
+        "bti",
+        "cpuid",
+        "crc32",
+        "dcpodp",
+        "dcpop",
+        "dit",
+        "ebf16",
+        "evtstrm",
+        "fcma",
+        "flagm",
+        "flagm2",
+        "fp",
+        "fphp",
+        "frint",
+        "i8mm",
+        "ilrcpc",
+        "jscvt",
+        "lrcpc",
+        "paca",
+        "pacg",
+        "pmull",
+        "sb",
+        "sha1",
+        "sha2",
+        "sha3",
+        "sha512",
+        "uscat"
+      ],
+      "verified_gpu_backends": [],
+      "gpu_observation": "No GPU backend qualified by this CPU-only fixture",
+      "selected_image_id": "sha256:747873867110897321865b8790204c0d42a9d51357dce8c3334f50c59d6e916c",
+      "tools": {
+        "gcc": {
+          "available": true,
+          "returncode": 0,
+          "output": "gcc (Ubuntu 13.3.0-6ubuntu2~24.04.1) 13.3.0\nCopyright (C) 2023 Free Software Foundation, Inc.\nThis is free software; see the source for copying conditions.  There is NO\nwarranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.\n\n"
+        },
+        "gdb": {
+          "available": true,
+          "returncode": 0,
+          "output": "GNU gdb (Ubuntu 15.1-1ubuntu1~24.04.1) 15.1\nCopyright (C) 2024 Free Software Foundation, Inc.\nLicense GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>\nThis is free software: you are free to change and redistribute it.\nThere is NO WARRANTY, to the extent permitted by law.\n"
+        },
+        "bash": {
+          "available": true,
+          "returncode": 0,
+          "output": "GNU bash, version 5.2.21(1)-release (aarch64-unknown-linux-gnu)\nCopyright (C) 2022 Free Software Foundation, Inc.\nLicense GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>\n\nThis is free software; you are free to change and redistribute it.\nThere is NO WARRANTY, to the extent permitted by law.\n"
+        },
+        "perl": {
+          "available": true,
+          "returncode": 0,
+          "output": "\nThis is perl 5, version 38, subversion 2 (v5.38.2) built for aarch64-linux-gnu-thread-multi\n(with 68 registered patches, see perl -V for more detail)\n\nCopyright 1987-2023, Larry Wall\n\nPerl may be copied only under the terms of either the Artistic License or the\nGNU General Public License, which may be found in the Perl 5 source kit.\n\nComplete documentation for Perl, including FAQ lists, should be found on\nthis system using \"man perl\" or \"perldoc perl\".  If you have access to the\nInternet, point your browser at https://www.perl.org/, the Perl Home Page.\n\n"
+        }
+      },
+      "process_status": "Name:\tpython3\nUmask:\t0022\nState:\tR (running)\nTgid:\t1\nNgid:\t0\nPid:\t1\nPPid:\t0\nTracerPid:\t0\nUid:\t0\t0\t0\t0\nGid:\t0\t0\t0\t0\nFDSize:\t64\nGroups:\t0 \nNStgid:\t1\nNSpid:\t1\nNSpgid:\t1\nNSsid:\t1\nKthread:\t0\nVmPeak:\t   31648 kB\nVmSize:\t   29208 kB\nVmLck:\t       0 kB\nVmPin:\t       0 kB\nVmHWM:\t   23844 kB\nVmRSS:\t   22068 kB\nRssAnon:\t   12952 kB\nRssFile:\t    9116 kB\nRssShmem:\t       0 kB\nVmData:\t   13860 kB\nVmStk:\t     132 kB\nVmExe:\t    6200 kB\nVmLib:\t    7224 kB\nVmPTE:\t      88 kB\nVmSwap:\t       0 kB\nHugetlbPages:\t       0 kB\nCoreDumping:\t0\nTHP_enabled:\t1\nuntag_mask:\t0xffffffffffffff\nThreads:\t1\nSigQ:\t0/31726\nSigPnd:\t0000000000000000\nShdPnd:\t0000000000000000\nSigBlk:\t0000000000000000\nSigIgn:\t0000000001001000\nSigCgt:\t0000000000000002\nCapInh:\t0000000000000000\nCapPrm:\t0000000000000000\nCapEff:\t0000000000000000\nCapBnd:\t0000000000000000\nCapAmb:\t0000000000000000\nNoNewPrivs:\t1\nSeccomp:\t2\nSeccomp_filters:\t1\nSpeculation_Store_Bypass:\tvulnerable\nSpeculationIndirectBranch:\tunknown\nCpus_allowed:\t3ffff\nCpus_allowed_list:\t0-17\nMems_allowed:\t1\nMems_allowed_list:\t0\nvoluntary_ctxt_switches:\t54\nnonvoluntary_ctxt_switches:\t41\n",
+      "ptrace_scope": "unavailable"
+    },
+    "artifact": {
+      "os": "linux",
+      "arch": "arm64",
+      "data_mode_bits": 64,
+      "binary_sha256": "7f347e52a6c1254eb1d786f1455f4bbb0373b29dfc12a1ec1329b03787ea7fbd",
+      "source_sha256": "53f68d5eae72c66a615ea54e256747065ff9a95964ed9ca4a401549234a85734"
+    },
+    "decision": {
+      "status": "compatible",
+      "reasons": [],
+      "dispatch_original": true,
+      "silent_emulation": false
+    },
+    "phases_dispatched_by_this_gate_check": 0
+  },
+  {
+    "case": "worker-amd64",
+    "evidence_kind": "constructed_incompatible_worker_descriptor",
+    "requirements": {
+      "os": "linux",
+      "arch": "arm64",
+      "data_mode_bits": 64,
+      "image_id": "sha256:747873867110897321865b8790204c0d42a9d51357dce8c3334f50c59d6e916c",
+      "cpu_features": [
+        "fp",
+        "asimd"
+      ],
+      "gpu_backend": null,
+      "emulation_requested": false
+    },
+    "worker": {
+      "os": "linux",
+      "arch": "amd64",
+      "uname": [
+        "Linux",
+        "3e6c7f082aca",
+        "6.12.76-linuxkit",
+        "#1 SMP Fri May 29 10:00:01 UTC 2026",
+        "aarch64",
+        "aarch64"
+      ],
+      "data_modes": [
+        64
+      ],
+      "cpu_features": [
+        "aes",
+        "afp",
+        "asimd",
+        "asimddp",
+        "asimdfhm",
+        "asimdhp",
+        "asimdrdm",
+        "atomics",
+        "bf16",
+        "bti",
+        "cpuid",
+        "crc32",
+        "dcpodp",
+        "dcpop",
+        "dit",
+        "ebf16",
+        "evtstrm",
+        "fcma",
+        "flagm",
+        "flagm2",
+        "fp",
+        "fphp",
+        "frint",
+        "i8mm",
+        "ilrcpc",
+        "jscvt",
+        "lrcpc",
+        "paca",
+        "pacg",
+        "pmull",
+        "sb",
+        "sha1",
+        "sha2",
+        "sha3",
+        "sha512",
+        "uscat"
+      ],
+      "verified_gpu_backends": [],
+      "gpu_observation": "No GPU backend qualified by this CPU-only fixture",
+      "selected_image_id": "sha256:747873867110897321865b8790204c0d42a9d51357dce8c3334f50c59d6e916c",
+      "tools": {
+        "gcc": {
+          "available": true,
+          "returncode": 0,
+          "output": "gcc (Ubuntu 13.3.0-6ubuntu2~24.04.1) 13.3.0\nCopyright (C) 2023 Free Software Foundation, Inc.\nThis is free software; see the source for copying conditions.  There is NO\nwarranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.\n\n"
+        },
+        "gdb": {
+          "available": true,
+          "returncode": 0,
+          "output": "GNU gdb (Ubuntu 15.1-1ubuntu1~24.04.1) 15.1\nCopyright (C) 2024 Free Software Foundation, Inc.\nLicense GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>\nThis is free software: you are free to change and redistribute it.\nThere is NO WARRANTY, to the extent permitted by law.\n"
+        },
+        "bash": {
+          "available": true,
+          "returncode": 0,
+          "output": "GNU bash, version 5.2.21(1)-release (aarch64-unknown-linux-gnu)\nCopyright (C) 2022 Free Software Foundation, Inc.\nLicense GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>\n\nThis is free software; you are free to change and redistribute it.\nThere is NO WARRANTY, to the extent permitted by law.\n"
+        },
+        "perl": {
+          "available": true,
+          "returncode": 0,
+          "output": "\nThis is perl 5, version 38, subversion 2 (v5.38.2) built for aarch64-linux-gnu-thread-multi\n(with 68 registered patches, see perl -V for more detail)\n\nCopyright 1987-2023, Larry Wall\n\nPerl may be copied only under the terms of either the Artistic License or the\nGNU General Public License, which may be found in the Perl 5 source kit.\n\nComplete documentation for Perl, including FAQ lists, should be found on\nthis system using \"man perl\" or \"perldoc perl\".  If you have access to the\nInternet, point your browser at https://www.perl.org/, the Perl Home Page.\n\n"
+        }
+      },
+      "process_status": "Name:\tpython3\nUmask:\t0022\nState:\tR (running)\nTgid:\t1\nNgid:\t0\nPid:\t1\nPPid:\t0\nTracerPid:\t0\nUid:\t0\t0\t0\t0\nGid:\t0\t0\t0\t0\nFDSize:\t64\nGroups:\t0 \nNStgid:\t1\nNSpid:\t1\nNSpgid:\t1\nNSsid:\t1\nKthread:\t0\nVmPeak:\t   31648 kB\nVmSize:\t   29208 kB\nVmLck:\t       0 kB\nVmPin:\t       0 kB\nVmHWM:\t   23844 kB\nVmRSS:\t   22068 kB\nRssAnon:\t   12952 kB\nRssFile:\t    9116 kB\nRssShmem:\t       0 kB\nVmData:\t   13860 kB\nVmStk:\t     132 kB\nVmExe:\t    6200 kB\nVmLib:\t    7224 kB\nVmPTE:\t      88 kB\nVmSwap:\t       0 kB\nHugetlbPages:\t       0 kB\nCoreDumping:\t0\nTHP_enabled:\t1\nuntag_mask:\t0xffffffffffffff\nThreads:\t1\nSigQ:\t0/31726\nSigPnd:\t0000000000000000\nShdPnd:\t0000000000000000\nSigBlk:\t0000000000000000\nSigIgn:\t0000000001001000\nSigCgt:\t0000000000000002\nCapInh:\t0000000000000000\nCapPrm:\t0000000000000000\nCapEff:\t0000000000000000\nCapBnd:\t0000000000000000\nCapAmb:\t0000000000000000\nNoNewPrivs:\t1\nSeccomp:\t2\nSeccomp_filters:\t1\nSpeculation_Store_Bypass:\tvulnerable\nSpeculationIndirectBranch:\tunknown\nCpus_allowed:\t3ffff\nCpus_allowed_list:\t0-17\nMems_allowed:\t1\nMems_allowed_list:\t0\nvoluntary_ctxt_switches:\t54\nnonvoluntary_ctxt_switches:\t41\n",
+      "ptrace_scope": "unavailable"
+    },
+    "artifact": {
+      "os": "linux",
+      "arch": "arm64",
+      "data_mode_bits": 64,
+      "binary_sha256": "7f347e52a6c1254eb1d786f1455f4bbb0373b29dfc12a1ec1329b03787ea7fbd",
+      "source_sha256": "53f68d5eae72c66a615ea54e256747065ff9a95964ed9ca4a401549234a85734"
+    },
+    "decision": {
+      "status": "rejected",
+      "reasons": [
+        {
+          "code": "WorkerArchMismatch",
+          "required": "arm64",
+          "available": "amd64"
+        }
+      ],
+      "dispatch_original": false,
+      "silent_emulation": false
+    },
+    "phases_dispatched_by_this_gate_check": 0
+  },
+  {
+    "case": "worker-darwin",
+    "evidence_kind": "constructed_incompatible_worker_descriptor",
+    "requirements": {
+      "os": "linux",
+      "arch": "arm64",
+      "data_mode_bits": 64,
+      "image_id": "sha256:747873867110897321865b8790204c0d42a9d51357dce8c3334f50c59d6e916c",
+      "cpu_features": [
+        "fp",
+        "asimd"
+      ],
+      "gpu_backend": null,
+      "emulation_requested": false
+    },
+    "worker": {
+      "os": "darwin",
+      "arch": "arm64",
+      "uname": [
+        "Linux",
+        "3e6c7f082aca",
+        "6.12.76-linuxkit",
+        "#1 SMP Fri May 29 10:00:01 UTC 2026",
+        "aarch64",
+        "aarch64"
+      ],
+      "data_modes": [
+        64
+      ],
+      "cpu_features": [
+        "aes",
+        "afp",
+        "asimd",
+        "asimddp",
+        "asimdfhm",
+        "asimdhp",
+        "asimdrdm",
+        "atomics",
+        "bf16",
+        "bti",
+        "cpuid",
+        "crc32",
+        "dcpodp",
+        "dcpop",
+        "dit",
+        "ebf16",
+        "evtstrm",
+        "fcma",
+        "flagm",
+        "flagm2",
+        "fp",
+        "fphp",
+        "frint",
+        "i8mm",
+        "ilrcpc",
+        "jscvt",
+        "lrcpc",
+        "paca",
+        "pacg",
+        "pmull",
+        "sb",
+        "sha1",
+        "sha2",
+        "sha3",
+        "sha512",
+        "uscat"
+      ],
+      "verified_gpu_backends": [],
+      "gpu_observation": "No GPU backend qualified by this CPU-only fixture",
+      "selected_image_id": "sha256:747873867110897321865b8790204c0d42a9d51357dce8c3334f50c59d6e916c",
+      "tools": {
+        "gcc": {
+          "available": true,
+          "returncode": 0,
+          "output": "gcc (Ubuntu 13.3.0-6ubuntu2~24.04.1) 13.3.0\nCopyright (C) 2023 Free Software Foundation, Inc.\nThis is free software; see the source for copying conditions.  There is NO\nwarranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.\n\n"
+        },
+        "gdb": {
+          "available": true,
+          "returncode": 0,
+          "output": "GNU gdb (Ubuntu 15.1-1ubuntu1~24.04.1) 15.1\nCopyright (C) 2024 Free Software Foundation, Inc.\nLicense GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>\nThis is free software: you are free to change and redistribute it.\nThere is NO WARRANTY, to the extent permitted by law.\n"
+        },
+        "bash": {
+          "available": true,
+          "returncode": 0,
+          "output": "GNU bash, version 5.2.21(1)-release (aarch64-unknown-linux-gnu)\nCopyright (C) 2022 Free Software Foundation, Inc.\nLicense GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>\n\nThis is free software; you are free to change and redistribute it.\nThere is NO WARRANTY, to the extent permitted by law.\n"
+        },
+        "perl": {
+          "available": true,
+          "returncode": 0,
+          "output": "\nThis is perl 5, version 38, subversion 2 (v5.38.2) built for aarch64-linux-gnu-thread-multi\n(with 68 registered patches, see perl -V for more detail)\n\nCopyright 1987-2023, Larry Wall\n\nPerl may be copied only under the terms of either the Artistic License or the\nGNU General Public License, which may be found in the Perl 5 source kit.\n\nComplete documentation for Perl, including FAQ lists, should be found on\nthis system using \"man perl\" or \"perldoc perl\".  If you have access to the\nInternet, point your browser at https://www.perl.org/, the Perl Home Page.\n\n"
+        }
+      },
+      "process_status": "Name:\tpython3\nUmask:\t0022\nState:\tR (running)\nTgid:\t1\nNgid:\t0\nPid:\t1\nPPid:\t0\nTracerPid:\t0\nUid:\t0\t0\t0\t0\nGid:\t0\t0\t0\t0\nFDSize:\t64\nGroups:\t0 \nNStgid:\t1\nNSpid:\t1\nNSpgid:\t1\nNSsid:\t1\nKthread:\t0\nVmPeak:\t   31648 kB\nVmSize:\t   29208 kB\nVmLck:\t       0 kB\nVmPin:\t       0 kB\nVmHWM:\t   23844 kB\nVmRSS:\t   22068 kB\nRssAnon:\t   12952 kB\nRssFile:\t    9116 kB\nRssShmem:\t       0 kB\nVmData:\t   13860 kB\nVmStk:\t     132 kB\nVmExe:\t    6200 kB\nVmLib:\t    7224 kB\nVmPTE:\t      88 kB\nVmSwap:\t       0 kB\nHugetlbPages:\t       0 kB\nCoreDumping:\t0\nTHP_enabled:\t1\nuntag_mask:\t0xffffffffffffff\nThreads:\t1\nSigQ:\t0/31726\nSigPnd:\t0000000000000000\nShdPnd:\t0000000000000000\nSigBlk:\t0000000000000000\nSigIgn:\t0000000001001000\nSigCgt:\t0000000000000002\nCapInh:\t0000000000000000\nCapPrm:\t0000000000000000\nCapEff:\t0000000000000000\nCapBnd:\t0000000000000000\nCapAmb:\t0000000000000000\nNoNewPrivs:\t1\nSeccomp:\t2\nSeccomp_filters:\t1\nSpeculation_Store_Bypass:\tvulnerable\nSpeculationIndirectBranch:\tunknown\nCpus_allowed:\t3ffff\nCpus_allowed_list:\t0-17\nMems_allowed:\t1\nMems_allowed_list:\t0\nvoluntary_ctxt_switches:\t54\nnonvoluntary_ctxt_switches:\t41\n",
+      "ptrace_scope": "unavailable"
+    },
+    "artifact": {
+      "os": "linux",
+      "arch": "arm64",
+      "data_mode_bits": 64,
+      "binary_sha256": "7f347e52a6c1254eb1d786f1455f4bbb0373b29dfc12a1ec1329b03787ea7fbd",
+      "source_sha256": "53f68d5eae72c66a615ea54e256747065ff9a95964ed9ca4a401549234a85734"
+    },
+    "decision": {
+      "status": "rejected",
+      "reasons": [
+        {
+          "code": "WorkerOsMismatch",
+          "required": "linux",
+          "available": "darwin"
+        }
+      ],
+      "dispatch_original": false,
+      "silent_emulation": false
+    },
+    "phases_dispatched_by_this_gate_check": 0
+  },
+  {
+    "case": "worker-32-bit",
+    "evidence_kind": "constructed_incompatible_worker_descriptor",
+    "requirements": {
+      "os": "linux",
+      "arch": "arm64",
+      "data_mode_bits": 64,
+      "image_id": "sha256:747873867110897321865b8790204c0d42a9d51357dce8c3334f50c59d6e916c",
+      "cpu_features": [
+        "fp",
+        "asimd"
+      ],
+      "gpu_backend": null,
+      "emulation_requested": false
+    },
+    "worker": {
+      "os": "linux",
+      "arch": "arm64",
+      "uname": [
+        "Linux",
+        "3e6c7f082aca",
+        "6.12.76-linuxkit",
+        "#1 SMP Fri May 29 10:00:01 UTC 2026",
+        "aarch64",
+        "aarch64"
+      ],
+      "data_modes": [
+        32
+      ],
+      "cpu_features": [
+        "aes",
+        "afp",
+        "asimd",
+        "asimddp",
+        "asimdfhm",
+        "asimdhp",
+        "asimdrdm",
+        "atomics",
+        "bf16",
+        "bti",
+        "cpuid",
+        "crc32",
+        "dcpodp",
+        "dcpop",
+        "dit",
+        "ebf16",
+        "evtstrm",
+        "fcma",
+        "flagm",
+        "flagm2",
+        "fp",
+        "fphp",
+        "frint",
+        "i8mm",
+        "ilrcpc",
+        "jscvt",
+        "lrcpc",
+        "paca",
+        "pacg",
+        "pmull",
+        "sb",
+        "sha1",
+        "sha2",
+        "sha3",
+        "sha512",
+        "uscat"
+      ],
+      "verified_gpu_backends": [],
+      "gpu_observation": "No GPU backend qualified by this CPU-only fixture",
+      "selected_image_id": "sha256:747873867110897321865b8790204c0d42a9d51357dce8c3334f50c59d6e916c",
+      "tools": {
+        "gcc": {
+          "available": true,
+          "returncode": 0,
+          "output": "gcc (Ubuntu 13.3.0-6ubuntu2~24.04.1) 13.3.0\nCopyright (C) 2023 Free Software Foundation, Inc.\nThis is free software; see the source for copying conditions.  There is NO\nwarranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.\n\n"
+        },
+        "gdb": {
+          "available": true,
+          "returncode": 0,
+          "output": "GNU gdb (Ubuntu 15.1-1ubuntu1~24.04.1) 15.1\nCopyright (C) 2024 Free Software Foundation, Inc.\nLicense GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>\nThis is free software: you are free to change and redistribute it.\nThere is NO WARRANTY, to the extent permitted by law.\n"
+        },
+        "bash": {
+          "available": true,
+          "returncode": 0,
+          "output": "GNU bash, version 5.2.21(1)-release (aarch64-unknown-linux-gnu)\nCopyright (C) 2022 Free Software Foundation, Inc.\nLicense GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>\n\nThis is free software; you are free to change and redistribute it.\nThere is NO WARRANTY, to the extent permitted by law.\n"
+        },
+        "perl": {
+          "available": true,
+          "returncode": 0,
+          "output": "\nThis is perl 5, version 38, subversion 2 (v5.38.2) built for aarch64-linux-gnu-thread-multi\n(with 68 registered patches, see perl -V for more detail)\n\nCopyright 1987-2023, Larry Wall\n\nPerl may be copied only under the terms of either the Artistic License or the\nGNU General Public License, which may be found in the Perl 5 source kit.\n\nComplete documentation for Perl, including FAQ lists, should be found on\nthis system using \"man perl\" or \"perldoc perl\".  If you have access to the\nInternet, point your browser at https://www.perl.org/, the Perl Home Page.\n\n"
+        }
+      },
+      "process_status": "Name:\tpython3\nUmask:\t0022\nState:\tR (running)\nTgid:\t1\nNgid:\t0\nPid:\t1\nPPid:\t0\nTracerPid:\t0\nUid:\t0\t0\t0\t0\nGid:\t0\t0\t0\t0\nFDSize:\t64\nGroups:\t0 \nNStgid:\t1\nNSpid:\t1\nNSpgid:\t1\nNSsid:\t1\nKthread:\t0\nVmPeak:\t   31648 kB\nVmSize:\t   29208 kB\nVmLck:\t       0 kB\nVmPin:\t       0 kB\nVmHWM:\t   23844 kB\nVmRSS:\t   22068 kB\nRssAnon:\t   12952 kB\nRssFile:\t    9116 kB\nRssShmem:\t       0 kB\nVmData:\t   13860 kB\nVmStk:\t     132 kB\nVmExe:\t    6200 kB\nVmLib:\t    7224 kB\nVmPTE:\t      88 kB\nVmSwap:\t       0 kB\nHugetlbPages:\t       0 kB\nCoreDumping:\t0\nTHP_enabled:\t1\nuntag_mask:\t0xffffffffffffff\nThreads:\t1\nSigQ:\t0/31726\nSigPnd:\t0000000000000000\nShdPnd:\t0000000000000000\nSigBlk:\t0000000000000000\nSigIgn:\t0000000001001000\nSigCgt:\t0000000000000002\nCapInh:\t0000000000000000\nCapPrm:\t0000000000000000\nCapEff:\t0000000000000000\nCapBnd:\t0000000000000000\nCapAmb:\t0000000000000000\nNoNewPrivs:\t1\nSeccomp:\t2\nSeccomp_filters:\t1\nSpeculation_Store_Bypass:\tvulnerable\nSpeculationIndirectBranch:\tunknown\nCpus_allowed:\t3ffff\nCpus_allowed_list:\t0-17\nMems_allowed:\t1\nMems_allowed_list:\t0\nvoluntary_ctxt_switches:\t54\nnonvoluntary_ctxt_switches:\t41\n",
+      "ptrace_scope": "unavailable"
+    },
+    "artifact": {
+      "os": "linux",
+      "arch": "arm64",
+      "data_mode_bits": 64,
+      "binary_sha256": "7f347e52a6c1254eb1d786f1455f4bbb0373b29dfc12a1ec1329b03787ea7fbd",
+      "source_sha256": "53f68d5eae72c66a615ea54e256747065ff9a95964ed9ca4a401549234a85734"
+    },
+    "decision": {
+      "status": "rejected",
+      "reasons": [
+        {
+          "code": "UnsupportedDataMode",
+          "required": 64,
+          "available": [
+            32
+          ]
+        }
+      ],
+      "dispatch_original": false,
+      "silent_emulation": false
+    },
+    "phases_dispatched_by_this_gate_check": 0
+  },
+  {
+    "case": "worker-missing-asimd",
+    "evidence_kind": "constructed_incompatible_worker_descriptor",
+    "requirements": {
+      "os": "linux",
+      "arch": "arm64",
+      "data_mode_bits": 64,
+      "image_id": "sha256:747873867110897321865b8790204c0d42a9d51357dce8c3334f50c59d6e916c",
+      "cpu_features": [
+        "fp",
+        "asimd"
+      ],
+      "gpu_backend": null,
+      "emulation_requested": false
+    },
+    "worker": {
+      "os": "linux",
+      "arch": "arm64",
+      "uname": [
+        "Linux",
+        "3e6c7f082aca",
+        "6.12.76-linuxkit",
+        "#1 SMP Fri May 29 10:00:01 UTC 2026",
+        "aarch64",
+        "aarch64"
+      ],
+      "data_modes": [
+        64
+      ],
+      "cpu_features": [
+        "aes",
+        "afp",
+        "asimddp",
+        "asimdfhm",
+        "asimdhp",
+        "asimdrdm",
+        "atomics",
+        "bf16",
+        "bti",
+        "cpuid",
+        "crc32",
+        "dcpodp",
+        "dcpop",
+        "dit",
+        "ebf16",
+        "evtstrm",
+        "fcma",
+        "flagm",
+        "flagm2",
+        "fp",
+        "fphp",
+        "frint",
+        "i8mm",
+        "ilrcpc",
+        "jscvt",
+        "lrcpc",
+        "paca",
+        "pacg",
+        "pmull",
+        "sb",
+        "sha1",
+        "sha2",
+        "sha3",
+        "sha512",
+        "uscat"
+      ],
+      "verified_gpu_backends": [],
+      "gpu_observation": "No GPU backend qualified by this CPU-only fixture",
+      "selected_image_id": "sha256:747873867110897321865b8790204c0d42a9d51357dce8c3334f50c59d6e916c",
+      "tools": {
+        "gcc": {
+          "available": true,
+          "returncode": 0,
+          "output": "gcc (Ubuntu 13.3.0-6ubuntu2~24.04.1) 13.3.0\nCopyright (C) 2023 Free Software Foundation, Inc.\nThis is free software; see the source for copying conditions.  There is NO\nwarranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.\n\n"
+        },
+        "gdb": {
+          "available": true,
+          "returncode": 0,
+          "output": "GNU gdb (Ubuntu 15.1-1ubuntu1~24.04.1) 15.1\nCopyright (C) 2024 Free Software Foundation, Inc.\nLicense GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>\nThis is free software: you are free to change and redistribute it.\nThere is NO WARRANTY, to the extent permitted by law.\n"
+        },
+        "bash": {
+          "available": true,
+          "returncode": 0,
+          "output": "GNU bash, version 5.2.21(1)-release (aarch64-unknown-linux-gnu)\nCopyright (C) 2022 Free Software Foundation, Inc.\nLicense GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>\n\nThis is free software; you are free to change and redistribute it.\nThere is NO WARRANTY, to the extent permitted by law.\n"
+        },
+        "perl": {
+          "available": true,
+          "returncode": 0,
+          "output": "\nThis is perl 5, version 38, subversion 2 (v5.38.2) built for aarch64-linux-gnu-thread-multi\n(with 68 registered patches, see perl -V for more detail)\n\nCopyright 1987-2023, Larry Wall\n\nPerl may be copied only under the terms of either the Artistic License or the\nGNU General Public License, which may be found in the Perl 5 source kit.\n\nComplete documentation for Perl, including FAQ lists, should be found on\nthis system using \"man perl\" or \"perldoc perl\".  If you have access to the\nInternet, point your browser at https://www.perl.org/, the Perl Home Page.\n\n"
+        }
+      },
+      "process_status": "Name:\tpython3\nUmask:\t0022\nState:\tR (running)\nTgid:\t1\nNgid:\t0\nPid:\t1\nPPid:\t0\nTracerPid:\t0\nUid:\t0\t0\t0\t0\nGid:\t0\t0\t0\t0\nFDSize:\t64\nGroups:\t0 \nNStgid:\t1\nNSpid:\t1\nNSpgid:\t1\nNSsid:\t1\nKthread:\t0\nVmPeak:\t   31648 kB\nVmSize:\t   29208 kB\nVmLck:\t       0 kB\nVmPin:\t       0 kB\nVmHWM:\t   23844 kB\nVmRSS:\t   22068 kB\nRssAnon:\t   12952 kB\nRssFile:\t    9116 kB\nRssShmem:\t       0 kB\nVmData:\t   13860 kB\nVmStk:\t     132 kB\nVmExe:\t    6200 kB\nVmLib:\t    7224 kB\nVmPTE:\t      88 kB\nVmSwap:\t       0 kB\nHugetlbPages:\t       0 kB\nCoreDumping:\t0\nTHP_enabled:\t1\nuntag_mask:\t0xffffffffffffff\nThreads:\t1\nSigQ:\t0/31726\nSigPnd:\t0000000000000000\nShdPnd:\t0000000000000000\nSigBlk:\t0000000000000000\nSigIgn:\t0000000001001000\nSigCgt:\t0000000000000002\nCapInh:\t0000000000000000\nCapPrm:\t0000000000000000\nCapEff:\t0000000000000000\nCapBnd:\t0000000000000000\nCapAmb:\t0000000000000000\nNoNewPrivs:\t1\nSeccomp:\t2\nSeccomp_filters:\t1\nSpeculation_Store_Bypass:\tvulnerable\nSpeculationIndirectBranch:\tunknown\nCpus_allowed:\t3ffff\nCpus_allowed_list:\t0-17\nMems_allowed:\t1\nMems_allowed_list:\t0\nvoluntary_ctxt_switches:\t54\nnonvoluntary_ctxt_switches:\t41\n",
+      "ptrace_scope": "unavailable"
+    },
+    "artifact": {
+      "os": "linux",
+      "arch": "arm64",
+      "data_mode_bits": 64,
+      "binary_sha256": "7f347e52a6c1254eb1d786f1455f4bbb0373b29dfc12a1ec1329b03787ea7fbd",
+      "source_sha256": "53f68d5eae72c66a615ea54e256747065ff9a95964ed9ca4a401549234a85734"
+    },
+    "decision": {
+      "status": "rejected",
+      "reasons": [
+        {
+          "code": "MissingCPUFeatures",
+          "missing": [
+            "asimd"
+          ]
+        }
+      ],
+      "dispatch_original": false,
+      "silent_emulation": false
+    },
+    "phases_dispatched_by_this_gate_check": 0
+  },
+  {
+    "case": "base-image-mismatch",
+    "evidence_kind": "actual_base_runtime_inventory",
+    "requirements": {
+      "os": "linux",
+      "arch": "arm64",
+      "data_mode_bits": 64,
+      "image_id": "sha256:747873867110897321865b8790204c0d42a9d51357dce8c3334f50c59d6e916c",
+      "cpu_features": [
+        "fp",
+        "asimd"
+      ],
+      "gpu_backend": null,
+      "emulation_requested": false
+    },
+    "worker": {
+      "os": "linux",
+      "arch": "arm64",
+      "uname": [
+        "Linux",
+        "dc30758e1732",
+        "6.12.76-linuxkit",
+        "#1 SMP Fri May 29 10:00:01 UTC 2026",
+        "aarch64",
+        "aarch64"
+      ],
+      "data_modes": [
+        64
+      ],
+      "cpu_features": [
+        "aes",
+        "afp",
+        "asimd",
+        "asimddp",
+        "asimdfhm",
+        "asimdhp",
+        "asimdrdm",
+        "atomics",
+        "bf16",
+        "bti",
+        "cpuid",
+        "crc32",
+        "dcpodp",
+        "dcpop",
+        "dit",
+        "ebf16",
+        "evtstrm",
+        "fcma",
+        "flagm",
+        "flagm2",
+        "fp",
+        "fphp",
+        "frint",
+        "i8mm",
+        "ilrcpc",
+        "jscvt",
+        "lrcpc",
+        "paca",
+        "pacg",
+        "pmull",
+        "sb",
+        "sha1",
+        "sha2",
+        "sha3",
+        "sha512",
+        "uscat"
+      ],
+      "verified_gpu_backends": [],
+      "gpu_observation": "No GPU backend qualified by this CPU-only fixture",
+      "selected_image_id": "sha256:a119c5e4a42dedbb5cdce10d448efce31b4054018bde56a4e476bc2c529fa62c",
+      "tools": {
+        "gcc": {
+          "available": true,
+          "returncode": 0,
+          "output": "gcc (Ubuntu 13.3.0-6ubuntu2~24.04.1) 13.3.0\nCopyright (C) 2023 Free Software Foundation, Inc.\nThis is free software; see the source for copying conditions.  There is NO\nwarranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.\n\n"
+        },
+        "gdb": {
+          "available": false
+        },
+        "bash": {
+          "available": true,
+          "returncode": 0,
+          "output": "GNU bash, version 5.2.21(1)-release (aarch64-unknown-linux-gnu)\nCopyright (C) 2022 Free Software Foundation, Inc.\nLicense GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>\n\nThis is free software; you are free to change and redistribute it.\nThere is NO WARRANTY, to the extent permitted by law.\n"
+        },
+        "perl": {
+          "available": true,
+          "returncode": 0,
+          "output": "\nThis is perl 5, version 38, subversion 2 (v5.38.2) built for aarch64-linux-gnu-thread-multi\n(with 68 registered patches, see perl -V for more detail)\n\nCopyright 1987-2023, Larry Wall\n\nPerl may be copied only under the terms of either the Artistic License or the\nGNU General Public License, which may be found in the Perl 5 source kit.\n\nComplete documentation for Perl, including FAQ lists, should be found on\nthis system using \"man perl\" or \"perldoc perl\".  If you have access to the\nInternet, point your browser at https://www.perl.org/, the Perl Home Page.\n\n"
+        }
+      },
+      "process_status": "Name:\tpython3\nUmask:\t0022\nState:\tR (running)\nTgid:\t1\nNgid:\t0\nPid:\t1\nPPid:\t0\nTracerPid:\t0\nUid:\t0\t0\t0\t0\nGid:\t0\t0\t0\t0\nFDSize:\t64\nGroups:\t0 \nNStgid:\t1\nNSpid:\t1\nNSpgid:\t1\nNSsid:\t1\nKthread:\t0\nVmPeak:\t   31648 kB\nVmSize:\t   29208 kB\nVmLck:\t       0 kB\nVmPin:\t       0 kB\nVmHWM:\t   23480 kB\nVmRSS:\t   21972 kB\nRssAnon:\t   12956 kB\nRssFile:\t    9016 kB\nRssShmem:\t       0 kB\nVmData:\t   13860 kB\nVmStk:\t     132 kB\nVmExe:\t    6200 kB\nVmLib:\t    7224 kB\nVmPTE:\t      88 kB\nVmSwap:\t       0 kB\nHugetlbPages:\t       0 kB\nCoreDumping:\t0\nTHP_enabled:\t1\nuntag_mask:\t0xffffffffffffff\nThreads:\t1\nSigQ:\t0/31726\nSigPnd:\t0000000000000000\nShdPnd:\t0000000000000000\nSigBlk:\t0000000000000000\nSigIgn:\t0000000001001000\nSigCgt:\t0000000000000002\nCapInh:\t0000000000000000\nCapPrm:\t0000000000000000\nCapEff:\t0000000000000000\nCapBnd:\t0000000000000000\nCapAmb:\t0000000000000000\nNoNewPrivs:\t1\nSeccomp:\t2\nSeccomp_filters:\t1\nSpeculation_Store_Bypass:\tvulnerable\nSpeculationIndirectBranch:\tunknown\nCpus_allowed:\t3ffff\nCpus_allowed_list:\t0-17\nMems_allowed:\t1\nMems_allowed_list:\t0\nvoluntary_ctxt_switches:\t3015\nnonvoluntary_ctxt_switches:\t8\n",
+      "ptrace_scope": "unavailable"
+    },
+    "artifact": {
+      "os": "linux",
+      "arch": "arm64",
+      "data_mode_bits": 64,
+      "binary_sha256": "7f347e52a6c1254eb1d786f1455f4bbb0373b29dfc12a1ec1329b03787ea7fbd",
+      "source_sha256": "53f68d5eae72c66a615ea54e256747065ff9a95964ed9ca4a401549234a85734"
+    },
+    "decision": {
+      "status": "rejected",
+      "reasons": [
+        {
+          "code": "ImageIdentityMismatch",
+          "required": "sha256:747873867110897321865b8790204c0d42a9d51357dce8c3334f50c59d6e916c",
+          "selected": "sha256:a119c5e4a42dedbb5cdce10d448efce31b4054018bde56a4e476bc2c529fa62c"
+        }
+      ],
+      "dispatch_original": false,
+      "silent_emulation": false
+    },
+    "phases_dispatched_by_this_gate_check": 0
+  },
+  {
+    "case": "requested-32-bit",
+    "evidence_kind": "changed_target_request_on_actual_worker",
+    "requirements": {
+      "os": "linux",
+      "arch": "arm64",
+      "data_mode_bits": 32,
+      "image_id": "sha256:747873867110897321865b8790204c0d42a9d51357dce8c3334f50c59d6e916c",
+      "cpu_features": [
+        "fp",
+        "asimd"
+      ],
+      "gpu_backend": null,
+      "emulation_requested": false
+    },
+    "worker": {
+      "os": "linux",
+      "arch": "arm64",
+      "uname": [
+        "Linux",
+        "3e6c7f082aca",
+        "6.12.76-linuxkit",
+        "#1 SMP Fri May 29 10:00:01 UTC 2026",
+        "aarch64",
+        "aarch64"
+      ],
+      "data_modes": [
+        64
+      ],
+      "cpu_features": [
+        "aes",
+        "afp",
+        "asimd",
+        "asimddp",
+        "asimdfhm",
+        "asimdhp",
+        "asimdrdm",
+        "atomics",
+        "bf16",
+        "bti",
+        "cpuid",
+        "crc32",
+        "dcpodp",
+        "dcpop",
+        "dit",
+        "ebf16",
+        "evtstrm",
+        "fcma",
+        "flagm",
+        "flagm2",
+        "fp",
+        "fphp",
+        "frint",
+        "i8mm",
+        "ilrcpc",
+        "jscvt",
+        "lrcpc",
+        "paca",
+        "pacg",
+        "pmull",
+        "sb",
+        "sha1",
+        "sha2",
+        "sha3",
+        "sha512",
+        "uscat"
+      ],
+      "verified_gpu_backends": [],
+      "gpu_observation": "No GPU backend qualified by this CPU-only fixture",
+      "selected_image_id": "sha256:747873867110897321865b8790204c0d42a9d51357dce8c3334f50c59d6e916c",
+      "tools": {
+        "gcc": {
+          "available": true,
+          "returncode": 0,
+          "output": "gcc (Ubuntu 13.3.0-6ubuntu2~24.04.1) 13.3.0\nCopyright (C) 2023 Free Software Foundation, Inc.\nThis is free software; see the source for copying conditions.  There is NO\nwarranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.\n\n"
+        },
+        "gdb": {
+          "available": true,
+          "returncode": 0,
+          "output": "GNU gdb (Ubuntu 15.1-1ubuntu1~24.04.1) 15.1\nCopyright (C) 2024 Free Software Foundation, Inc.\nLicense GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>\nThis is free software: you are free to change and redistribute it.\nThere is NO WARRANTY, to the extent permitted by law.\n"
+        },
+        "bash": {
+          "available": true,
+          "returncode": 0,
+          "output": "GNU bash, version 5.2.21(1)-release (aarch64-unknown-linux-gnu)\nCopyright (C) 2022 Free Software Foundation, Inc.\nLicense GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>\n\nThis is free software; you are free to change and redistribute it.\nThere is NO WARRANTY, to the extent permitted by law.\n"
+        },
+        "perl": {
+          "available": true,
+          "returncode": 0,
+          "output": "\nThis is perl 5, version 38, subversion 2 (v5.38.2) built for aarch64-linux-gnu-thread-multi\n(with 68 registered patches, see perl -V for more detail)\n\nCopyright 1987-2023, Larry Wall\n\nPerl may be copied only under the terms of either the Artistic License or the\nGNU General Public License, which may be found in the Perl 5 source kit.\n\nComplete documentation for Perl, including FAQ lists, should be found on\nthis system using \"man perl\" or \"perldoc perl\".  If you have access to the\nInternet, point your browser at https://www.perl.org/, the Perl Home Page.\n\n"
+        }
+      },
+      "process_status": "Name:\tpython3\nUmask:\t0022\nState:\tR (running)\nTgid:\t1\nNgid:\t0\nPid:\t1\nPPid:\t0\nTracerPid:\t0\nUid:\t0\t0\t0\t0\nGid:\t0\t0\t0\t0\nFDSize:\t64\nGroups:\t0 \nNStgid:\t1\nNSpid:\t1\nNSpgid:\t1\nNSsid:\t1\nKthread:\t0\nVmPeak:\t   31648 kB\nVmSize:\t   29208 kB\nVmLck:\t       0 kB\nVmPin:\t       0 kB\nVmHWM:\t   23844 kB\nVmRSS:\t   22068 kB\nRssAnon:\t   12952 kB\nRssFile:\t    9116 kB\nRssShmem:\t       0 kB\nVmData:\t   13860 kB\nVmStk:\t     132 kB\nVmExe:\t    6200 kB\nVmLib:\t    7224 kB\nVmPTE:\t      88 kB\nVmSwap:\t       0 kB\nHugetlbPages:\t       0 kB\nCoreDumping:\t0\nTHP_enabled:\t1\nuntag_mask:\t0xffffffffffffff\nThreads:\t1\nSigQ:\t0/31726\nSigPnd:\t0000000000000000\nShdPnd:\t0000000000000000\nSigBlk:\t0000000000000000\nSigIgn:\t0000000001001000\nSigCgt:\t0000000000000002\nCapInh:\t0000000000000000\nCapPrm:\t0000000000000000\nCapEff:\t0000000000000000\nCapBnd:\t0000000000000000\nCapAmb:\t0000000000000000\nNoNewPrivs:\t1\nSeccomp:\t2\nSeccomp_filters:\t1\nSpeculation_Store_Bypass:\tvulnerable\nSpeculationIndirectBranch:\tunknown\nCpus_allowed:\t3ffff\nCpus_allowed_list:\t0-17\nMems_allowed:\t1\nMems_allowed_list:\t0\nvoluntary_ctxt_switches:\t54\nnonvoluntary_ctxt_switches:\t41\n",
+      "ptrace_scope": "unavailable"
+    },
+    "artifact": {
+      "os": "linux",
+      "arch": "arm64",
+      "data_mode_bits": 64,
+      "binary_sha256": "7f347e52a6c1254eb1d786f1455f4bbb0373b29dfc12a1ec1329b03787ea7fbd",
+      "source_sha256": "53f68d5eae72c66a615ea54e256747065ff9a95964ed9ca4a401549234a85734"
+    },
+    "decision": {
+      "status": "rejected",
+      "reasons": [
+        {
+          "code": "UnsupportedDataMode",
+          "required": 32,
+          "available": [
+            64
+          ]
+        },
+        {
+          "code": "ArtifactDataModeMismatch",
+          "required": 32,
+          "captured": 64
+        }
+      ],
+      "dispatch_original": false,
+      "silent_emulation": false
+    },
+    "phases_dispatched_by_this_gate_check": 0
+  },
+  {
+    "case": "gpu-required",
+    "evidence_kind": "unqualified_gpu_request_on_actual_cpu_runtime",
+    "requirements": {
+      "os": "linux",
+      "arch": "arm64",
+      "data_mode_bits": 64,
+      "image_id": "sha256:747873867110897321865b8790204c0d42a9d51357dce8c3334f50c59d6e916c",
+      "cpu_features": [
+        "fp",
+        "asimd"
+      ],
+      "gpu_backend": "cuda",
+      "emulation_requested": false
+    },
+    "worker": {
+      "os": "linux",
+      "arch": "arm64",
+      "uname": [
+        "Linux",
+        "3e6c7f082aca",
+        "6.12.76-linuxkit",
+        "#1 SMP Fri May 29 10:00:01 UTC 2026",
+        "aarch64",
+        "aarch64"
+      ],
+      "data_modes": [
+        64
+      ],
+      "cpu_features": [
+        "aes",
+        "afp",
+        "asimd",
+        "asimddp",
+        "asimdfhm",
+        "asimdhp",
+        "asimdrdm",
+        "atomics",
+        "bf16",
+        "bti",
+        "cpuid",
+        "crc32",
+        "dcpodp",
+        "dcpop",
+        "dit",
+        "ebf16",
+        "evtstrm",
+        "fcma",
+        "flagm",
+        "flagm2",
+        "fp",
+        "fphp",
+        "frint",
+        "i8mm",
+        "ilrcpc",
+        "jscvt",
+        "lrcpc",
+        "paca",
+        "pacg",
+        "pmull",
+        "sb",
+        "sha1",
+        "sha2",
+        "sha3",
+        "sha512",
+        "uscat"
+      ],
+      "verified_gpu_backends": [],
+      "gpu_observation": "No GPU backend qualified by this CPU-only fixture",
+      "selected_image_id": "sha256:747873867110897321865b8790204c0d42a9d51357dce8c3334f50c59d6e916c",
+      "tools": {
+        "gcc": {
+          "available": true,
+          "returncode": 0,
+          "output": "gcc (Ubuntu 13.3.0-6ubuntu2~24.04.1) 13.3.0\nCopyright (C) 2023 Free Software Foundation, Inc.\nThis is free software; see the source for copying conditions.  There is NO\nwarranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.\n\n"
+        },
+        "gdb": {
+          "available": true,
+          "returncode": 0,
+          "output": "GNU gdb (Ubuntu 15.1-1ubuntu1~24.04.1) 15.1\nCopyright (C) 2024 Free Software Foundation, Inc.\nLicense GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>\nThis is free software: you are free to change and redistribute it.\nThere is NO WARRANTY, to the extent permitted by law.\n"
+        },
+        "bash": {
+          "available": true,
+          "returncode": 0,
+          "output": "GNU bash, version 5.2.21(1)-release (aarch64-unknown-linux-gnu)\nCopyright (C) 2022 Free Software Foundation, Inc.\nLicense GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>\n\nThis is free software; you are free to change and redistribute it.\nThere is NO WARRANTY, to the extent permitted by law.\n"
+        },
+        "perl": {
+          "available": true,
+          "returncode": 0,
+          "output": "\nThis is perl 5, version 38, subversion 2 (v5.38.2) built for aarch64-linux-gnu-thread-multi\n(with 68 registered patches, see perl -V for more detail)\n\nCopyright 1987-2023, Larry Wall\n\nPerl may be copied only under the terms of either the Artistic License or the\nGNU General Public License, which may be found in the Perl 5 source kit.\n\nComplete documentation for Perl, including FAQ lists, should be found on\nthis system using \"man perl\" or \"perldoc perl\".  If you have access to the\nInternet, point your browser at https://www.perl.org/, the Perl Home Page.\n\n"
+        }
+      },
+      "process_status": "Name:\tpython3\nUmask:\t0022\nState:\tR (running)\nTgid:\t1\nNgid:\t0\nPid:\t1\nPPid:\t0\nTracerPid:\t0\nUid:\t0\t0\t0\t0\nGid:\t0\t0\t0\t0\nFDSize:\t64\nGroups:\t0 \nNStgid:\t1\nNSpid:\t1\nNSpgid:\t1\nNSsid:\t1\nKthread:\t0\nVmPeak:\t   31648 kB\nVmSize:\t   29208 kB\nVmLck:\t       0 kB\nVmPin:\t       0 kB\nVmHWM:\t   23844 kB\nVmRSS:\t   22068 kB\nRssAnon:\t   12952 kB\nRssFile:\t    9116 kB\nRssShmem:\t       0 kB\nVmData:\t   13860 kB\nVmStk:\t     132 kB\nVmExe:\t    6200 kB\nVmLib:\t    7224 kB\nVmPTE:\t      88 kB\nVmSwap:\t       0 kB\nHugetlbPages:\t       0 kB\nCoreDumping:\t0\nTHP_enabled:\t1\nuntag_mask:\t0xffffffffffffff\nThreads:\t1\nSigQ:\t0/31726\nSigPnd:\t0000000000000000\nShdPnd:\t0000000000000000\nSigBlk:\t0000000000000000\nSigIgn:\t0000000001001000\nSigCgt:\t0000000000000002\nCapInh:\t0000000000000000\nCapPrm:\t0000000000000000\nCapEff:\t0000000000000000\nCapBnd:\t0000000000000000\nCapAmb:\t0000000000000000\nNoNewPrivs:\t1\nSeccomp:\t2\nSeccomp_filters:\t1\nSpeculation_Store_Bypass:\tvulnerable\nSpeculationIndirectBranch:\tunknown\nCpus_allowed:\t3ffff\nCpus_allowed_list:\t0-17\nMems_allowed:\t1\nMems_allowed_list:\t0\nvoluntary_ctxt_switches:\t54\nnonvoluntary_ctxt_switches:\t41\n",
+      "ptrace_scope": "unavailable"
+    },
+    "artifact": {
+      "os": "linux",
+      "arch": "arm64",
+      "data_mode_bits": 64,
+      "binary_sha256": "7f347e52a6c1254eb1d786f1455f4bbb0373b29dfc12a1ec1329b03787ea7fbd",
+      "source_sha256": "53f68d5eae72c66a615ea54e256747065ff9a95964ed9ca4a401549234a85734"
+    },
+    "decision": {
+      "status": "rejected",
+      "reasons": [
+        {
+          "code": "MissingVerifiedGPUBackend",
+          "required": "cuda",
+          "available": []
+        }
+      ],
+      "dispatch_original": false,
+      "silent_emulation": false
+    },
+    "phases_dispatched_by_this_gate_check": 0
+  },
+  {
+    "case": "base-debugger-missing",
+    "evidence_kind": "actual_base_runtime_inventory",
+    "requirements": {
+      "os": "linux",
+      "arch": "arm64",
+      "data_mode_bits": 64,
+      "image_id": "sha256:747873867110897321865b8790204c0d42a9d51357dce8c3334f50c59d6e916c",
+      "cpu_features": [
+        "fp",
+        "asimd"
+      ],
+      "gpu_backend": null,
+      "emulation_requested": false,
+      "debugger_required": true
+    },
+    "worker": {
+      "os": "linux",
+      "arch": "arm64",
+      "uname": [
+        "Linux",
+        "dc30758e1732",
+        "6.12.76-linuxkit",
+        "#1 SMP Fri May 29 10:00:01 UTC 2026",
+        "aarch64",
+        "aarch64"
+      ],
+      "data_modes": [
+        64
+      ],
+      "cpu_features": [
+        "aes",
+        "afp",
+        "asimd",
+        "asimddp",
+        "asimdfhm",
+        "asimdhp",
+        "asimdrdm",
+        "atomics",
+        "bf16",
+        "bti",
+        "cpuid",
+        "crc32",
+        "dcpodp",
+        "dcpop",
+        "dit",
+        "ebf16",
+        "evtstrm",
+        "fcma",
+        "flagm",
+        "flagm2",
+        "fp",
+        "fphp",
+        "frint",
+        "i8mm",
+        "ilrcpc",
+        "jscvt",
+        "lrcpc",
+        "paca",
+        "pacg",
+        "pmull",
+        "sb",
+        "sha1",
+        "sha2",
+        "sha3",
+        "sha512",
+        "uscat"
+      ],
+      "verified_gpu_backends": [],
+      "gpu_observation": "No GPU backend qualified by this CPU-only fixture",
+      "selected_image_id": "sha256:a119c5e4a42dedbb5cdce10d448efce31b4054018bde56a4e476bc2c529fa62c",
+      "tools": {
+        "gcc": {
+          "available": true,
+          "returncode": 0,
+          "output": "gcc (Ubuntu 13.3.0-6ubuntu2~24.04.1) 13.3.0\nCopyright (C) 2023 Free Software Foundation, Inc.\nThis is free software; see the source for copying conditions.  There is NO\nwarranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.\n\n"
+        },
+        "gdb": {
+          "available": false
+        },
+        "bash": {
+          "available": true,
+          "returncode": 0,
+          "output": "GNU bash, version 5.2.21(1)-release (aarch64-unknown-linux-gnu)\nCopyright (C) 2022 Free Software Foundation, Inc.\nLicense GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>\n\nThis is free software; you are free to change and redistribute it.\nThere is NO WARRANTY, to the extent permitted by law.\n"
+        },
+        "perl": {
+          "available": true,
+          "returncode": 0,
+          "output": "\nThis is perl 5, version 38, subversion 2 (v5.38.2) built for aarch64-linux-gnu-thread-multi\n(with 68 registered patches, see perl -V for more detail)\n\nCopyright 1987-2023, Larry Wall\n\nPerl may be copied only under the terms of either the Artistic License or the\nGNU General Public License, which may be found in the Perl 5 source kit.\n\nComplete documentation for Perl, including FAQ lists, should be found on\nthis system using \"man perl\" or \"perldoc perl\".  If you have access to the\nInternet, point your browser at https://www.perl.org/, the Perl Home Page.\n\n"
+        }
+      },
+      "process_status": "Name:\tpython3\nUmask:\t0022\nState:\tR (running)\nTgid:\t1\nNgid:\t0\nPid:\t1\nPPid:\t0\nTracerPid:\t0\nUid:\t0\t0\t0\t0\nGid:\t0\t0\t0\t0\nFDSize:\t64\nGroups:\t0 \nNStgid:\t1\nNSpid:\t1\nNSpgid:\t1\nNSsid:\t1\nKthread:\t0\nVmPeak:\t   31648 kB\nVmSize:\t   29208 kB\nVmLck:\t       0 kB\nVmPin:\t       0 kB\nVmHWM:\t   23480 kB\nVmRSS:\t   21972 kB\nRssAnon:\t   12956 kB\nRssFile:\t    9016 kB\nRssShmem:\t       0 kB\nVmData:\t   13860 kB\nVmStk:\t     132 kB\nVmExe:\t    6200 kB\nVmLib:\t    7224 kB\nVmPTE:\t      88 kB\nVmSwap:\t       0 kB\nHugetlbPages:\t       0 kB\nCoreDumping:\t0\nTHP_enabled:\t1\nuntag_mask:\t0xffffffffffffff\nThreads:\t1\nSigQ:\t0/31726\nSigPnd:\t0000000000000000\nShdPnd:\t0000000000000000\nSigBlk:\t0000000000000000\nSigIgn:\t0000000001001000\nSigCgt:\t0000000000000002\nCapInh:\t0000000000000000\nCapPrm:\t0000000000000000\nCapEff:\t0000000000000000\nCapBnd:\t0000000000000000\nCapAmb:\t0000000000000000\nNoNewPrivs:\t1\nSeccomp:\t2\nSeccomp_filters:\t1\nSpeculation_Store_Bypass:\tvulnerable\nSpeculationIndirectBranch:\tunknown\nCpus_allowed:\t3ffff\nCpus_allowed_list:\t0-17\nMems_allowed:\t1\nMems_allowed_list:\t0\nvoluntary_ctxt_switches:\t3015\nnonvoluntary_ctxt_switches:\t8\n",
+      "ptrace_scope": "unavailable"
+    },
+    "artifact": {
+      "os": "linux",
+      "arch": "arm64",
+      "data_mode_bits": 64,
+      "binary_sha256": "7f347e52a6c1254eb1d786f1455f4bbb0373b29dfc12a1ec1329b03787ea7fbd",
+      "source_sha256": "53f68d5eae72c66a615ea54e256747065ff9a95964ed9ca4a401549234a85734"
+    },
+    "decision": {
+      "status": "rejected",
+      "reasons": [
+        {
+          "code": "ImageIdentityMismatch",
+          "required": "sha256:747873867110897321865b8790204c0d42a9d51357dce8c3334f50c59d6e916c",
+          "selected": "sha256:a119c5e4a42dedbb5cdce10d448efce31b4054018bde56a4e476bc2c529fa62c"
+        },
+        {
+          "code": "MissingDebugger",
+          "required": "gdb"
+        }
+      ],
+      "dispatch_original": false,
+      "silent_emulation": false
+    },
+    "phases_dispatched_by_this_gate_check": 0
+  },
+  {
+    "case": "explicit-emulation-request",
+    "evidence_kind": "policy_check_not_an_emulated_run",
+    "requirements": {
+      "os": "linux",
+      "arch": "arm64",
+      "data_mode_bits": 64,
+      "image_id": "sha256:747873867110897321865b8790204c0d42a9d51357dce8c3334f50c59d6e916c",
+      "cpu_features": [
+        "fp",
+        "asimd"
+      ],
+      "gpu_backend": null,
+      "emulation_requested": true
+    },
+    "worker": {
+      "os": "linux",
+      "arch": "amd64",
+      "uname": [
+        "Linux",
+        "3e6c7f082aca",
+        "6.12.76-linuxkit",
+        "#1 SMP Fri May 29 10:00:01 UTC 2026",
+        "aarch64",
+        "aarch64"
+      ],
+      "data_modes": [
+        64
+      ],
+      "cpu_features": [
+        "aes",
+        "afp",
+        "asimd",
+        "asimddp",
+        "asimdfhm",
+        "asimdhp",
+        "asimdrdm",
+        "atomics",
+        "bf16",
+        "bti",
+        "cpuid",
+        "crc32",
+        "dcpodp",
+        "dcpop",
+        "dit",
+        "ebf16",
+        "evtstrm",
+        "fcma",
+        "flagm",
+        "flagm2",
+        "fp",
+        "fphp",
+        "frint",
+        "i8mm",
+        "ilrcpc",
+        "jscvt",
+        "lrcpc",
+        "paca",
+        "pacg",
+        "pmull",
+        "sb",
+        "sha1",
+        "sha2",
+        "sha3",
+        "sha512",
+        "uscat"
+      ],
+      "verified_gpu_backends": [],
+      "gpu_observation": "No GPU backend qualified by this CPU-only fixture",
+      "selected_image_id": "sha256:747873867110897321865b8790204c0d42a9d51357dce8c3334f50c59d6e916c",
+      "tools": {
+        "gcc": {
+          "available": true,
+          "returncode": 0,
+          "output": "gcc (Ubuntu 13.3.0-6ubuntu2~24.04.1) 13.3.0\nCopyright (C) 2023 Free Software Foundation, Inc.\nThis is free software; see the source for copying conditions.  There is NO\nwarranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.\n\n"
+        },
+        "gdb": {
+          "available": true,
+          "returncode": 0,
+          "output": "GNU gdb (Ubuntu 15.1-1ubuntu1~24.04.1) 15.1\nCopyright (C) 2024 Free Software Foundation, Inc.\nLicense GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>\nThis is free software: you are free to change and redistribute it.\nThere is NO WARRANTY, to the extent permitted by law.\n"
+        },
+        "bash": {
+          "available": true,
+          "returncode": 0,
+          "output": "GNU bash, version 5.2.21(1)-release (aarch64-unknown-linux-gnu)\nCopyright (C) 2022 Free Software Foundation, Inc.\nLicense GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>\n\nThis is free software; you are free to change and redistribute it.\nThere is NO WARRANTY, to the extent permitted by law.\n"
+        },
+        "perl": {
+          "available": true,
+          "returncode": 0,
+          "output": "\nThis is perl 5, version 38, subversion 2 (v5.38.2) built for aarch64-linux-gnu-thread-multi\n(with 68 registered patches, see perl -V for more detail)\n\nCopyright 1987-2023, Larry Wall\n\nPerl may be copied only under the terms of either the Artistic License or the\nGNU General Public License, which may be found in the Perl 5 source kit.\n\nComplete documentation for Perl, including FAQ lists, should be found on\nthis system using \"man perl\" or \"perldoc perl\".  If you have access to the\nInternet, point your browser at https://www.perl.org/, the Perl Home Page.\n\n"
+        }
+      },
+      "process_status": "Name:\tpython3\nUmask:\t0022\nState:\tR (running)\nTgid:\t1\nNgid:\t0\nPid:\t1\nPPid:\t0\nTracerPid:\t0\nUid:\t0\t0\t0\t0\nGid:\t0\t0\t0\t0\nFDSize:\t64\nGroups:\t0 \nNStgid:\t1\nNSpid:\t1\nNSpgid:\t1\nNSsid:\t1\nKthread:\t0\nVmPeak:\t   31648 kB\nVmSize:\t   29208 kB\nVmLck:\t       0 kB\nVmPin:\t       0 kB\nVmHWM:\t   23844 kB\nVmRSS:\t   22068 kB\nRssAnon:\t   12952 kB\nRssFile:\t    9116 kB\nRssShmem:\t       0 kB\nVmData:\t   13860 kB\nVmStk:\t     132 kB\nVmExe:\t    6200 kB\nVmLib:\t    7224 kB\nVmPTE:\t      88 kB\nVmSwap:\t       0 kB\nHugetlbPages:\t       0 kB\nCoreDumping:\t0\nTHP_enabled:\t1\nuntag_mask:\t0xffffffffffffff\nThreads:\t1\nSigQ:\t0/31726\nSigPnd:\t0000000000000000\nShdPnd:\t0000000000000000\nSigBlk:\t0000000000000000\nSigIgn:\t0000000001001000\nSigCgt:\t0000000000000002\nCapInh:\t0000000000000000\nCapPrm:\t0000000000000000\nCapEff:\t0000000000000000\nCapBnd:\t0000000000000000\nCapAmb:\t0000000000000000\nNoNewPrivs:\t1\nSeccomp:\t2\nSeccomp_filters:\t1\nSpeculation_Store_Bypass:\tvulnerable\nSpeculationIndirectBranch:\tunknown\nCpus_allowed:\t3ffff\nCpus_allowed_list:\t0-17\nMems_allowed:\t1\nMems_allowed_list:\t0\nvoluntary_ctxt_switches:\t54\nnonvoluntary_ctxt_switches:\t41\n",
+      "ptrace_scope": "unavailable"
+    },
+    "artifact": {
+      "os": "linux",
+      "arch": "arm64",
+      "data_mode_bits": 64,
+      "binary_sha256": "7f347e52a6c1254eb1d786f1455f4bbb0373b29dfc12a1ec1329b03787ea7fbd",
+      "source_sha256": "53f68d5eae72c66a615ea54e256747065ff9a95964ed9ca4a401549234a85734"
+    },
+    "decision": {
+      "status": "changed_session_required",
+      "reasons": [
+        {
+          "code": "WorkerArchMismatch",
+          "required": "arm64",
+          "available": "amd64"
+        },
+        {
+          "code": "ChangedSessionRequired",
+          "detail": "Emulation/different-target execution is not the original performance environment"
+        }
+      ],
+      "dispatch_original": false,
+      "silent_emulation": false
+    },
+    "phases_dispatched_by_this_gate_check": 0
+  }
+]

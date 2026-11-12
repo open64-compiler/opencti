@@ -213,3 +213,34 @@ python3 validation/phase0/legacy/verify_ft08.py \
 The full audit checks 174 file hashes. Both full and compact audits verify six initial input files, three generated files, 25 distinct A/B regular-file inode pairs, overlapping writable sessions, two successful A phases, zero B phases, original/B byte identities, two rejected writes, the shared-source hazard control, four unchanged phase/environment recipes and all four mount maps. The captured TM diagnostics retain their whitespace through file-specific Git attributes so evidence digests remain valid.
 
 This is synthetic application preservation evidence, not qualification of historical setup hooks/builds, arbitrary external source links, hostile host writers, native session/retention APIs, debugger attachment, dashboard or GPU/DSL workflows. Earlier captures, live fixtures/framework and all pre-existing filename-collision files remain untouched. See the [FT08 report](../../../doc/guide/phase0-ft08-results.md).
+
+## FT09 platform compatibility and debugger attachment
+
+`run_ft09.py` extends the retained legacy image with GDB and captures a new stock regression with debug symbols. Python 3.9 or newer and Docker are required. The image setup needs package-network access; all probe/capture/replay/debug workers have networking disabled. Framework code, defaults and approved tests remain unchanged.
+
+```sh
+python3 validation/phase0/legacy/run_ft09.py \
+  --capture validation/phase0/legacy/runs/run-002 \
+  --output validation/phase0/legacy/runs/new-ft09-run
+```
+
+The output directory must be new. The runner verifies/loads the original image and framework archives, adds the packaged GDB runtime, records its immutable ID and retains that new image archive locally. Every worker's entire 2,654-entry framework inventory must match the earlier deployed archive, including bytes/modes/link targets. This checks framework preservation despite the separate runtime extension.
+
+The fixture uses GCC `-g -O0 -fno-omit-frame-pointer -no-pie` on Linux ARM64. Its saved ELF64 executable prints `value=42`, exits 7 and records `ExecErr`. ELF debug sections and source/binary digests are retained. A fresh worker repeats saved execution, compilation, linking and rebuilt execution with the same failure outcome and selected image. Declared requirements include Linux/ARM64, 64-bit data mode, `fp`/`asimd` CPU features and the image identity.
+
+Ten compatibility decisions include an actual compatible runtime, four constructed foreign-worker descriptors, an actual earlier-runtime image mismatch, an incompatible 32-bit target request, an unqualified CUDA request, the actual earlier runtime missing GDB, and an explicit emulation request. Rejected cases dispatch no phase. The foreign descriptors are policy tests, not live foreign machines; no GPU job or emulator is launched. Emulation requires a changed session and cannot be presented as the original performance environment.
+
+The debugger session launches the original captured binary with an explicitly changed `--wait` invocation. A real interactive Bash pseudo-terminal runs GDB, which attaches by PID, reads variable 41 and source, sets a breakpoint, changes process memory to 42, continues to the source breakpoint/backtrace and detaches. That new process prints `value=43` and exits 7. The executable and original failure/evidence stay unchanged; this is not checkpoint/restore of the already exited failing process.
+
+The reference attachment succeeds with all capabilities dropped, `no-new-privileges`, default seccomp and private PID mode. No `SYS_PTRACE`, privileged or unconfined setting is needed. The runner has a conditional `SYS_PTRACE`-only retry if normal attachment is denied; that branch is not exercised by this reference. If attachment remains unsupported it is reported separately from shell/phase replay, with the new waiting process explicitly cleaned up. No worker mounts a live checkout, home directory, Docker socket or host process namespace. All five reference workers are removed after export.
+
+The reference is `runs/ft09-001/`; compact evidence in `evidence/ft09-001/` is approximately 375 KB. It includes source/options, original work and session archives, actual inventories, compatibility inputs/decisions, immutable image identity, mount/profile inspection and raw GDB/PTY transcripts. The new runtime archive is 623,109,120 bytes and stays local/ignored; its digest, the base image and framework archive are recorded separately. Retain the exact image archive for future replay rather than relying on a mutable tag or later package rebuild.
+
+```sh
+python3 validation/phase0/legacy/verify_ft09.py \
+  validation/phase0/legacy/evidence/ft09-001
+```
+
+The full audit checks 65 file hashes, including the new image archive. Full and compact audits verify the framework identity, native target/data mode/features, ten compatibility cases, four replay phases, actual interactive attachment, ten unchanged recipe/environment files, five mount maps and the no-added-capability profile. Raw diagnostic/terminal bytes are preserved through scoped Git attributes; compact verification explicitly identifies the omitted runtime archive.
+
+This is synthetic native CPU/GCC evidence. Real heterogeneous workers, GPU capability execution, alternate ptrace policies, missing system-library sources, historical suites, debugger/dashboard services, native scheduling/retention and GPU/DSL acceptance remain open. See the [FT09 report](../../../doc/guide/phase0-ft09-results.md) for the actual supported and unsupported paths.

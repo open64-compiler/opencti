@@ -1,0 +1,18 @@
+{
+  "runtime-image.tar": {
+    "local_path": "/Users/shinmingliu/opcti/validation/phase0/legacy/runs/ft09-001/runtime-image.tar",
+    "bytes": 623109120,
+    "sha256": "1e001626e131877f12f638b98fa922bf6b05526c24c5678aa6557f9647ec277c",
+    "image_id": "sha256:747873867110897321865b8790204c0d42a9d51357dce8c3334f50c59d6e916c"
+  },
+  "base-runtime-image.tar": {
+    "local_path": "/Users/shinmingliu/opcti/validation/phase0/legacy/runs/run-002/runtime-image.tar",
+    "bytes": 586248192,
+    "sha256": "8b69adc550862c611dd9f4b58a2126e6f82e94dc7a2c7781dfae3163418bf8a5"
+  },
+  "deployed-framework.tar.gz": {
+    "local_path": "/Users/shinmingliu/opcti/validation/phase0/legacy/runs/run-002/deployed-framework.tar.gz",
+    "bytes": 8753942,
+    "sha256": "c8c01a1f7a0d151412d53f873cc745bbf007af6e4aaeee77c9da59644286c064"
+  }
+}

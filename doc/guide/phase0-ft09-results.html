@@ -1,0 +1,95 @@
+<!--
+Copyright (C) 2011, Hewlett-Packard Development Company, L.P.
+All Rights Reserved.
+Open64 is free software; you can redistribute it and/or modify it under the
+terms of the GNU General Public License as published by the Free Software
+Foundation; either version 2 of the License, or (at your option) any later
+version. Distributed WITHOUT ANY WARRANTY; without even the implied warranty
+of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General
+Public License for more details.
+-->
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Phase 0 FT09 platform compatibility and debugger results — OpenCTI</title><style>body{margin:0;background:#f4f6f8;color:#18232e;font:17px/1.6 system-ui,sans-serif}
+main{max-width:1050px;margin:auto;padding:2rem;background:white;min-height:100vh}
+a{color:#075ca8}nav{padding:.7rem 0;border-bottom:1px solid #ccd5dd}
+h1,h2,h3{line-height:1.25;scroll-margin-top:1rem}h2{margin-top:2rem}
+pre{padding:1rem;background:#eff3f7;overflow:auto;border:1px solid #d5dce3}
+code{font: .88em/1.5 ui-monospace,monospace;overflow-wrap:anywhere}
+table{border-collapse:collapse;width:100%;display:block;overflow:auto}
+th,td{padding:.6rem;border:1px solid #ccd5dd;text-align:left;vertical-align:top}
+th{background:#eff3f7}td:first-child{min-width:10rem}footer{border-top:1px solid #ccd5dd;margin-top:2rem;color:#52606b}
+@media(max-width:640px){main{padding:1rem}body{font-size:16px}}
+</style></head><body><main>
+<nav><a href="index.html">CTI documentation</a></nav>
+<h1 id="phase-0-ft09-platform-compatibility-and-debugger-results">Phase 0 FT09 platform compatibility and debugger results</h1>
+<p><a href="index.html">Documentation home</a> · <a href="failure-triage-acceptance.html">Failure triage scenarios</a> · <a href="phase0-ft08-results.html">FT08 writable sessions</a></p>
+<h2 id="result-and-scope">Result and scope</h2>
+<p>FT09 passed automated checks for a new synthetic Linux ARM64 regression with captured debug symbols. The recorded image and target replayed the original failure; ten compatibility decisions handled native, incompatible and explicitly changed-session requests. An interactive Bash session ran GDB and attached to a new invocation of the preserved executable, inspected its source/variable, hit a breakpoint, displayed a backtrace and detached. The reference finished on November 12 2026 at 10:32 AM America Los Angeles time.</p>
+<p>Attachment worked under the normal restricted worker profile: all capabilities dropped, <code>no-new-privileges</code>, default seccomp and a private PID namespace. No <code>SYS_PTRACE</code> addition, privileged container, host PID access or unconfined seccomp was required. This is the observed behavior on this Docker/Linux configuration; it is not a claim about every backend&#x27;s ptrace policy.</p>
+<p>The existing framework, configuration defaults, approved tests and earlier captures remain untouched. A derived runtime installs GDB and its package dependencies, then captures a new symbol-bearing failure. It is a separately identified runtime, not a silent change to the runtime of earlier captures. Native scheduling/debugger services, real foreign workers, GPU execution and broader production acceptance remain open.</p>
+<h2 id="captured-execution-contract">Captured execution contract</h2>
+<p>The new runtime extends the retained legacy image and uses the same deployed framework. All 2,654 framework file/link/mode entries are digested against the earlier deployed archive before and after every worker operation; their identity remains unchanged. The new image is retained as a native Docker archive and selected by immutable image ID for capture, replay and debugging.</p>
+<table><thead><tr><th>Requirement</th><th>Captured/observed value</th></tr></thead><tbody>
+<tr><td>Runtime image</td><td><code>sha256:747873867110897321865b8790204c0d42a9d51357dce8c3334f50c59d6e916c</code></td></tr>
+<tr><td>Execution OS/architecture</td><td>Linux / ARM64; Docker engine and runtime inventory agree</td></tr>
+<tr><td>Artifact data mode</td><td>Little-endian ELF64/AArch64, independently checked from the executable header</td></tr>
+<tr><td>Qualified runtime data modes</td><td>64-bit for this fixture; no multilib qualification is inferred</td></tr>
+<tr><td>Declared CPU features</td><td><code>fp</code> and <code>asimd</code>, present in the actual runtime inventory</td></tr>
+<tr><td>Compiler/symbol build</td><td>GCC 13.3.0 with <code>-g -O0 -fno-omit-frame-pointer -no-pie</code></td></tr>
+<tr><td>Debugger</td><td>GNU GDB 15.1 from the derived runtime</td></tr>
+<tr><td>Symbol/source evidence</td><td>ELF <code>.debug_info</code> and <code>.debug_line</code>, saved source digest and working source link</td></tr>
+<tr><td>Qualified GPU backend</td><td>None in this CPU-only fixture; a CUDA requirement is rejected rather than inferred from host hardware</td></tr>
+</tbody></table>
+<p>The native Mac is the client/artifact host. The execution worker is Linux ARM64 inside Docker. Exact tool/kernel/engine versions, CPU features and process security fields are recorded in the inventory. The container&#x27;s Yama <code>ptrace_scope</code> path is unavailable; no value is inferred from that absence.</p>
+<p>Stock TM runs <code>debug_target</code> without arguments. It prints <code>value=42</code>, exits 7 and records <code>ExecErr</code>; TM itself returns 0. The original work archive retains the executable, object, source link, generated compile/link/run scripts, saved environment and diagnostics. A separate replay reproduces the saved execution, recompiles, links and again exits 7 with the same output and result tag.</p>
+<h2 id="compatibility-and-incompatible-worker-handling">Compatibility and incompatible-worker handling</h2>
+<p>The validation-only gate checks declared OS, architecture, image identity, CPU data mode, required CPU features, qualified GPU backend and optional debugger availability against the preserved artifact and candidate inventory. A rejected decision dispatches no original phase. Emulation is a separately identified changed-session request and cannot be accepted as the original performance environment.</p>
+<table><thead><tr><th>Decision</th><th>Evidence type</th><th>Result</th></tr></thead><tbody>
+<tr><td>Native compatible worker</td><td>Actual derived-runtime and engine inventory</td><td>Compatible; subsequent real phase replay and debugging use the captured image</td></tr>
+<tr><td>AMD64 worker</td><td>Constructed worker descriptor</td><td><code>WorkerArchMismatch</code></td></tr>
+<tr><td>Darwin worker</td><td>Constructed worker descriptor</td><td><code>WorkerOsMismatch</code></td></tr>
+<tr><td>Worker qualified only for 32-bit</td><td>Constructed worker descriptor</td><td><code>UnsupportedDataMode</code></td></tr>
+<tr><td>Worker missing <code>asimd</code></td><td>Constructed worker descriptor</td><td><code>MissingCPUFeatures</code></td></tr>
+<tr><td>Earlier base image selected</td><td>Actual earlier-runtime probe</td><td><code>ImageIdentityMismatch</code></td></tr>
+<tr><td>32-bit target requested for the saved 64-bit artifact</td><td>Changed request on the actual worker</td><td><code>UnsupportedDataMode</code> and <code>ArtifactDataModeMismatch</code></td></tr>
+<tr><td>CUDA required</td><td>Requirement on the actual unqualified CPU runtime</td><td><code>MissingVerifiedGPUBackend</code></td></tr>
+<tr><td>Debugger required in earlier base runtime</td><td>Actual probe finds no GDB; image also differs</td><td><code>MissingDebugger</code> and <code>ImageIdentityMismatch</code></td></tr>
+<tr><td>Explicit emulation request on an AMD64 descriptor</td><td>Policy check, not an emulated run</td><td><code>changed_session_required</code>; original dispatch remains false</td></tr>
+</tbody></table>
+<p>The four foreign-worker descriptors are constructed negative tests, not live AMD64/Darwin/32-bit machines. The earlier base runtime is a real local probe and is rejected as an execution candidate; it does not execute the new failure with a substituted image. GPU qualification and emulation are gate checks only. No remote GPU job, foreign-architecture worker or emulator is launched.</p>
+<h2 id="actual-interactive-attachment">Actual interactive attachment</h2>
+<p>The original failure process has already exited. A new debugging session restores the captured executable unchanged and starts it with the explicitly recorded <code>--wait</code> argument. That mode prints its PID and waits with <code>debug_value=41</code>. It is a changed debugging invocation of captured code, not restoration of the failed live process.</p>
+<p>An actual pseudo-terminal runs interactive Bash. Within that shell, batch GDB attaches to the waiting process by PID using the captured symbols. The transcript records:</p>
+<ol>
+<li>Read <code>debug_value</code> as 41 and list the original C source.</li>
+<li>Set a breakpoint at <code>debug_checkpoint</code>.</li>
+<li>Change only the new process&#x27;s variable to 42 and continue.</li>
+<li>Stop at the breakpoint, read 42 and show the <code>debug_checkpoint</code>/<code>main</code> source backtrace.</li>
+<li>Detach; the process prints <code>value=43</code> and exits 7.</li>
+</ol>
+<p>The first stop is inside libc&#x27;s sleep implementation, whose source is not bundled; <code>list main</code> and the later breakpoint/backtrace resolve the captured test source. System-library debug-source completeness is not claimed. Debugger activity changes the session process&#x27;s memory, while the executable, source, saved recipes, original failure output and original evidence remain unchanged.</p>
+<p>All five experiment containers use disabled networking, no published ports, dropped capabilities, <code>no-new-privileges</code>, default seccomp, no host PID mode and only read-only tools/metadata/evidence/fixture mounts plus their own writable export. Runtime process status confirms effective capabilities zero, seccomp mode 2 and <code>NoNewPrivs=1</code>.</p>
+<p>The runner first tries this normal profile. Its conditional fallback adds only <code>SYS_PTRACE</code> if the backend rejects attachment; it never selects privileged or unconfined mode. That fallback was not needed or exercised by this reference. A denied attachment would be recorded separately from shell/phase replay and its own waiting target cleaned up explicitly. Production profiles that deny ptrace still need their own qualification; the real missing-GDB candidate above supplies an observed unsupported runtime path here.</p>
+<h2 id="evidence-and-repeatability">Evidence and repeatability</h2>
+<p>See the <a href="../../validation/phase0/legacy/README.md">experiment instructions</a>. New tools are <a href="../../validation/phase0/legacy/run_ft09.py">run_ft09.py</a>, the <a href="../../validation/phase0/legacy/ft09/Dockerfile">image extension</a>, <a href="../../validation/phase0/legacy/ft09/compatibility.py">compatibility decisions</a>, <a href="../../validation/phase0/legacy/ft09/inventory.py">inventory helper</a>, <a href="../../validation/phase0/legacy/ft09/worker.py">worker</a>, <a href="../../validation/phase0/legacy/ft09/debug_target.c">synthetic target</a> and <a href="../../validation/phase0/legacy/verify_ft09.py">verify_ft09.py</a>.</p>
+<table><thead><tr><th>Evidence</th><th>Review purpose</th></tr></thead><tbody>
+<tr><td><a href="../../validation/phase0/legacy/evidence/ft09-001/summary.json">Summary</a></td><td>Scoped result, image identities and selected debugger profile</td></tr>
+<tr><td><a href="../../validation/phase0/legacy/evidence/ft09-001/execution-host.json">Host/engine</a></td><td>Native client and actual Docker execution platform</td></tr>
+<tr><td><a href="../../validation/phase0/legacy/evidence/ft09-001/metadata/requirements.json">Captured requirements</a></td><td>OS/architecture/image/data-mode/CPU contract</td></tr>
+<tr><td><a href="../../validation/phase0/legacy/evidence/ft09-001/compatibility-decisions.json">Compatibility decisions</a></td><td>Ten requests, inputs, named reasons and evidence-type labels</td></tr>
+<tr><td><a href="../../validation/phase0/legacy/evidence/ft09-001/capture/results.json">Original capture</a></td><td>Stock TM result, ELF/source digests and debug sections</td></tr>
+<tr><td><a href="../../validation/phase0/legacy/evidence/ft09-001/replay/results.json">Phase replay</a></td><td>Four independent saved/rebuilt phase checks and unchanged outcome</td></tr>
+<tr><td><a href="../../validation/phase0/legacy/evidence/ft09-001/debug-default/results.json">Attachment results</a></td><td>New debug invocation, target exit, security inventory and binary preservation</td></tr>
+<tr><td><a href="../../validation/phase0/legacy/evidence/ft09-001/debug-default/interactive-shell.log">Interactive shell</a></td><td>Raw pseudo-terminal commands/output and interactive shell flag</td></tr>
+<tr><td><a href="../../validation/phase0/legacy/evidence/ft09-001/debug-default/gdb.log">GDB transcript</a></td><td>Real attachment, variable values, source breakpoint/backtrace and detach</td></tr>
+<tr><td><a href="../../validation/phase0/legacy/evidence/ft09-001/debug-default/container-inspect.json">Debugger mount/profile inspection</a></td><td>Actual image, private PID mode, dropped capabilities and read-only inputs</td></tr>
+<tr><td><a href="../../validation/phase0/legacy/evidence/ft09-001/probe-base/results.json">Earlier runtime probe</a></td><td>Actual missing debugger and different-image identity</td></tr>
+<tr><td><a href="../../validation/phase0/legacy/evidence/ft09-001/verification.json">Verification</a></td><td>Full reference audit, compatibility cases, symbols, attachment and recipe preservation</td></tr>
+<tr><td><a href="../../validation/phase0/legacy/evidence/ft09-001/SHA256SUMS.json">Checksums</a></td><td>Compact digests; raw-run index and large-artifact retention manifest included</td></tr>
+</tbody></table>
+<p>The full reference is <code>validation/phase0/legacy/runs/ft09-001/</code>; compact review evidence is approximately 375 KB under <code>evidence/ft09-001/</code>. It includes the original small failure archive, replay/debug sessions, exact scripts/source, native and base probes, compatibility inputs/decisions and raw terminal output. The derived runtime archive is 623,109,120 bytes and remains local/ignored. The earlier base runtime and deployed-framework archive also stay local. Their sizes/digests are recorded; the compact bundle alone does not supply the executable platform image.</p>
+<h2 id="remaining-gates">Remaining gates</h2>
+<p>This establishes the synthetic native-platform and debugger subset, not a native scheduler/capability service. Foreign-worker cases are descriptor rejection tests; real heterogeneous workers, GPU capability/driver execution and alternate debugger profiles remain unqualified. No live-process checkpoint/restore, deterministic recurrence or performance equivalence is claimed. Historical suites, dashboard navigation and GPU/DSL execution remain open. FT10 through FT19 remain not run; phase 0 is not complete.</p>
+<footer>Reconstructed from OpenCTI source, baseline 8c3d603. Generated by doc/tools/build_docs.py.</footer>
+</main></body></html>

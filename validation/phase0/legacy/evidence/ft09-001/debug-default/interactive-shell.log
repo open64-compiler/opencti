@@ -1,0 +1,60 @@
+printf 'FT09_SHELL_FLAGS=%s\n' "$-"
+pwd
+uname -m
+file ./debug_target
+gdb --version | head -1
+gdb --nx --nh --batch -q -x /session/attach.gdb -p 21 > /session/gdb.log 2>&1
+gdb_status=$?
+printf 'FT09_GDB_STATUS=%s\n' "$gdb_status"
+cat /session/gdb.log
+exit "$gdb_status"
+bash-5.2# printf 'FT09_SHELL_FLAGS=%s\n' "$-"
+FT09_SHELL_FLAGS=himBHs
+bash-5.2# pwd
+/session/original/work/Regression/FT09
+bash-5.2# uname -m
+aarch64
+bash-5.2# file ./debug_target
+./debug_target: ELF 64-bit LSB executable, ARM aarch64, version 1 (SYSV), dynamically linked, interpreter /lib/ld-linux-aarch64.so.1, BuildID[sha1]=d1b762c54b0c228a6131df3b5ad903ccd917a7f0, for GNU/Linux 3.7.0, with debug_info, not stripped
+bash-5.2# gdb --version | head -1
+GNU gdb (Ubuntu 15.1-1ubuntu1~24.04.1) 15.1
+bash-5.2# <x /session/attach.gdb -p 21 > /session/gdb.log 2>&1
+bash-5.2# gdb_status=$?
+bash-5.2# printf 'FT09_GDB_STATUS=%s\n' "$gdb_status"
+FT09_GDB_STATUS=0
+bash-5.2# cat /session/gdb.log
+[Thread debugging using libthread_db enabled]
+Using host libthread_db library "/lib/aarch64-linux-gnu/libthread_db.so.1".
+0x0000ffffae3fbd0c in clock_nanosleep () from /lib/aarch64-linux-gnu/libc.so.6
+FT09_VALUE_BEFORE=41
+No current source file.
+6	
+7	__attribute__((noinline)) int debug_checkpoint(void) {
+8	    return debug_value + 1;
+9	}
+10	
+11	int main(int argc, char **argv) {
+12	    if (argc == 2 && strcmp(argv[1], "--wait") == 0) {
+13	        printf("FT09_ATTACH_READY pid=%ld\n", (long)getpid());
+14	        fflush(stdout);
+15	        while (debug_value == 41) usleep(10000);
+Breakpoint 1 at 0x4007e8: file debug_target.c, line 8.
+
+Breakpoint 1, debug_checkpoint () at debug_target.c:8
+8	    return debug_value + 1;
+FT09_VALUE_AFTER=42
+#0  debug_checkpoint () at debug_target.c:8
+#1  0x0000000000400888 in main (argc=2, argv=0xffffcd876958) at debug_target.c:17
+3	#include <unistd.h>
+4	
+5	volatile int debug_value = 41;
+6	
+7	__attribute__((noinline)) int debug_checkpoint(void) {
+8	    return debug_value + 1;
+9	}
+10	
+11	int main(int argc, char **argv) {
+12	    if (argc == 2 && strcmp(argv[1], "--wait") == 0) {
+[Inferior 1 (process 21) detached]
+bash-5.2# exit "$gdb_status"
+exit
