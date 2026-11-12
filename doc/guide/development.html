@@ -1,0 +1,91 @@
+<!--
+Copyright (C) 2011, Hewlett-Packard Development Company, L.P.
+All Rights Reserved.
+Open64 is free software; you can redistribute it and/or modify it under the
+terms of the GNU General Public License as published by the Free Software
+Foundation; either version 2 of the License, or (at your option) any later
+version. Distributed WITHOUT ANY WARRANTY; without even the implied warranty
+of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General
+Public License for more details.
+-->
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Development and documentation maintenance — OpenCTI</title><style>body{margin:0;background:#f4f6f8;color:#18232e;font:17px/1.6 system-ui,sans-serif}
+main{max-width:1050px;margin:auto;padding:2rem;background:white;min-height:100vh}
+a{color:#075ca8}nav{padding:.7rem 0;border-bottom:1px solid #ccd5dd}
+h1,h2,h3{line-height:1.25;scroll-margin-top:1rem}h2{margin-top:2rem}
+pre{padding:1rem;background:#eff3f7;overflow:auto;border:1px solid #d5dce3}
+code{font: .88em/1.5 ui-monospace,monospace;overflow-wrap:anywhere}
+table{border-collapse:collapse;width:100%;display:block;overflow:auto}
+th,td{padding:.6rem;border:1px solid #ccd5dd;text-align:left;vertical-align:top}
+th{background:#eff3f7}td:first-child{min-width:10rem}footer{border-top:1px solid #ccd5dd;margin-top:2rem;color:#52606b}
+@media(max-width:640px){main{padding:1rem}body{font-size:16px}}
+</style></head><body><main>
+<nav><a href="index.html">CTI documentation</a></nav>
+<h1 id="development-and-documentation-maintenance">Development and documentation maintenance</h1>
+<p><a href="index.html">Documentation home</a></p>
+<p>The <a href="architecture.html">architecture reconstruction</a> explains test families, enrollment, execution, harness management, user/site administration, and modernization boundaries. This page is the source map and maintenance companion.</p>
+<h2 id="source-map">Source map</h2>
+<table><thead><tr><th>Path</th><th>Responsibility</th></tr></thead><tbody>
+<tr><td><code>configure.pl</code></td><td>Interactive checks and in-place deployment substitutions</td></tr>
+<tr><td><code>bin/TM.pl</code></td><td>Run-level options, selection, local/distributed dispatch, log generation</td></tr>
+<tr><td><code>Scripts/generateUnitList.pm</code></td><td>Group expansion and unit selection</td></tr>
+<tr><td><code>Scripts/drivers/meta-driver.pl</code>, <code>lib/metaDriver.pm</code></td><td>Unit setup, driver selection, hooks, result collection</td></tr>
+<tr><td><code>Scripts/drivers/regression.pl</code>, <code>lib/regressionDriver.pm</code></td><td>Individual regression compilation, execution, and comparisons</td></tr>
+<tr><td><code>Scripts/drivers/application.pl</code>, <code>lib/applicationDriver.pm</code></td><td>Application work-tree setup and make-based compile/validate</td></tr>
+<tr><td><code>Scripts/drivers/script-driver.pl</code>, <code>lib/scriptDriver.pm</code></td><td>Script-based test units</td></tr>
+<tr><td><code>Scripts/drivers/lib/</code></td><td>Option customization, discovery, script generation, comparison, result utilities</td></tr>
+<tr><td><code>Scripts/utils/</code>, <code>Scripts/real_hardware_scripts/</code></td><td>Filters, hooks, specialized validation, performance runs</td></tr>
+<tr><td><code>conf/</code></td><td>Defaults, declared customizable/saved/unsaved options, result definitions</td></tr>
+<tr><td><code>lib/CTI_lib.pm</code>, <code>lib/TestInfo.pm</code></td><td>Shared utilities, reports/cache, schedule records and launching</td></tr>
+<tr><td><code>dtm/src/</code>, <code>dtm/lib/</code>, <code>dtm/bin/</code></td><td>Java scheduler, bundled classes, native monitor, Perl operational tools</td></tr>
+<tr><td><code>cti_groups/</code></td><td>Bundled regression, application, and performance test sources</td></tr>
+<tr><td><code>cti_regression/</code>, <code>cti_perf/</code></td><td>Site configuration templates for test campaigns</td></tr>
+<tr><td><code>www/</code></td><td>Web scripts, styles, and symlinks into the installation</td></tr>
+</tbody></table>
+<h2 id="execution-flow">Execution flow</h2>
+<pre><code>TM.pl
+  -&gt; global/default/user options and CLI adjustments
+  -&gt; generateUnitList (SELECTIONS + CHILDREN + Src detection)
+  -&gt; local: meta-driver for each unit
+     distributed: dTM task -&gt; worker unit launcher -&gt; meta-driver
+  -&gt; customize group/unit options; run pre-run hooks
+  -&gt; UNIT_DRIVER
+     regression: discover tests -&gt; customize test -&gt; emit/run scripts
+     application: populate work tree -&gt; make compile -&gt; make validate
+     script: execute configured script tests
+  -&gt; run post-run hooks; collect messages and artifacts
+  -&gt; build summary log; optional postprocessing and log mail</code></pre>
+<p>The driver modules generate shell scripts as durable reproduction artifacts. A change to option saving or script generation can affect both test execution and later failure triage. Preserve the expected environment, current directory, exit status, and message-file conventions.</p>
+<h2 id="changing-drivers">Changing drivers</h2>
+<p>Reusable driver logic belongs in <code>Scripts/drivers/lib</code>. Existing drivers use <code>cti_error</code> for diagnostics; shared modules can call the top-level <code>main::error</code> and <code>main::warning</code> functions. Follow the surrounding module&#x27;s conventions and ensure the entry point supplies the expected diagnostics.</p>
+<p>Add test-level control variables to <code>conf/TestLevelCustomizableOptions.conf</code> when needed; the customizer validates against that file. Add saved-only values to <code>SavedOptions.conf</code> and exclusions to <code>UnsavedOptions.conf</code> deliberately. Result tags and labels belong in <code>TestResultTypes.conf</code>; consumers include driver message collection and web reports. Regenerate the docs after changing these metadata files.</p>
+<p>Some metadata is itself malformed or stale. For example, the literal key <code>TestLevelCustomizableOptions.conf:APP_LANG</code> appears in the customizable-options file. The generated catalog preserves and flags it; documentation does not silently repair the runtime registry. Correcting that entry requires a separate code/configuration change.</p>
+<h2 id="validation-boundaries">Validation boundaries</h2>
+<p>This reconstruction is based on source inspection and documentation build checks. It does not certify compiler test results, modern Perl/Java compatibility, load-monitor binaries, or a running CGI deployment. The unconfigured macOS checkout has case-collision artifacts and is unsuitable for claiming a complete suite run.</p>
+<p>For future code changes, select a configured Linux host, verify option loading, run a small affected unit locally, and inspect its generated scripts and results. Add distributed or web checks only when those paths change. Preserve failure artifacts and record compilers, options, host attributes, and selections with the outcome.</p>
+<h2 id="rebuild-these-docs">Rebuild these docs</h2>
+<p>From the repository root:</p>
+<pre><code>python3 doc/tools/build_docs.py
+python3 doc/tools/build_docs.py --check</code></pre>
+<p>The builder uses only Python&#x27;s standard library. It generates <code>reference.md</code> from option/result metadata, renders <code>doc/guide/*.md</code> into static HTML, updates the existing documentation entry points and text guides, and checks local links and fragments. It supports the Markdown subset used by these pages: headings, paragraphs, fenced code, simple lists, tables, links, and inline code. Raw HTML is escaped.</p>
+<p><code>--check</code> compares expected output with the files on disk and validates links without writing files. No CTI configuration, services, compiler invocations, or network access are required. Generated HTML is committed alongside the Markdown so readers do not need build tools.</p>
+<p>Edit Markdown guides and the builder, then regenerate. Existing HTML URLs are maintained as generated topic views so older links open corrected content. Source links are relative to the repository and are useful from a local checkout or repository viewer; a web deployment exposing only <code>www/</code> may not serve every source path.</p>
+<h2 id="corrections-to-previous-documentation">Corrections to previous documentation</h2>
+<table><thead><tr><th>Previous claim</th><th>Behavior documented from implementation</th></tr></thead><tbody>
+<tr><td>Obtain development code from SVN</td><td>This package is obtained from the GitHub repository; some import tools still assume SVN/ClearCase</td></tr>
+<tr><td><code>TM.pl</code> supports <code>add</code>, <code>analyze</code>, or <code>validate</code></td><td>Parser accepts only <code>clean</code>, <code>run</code>, and <code>test_setting</code></td></tr>
+<tr><td>Default subcommands are <code>clean run</code></td><td>Default is <code>run</code>; cleanup is embedded in that action</td></tr>
+<tr><td>Standalone <code>clean</code> removes work/log data</td><td>Parsed but not dispatched; it performs no standalone cleanup</td></tr>
+<tr><td>Rightmost <code>-id</code>/<code>-w</code>/<code>-l</code> wins</td><td>Explicit <code>-w</code>/<code>-l</code> win over <code>-id</code> regardless of order</td></tr>
+<tr><td>Default log is in the current directory</td><td>Default is <code>&lt;workdir&gt;/log</code> unless overridden</td></tr>
+<tr><td><code>SELECTIONS</code> can name an individual test source</td><td>Select groups/units; narrow regression tests with <code>TESTS</code></td></tr>
+<tr><td>Command-line values always override test configuration</td><td>Hierarchical customization follows run-level overrides</td></tr>
+<tr><td>Application wrapper defaults to <code>M.hp.TAHOE</code></td><td>Driver adds <code>-f</code> only when <code>MAKEWRAPPER</code> is set</td></tr>
+<tr><td>Schedule syntax errors always abort</td><td>Loader can warn and continue; inspect diagnostics and selected tests</td></tr>
+<tr><td>dTM start does nothing when already running</td><td>It errors if the configured server is reachable</td></tr>
+<tr><td>Newer Java automatically satisfies configuration checks</td><td>Historical output/version parsing can reject modern runtimes</td></tr>
+</tbody></table>
+<p>The replacement guides use the implementation in this checkout as the source of truth. They do not change those runtime behaviors.</p>
+<footer>Reconstructed from OpenCTI source, baseline 8c3d603. Generated by doc/tools/build_docs.py.</footer>
+</main></body></html>

@@ -1,0 +1,435 @@
+[
+  {
+    "path": "launcher.log",
+    "type": "file",
+    "mode": "0o644",
+    "sha256": "71d34a172028c0dbb236cc66b201258e32de5def4cc277b63a3e290cca194b28",
+    "size": 6309
+  },
+  {
+    "path": "summary.log",
+    "type": "file",
+    "mode": "0o644",
+    "sha256": "20a03f6d06b252a20bc59ffa8abde0c85b269210dabb78a047215e378c1264f0",
+    "size": 1644
+  },
+  {
+    "path": "work/Regression/FT01/compile_error.c",
+    "type": "symlink",
+    "target": "/fixtures/groups/Regression/FT01/Src/compile_error.c",
+    "resolved_sha256": "0b8ba5c3ff219febf64c85992220840f21d2f67d284a94e57d0232ce7a807b36"
+  },
+  {
+    "path": "work/Regression/FT01/compile_error.compare-out.sh",
+    "type": "file",
+    "mode": "0o777",
+    "sha256": "af8de3220a3adf918cc2b38411cc51fab531499a2eedef77e72d45b5ee89edf9",
+    "size": 958
+  },
+  {
+    "path": "work/Regression/FT01/compile_error.compile.sh",
+    "type": "file",
+    "mode": "0o777",
+    "sha256": "45cacbca12e5c9ca81bbdd93e87941e78cf12aed674a68f4c997a8c25cbaf1ed",
+    "size": 902
+  },
+  {
+    "path": "work/Regression/FT01/compile_error.env",
+    "type": "file",
+    "mode": "0o664",
+    "sha256": "ce4c3b3f4ba98ba9d21a26a2d6cb939323f5ed766c589bad4c62fb4de2e2c49d",
+    "size": 2013
+  },
+  {
+    "path": "work/Regression/FT01/compile_error.err",
+    "type": "file",
+    "mode": "0o664",
+    "sha256": "291b9566f2a1619423b329336087717eab1f60de24fb7e63446fc7ef17bbb5b9",
+    "size": 501
+  },
+  {
+    "path": "work/Regression/FT01/compile_error.link.sh",
+    "type": "file",
+    "mode": "0o777",
+    "sha256": "1f89865b77e8afd40d23cac92fef2910d922db09c165874c78c00c34df6dcbb7",
+    "size": 868
+  },
+  {
+    "path": "work/Regression/FT01/compile_error.out.master",
+    "type": "symlink",
+    "target": "/fixtures/groups/Regression/FT01/Src/../Masters/compile_error.out",
+    "resolved_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "path": "work/Regression/FT01/compile_error.result",
+    "type": "file",
+    "mode": "0o664",
+    "sha256": "d6db9dab1c5704369bc9d46bf199a26f236c01e1164ef796f1ab9a00ed2829a0",
+    "size": 11
+  },
+  {
+    "path": "work/Regression/FT01/compile_error.run.sh",
+    "type": "file",
+    "mode": "0o777",
+    "sha256": "e6a7429d70091bb7374466fa7471f891fb5176b7182ae3ad2983fb900a22c2fe",
+    "size": 726
+  },
+  {
+    "path": "work/Regression/FT01/compile_error.sh",
+    "type": "file",
+    "mode": "0o777",
+    "sha256": "c9cc8790bd7e4c45db9ffa38975f7616edd984533ceb53b2d700704abf8b7ef4",
+    "size": 1612
+  },
+  {
+    "path": "work/Regression/FT02/runtime_error",
+    "type": "file",
+    "mode": "0o775",
+    "sha256": "585adf4b08c170e4a7c67ec933145af6ddb65f553858a4b732396d5f40e727df",
+    "size": 70320
+  },
+  {
+    "path": "work/Regression/FT02/runtime_error.c",
+    "type": "symlink",
+    "target": "/fixtures/groups/Regression/FT02/Src/runtime_error.c",
+    "resolved_sha256": "18f3a3c41dad4a7122c179dcf040a10b74120e051db6ca7a251e4d61742d2651"
+  },
+  {
+    "path": "work/Regression/FT02/runtime_error.compare-out.sh",
+    "type": "file",
+    "mode": "0o777",
+    "sha256": "2467c0cfa39b438600e7f849b03969dacccd67fb3fe0867e09587aaee32216ef",
+    "size": 958
+  },
+  {
+    "path": "work/Regression/FT02/runtime_error.compile.sh",
+    "type": "file",
+    "mode": "0o777",
+    "sha256": "97d54d62cd1ee6be41d53d18e8f95c4ff25cd6d11b9e78453b8ecc619858cce0",
+    "size": 902
+  },
+  {
+    "path": "work/Regression/FT02/runtime_error.env",
+    "type": "file",
+    "mode": "0o664",
+    "sha256": "988030b50975510390c0ec027675cb674bd05077deeb2dc40656f90d9ef99c26",
+    "size": 2013
+  },
+  {
+    "path": "work/Regression/FT02/runtime_error.err",
+    "type": "file",
+    "mode": "0o664",
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "size": 0
+  },
+  {
+    "path": "work/Regression/FT02/runtime_error.link.sh",
+    "type": "file",
+    "mode": "0o777",
+    "sha256": "666d57029be52e990e321fc26d491e348d51f095d27550dcba6163bbe70fa917",
+    "size": 868
+  },
+  {
+    "path": "work/Regression/FT02/runtime_error.o",
+    "type": "file",
+    "mode": "0o664",
+    "sha256": "f0bd07e3c86238f534687617b8123bfc1cc1c05d082fde6cf819fbc164b40b88",
+    "size": 1624
+  },
+  {
+    "path": "work/Regression/FT02/runtime_error.out",
+    "type": "file",
+    "mode": "0o664",
+    "sha256": "907a759d6e6e0c59ce500f1ae0f81d41111848f6443bc6bbcf082142559764e8",
+    "size": 16
+  },
+  {
+    "path": "work/Regression/FT02/runtime_error.out.master",
+    "type": "symlink",
+    "target": "/fixtures/groups/Regression/FT02/Src/../Masters/runtime_error.out",
+    "resolved_sha256": "907a759d6e6e0c59ce500f1ae0f81d41111848f6443bc6bbcf082142559764e8"
+  },
+  {
+    "path": "work/Regression/FT02/runtime_error.result",
+    "type": "file",
+    "mode": "0o664",
+    "sha256": "5b4c1d5448279cdffaa6d232b0c71371ae4e53058210195a6a238959ee9d9c18",
+    "size": 8
+  },
+  {
+    "path": "work/Regression/FT02/runtime_error.run.sh",
+    "type": "file",
+    "mode": "0o777",
+    "sha256": "f47e356ba8550c27c0365ba686c8376cff91be8c0b4a985db0088d1b820ff7c2",
+    "size": 726
+  },
+  {
+    "path": "work/Regression/FT02/runtime_error.sh",
+    "type": "file",
+    "mode": "0o777",
+    "sha256": "ccc29bdb65f79e5e24e5f6e77c8fb2fe476e12a29ef7fa1651e1a48c5be3f9b4",
+    "size": 1612
+  },
+  {
+    "path": "work/Regression/FT03/output_mismatch",
+    "type": "file",
+    "mode": "0o775",
+    "sha256": "b582e76a1b2c18262c7ed8481f66aa89915faec1255f4d24a55dd9b428e5ff10",
+    "size": 70328
+  },
+  {
+    "path": "work/Regression/FT03/output_mismatch.c",
+    "type": "symlink",
+    "target": "/fixtures/groups/Regression/FT03/Src/output_mismatch.c",
+    "resolved_sha256": "08e9e9a79f9aa79349f7775eb2fcc65a82d0ded7c20be4d6a3baa35bd51ceb30"
+  },
+  {
+    "path": "work/Regression/FT03/output_mismatch.compare-out.sh",
+    "type": "file",
+    "mode": "0o777",
+    "sha256": "f6b463e2693de4f547ae2f5808fceb70d76ddbda82903e438361b0654b439ced",
+    "size": 982
+  },
+  {
+    "path": "work/Regression/FT03/output_mismatch.compile.sh",
+    "type": "file",
+    "mode": "0o777",
+    "sha256": "94cf64ab8322c655fc287e873f7ccf661c530ff9224d7580d40d42991e51ba48",
+    "size": 918
+  },
+  {
+    "path": "work/Regression/FT03/output_mismatch.env",
+    "type": "file",
+    "mode": "0o664",
+    "sha256": "4dce110b92a5ae9737c4a11280a1773dd1bfe49d42bbbbee05bda78e9cc36777",
+    "size": 2017
+  },
+  {
+    "path": "work/Regression/FT03/output_mismatch.err",
+    "type": "file",
+    "mode": "0o664",
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "size": 0
+  },
+  {
+    "path": "work/Regression/FT03/output_mismatch.link.sh",
+    "type": "file",
+    "mode": "0o777",
+    "sha256": "17799573be35c62d401d93407b06d01e957d5e80a5b6e4f146997d2ed925a644",
+    "size": 888
+  },
+  {
+    "path": "work/Regression/FT03/output_mismatch.o",
+    "type": "file",
+    "mode": "0o664",
+    "sha256": "f2ec226957d9f6588110e9b0a6e87ee6424e26641d20b0e7fec90d6aacda381a",
+    "size": 1616
+  },
+  {
+    "path": "work/Regression/FT03/output_mismatch.out",
+    "type": "file",
+    "mode": "0o664",
+    "sha256": "6485b059becfc9a1e0a457fe126326e43302c75a3d8ecfb93c6f8af8978b5b1a",
+    "size": 7
+  },
+  {
+    "path": "work/Regression/FT03/output_mismatch.out.diff",
+    "type": "file",
+    "mode": "0o664",
+    "sha256": "7380d645e4b8fff064e15452d4cd03641f41a61ebcf8d69080072978237701bd",
+    "size": 28
+  },
+  {
+    "path": "work/Regression/FT03/output_mismatch.out.master",
+    "type": "symlink",
+    "target": "/fixtures/groups/Regression/FT03/Src/../Masters/output_mismatch.out",
+    "resolved_sha256": "1ea7a9b77da8c725742658e48d686d50bdaaf7f8b0289b1061adec3d249e5071"
+  },
+  {
+    "path": "work/Regression/FT03/output_mismatch.result",
+    "type": "file",
+    "mode": "0o664",
+    "sha256": "461325dffd71fed76022e3abcb471822b2b7da0bd0a45d623fd68d05e7fac465",
+    "size": 11
+  },
+  {
+    "path": "work/Regression/FT03/output_mismatch.run.sh",
+    "type": "file",
+    "mode": "0o777",
+    "sha256": "2cef3a02e5977c1bff1cf621d2551cd2246a67fdc4e745a132fa13040a9ed752",
+    "size": 742
+  },
+  {
+    "path": "work/Regression/FT03/output_mismatch.sh",
+    "type": "file",
+    "mode": "0o777",
+    "sha256": "4eaa07fb0754f5c37d9a8349dd33f195f592f4a06b75cb73dc49279627beea2d",
+    "size": 1644
+  },
+  {
+    "path": "work/Regression/FT03NoMaster/absent_master",
+    "type": "file",
+    "mode": "0o775",
+    "sha256": "effcd3b264a265e38ca64654bb0c483c8e57dc64252ede3d789be927a13659a6",
+    "size": 70320
+  },
+  {
+    "path": "work/Regression/FT03NoMaster/absent_master.c",
+    "type": "symlink",
+    "target": "/fixtures/groups/Regression/FT03NoMaster/Src/absent_master.c",
+    "resolved_sha256": "08e9e9a79f9aa79349f7775eb2fcc65a82d0ded7c20be4d6a3baa35bd51ceb30"
+  },
+  {
+    "path": "work/Regression/FT03NoMaster/absent_master.compare-out.sh",
+    "type": "file",
+    "mode": "0o777",
+    "sha256": "17014c8338e34cf31db1ca8702f784e5c18931e686a8b7c95460d8999938b5d1",
+    "size": 1511
+  },
+  {
+    "path": "work/Regression/FT03NoMaster/absent_master.compile.sh",
+    "type": "file",
+    "mode": "0o777",
+    "sha256": "8bb21fe83b85eb0d11be07c32449389c370bdd083104c3fe09e637756aafa142",
+    "size": 902
+  },
+  {
+    "path": "work/Regression/FT03NoMaster/absent_master.env",
+    "type": "file",
+    "mode": "0o664",
+    "sha256": "e62261fb85b1e139ebfe3fcd4548f422edc8d8c71facabfc6e84ed2c5de39f91",
+    "size": 2021
+  },
+  {
+    "path": "work/Regression/FT03NoMaster/absent_master.err",
+    "type": "file",
+    "mode": "0o664",
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "size": 0
+  },
+  {
+    "path": "work/Regression/FT03NoMaster/absent_master.link.sh",
+    "type": "file",
+    "mode": "0o777",
+    "sha256": "dcf82342f9d9b3dd9c95e63c6f0ef1e6a5ef7ffa3dfac9008a283ed96f915f78",
+    "size": 868
+  },
+  {
+    "path": "work/Regression/FT03NoMaster/absent_master.o",
+    "type": "file",
+    "mode": "0o664",
+    "sha256": "2d04267dc3b2a462d6db67dd93fb88fc8250cd9963f52b4f04203a40e38a1eef",
+    "size": 1616
+  },
+  {
+    "path": "work/Regression/FT03NoMaster/absent_master.out",
+    "type": "file",
+    "mode": "0o664",
+    "sha256": "6485b059becfc9a1e0a457fe126326e43302c75a3d8ecfb93c6f8af8978b5b1a",
+    "size": 7
+  },
+  {
+    "path": "work/Regression/FT03NoMaster/absent_master.out.master",
+    "type": "symlink",
+    "target": "/fixtures/groups/Regression/FT03NoMaster/Src/../Masters/absent_master.out",
+    "resolved_sha256": null
+  },
+  {
+    "path": "work/Regression/FT03NoMaster/absent_master.result",
+    "type": "file",
+    "mode": "0o664",
+    "sha256": "9db19afe238ae60b4146c2b8179f9c6d1fb767ad5e144ce43180d06ac1b49a74",
+    "size": 12
+  },
+  {
+    "path": "work/Regression/FT03NoMaster/absent_master.run.sh",
+    "type": "file",
+    "mode": "0o777",
+    "sha256": "acaafba78b0782e8d6b8991432dd789d030e1172f6c782b80746eaca5e181f22",
+    "size": 726
+  },
+  {
+    "path": "work/Regression/FT03NoMaster/absent_master.sh",
+    "type": "file",
+    "mode": "0o777",
+    "sha256": "c07e5a251e2e9b1d666a5dbcba91b8668bf2d9a2bd8b5ac5c5aaeb5a0ff87836",
+    "size": 1612
+  },
+  {
+    "path": "work/TMEnv",
+    "type": "file",
+    "mode": "0o644",
+    "sha256": "4b103ae0e6592eeaea300dab3cc70552f4fae99e641c6d6b76af693c10dc8102",
+    "size": 7259
+  },
+  {
+    "path": "work/TMUnits",
+    "type": "file",
+    "mode": "0o644",
+    "sha256": "ac1577cf8e317b9fc9f9c9ee9335dba2108a77c456101589798868d60a7d16f9",
+    "size": 84
+  },
+  {
+    "path": "work/TMmsgs/enumfile.1",
+    "type": "file",
+    "mode": "0o644",
+    "sha256": "04503450b59697d1767720efd8008310356f34df82c6636bd87b0ca99668d1d5",
+    "size": 40
+  },
+  {
+    "path": "work/TMmsgs/enumfile.2",
+    "type": "file",
+    "mode": "0o644",
+    "sha256": "b37a6e0a63351d878427e0582fb445a4d3413793e350e38435d1caa7854113e3",
+    "size": 34
+  },
+  {
+    "path": "work/TMmsgs/enumfile.3",
+    "type": "file",
+    "mode": "0o644",
+    "sha256": "850b40fa281524743f9209e7d23369d1aa444872fb7b0e849eccda16578f453a",
+    "size": 32
+  },
+  {
+    "path": "work/TMmsgs/enumfile.4",
+    "type": "file",
+    "mode": "0o644",
+    "sha256": "9a6925c52791a0bd9d14cb6bc58a157ebed80e8302182908c9d82a9f890accb3",
+    "size": 32
+  },
+  {
+    "path": "work/TMmsgs/result.1",
+    "type": "file",
+    "mode": "0o664",
+    "sha256": "de6cf1413311b77208ed9db768c6e743e73e39196f9a408bab605cc9733016f4",
+    "size": 52
+  },
+  {
+    "path": "work/TMmsgs/result.2",
+    "type": "file",
+    "mode": "0o664",
+    "sha256": "40c8ecf0ae41e6d49380c7d96c5590cef70362fcde182052beba07ae5d05c333",
+    "size": 45
+  },
+  {
+    "path": "work/TMmsgs/result.3",
+    "type": "file",
+    "mode": "0o664",
+    "sha256": "41dfaf82b345f1ea7ab622038fb5fcb2af99e579014db3e3ceec59e7dc62ba6e",
+    "size": 40
+  },
+  {
+    "path": "work/TMmsgs/result.4",
+    "type": "file",
+    "mode": "0o664",
+    "sha256": "cef9208a0a86beaaa53c14b48023729572c8f1fa64ef243679eec3a7207f458a",
+    "size": 43
+  },
+  {
+    "path": "work/log.header",
+    "type": "file",
+    "mode": "0o644",
+    "sha256": "a1257f283d85942d41e9e90f22e3715d8cfc3c39510a719770a61c0ccd4e3c31",
+    "size": 606
+  }
+]

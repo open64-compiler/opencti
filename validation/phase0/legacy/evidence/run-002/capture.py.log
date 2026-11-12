@@ -1,0 +1,9 @@
+{
+  "tm_returncode": 0,
+  "result_files": {
+    "work/Regression/FT01/compile_error.result": "CompileErr",
+    "work/Regression/FT02/runtime_error.result": "ExecErr",
+    "work/Regression/FT03/output_mismatch.result": "DiffPgmOut",
+    "work/Regression/FT03NoMaster/absent_master.result": "NoMasterOut"
+  }
+}

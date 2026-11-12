@@ -1,0 +1,107 @@
+<!--
+Copyright (C) 2011, Hewlett-Packard Development Company, L.P.
+All Rights Reserved.
+Open64 is free software; you can redistribute it and/or modify it under the
+terms of the GNU General Public License as published by the Free Software
+Foundation; either version 2 of the License, or (at your option) any later
+version. Distributed WITHOUT ANY WARRANTY; without even the implied warranty
+of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General
+Public License for more details.
+-->
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Running tests and reading results — OpenCTI</title><style>body{margin:0;background:#f4f6f8;color:#18232e;font:17px/1.6 system-ui,sans-serif}
+main{max-width:1050px;margin:auto;padding:2rem;background:white;min-height:100vh}
+a{color:#075ca8}nav{padding:.7rem 0;border-bottom:1px solid #ccd5dd}
+h1,h2,h3{line-height:1.25;scroll-margin-top:1rem}h2{margin-top:2rem}
+pre{padding:1rem;background:#eff3f7;overflow:auto;border:1px solid #d5dce3}
+code{font: .88em/1.5 ui-monospace,monospace;overflow-wrap:anywhere}
+table{border-collapse:collapse;width:100%;display:block;overflow:auto}
+th,td{padding:.6rem;border:1px solid #ccd5dd;text-align:left;vertical-align:top}
+th{background:#eff3f7}td:first-child{min-width:10rem}footer{border-top:1px solid #ccd5dd;margin-top:2rem;color:#52606b}
+@media(max-width:640px){main{padding:1rem}body{font-size:16px}}
+</style></head><body><main>
+<nav><a href="index.html">CTI documentation</a></nav>
+<h1 id="running-tests-and-reading-results">Running tests and reading results</h1>
+<p><a href="index.html">Documentation home</a></p>
+<h2 id="first-local-run">First local run</h2>
+<p>Start on a configured Linux deployment with a small regression unit. The following option file uses Open64 compilers supplied by the site; replace <code>/opt/open64/bin</code> with the actual installation. Save it outside the source tree as <code>local.opt</code>:</p>
+<pre><code>export CTI_GROUPS=&quot;$CTI_HOME/cti_groups&quot;
+export SELECTIONS=&quot;Regression/fe&quot;
+export CC=/opt/open64/bin/opencc
+export CXX=/opt/open64/bin/openCC
+export FC=/opt/open64/bin/openf90
+export DATA_MODE=+DD64
+export DATA_MODE_MAPPING=&quot;+DD32/-m32 +DD64/-m64&quot;
+export CTI_OPT_SIGN=&quot;-&quot;
+export OPT_LEVEL=2
+export CTI_COMPILE_HOST_OS=Linux
+export CTI_RUN_HOST_OS=Linux
+export CTI_REPORT_PASSES=true
+export CLEAN=false</code></pre>
+<p><code>CTI_HOME</code> must resolve to the configured installation, and the selected compilers must be executable. The defaults deliberately set <code>CC</code>, <code>CXX</code>, and <code>FC</code> to <code>/bin/false</code>. Unit settings may further customize options; inspect the generated compile command before assuming your chosen flags reached a test.</p>
+<p>From a separate scratch directory, set your installation path and inspect the effective run environment:</p>
+<pre><code>export CTI_HOME=/absolute/path/to/opencti
+perl &quot;$CTI_HOME/bin/TM.pl&quot; -nod -nomail -f ./local.opt \
+  -w &quot;$PWD/fe.work&quot; -l &quot;$PWD/fe.log&quot; test_setting</code></pre>
+<p><code>test_setting</code> prints the full environment and exits before running drivers. Avoid sharing its output without reviewing it for credentials inherited from the shell. It still loads option files, checks selections/paths, and can create the log&#x27;s parent directory.</p>
+<p>Run the selected unit:</p>
+<pre><code>perl &quot;$CTI_HOME/bin/TM.pl&quot; -nod -nomail -f ./local.opt \
+  -w &quot;$PWD/fe.work&quot; -l &quot;$PWD/fe.log&quot; run</code></pre>
+<p><code>run</code> replaces a previous work directory: it moves it to a <code>.clean</code> sibling and removes that directory asynchronously. Use a fresh work/log location for runs you want to retain. <code>CLEAN=false</code> preserves driver artifacts; it does not disable this top-level replacement.</p>
+<h2 id="tm-command-reference">TM command reference</h2>
+<p>The parser in <a href="../../bin/TM.pl">TM.pl</a> accepts these options. Its built-in help contains historical discrepancies listed below.</p>
+<table><thead><tr><th>Option</th><th>Implemented purpose</th></tr></thead><tbody>
+<tr><td><code>-f FILE</code></td><td>Load a shell options file after defaults</td></tr>
+<tr><td><code>-xf FILE</code></td><td>Load another shell options file after <code>-f</code></td></tr>
+<tr><td><code>-px NAME=value</code></td><td>Set an environment variable after defaults, before the user options file</td></tr>
+<tr><td><code>-x NAME=value</code> or <code>NAME=value</code></td><td>Set an environment variable after option files and CLI-derived adjustments</td></tr>
+<tr><td><code>-nod</code></td><td>Request local execution</td></tr>
+<tr><td><code>-d</code></td><td>Request distributed execution</td></tr>
+<tr><td><code>-d=POOL:host1,host2</code></td><td>Request distributed execution with a pool/host restriction</td></tr>
+<tr><td><code>-w DIR</code>, <code>-l FILE</code></td><td>Set work directory and summary log</td></tr>
+<tr><td><code>-id NAME</code></td><td>Set <code>NAME.work</code> and <code>NAME.log</code>; explicit <code>-w</code>/<code>-l</code> take precedence regardless of argument order</td></tr>
+<tr><td><code>-nomail</code></td><td>Disable final log mail unless subsequently overridden by <code>-x SEND_LOG=...</code></td></tr>
+<tr><td><code>-m true</code>, <code>-m false</code>, <code>-m USER</code></td><td>Choose final log recipients; absent a choice, mail defaults to the invoker</td></tr>
+<tr><td><code>-skip FILE</code></td><td>Read whitespace-separated fully qualified skip selections</td></tr>
+<tr><td><code>-s</code></td><td>Sort units using recorded timing information</td></tr>
+<tr><td><code>-c</code></td><td>Disable data-mode validation</td></tr>
+<tr><td><code>-env DIR</code></td><td>Set <code>TEST_ENV_DIR</code> before loading defaults; defaults may overwrite it</td></tr>
+<tr><td><code>-native</code>, <code>-cross</code></td><td>Apply historical IPF/PA simulator settings; do not use these as generic x86 switches</td></tr>
+<tr><td><code>-h</code>, <code>-help</code></td><td>Print usage and exit with status 1</td></tr>
+</tbody></table>
+<p>The accepted subcommands are <code>run</code>, <code>clean</code>, and <code>test_setting</code>. With no subcommand the code selects <code>run</code>. <code>clean</code> is parsed but has no standalone action in the dispatch loop; cleanup happens inside <code>run</code>. The help text&#x27;s claim that the default is <code>clean run</code> does not match the implementation.</p>
+<p>The script ends with <code>exit 0</code> after a completed run even when tests fail. Check the summary log and per-test results rather than treating the TM process exit code as the test verdict. Fatal infrastructure errors may still terminate the process earlier.</p>
+<h2 id="select-and-narrow-tests">Select and narrow tests</h2>
+<p><code>SELECTIONS</code> names groups or units relative to <code>CTI_GROUPS</code>. Select a unit using <code>SELECTIONS=&quot;Regression/fe&quot;</code>; use <code>TESTS</code> to narrow regression tests to exact unqualified test filenames, including extensions:</p>
+<pre><code>perl &quot;$CTI_HOME/bin/TM.pl&quot; -nod -nomail -f ./local.opt \
+  -x &#x27;TESTS=bug15191_4.c&#x27; -x &#x27;SELECTIONS=Regression/cg&#x27; \
+  -w &quot;$PWD/one.work&quot; -l &quot;$PWD/one.log&quot; run</code></pre>
+<p>Groups expand through <code>CHILDREN</code> in their <code>tmconfig</code>. <code>SELECTIONS=.all.</code> requires root <code>CHILDREN</code> configuration; this checkout has no <code>cti_groups/tmconfig</code>, so explicitly select <code>Regression</code> and/or <code>Applications</code> instead. A single source path is not a unit selection. See <a href="configuration.html">configuration</a>.</p>
+<h2 id="artifacts-and-triage">Artifacts and triage</h2>
+<p>The summary log records totals and groups failures by the labels in <a href="reference.html">the result catalog</a>. Unit work directories appear under the run&#x27;s work tree. Names vary by driver and iteration, but useful artifacts include:</p>
+<table><thead><tr><th>Artifact</th><th>Use</th></tr></thead><tbody>
+<tr><td><code>*.env</code></td><td>Saved options and environment used by generated scripts</td></tr>
+<tr><td><code>*.compile.sh</code>, <code>*.comp.err</code></td><td>Recompile script and compile/link diagnostics</td></tr>
+<tr><td><code>*.run.sh</code>, <code>*.run.out</code></td><td>Runtime reproduction script and captured program output</td></tr>
+<tr><td><code>*.result</code></td><td>Internal result tag, such as <code>CompileErr</code> or <code>DiffPgmOut</code></td></tr>
+<tr><td><code>compare.results</code></td><td>Application validation status; present and empty for success</td></tr>
+<tr><td><code>TMmsgs/</code></td><td>Messages collected to build the summary log</td></tr>
+</tbody></table>
+<p>Read each generated script, change to its working directory, and run it with the configured shell. Keep its <code>.env</code> file and referenced source paths available. Recompiling or rerunning can overwrite artifacts, so copy the failure directory first if you need the original evidence.</p>
+<h2 id="troubleshooting">Troubleshooting</h2>
+<table><thead><tr><th>Symptom</th><th>What to inspect</th></tr></thead><tbody>
+<tr><td>Missing <code>/usr/local/bin/perl</code> or <code>/bin/ksh</code></td><td>Script shebangs and configured Perl path; explicitly invoking Perl only bypasses the first script&#x27;s shebang</td></tr>
+<tr><td>Cannot load options, missing environment dump</td><td><code>Scripts/saveOpt2Env</code>, Korn shell, option syntax, permissions, and temporary-file errors</td></tr>
+<tr><td><code>CTI_GROUPS directory not found</code></td><td>Resolved path and remaining configuration tokens</td></tr>
+<tr><td>No tests selected or unknown group/unit</td><td><code>SELECTIONS</code>, <code>CHILDREN</code>, <code>Src/</code>, and the unit&#x27;s real filename case</td></tr>
+<tr><td>All compilations fail immediately</td><td>Compiler paths and flags; defaults point to <code>/bin/false</code></td></tr>
+<tr><td><code>NoMasterOut</code> or <code>NoMasterErr</code></td><td><code>MASTER_FILE_PATH</code>, suffixes, qualifiers, and case collisions</td></tr>
+<tr><td><code>DiffPgmOut</code></td><td>Output, master file, filters, and padding settings; do not remaster until the behavior is understood</td></tr>
+<tr><td><code>LongCompilation</code>, <code>LongLinking</code>, <code>LongExec</code></td><td>Phase log and <code>TIME_LIMIT</code> in minutes</td></tr>
+<tr><td>Driver or hook errors</td><td>Generated scripts, hook exit codes, shell compatibility, and site tools</td></tr>
+<tr><td>dTM jobs wait indefinitely</td><td>Pool/host status, OS/architecture matching, load monitors, SSH, and shared-path access</td></tr>
+</tbody></table>
+<p>Some tests are compiler- or target-specific. A failure on a different compiler family or modern host is not by itself evidence of a new compiler defect.</p>
+<footer>Reconstructed from OpenCTI source, baseline 8c3d603. Generated by doc/tools/build_docs.py.</footer>
+</main></body></html>

@@ -1,0 +1,74 @@
+<!--
+Copyright (C) 2011, Hewlett-Packard Development Company, L.P.
+All Rights Reserved.
+Open64 is free software; you can redistribute it and/or modify it under the
+terms of the GNU General Public License as published by the Free Software
+Foundation; either version 2 of the License, or (at your option) any later
+version. Distributed WITHOUT ANY WARRANTY; without even the implied warranty
+of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General
+Public License for more details.
+-->
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Distributed testing and web operations — OpenCTI</title><style>body{margin:0;background:#f4f6f8;color:#18232e;font:17px/1.6 system-ui,sans-serif}
+main{max-width:1050px;margin:auto;padding:2rem;background:white;min-height:100vh}
+a{color:#075ca8}nav{padding:.7rem 0;border-bottom:1px solid #ccd5dd}
+h1,h2,h3{line-height:1.25;scroll-margin-top:1rem}h2{margin-top:2rem}
+pre{padding:1rem;background:#eff3f7;overflow:auto;border:1px solid #d5dce3}
+code{font: .88em/1.5 ui-monospace,monospace;overflow-wrap:anywhere}
+table{border-collapse:collapse;width:100%;display:block;overflow:auto}
+th,td{padding:.6rem;border:1px solid #ccd5dd;text-align:left;vertical-align:top}
+th{background:#eff3f7}td:first-child{min-width:10rem}footer{border-top:1px solid #ccd5dd;margin-top:2rem;color:#52606b}
+@media(max-width:640px){main{padding:1rem}body{font-size:16px}}
+</style></head><body><main>
+<nav><a href="index.html">CTI documentation</a></nav>
+<h1 id="distributed-testing-and-web-operations">Distributed testing and web operations</h1>
+<p><a href="index.html">Documentation home</a></p>
+<h2 id="dtm-responsibilities">dTM responsibilities</h2>
+<p>The Java Distributed Test Manager assigns unit tasks to worker machines, tracks machine load, and manages performance-machine locks. Local <code>TM.pl -nod</code> execution bypasses this service. The Perl client and server launcher are <a href="../../dtm/bin/dtm.pl">dtm/bin/dtm.pl</a>; server sources are in <code>dtm/src</code>.</p>
+<p>Configure the installation first. The <a href="../../dtm/conf/dTM_conf.xml">XML configuration</a> defines the server, machines, pools, and users. Its internal DTD specifies element ordering; preserve that order when editing.</p>
+<table><thead><tr><th>Setting</th><th>Shipped template/default</th></tr></thead><tbody>
+<tr><td>Server and auxiliary ports</td><td><code>6969</code>, <code>6968</code> via configuration prompts</td></tr>
+<tr><td>Load-monitor port</td><td><code>5010</code></td></tr>
+<tr><td>Worker scratch directory</td><td><code>/tmp/dTM</code></td></tr>
+<tr><td>Pools</td><td><code>Default</code> and <code>Performance</code>, with placeholder hosts</td></tr>
+<tr><td>Server logs</td><td><code>dtm/log/server.log</code>, <code>dtm/log/error.log</code> after configuration</td></tr>
+<tr><td>Remote shell</td><td><code>/usr/bin/ssh</code> via configuration prompt</td></tr>
+</tbody></table>
+<p>Replace placeholder hosts in the pools. Add explicit machine records when necessary; the commented machine example shows OS, architecture, implementation, frequency, CPUs, scratch directory, and services. Worker attributes must satisfy the run&#x27;s <code>DTM_OPSYS</code>, <code>DTM_CPUARCH</code>, and other requested constraints. The regression template uses <code>Linux_SLES</code> and <code>x86_64</code>; inspect actual detected worker values rather than assuming those labels match your machines.</p>
+<p>Arrange noninteractive remote execution, shared installation/source/result paths, and writable worker scratch directories for participating accounts. The old installation prescribed a world-writable <code>/tmp/dTM</code>; the code needs usable scratch storage, so choose permissions suitable for your site&#x27;s user model. On connection refusal the server attempts to start a worker&#x27;s load daemon through the configured remote shell; repeated failures can disable the worker.</p>
+<p>Evidence: <a href="../../dtm/src/TestMachine.java">machine monitoring</a>, <a href="../../dtm/src/UnitTask.java">task execution</a>, <a href="../../dtm/src/dTMConfig.java">configuration parser</a>.</p>
+<h2 id="verify-start-and-inspect">Verify, start, and inspect</h2>
+<p>Run verification and startup on the configured server host. Startup enforces the configured administrator account and rejects a ClearCase view environment.</p>
+<pre><code>perl &quot;$CTI_HOME/dtm/bin/dtm.pl&quot; -verify
+perl &quot;$CTI_HOME/dtm/bin/dtm.pl&quot; -start
+perl &quot;$CTI_HOME/dtm/bin/dtm.pl&quot; -status
+perl &quot;$CTI_HOME/dtm/bin/dtm.pl&quot; -pool_status Default,Performance
+perl &quot;$CTI_HOME/dtm/bin/dtm.pl&quot; -dynamic</code></pre>
+<p><code>-start</code> errors if the server is already reachable; it is not an idempotent start operation despite the old help wording. Its wait loop has no explicit startup deadline. If startup stalls, inspect both server logs and the Java command configuration.</p>
+<p>After confirming worker readiness, enable a worker with <code>-enable worker1</code>. Disable one using <code>-disable worker1 -info maintenance</code>. <code>-cancel &#x27;GROUP:2,5..8&#x27;</code> cancels selected tasks; <code>-cancel &#x27;GROUP:-1&#x27;</code> cancels a group&#x27;s tasks. <code>-stop</code> stops the service. Use these operations only as part of deliberate pool administration.</p>
+<p>To submit tests, use your configured options file and a new work/log location:</p>
+<pre><code>perl &quot;$CTI_HOME/bin/TM.pl&quot; -d -nomail -f ./local.opt \
+  -x DTM_POOL=Default -w &quot;$PWD/distributed.work&quot; \
+  -l &quot;$PWD/distributed.log&quot; run</code></pre>
+<p><code>-d=Default:worker1,worker2</code> restricts submission to specific hosts in that pool. See <a href="running-tests.html">running tests</a> for results and reproduction artifacts.</p>
+<h2 id="rebuild-server-components">Rebuild server components</h2>
+<p>The checkout includes Java <code>.class</code> files and architecture-specific load monitors; do not assume those binaries suit a new host. An explicit Java rebuild, using a suitable JDK, is:</p>
+<pre><code>javac -d &quot;$CTI_HOME/dtm/lib&quot; &quot;$CTI_HOME&quot;/dtm/src/*.java</code></pre>
+<p>This replaces class files. No Java build target is supplied by <code>dtm/src/Makefile</code>. Test compatibility in the deployment environment before starting the service.</p>
+<p>That <a href="../../dtm/src/Makefile">Makefile</a> builds native <code>loadd</code> variants by SSHing to configured build hosts. Its <code>all</code> target includes multiple historical architectures. Override the relevant host variable or compile only the desired variant. <code>copytobindir</code> maps the lowercase build filenames to runtime names such as <code>loadd.Linux.x86_64</code>; set <code>BINDIR</code> explicitly. The runtime <a href="../../dtm/bin/osarch_exec.sh">osarch dispatcher</a> selects binaries using <code>uname</code>. Refresh running load daemons after deploying a rebuild so workers use the new executable.</p>
+<h2 id="web-deployment-layout">Web deployment layout</h2>
+<p>Serve <code>www/</code> as the CTI document root. It contains symlinks to <code>doc/</code>, <code>conf/</code>, <code>bin/</code>, and <code>dtm/</code>; <code>www/index.html</code> resolves to <code>doc/index.html</code>. Configure symlink handling and CGI execution deliberately in the web server. The default configurator&#x27;s user-home symlink instead points at the repository root, so reconcile that with the <code>www/</code> document-root layout rather than assuming it is a complete web deployment.</p>
+<table><thead><tr><th>URL relative to CTI web root</th><th>Purpose</th></tr></thead><tbody>
+<tr><td><code>index.html</code></td><td>Documentation landing page</td></tr>
+<tr><td><code>doc/guide/index.html</code></td><td>Rebuilt static guides</td></tr>
+<tr><td><code>cgi-bin/show-schedule.cgi?sched=...</code></td><td>Schedule and daily result overview</td></tr>
+<tr><td><code>cgi-bin/show-failures.cgi?sched=...</code></td><td>Failure details</td></tr>
+<tr><td><code>dtm/www/cgi-bin/dTMState.php</code></td><td>dTM machine and task display</td></tr>
+<tr><td><code>cgi-bin/start_tests.cgi</code></td><td>Launch selected configured tests</td></tr>
+<tr><td><code>cgi-bin/addtest.cgi</code></td><td>Legacy test-import form</td></tr>
+</tbody></table>
+<p>The CGI tools execute commands and modify test/result data under configured accounts. Review account permissions, repository assumptions, and access controls before exposing them. The original Apache 2.2 configuration syntax is not a ready-made configuration for a current server. Static documentation needs no CGI or PHP execution.</p>
+<p>For schedules and performance settings, continue with <a href="scheduling.html">scheduling</a>. For annotations, see <a href="known-failures.html">known failures</a>.</p>
+<footer>Reconstructed from OpenCTI source, baseline 8c3d603. Generated by doc/tools/build_docs.py.</footer>
+</main></body></html>

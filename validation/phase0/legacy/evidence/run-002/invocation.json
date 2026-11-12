@@ -1,0 +1,16 @@
+{
+  "argv": [
+    "/usr/bin/perl",
+    "/opt/cti/bin/TM.pl",
+    "-nod",
+    "-nomail",
+    "-f",
+    "/fixtures/phase0.opt",
+    "-w",
+    "/capture/original/work",
+    "-l",
+    "/capture/original/summary.log",
+    "run"
+  ],
+  "returncode": 0
+}

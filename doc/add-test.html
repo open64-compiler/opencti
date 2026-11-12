@@ -1,218 +1,88 @@
 <!--
- ====================================================================
-
- Copyright (C) 2011, Hewlett-Packard Development Company, L.P.
- All Rights Reserved.
-
- Open64 is free software; you can redistribute it and/or
- modify it under the terms of the GNU General Public License
- as published by the Free Software Foundation; either version 2
- of the License, or (at your option) any later version.
-
- Open64 is distributed in the hope that it will be useful,
- but WITHOUT ANY WARRANTY; without even the implied warranty of
- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- GNU General Public License for more details.
-
- You should have received a copy of the GNU General Public License
- along with this program; if not, write to the Free Software
- Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston,
- MA  02110-1301, USA.
-
- ====================================================================
+Copyright (C) 2011, Hewlett-Packard Development Company, L.P.
+All Rights Reserved.
+Open64 is free software; you can redistribute it and/or modify it under the
+terms of the GNU General Public License as published by the Free Software
+Foundation; either version 2 of the License, or (at your option) any later
+version. Distributed WITHOUT ANY WARRANTY; without even the implied warranty
+of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General
+Public License for more details.
 -->
-<HTML>
-<HEAD>
-<TITLE>Add new CTI test - help</TITLE>
-</HEAD>
-<BODY>
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Adding regression and application tests — OpenCTI</title><style>body{margin:0;background:#f4f6f8;color:#18232e;font:17px/1.6 system-ui,sans-serif}
+main{max-width:1050px;margin:auto;padding:2rem;background:white;min-height:100vh}
+a{color:#075ca8}nav{padding:.7rem 0;border-bottom:1px solid #ccd5dd}
+h1,h2,h3{line-height:1.25;scroll-margin-top:1rem}h2{margin-top:2rem}
+pre{padding:1rem;background:#eff3f7;overflow:auto;border:1px solid #d5dce3}
+code{font: .88em/1.5 ui-monospace,monospace;overflow-wrap:anywhere}
+table{border-collapse:collapse;width:100%;display:block;overflow:auto}
+th,td{padding:.6rem;border:1px solid #ccd5dd;text-align:left;vertical-align:top}
+th{background:#eff3f7}td:first-child{min-width:10rem}footer{border-top:1px solid #ccd5dd;margin-top:2rem;color:#52606b}
+@media(max-width:640px){main{padding:1rem}body{font-size:16px}}
+</style></head><body><main>
+<nav><a href="guide/index.html">CTI documentation</a></nav>
+<h1 id="adding-regression-and-application-tests">Adding regression and application tests</h1>
+<p><a href="guide/index.html">Documentation home</a></p>
+<h2 id="layout-and-enrollment">Layout and enrollment</h2>
+<pre><code>cti_groups/
+  Regression/
+    tmconfig                 # CHILDREN and regression.pl selection
+    myunit/
+      tmconfig
+      tmconfig.env           # optional pattern-specific settings
+      tmconfig.list          # optional multi-source definitions
+      Src/
+        sample.c
+        sample.tmconfig      # optional per-test settings
+      Masters/
+        sample.out
+  Applications/
+    tmconfig                 # CHILDREN and application.pl selection
+    myapp/
+      tmconfig
+      Src/
+        Makefile.CTI
+        ...</code></pre>
+<p>A <code>Src/</code> subdirectory identifies a unit. Add new units to the parent group&#x27;s <code>CHILDREN</code> list for group-wide runs. A direct unit selection works without parent enrollment. Preserve filename case, especially C <code>.c</code> versus C++ <code>.C</code>.</p>
+<h2 id="regression-tests">Regression tests</h2>
+<p>The <a href="../Scripts/drivers/lib/regressionDriver.pm">regression driver</a> discovers individual sources by the configured extension/language mapping. Put a single-source test in <code>Src/</code>. Add its runtime master under the configured <code>MASTER_FILE_PATH</code>; <code>Regression/tmconfig</code> sets that path to <code>../Masters</code>, relative to <code>Src</code>.</p>
+<p>A minimal test that produces no output can use an empty master:</p>
+<pre><code>int main(void) { return 0; }</code></pre>
+<p>For <code>sample.c</code>, place an empty <code>Masters/sample.out</code>. CTI&#x27;s regression output padding is enabled by default; set <code>RUN_TESTS_PAD_OUTPUT=false</code> in <code>Src/sample.tmconfig</code> when the master should contain only raw program output. Verify the captured output before accepting the master.</p>
+<p>For a compile-only test, add <code>RUN_TESTS=false</code> to its <code>.tmconfig</code>; also set <code>LINK_TESTS=false</code> if no link step is intended. A negative compile test uses <code>CT_NEG=true</code>. To compare diagnostics, enable <code>CT_DIFF=true</code> and provide the appropriate <code>.err</code> master, or use <code>ERROR_MASTER_EMPTY=true</code> if an empty diagnostic master is intended.</p>
+<p>For multi-source tests, create <code>Src/&lt;name&gt;.list</code> listing source files, or a unit-level <code>tmconfig.list</code> with records such as:</p>
+<pre><code>joined: first.c second.c</code></pre>
+<p>Inspect <a href="../Scripts/drivers/lib/readListFile.pm">readListFile.pm</a> for list syntax. <a href="../Scripts/drivers/lib/collectTests.pm">collectTests.pm</a> prevents these component sources from also running as independent tests.</p>
+<p>Master names start with the test base name and the configured suffix (<code>out</code> or <code>err</code> by default). <code>RUNTIME_OUTPUT_QUALIFIERS</code> and <code>ERROR_OUTPUT_QUALIFIERS</code> can insert option values into the name. <a href="../Scripts/drivers/lib/locateMaster.pm">locateMaster.pm</a> defines the lookup order and the special Fortran handling of the <code>COMPILER_VERSION</code> qualifier.</p>
+<p>Use <code>SELECTIONS</code> for the unit and <code>TESTS</code> for a specific test filename. Run locally with <code>CLEAN=false</code>, inspect compile/link/run commands, and confirm that the intended failure or output comparison is exercised before adding it to broad selections.</p>
+<h2 id="application-wrapper-contract">Application wrapper contract</h2>
+<p>The <a href="../Scripts/drivers/lib/applicationDriver.pm">application driver</a> operates on one application unit, populates a work directory, customizes options, and generates scripts calling GNU make. Set the wrapper filename in the application&#x27;s <code>tmconfig</code>:</p>
+<pre><code>MAKEWRAPPER=Makefile.CTI</code></pre>
+<p>The implementation adds <code>-f</code> only when <code>MAKEWRAPPER</code> is set. Otherwise GNU make uses its normal makefile discovery. There is no hardcoded <code>M.hp.TAHOE</code> default in this driver.</p>
+<p>The normal compile stage invokes the make target <code>compile</code>; the normal execution stage invokes <code>validate</code>. A successful validation must return zero and leave <code>compare.results</code> present and empty. A missing file produces an execution failure; a nonempty file produces an output-difference failure. Separate <code>run</code>, <code>compare</code>, and <code>clean</code> targets are useful wrapper conventions; they are not each independently invoked by the normal two-stage driver path.</p>
+<p>The driver passes <code>CC</code>, <code>CXX</code>, <code>FC</code>, <code>AR</code>, <code>EXTRA_FLAGS</code>, language-specific <code>EXTRA_CFLAGS</code>/<code>EXTRA_CXXFLAGS</code>/<code>EXTRA_FFLAGS</code>, <code>EXTRA_LIBS</code>, <code>SIMULATOR</code>, and <code>GMAKEROOT</code> when defined. <code>EXTRA_FLAGS</code> includes data-mode and optimization settings. Wrappers must actually forward those flags to the upstream build; assigning <code>CC</code> alone does not prove the compiler used the intended options.</p>
+<p>A simple wrapper around a configure/make project can follow this pattern. Recipe indentation must be tabs:</p>
+<pre><code>export CC
+export CFLAGS = $(EXTRA_FLAGS) $(EXTRA_CFLAGS)
 
-<PRE>
-<code>
+compile:
+	./configure
+	$(MAKE) -f Makefile
 
-<H3>  Fields on the form for adding a new test</H3>
+validate:
+	rm -f compare.results
+	$(MAKE) -f Makefile check
+	: &gt; compare.results
 
-<a name="sources"></a> 
-<H4>Sources</H4>
-    Full path names of files that constitute a test case. This 
-    includes source program (.c, .f, .C etc.) files, header (.h) files,
-    test specific libraries,
-    object files or input data files, if any. The source program
-    files go first. If you have files besides the soure program,
-    the tool will set TEST_AUXFILES; and you don't have to set it
-    in the additional env. vars section.
-
-    The base name of the first listed file is used as the test name.
-
-    A test, consisting of multiple source program files, is called a
-    .list test, you do not have to create a .list file. The add test
-    tool will count the number of source program files and create a
-    .list file for you. But you may do so if you wish (e.g., to choose
-    a different test name).
-
-    All files listed here will be added to the Src directory of
-    the specified unit. If one of files names is the same as
-    the one present in the Src directory, the add test tool will
-    reject it and send out an error message.
-
-
-<a name="tmconfig"></a> 
-<H4> Configuration file</H4>
-    The tmconfig file to use for this test. All test level customizable
-    env. variables could be set here.
-
-<a name="target"></a>
-<H4>Target path</H4>
-    Specify what unit you want this test to go into. The default
-    value has been set to Regression/.../. You just need to append
-    the unit name. The unit must be exist before adding a test.
-    This is a required box.
- 
-<a name="additional"></a> 
-<H4>Additional env vars</H4> 
-    The environment variable settings you choose here will be
-    added to the tmconfig file for the test.
-
-    When adding a new test, you need to consider the test should
-
-    1. be compiled at what optimization level,
-    2. with what data mode,
-    3. exercise what compiler options, and
-    4. if it is runnable, or
-    5. linked with what specific libraries; or
-    6. if it is a cycle count test
-
-<H4>OPT_LEVEL</H4>
-    If you choose a specific number to optimization level, the
-    test will only run at this optimization level, regardless of
-    what optimization level you set in your options file or via TM
-    command line. 
-
-    If you don't set OPT_LEVEL, the test will run at the level
-    specified in an options file or via TM command line. This
-    could easily produce bogus failure, if a test does not apply
-    to all optimization levels and you forget to set OPT_LEVEL.
-    At the time you add a test, you might think that our team and
-    I only run the test at +O2, which is default, so I don't have
-    to set OPT_LEVEL. But remember someone else from other team
-    may run it at +O1 or +O4 with their own options file. The
-    advise is that always set OPT_LEVEL if the test does not
-    apply to all optimization levels.
-
-    Note that there is no way to specify a test not to run at a
-    specific optimization level in the current CTI implementation.
-    There is no way to set a test to run at only two or three
-    optimization levels either. However there is a way to skip
-    some tests at TM command level via a setting to SKIP_SELECTIONS.
-
-<H4>DATA_MODE</H4>
-    If you choose +DD64 or +DD32, the test will always be compiled
-    at the specified data mode, regardless of what you set to
-    DATA_MODE in the options file or via TM command line.
-
-    If you don't set DATA_MODE, the test would take DATA_MODE
-    setting from the options file or TM command line.
-
-<H4>CC_OPTIONS, CXX_OPTIONS and FC_OPTIONS</H4>
-    The options are used to compile the test. Since data mode,
-    optimization level, libraries are treated separately on this
-    web page, you may not use them in these OPTIONS string.
-
-<H4>RUN_TESTS</H4>
-    If it is compile-only test, choose FALSE. If it is runnable,
-    choose TRUE or %NATIVE_RUN. The %NATIVE_RUN will let you
-    disable running the test on simulator (for cross test), but allow
-    us to run the test on native machines (for native test). This is
-    used in cases where a test takes long time to run on simulator. 
-
-<H4>LINK_TESTS</H4>
-    If it is compile-only test and you already set RUN_TESTS=FALSE.
-    the test is still considered linkable under CTI default settings,
-    creating a shared library (.so file) for the test. If you don't
-    want this behavior, turn it off by set LINK_TESTS to FALSE.
-
-<a name="cct"></a> 
-<H4>Cycle count test</H4>
-    Adding a cycle count test is a complex task, since we do not have
-    an infrastructure support for consistency check between the
-    settings. Here are some of the variables you may need to set 
-
-    . DATA_MODE must be set to either +DD32 or +DD64.
-    . Add +Uzrsched=cycle option to EXTRA_PRE_CC_OPTIONS, 
-      EXTRA_PRE_CXX_OPTIONS or EXTRA_PRE_FC_OPTIONS
-      depending the language type of the test you are adding.
-    . Set CT_DIFF=TRUE, since the cycle count output goes into
-      the compiler output.
-    . Set ERROR_COMPARE_SCRIPT=cycleCompare.pl.
-    . OPT_LEVEL must be equal or greater than 2.
-    . Set CT_DIFF_OPT_LEVELS=the number you set to OPT_LEVEL.
-
-    Notes that a cycle count test can be either compile-only or 
-    runnable; this doesn't make a difference. If one chooses 'Yes',
-    then the following tmconfig variables will be set:
-
-        EXTRA_PRE_CC_OPTIONS="+Uzrsched=cycle" (for C test)
-        EXTRA_PRE_CXX_OPTIONS="+Uzrsched=cycle" (for C++ test)
-        EXTRA_PRE_FC_OPTIONS="+Uzrsched=cycle" (for fortran test)
-        CT_DIFF="true"
-        CT_DIFF_OPT_LEVELS="2"
-        ERROR_COMPARE_SCRIPT="cycleCompare.pl"
-
-
-<H4>LIBS</H4>
-    If the test needs special libraries or object files to link
-    against, add them in LIBS. If the library is standard one, use
-    -l&lt;libname&gt;, If not, (assuming you have put the full path
-    names of the libraries in the Sources box,) you only need to
-    provide base name of the libraries.
- 
-<H4>Other environment variables</H4>
-    TM supports many environment variables for you to customize a test.
-    For definition and effect of these variables, refer to 
-    <A HREF="http://{CONFIGURE_webserver}/{CONFIGURE_webroot}/cgi-bin/describe-cti-options.cgi"
-    >the CTI/TM document</A> on the CTI web page.
-
-    If you need more boxes for environment variables settings, click
-    on the <B>number</B> you want or <B>more</B> on the web page.
-
-<a name="masters"></a>
-<H4>Master error files and Master outputs</H4>
-    If you want to add test output files (called master output file)
-    and compiler outputs (master error files), you can enter the full
-    path names here. If the test is not runnable, you don't need to
-    add master output file. The base name of test output and error
-    files must follow the example bellow.
-
-    These master files will be stored in the Master directory of the
-    specified unit by the add test tool.
-
-    In general, it is not required to add test output and error
-    files, even if it's a runnable test. TM nightly run can generate
-    test output and compiler output for you. A test without test 
-    output and compiler output masters will be listed in No master
-    .out and No master .err sections in test log file.  The next 
-    morning after adding the test, you can check out nightly test
-    log (via web) and see if the master files are generated correct.
-    If so, remaster your test via the web.
-
-<a name="comments"></a>
-<H4>Comments</H4>
-    Some comments about the test to be added when check in the test.
- 
-<a name="email"></a>
-<H4>Your email address</H4>
-    Specify persons to be notified when adding a test. Default
-    to llo-ia64, to let everybody know this is a new test if
-    it failed in an individual test.
-
-<a name="user_id"></a>
-<H4>Your User ID</H4>
-    Specify persons in the svn commit log, to let everybody know
-    the new test is added by whom.
-
-
-</code>
-</PRE>
-
-</body>
-</HTML>
+clean:
+	$(MAKE) -f Makefile clean</code></pre>
+<p>Only create the empty marker after validation succeeds. Remove stale markers first. A failed upstream check must propagate failure rather than being hidden by an unconditional successful command. For a real bundled example, see <a href="../cti_groups/Applications/gsl-1.14/Src/Makefile.CTI">GSL&#x27;s wrapper</a>.</p>
+<p><code>APPLICATION_SETUP_HOOKS</code> customizes work-directory preparation. <code>APPLICATION_RUN_HOOK</code> supplies a script generator for specialized runs; it receives the unit name and output-script filename. Performance templates use this mechanism. Use <a href="guide/reference.html">the declared hooks</a> and driver code to establish argument and exit-code contracts.</p>
+<h2 id="import-and-dependencies">Import and dependencies</h2>
+<p>Import a clean source tree, not a previously built directory. Retain upstream notices and record any portability patches. Ensure configuration respects the selected compilers and flags, and arrange for tests to run without interactive input. Avoid fixed scratch filenames that collide across concurrent jobs. Set <code>TIME_LIMIT</code> to a justified value for larger builds.</p>
+<p>The bundled application units are <code>Applications/gsl-1.14</code> and <code>Applications/hmmer-2.3.2</code>; <code>Perf/ex1</code> is a performance example. Dependencies come from each unit&#x27;s wrapper and upstream source, not from a package dependency installer. Application runs also require the hardcoded Linux GNU make path described in <a href="guide/installation.html">installation</a>.</p>
+<h2 id="legacy-add-test-tools">Legacy add-test tools</h2>
+<p><code>TM.pl</code> does not implement an <code>add</code> command. The older import tool is <a href="../bin/www/addtest.pl">bin/www/addtest.pl</a>, with a web form at <code>www/cgi-bin/addtest.cgi</code>. Its parser requires <code>-CTI_GROUPS</code> to specify the absolute test root. It includes SVN/ClearCase-oriented check-in helpers and is not a Git-aware replacement for editing a working tree. Use the manual layout workflow above for this Git checkout; review the tool&#x27;s implementation and dry-run behavior before using it in a configured legacy repository.</p>
+<footer>Reconstructed from OpenCTI source, baseline 8c3d603. Generated by doc/tools/build_docs.py.</footer>
+</main></body></html>
