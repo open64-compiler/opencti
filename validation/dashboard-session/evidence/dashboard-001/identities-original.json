@@ -1,0 +1,6 @@
+{
+  "schema": "cti-dashboard-identities/v1",
+  "matches": {
+    "ed0d18e941cf9385c861345ea26cde3492c5b53e84eb1afb17b0494e7764d7c7": "fa50804d288f15204734d13f9d3a597c66e36ddfb43048861fe0fc6c5c3a8cd5"
+  }
+}

@@ -130,3 +130,5 @@ Record missing roles and explicit reprovisioning references separately from the 
 ## Open an interactive captured workspace
 
 The new [session CLI](debugging-sessions.md) opens supported captured failures in private Docker workspaces without changing the legacy framework or original evidence. Run `./tools/cti-session open --capture validation/phase0/legacy/evidence/ft09-001` from your terminal. It restores captured paths, enters the test directory and loads its saved `.env`. Use `list`, `attach`, `exec`, `stop` and `remove` for the private session lifecycle.
+
+On macOS, the optional `tools/cti-dashboard` adapter connects registered failed-case links to a new Terminal window and the same CLI opener. The guide covers local capture pages, opt-in legacy CGI setup, original-log identity checks and rollback. Each click creates a fresh private session while retaining the original capture and result.

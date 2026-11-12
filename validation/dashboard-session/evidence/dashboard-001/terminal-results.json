@@ -1,0 +1,16 @@
+[
+  {
+    "session_id": "852f5f2a47e34aa493ff2f2a4ffad223",
+    "interactive_shells": [
+      {
+        "command": "bash --noprofile --rcfile /cti-launch/interactive.bash -i ",
+        "cwd": "/export/original/work/Regression/FT09",
+        "stdin": "/dev/pts/0"
+      }
+    ],
+    "cc_options": "-g -O0 -fno-omit-frame-pointer -no-pie",
+    "saved_run_exit_status": 7,
+    "gdb_stdout": "Breakpoint 1 at 0x4007e8: file debug_target.c, line 8.\n[Thread debugging using libthread_db enabled]\nUsing host libthread_db library \"/lib/aarch64-linux-gnu/libthread_db.so.1\".\n\nBreakpoint 1, debug_checkpoint () at debug_target.c:8\n8\t    return debug_value + 1;\n$1 = 41\n#0  debug_checkpoint () at debug_target.c:8\n#1  0x0000000000400888 in main (argc=1, argv=0xffffd1c4d878) at debug_target.c:17\n",
+    "gdb_stderr": "warning: Error disabling address space randomization: Operation not permitted\n"
+  }
+]
