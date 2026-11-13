@@ -1,0 +1,11 @@
+# Preserve original CGI/Perl diagnostic whitespace in the measured reference.
+reference/evidence/reference-001/**/*.html -text whitespace=-blank-at-eol,-blank-at-eof,-space-before-tab
+reference/evidence/reference-001/**/*.stdout -text whitespace=-blank-at-eol,-blank-at-eof,-space-before-tab
+reference/evidence/reference-001/**/*.stderr -text whitespace=-blank-at-eol,-blank-at-eof,-space-before-tab
+reference/evidence/reference-001/**/*.log -text whitespace=-blank-at-eol,-blank-at-eof,-space-before-tab
+reference/evidence/reference-001/**/*.cache -text whitespace=-blank-at-eol,-blank-at-eof,-space-before-tab
+reference/evidence/reference-001/**/*.tar.gz -text
+# Copied legacy CGI sources retain their original, checksummed whitespace.
+reference/evidence/reference-001/deployed/** -text whitespace=-blank-at-eol,-blank-at-eof,-space-before-tab
+# Exact retained test output and original wrapper tabs are fixture inputs.
+adoption-fixtures/** -text whitespace=-blank-at-eol,-blank-at-eof,-space-before-tab

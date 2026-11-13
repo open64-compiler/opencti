@@ -1,0 +1,12 @@
+{
+  "verified_files": 168,
+  "tm_executions": 7,
+  "cgi_previews_not_executions": 2,
+  "pinned_attempts": 7,
+  "distinct_cas_objects": 21,
+  "isolated_native_allocations": 2,
+  "workspace_guard_rejections": 5,
+  "lost_original_cli_settings_characterized": true,
+  "original_replayed_after_cleanup": true,
+  "framework_unchanged": true
+}

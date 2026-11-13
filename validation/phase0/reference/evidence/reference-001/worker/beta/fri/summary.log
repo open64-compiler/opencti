@@ -1,0 +1,48 @@
+# Start time was Fri Nov 13 18:13:38 2026 on 187210d2404b
+# TEST_WORK_DIR --> /export/beta/fri/work
+# OPT_LEVEL     --> 0
+# DATA_MODE     --> +DD64
+# COMPILER_VERSION --> gcc-13.3.0
+# CTI_GROUPS    --> /fixtures/groups
+# REPOSITORY_TYPE --> SVN
+# OPTIONS_FILE--> /fixtures/reference.opt
+# SELECTIONS  --> Regression/Reference
+# VIEW    --> None
+# DTM_POOL    --> Default
+# DTM_CPUARCH --> aarch64
+# DTM_PRIORITY--> 2
+# DISTRIBUTED_TM --> 
+# SEND_LOG    --> 
+# http://localhost/CTI/cgi-bin/get-log-file.cgi?log=/export/beta/fri/summary.log
+# END OF HEADER
+
+# TOTAL TESTS=5,  PASS=2,  FAIL=3,  RUNNING=0
+
+#_________________________________________________________
+#  PASSES 
+#_________________________________________________________
+# Total Number of PASSES = 2
+Regression/Reference/A.c
+Regression/Reference/E.c
+
+#_________________________________________________________
+#  COMPILATION FAILURES 
+#_________________________________________________________
+# Total Number of COMPILATION FAILURES = 1
+Regression/Reference/B.c
+
+#_________________________________________________________
+#  EXECUTION FAILURES 
+#_________________________________________________________
+# Total Number of EXECUTION FAILURES = 1
+Regression/Reference/C.c
+
+#_________________________________________________________
+#  OUTPUT DIFFERENCE FAILURES 
+#_________________________________________________________
+# Total Number of OUTPUT DIFFERENCE FAILURES = 1
+Regression/Reference/D.c
+
+# TIME_TAKEN --> 00:00:00 [1794593618 - 1794593618]
+
+# End Time was Fri Nov 13 18:13:38 2026

@@ -1,0 +1,31 @@
+$Cache_data = {
+  'TIME_STAMP' => 'Thu Nov 12',
+  '/export/alpha/thu/summary.log' => {
+    'STATUS' => [
+      2,
+      0,
+      0,
+      0
+    ],
+    'Regression/Reference/C.c' => {
+      'ERR_TYPE' => 'EXECUTION FAILURES'
+    },
+    'Regression/Reference/B.c' => {
+      'ERR_TYPE' => 'COMPILATION FAILURES'
+    }
+  },
+  '/export/beta/thu/summary.log' => {
+    'STATUS' => [
+      2,
+      0,
+      0,
+      0
+    ],
+    'Regression/Reference/C.c' => {
+      'ERR_TYPE' => 'EXECUTION FAILURES'
+    },
+    'Regression/Reference/B.c' => {
+      'ERR_TYPE' => 'COMPILATION FAILURES'
+    }
+  }
+};

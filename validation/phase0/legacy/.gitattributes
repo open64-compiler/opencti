@@ -64,3 +64,9 @@ evidence/ft18-001/**/*.stdout -text whitespace=-blank-at-eol,-blank-at-eof
 evidence/ft18-001/**/*.stderr -text whitespace=-blank-at-eol,-blank-at-eof
 # Copied deployment sources retain the original framework's exact whitespace.
 evidence/ft18-001/deployed/** -text whitespace=-blank-at-eol,-blank-at-eof,-space-before-tab
+
+# FT19 native IR dumps and diagnostics retain exact producer whitespace.
+evidence/ft19-001/**/*.tar.gz -text
+evidence/ft19-001/**/*.T -text whitespace=-blank-at-eol,-blank-at-eof,-space-before-tab
+evidence/ft19-001/**/*.stderr -text whitespace=-blank-at-eol,-blank-at-eof,-space-before-tab
+evidence/ft19-001/**/*.stdout -text whitespace=-blank-at-eol,-blank-at-eof,-space-before-tab

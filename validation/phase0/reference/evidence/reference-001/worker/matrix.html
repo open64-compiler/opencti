@@ -1,0 +1,94 @@
+
+    var req;
+    var counter=0;
+    var pics = new Array ('../images/plus.gif', '../images/minus.gif' );
+
+    function processReqChange()
+    { // only if req shows "loaded"
+      if (req.readyState == 4)
+        { // only if "OK"
+          counter++;
+          document.getElementById('usage_button').src = pics [counter % 2];
+          if (req.status == 200)
+            { // ...processing statements  go here...
+              if(counter % 2)
+                { document.getElementById('usage').innerHTML = req.responseText;
+                }
+              else
+                { document.getElementById('usage').innerHTML = '';
+                }
+            }
+          else
+            { alert("There was a problem retrieving the XML data:" + req.statusText);
+            }
+        }
+    }
+
+    function loadXMLDoc(url)
+    { // branch for native XMLHttpRequest object
+      if (window.XMLHttpRequest)
+        { req = new XMLHttpRequest();
+          req.onreadystatechange = processReqChange;
+          req.open("GET", url, true);
+          req.send(null);
+        }
+      else if (window.ActiveXObject)
+        { req = new ActiveXObject("Microsoft.XMLHTTP");
+          if (req)
+            { req.onreadystatechange = processReqChange;
+              req.open("GET", url, true);
+              req.send();
+            }
+        }
+    }
+  
+//]]></script>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+</head>
+<body>
+<h2>Show schedule /export/reference.sched as of Fri Nov 13 18:13:38 2026</h2>
+<a href="javascript:loadXMLDoc('http://127.0.0.1/cgi-bin/show-schedule.cgi?customize=1');"><img id="usage_button" border="0"
+            src="../images/plus.gif" value="+"></a> Customizable options<p><div id="usage" align="left"> </div><table cellspacing="10"><tr><td nowrap><a href="http://localhost/CTI">CTI Home</a></td>
+<td nowrap><a href="http://localhost/CTI/dtm/www/cgi-bin/dTMState.php">dTM server</a></td>
+<td nowrap><a href="./show-failures.cgi?sched=/export/reference.sched&old_log=OK">Show failures</a></td>
+<td nowrap><a href="./get-file.cgi?file=/export/reference.sched">Schedule file</a></td>
+<td nowrap><a href="./start_tests.cgi?sched=/export/reference.sched">Start tests</a></td>
+<td nowrap><a href="http://127.0.0.1/cgi-bin/show-schedule.cgi?sched=/export/reference.sched;old_log=OK;debug=1&time_taken=1">Show time taken</a></td></tr>
+</table>    <table border="0">
+       <tr><td bgcolor="#E6E6E6">Status color code:</td>
+           <td bgcolor="#E6E6E6"><font color="Green"><b>no errors</b></font></td>
+           <td bgcolor="#E6E6E6"><font color="BlueViolet"><b>some errors</b></font></td>
+           <td bgcolor="#E6E6E6"><font color="Orange"><b>in-progress</b></font></td>
+           <td bgcolor="#E6E6E6"><font color="OrangeRed"><b>setup errors/old_log</b></font></td>
+       </tr>
+    </table>
+<table border="1">
+<thead><tr><th nowrap bgcolor="#CCCCCC" align="center"> Options file, view &nbsp;/&nbsp; dates</th>
+<th nowrap bgcolor="#CCCCCC" align="center">Fri<br>fail / total</th><th nowrap bgcolor="#CCCCCC" align="center">Thu<br>fail / total</th><th nowrap bgcolor="#CCCCCC" align="center">Wed<br>fail / total</th><th nowrap bgcolor="#CCCCCC" align="center">Tue<br>fail / total</th><th nowrap bgcolor="#CCCCCC" align="center">Mon<br>fail / total</th><th nowrap bgcolor="#CCCCCC" align="center">Sun<br>fail / total</th><th nowrap bgcolor="#CCCCCC" align="center">Sat<br>fail / total</th><th nowrap bgcolor="#CCCCCC" align="center">Fri<br>fail / total</th><th nowrap bgcolor="#CCCCCC" align="center">TM out</th><th nowrap bgcolor="#CCCCCC" align="center">ACTIONS</th></tr></thead>
+<tbody><tr valign="top"><td nowrap bgcolor="#E6E6E6"><a href="./get-options-file.cgi?file=/fixtures/reference.opt&view=alpha">reference.opt</a><br>alpha</td><td nowrap bgcolor="#E6E6E6" align=center><a href="./get-log-file.cgi?log=/export/alpha/fri/summary.log"><b><font color=BlueViolet>Fri</font></b></a> - Nov 13<br>3 / 5
+</td>
+<td nowrap bgcolor="#E6E6E6" align=center><a href="./get-log-file.cgi?log=/export/alpha/thu/summary.log"><b><font color=Orange>Thu</font></b></a> - Nov 13<br>0 / 0
+</td>
+<td nowrap bgcolor="#E6E6E6" align=center><a href="./get-log-file.cgi?log=/export/alpha/wed/summary.log"><b><font color=BlueViolet>Wed</font></b></a> - Nov 13<br>2 / 5
+</td>
+<td nowrap bgcolor="#E6E6E6" align=center><a href="./get-log-file.cgi?log=/export/alpha/tue/summary.log"><b><font color=OrangeRed><td nowrap bgcolor="#E6E6E6" align=center><a href="./get-log-file.cgi?log=/export/alpha/mon/summary.log"><b><font color=OrangeRed><td nowrap bgcolor="#E6E6E6" align=center><a href="./get-log-file.cgi?log=/export/alpha/sun/summary.log"><b><font color=OrangeRed><td nowrap bgcolor="#E6E6E6" align=center><a href="./get-log-file.cgi?log=/export/alpha/sat/summary.log"><b><font color=OrangeRed><td nowrap bgcolor="#E6E6E6" align=center><a href="./get-log-file.cgi?log=/export/alpha/xxx/summary.log"><b><font color=OrangeRed><td nowrap bgcolor="#E6E6E6"><a href="./get-file.cgi?file=/export/alpha/fri/summary.log.tmout&view=alpha">TM log</a></td><td nowrap bgcolor="#E6E6E6"></td></tr>
+<tr valign="top"><td nowrap bgcolor="#E6E6E6"><a href="./get-options-file.cgi?file=/fixtures/reference.opt&view=beta">reference.opt</a><br>beta</td><td nowrap bgcolor="#E6E6E6" align=center><a href="./get-log-file.cgi?log=/export/beta/fri/summary.log"><b><font color=BlueViolet>Fri</font></b></a> - Nov 13<br>3 / 5
+</td>
+<td nowrap bgcolor="#E6E6E6" align=center><a href="./get-log-file.cgi?log=/export/beta/thu/summary.log"><b><font color=Orange>Thu</font></b></a> - Nov 13<br>0 / 0
+</td>
+<td nowrap bgcolor="#E6E6E6" align=center><a href="./get-log-file.cgi?log=/export/beta/wed/summary.log"><b><font color=BlueViolet>Wed</font></b></a> - Nov 13<br>2 / 5
+</td>
+<td nowrap bgcolor="#E6E6E6" align=center><a href="./get-log-file.cgi?log=/export/beta/tue/summary.log"><b><font color=OrangeRed><td nowrap bgcolor="#E6E6E6" align=center><a href="./get-log-file.cgi?log=/export/beta/mon/summary.log"><b><font color=OrangeRed><td nowrap bgcolor="#E6E6E6" align=center><a href="./get-log-file.cgi?log=/export/beta/sun/summary.log"><b><font color=OrangeRed><td nowrap bgcolor="#E6E6E6" align=center><a href="./get-log-file.cgi?log=/export/beta/sat/summary.log"><b><font color=OrangeRed><td nowrap bgcolor="#E6E6E6" align=center><a href="./get-log-file.cgi?log=/export/beta/xxx/summary.log"><b><font color=OrangeRed><td nowrap bgcolor="#E6E6E6"><a href="./get-file.cgi?file=/export/beta/fri/summary.log.tmout&view=beta">TM log</a></td><td nowrap bgcolor="#E6E6E6"></td></tr>
+<tr valign="top"><td nowrap bgcolor="#CCCCCC" align="center"><b>Total</b><br>Failure %</td>
+<td nowrap bgcolor="#CCCCCC" align="center"><b>6 / 10</b><br>60.00 %</td>
+<td nowrap bgcolor="#CCCCCC" align="center"><b>0 / 0</b><br></td>
+<td nowrap bgcolor="#CCCCCC" align="center"><b>4 / 10</b><br>40.00 %</td>
+<td nowrap bgcolor="#CCCCCC" align="center"><b>0 / 0</b><br></td>
+<td nowrap bgcolor="#CCCCCC" align="center"><b>0 / 0</b><br></td>
+<td nowrap bgcolor="#CCCCCC" align="center"><b>0 / 0</b><br></td>
+<td nowrap bgcolor="#CCCCCC" align="center"><b>0 / 0</b><br></td>
+<td nowrap bgcolor="#CCCCCC" align="center"><b>0 / 0</b><br></td>
+<td nowrap bgcolor="#CCCCCC" align="center">&nbsp;</td><td nowrap bgcolor="#CCCCCC" align="center">&nbsp;</td></tr>
+</tbody></table>
+</body>
+</html>

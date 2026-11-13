@@ -1,0 +1,115 @@
+{
+  "schema": "opencti.phase0-discrepancies/v1",
+  "items": [
+    {
+      "id": "P0-D01",
+      "evidence": "FT05",
+      "observation": "Active-master promotion changes an unprotected workspace oracle",
+      "replacement_gate": "phase 2",
+      "required_treatment": "Immutable per-attempt baseline and reviewed promotion",
+      "owner": "Codex (technical preparation); implementation owner assigned per later slice",
+      "reviewer": "GitHub repository creator (maintainer-designated)",
+      "status": "open",
+      "legacy_behavior_changed": false
+    },
+    {
+      "id": "P0-D02",
+      "evidence": "FT11",
+      "observation": "Negative-runtime legacy false pass",
+      "replacement_gate": "phase 3",
+      "required_treatment": "Raw status/expectation reconciliation; retain original verdict discrepancy",
+      "owner": "Codex (technical preparation); implementation owner assigned per later slice",
+      "reviewer": "GitHub repository creator (maintainer-designated)",
+      "status": "open",
+      "legacy_behavior_changed": false
+    },
+    {
+      "id": "P0-D03",
+      "evidence": "FT12",
+      "observation": "Header reruns lose options; nested history can be deleted by workspace reuse",
+      "replacement_gate": "phase 1/3",
+      "required_treatment": "Pinned resolved options and independent attempt/workspace identity",
+      "owner": "Codex (technical preparation); implementation owner assigned per later slice",
+      "reviewer": "GitHub repository creator (maintainer-designated)",
+      "status": "open",
+      "legacy_behavior_changed": false
+    },
+    {
+      "id": "P0-D04",
+      "evidence": "FT15",
+      "observation": "Custom application run hook can ignore failure with stale empty compare.results",
+      "replacement_gate": "phase 3",
+      "required_treatment": "Require phase status plus present fresh/appropriate comparison marker",
+      "owner": "Codex (technical preparation); implementation owner assigned per later slice",
+      "reviewer": "GitHub repository creator (maintainer-designated)",
+      "status": "open",
+      "legacy_behavior_changed": false
+    },
+    {
+      "id": "P0-D05",
+      "evidence": "FT17",
+      "observation": "Case-distinct same-basename tests overwrite stock shared work products",
+      "replacement_gate": "phase 2/3",
+      "required_treatment": "Full test-identity workspace isolation and case-sensitive reconstruction",
+      "owner": "Codex (technical preparation); implementation owner assigned per later slice",
+      "reviewer": "GitHub repository creator (maintainer-designated)",
+      "status": "open",
+      "legacy_behavior_changed": false
+    },
+    {
+      "id": "P0-D06",
+      "evidence": "FT18",
+      "observation": "Dashboard adapter rewrites in-page file anchors into Terminal actions",
+      "replacement_gate": "phase 1",
+      "required_treatment": "Preserve same-page fragment navigation and test actual click behavior",
+      "owner": "Codex (technical preparation); implementation owner assigned per later slice",
+      "reviewer": "GitHub repository creator (maintainer-designated)",
+      "status": "open",
+      "legacy_behavior_changed": false
+    },
+    {
+      "id": "P0-D07",
+      "evidence": "FT18",
+      "observation": "Product preservation, mount and downloadable bundle views absent",
+      "replacement_gate": "phase 1/2",
+      "required_treatment": "Expose explicit complete/incomplete evidence and portable access without losing legacy views",
+      "owner": "Codex (technical preparation); implementation owner assigned per later slice",
+      "reviewer": "GitHub repository creator (maintainer-designated)",
+      "status": "open",
+      "legacy_behavior_changed": false
+    },
+    {
+      "id": "P0-D08",
+      "evidence": "reference-001",
+      "observation": "Partial log can render negative unknown-failure count (-1 / 1 / 0 / 0)",
+      "replacement_gate": "phase 1",
+      "required_treatment": "Keep partial/unknown state explicit; reconcile derived counts without inventing success",
+      "owner": "Codex (technical preparation); implementation owner assigned per later slice",
+      "reviewer": "GitHub repository creator (maintainer-designated)",
+      "status": "open",
+      "legacy_behavior_changed": false
+    },
+    {
+      "id": "P0-D09",
+      "evidence": "FT19",
+      "observation": "Initial-default IPL not retained; reconstructed environment uses shared authenticated IPL",
+      "replacement_gate": "phase 4",
+      "required_treatment": "Keep original and reconstructed provenance distinct; no exact historical closure/core claim",
+      "owner": "Codex (technical preparation); implementation owner assigned per later slice",
+      "reviewer": "GitHub repository creator (maintainer-designated)",
+      "status": "open",
+      "legacy_behavior_changed": false
+    },
+    {
+      "id": "P0-D10",
+      "evidence": "FT15/SA-G4",
+      "observation": "Script collection has no timeout and multiple iterations are unsupported",
+      "replacement_gate": "phase 3",
+      "required_treatment": "Explicit capabilities and bounded collection; preserve actual legacy outcomes",
+      "owner": "Codex (technical preparation); implementation owner assigned per later slice",
+      "reviewer": "GitHub repository creator (maintainer-designated)",
+      "status": "open",
+      "legacy_behavior_changed": false
+    }
+  ]
+}

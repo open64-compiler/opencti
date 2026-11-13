@@ -1,0 +1,14 @@
+test_expected_rejection_not_failure (test_reference.ReferenceTests) ... ok
+test_full_parity_claim (test_reference.ReferenceTests) ... ok
+test_historical_claim (test_reference.ReferenceTests) ... ok
+test_matrix_totals (test_reference.ReferenceTests) ... ok
+test_partial_negative_count_is_not_hidden (test_reference.ReferenceTests) ... ok
+test_readonly_deployment (test_reference.ReferenceTests) ... ok
+test_reference (test_reference.ReferenceTests) ... ok
+test_unchanged_failure_is_not_new (test_reference.ReferenceTests) ... ok
+test_wrong_known_identity (test_reference.ReferenceTests) ... ok
+
+----------------------------------------------------------------------
+Ran 9 tests in 0.776s
+
+OK

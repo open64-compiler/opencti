@@ -1,0 +1,5 @@
+$Cache_data = {
+  'TIME_STAMP' => 'Mon Nov 9',
+  '/export/alpha/mon/summary.log' => {},
+  '/export/beta/mon/summary.log' => {}
+};

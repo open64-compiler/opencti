@@ -1,0 +1,29 @@
+{
+  "schema": "opencti.suite-adoption-plan/v1",
+  "suite_id": "Open64-DSL-pilot",
+  "repository": {
+    "type": "git",
+    "identity": "https://github.com/open64-compiler/open64",
+    "revision": "2dd9308c3c77eb06ef52e461329a04ab1da6e7ec",
+    "logical_path": "osprey/torch2whirl/python/tests/models/absorbed_mla.py",
+    "content_sha256": "0b09aa070ca31850f85d7721315b3ba430ddfeab68639edca3f992c8a014f222",
+    "patch": null,
+    "authority": "git:https://github.com/open64-compiler/open64"
+  },
+  "write_authority": "git:https://github.com/open64-compiler/open64",
+  "original_entry_points": [
+    {
+      "sha256": "a30f5ab883e3d2649e25b747d535254cdb80470f9c5362bbabea7a6626cd5b36",
+      "logical_path": "toolchain/current/ir_tools/tensor_kernel_lower",
+      "role": "toolchain"
+    }
+  ],
+  "changes": [],
+  "preview_only": true,
+  "publication": "not_requested",
+  "rollback": [],
+  "capability_gaps": [
+    "No production DSL adapter",
+    "Frontend regeneration not characterized"
+  ]
+}

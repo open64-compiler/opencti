@@ -1,0 +1,16 @@
+{
+  "status": "pass_for_synthetic_legacy_reader_reference",
+  "checksummed_files": 85,
+  "actual_TM_runs": 4,
+  "completed_test_results": 20,
+  "legacy_reader_and_CGI": "observed",
+  "current_campaign_counts": [
+    5,
+    2,
+    3
+  ],
+  "new_failure": "D.c",
+  "partial_negative_unknown_count": "observed_not_fixed",
+  "full_DA01_DA02_DA04_DA05_DA13": "not_claimed",
+  "historical_archive": "unavailable"
+}

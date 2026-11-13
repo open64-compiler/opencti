@@ -1,0 +1,37 @@
+{
+  "case": "absorbed-mla-short-lno-crash",
+  "failure_class": "CompilerCrash",
+  "historical_command": {
+    "label": "short-probe",
+    "argv": [
+      "/evidence/review-tools/be/be",
+      "-fB,/evidence/controls/short.input.B",
+      "-fo,/evidence/controls/short-probe.o",
+      "-ft,/evidence/controls/short-probe.phase.t",
+      "-PHASE:l=on:w=off:c=off:lpath=/build/osprey/targdir/lno:wpath=/evidence/review-tools/wopt",
+      "-O3",
+      "-DSL:ai_opt_trace=on",
+      "-tr25",
+      "-tt25:1",
+      "-OPT:IEEE_arith=3:roundoff=2",
+      "-DSL:partition_axis=on",
+      "/src/osprey/torch2whirl/python/tests/models/absorbed_mla.py"
+    ],
+    "environment_binding": null,
+    "pinned_backend": false,
+    "returncode": -4
+  },
+  "historical_diagnostic_sha256": "0db486408f7cffa18bfb43e5c9b42cdcec3326d5b421d20e5be6af11e6e71e8e",
+  "source_stage": "retained_native_DSL_WHIRL_then_Common_High",
+  "model": "absorbed_mla.py",
+  "original_toolchain_ancestry": "retained_default_build_products",
+  "historical_process_environment_fully_recovered": false,
+  "shared_IPL_dependency": "authenticated_final_receipt_IPL_used_for_both_new_captured_variants",
+  "expected_compiler_success_code": 0,
+  "observed_process_returncode": -4,
+  "reported_fault": "SIGSEGV_in_LNO",
+  "process_termination_signal": "SIGILL",
+  "wrong_result_required": false,
+  "generated_program_crash_claimed": false,
+  "gpu_variant": "not_applicable_CPU_IR_lowering_and_host_reference_execution"
+}

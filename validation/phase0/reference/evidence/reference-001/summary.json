@@ -1,0 +1,9 @@
+{
+  "status": "pass_for_synthetic_legacy_reader_reference",
+  "framework_changed": false,
+  "previous_evidence_unchanged": true,
+  "worker_removed": true,
+  "historical_archive_available": false,
+  "UI_browser_inspection": false,
+  "production_parity_claimed": false
+}
