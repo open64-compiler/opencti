@@ -1,0 +1,4 @@
+/usr/bin/gmake -f Makefile --quiet check || exit 1;
+FT15 deliberate upstream make-check failure
+gmake[1]: *** [Makefile:7: check] Error 19
+gmake: *** [Makefile.CTI:24: run_tests] Error 1

@@ -1,0 +1,8 @@
+./program > actual.out
+/usr/bin/python3 check.py
+FT15 deliberate upstream make-check failure
+gmake: *** [Makefile:7: check] Error 19
+./program > actual.out
+/usr/bin/python3 check.py
+FT15 deliberate upstream make-check failure
+gmake: *** [Makefile:7: check] Error 19

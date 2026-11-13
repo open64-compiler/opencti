@@ -1,0 +1,86 @@
+[
+  {
+    "id": "app-compile",
+    "family": "application",
+    "unit": "Applications/FT15Compile",
+    "work_relative": "Applications/FT15Compile",
+    "base": "FT15Compile",
+    "expected_tag": "CompileErr",
+    "oracle": "upstream_make_check_and_compare_results",
+    "wrapper_sha256": "49b2cf2e27ccddb69d42f8314be7049628e95286e023ca43faa10fc073da56d9"
+  },
+  {
+    "id": "app-check",
+    "family": "application",
+    "unit": "Applications/FT15Check",
+    "work_relative": "Applications/FT15Check",
+    "base": "FT15Check",
+    "expected_tag": "ExecErr",
+    "oracle": "upstream_make_check_and_compare_results",
+    "wrapper_sha256": "49b2cf2e27ccddb69d42f8314be7049628e95286e023ca43faa10fc073da56d9"
+  },
+  {
+    "id": "app-marker",
+    "family": "application",
+    "unit": "Applications/FT15Marker",
+    "work_relative": "Applications/FT15Marker",
+    "base": "FT15Marker",
+    "expected_tag": "DiffPgmOut",
+    "oracle": "upstream_make_check_and_compare_results",
+    "wrapper_sha256": "49b2cf2e27ccddb69d42f8314be7049628e95286e023ca43faa10fc073da56d9"
+  },
+  {
+    "id": "app-hook",
+    "family": "application",
+    "unit": "Applications/FT15Hook",
+    "work_relative": "Applications/FT15Hook",
+    "base": "FT15Hook",
+    "expected_tag": "ExecErr",
+    "oracle": "upstream_make_check_and_compare_results",
+    "wrapper_sha256": "49b2cf2e27ccddb69d42f8314be7049628e95286e023ca43faa10fc073da56d9"
+  },
+  {
+    "id": "script-mismatch",
+    "family": "script",
+    "unit": "ScriptSuites/FT15Files",
+    "test": "mismatch.z",
+    "base": "mismatch",
+    "work_relative": "ScriptSuites/FT15Files",
+    "expected_tag": "DiffPgmOut",
+    "check_exit": true,
+    "glue": "./glue.py"
+  },
+  {
+    "id": "script-exit-checked",
+    "family": "script",
+    "unit": "ScriptSuites/FT15Files",
+    "test": "exit7.z",
+    "base": "exit7",
+    "work_relative": "ScriptSuites/FT15Files",
+    "expected_tag": "ScriptTestFailure",
+    "check_exit": true,
+    "glue": "./glue.py"
+  },
+  {
+    "id": "script-exit-unchecked",
+    "family": "script",
+    "unit": "ScriptSuites/FT15Unchecked",
+    "test": "exit7.z",
+    "base": "exit7",
+    "work_relative": "ScriptSuites/FT15Unchecked",
+    "expected_tag": "SuccessExec",
+    "check_exit": false,
+    "glue": "./glue.py"
+  },
+  {
+    "id": "script-directory",
+    "family": "script",
+    "unit": "ScriptSuites/FT15Dirs",
+    "test": "case_dir",
+    "base": "case_dir",
+    "work_relative": "ScriptSuites/FT15Dirs/case_dir",
+    "expected_tag": "DiffPgmOut",
+    "check_exit": true,
+    "glue": "./glue.py"
+  }
+]

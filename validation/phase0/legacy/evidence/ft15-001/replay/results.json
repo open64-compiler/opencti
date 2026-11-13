@@ -1,0 +1,937 @@
+{
+  "framework_before": {
+    "id": "1584e7b404a016da21ea8bd4a5c3ee2d30a1ee1424ece1d21deab627b00e1de2",
+    "files": 2654
+  },
+  "framework_after": {
+    "id": "1584e7b404a016da21ea8bd4a5c3ee2d30a1ee1424ece1d21deab627b00e1de2",
+    "files": 2654
+  },
+  "framework_unchanged": true,
+  "records": [
+    {
+      "label": "changed-external-collection",
+      "argv": [
+        "/fixtures/hooks/collector.py",
+        "/fixtures/groups/ScriptSuites/FT15Files/Src"
+      ],
+      "cwd": null,
+      "returncode": 0
+    },
+    {
+      "label": "app-compile-compile",
+      "argv": [
+        "bash",
+        "./FT15Compile.compile.sh"
+      ],
+      "cwd": "/lab/original/work/Applications/FT15Compile",
+      "returncode": 1,
+      "tag": "CompileErr",
+      "compare_results": "missing",
+      "artifacts": {
+        "comp.err": "app-compile-compile.comp.err",
+        "build-options.jsonl": "app-compile-compile.build-options.jsonl"
+      }
+    },
+    {
+      "label": "app-check-compile",
+      "argv": [
+        "bash",
+        "./FT15Check.compile.sh"
+      ],
+      "cwd": "/lab/original/work/Applications/FT15Check",
+      "returncode": 0,
+      "tag": null,
+      "compare_results": "missing",
+      "artifacts": {
+        "comp.err": "app-check-compile.comp.err",
+        "run.out": "app-check-compile.run.out",
+        "build-options.jsonl": "app-check-compile.build-options.jsonl"
+      }
+    },
+    {
+      "label": "app-check-validate-only",
+      "argv": [
+        "bash",
+        "./FT15Check.run.sh"
+      ],
+      "cwd": "/lab/original/work/Applications/FT15Check",
+      "returncode": 1,
+      "tag": "ExecErr",
+      "compare_results": "missing",
+      "artifacts": {
+        "comp.err": "app-check-validate-only.comp.err",
+        "run.out": "app-check-validate-only.run.out",
+        "build-options.jsonl": "app-check-validate-only.build-options.jsonl"
+      }
+    },
+    {
+      "label": "app-marker-compile",
+      "argv": [
+        "bash",
+        "./FT15Marker.compile.sh"
+      ],
+      "cwd": "/lab/original/work/Applications/FT15Marker",
+      "returncode": 0,
+      "tag": null,
+      "compare_results": "nonempty",
+      "artifacts": {
+        "comp.err": "app-marker-compile.comp.err",
+        "run.out": "app-marker-compile.run.out",
+        "compare.results": "app-marker-compile.compare.results",
+        "build-options.jsonl": "app-marker-compile.build-options.jsonl"
+      }
+    },
+    {
+      "label": "app-marker-validate-only",
+      "argv": [
+        "bash",
+        "./FT15Marker.run.sh"
+      ],
+      "cwd": "/lab/original/work/Applications/FT15Marker",
+      "returncode": 1,
+      "tag": "DiffPgmOut",
+      "compare_results": "nonempty",
+      "artifacts": {
+        "comp.err": "app-marker-validate-only.comp.err",
+        "run.out": "app-marker-validate-only.run.out",
+        "compare.results": "app-marker-validate-only.compare.results",
+        "build-options.jsonl": "app-marker-validate-only.build-options.jsonl"
+      }
+    },
+    {
+      "label": "app-hook-compile",
+      "argv": [
+        "bash",
+        "./FT15Hook.compile.sh"
+      ],
+      "cwd": "/lab/original/work/Applications/FT15Hook",
+      "returncode": 0,
+      "tag": null,
+      "compare_results": "missing",
+      "artifacts": {
+        "comp.err": "app-hook-compile.comp.err",
+        "hook-status.log": "app-hook-compile.hook-status.log",
+        "hook-check.log": "app-hook-compile.hook-check.log",
+        "build-options.jsonl": "app-hook-compile.build-options.jsonl"
+      }
+    },
+    {
+      "label": "app-hook-validate-only",
+      "argv": [
+        "bash",
+        "./FT15Hook.run.sh"
+      ],
+      "cwd": "/lab/original/work/Applications/FT15Hook",
+      "returncode": 1,
+      "tag": "ExecErr",
+      "compare_results": "missing",
+      "artifacts": {
+        "comp.err": "app-hook-validate-only.comp.err",
+        "hook-status.log": "app-hook-validate-only.hook-status.log",
+        "hook-check.log": "app-hook-validate-only.hook-check.log",
+        "build-options.jsonl": "app-hook-validate-only.build-options.jsonl"
+      }
+    },
+    {
+      "label": "script-mismatch-producer",
+      "argv": [
+        "./glue.py",
+        "mismatch.z"
+      ],
+      "cwd": "/lab/original/work/ScriptSuites/FT15Files",
+      "returncode": 0
+    },
+    {
+      "label": "script-mismatch-invoker-only",
+      "argv": [
+        "bash",
+        "./mismatch.invoker.sh"
+      ],
+      "cwd": "/lab/original/work/ScriptSuites/FT15Files",
+      "returncode": 0,
+      "tag": null,
+      "compare_results": "missing",
+      "artifacts": {
+        "output": "script-mismatch-invoker-only.output"
+      }
+    },
+    {
+      "label": "script-mismatch-compare-only",
+      "argv": [
+        "bash",
+        "./mismatch.compare-out.sh"
+      ],
+      "cwd": "/lab/original/work/ScriptSuites/FT15Files",
+      "returncode": 1,
+      "tag": "DiffPgmOut",
+      "compare_results": "missing",
+      "artifacts": {
+        "output": "script-mismatch-compare-only.output"
+      }
+    },
+    {
+      "label": "script-exit-checked-producer",
+      "argv": [
+        "./glue.py",
+        "exit7.z"
+      ],
+      "cwd": "/lab/original/work/ScriptSuites/FT15Files",
+      "returncode": 7
+    },
+    {
+      "label": "script-exit-checked-invoker-only",
+      "argv": [
+        "bash",
+        "./exit7.invoker.sh"
+      ],
+      "cwd": "/lab/original/work/ScriptSuites/FT15Files",
+      "returncode": 7,
+      "tag": "ScriptTestFailure",
+      "compare_results": "missing",
+      "artifacts": {
+        "output": "script-exit-checked-invoker-only.output"
+      }
+    },
+    {
+      "label": "script-exit-checked-compare-only",
+      "argv": [
+        "bash",
+        "./exit7.compare-out.sh"
+      ],
+      "cwd": "/lab/original/work/ScriptSuites/FT15Files",
+      "returncode": 0,
+      "tag": null,
+      "compare_results": "missing",
+      "artifacts": {
+        "output": "script-exit-checked-compare-only.output"
+      }
+    },
+    {
+      "label": "script-exit-unchecked-producer",
+      "argv": [
+        "./glue.py",
+        "exit7.z"
+      ],
+      "cwd": "/lab/original/work/ScriptSuites/FT15Unchecked",
+      "returncode": 7
+    },
+    {
+      "label": "script-exit-unchecked-invoker-only",
+      "argv": [
+        "bash",
+        "./exit7.invoker.sh"
+      ],
+      "cwd": "/lab/original/work/ScriptSuites/FT15Unchecked",
+      "returncode": 0,
+      "tag": null,
+      "compare_results": "missing",
+      "artifacts": {
+        "output": "script-exit-unchecked-invoker-only.output"
+      }
+    },
+    {
+      "label": "script-exit-unchecked-compare-only",
+      "argv": [
+        "bash",
+        "./exit7.compare-out.sh"
+      ],
+      "cwd": "/lab/original/work/ScriptSuites/FT15Unchecked",
+      "returncode": 0,
+      "tag": null,
+      "compare_results": "missing",
+      "artifacts": {
+        "output": "script-exit-unchecked-compare-only.output"
+      }
+    },
+    {
+      "label": "script-directory-producer",
+      "argv": [
+        "./glue.py",
+        "case_dir"
+      ],
+      "cwd": "/lab/original/work/ScriptSuites/FT15Dirs/case_dir",
+      "returncode": 0
+    },
+    {
+      "label": "script-directory-invoker-only",
+      "argv": [
+        "bash",
+        "./case_dir.invoker.sh"
+      ],
+      "cwd": "/lab/original/work/ScriptSuites/FT15Dirs/case_dir",
+      "returncode": 0,
+      "tag": null,
+      "compare_results": "missing",
+      "artifacts": {
+        "output": "script-directory-invoker-only.output"
+      }
+    },
+    {
+      "label": "script-directory-compare-only",
+      "argv": [
+        "bash",
+        "./case_dir.compare-out.sh"
+      ],
+      "cwd": "/lab/original/work/ScriptSuites/FT15Dirs/case_dir",
+      "returncode": 1,
+      "tag": "DiffPgmOut",
+      "compare_results": "missing",
+      "artifacts": {
+        "output": "script-directory-compare-only.output"
+      }
+    },
+    {
+      "label": "hook-stale-empty",
+      "argv": [
+        "bash",
+        "./FT15Hook.run.sh"
+      ],
+      "cwd": "/lab/original/work/Applications/FT15Hook",
+      "returncode": 0,
+      "tag": null,
+      "compare_results": "empty",
+      "artifacts": {
+        "comp.err": "hook-stale-empty.comp.err",
+        "compare.results": "hook-stale-empty.compare.results",
+        "hook-status.log": "hook-stale-empty.hook-status.log",
+        "hook-check.log": "hook-stale-empty.hook-check.log",
+        "build-options.jsonl": "hook-stale-empty.build-options.jsonl"
+      }
+    },
+    {
+      "label": "hook-stale-empty-meta",
+      "argv": [
+        "bash",
+        "./FT15Hook.sh"
+      ],
+      "cwd": "/lab/original/work/Applications/FT15Hook",
+      "returncode": 0
+    },
+    {
+      "label": "normal-stale-empty",
+      "argv": [
+        "bash",
+        "./FT15Check.run.sh"
+      ],
+      "cwd": "/lab/original/work/Applications/FT15Check",
+      "returncode": 1,
+      "tag": "ExecErr",
+      "compare_results": "empty",
+      "artifacts": {
+        "comp.err": "normal-stale-empty.comp.err",
+        "run.out": "normal-stale-empty.run.out",
+        "compare.results": "normal-stale-empty.compare.results",
+        "build-options.jsonl": "normal-stale-empty.build-options.jsonl"
+      }
+    },
+    {
+      "label": "private-corrected-check",
+      "argv": [
+        "bash",
+        "./FT15Check.run.sh"
+      ],
+      "cwd": "/lab/original/work/Applications/FT15Check",
+      "returncode": 0,
+      "tag": null,
+      "compare_results": "empty",
+      "artifacts": {
+        "comp.err": "private-corrected-check.comp.err",
+        "run.out": "private-corrected-check.run.out",
+        "compare.results": "private-corrected-check.compare.results",
+        "build-options.jsonl": "private-corrected-check.build-options.jsonl"
+      }
+    },
+    {
+      "label": "unsupported-iterations",
+      "argv": [
+        "perl",
+        "/opt/cti/bin/TM.pl",
+        "-nod",
+        "-nomail",
+        "-f",
+        "/fixtures/phase0.opt",
+        "-w",
+        "/controls/iterations/work",
+        "-l",
+        "/export/unsupported-iterations.log",
+        "-x",
+        "SELECTIONS=ScriptSuites/FT15Files",
+        "-x",
+        "TESTS=mismatch.z",
+        "-x",
+        "MULTIPLE_ITERATIONS=2",
+        "run"
+      ],
+      "cwd": null,
+      "returncode": 0
+    },
+    {
+      "label": "limited-invoker",
+      "argv": [
+        "bash",
+        "./mismatch.sh"
+      ],
+      "cwd": "/lab/original/work/ScriptSuites/FT15Files",
+      "returncode": 1
+    }
+  ],
+  "cases": [
+    {
+      "id": "app-compile",
+      "original_tag": "CompileErr",
+      "compile": {
+        "label": "app-compile-compile",
+        "argv": [
+          "bash",
+          "./FT15Compile.compile.sh"
+        ],
+        "cwd": "/lab/original/work/Applications/FT15Compile",
+        "returncode": 1,
+        "tag": "CompileErr",
+        "compare_results": "missing",
+        "artifacts": {
+          "comp.err": "app-compile-compile.comp.err",
+          "build-options.jsonl": "app-compile-compile.build-options.jsonl"
+        }
+      },
+      "collector_not_rerun": true
+    },
+    {
+      "id": "app-check",
+      "original_tag": "ExecErr",
+      "compile": {
+        "label": "app-check-compile",
+        "argv": [
+          "bash",
+          "./FT15Check.compile.sh"
+        ],
+        "cwd": "/lab/original/work/Applications/FT15Check",
+        "returncode": 0,
+        "tag": null,
+        "compare_results": "missing",
+        "artifacts": {
+          "comp.err": "app-check-compile.comp.err",
+          "run.out": "app-check-compile.run.out",
+          "build-options.jsonl": "app-check-compile.build-options.jsonl"
+        }
+      },
+      "validate": {
+        "label": "app-check-validate-only",
+        "argv": [
+          "bash",
+          "./FT15Check.run.sh"
+        ],
+        "cwd": "/lab/original/work/Applications/FT15Check",
+        "returncode": 1,
+        "tag": "ExecErr",
+        "compare_results": "missing",
+        "artifacts": {
+          "comp.err": "app-check-validate-only.comp.err",
+          "run.out": "app-check-validate-only.run.out",
+          "build-options.jsonl": "app-check-validate-only.build-options.jsonl"
+        }
+      },
+      "compile_count_before_validate": 1,
+      "compile_count_after_validate": 1,
+      "observation": {
+        "reported_returncode": 1,
+        "marker": "missing",
+        "hook_returncode": null,
+        "reference_discrepancy": false,
+        "validation_succeeded": false,
+        "oracle": "upstream_make_check_and_compare_results",
+        "text_master_invented": false
+      },
+      "collector_not_rerun": true
+    },
+    {
+      "id": "app-marker",
+      "original_tag": "DiffPgmOut",
+      "compile": {
+        "label": "app-marker-compile",
+        "argv": [
+          "bash",
+          "./FT15Marker.compile.sh"
+        ],
+        "cwd": "/lab/original/work/Applications/FT15Marker",
+        "returncode": 0,
+        "tag": null,
+        "compare_results": "nonempty",
+        "artifacts": {
+          "comp.err": "app-marker-compile.comp.err",
+          "run.out": "app-marker-compile.run.out",
+          "compare.results": "app-marker-compile.compare.results",
+          "build-options.jsonl": "app-marker-compile.build-options.jsonl"
+        }
+      },
+      "validate": {
+        "label": "app-marker-validate-only",
+        "argv": [
+          "bash",
+          "./FT15Marker.run.sh"
+        ],
+        "cwd": "/lab/original/work/Applications/FT15Marker",
+        "returncode": 1,
+        "tag": "DiffPgmOut",
+        "compare_results": "nonempty",
+        "artifacts": {
+          "comp.err": "app-marker-validate-only.comp.err",
+          "run.out": "app-marker-validate-only.run.out",
+          "compare.results": "app-marker-validate-only.compare.results",
+          "build-options.jsonl": "app-marker-validate-only.build-options.jsonl"
+        }
+      },
+      "compile_count_before_validate": 1,
+      "compile_count_after_validate": 1,
+      "observation": {
+        "reported_returncode": 1,
+        "marker": "nonempty",
+        "hook_returncode": null,
+        "reference_discrepancy": false,
+        "validation_succeeded": false,
+        "oracle": "upstream_make_check_and_compare_results",
+        "text_master_invented": false
+      },
+      "collector_not_rerun": true
+    },
+    {
+      "id": "app-hook",
+      "original_tag": "ExecErr",
+      "compile": {
+        "label": "app-hook-compile",
+        "argv": [
+          "bash",
+          "./FT15Hook.compile.sh"
+        ],
+        "cwd": "/lab/original/work/Applications/FT15Hook",
+        "returncode": 0,
+        "tag": null,
+        "compare_results": "missing",
+        "artifacts": {
+          "comp.err": "app-hook-compile.comp.err",
+          "hook-status.log": "app-hook-compile.hook-status.log",
+          "hook-check.log": "app-hook-compile.hook-check.log",
+          "build-options.jsonl": "app-hook-compile.build-options.jsonl"
+        }
+      },
+      "validate": {
+        "label": "app-hook-validate-only",
+        "argv": [
+          "bash",
+          "./FT15Hook.run.sh"
+        ],
+        "cwd": "/lab/original/work/Applications/FT15Hook",
+        "returncode": 1,
+        "tag": "ExecErr",
+        "compare_results": "missing",
+        "artifacts": {
+          "comp.err": "app-hook-validate-only.comp.err",
+          "hook-status.log": "app-hook-validate-only.hook-status.log",
+          "hook-check.log": "app-hook-validate-only.hook-check.log",
+          "build-options.jsonl": "app-hook-validate-only.build-options.jsonl"
+        }
+      },
+      "compile_count_before_validate": 1,
+      "compile_count_after_validate": 1,
+      "observation": {
+        "reported_returncode": 1,
+        "marker": "missing",
+        "hook_returncode": 2,
+        "reference_discrepancy": false,
+        "validation_succeeded": false,
+        "oracle": "upstream_make_check_and_compare_results",
+        "text_master_invented": false
+      },
+      "collector_not_rerun": true
+    },
+    {
+      "id": "script-mismatch",
+      "original_tag": "DiffPgmOut",
+      "producer": {
+        "label": "script-mismatch-producer",
+        "argv": [
+          "./glue.py",
+          "mismatch.z"
+        ],
+        "cwd": "/lab/original/work/ScriptSuites/FT15Files",
+        "returncode": 0
+      },
+      "invoker": {
+        "label": "script-mismatch-invoker-only",
+        "argv": [
+          "bash",
+          "./mismatch.invoker.sh"
+        ],
+        "cwd": "/lab/original/work/ScriptSuites/FT15Files",
+        "returncode": 0,
+        "tag": null,
+        "compare_results": "missing",
+        "artifacts": {
+          "output": "script-mismatch-invoker-only.output"
+        }
+      },
+      "compare": {
+        "label": "script-mismatch-compare-only",
+        "argv": [
+          "bash",
+          "./mismatch.compare-out.sh"
+        ],
+        "cwd": "/lab/original/work/ScriptSuites/FT15Files",
+        "returncode": 1,
+        "tag": "DiffPgmOut",
+        "compare_results": "missing",
+        "artifacts": {
+          "output": "script-mismatch-compare-only.output"
+        }
+      },
+      "output": "observed|OUT-1|OUT-2|helper-A|input-A\nERR-1|ERR-2\n",
+      "observation": {
+        "check_exit": true,
+        "producer_returncode": 0,
+        "invoker_returncode": 0,
+        "compare_returncode": 1,
+        "combined_outcome": "DiffPgmOut",
+        "stream_contract": "stdout_then_stderr"
+      },
+      "directory_input": false,
+      "local_auxiliary_present": true,
+      "collector_not_rerun": true
+    },
+    {
+      "id": "script-exit-checked",
+      "original_tag": "ScriptTestFailure",
+      "producer": {
+        "label": "script-exit-checked-producer",
+        "argv": [
+          "./glue.py",
+          "exit7.z"
+        ],
+        "cwd": "/lab/original/work/ScriptSuites/FT15Files",
+        "returncode": 7
+      },
+      "invoker": {
+        "label": "script-exit-checked-invoker-only",
+        "argv": [
+          "bash",
+          "./exit7.invoker.sh"
+        ],
+        "cwd": "/lab/original/work/ScriptSuites/FT15Files",
+        "returncode": 7,
+        "tag": "ScriptTestFailure",
+        "compare_results": "missing",
+        "artifacts": {
+          "output": "script-exit-checked-invoker-only.output"
+        }
+      },
+      "compare": {
+        "label": "script-exit-checked-compare-only",
+        "argv": [
+          "bash",
+          "./exit7.compare-out.sh"
+        ],
+        "cwd": "/lab/original/work/ScriptSuites/FT15Files",
+        "returncode": 0,
+        "tag": null,
+        "compare_results": "missing",
+        "artifacts": {
+          "output": "script-exit-checked-compare-only.output"
+        }
+      },
+      "output": "observed|OUT-1|OUT-2|helper-A|input-A\nERR-1|ERR-2\n",
+      "observation": {
+        "check_exit": true,
+        "producer_returncode": 7,
+        "invoker_returncode": 7,
+        "compare_returncode": 0,
+        "combined_outcome": "ScriptTestFailure",
+        "stream_contract": "stdout_then_stderr"
+      },
+      "directory_input": false,
+      "local_auxiliary_present": true,
+      "collector_not_rerun": true
+    },
+    {
+      "id": "script-exit-unchecked",
+      "original_tag": "SuccessExec",
+      "producer": {
+        "label": "script-exit-unchecked-producer",
+        "argv": [
+          "./glue.py",
+          "exit7.z"
+        ],
+        "cwd": "/lab/original/work/ScriptSuites/FT15Unchecked",
+        "returncode": 7
+      },
+      "invoker": {
+        "label": "script-exit-unchecked-invoker-only",
+        "argv": [
+          "bash",
+          "./exit7.invoker.sh"
+        ],
+        "cwd": "/lab/original/work/ScriptSuites/FT15Unchecked",
+        "returncode": 0,
+        "tag": null,
+        "compare_results": "missing",
+        "artifacts": {
+          "output": "script-exit-unchecked-invoker-only.output"
+        }
+      },
+      "compare": {
+        "label": "script-exit-unchecked-compare-only",
+        "argv": [
+          "bash",
+          "./exit7.compare-out.sh"
+        ],
+        "cwd": "/lab/original/work/ScriptSuites/FT15Unchecked",
+        "returncode": 0,
+        "tag": null,
+        "compare_results": "missing",
+        "artifacts": {
+          "output": "script-exit-unchecked-compare-only.output"
+        }
+      },
+      "output": "observed|OUT-1|OUT-2|helper-A|input-A\nERR-1|ERR-2\n",
+      "observation": {
+        "check_exit": false,
+        "producer_returncode": 7,
+        "invoker_returncode": 0,
+        "compare_returncode": 0,
+        "combined_outcome": "SuccessExec",
+        "stream_contract": "stdout_then_stderr"
+      },
+      "directory_input": false,
+      "local_auxiliary_present": true,
+      "collector_not_rerun": true
+    },
+    {
+      "id": "script-directory",
+      "original_tag": "DiffPgmOut",
+      "producer": {
+        "label": "script-directory-producer",
+        "argv": [
+          "./glue.py",
+          "case_dir"
+        ],
+        "cwd": "/lab/original/work/ScriptSuites/FT15Dirs/case_dir",
+        "returncode": 0
+      },
+      "invoker": {
+        "label": "script-directory-invoker-only",
+        "argv": [
+          "bash",
+          "./case_dir.invoker.sh"
+        ],
+        "cwd": "/lab/original/work/ScriptSuites/FT15Dirs/case_dir",
+        "returncode": 0,
+        "tag": null,
+        "compare_results": "missing",
+        "artifacts": {
+          "output": "script-directory-invoker-only.output"
+        }
+      },
+      "compare": {
+        "label": "script-directory-compare-only",
+        "argv": [
+          "bash",
+          "./case_dir.compare-out.sh"
+        ],
+        "cwd": "/lab/original/work/ScriptSuites/FT15Dirs/case_dir",
+        "returncode": 1,
+        "tag": "DiffPgmOut",
+        "compare_results": "missing",
+        "artifacts": {
+          "output": "script-directory-compare-only.output"
+        }
+      },
+      "output": "observed|OUT-1|OUT-2|helper-A|input-A\nERR-1|ERR-2\n",
+      "observation": {
+        "check_exit": true,
+        "producer_returncode": 0,
+        "invoker_returncode": 0,
+        "compare_returncode": 1,
+        "combined_outcome": "DiffPgmOut",
+        "stream_contract": "stdout_then_stderr"
+      },
+      "directory_input": true,
+      "local_auxiliary_present": true,
+      "collector_not_rerun": true
+    }
+  ],
+  "controls": [
+    {
+      "case": "hook-stale-empty",
+      "phase": {
+        "label": "hook-stale-empty",
+        "argv": [
+          "bash",
+          "./FT15Hook.run.sh"
+        ],
+        "cwd": "/lab/original/work/Applications/FT15Hook",
+        "returncode": 0,
+        "tag": null,
+        "compare_results": "empty",
+        "artifacts": {
+          "comp.err": "hook-stale-empty.comp.err",
+          "compare.results": "hook-stale-empty.compare.results",
+          "hook-status.log": "hook-stale-empty.hook-status.log",
+          "hook-check.log": "hook-stale-empty.hook-check.log",
+          "build-options.jsonl": "hook-stale-empty.build-options.jsonl"
+        }
+      },
+      "observation": {
+        "reported_returncode": 0,
+        "marker": "empty",
+        "hook_returncode": 2,
+        "reference_discrepancy": true,
+        "validation_succeeded": false,
+        "oracle": "upstream_make_check_and_compare_results",
+        "text_master_invented": false
+      },
+      "meta": {
+        "label": "hook-stale-empty-meta",
+        "argv": [
+          "bash",
+          "./FT15Hook.sh"
+        ],
+        "cwd": "/lab/original/work/Applications/FT15Hook",
+        "returncode": 0
+      },
+      "legacy_tag": "SuccessExec",
+      "corrected_native_claim": false
+    },
+    {
+      "case": "normal-stale-empty",
+      "phase": {
+        "label": "normal-stale-empty",
+        "argv": [
+          "bash",
+          "./FT15Check.run.sh"
+        ],
+        "cwd": "/lab/original/work/Applications/FT15Check",
+        "returncode": 1,
+        "tag": "ExecErr",
+        "compare_results": "empty",
+        "artifacts": {
+          "comp.err": "normal-stale-empty.comp.err",
+          "run.out": "normal-stale-empty.run.out",
+          "compare.results": "normal-stale-empty.compare.results",
+          "build-options.jsonl": "normal-stale-empty.build-options.jsonl"
+        }
+      },
+      "observation": {
+        "reported_returncode": 1,
+        "marker": "empty",
+        "hook_returncode": null,
+        "reference_discrepancy": false,
+        "validation_succeeded": false,
+        "oracle": "upstream_make_check_and_compare_results",
+        "text_master_invented": false
+      }
+    },
+    {
+      "case": "private-corrected-check",
+      "phase": {
+        "label": "private-corrected-check",
+        "argv": [
+          "bash",
+          "./FT15Check.run.sh"
+        ],
+        "cwd": "/lab/original/work/Applications/FT15Check",
+        "returncode": 0,
+        "tag": null,
+        "compare_results": "empty",
+        "artifacts": {
+          "comp.err": "private-corrected-check.comp.err",
+          "run.out": "private-corrected-check.run.out",
+          "compare.results": "private-corrected-check.compare.results",
+          "build-options.jsonl": "private-corrected-check.build-options.jsonl"
+        }
+      },
+      "original_tag": "ExecErr",
+      "marker": "empty"
+    },
+    {
+      "case": "missing-glue",
+      "decision": {
+        "dispatch_phase": false,
+        "problems": [
+          {
+            "role": "script-invocation-glue",
+            "code": "MissingDependency",
+            "path": "/external/glue.py"
+          }
+        ]
+      },
+      "phases_executed": 0
+    },
+    {
+      "case": "unsupported-iterations",
+      "invocation": {
+        "label": "unsupported-iterations",
+        "argv": [
+          "perl",
+          "/opt/cti/bin/TM.pl",
+          "-nod",
+          "-nomail",
+          "-f",
+          "/fixtures/phase0.opt",
+          "-w",
+          "/controls/iterations/work",
+          "-l",
+          "/export/unsupported-iterations.log",
+          "-x",
+          "SELECTIONS=ScriptSuites/FT15Files",
+          "-x",
+          "TESTS=mismatch.z",
+          "-x",
+          "MULTIPLE_ITERATIONS=2",
+          "run"
+        ],
+        "cwd": null,
+        "returncode": 0
+      },
+      "diagnostic_present": true,
+      "invoker_generated": false
+    },
+    {
+      "case": "unlimited-collection",
+      "alive_after_seconds": 2.2164320009997027,
+      "configured_phase_seconds": 1,
+      "external_watchdog": true,
+      "controller_returncode": -15,
+      "collector_pid": 245,
+      "argv": [
+        "perl",
+        "/opt/cti/bin/TM.pl",
+        "-nod",
+        "-nomail",
+        "-f",
+        "/fixtures/phase0.opt",
+        "-w",
+        "/controls/collection/work",
+        "-l",
+        "/export/collection-wait.log",
+        "-x",
+        "SELECTIONS=ScriptSuites/FT15Files",
+        "run"
+      ]
+    },
+    {
+      "case": "limited-invoker",
+      "invocation": {
+        "label": "limited-invoker",
+        "argv": [
+          "bash",
+          "./mismatch.sh"
+        ],
+        "cwd": "/lab/original/work/ScriptSuites/FT15Files",
+        "returncode": 1
+      },
+      "legacy_tag": "LongScriptTest"
+    }
+  ],
+  "sealed_evidence_unchanged": true,
+  "original_paths_removed_before_reconstruction": true,
+  "independent_recipes": true
+}

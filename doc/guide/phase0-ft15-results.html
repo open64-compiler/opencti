@@ -1,0 +1,76 @@
+<!--
+Copyright (C) 2011, Hewlett-Packard Development Company, L.P.
+All Rights Reserved.
+Open64 is free software; you can redistribute it and/or modify it under the
+terms of the GNU General Public License as published by the Free Software
+Foundation; either version 2 of the License, or (at your option) any later
+version. Distributed WITHOUT ANY WARRANTY; without even the implied warranty
+of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General
+Public License for more details.
+-->
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>FT15 application and externally scripted harness contracts — OpenCTI</title><style>body{margin:0;background:#f4f6f8;color:#18232e;font:17px/1.6 system-ui,sans-serif}
+main{max-width:1050px;margin:auto;padding:2rem;background:white;min-height:100vh}
+a{color:#075ca8}nav{padding:.7rem 0;border-bottom:1px solid #ccd5dd}
+h1,h2,h3{line-height:1.25;scroll-margin-top:1rem}h2{margin-top:2rem}
+pre{padding:1rem;background:#eff3f7;overflow:auto;border:1px solid #d5dce3}
+code{font: .88em/1.5 ui-monospace,monospace;overflow-wrap:anywhere}
+table{border-collapse:collapse;width:100%;display:block;overflow:auto}
+th,td{padding:.6rem;border:1px solid #ccd5dd;text-align:left;vertical-align:top}
+th{background:#eff3f7}td:first-child{min-width:10rem}footer{border-top:1px solid #ccd5dd;margin-top:2rem;color:#52606b}
+@media(max-width:640px){main{padding:1rem}body{font-size:16px}}
+</style></head><body><main>
+<nav><a href="index.html">CTI documentation</a></nav>
+<h1 id="ft15-application-and-externally-scripted-harness-contracts">FT15 application and externally scripted harness contracts</h1>
+<p><a href="index.html">Documentation home</a> · <a href="failure-triage-acceptance.html#ft15-application-and-script-suite-harnesses">FT15 acceptance</a> · <a href="architecture.html">Architecture</a> · <a href="../../validation/phase0/legacy/README.md#ft15-application-and-externally-scripted-harness-contracts">Reproduction</a></p>
+<h2 id="result-and-scope">Result and scope</h2>
+<p>FT15&#x27;s synthetic application/script characterization passes. Eight cases retain their original harness contracts and support fifteen independent saved-phase replays after the original container is deleted. **A stale-marker false pass is reproduced in the application run-hook path and remains an explicit reference discrepancy; the framework is not changed to fix it.**</p>
+<p>The reference is <code>runs/ft15-004</code>, completed on 2026-11-12 Pacific time. Compact evidence is <a href="../../validation/phase0/legacy/evidence/ft15-001/summary.json">`evidence/ft15-001`</a>. One main stock TM invocation reports eight tests: one pass and seven failures. Additional isolated controls exercise unsupported iterations and collection waiting. No production adapter or historical FX09 archive is acquired.</p>
+<table><thead><tr><th>Captured case</th><th>Original CTI verdict</th><th>Independent replay</th></tr></thead><tbody>
+<tr><td>Application compilation failure</td><td><code>CompileErr</code></td><td>Saved compile returns 1 with the original compiler diagnostics</td></tr>
+<tr><td>Application upstream <code>make check</code> failure</td><td><code>ExecErr</code></td><td>Compile succeeds independently; saved validation returns 1 without compiling again</td></tr>
+<tr><td>Application nonempty validation marker</td><td><code>DiffPgmOut</code></td><td>Upstream check succeeds but leaves nonempty <code>compare.results</code>; saved validation returns 1</td></tr>
+<tr><td>Application run-hook failure with no marker</td><td><code>ExecErr</code></td><td>Saved run hook fails and marker remains absent; fresh saved validation returns 1</td></tr>
+<tr><td>File-based script output mismatch</td><td><code>DiffPgmOut</code></td><td>Invoker returns 0; independent comparison returns 1</td></tr>
+<tr><td>Script exits 7 with exit checking enabled</td><td><code>ScriptTestFailure</code></td><td>Invoker returns 7; comparison alone returns 0, without replacing the original failed verdict</td></tr>
+<tr><td>Same script exits 7 with exit checking disabled</td><td><code>SuccessExec</code></td><td>Invoker returns 0 by configuration; matching output compares successfully</td></tr>
+<tr><td>Directory-based script mismatch</td><td><code>DiffPgmOut</code></td><td>Nested inputs/shared glue survive reconstruction; invoker 0, comparison 1</td></tr>
+</tbody></table>
+<h2 id="application-wrapper-and-upstream-oracle">Application wrapper and upstream oracle</h2>
+<p>All four application fixtures use an exact, unmodified copy of the tracked GSL 1.14 <code>Makefile.CTI</code>. The upstream C source, makefile, configure/check programs and inputs are synthetic. This tests that wrapper&#x27;s contract, not the complete GSL distribution.</p>
+<p>The wrapper runs configure/build for <code>compile</code>, and an upstream <code>make --quiet check</code> for <code>validate</code>. A failing upstream check propagates before the wrapper touches <code>compare.results</code>. A successful check reaches <code>touch</code>; touching an existing marker does not empty it. CTI&#x27;s normal validation recipe checks make&#x27;s return code, then requires an existing empty marker.</p>
+<p>Captured build arguments are <code>/usr/bin/gcc</code>, <code>CFLAGS=-O1 -DFT15_FLAG=15</code> and explicit <code>OPT_LEVEL=1</code> through <code>UNIT_MAKEVARS</code>. Source, configure/check inputs, wrapper, effective environment, build arguments, generated recipes, executable, output and marker bytes are archived. A validation-only replay uses the captured executable: its build count remains 1 before and after validation. Compilation is tested separately in another fresh private reconstruction.</p>
+<p>There is **no application text master or fabricated compare-out phase**. The oracle remains the upstream check plus the wrapper&#x27;s marker contract. The nonempty-marker case deliberately returns success from its upstream check while writing <code>FT15 upstream semantic mismatch\n</code>; GNU make succeeds, and CTI then records <code>DiffPgmOut</code> from the marker.</p>
+<h2 id="observed-stale-empty-marker-false-pass">Observed stale-empty-marker false pass</h2>
+<p>The application run-hook generator produces a script that performs the upstream check and propagates its GNU make exit status of 2. The original capture has no marker, so CTI&#x27;s outer wrapper records <code>ExecErr</code>.</p>
+<p>In a fresh **isolated control copy**, leave an empty <code>compare.results</code> and repeat that failing hook. The emitted CTI outer run wrapper ignores the hook&#x27;s status, sees the existing empty marker and returns 0. The full saved meta-script then reports <code>SuccessExec</code>, despite the hook still returning 2. The compact proof retains the raw hook status/check log, empty marker, full meta-script result and the validation helper&#x27;s discrepancy classification.</p>
+<p>The normal make-validation path behaves differently under the same stale-empty-marker control: it returns 1 and records <code>ExecErr</code> before accepting the marker. A separate private correction changes only the upstream check input, clears its marker, and then legitimately validates successfully. Neither control changes the original sealed failure or its verdict.</p>
+<p>The helper reports <code>reference_discrepancy=true</code> and <code>validation_succeeded=false</code> for the run-hook false pass. This does not fix the driver or qualify native replacement behavior. A future adapter must retain upstream failure status and marker freshness rather than treating an old empty file as proof of a new successful validation.</p>
+<h2 id="externally-scripted-suite-closure">Externally scripted suite closure</h2>
+<p>The fixture has a collector, invocation glue, selected <code>.z</code> files and a directory case with a nested input. File tests declare <code>TEST_AUXFILES</code> for glue/helper/input links; directory tests use the driver&#x27;s recursive linking behavior. Source aliases cross from <code>/fixtures</code> to a separately retained <code>/external</code> tree, including a directory-to-shared-glue link and a relative nested-input link.</p>
+<p>The collector executes six times during the original run: once for enumeration and once for execution for each of three script units. In the replay worker, an independently changed tree first collects <code>replacement.z</code>; that changed tree is then removed. The original source/external/work trees are restored from sealed archives at their logical paths. Every selected saved invoker/comparison replay leaves the captured collector log unchanged. Reopening a failure therefore does not depend on recollecting a later external checkout.</p>
+<p>The script producer deliberately writes stderr/stdout in alternating calls. CTI captures the two streams separately, concatenates **all stdout followed by all stderr**, and removes the temporary stream files. Direct producer captures and saved invoker output verify that exact byte contract; original interleaving is not preserved. Output masters remain those captured for the selected scripts.</p>
+<p>With <code>RUN_TESTS_CHECK_EXIT=true</code>, producer exit 7 becomes invoker exit 7 and <code>ScriptTestFailure</code>. Its output can still match the master when comparison is invoked alone. With the setting false, the emitted invoker returns 0 and permits successful comparison despite producer exit 7. This is the configured script-driver behavior; the source option description saying “regression only” is incomplete.</p>
+<p><code>RUN_TESTS_CHECK_EXIT</code>, collection/invocation settings and several other controls are pruned from saved <code>.env</code> files. Their effects are embedded in the generated recipes. Preserve source configuration, collector/glue and the original recipes in addition to the environment; an <code>.env</code> alone is not the entire harness contract. A missing-glue control is blocked by the validation-only dependency check before phase dispatch.</p>
+<h2 id="collection-limits-and-unsupported-iteration">Collection limits and unsupported iteration</h2>
+<p>The script units generate ordinary phase wrappers with <code>LIMIT_OPTIONS=-s1</code>. A deliberately waiting saved invoker is stopped by the legacy limiter with <code>LongScriptTest</code>. The collector is called outside those phase wrappers: a waiting collector remains alive for more than 2.2 seconds and requires the experiment&#x27;s explicit external watchdog. This bounded observation and the source trace establish that the normal generated one-second phase limit is not applied to collection; it does not claim an unlimited-duration stress test.</p>
+<p>An actual TM request with <code>MULTIPLE_ITERATIONS=2</code> produces the explicit “feature not implemented” diagnostic and generates no invoker. TM still exits zero in this control. That process status is not evidence of iteration support or a successful test. These gaps remain visible for future adapter qualification.</p>
+<h2 id="isolation-retained-evidence-and-checks">Isolation, retained evidence and checks</h2>
+<p>Both workers run in the pinned native Linux ARM64 image with networking disabled, one CPU, 1 GiB memory, all capabilities dropped, <code>no-new-privileges</code>, default PID isolation and no device requests. Only copied tools, metadata and the input/sealed bundles are mounted read-only; the new export directory is writable. Original source/external/work paths exist only inside disposable container filesystems. The capture container is deleted before the replay container starts.</p>
+<p>Extraction assigns uid/gid ownership to the disposable session while retaining content, executable modes and link targets. This avoids a foreign-host ownership operation causing executable-mode restoration to be skipped under the restricted profile. Linux link permission bits can differ from the native archive&#x27;s link mode; file contents, link targets and regular-file modes are audited against the initial bundle.</p>
+<p>All 2,654 deployed framework entries retain their original identity. All 1,040 earlier evidence entries and the new run&#x27;s original native input trees remain unchanged. Sealed original failure archives are read-only throughout replay. Both workers are removed; no product, driver, framework configuration or approved test is changed. The pre-existing filename-collision edits are untouched.</p>
+<p>The full reference has 193 regular-file hashes. Compact evidence has 136 hashes plus its index and totals 566,776 bytes. It retains sealed work/source/external archives, original input bundle, case contracts, raw per-phase compiler/make/stream/marker logs, copied tools/runner, source hashes, worker profiles and preservation inventories. Expanded work/session trees, development runs and the 623,109,120-byte runtime image archive remain local/ignored. The runtime can be rebound with <code>--image-archive</code> while preserving its exact hash/size and the original capture.</p>
+<p>Both audits and fifteen offline tests pass. Contradiction tests reject a rehashed false validation success, changed glue, disabled exit checking, interleaved-output substitution, hidden recompilation/recollection, invented application text oracle and fabricated collection/iteration support.</p>
+<ul>
+<li><a href="../../validation/phase0/legacy/run_ft15.py">Runner</a></li>
+<li><a href="../../validation/phase0/legacy/ft15/worker.py">Worker and independent recipes</a></li>
+<li><a href="../../validation/phase0/legacy/ft15/contracts.py">Contract/closure observations</a></li>
+<li><a href="../../validation/phase0/legacy/verify_ft15.py">Full and compact auditor</a></li>
+<li><a href="../../validation/phase0/legacy/test_verify_ft15.py">Offline tests</a></li>
+<li><a href="../../validation/phase0/legacy/evidence/ft15-001/capture/results.json">Captured contracts</a></li>
+<li><a href="../../validation/phase0/legacy/evidence/ft15-001/replay/results.json">Replay and discrepancy controls</a></li>
+</ul>
+<p>Historical/vendor suites, other application languages and custom wrappers, production adapter acceptance, correction of the run-hook discrepancy, and full remote GPU qualification remain open. Phase 0 is incomplete; FT16 through FT19 are not run.</p>
+<footer>Reconstructed from OpenCTI source, baseline 8c3d603. Generated by doc/tools/build_docs.py.</footer>
+</main></body></html>

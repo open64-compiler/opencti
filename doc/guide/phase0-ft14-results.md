@@ -76,4 +76,4 @@ The compact record contains 32 checksummed files plus its index, totaling 578,27
 
 Thirteen offline tests cover reference integrity, byte corruption, rehashed false GPU/fallback/lease/cleanup/replay claims, duplicate-event contradictions, immutable job submissions, blocked dispatch and lease fencing across connections. See the [validation instructions](../../validation/phase0/legacy/README.md#ft14-isolated-job-persistence-and-collection-subset).
 
-Real GPU failure/replay, actual Mac sleep, a separate remote host, SSH/WAN behavior, physical GPU leases, historical FX10 and full FT14 acceptance remain open. Phase 0 is not complete; FT15 through FT19 are not run.
+Real GPU failure/replay, actual Mac sleep, a separate remote host, SSH/WAN behavior, physical GPU leases, historical FX10 and full FT14 acceptance remain open. Phase 0 is not complete; The [FT15 application/script follow-up](phase0-ft15-results.md) now provides synthetic harness-contract evidence with an explicit stale-marker discrepancy; FT16 through FT19 are not run.

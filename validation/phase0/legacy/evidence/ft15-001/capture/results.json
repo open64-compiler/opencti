@@ -1,0 +1,319 @@
+{
+  "framework_before": {
+    "id": "1584e7b404a016da21ea8bd4a5c3ee2d30a1ee1424ece1d21deab627b00e1de2",
+    "files": 2654
+  },
+  "framework_after": {
+    "id": "1584e7b404a016da21ea8bd4a5c3ee2d30a1ee1424ece1d21deab627b00e1de2",
+    "files": 2654
+  },
+  "framework_unchanged": true,
+  "records": [
+    {
+      "label": "original-tm",
+      "argv": [
+        "perl",
+        "/opt/cti/bin/TM.pl",
+        "-nod",
+        "-nomail",
+        "-f",
+        "/fixtures/phase0.opt",
+        "-w",
+        "/lab/original/work",
+        "-l",
+        "/export/original-tm.log",
+        "run"
+      ],
+      "cwd": null,
+      "returncode": 0
+    }
+  ],
+  "cases": [
+    {
+      "id": "app-compile",
+      "family": "application",
+      "unit": "Applications/FT15Compile",
+      "work_relative": "Applications/FT15Compile",
+      "base": "FT15Compile",
+      "expected_tag": "CompileErr",
+      "oracle": "upstream_make_check_and_compare_results",
+      "wrapper_sha256": "49b2cf2e27ccddb69d42f8314be7049628e95286e023ca43faa10fc073da56d9",
+      "original_tag": "CompileErr",
+      "saved_environment_sha256": "01ba8cc938fe24383505d4d1dc3abcab2b3aa0a9b34128aeacb4aff8238dac2e",
+      "saved_scripts": {
+        "FT15Compile.compile.sh": "eb68debebb6be7716d74c32e6bb8ab9c82da0b1ce6f9b3410ca4685747dbc7b3",
+        "FT15Compile.run.sh": "8a50fd91888be397027c01433f84c5461120a7cb533b1d01fdc686df01af17d7"
+      },
+      "exit_check_setting_pruned_from_env": true,
+      "marker": "missing",
+      "build_options": {
+        "cc": "/usr/bin/gcc",
+        "cflags": "-O1 -DFT15_FLAG=15",
+        "unit_opt_level": "1"
+      }
+    },
+    {
+      "id": "app-check",
+      "family": "application",
+      "unit": "Applications/FT15Check",
+      "work_relative": "Applications/FT15Check",
+      "base": "FT15Check",
+      "expected_tag": "ExecErr",
+      "oracle": "upstream_make_check_and_compare_results",
+      "wrapper_sha256": "49b2cf2e27ccddb69d42f8314be7049628e95286e023ca43faa10fc073da56d9",
+      "original_tag": "ExecErr",
+      "saved_environment_sha256": "d675559d863d7622a1cc5e00391771c076f195c572ac5bee5a9ff14609f1d6ba",
+      "saved_scripts": {
+        "FT15Check.run.sh": "940b168e2ca8b0d6b2a44906bb4762092362b8dd52e3bfe3eee6f8a4c1fecb93",
+        "FT15Check.compile.sh": "e5d88df995adf893138decb33fb43209a29c420e04f7f3050221136d2509a6f6"
+      },
+      "exit_check_setting_pruned_from_env": true,
+      "marker": "missing",
+      "build_options": {
+        "cc": "/usr/bin/gcc",
+        "cflags": "-O1 -DFT15_FLAG=15",
+        "unit_opt_level": "1"
+      }
+    },
+    {
+      "id": "app-marker",
+      "family": "application",
+      "unit": "Applications/FT15Marker",
+      "work_relative": "Applications/FT15Marker",
+      "base": "FT15Marker",
+      "expected_tag": "DiffPgmOut",
+      "oracle": "upstream_make_check_and_compare_results",
+      "wrapper_sha256": "49b2cf2e27ccddb69d42f8314be7049628e95286e023ca43faa10fc073da56d9",
+      "original_tag": "DiffPgmOut",
+      "saved_environment_sha256": "51b2b3976f0f33798405b93aa31f2ccfc5833401b3af4172362d9002cc26a34e",
+      "saved_scripts": {
+        "FT15Marker.compile.sh": "1a48daf9e2aea19f9e5e02ce930a88e86d8a2e9433509b55f22cd44a56793dfe",
+        "FT15Marker.run.sh": "b3e73f194b71c8f69c644e3b55875067f5ff268640a73cba8d78f40a24e91fc4"
+      },
+      "exit_check_setting_pruned_from_env": true,
+      "marker": "nonempty",
+      "build_options": {
+        "cc": "/usr/bin/gcc",
+        "cflags": "-O1 -DFT15_FLAG=15",
+        "unit_opt_level": "1"
+      }
+    },
+    {
+      "id": "app-hook",
+      "family": "application",
+      "unit": "Applications/FT15Hook",
+      "work_relative": "Applications/FT15Hook",
+      "base": "FT15Hook",
+      "expected_tag": "ExecErr",
+      "oracle": "upstream_make_check_and_compare_results",
+      "wrapper_sha256": "49b2cf2e27ccddb69d42f8314be7049628e95286e023ca43faa10fc073da56d9",
+      "original_tag": "ExecErr",
+      "saved_environment_sha256": "6306fe81d239c82b4fc118f44e175294708ab2279db36528433e9e3af2646141",
+      "saved_scripts": {
+        "FT15Hook.compile.sh": "1d6247aaead1cf16d71b953db3df3def9dd27793655af4c08554ac337fabfb05",
+        "FT15Hook.runhook.sh": "a7c1a84d3e42f02e2a387ae9cc82686526d233304a807c24c97e922b5ebc7ad0",
+        "FT15Hook.runvanilla.sh": "66a32a4a91745f21e4f367578a720db73bd1c57882f41b03fb882dec9f787e8c",
+        "FT15Hook.run.sh": "37efdc8b353bb85fbe4243e6956533bed1261ee0be0c44d2ac2f4d3088018bee"
+      },
+      "exit_check_setting_pruned_from_env": true,
+      "marker": "missing",
+      "build_options": {
+        "cc": "/usr/bin/gcc",
+        "cflags": "-O1 -DFT15_FLAG=15",
+        "unit_opt_level": "1"
+      }
+    },
+    {
+      "id": "script-mismatch",
+      "family": "script",
+      "unit": "ScriptSuites/FT15Files",
+      "test": "mismatch.z",
+      "base": "mismatch",
+      "work_relative": "ScriptSuites/FT15Files",
+      "expected_tag": "DiffPgmOut",
+      "check_exit": true,
+      "glue": "./glue.py",
+      "original_tag": "DiffPgmOut",
+      "saved_environment_sha256": "e860a890f4b082e521557f482994c7084e59834fe471f201f4986ea25e048e97",
+      "saved_scripts": {
+        "mismatch.compare-out.sh": "5e5146de8dcd525d5bf28059ef55e14b3e24fd16cd363194d18a9cce5cf32cf2",
+        "mismatch.invoker.sh": "13754bbe3655ed34465fab7837abf3322ac1c034b71b52de0cba6294725e917a"
+      },
+      "exit_check_setting_pruned_from_env": true,
+      "output": "observed|OUT-1|OUT-2|helper-A|input-A\nERR-1|ERR-2\n",
+      "producer": {
+        "argv": [
+          "mismatch.z"
+        ],
+        "events": [
+          "stderr-1",
+          "stdout-1",
+          "stderr-2",
+          "stdout-2"
+        ],
+        "stdout": "observed|OUT-1|OUT-2|helper-A|input-A\n",
+        "stderr": "ERR-1|ERR-2\n",
+        "returncode": 0,
+        "opt_level": "0"
+      }
+    },
+    {
+      "id": "script-exit-checked",
+      "family": "script",
+      "unit": "ScriptSuites/FT15Files",
+      "test": "exit7.z",
+      "base": "exit7",
+      "work_relative": "ScriptSuites/FT15Files",
+      "expected_tag": "ScriptTestFailure",
+      "check_exit": true,
+      "glue": "./glue.py",
+      "original_tag": "ScriptTestFailure",
+      "saved_environment_sha256": "71d3e17894163173c9686b7b9a61f0cafd0afdb6877c03dc84d28a40f81b423f",
+      "saved_scripts": {
+        "exit7.compare-out.sh": "99d9b56c0df9bcf7f2fa449701f92667f59552e4bd742e82fa93bfe9fdf7a4ed",
+        "exit7.invoker.sh": "d521c81059e7c92be4b49b88377eef5cd787600b6ab3d4db5481d27c4affe6e2"
+      },
+      "exit_check_setting_pruned_from_env": true,
+      "output": "observed|OUT-1|OUT-2|helper-A|input-A\nERR-1|ERR-2\n",
+      "producer": {
+        "argv": [
+          "exit7.z"
+        ],
+        "events": [
+          "stderr-1",
+          "stdout-1",
+          "stderr-2",
+          "stdout-2"
+        ],
+        "stdout": "observed|OUT-1|OUT-2|helper-A|input-A\n",
+        "stderr": "ERR-1|ERR-2\n",
+        "returncode": 7,
+        "opt_level": "0"
+      }
+    },
+    {
+      "id": "script-exit-unchecked",
+      "family": "script",
+      "unit": "ScriptSuites/FT15Unchecked",
+      "test": "exit7.z",
+      "base": "exit7",
+      "work_relative": "ScriptSuites/FT15Unchecked",
+      "expected_tag": "SuccessExec",
+      "check_exit": false,
+      "glue": "./glue.py",
+      "original_tag": "SuccessExec",
+      "saved_environment_sha256": "f20c341add76078ee56e22ece12c1a36681f51e5fced80ee26139d0be48349fd",
+      "saved_scripts": {
+        "exit7.compare-out.sh": "99d9b56c0df9bcf7f2fa449701f92667f59552e4bd742e82fa93bfe9fdf7a4ed",
+        "exit7.invoker.sh": "8a74124aad485f5b5bc3f64df4c2ce683c79a4bfd43df44a1997e6a7977e7954"
+      },
+      "exit_check_setting_pruned_from_env": true,
+      "output": "observed|OUT-1|OUT-2|helper-A|input-A\nERR-1|ERR-2\n",
+      "producer": {
+        "argv": [
+          "exit7.z"
+        ],
+        "events": [
+          "stderr-1",
+          "stdout-1",
+          "stderr-2",
+          "stdout-2"
+        ],
+        "stdout": "observed|OUT-1|OUT-2|helper-A|input-A\n",
+        "stderr": "ERR-1|ERR-2\n",
+        "returncode": 7,
+        "opt_level": "0"
+      }
+    },
+    {
+      "id": "script-directory",
+      "family": "script",
+      "unit": "ScriptSuites/FT15Dirs",
+      "test": "case_dir",
+      "base": "case_dir",
+      "work_relative": "ScriptSuites/FT15Dirs/case_dir",
+      "expected_tag": "DiffPgmOut",
+      "check_exit": true,
+      "glue": "./glue.py",
+      "original_tag": "DiffPgmOut",
+      "saved_environment_sha256": "5e4375cb6f3a118eff5179f5d1e7c536faf9117d88b6ea0adf3709a4a0ffe002",
+      "saved_scripts": {
+        "case_dir.invoker.sh": "7d4db3e49f4a32e1eb281c5306d91e97771ec998f137da8cedb9a85ba49d4ce6",
+        "case_dir.compare-out.sh": "d65e187703270228f4f1f990528362337b664eb1d72de313859cbd359044daaf"
+      },
+      "exit_check_setting_pruned_from_env": true,
+      "output": "observed|OUT-1|OUT-2|helper-A|input-A\nERR-1|ERR-2\n",
+      "producer": {
+        "argv": [
+          "case_dir"
+        ],
+        "events": [
+          "stderr-1",
+          "stdout-1",
+          "stderr-2",
+          "stdout-2"
+        ],
+        "stdout": "observed|OUT-1|OUT-2|helper-A|input-A\n",
+        "stderr": "ERR-1|ERR-2\n",
+        "returncode": 0,
+        "opt_level": "0"
+      }
+    }
+  ],
+  "original_verdicts": {
+    "app-compile": "CompileErr",
+    "app-check": "ExecErr",
+    "app-marker": "DiffPgmOut",
+    "app-hook": "ExecErr",
+    "script-mismatch": "DiffPgmOut",
+    "script-exit-checked": "ScriptTestFailure",
+    "script-exit-unchecked": "SuccessExec",
+    "script-directory": "DiffPgmOut"
+  },
+  "collector_calls": [
+    {
+      "source": "/fixtures/groups/ScriptSuites/FT15Dirs/Src",
+      "enumerating": true,
+      "tests": [
+        "case_dir"
+      ]
+    },
+    {
+      "source": "/fixtures/groups/ScriptSuites/FT15Unchecked/Src",
+      "enumerating": true,
+      "tests": [
+        "exit7.z"
+      ]
+    },
+    {
+      "source": "/fixtures/groups/ScriptSuites/FT15Files/Src",
+      "enumerating": true,
+      "tests": [
+        "mismatch.z",
+        "exit7.z"
+      ]
+    },
+    {
+      "source": "/fixtures/groups/ScriptSuites/FT15Dirs/Src",
+      "enumerating": false,
+      "tests": [
+        "case_dir"
+      ]
+    },
+    {
+      "source": "/fixtures/groups/ScriptSuites/FT15Unchecked/Src",
+      "enumerating": false,
+      "tests": [
+        "exit7.z"
+      ]
+    },
+    {
+      "source": "/fixtures/groups/ScriptSuites/FT15Files/Src",
+      "enumerating": false,
+      "tests": [
+        "mismatch.z",
+        "exit7.z"
+      ]
+    }
+  ]
+}

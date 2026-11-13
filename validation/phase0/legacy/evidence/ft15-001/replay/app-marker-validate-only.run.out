@@ -1,0 +1,2 @@
+/usr/bin/gmake -f Makefile --quiet check || exit 1;
+touch compare.results
