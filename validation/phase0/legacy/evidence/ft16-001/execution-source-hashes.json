@@ -1,0 +1,9 @@
+{
+  "validation/phase0/legacy/run_ft16.py": "a821adf79101b4ddb37d46d7c909a7a96dae6e3517ffaaf30aac4416ab12168a",
+  "validation/phase0/legacy/run_ft04.py": "b1cab992e85ae4237c1626516814d85cac85f3f5bc98e3adb5d310b5f7d2a2c8",
+  "validation/phase0/legacy/run_ft14.py": "6799dc9bed638e7fa415ed673c3dd9d52bbf55a11b4c7356e7c01303e9587592",
+  "validation/phase0/legacy/ft09/inventory.py": "2c9655c6f2fc7b7ed8aafb1ae4c077013f67940e569addb6a818fd4c692da23a",
+  "validation/phase0/legacy/ft14/protocol.py": "2ae848709c3f8c59b17a3b12b562dd02c31c2fd9bb8888d00ab5180df64bcab7",
+  "validation/phase0/legacy/ft16/wait.c": "a90ccf40bfb68b51f7a17221300860aae41024489daf7f71af5e0317aeafbadf",
+  "validation/phase0/legacy/ft16/worker.py": "07999c9d001ff49e21df4525e90232bac1f5f57e542f1af5cf5539dad559a428"
+}

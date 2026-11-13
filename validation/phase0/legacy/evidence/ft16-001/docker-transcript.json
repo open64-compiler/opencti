@@ -1,0 +1,1471 @@
+[
+  {
+    "argv": [
+      "docker",
+      "image",
+      "inspect",
+      "sha256:747873867110897321865b8790204c0d42a9d51357dce8c3334f50c59d6e916c"
+    ],
+    "returncode": 0,
+    "stdout": "[\n    {\n        \"Id\": \"sha256:747873867110897321865b8790204c0d42a9d51357dce8c3334f50c59d6e916c\",\n        \"RepoTags\": [\n            \"opencti:phase0-ft09-gdb\"\n        ],\n        \"RepoDigests\": [],\n        \"Comment\": \"buildkit.dockerfile.v0\",\n        \"Created\": \"2026-11-12T18:31:53.754104461Z\",\n        \"Config\": {\n            \"Env\": [\n                \"PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin\",\n                \"DEBIAN_FRONTEND=noninteractive\",\n                \"CTI_HOME=/opt/cti\",\n                \"CTI_PERL=/usr/bin/perl\",\n                \"CTI_SHELL=/bin/bash\"\n            ],\n            \"Cmd\": [\n                \"/bin/bash\"\n            ],\n            \"WorkingDir\": \"/capture\",\n            \"Labels\": {\n                \"org.opencontainers.image.version\": \"24.04\"\n            },\n            \"ArgsEscaped\": true\n        },\n        \"Architecture\": \"arm64\",\n        \"Os\": \"linux\",\n        \"Size\": 610818941,\n        \"GraphDriver\": {\n            \"Data\": {\n                \"LowerDir\": \"/var/lib/docker/overlay2/1wdzjbdhqu6tfzi2i401crrq1/diff:/var/lib/docker/overlay2/ttri2xu5n18wwohwi38tooeik/diff:/var/lib/docker/overlay2/os4d819slnpizlvcm8g13nv3a/diff:/var/lib/docker/overlay2/eac0fiqi2yu7zsw9xnen2hz18/diff:/var/lib/docker/overlay2/dj9xzqgejlnfjccxc2pdbh4ky/diff:/var/lib/docker/overlay2/jrgrxuvb8pkc0dbik46t9mjwc/diff:/var/lib/docker/overlay2/45b9d819b5b52e3f6876c7b987dcf6a2689fa57a81ed6f264c428e6c77388b17/diff\",\n                \"MergedDir\": \"/var/lib/docker/overlay2/qe060ivzuj600czqdq7r6i31q/merged\",\n                \"UpperDir\": \"/var/lib/docker/overlay2/qe060ivzuj600czqdq7r6i31q/diff\",\n                \"WorkDir\": \"/var/lib/docker/overlay2/qe060ivzuj600czqdq7r6i31q/work\"\n            },\n            \"Name\": \"overlay2\"\n        },\n        \"RootFS\": {\n            \"Type\": \"layers\",\n            \"Layers\": [\n                \"sha256:2d8834226313616cc27c8a08ca876096cf83f18090b5fa07fd65dba017ec9e5e\",\n                \"sha256:bc00e9265433bf61e2511b0692908e4dd29af19c1e95502c8a2a973e8f6f178c\",\n                \"sha256:f0619e923ce52f724f07145713f6b7dd8de97f6f1c18ac70dfd5c9dab3dddee9\",\n                \"sha256:ee25e8507093fbef25ae6f0dde330041130a3327c3f93739562cfbd43b4844db\",\n                \"sha256:219a2fa39458eda4a1a1a73727ef8172b60824f8e76af6d3dbf3a41b4c72be68\",\n                \"sha256:a4615f60a1e199d252bc572cb16534bd0f4e0c87fa67c666f120d9bf11b6182a\",\n                \"sha256:5e3df576073dd17048e8cf7754d6e94b26a56cd3cee0dbba9255a9d1408c46d5\",\n                \"sha256:e1a1f3019d2f3a321200db0e2c77727f362ddc75d2feba7c6050b5aa932da252\"\n            ]\n        },\n        \"Metadata\": {\n            \"LastTagTime\": \"2026-11-12T18:31:53.808743878Z\"\n        }\n    }\n]\n",
+    "stderr": "",
+    "started_utc": "2026-11-13T00:53:35.435089+00:00",
+    "finished_utc": "2026-11-13T00:53:35.451779+00:00"
+  },
+  {
+    "argv": [
+      "docker",
+      "volume",
+      "create",
+      "--label",
+      "org.opencti.phase0.ft16=ft16-003",
+      "cti-ft16-ffd3ec1e0675"
+    ],
+    "returncode": 0,
+    "stdout": "cti-ft16-ffd3ec1e0675\n",
+    "stderr": "",
+    "started_utc": "2026-11-13T00:53:35.452287+00:00",
+    "finished_utc": "2026-11-13T00:53:35.477467+00:00"
+  },
+  {
+    "argv": [
+      "docker",
+      "create",
+      "--name",
+      "cti-ft16-4d9ce25ac640",
+      "--pull=never",
+      "--platform",
+      "linux/arm64",
+      "--network",
+      "none",
+      "--cpus",
+      "1",
+      "--memory",
+      "1g",
+      "--cap-drop",
+      "ALL",
+      "--security-opt",
+      "no-new-privileges",
+      "--label",
+      "org.opencti.phase0.ft16=ft16-003",
+      "--env",
+      "FT16_IMAGE_ID=sha256:747873867110897321865b8790204c0d42a9d51357dce8c3334f50c59d6e916c",
+      "--mount",
+      "type=bind,src=/Users/shinmingliu/opcti/validation/phase0/legacy/runs/ft16-003/retained-tools,dst=/tools,readonly",
+      "--mount",
+      "type=bind,src=/Users/shinmingliu/opcti/validation/phase0/legacy/runs/ft16-003/input-bundle,dst=/bundle,readonly",
+      "--mount",
+      "type=bind,src=/Users/shinmingliu/opcti/validation/phase0/legacy/runs/ft16-003/timeout,dst=/export",
+      "--mount",
+      "type=volume,src=cti-ft16-ffd3ec1e0675,dst=/state",
+      "--entrypoint",
+      "/usr/bin/python3",
+      "sha256:747873867110897321865b8790204c0d42a9d51357dce8c3334f50c59d6e916c",
+      "-B",
+      "/tools/worker.py",
+      "serve",
+      "timeout",
+      "a61b1724974d474e8fee88f05d2a9dcd",
+      "cti-ft16-4d9ce25ac640"
+    ],
+    "returncode": 0,
+    "stdout": "e93005ff8100e07e3a304e44b8336d26a509e1178b7c0d75f832da04a862bfac\n",
+    "stderr": "",
+    "started_utc": "2026-11-13T00:53:35.478752+00:00",
+    "finished_utc": "2026-11-13T00:53:35.507609+00:00"
+  },
+  {
+    "argv": [
+      "docker",
+      "container",
+      "inspect",
+      "cti-ft16-4d9ce25ac640"
+    ],
+    "returncode": 0,
+    "stdout": "[\n    {\n        \"Id\": \"e93005ff8100e07e3a304e44b8336d26a509e1178b7c0d75f832da04a862bfac\",\n        \"Created\": \"2026-11-13T00:53:35.491694416Z\",\n        \"Path\": \"/usr/bin/python3\",\n        \"Args\": [\n            \"-B\",\n            \"/tools/worker.py\",\n            \"serve\",\n            \"timeout\",\n            \"a61b1724974d474e8fee88f05d2a9dcd\",\n            \"cti-ft16-4d9ce25ac640\"\n        ],\n        \"State\": {\n            \"Status\": \"created\",\n            \"Running\": false,\n            \"Paused\": false,\n            \"Restarting\": false,\n            \"OOMKilled\": false,\n            \"Dead\": false,\n            \"Pid\": 0,\n            \"ExitCode\": 0,\n            \"Error\": \"\",\n            \"StartedAt\": \"0001-01-01T00:00:00Z\",\n            \"FinishedAt\": \"0001-01-01T00:00:00Z\"\n        },\n        \"Image\": \"sha256:747873867110897321865b8790204c0d42a9d51357dce8c3334f50c59d6e916c\",\n        \"ResolvConfPath\": \"\",\n        \"HostnamePath\": \"\",\n        \"HostsPath\": \"\",\n        \"LogPath\": \"\",\n        \"Name\": \"/cti-ft16-4d9ce25ac640\",\n        \"RestartCount\": 0,\n        \"Driver\": \"overlay2\",\n        \"Platform\": \"linux\",\n        \"MountLabel\": \"\",\n        \"ProcessLabel\": \"\",\n        \"AppArmorProfile\": \"\",\n        \"ExecIDs\": null,\n        \"HostConfig\": {\n            \"Binds\": null,\n            \"ContainerIDFile\": \"\",\n            \"LogConfig\": {\n                \"Type\": \"json-file\",\n                \"Config\": {}\n            },\n            \"NetworkMode\": \"none\",\n            \"PortBindings\": {},\n            \"RestartPolicy\": {\n                \"Name\": \"no\",\n                \"MaximumRetryCount\": 0\n            },\n            \"AutoRemove\": false,\n            \"VolumeDriver\": \"\",\n            \"VolumesFrom\": null,\n            \"ConsoleSize\": [\n                0,\n                0\n            ],\n            \"CapAdd\": null,\n            \"CapDrop\": [\n                \"ALL\"\n            ],\n            \"CgroupnsMode\": \"private\",\n            \"Dns\": null,\n            \"DnsOptions\": [],\n            \"DnsSearch\": [],\n            \"ExtraHosts\": null,\n            \"GroupAdd\": null,\n            \"IpcMode\": \"private\",\n            \"Cgroup\": \"\",\n            \"Links\": null,\n            \"OomScoreAdj\": 0,\n            \"PidMode\": \"\",\n            \"Privileged\": false,\n            \"PublishAllPorts\": false,\n            \"ReadonlyRootfs\": false,\n            \"SecurityOpt\": [\n                \"no-new-privileges\"\n            ],\n            \"UTSMode\": \"\",\n            \"UsernsMode\": \"\",\n            \"ShmSize\": 67108864,\n            \"Runtime\": \"runc\",\n            \"Isolation\": \"\",\n            \"CpuShares\": 0,\n            \"Memory\": 1073741824,\n            \"NanoCpus\": 1000000000,\n            \"CgroupParent\": \"\",\n            \"BlkioWeight\": 0,\n            \"BlkioWeightDevice\": [],\n            \"BlkioDeviceReadBps\": [],\n            \"BlkioDeviceWriteBps\": [],\n            \"BlkioDeviceReadIOps\": [],\n            \"BlkioDeviceWriteIOps\": [],\n            \"CpuPeriod\": 0,\n            \"CpuQuota\": 0,\n            \"CpuRealtimePeriod\": 0,\n            \"CpuRealtimeRuntime\": 0,\n            \"CpusetCpus\": \"\",\n            \"CpusetMems\": \"\",\n            \"Devices\": [],\n            \"DeviceCgroupRules\": null,\n            \"DeviceRequests\": null,\n            \"MemoryReservation\": 0,\n            \"MemorySwap\": 2147483648,\n            \"MemorySwappiness\": null,\n            \"OomKillDisable\": false,\n            \"PidsLimit\": null,\n            \"Ulimits\": [],\n            \"CpuCount\": 0,\n            \"CpuPercent\": 0,\n            \"IOMaximumIOps\": 0,\n            \"IOMaximumBandwidth\": 0,\n            \"Mounts\": [\n                {\n                    \"Type\": \"bind\",\n                    \"Source\": \"/Users/shinmingliu/opcti/validation/phase0/legacy/runs/ft16-003/retained-tools\",\n                    \"Target\": \"/tools\",\n                    \"ReadOnly\": true\n                },\n                {\n                    \"Type\": \"bind\",\n                    \"Source\": \"/Users/shinmingliu/opcti/validation/phase0/legacy/runs/ft16-003/input-bundle\",\n                    \"Target\": \"/bundle\",\n                    \"ReadOnly\": true\n                },\n                {\n                    \"Type\": \"bind\",\n                    \"Source\": \"/Users/shinmingliu/opcti/validation/phase0/legacy/runs/ft16-003/timeout\",\n                    \"Target\": \"/export\"\n                },\n                {\n                    \"Type\": \"volume\",\n                    \"Source\": \"cti-ft16-ffd3ec1e0675\",\n                    \"Target\": \"/state\"\n                }\n            ],\n            \"MaskedPaths\": [\n                \"/proc/acpi\",\n                \"/proc/asound\",\n                \"/proc/interrupts\",\n                \"/proc/kcore\",\n                \"/proc/keys\",\n                \"/proc/latency_stats\",\n                \"/proc/sched_debug\",\n                \"/proc/scsi\",\n                \"/proc/timer_list\",\n                \"/proc/timer_stats\",\n                \"/sys/devices/virtual/powercap\",\n                \"/sys/firmware\"\n            ],\n            \"ReadonlyPaths\": [\n                \"/proc/bus\",\n                \"/proc/fs\",\n                \"/proc/irq\",\n                \"/proc/sys\",\n                \"/proc/sysrq-trigger\"\n            ]\n        },\n        \"GraphDriver\": {\n            \"Data\": {\n                \"ID\": \"e93005ff8100e07e3a304e44b8336d26a509e1178b7c0d75f832da04a862bfac\",\n                \"LowerDir\": \"/var/lib/docker/overlay2/a8e287c2716e36d25099b7ded962b2059375428f8ddfca1f3296c0002c02fe75-init/diff:/var/lib/docker/overlay2/qe060ivzuj600czqdq7r6i31q/diff:/var/lib/docker/overlay2/1wdzjbdhqu6tfzi2i401crrq1/diff:/var/lib/docker/overlay2/ttri2xu5n18wwohwi38tooeik/diff:/var/lib/docker/overlay2/os4d819slnpizlvcm8g13nv3a/diff:/var/lib/docker/overlay2/eac0fiqi2yu7zsw9xnen2hz18/diff:/var/lib/docker/overlay2/dj9xzqgejlnfjccxc2pdbh4ky/diff:/var/lib/docker/overlay2/jrgrxuvb8pkc0dbik46t9mjwc/diff:/var/lib/docker/overlay2/45b9d819b5b52e3f6876c7b987dcf6a2689fa57a81ed6f264c428e6c77388b17/diff\",\n                \"MergedDir\": \"/var/lib/docker/overlay2/a8e287c2716e36d25099b7ded962b2059375428f8ddfca1f3296c0002c02fe75/merged\",\n                \"UpperDir\": \"/var/lib/docker/overlay2/a8e287c2716e36d25099b7ded962b2059375428f8ddfca1f3296c0002c02fe75/diff\",\n                \"WorkDir\": \"/var/lib/docker/overlay2/a8e287c2716e36d25099b7ded962b2059375428f8ddfca1f3296c0002c02fe75/work\"\n            },\n            \"Name\": \"overlay2\"\n        },\n        \"Mounts\": [\n            {\n                \"Type\": \"bind\",\n                \"Source\": \"/Users/shinmingliu/opcti/validation/phase0/legacy/runs/ft16-003/timeout\",\n                \"Destination\": \"/export\",\n                \"Mode\": \"\",\n                \"RW\": true,\n                \"Propagation\": \"rprivate\"\n            },\n            {\n                \"Type\": \"volume\",\n                \"Name\": \"cti-ft16-ffd3ec1e0675\",\n                \"Source\": \"/var/lib/docker/volumes/cti-ft16-ffd3ec1e0675/_data\",\n                \"Destination\": \"/state\",\n                \"Driver\": \"local\",\n                \"Mode\": \"z\",\n                \"RW\": true,\n                \"Propagation\": \"\"\n            },\n            {\n                \"Type\": \"bind\",\n                \"Source\": \"/Users/shinmingliu/opcti/validation/phase0/legacy/runs/ft16-003/retained-tools\",\n                \"Destination\": \"/tools\",\n                \"Mode\": \"\",\n                \"RW\": false,\n                \"Propagation\": \"rprivate\"\n            },\n            {\n                \"Type\": \"bind\",\n                \"Source\": \"/Users/shinmingliu/opcti/validation/phase0/legacy/runs/ft16-003/input-bundle\",\n                \"Destination\": \"/bundle\",\n                \"Mode\": \"\",\n                \"RW\": false,\n                \"Propagation\": \"rprivate\"\n            }\n        ],\n        \"Config\": {\n            \"Hostname\": \"e93005ff8100\",\n            \"Domainname\": \"\",\n            \"User\": \"\",\n            \"AttachStdin\": false,\n            \"AttachStdout\": true,\n            \"AttachStderr\": true,\n            \"Tty\": false,\n            \"OpenStdin\": false,\n            \"StdinOnce\": false,\n            \"Env\": [\n                \"FT16_IMAGE_ID=sha256:747873867110897321865b8790204c0d42a9d51357dce8c3334f50c59d6e916c\",\n                \"PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin\",\n                \"DEBIAN_FRONTEND=noninteractive\",\n                \"CTI_HOME=/opt/cti\",\n                \"CTI_PERL=/usr/bin/perl\",\n                \"CTI_SHELL=/bin/bash\"\n            ],\n            \"Cmd\": [\n                \"-B\",\n                \"/tools/worker.py\",\n                \"serve\",\n                \"timeout\",\n                \"a61b1724974d474e8fee88f05d2a9dcd\",\n                \"cti-ft16-4d9ce25ac640\"\n            ],\n            \"Image\": \"sha256:747873867110897321865b8790204c0d42a9d51357dce8c3334f50c59d6e916c\",\n            \"Volumes\": null,\n            \"WorkingDir\": \"/capture\",\n            \"Entrypoint\": [\n                \"/usr/bin/python3\"\n            ],\n            \"Labels\": {\n                \"org.opencontainers.image.version\": \"24.04\",\n                \"org.opencti.phase0.ft16\": \"ft16-003\"\n            },\n            \"StopTimeout\": 1\n        },\n        \"NetworkSettings\": {\n            \"SandboxID\": \"\",\n            \"SandboxKey\": \"\",\n            \"Ports\": {},\n            \"Networks\": {\n                \"none\": {\n                    \"IPAMConfig\": null,\n                    \"Links\": null,\n                    \"Aliases\": null,\n                    \"DriverOpts\": null,\n                    \"GwPriority\": 0,\n                    \"NetworkID\": \"\",\n                    \"EndpointID\": \"\",\n                    \"Gateway\": \"\",\n                    \"IPAddress\": \"\",\n                    \"MacAddress\": \"\",\n                    \"IPPrefixLen\": 0,\n                    \"IPv6Gateway\": \"\",\n                    \"GlobalIPv6Address\": \"\",\n                    \"GlobalIPv6PrefixLen\": 0,\n                    \"DNSNames\": null\n                }\n            }\n        }\n    }\n]\n",
+    "stderr": "",
+    "started_utc": "2026-11-13T00:53:35.507988+00:00",
+    "finished_utc": "2026-11-13T00:53:35.522496+00:00"
+  },
+  {
+    "argv": [
+      "docker",
+      "start",
+      "cti-ft16-4d9ce25ac640"
+    ],
+    "returncode": 0,
+    "stdout": "cti-ft16-4d9ce25ac640\n",
+    "stderr": "",
+    "started_utc": "2026-11-13T00:53:35.523142+00:00",
+    "finished_utc": "2026-11-13T00:53:35.607323+00:00"
+  },
+  {
+    "argv": [
+      "docker",
+      "exec",
+      "cti-ft16-4d9ce25ac640",
+      "python3",
+      "-B",
+      "/tools/worker.py",
+      "snapshot",
+      "checkpoint"
+    ],
+    "returncode": 0,
+    "stdout": "",
+    "stderr": "",
+    "started_utc": "2026-11-13T00:53:36.002815+00:00",
+    "finished_utc": "2026-11-13T00:53:36.168585+00:00"
+  },
+  {
+    "argv": [
+      "docker",
+      "exec",
+      "cti-ft16-4d9ce25ac640",
+      "python3",
+      "-B",
+      "/tools/worker.py",
+      "snapshot",
+      "final"
+    ],
+    "returncode": 0,
+    "stdout": "",
+    "stderr": "",
+    "started_utc": "2026-11-13T00:53:38.164648+00:00",
+    "finished_utc": "2026-11-13T00:53:38.331056+00:00"
+  },
+  {
+    "argv": [
+      "docker",
+      "container",
+      "rm",
+      "-f",
+      "cti-ft16-4d9ce25ac640"
+    ],
+    "returncode": 0,
+    "stdout": "cti-ft16-4d9ce25ac640\n",
+    "stderr": "",
+    "started_utc": "2026-11-13T00:53:38.332605+00:00",
+    "finished_utc": "2026-11-13T00:53:38.373418+00:00"
+  },
+  {
+    "argv": [
+      "docker",
+      "container",
+      "inspect",
+      "cti-ft16-4d9ce25ac640"
+    ],
+    "returncode": 1,
+    "stdout": "[]\n",
+    "stderr": "Error response from daemon: No such container: cti-ft16-4d9ce25ac640\n",
+    "started_utc": "2026-11-13T00:53:38.373846+00:00",
+    "finished_utc": "2026-11-13T00:53:38.386899+00:00"
+  },
+  {
+    "argv": [
+      "docker",
+      "volume",
+      "rm",
+      "cti-ft16-ffd3ec1e0675"
+    ],
+    "returncode": 0,
+    "stdout": "cti-ft16-ffd3ec1e0675\n",
+    "stderr": "",
+    "started_utc": "2026-11-13T00:53:38.388909+00:00",
+    "finished_utc": "2026-11-13T00:53:38.402711+00:00"
+  },
+  {
+    "argv": [
+      "docker",
+      "volume",
+      "inspect",
+      "cti-ft16-ffd3ec1e0675"
+    ],
+    "returncode": 1,
+    "stdout": "[]\n",
+    "stderr": "Error response from daemon: get cti-ft16-ffd3ec1e0675: no such volume\n",
+    "started_utc": "2026-11-13T00:53:38.403118+00:00",
+    "finished_utc": "2026-11-13T00:53:38.415250+00:00"
+  },
+  {
+    "argv": [
+      "docker",
+      "volume",
+      "create",
+      "--label",
+      "org.opencti.phase0.ft16=ft16-003",
+      "cti-ft16-5a54675a0298"
+    ],
+    "returncode": 0,
+    "stdout": "cti-ft16-5a54675a0298\n",
+    "stderr": "",
+    "started_utc": "2026-11-13T00:53:38.416086+00:00",
+    "finished_utc": "2026-11-13T00:53:38.430923+00:00"
+  },
+  {
+    "argv": [
+      "docker",
+      "create",
+      "--name",
+      "cti-ft16-757b4a3cb99a",
+      "--pull=never",
+      "--platform",
+      "linux/arm64",
+      "--network",
+      "none",
+      "--cpus",
+      "1",
+      "--memory",
+      "1g",
+      "--cap-drop",
+      "ALL",
+      "--security-opt",
+      "no-new-privileges",
+      "--label",
+      "org.opencti.phase0.ft16=ft16-003",
+      "--env",
+      "FT16_IMAGE_ID=sha256:747873867110897321865b8790204c0d42a9d51357dce8c3334f50c59d6e916c",
+      "--mount",
+      "type=bind,src=/Users/shinmingliu/opcti/validation/phase0/legacy/runs/ft16-003/retained-tools,dst=/tools,readonly",
+      "--mount",
+      "type=bind,src=/Users/shinmingliu/opcti/validation/phase0/legacy/runs/ft16-003/input-bundle,dst=/bundle,readonly",
+      "--mount",
+      "type=bind,src=/Users/shinmingliu/opcti/validation/phase0/legacy/runs/ft16-003/cancel-before,dst=/export",
+      "--mount",
+      "type=volume,src=cti-ft16-5a54675a0298,dst=/state",
+      "--entrypoint",
+      "/usr/bin/python3",
+      "sha256:747873867110897321865b8790204c0d42a9d51357dce8c3334f50c59d6e916c",
+      "-B",
+      "/tools/worker.py",
+      "serve",
+      "cancel-before",
+      "100dff3cbb164b88ab644b73b3841d2e",
+      "cti-ft16-757b4a3cb99a"
+    ],
+    "returncode": 0,
+    "stdout": "d3d9a65dd5dbce5514f15c013bcff2358c859aad7753796ffa34c24995c447f7\n",
+    "stderr": "",
+    "started_utc": "2026-11-13T00:53:38.432018+00:00",
+    "finished_utc": "2026-11-13T00:53:38.459258+00:00"
+  },
+  {
+    "argv": [
+      "docker",
+      "container",
+      "inspect",
+      "cti-ft16-757b4a3cb99a"
+    ],
+    "returncode": 0,
+    "stdout": "[\n    {\n        \"Id\": \"d3d9a65dd5dbce5514f15c013bcff2358c859aad7753796ffa34c24995c447f7\",\n        \"Created\": \"2026-11-13T00:53:38.442630251Z\",\n        \"Path\": \"/usr/bin/python3\",\n        \"Args\": [\n            \"-B\",\n            \"/tools/worker.py\",\n            \"serve\",\n            \"cancel-before\",\n            \"100dff3cbb164b88ab644b73b3841d2e\",\n            \"cti-ft16-757b4a3cb99a\"\n        ],\n        \"State\": {\n            \"Status\": \"created\",\n            \"Running\": false,\n            \"Paused\": false,\n            \"Restarting\": false,\n            \"OOMKilled\": false,\n            \"Dead\": false,\n            \"Pid\": 0,\n            \"ExitCode\": 0,\n            \"Error\": \"\",\n            \"StartedAt\": \"0001-01-01T00:00:00Z\",\n            \"FinishedAt\": \"0001-01-01T00:00:00Z\"\n        },\n        \"Image\": \"sha256:747873867110897321865b8790204c0d42a9d51357dce8c3334f50c59d6e916c\",\n        \"ResolvConfPath\": \"\",\n        \"HostnamePath\": \"\",\n        \"HostsPath\": \"\",\n        \"LogPath\": \"\",\n        \"Name\": \"/cti-ft16-757b4a3cb99a\",\n        \"RestartCount\": 0,\n        \"Driver\": \"overlay2\",\n        \"Platform\": \"linux\",\n        \"MountLabel\": \"\",\n        \"ProcessLabel\": \"\",\n        \"AppArmorProfile\": \"\",\n        \"ExecIDs\": null,\n        \"HostConfig\": {\n            \"Binds\": null,\n            \"ContainerIDFile\": \"\",\n            \"LogConfig\": {\n                \"Type\": \"json-file\",\n                \"Config\": {}\n            },\n            \"NetworkMode\": \"none\",\n            \"PortBindings\": {},\n            \"RestartPolicy\": {\n                \"Name\": \"no\",\n                \"MaximumRetryCount\": 0\n            },\n            \"AutoRemove\": false,\n            \"VolumeDriver\": \"\",\n            \"VolumesFrom\": null,\n            \"ConsoleSize\": [\n                0,\n                0\n            ],\n            \"CapAdd\": null,\n            \"CapDrop\": [\n                \"ALL\"\n            ],\n            \"CgroupnsMode\": \"private\",\n            \"Dns\": null,\n            \"DnsOptions\": [],\n            \"DnsSearch\": [],\n            \"ExtraHosts\": null,\n            \"GroupAdd\": null,\n            \"IpcMode\": \"private\",\n            \"Cgroup\": \"\",\n            \"Links\": null,\n            \"OomScoreAdj\": 0,\n            \"PidMode\": \"\",\n            \"Privileged\": false,\n            \"PublishAllPorts\": false,\n            \"ReadonlyRootfs\": false,\n            \"SecurityOpt\": [\n                \"no-new-privileges\"\n            ],\n            \"UTSMode\": \"\",\n            \"UsernsMode\": \"\",\n            \"ShmSize\": 67108864,\n            \"Runtime\": \"runc\",\n            \"Isolation\": \"\",\n            \"CpuShares\": 0,\n            \"Memory\": 1073741824,\n            \"NanoCpus\": 1000000000,\n            \"CgroupParent\": \"\",\n            \"BlkioWeight\": 0,\n            \"BlkioWeightDevice\": [],\n            \"BlkioDeviceReadBps\": [],\n            \"BlkioDeviceWriteBps\": [],\n            \"BlkioDeviceReadIOps\": [],\n            \"BlkioDeviceWriteIOps\": [],\n            \"CpuPeriod\": 0,\n            \"CpuQuota\": 0,\n            \"CpuRealtimePeriod\": 0,\n            \"CpuRealtimeRuntime\": 0,\n            \"CpusetCpus\": \"\",\n            \"CpusetMems\": \"\",\n            \"Devices\": [],\n            \"DeviceCgroupRules\": null,\n            \"DeviceRequests\": null,\n            \"MemoryReservation\": 0,\n            \"MemorySwap\": 2147483648,\n            \"MemorySwappiness\": null,\n            \"OomKillDisable\": false,\n            \"PidsLimit\": null,\n            \"Ulimits\": [],\n            \"CpuCount\": 0,\n            \"CpuPercent\": 0,\n            \"IOMaximumIOps\": 0,\n            \"IOMaximumBandwidth\": 0,\n            \"Mounts\": [\n                {\n                    \"Type\": \"bind\",\n                    \"Source\": \"/Users/shinmingliu/opcti/validation/phase0/legacy/runs/ft16-003/retained-tools\",\n                    \"Target\": \"/tools\",\n                    \"ReadOnly\": true\n                },\n                {\n                    \"Type\": \"bind\",\n                    \"Source\": \"/Users/shinmingliu/opcti/validation/phase0/legacy/runs/ft16-003/input-bundle\",\n                    \"Target\": \"/bundle\",\n                    \"ReadOnly\": true\n                },\n                {\n                    \"Type\": \"bind\",\n                    \"Source\": \"/Users/shinmingliu/opcti/validation/phase0/legacy/runs/ft16-003/cancel-before\",\n                    \"Target\": \"/export\"\n                },\n                {\n                    \"Type\": \"volume\",\n                    \"Source\": \"cti-ft16-5a54675a0298\",\n                    \"Target\": \"/state\"\n                }\n            ],\n            \"MaskedPaths\": [\n                \"/proc/acpi\",\n                \"/proc/asound\",\n                \"/proc/interrupts\",\n                \"/proc/kcore\",\n                \"/proc/keys\",\n                \"/proc/latency_stats\",\n                \"/proc/sched_debug\",\n                \"/proc/scsi\",\n                \"/proc/timer_list\",\n                \"/proc/timer_stats\",\n                \"/sys/devices/virtual/powercap\",\n                \"/sys/firmware\"\n            ],\n            \"ReadonlyPaths\": [\n                \"/proc/bus\",\n                \"/proc/fs\",\n                \"/proc/irq\",\n                \"/proc/sys\",\n                \"/proc/sysrq-trigger\"\n            ]\n        },\n        \"GraphDriver\": {\n            \"Data\": {\n                \"ID\": \"d3d9a65dd5dbce5514f15c013bcff2358c859aad7753796ffa34c24995c447f7\",\n                \"LowerDir\": \"/var/lib/docker/overlay2/ad6c6b6f7edc4aaf4686e92b23b92cc21fa5a33443cdb61b49de06f2357ee718-init/diff:/var/lib/docker/overlay2/qe060ivzuj600czqdq7r6i31q/diff:/var/lib/docker/overlay2/1wdzjbdhqu6tfzi2i401crrq1/diff:/var/lib/docker/overlay2/ttri2xu5n18wwohwi38tooeik/diff:/var/lib/docker/overlay2/os4d819slnpizlvcm8g13nv3a/diff:/var/lib/docker/overlay2/eac0fiqi2yu7zsw9xnen2hz18/diff:/var/lib/docker/overlay2/dj9xzqgejlnfjccxc2pdbh4ky/diff:/var/lib/docker/overlay2/jrgrxuvb8pkc0dbik46t9mjwc/diff:/var/lib/docker/overlay2/45b9d819b5b52e3f6876c7b987dcf6a2689fa57a81ed6f264c428e6c77388b17/diff\",\n                \"MergedDir\": \"/var/lib/docker/overlay2/ad6c6b6f7edc4aaf4686e92b23b92cc21fa5a33443cdb61b49de06f2357ee718/merged\",\n                \"UpperDir\": \"/var/lib/docker/overlay2/ad6c6b6f7edc4aaf4686e92b23b92cc21fa5a33443cdb61b49de06f2357ee718/diff\",\n                \"WorkDir\": \"/var/lib/docker/overlay2/ad6c6b6f7edc4aaf4686e92b23b92cc21fa5a33443cdb61b49de06f2357ee718/work\"\n            },\n            \"Name\": \"overlay2\"\n        },\n        \"Mounts\": [\n            {\n                \"Type\": \"bind\",\n                \"Source\": \"/Users/shinmingliu/opcti/validation/phase0/legacy/runs/ft16-003/input-bundle\",\n                \"Destination\": \"/bundle\",\n                \"Mode\": \"\",\n                \"RW\": false,\n                \"Propagation\": \"rprivate\"\n            },\n            {\n                \"Type\": \"bind\",\n                \"Source\": \"/Users/shinmingliu/opcti/validation/phase0/legacy/runs/ft16-003/cancel-before\",\n                \"Destination\": \"/export\",\n                \"Mode\": \"\",\n                \"RW\": true,\n                \"Propagation\": \"rprivate\"\n            },\n            {\n                \"Type\": \"volume\",\n                \"Name\": \"cti-ft16-5a54675a0298\",\n                \"Source\": \"/var/lib/docker/volumes/cti-ft16-5a54675a0298/_data\",\n                \"Destination\": \"/state\",\n                \"Driver\": \"local\",\n                \"Mode\": \"z\",\n                \"RW\": true,\n                \"Propagation\": \"\"\n            },\n            {\n                \"Type\": \"bind\",\n                \"Source\": \"/Users/shinmingliu/opcti/validation/phase0/legacy/runs/ft16-003/retained-tools\",\n                \"Destination\": \"/tools\",\n                \"Mode\": \"\",\n                \"RW\": false,\n                \"Propagation\": \"rprivate\"\n            }\n        ],\n        \"Config\": {\n            \"Hostname\": \"d3d9a65dd5db\",\n            \"Domainname\": \"\",\n            \"User\": \"\",\n            \"AttachStdin\": false,\n            \"AttachStdout\": true,\n            \"AttachStderr\": true,\n            \"Tty\": false,\n            \"OpenStdin\": false,\n            \"StdinOnce\": false,\n            \"Env\": [\n                \"FT16_IMAGE_ID=sha256:747873867110897321865b8790204c0d42a9d51357dce8c3334f50c59d6e916c\",\n                \"PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin\",\n                \"DEBIAN_FRONTEND=noninteractive\",\n                \"CTI_HOME=/opt/cti\",\n                \"CTI_PERL=/usr/bin/perl\",\n                \"CTI_SHELL=/bin/bash\"\n            ],\n            \"Cmd\": [\n                \"-B\",\n                \"/tools/worker.py\",\n                \"serve\",\n                \"cancel-before\",\n                \"100dff3cbb164b88ab644b73b3841d2e\",\n                \"cti-ft16-757b4a3cb99a\"\n            ],\n            \"Image\": \"sha256:747873867110897321865b8790204c0d42a9d51357dce8c3334f50c59d6e916c\",\n            \"Volumes\": null,\n            \"WorkingDir\": \"/capture\",\n            \"Entrypoint\": [\n                \"/usr/bin/python3\"\n            ],\n            \"Labels\": {\n                \"org.opencontainers.image.version\": \"24.04\",\n                \"org.opencti.phase0.ft16\": \"ft16-003\"\n            },\n            \"StopTimeout\": 1\n        },\n        \"NetworkSettings\": {\n            \"SandboxID\": \"\",\n            \"SandboxKey\": \"\",\n            \"Ports\": {},\n            \"Networks\": {\n                \"none\": {\n                    \"IPAMConfig\": null,\n                    \"Links\": null,\n                    \"Aliases\": null,\n                    \"DriverOpts\": null,\n                    \"GwPriority\": 0,\n                    \"NetworkID\": \"\",\n                    \"EndpointID\": \"\",\n                    \"Gateway\": \"\",\n                    \"IPAddress\": \"\",\n                    \"MacAddress\": \"\",\n                    \"IPPrefixLen\": 0,\n                    \"IPv6Gateway\": \"\",\n                    \"GlobalIPv6Address\": \"\",\n                    \"GlobalIPv6PrefixLen\": 0,\n                    \"DNSNames\": null\n                }\n            }\n        }\n    }\n]\n",
+    "stderr": "",
+    "started_utc": "2026-11-13T00:53:38.459679+00:00",
+    "finished_utc": "2026-11-13T00:53:38.473054+00:00"
+  },
+  {
+    "argv": [
+      "docker",
+      "start",
+      "cti-ft16-757b4a3cb99a"
+    ],
+    "returncode": 0,
+    "stdout": "cti-ft16-757b4a3cb99a\n",
+    "stderr": "",
+    "started_utc": "2026-11-13T00:53:38.473841+00:00",
+    "finished_utc": "2026-11-13T00:53:38.553155+00:00"
+  },
+  {
+    "argv": [
+      "docker",
+      "exec",
+      "cti-ft16-757b4a3cb99a",
+      "python3",
+      "-B",
+      "/tools/worker.py",
+      "snapshot",
+      "checkpoint"
+    ],
+    "returncode": 0,
+    "stdout": "",
+    "stderr": "",
+    "started_utc": "2026-11-13T00:53:38.756946+00:00",
+    "finished_utc": "2026-11-13T00:53:38.916815+00:00"
+  },
+  {
+    "argv": [
+      "docker",
+      "exec",
+      "cti-ft16-757b4a3cb99a",
+      "python3",
+      "-B",
+      "/tools/worker.py",
+      "snapshot",
+      "final"
+    ],
+    "returncode": 0,
+    "stdout": "",
+    "stderr": "",
+    "started_utc": "2026-11-13T00:53:38.918546+00:00",
+    "finished_utc": "2026-11-13T00:53:39.062908+00:00"
+  },
+  {
+    "argv": [
+      "docker",
+      "container",
+      "rm",
+      "-f",
+      "cti-ft16-757b4a3cb99a"
+    ],
+    "returncode": 0,
+    "stdout": "cti-ft16-757b4a3cb99a\n",
+    "stderr": "",
+    "started_utc": "2026-11-13T00:53:39.064754+00:00",
+    "finished_utc": "2026-11-13T00:53:39.104507+00:00"
+  },
+  {
+    "argv": [
+      "docker",
+      "container",
+      "inspect",
+      "cti-ft16-757b4a3cb99a"
+    ],
+    "returncode": 1,
+    "stdout": "[]\n",
+    "stderr": "Error response from daemon: No such container: cti-ft16-757b4a3cb99a\n",
+    "started_utc": "2026-11-13T00:53:39.105000+00:00",
+    "finished_utc": "2026-11-13T00:53:39.117989+00:00"
+  },
+  {
+    "argv": [
+      "docker",
+      "volume",
+      "rm",
+      "cti-ft16-5a54675a0298"
+    ],
+    "returncode": 0,
+    "stdout": "cti-ft16-5a54675a0298\n",
+    "stderr": "",
+    "started_utc": "2026-11-13T00:53:39.120145+00:00",
+    "finished_utc": "2026-11-13T00:53:39.134493+00:00"
+  },
+  {
+    "argv": [
+      "docker",
+      "volume",
+      "inspect",
+      "cti-ft16-5a54675a0298"
+    ],
+    "returncode": 1,
+    "stdout": "[]\n",
+    "stderr": "Error response from daemon: get cti-ft16-5a54675a0298: no such volume\n",
+    "started_utc": "2026-11-13T00:53:39.134956+00:00",
+    "finished_utc": "2026-11-13T00:53:39.146814+00:00"
+  },
+  {
+    "argv": [
+      "docker",
+      "volume",
+      "create",
+      "--label",
+      "org.opencti.phase0.ft16=ft16-003",
+      "cti-ft16-7df52f4fa3da"
+    ],
+    "returncode": 0,
+    "stdout": "cti-ft16-7df52f4fa3da\n",
+    "stderr": "",
+    "started_utc": "2026-11-13T00:53:39.147562+00:00",
+    "finished_utc": "2026-11-13T00:53:39.161245+00:00"
+  },
+  {
+    "argv": [
+      "docker",
+      "create",
+      "--name",
+      "cti-ft16-67b04772caef",
+      "--pull=never",
+      "--platform",
+      "linux/arm64",
+      "--network",
+      "none",
+      "--cpus",
+      "1",
+      "--memory",
+      "1g",
+      "--cap-drop",
+      "ALL",
+      "--security-opt",
+      "no-new-privileges",
+      "--label",
+      "org.opencti.phase0.ft16=ft16-003",
+      "--env",
+      "FT16_IMAGE_ID=sha256:747873867110897321865b8790204c0d42a9d51357dce8c3334f50c59d6e916c",
+      "--mount",
+      "type=bind,src=/Users/shinmingliu/opcti/validation/phase0/legacy/runs/ft16-003/retained-tools,dst=/tools,readonly",
+      "--mount",
+      "type=bind,src=/Users/shinmingliu/opcti/validation/phase0/legacy/runs/ft16-003/input-bundle,dst=/bundle,readonly",
+      "--mount",
+      "type=bind,src=/Users/shinmingliu/opcti/validation/phase0/legacy/runs/ft16-003/cancel-after,dst=/export",
+      "--mount",
+      "type=volume,src=cti-ft16-7df52f4fa3da,dst=/state",
+      "--entrypoint",
+      "/usr/bin/python3",
+      "sha256:747873867110897321865b8790204c0d42a9d51357dce8c3334f50c59d6e916c",
+      "-B",
+      "/tools/worker.py",
+      "serve",
+      "cancel-after",
+      "700f5724bab54d21b8bd4651e2984f92",
+      "cti-ft16-67b04772caef"
+    ],
+    "returncode": 0,
+    "stdout": "05f6d31a9c3817a70a4aa9cd87c435ff44dacccdb80eb328ce926a939908340a\n",
+    "stderr": "",
+    "started_utc": "2026-11-13T00:53:39.162417+00:00",
+    "finished_utc": "2026-11-13T00:53:39.190192+00:00"
+  },
+  {
+    "argv": [
+      "docker",
+      "container",
+      "inspect",
+      "cti-ft16-67b04772caef"
+    ],
+    "returncode": 0,
+    "stdout": "[\n    {\n        \"Id\": \"05f6d31a9c3817a70a4aa9cd87c435ff44dacccdb80eb328ce926a939908340a\",\n        \"Created\": \"2026-11-13T00:53:39.174029585Z\",\n        \"Path\": \"/usr/bin/python3\",\n        \"Args\": [\n            \"-B\",\n            \"/tools/worker.py\",\n            \"serve\",\n            \"cancel-after\",\n            \"700f5724bab54d21b8bd4651e2984f92\",\n            \"cti-ft16-67b04772caef\"\n        ],\n        \"State\": {\n            \"Status\": \"created\",\n            \"Running\": false,\n            \"Paused\": false,\n            \"Restarting\": false,\n            \"OOMKilled\": false,\n            \"Dead\": false,\n            \"Pid\": 0,\n            \"ExitCode\": 0,\n            \"Error\": \"\",\n            \"StartedAt\": \"0001-01-01T00:00:00Z\",\n            \"FinishedAt\": \"0001-01-01T00:00:00Z\"\n        },\n        \"Image\": \"sha256:747873867110897321865b8790204c0d42a9d51357dce8c3334f50c59d6e916c\",\n        \"ResolvConfPath\": \"\",\n        \"HostnamePath\": \"\",\n        \"HostsPath\": \"\",\n        \"LogPath\": \"\",\n        \"Name\": \"/cti-ft16-67b04772caef\",\n        \"RestartCount\": 0,\n        \"Driver\": \"overlay2\",\n        \"Platform\": \"linux\",\n        \"MountLabel\": \"\",\n        \"ProcessLabel\": \"\",\n        \"AppArmorProfile\": \"\",\n        \"ExecIDs\": null,\n        \"HostConfig\": {\n            \"Binds\": null,\n            \"ContainerIDFile\": \"\",\n            \"LogConfig\": {\n                \"Type\": \"json-file\",\n                \"Config\": {}\n            },\n            \"NetworkMode\": \"none\",\n            \"PortBindings\": {},\n            \"RestartPolicy\": {\n                \"Name\": \"no\",\n                \"MaximumRetryCount\": 0\n            },\n            \"AutoRemove\": false,\n            \"VolumeDriver\": \"\",\n            \"VolumesFrom\": null,\n            \"ConsoleSize\": [\n                0,\n                0\n            ],\n            \"CapAdd\": null,\n            \"CapDrop\": [\n                \"ALL\"\n            ],\n            \"CgroupnsMode\": \"private\",\n            \"Dns\": null,\n            \"DnsOptions\": [],\n            \"DnsSearch\": [],\n            \"ExtraHosts\": null,\n            \"GroupAdd\": null,\n            \"IpcMode\": \"private\",\n            \"Cgroup\": \"\",\n            \"Links\": null,\n            \"OomScoreAdj\": 0,\n            \"PidMode\": \"\",\n            \"Privileged\": false,\n            \"PublishAllPorts\": false,\n            \"ReadonlyRootfs\": false,\n            \"SecurityOpt\": [\n                \"no-new-privileges\"\n            ],\n            \"UTSMode\": \"\",\n            \"UsernsMode\": \"\",\n            \"ShmSize\": 67108864,\n            \"Runtime\": \"runc\",\n            \"Isolation\": \"\",\n            \"CpuShares\": 0,\n            \"Memory\": 1073741824,\n            \"NanoCpus\": 1000000000,\n            \"CgroupParent\": \"\",\n            \"BlkioWeight\": 0,\n            \"BlkioWeightDevice\": [],\n            \"BlkioDeviceReadBps\": [],\n            \"BlkioDeviceWriteBps\": [],\n            \"BlkioDeviceReadIOps\": [],\n            \"BlkioDeviceWriteIOps\": [],\n            \"CpuPeriod\": 0,\n            \"CpuQuota\": 0,\n            \"CpuRealtimePeriod\": 0,\n            \"CpuRealtimeRuntime\": 0,\n            \"CpusetCpus\": \"\",\n            \"CpusetMems\": \"\",\n            \"Devices\": [],\n            \"DeviceCgroupRules\": null,\n            \"DeviceRequests\": null,\n            \"MemoryReservation\": 0,\n            \"MemorySwap\": 2147483648,\n            \"MemorySwappiness\": null,\n            \"OomKillDisable\": false,\n            \"PidsLimit\": null,\n            \"Ulimits\": [],\n            \"CpuCount\": 0,\n            \"CpuPercent\": 0,\n            \"IOMaximumIOps\": 0,\n            \"IOMaximumBandwidth\": 0,\n            \"Mounts\": [\n                {\n                    \"Type\": \"bind\",\n                    \"Source\": \"/Users/shinmingliu/opcti/validation/phase0/legacy/runs/ft16-003/retained-tools\",\n                    \"Target\": \"/tools\",\n                    \"ReadOnly\": true\n                },\n                {\n                    \"Type\": \"bind\",\n                    \"Source\": \"/Users/shinmingliu/opcti/validation/phase0/legacy/runs/ft16-003/input-bundle\",\n                    \"Target\": \"/bundle\",\n                    \"ReadOnly\": true\n                },\n                {\n                    \"Type\": \"bind\",\n                    \"Source\": \"/Users/shinmingliu/opcti/validation/phase0/legacy/runs/ft16-003/cancel-after\",\n                    \"Target\": \"/export\"\n                },\n                {\n                    \"Type\": \"volume\",\n                    \"Source\": \"cti-ft16-7df52f4fa3da\",\n                    \"Target\": \"/state\"\n                }\n            ],\n            \"MaskedPaths\": [\n                \"/proc/acpi\",\n                \"/proc/asound\",\n                \"/proc/interrupts\",\n                \"/proc/kcore\",\n                \"/proc/keys\",\n                \"/proc/latency_stats\",\n                \"/proc/sched_debug\",\n                \"/proc/scsi\",\n                \"/proc/timer_list\",\n                \"/proc/timer_stats\",\n                \"/sys/devices/virtual/powercap\",\n                \"/sys/firmware\"\n            ],\n            \"ReadonlyPaths\": [\n                \"/proc/bus\",\n                \"/proc/fs\",\n                \"/proc/irq\",\n                \"/proc/sys\",\n                \"/proc/sysrq-trigger\"\n            ]\n        },\n        \"GraphDriver\": {\n            \"Data\": {\n                \"ID\": \"05f6d31a9c3817a70a4aa9cd87c435ff44dacccdb80eb328ce926a939908340a\",\n                \"LowerDir\": \"/var/lib/docker/overlay2/2ebe719de69daa6577d0bfed4def74e22b1d08875bedf27b00cdd893e79977d0-init/diff:/var/lib/docker/overlay2/qe060ivzuj600czqdq7r6i31q/diff:/var/lib/docker/overlay2/1wdzjbdhqu6tfzi2i401crrq1/diff:/var/lib/docker/overlay2/ttri2xu5n18wwohwi38tooeik/diff:/var/lib/docker/overlay2/os4d819slnpizlvcm8g13nv3a/diff:/var/lib/docker/overlay2/eac0fiqi2yu7zsw9xnen2hz18/diff:/var/lib/docker/overlay2/dj9xzqgejlnfjccxc2pdbh4ky/diff:/var/lib/docker/overlay2/jrgrxuvb8pkc0dbik46t9mjwc/diff:/var/lib/docker/overlay2/45b9d819b5b52e3f6876c7b987dcf6a2689fa57a81ed6f264c428e6c77388b17/diff\",\n                \"MergedDir\": \"/var/lib/docker/overlay2/2ebe719de69daa6577d0bfed4def74e22b1d08875bedf27b00cdd893e79977d0/merged\",\n                \"UpperDir\": \"/var/lib/docker/overlay2/2ebe719de69daa6577d0bfed4def74e22b1d08875bedf27b00cdd893e79977d0/diff\",\n                \"WorkDir\": \"/var/lib/docker/overlay2/2ebe719de69daa6577d0bfed4def74e22b1d08875bedf27b00cdd893e79977d0/work\"\n            },\n            \"Name\": \"overlay2\"\n        },\n        \"Mounts\": [\n            {\n                \"Type\": \"bind\",\n                \"Source\": \"/Users/shinmingliu/opcti/validation/phase0/legacy/runs/ft16-003/retained-tools\",\n                \"Destination\": \"/tools\",\n                \"Mode\": \"\",\n                \"RW\": false,\n                \"Propagation\": \"rprivate\"\n            },\n            {\n                \"Type\": \"bind\",\n                \"Source\": \"/Users/shinmingliu/opcti/validation/phase0/legacy/runs/ft16-003/input-bundle\",\n                \"Destination\": \"/bundle\",\n                \"Mode\": \"\",\n                \"RW\": false,\n                \"Propagation\": \"rprivate\"\n            },\n            {\n                \"Type\": \"bind\",\n                \"Source\": \"/Users/shinmingliu/opcti/validation/phase0/legacy/runs/ft16-003/cancel-after\",\n                \"Destination\": \"/export\",\n                \"Mode\": \"\",\n                \"RW\": true,\n                \"Propagation\": \"rprivate\"\n            },\n            {\n                \"Type\": \"volume\",\n                \"Name\": \"cti-ft16-7df52f4fa3da\",\n                \"Source\": \"/var/lib/docker/volumes/cti-ft16-7df52f4fa3da/_data\",\n                \"Destination\": \"/state\",\n                \"Driver\": \"local\",\n                \"Mode\": \"z\",\n                \"RW\": true,\n                \"Propagation\": \"\"\n            }\n        ],\n        \"Config\": {\n            \"Hostname\": \"05f6d31a9c38\",\n            \"Domainname\": \"\",\n            \"User\": \"\",\n            \"AttachStdin\": false,\n            \"AttachStdout\": true,\n            \"AttachStderr\": true,\n            \"Tty\": false,\n            \"OpenStdin\": false,\n            \"StdinOnce\": false,\n            \"Env\": [\n                \"FT16_IMAGE_ID=sha256:747873867110897321865b8790204c0d42a9d51357dce8c3334f50c59d6e916c\",\n                \"PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin\",\n                \"DEBIAN_FRONTEND=noninteractive\",\n                \"CTI_HOME=/opt/cti\",\n                \"CTI_PERL=/usr/bin/perl\",\n                \"CTI_SHELL=/bin/bash\"\n            ],\n            \"Cmd\": [\n                \"-B\",\n                \"/tools/worker.py\",\n                \"serve\",\n                \"cancel-after\",\n                \"700f5724bab54d21b8bd4651e2984f92\",\n                \"cti-ft16-67b04772caef\"\n            ],\n            \"Image\": \"sha256:747873867110897321865b8790204c0d42a9d51357dce8c3334f50c59d6e916c\",\n            \"Volumes\": null,\n            \"WorkingDir\": \"/capture\",\n            \"Entrypoint\": [\n                \"/usr/bin/python3\"\n            ],\n            \"Labels\": {\n                \"org.opencontainers.image.version\": \"24.04\",\n                \"org.opencti.phase0.ft16\": \"ft16-003\"\n            },\n            \"StopTimeout\": 1\n        },\n        \"NetworkSettings\": {\n            \"SandboxID\": \"\",\n            \"SandboxKey\": \"\",\n            \"Ports\": {},\n            \"Networks\": {\n                \"none\": {\n                    \"IPAMConfig\": null,\n                    \"Links\": null,\n                    \"Aliases\": null,\n                    \"DriverOpts\": null,\n                    \"GwPriority\": 0,\n                    \"NetworkID\": \"\",\n                    \"EndpointID\": \"\",\n                    \"Gateway\": \"\",\n                    \"IPAddress\": \"\",\n                    \"MacAddress\": \"\",\n                    \"IPPrefixLen\": 0,\n                    \"IPv6Gateway\": \"\",\n                    \"GlobalIPv6Address\": \"\",\n                    \"GlobalIPv6PrefixLen\": 0,\n                    \"DNSNames\": null\n                }\n            }\n        }\n    }\n]\n",
+    "stderr": "",
+    "started_utc": "2026-11-13T00:53:39.190686+00:00",
+    "finished_utc": "2026-11-13T00:53:39.204124+00:00"
+  },
+  {
+    "argv": [
+      "docker",
+      "start",
+      "cti-ft16-67b04772caef"
+    ],
+    "returncode": 0,
+    "stdout": "cti-ft16-67b04772caef\n",
+    "stderr": "",
+    "started_utc": "2026-11-13T00:53:39.205060+00:00",
+    "finished_utc": "2026-11-13T00:53:39.274200+00:00"
+  },
+  {
+    "argv": [
+      "docker",
+      "exec",
+      "cti-ft16-67b04772caef",
+      "python3",
+      "-B",
+      "/tools/worker.py",
+      "snapshot",
+      "checkpoint"
+    ],
+    "returncode": 0,
+    "stdout": "",
+    "stderr": "",
+    "started_utc": "2026-11-13T00:53:39.670592+00:00",
+    "finished_utc": "2026-11-13T00:53:39.832008+00:00"
+  },
+  {
+    "argv": [
+      "docker",
+      "exec",
+      "cti-ft16-67b04772caef",
+      "python3",
+      "-B",
+      "/tools/worker.py",
+      "cancel"
+    ],
+    "returncode": 0,
+    "stdout": "",
+    "stderr": "",
+    "started_utc": "2026-11-13T00:53:39.834152+00:00",
+    "finished_utc": "2026-11-13T00:53:39.904910+00:00"
+  },
+  {
+    "argv": [
+      "docker",
+      "exec",
+      "cti-ft16-67b04772caef",
+      "python3",
+      "-B",
+      "/tools/worker.py",
+      "snapshot",
+      "final"
+    ],
+    "returncode": 0,
+    "stdout": "",
+    "stderr": "",
+    "started_utc": "2026-11-13T00:53:39.960378+00:00",
+    "finished_utc": "2026-11-13T00:53:40.147311+00:00"
+  },
+  {
+    "argv": [
+      "docker",
+      "container",
+      "rm",
+      "-f",
+      "cti-ft16-67b04772caef"
+    ],
+    "returncode": 0,
+    "stdout": "cti-ft16-67b04772caef\n",
+    "stderr": "",
+    "started_utc": "2026-11-13T00:53:40.149300+00:00",
+    "finished_utc": "2026-11-13T00:53:40.192780+00:00"
+  },
+  {
+    "argv": [
+      "docker",
+      "container",
+      "inspect",
+      "cti-ft16-67b04772caef"
+    ],
+    "returncode": 1,
+    "stdout": "[]\n",
+    "stderr": "Error response from daemon: No such container: cti-ft16-67b04772caef\n",
+    "started_utc": "2026-11-13T00:53:40.193352+00:00",
+    "finished_utc": "2026-11-13T00:53:40.206445+00:00"
+  },
+  {
+    "argv": [
+      "docker",
+      "volume",
+      "rm",
+      "cti-ft16-7df52f4fa3da"
+    ],
+    "returncode": 0,
+    "stdout": "cti-ft16-7df52f4fa3da\n",
+    "stderr": "",
+    "started_utc": "2026-11-13T00:53:40.208578+00:00",
+    "finished_utc": "2026-11-13T00:53:40.224923+00:00"
+  },
+  {
+    "argv": [
+      "docker",
+      "volume",
+      "inspect",
+      "cti-ft16-7df52f4fa3da"
+    ],
+    "returncode": 1,
+    "stdout": "[]\n",
+    "stderr": "Error response from daemon: get cti-ft16-7df52f4fa3da: no such volume\n",
+    "started_utc": "2026-11-13T00:53:40.225459+00:00",
+    "finished_utc": "2026-11-13T00:53:40.238552+00:00"
+  },
+  {
+    "argv": [
+      "docker",
+      "volume",
+      "create",
+      "--label",
+      "org.opencti.phase0.ft16=ft16-003",
+      "cti-ft16-7456254d690a"
+    ],
+    "returncode": 0,
+    "stdout": "cti-ft16-7456254d690a\n",
+    "stderr": "",
+    "started_utc": "2026-11-13T00:53:40.239451+00:00",
+    "finished_utc": "2026-11-13T00:53:40.253995+00:00"
+  },
+  {
+    "argv": [
+      "docker",
+      "create",
+      "--name",
+      "cti-ft16-fda9b8b4b525",
+      "--pull=never",
+      "--platform",
+      "linux/arm64",
+      "--network",
+      "none",
+      "--cpus",
+      "1",
+      "--memory",
+      "1g",
+      "--cap-drop",
+      "ALL",
+      "--security-opt",
+      "no-new-privileges",
+      "--label",
+      "org.opencti.phase0.ft16=ft16-003",
+      "--env",
+      "FT16_IMAGE_ID=sha256:747873867110897321865b8790204c0d42a9d51357dce8c3334f50c59d6e916c",
+      "--mount",
+      "type=bind,src=/Users/shinmingliu/opcti/validation/phase0/legacy/runs/ft16-003/retained-tools,dst=/tools,readonly",
+      "--mount",
+      "type=bind,src=/Users/shinmingliu/opcti/validation/phase0/legacy/runs/ft16-003/input-bundle,dst=/bundle,readonly",
+      "--mount",
+      "type=bind,src=/Users/shinmingliu/opcti/validation/phase0/legacy/runs/ft16-003/forced-cancel,dst=/export",
+      "--mount",
+      "type=volume,src=cti-ft16-7456254d690a,dst=/state",
+      "--entrypoint",
+      "/usr/bin/python3",
+      "sha256:747873867110897321865b8790204c0d42a9d51357dce8c3334f50c59d6e916c",
+      "-B",
+      "/tools/worker.py",
+      "serve",
+      "forced-cancel",
+      "d77c433c77e54e1d810580378badae76",
+      "cti-ft16-fda9b8b4b525"
+    ],
+    "returncode": 0,
+    "stdout": "a59082cd8e80de75f6bffa32ab4c5f141dc23b4d45e4077b087e9ce1db05cf15\n",
+    "stderr": "",
+    "started_utc": "2026-11-13T00:53:40.255431+00:00",
+    "finished_utc": "2026-11-13T00:53:40.284158+00:00"
+  },
+  {
+    "argv": [
+      "docker",
+      "container",
+      "inspect",
+      "cti-ft16-fda9b8b4b525"
+    ],
+    "returncode": 0,
+    "stdout": "[\n    {\n        \"Id\": \"a59082cd8e80de75f6bffa32ab4c5f141dc23b4d45e4077b087e9ce1db05cf15\",\n        \"Created\": \"2026-11-13T00:53:40.267050877Z\",\n        \"Path\": \"/usr/bin/python3\",\n        \"Args\": [\n            \"-B\",\n            \"/tools/worker.py\",\n            \"serve\",\n            \"forced-cancel\",\n            \"d77c433c77e54e1d810580378badae76\",\n            \"cti-ft16-fda9b8b4b525\"\n        ],\n        \"State\": {\n            \"Status\": \"created\",\n            \"Running\": false,\n            \"Paused\": false,\n            \"Restarting\": false,\n            \"OOMKilled\": false,\n            \"Dead\": false,\n            \"Pid\": 0,\n            \"ExitCode\": 0,\n            \"Error\": \"\",\n            \"StartedAt\": \"0001-01-01T00:00:00Z\",\n            \"FinishedAt\": \"0001-01-01T00:00:00Z\"\n        },\n        \"Image\": \"sha256:747873867110897321865b8790204c0d42a9d51357dce8c3334f50c59d6e916c\",\n        \"ResolvConfPath\": \"\",\n        \"HostnamePath\": \"\",\n        \"HostsPath\": \"\",\n        \"LogPath\": \"\",\n        \"Name\": \"/cti-ft16-fda9b8b4b525\",\n        \"RestartCount\": 0,\n        \"Driver\": \"overlay2\",\n        \"Platform\": \"linux\",\n        \"MountLabel\": \"\",\n        \"ProcessLabel\": \"\",\n        \"AppArmorProfile\": \"\",\n        \"ExecIDs\": null,\n        \"HostConfig\": {\n            \"Binds\": null,\n            \"ContainerIDFile\": \"\",\n            \"LogConfig\": {\n                \"Type\": \"json-file\",\n                \"Config\": {}\n            },\n            \"NetworkMode\": \"none\",\n            \"PortBindings\": {},\n            \"RestartPolicy\": {\n                \"Name\": \"no\",\n                \"MaximumRetryCount\": 0\n            },\n            \"AutoRemove\": false,\n            \"VolumeDriver\": \"\",\n            \"VolumesFrom\": null,\n            \"ConsoleSize\": [\n                0,\n                0\n            ],\n            \"CapAdd\": null,\n            \"CapDrop\": [\n                \"ALL\"\n            ],\n            \"CgroupnsMode\": \"private\",\n            \"Dns\": null,\n            \"DnsOptions\": [],\n            \"DnsSearch\": [],\n            \"ExtraHosts\": null,\n            \"GroupAdd\": null,\n            \"IpcMode\": \"private\",\n            \"Cgroup\": \"\",\n            \"Links\": null,\n            \"OomScoreAdj\": 0,\n            \"PidMode\": \"\",\n            \"Privileged\": false,\n            \"PublishAllPorts\": false,\n            \"ReadonlyRootfs\": false,\n            \"SecurityOpt\": [\n                \"no-new-privileges\"\n            ],\n            \"UTSMode\": \"\",\n            \"UsernsMode\": \"\",\n            \"ShmSize\": 67108864,\n            \"Runtime\": \"runc\",\n            \"Isolation\": \"\",\n            \"CpuShares\": 0,\n            \"Memory\": 1073741824,\n            \"NanoCpus\": 1000000000,\n            \"CgroupParent\": \"\",\n            \"BlkioWeight\": 0,\n            \"BlkioWeightDevice\": [],\n            \"BlkioDeviceReadBps\": [],\n            \"BlkioDeviceWriteBps\": [],\n            \"BlkioDeviceReadIOps\": [],\n            \"BlkioDeviceWriteIOps\": [],\n            \"CpuPeriod\": 0,\n            \"CpuQuota\": 0,\n            \"CpuRealtimePeriod\": 0,\n            \"CpuRealtimeRuntime\": 0,\n            \"CpusetCpus\": \"\",\n            \"CpusetMems\": \"\",\n            \"Devices\": [],\n            \"DeviceCgroupRules\": null,\n            \"DeviceRequests\": null,\n            \"MemoryReservation\": 0,\n            \"MemorySwap\": 2147483648,\n            \"MemorySwappiness\": null,\n            \"OomKillDisable\": false,\n            \"PidsLimit\": null,\n            \"Ulimits\": [],\n            \"CpuCount\": 0,\n            \"CpuPercent\": 0,\n            \"IOMaximumIOps\": 0,\n            \"IOMaximumBandwidth\": 0,\n            \"Mounts\": [\n                {\n                    \"Type\": \"bind\",\n                    \"Source\": \"/Users/shinmingliu/opcti/validation/phase0/legacy/runs/ft16-003/retained-tools\",\n                    \"Target\": \"/tools\",\n                    \"ReadOnly\": true\n                },\n                {\n                    \"Type\": \"bind\",\n                    \"Source\": \"/Users/shinmingliu/opcti/validation/phase0/legacy/runs/ft16-003/input-bundle\",\n                    \"Target\": \"/bundle\",\n                    \"ReadOnly\": true\n                },\n                {\n                    \"Type\": \"bind\",\n                    \"Source\": \"/Users/shinmingliu/opcti/validation/phase0/legacy/runs/ft16-003/forced-cancel\",\n                    \"Target\": \"/export\"\n                },\n                {\n                    \"Type\": \"volume\",\n                    \"Source\": \"cti-ft16-7456254d690a\",\n                    \"Target\": \"/state\"\n                }\n            ],\n            \"MaskedPaths\": [\n                \"/proc/acpi\",\n                \"/proc/asound\",\n                \"/proc/interrupts\",\n                \"/proc/kcore\",\n                \"/proc/keys\",\n                \"/proc/latency_stats\",\n                \"/proc/sched_debug\",\n                \"/proc/scsi\",\n                \"/proc/timer_list\",\n                \"/proc/timer_stats\",\n                \"/sys/devices/virtual/powercap\",\n                \"/sys/firmware\"\n            ],\n            \"ReadonlyPaths\": [\n                \"/proc/bus\",\n                \"/proc/fs\",\n                \"/proc/irq\",\n                \"/proc/sys\",\n                \"/proc/sysrq-trigger\"\n            ]\n        },\n        \"GraphDriver\": {\n            \"Data\": {\n                \"ID\": \"a59082cd8e80de75f6bffa32ab4c5f141dc23b4d45e4077b087e9ce1db05cf15\",\n                \"LowerDir\": \"/var/lib/docker/overlay2/f0b12af63f5cdeab83fcd8ed870fe34ee14edf6dafc78c7d888ef45f85a5edd4-init/diff:/var/lib/docker/overlay2/qe060ivzuj600czqdq7r6i31q/diff:/var/lib/docker/overlay2/1wdzjbdhqu6tfzi2i401crrq1/diff:/var/lib/docker/overlay2/ttri2xu5n18wwohwi38tooeik/diff:/var/lib/docker/overlay2/os4d819slnpizlvcm8g13nv3a/diff:/var/lib/docker/overlay2/eac0fiqi2yu7zsw9xnen2hz18/diff:/var/lib/docker/overlay2/dj9xzqgejlnfjccxc2pdbh4ky/diff:/var/lib/docker/overlay2/jrgrxuvb8pkc0dbik46t9mjwc/diff:/var/lib/docker/overlay2/45b9d819b5b52e3f6876c7b987dcf6a2689fa57a81ed6f264c428e6c77388b17/diff\",\n                \"MergedDir\": \"/var/lib/docker/overlay2/f0b12af63f5cdeab83fcd8ed870fe34ee14edf6dafc78c7d888ef45f85a5edd4/merged\",\n                \"UpperDir\": \"/var/lib/docker/overlay2/f0b12af63f5cdeab83fcd8ed870fe34ee14edf6dafc78c7d888ef45f85a5edd4/diff\",\n                \"WorkDir\": \"/var/lib/docker/overlay2/f0b12af63f5cdeab83fcd8ed870fe34ee14edf6dafc78c7d888ef45f85a5edd4/work\"\n            },\n            \"Name\": \"overlay2\"\n        },\n        \"Mounts\": [\n            {\n                \"Type\": \"bind\",\n                \"Source\": \"/Users/shinmingliu/opcti/validation/phase0/legacy/runs/ft16-003/retained-tools\",\n                \"Destination\": \"/tools\",\n                \"Mode\": \"\",\n                \"RW\": false,\n                \"Propagation\": \"rprivate\"\n            },\n            {\n                \"Type\": \"bind\",\n                \"Source\": \"/Users/shinmingliu/opcti/validation/phase0/legacy/runs/ft16-003/input-bundle\",\n                \"Destination\": \"/bundle\",\n                \"Mode\": \"\",\n                \"RW\": false,\n                \"Propagation\": \"rprivate\"\n            },\n            {\n                \"Type\": \"bind\",\n                \"Source\": \"/Users/shinmingliu/opcti/validation/phase0/legacy/runs/ft16-003/forced-cancel\",\n                \"Destination\": \"/export\",\n                \"Mode\": \"\",\n                \"RW\": true,\n                \"Propagation\": \"rprivate\"\n            },\n            {\n                \"Type\": \"volume\",\n                \"Name\": \"cti-ft16-7456254d690a\",\n                \"Source\": \"/var/lib/docker/volumes/cti-ft16-7456254d690a/_data\",\n                \"Destination\": \"/state\",\n                \"Driver\": \"local\",\n                \"Mode\": \"z\",\n                \"RW\": true,\n                \"Propagation\": \"\"\n            }\n        ],\n        \"Config\": {\n            \"Hostname\": \"a59082cd8e80\",\n            \"Domainname\": \"\",\n            \"User\": \"\",\n            \"AttachStdin\": false,\n            \"AttachStdout\": true,\n            \"AttachStderr\": true,\n            \"Tty\": false,\n            \"OpenStdin\": false,\n            \"StdinOnce\": false,\n            \"Env\": [\n                \"FT16_IMAGE_ID=sha256:747873867110897321865b8790204c0d42a9d51357dce8c3334f50c59d6e916c\",\n                \"PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin\",\n                \"DEBIAN_FRONTEND=noninteractive\",\n                \"CTI_HOME=/opt/cti\",\n                \"CTI_PERL=/usr/bin/perl\",\n                \"CTI_SHELL=/bin/bash\"\n            ],\n            \"Cmd\": [\n                \"-B\",\n                \"/tools/worker.py\",\n                \"serve\",\n                \"forced-cancel\",\n                \"d77c433c77e54e1d810580378badae76\",\n                \"cti-ft16-fda9b8b4b525\"\n            ],\n            \"Image\": \"sha256:747873867110897321865b8790204c0d42a9d51357dce8c3334f50c59d6e916c\",\n            \"Volumes\": null,\n            \"WorkingDir\": \"/capture\",\n            \"Entrypoint\": [\n                \"/usr/bin/python3\"\n            ],\n            \"Labels\": {\n                \"org.opencontainers.image.version\": \"24.04\",\n                \"org.opencti.phase0.ft16\": \"ft16-003\"\n            },\n            \"StopTimeout\": 1\n        },\n        \"NetworkSettings\": {\n            \"SandboxID\": \"\",\n            \"SandboxKey\": \"\",\n            \"Ports\": {},\n            \"Networks\": {\n                \"none\": {\n                    \"IPAMConfig\": null,\n                    \"Links\": null,\n                    \"Aliases\": null,\n                    \"DriverOpts\": null,\n                    \"GwPriority\": 0,\n                    \"NetworkID\": \"\",\n                    \"EndpointID\": \"\",\n                    \"Gateway\": \"\",\n                    \"IPAddress\": \"\",\n                    \"MacAddress\": \"\",\n                    \"IPPrefixLen\": 0,\n                    \"IPv6Gateway\": \"\",\n                    \"GlobalIPv6Address\": \"\",\n                    \"GlobalIPv6PrefixLen\": 0,\n                    \"DNSNames\": null\n                }\n            }\n        }\n    }\n]\n",
+    "stderr": "",
+    "started_utc": "2026-11-13T00:53:40.284758+00:00",
+    "finished_utc": "2026-11-13T00:53:40.299501+00:00"
+  },
+  {
+    "argv": [
+      "docker",
+      "start",
+      "cti-ft16-fda9b8b4b525"
+    ],
+    "returncode": 0,
+    "stdout": "cti-ft16-fda9b8b4b525\n",
+    "stderr": "",
+    "started_utc": "2026-11-13T00:53:40.300757+00:00",
+    "finished_utc": "2026-11-13T00:53:40.375519+00:00"
+  },
+  {
+    "argv": [
+      "docker",
+      "exec",
+      "cti-ft16-fda9b8b4b525",
+      "python3",
+      "-B",
+      "/tools/worker.py",
+      "snapshot",
+      "checkpoint"
+    ],
+    "returncode": 0,
+    "stdout": "",
+    "stderr": "",
+    "started_utc": "2026-11-13T00:53:40.933621+00:00",
+    "finished_utc": "2026-11-13T00:53:41.110922+00:00"
+  },
+  {
+    "argv": [
+      "docker",
+      "exec",
+      "cti-ft16-fda9b8b4b525",
+      "python3",
+      "-B",
+      "/tools/worker.py",
+      "cancel"
+    ],
+    "returncode": 0,
+    "stdout": "",
+    "stderr": "",
+    "started_utc": "2026-11-13T00:53:41.113066+00:00",
+    "finished_utc": "2026-11-13T00:53:41.184189+00:00"
+  },
+  {
+    "argv": [
+      "docker",
+      "exec",
+      "cti-ft16-fda9b8b4b525",
+      "python3",
+      "-B",
+      "/tools/worker.py",
+      "snapshot",
+      "final"
+    ],
+    "returncode": 0,
+    "stdout": "",
+    "stderr": "",
+    "started_utc": "2026-11-13T00:53:41.997287+00:00",
+    "finished_utc": "2026-11-13T00:53:42.158071+00:00"
+  },
+  {
+    "argv": [
+      "docker",
+      "container",
+      "rm",
+      "-f",
+      "cti-ft16-fda9b8b4b525"
+    ],
+    "returncode": 0,
+    "stdout": "cti-ft16-fda9b8b4b525\n",
+    "stderr": "",
+    "started_utc": "2026-11-13T00:53:42.160227+00:00",
+    "finished_utc": "2026-11-13T00:53:42.201929+00:00"
+  },
+  {
+    "argv": [
+      "docker",
+      "container",
+      "inspect",
+      "cti-ft16-fda9b8b4b525"
+    ],
+    "returncode": 1,
+    "stdout": "[]\n",
+    "stderr": "Error response from daemon: No such container: cti-ft16-fda9b8b4b525\n",
+    "started_utc": "2026-11-13T00:53:42.202596+00:00",
+    "finished_utc": "2026-11-13T00:53:42.215310+00:00"
+  },
+  {
+    "argv": [
+      "docker",
+      "volume",
+      "rm",
+      "cti-ft16-7456254d690a"
+    ],
+    "returncode": 0,
+    "stdout": "cti-ft16-7456254d690a\n",
+    "stderr": "",
+    "started_utc": "2026-11-13T00:53:42.217491+00:00",
+    "finished_utc": "2026-11-13T00:53:42.232385+00:00"
+  },
+  {
+    "argv": [
+      "docker",
+      "volume",
+      "inspect",
+      "cti-ft16-7456254d690a"
+    ],
+    "returncode": 1,
+    "stdout": "[]\n",
+    "stderr": "Error response from daemon: get cti-ft16-7456254d690a: no such volume\n",
+    "started_utc": "2026-11-13T00:53:42.232949+00:00",
+    "finished_utc": "2026-11-13T00:53:42.246083+00:00"
+  },
+  {
+    "argv": [
+      "docker",
+      "volume",
+      "create",
+      "--label",
+      "org.opencti.phase0.ft16=ft16-003",
+      "cti-ft16-33d9dff3c8b4"
+    ],
+    "returncode": 0,
+    "stdout": "cti-ft16-33d9dff3c8b4\n",
+    "stderr": "",
+    "started_utc": "2026-11-13T00:53:42.246971+00:00",
+    "finished_utc": "2026-11-13T00:53:42.262009+00:00"
+  },
+  {
+    "argv": [
+      "docker",
+      "create",
+      "--name",
+      "cti-ft16-5c0bcc0ba861",
+      "--pull=never",
+      "--platform",
+      "linux/arm64",
+      "--network",
+      "none",
+      "--cpus",
+      "1",
+      "--memory",
+      "1g",
+      "--cap-drop",
+      "ALL",
+      "--security-opt",
+      "no-new-privileges",
+      "--label",
+      "org.opencti.phase0.ft16=ft16-003",
+      "--env",
+      "FT16_IMAGE_ID=sha256:747873867110897321865b8790204c0d42a9d51357dce8c3334f50c59d6e916c",
+      "--mount",
+      "type=bind,src=/Users/shinmingliu/opcti/validation/phase0/legacy/runs/ft16-003/retained-tools,dst=/tools,readonly",
+      "--mount",
+      "type=bind,src=/Users/shinmingliu/opcti/validation/phase0/legacy/runs/ft16-003/input-bundle,dst=/bundle,readonly",
+      "--mount",
+      "type=bind,src=/Users/shinmingliu/opcti/validation/phase0/legacy/runs/ft16-003/disconnect,dst=/export",
+      "--mount",
+      "type=volume,src=cti-ft16-33d9dff3c8b4,dst=/state",
+      "--entrypoint",
+      "/usr/bin/python3",
+      "sha256:747873867110897321865b8790204c0d42a9d51357dce8c3334f50c59d6e916c",
+      "-B",
+      "/tools/worker.py",
+      "serve",
+      "disconnect",
+      "9df99fa6687148288c7f3757d4a0a7f5",
+      "cti-ft16-5c0bcc0ba861"
+    ],
+    "returncode": 0,
+    "stdout": "fe0f0ef7a45cbc3dae47216195b1662e418924b04a06c2c15adf28e7c4cebd4a\n",
+    "stderr": "",
+    "started_utc": "2026-11-13T00:53:42.263495+00:00",
+    "finished_utc": "2026-11-13T00:53:42.291108+00:00"
+  },
+  {
+    "argv": [
+      "docker",
+      "container",
+      "inspect",
+      "cti-ft16-5c0bcc0ba861"
+    ],
+    "returncode": 0,
+    "stdout": "[\n    {\n        \"Id\": \"fe0f0ef7a45cbc3dae47216195b1662e418924b04a06c2c15adf28e7c4cebd4a\",\n        \"Created\": \"2026-11-13T00:53:42.275532628Z\",\n        \"Path\": \"/usr/bin/python3\",\n        \"Args\": [\n            \"-B\",\n            \"/tools/worker.py\",\n            \"serve\",\n            \"disconnect\",\n            \"9df99fa6687148288c7f3757d4a0a7f5\",\n            \"cti-ft16-5c0bcc0ba861\"\n        ],\n        \"State\": {\n            \"Status\": \"created\",\n            \"Running\": false,\n            \"Paused\": false,\n            \"Restarting\": false,\n            \"OOMKilled\": false,\n            \"Dead\": false,\n            \"Pid\": 0,\n            \"ExitCode\": 0,\n            \"Error\": \"\",\n            \"StartedAt\": \"0001-01-01T00:00:00Z\",\n            \"FinishedAt\": \"0001-01-01T00:00:00Z\"\n        },\n        \"Image\": \"sha256:747873867110897321865b8790204c0d42a9d51357dce8c3334f50c59d6e916c\",\n        \"ResolvConfPath\": \"\",\n        \"HostnamePath\": \"\",\n        \"HostsPath\": \"\",\n        \"LogPath\": \"\",\n        \"Name\": \"/cti-ft16-5c0bcc0ba861\",\n        \"RestartCount\": 0,\n        \"Driver\": \"overlay2\",\n        \"Platform\": \"linux\",\n        \"MountLabel\": \"\",\n        \"ProcessLabel\": \"\",\n        \"AppArmorProfile\": \"\",\n        \"ExecIDs\": null,\n        \"HostConfig\": {\n            \"Binds\": null,\n            \"ContainerIDFile\": \"\",\n            \"LogConfig\": {\n                \"Type\": \"json-file\",\n                \"Config\": {}\n            },\n            \"NetworkMode\": \"none\",\n            \"PortBindings\": {},\n            \"RestartPolicy\": {\n                \"Name\": \"no\",\n                \"MaximumRetryCount\": 0\n            },\n            \"AutoRemove\": false,\n            \"VolumeDriver\": \"\",\n            \"VolumesFrom\": null,\n            \"ConsoleSize\": [\n                0,\n                0\n            ],\n            \"CapAdd\": null,\n            \"CapDrop\": [\n                \"ALL\"\n            ],\n            \"CgroupnsMode\": \"private\",\n            \"Dns\": null,\n            \"DnsOptions\": [],\n            \"DnsSearch\": [],\n            \"ExtraHosts\": null,\n            \"GroupAdd\": null,\n            \"IpcMode\": \"private\",\n            \"Cgroup\": \"\",\n            \"Links\": null,\n            \"OomScoreAdj\": 0,\n            \"PidMode\": \"\",\n            \"Privileged\": false,\n            \"PublishAllPorts\": false,\n            \"ReadonlyRootfs\": false,\n            \"SecurityOpt\": [\n                \"no-new-privileges\"\n            ],\n            \"UTSMode\": \"\",\n            \"UsernsMode\": \"\",\n            \"ShmSize\": 67108864,\n            \"Runtime\": \"runc\",\n            \"Isolation\": \"\",\n            \"CpuShares\": 0,\n            \"Memory\": 1073741824,\n            \"NanoCpus\": 1000000000,\n            \"CgroupParent\": \"\",\n            \"BlkioWeight\": 0,\n            \"BlkioWeightDevice\": [],\n            \"BlkioDeviceReadBps\": [],\n            \"BlkioDeviceWriteBps\": [],\n            \"BlkioDeviceReadIOps\": [],\n            \"BlkioDeviceWriteIOps\": [],\n            \"CpuPeriod\": 0,\n            \"CpuQuota\": 0,\n            \"CpuRealtimePeriod\": 0,\n            \"CpuRealtimeRuntime\": 0,\n            \"CpusetCpus\": \"\",\n            \"CpusetMems\": \"\",\n            \"Devices\": [],\n            \"DeviceCgroupRules\": null,\n            \"DeviceRequests\": null,\n            \"MemoryReservation\": 0,\n            \"MemorySwap\": 2147483648,\n            \"MemorySwappiness\": null,\n            \"OomKillDisable\": false,\n            \"PidsLimit\": null,\n            \"Ulimits\": [],\n            \"CpuCount\": 0,\n            \"CpuPercent\": 0,\n            \"IOMaximumIOps\": 0,\n            \"IOMaximumBandwidth\": 0,\n            \"Mounts\": [\n                {\n                    \"Type\": \"bind\",\n                    \"Source\": \"/Users/shinmingliu/opcti/validation/phase0/legacy/runs/ft16-003/retained-tools\",\n                    \"Target\": \"/tools\",\n                    \"ReadOnly\": true\n                },\n                {\n                    \"Type\": \"bind\",\n                    \"Source\": \"/Users/shinmingliu/opcti/validation/phase0/legacy/runs/ft16-003/input-bundle\",\n                    \"Target\": \"/bundle\",\n                    \"ReadOnly\": true\n                },\n                {\n                    \"Type\": \"bind\",\n                    \"Source\": \"/Users/shinmingliu/opcti/validation/phase0/legacy/runs/ft16-003/disconnect\",\n                    \"Target\": \"/export\"\n                },\n                {\n                    \"Type\": \"volume\",\n                    \"Source\": \"cti-ft16-33d9dff3c8b4\",\n                    \"Target\": \"/state\"\n                }\n            ],\n            \"MaskedPaths\": [\n                \"/proc/acpi\",\n                \"/proc/asound\",\n                \"/proc/interrupts\",\n                \"/proc/kcore\",\n                \"/proc/keys\",\n                \"/proc/latency_stats\",\n                \"/proc/sched_debug\",\n                \"/proc/scsi\",\n                \"/proc/timer_list\",\n                \"/proc/timer_stats\",\n                \"/sys/devices/virtual/powercap\",\n                \"/sys/firmware\"\n            ],\n            \"ReadonlyPaths\": [\n                \"/proc/bus\",\n                \"/proc/fs\",\n                \"/proc/irq\",\n                \"/proc/sys\",\n                \"/proc/sysrq-trigger\"\n            ]\n        },\n        \"GraphDriver\": {\n            \"Data\": {\n                \"ID\": \"fe0f0ef7a45cbc3dae47216195b1662e418924b04a06c2c15adf28e7c4cebd4a\",\n                \"LowerDir\": \"/var/lib/docker/overlay2/6b590fa8bbcca2f332ce4fb7b63ddf91f311a85f535ce196119d86ca53587858-init/diff:/var/lib/docker/overlay2/qe060ivzuj600czqdq7r6i31q/diff:/var/lib/docker/overlay2/1wdzjbdhqu6tfzi2i401crrq1/diff:/var/lib/docker/overlay2/ttri2xu5n18wwohwi38tooeik/diff:/var/lib/docker/overlay2/os4d819slnpizlvcm8g13nv3a/diff:/var/lib/docker/overlay2/eac0fiqi2yu7zsw9xnen2hz18/diff:/var/lib/docker/overlay2/dj9xzqgejlnfjccxc2pdbh4ky/diff:/var/lib/docker/overlay2/jrgrxuvb8pkc0dbik46t9mjwc/diff:/var/lib/docker/overlay2/45b9d819b5b52e3f6876c7b987dcf6a2689fa57a81ed6f264c428e6c77388b17/diff\",\n                \"MergedDir\": \"/var/lib/docker/overlay2/6b590fa8bbcca2f332ce4fb7b63ddf91f311a85f535ce196119d86ca53587858/merged\",\n                \"UpperDir\": \"/var/lib/docker/overlay2/6b590fa8bbcca2f332ce4fb7b63ddf91f311a85f535ce196119d86ca53587858/diff\",\n                \"WorkDir\": \"/var/lib/docker/overlay2/6b590fa8bbcca2f332ce4fb7b63ddf91f311a85f535ce196119d86ca53587858/work\"\n            },\n            \"Name\": \"overlay2\"\n        },\n        \"Mounts\": [\n            {\n                \"Type\": \"bind\",\n                \"Source\": \"/Users/shinmingliu/opcti/validation/phase0/legacy/runs/ft16-003/retained-tools\",\n                \"Destination\": \"/tools\",\n                \"Mode\": \"\",\n                \"RW\": false,\n                \"Propagation\": \"rprivate\"\n            },\n            {\n                \"Type\": \"bind\",\n                \"Source\": \"/Users/shinmingliu/opcti/validation/phase0/legacy/runs/ft16-003/input-bundle\",\n                \"Destination\": \"/bundle\",\n                \"Mode\": \"\",\n                \"RW\": false,\n                \"Propagation\": \"rprivate\"\n            },\n            {\n                \"Type\": \"bind\",\n                \"Source\": \"/Users/shinmingliu/opcti/validation/phase0/legacy/runs/ft16-003/disconnect\",\n                \"Destination\": \"/export\",\n                \"Mode\": \"\",\n                \"RW\": true,\n                \"Propagation\": \"rprivate\"\n            },\n            {\n                \"Type\": \"volume\",\n                \"Name\": \"cti-ft16-33d9dff3c8b4\",\n                \"Source\": \"/var/lib/docker/volumes/cti-ft16-33d9dff3c8b4/_data\",\n                \"Destination\": \"/state\",\n                \"Driver\": \"local\",\n                \"Mode\": \"z\",\n                \"RW\": true,\n                \"Propagation\": \"\"\n            }\n        ],\n        \"Config\": {\n            \"Hostname\": \"fe0f0ef7a45c\",\n            \"Domainname\": \"\",\n            \"User\": \"\",\n            \"AttachStdin\": false,\n            \"AttachStdout\": true,\n            \"AttachStderr\": true,\n            \"Tty\": false,\n            \"OpenStdin\": false,\n            \"StdinOnce\": false,\n            \"Env\": [\n                \"FT16_IMAGE_ID=sha256:747873867110897321865b8790204c0d42a9d51357dce8c3334f50c59d6e916c\",\n                \"PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin\",\n                \"DEBIAN_FRONTEND=noninteractive\",\n                \"CTI_HOME=/opt/cti\",\n                \"CTI_PERL=/usr/bin/perl\",\n                \"CTI_SHELL=/bin/bash\"\n            ],\n            \"Cmd\": [\n                \"-B\",\n                \"/tools/worker.py\",\n                \"serve\",\n                \"disconnect\",\n                \"9df99fa6687148288c7f3757d4a0a7f5\",\n                \"cti-ft16-5c0bcc0ba861\"\n            ],\n            \"Image\": \"sha256:747873867110897321865b8790204c0d42a9d51357dce8c3334f50c59d6e916c\",\n            \"Volumes\": null,\n            \"WorkingDir\": \"/capture\",\n            \"Entrypoint\": [\n                \"/usr/bin/python3\"\n            ],\n            \"Labels\": {\n                \"org.opencontainers.image.version\": \"24.04\",\n                \"org.opencti.phase0.ft16\": \"ft16-003\"\n            },\n            \"StopTimeout\": 1\n        },\n        \"NetworkSettings\": {\n            \"SandboxID\": \"\",\n            \"SandboxKey\": \"\",\n            \"Ports\": {},\n            \"Networks\": {\n                \"none\": {\n                    \"IPAMConfig\": null,\n                    \"Links\": null,\n                    \"Aliases\": null,\n                    \"DriverOpts\": null,\n                    \"GwPriority\": 0,\n                    \"NetworkID\": \"\",\n                    \"EndpointID\": \"\",\n                    \"Gateway\": \"\",\n                    \"IPAddress\": \"\",\n                    \"MacAddress\": \"\",\n                    \"IPPrefixLen\": 0,\n                    \"IPv6Gateway\": \"\",\n                    \"GlobalIPv6Address\": \"\",\n                    \"GlobalIPv6PrefixLen\": 0,\n                    \"DNSNames\": null\n                }\n            }\n        }\n    }\n]\n",
+    "stderr": "",
+    "started_utc": "2026-11-13T00:53:42.291840+00:00",
+    "finished_utc": "2026-11-13T00:53:42.305920+00:00"
+  },
+  {
+    "argv": [
+      "docker",
+      "start",
+      "cti-ft16-5c0bcc0ba861"
+    ],
+    "returncode": 0,
+    "stdout": "cti-ft16-5c0bcc0ba861\n",
+    "stderr": "",
+    "started_utc": "2026-11-13T00:53:42.307189+00:00",
+    "finished_utc": "2026-11-13T00:53:42.377764+00:00"
+  },
+  {
+    "argv": [
+      "docker",
+      "exec",
+      "cti-ft16-5c0bcc0ba861",
+      "python3",
+      "-B",
+      "/tools/worker.py",
+      "snapshot",
+      "checkpoint"
+    ],
+    "returncode": 0,
+    "stdout": "",
+    "stderr": "",
+    "started_utc": "2026-11-13T00:53:42.769433+00:00",
+    "finished_utc": "2026-11-13T00:53:42.931770+00:00"
+  },
+  {
+    "argv": [
+      "docker",
+      "pause",
+      "cti-ft16-5c0bcc0ba861"
+    ],
+    "returncode": 0,
+    "stdout": "cti-ft16-5c0bcc0ba861\n",
+    "stderr": "",
+    "started_utc": "2026-11-13T00:53:42.934353+00:00",
+    "finished_utc": "2026-11-13T00:53:42.966966+00:00"
+  },
+  {
+    "argv": [
+      "docker",
+      "container",
+      "inspect",
+      "cti-ft16-5c0bcc0ba861"
+    ],
+    "returncode": 0,
+    "stdout": "[\n    {\n        \"Id\": \"fe0f0ef7a45cbc3dae47216195b1662e418924b04a06c2c15adf28e7c4cebd4a\",\n        \"Created\": \"2026-11-13T00:53:42.275532628Z\",\n        \"Path\": \"/usr/bin/python3\",\n        \"Args\": [\n            \"-B\",\n            \"/tools/worker.py\",\n            \"serve\",\n            \"disconnect\",\n            \"9df99fa6687148288c7f3757d4a0a7f5\",\n            \"cti-ft16-5c0bcc0ba861\"\n        ],\n        \"State\": {\n            \"Status\": \"paused\",\n            \"Running\": true,\n            \"Paused\": true,\n            \"Restarting\": false,\n            \"OOMKilled\": false,\n            \"Dead\": false,\n            \"Pid\": 14009,\n            \"ExitCode\": 0,\n            \"Error\": \"\",\n            \"StartedAt\": \"2026-11-13T00:53:42.325147336Z\",\n            \"FinishedAt\": \"0001-01-01T00:00:00Z\"\n        },\n        \"Image\": \"sha256:747873867110897321865b8790204c0d42a9d51357dce8c3334f50c59d6e916c\",\n        \"ResolvConfPath\": \"/var/lib/docker/containers/fe0f0ef7a45cbc3dae47216195b1662e418924b04a06c2c15adf28e7c4cebd4a/resolv.conf\",\n        \"HostnamePath\": \"/var/lib/docker/containers/fe0f0ef7a45cbc3dae47216195b1662e418924b04a06c2c15adf28e7c4cebd4a/hostname\",\n        \"HostsPath\": \"/var/lib/docker/containers/fe0f0ef7a45cbc3dae47216195b1662e418924b04a06c2c15adf28e7c4cebd4a/hosts\",\n        \"LogPath\": \"/var/lib/docker/containers/fe0f0ef7a45cbc3dae47216195b1662e418924b04a06c2c15adf28e7c4cebd4a/fe0f0ef7a45cbc3dae47216195b1662e418924b04a06c2c15adf28e7c4cebd4a-json.log\",\n        \"Name\": \"/cti-ft16-5c0bcc0ba861\",\n        \"RestartCount\": 0,\n        \"Driver\": \"overlay2\",\n        \"Platform\": \"linux\",\n        \"MountLabel\": \"\",\n        \"ProcessLabel\": \"\",\n        \"AppArmorProfile\": \"\",\n        \"ExecIDs\": null,\n        \"HostConfig\": {\n            \"Binds\": null,\n            \"ContainerIDFile\": \"\",\n            \"LogConfig\": {\n                \"Type\": \"json-file\",\n                \"Config\": {}\n            },\n            \"NetworkMode\": \"none\",\n            \"PortBindings\": {},\n            \"RestartPolicy\": {\n                \"Name\": \"no\",\n                \"MaximumRetryCount\": 0\n            },\n            \"AutoRemove\": false,\n            \"VolumeDriver\": \"\",\n            \"VolumesFrom\": null,\n            \"ConsoleSize\": [\n                0,\n                0\n            ],\n            \"CapAdd\": null,\n            \"CapDrop\": [\n                \"ALL\"\n            ],\n            \"CgroupnsMode\": \"private\",\n            \"Dns\": null,\n            \"DnsOptions\": [],\n            \"DnsSearch\": [],\n            \"ExtraHosts\": null,\n            \"GroupAdd\": null,\n            \"IpcMode\": \"private\",\n            \"Cgroup\": \"\",\n            \"Links\": null,\n            \"OomScoreAdj\": 0,\n            \"PidMode\": \"\",\n            \"Privileged\": false,\n            \"PublishAllPorts\": false,\n            \"ReadonlyRootfs\": false,\n            \"SecurityOpt\": [\n                \"no-new-privileges\"\n            ],\n            \"UTSMode\": \"\",\n            \"UsernsMode\": \"\",\n            \"ShmSize\": 67108864,\n            \"Runtime\": \"runc\",\n            \"Isolation\": \"\",\n            \"CpuShares\": 0,\n            \"Memory\": 1073741824,\n            \"NanoCpus\": 1000000000,\n            \"CgroupParent\": \"\",\n            \"BlkioWeight\": 0,\n            \"BlkioWeightDevice\": [],\n            \"BlkioDeviceReadBps\": [],\n            \"BlkioDeviceWriteBps\": [],\n            \"BlkioDeviceReadIOps\": [],\n            \"BlkioDeviceWriteIOps\": [],\n            \"CpuPeriod\": 0,\n            \"CpuQuota\": 0,\n            \"CpuRealtimePeriod\": 0,\n            \"CpuRealtimeRuntime\": 0,\n            \"CpusetCpus\": \"\",\n            \"CpusetMems\": \"\",\n            \"Devices\": [],\n            \"DeviceCgroupRules\": null,\n            \"DeviceRequests\": null,\n            \"MemoryReservation\": 0,\n            \"MemorySwap\": 2147483648,\n            \"MemorySwappiness\": null,\n            \"OomKillDisable\": null,\n            \"PidsLimit\": null,\n            \"Ulimits\": [],\n            \"CpuCount\": 0,\n            \"CpuPercent\": 0,\n            \"IOMaximumIOps\": 0,\n            \"IOMaximumBandwidth\": 0,\n            \"Mounts\": [\n                {\n                    \"Type\": \"bind\",\n                    \"Source\": \"/Users/shinmingliu/opcti/validation/phase0/legacy/runs/ft16-003/retained-tools\",\n                    \"Target\": \"/tools\",\n                    \"ReadOnly\": true\n                },\n                {\n                    \"Type\": \"bind\",\n                    \"Source\": \"/Users/shinmingliu/opcti/validation/phase0/legacy/runs/ft16-003/input-bundle\",\n                    \"Target\": \"/bundle\",\n                    \"ReadOnly\": true\n                },\n                {\n                    \"Type\": \"bind\",\n                    \"Source\": \"/Users/shinmingliu/opcti/validation/phase0/legacy/runs/ft16-003/disconnect\",\n                    \"Target\": \"/export\"\n                },\n                {\n                    \"Type\": \"volume\",\n                    \"Source\": \"cti-ft16-33d9dff3c8b4\",\n                    \"Target\": \"/state\"\n                }\n            ],\n            \"MaskedPaths\": [\n                \"/proc/acpi\",\n                \"/proc/asound\",\n                \"/proc/interrupts\",\n                \"/proc/kcore\",\n                \"/proc/keys\",\n                \"/proc/latency_stats\",\n                \"/proc/sched_debug\",\n                \"/proc/scsi\",\n                \"/proc/timer_list\",\n                \"/proc/timer_stats\",\n                \"/sys/devices/virtual/powercap\",\n                \"/sys/firmware\"\n            ],\n            \"ReadonlyPaths\": [\n                \"/proc/bus\",\n                \"/proc/fs\",\n                \"/proc/irq\",\n                \"/proc/sys\",\n                \"/proc/sysrq-trigger\"\n            ]\n        },\n        \"GraphDriver\": {\n            \"Data\": {\n                \"ID\": \"fe0f0ef7a45cbc3dae47216195b1662e418924b04a06c2c15adf28e7c4cebd4a\",\n                \"LowerDir\": \"/var/lib/docker/overlay2/6b590fa8bbcca2f332ce4fb7b63ddf91f311a85f535ce196119d86ca53587858-init/diff:/var/lib/docker/overlay2/qe060ivzuj600czqdq7r6i31q/diff:/var/lib/docker/overlay2/1wdzjbdhqu6tfzi2i401crrq1/diff:/var/lib/docker/overlay2/ttri2xu5n18wwohwi38tooeik/diff:/var/lib/docker/overlay2/os4d819slnpizlvcm8g13nv3a/diff:/var/lib/docker/overlay2/eac0fiqi2yu7zsw9xnen2hz18/diff:/var/lib/docker/overlay2/dj9xzqgejlnfjccxc2pdbh4ky/diff:/var/lib/docker/overlay2/jrgrxuvb8pkc0dbik46t9mjwc/diff:/var/lib/docker/overlay2/45b9d819b5b52e3f6876c7b987dcf6a2689fa57a81ed6f264c428e6c77388b17/diff\",\n                \"MergedDir\": \"/var/lib/docker/overlay2/6b590fa8bbcca2f332ce4fb7b63ddf91f311a85f535ce196119d86ca53587858/merged\",\n                \"UpperDir\": \"/var/lib/docker/overlay2/6b590fa8bbcca2f332ce4fb7b63ddf91f311a85f535ce196119d86ca53587858/diff\",\n                \"WorkDir\": \"/var/lib/docker/overlay2/6b590fa8bbcca2f332ce4fb7b63ddf91f311a85f535ce196119d86ca53587858/work\"\n            },\n            \"Name\": \"overlay2\"\n        },\n        \"Mounts\": [\n            {\n                \"Type\": \"bind\",\n                \"Source\": \"/Users/shinmingliu/opcti/validation/phase0/legacy/runs/ft16-003/retained-tools\",\n                \"Destination\": \"/tools\",\n                \"Mode\": \"\",\n                \"RW\": false,\n                \"Propagation\": \"rprivate\"\n            },\n            {\n                \"Type\": \"bind\",\n                \"Source\": \"/Users/shinmingliu/opcti/validation/phase0/legacy/runs/ft16-003/input-bundle\",\n                \"Destination\": \"/bundle\",\n                \"Mode\": \"\",\n                \"RW\": false,\n                \"Propagation\": \"rprivate\"\n            },\n            {\n                \"Type\": \"bind\",\n                \"Source\": \"/Users/shinmingliu/opcti/validation/phase0/legacy/runs/ft16-003/disconnect\",\n                \"Destination\": \"/export\",\n                \"Mode\": \"\",\n                \"RW\": true,\n                \"Propagation\": \"rprivate\"\n            },\n            {\n                \"Type\": \"volume\",\n                \"Name\": \"cti-ft16-33d9dff3c8b4\",\n                \"Source\": \"/var/lib/docker/volumes/cti-ft16-33d9dff3c8b4/_data\",\n                \"Destination\": \"/state\",\n                \"Driver\": \"local\",\n                \"Mode\": \"z\",\n                \"RW\": true,\n                \"Propagation\": \"\"\n            }\n        ],\n        \"Config\": {\n            \"Hostname\": \"fe0f0ef7a45c\",\n            \"Domainname\": \"\",\n            \"User\": \"\",\n            \"AttachStdin\": false,\n            \"AttachStdout\": true,\n            \"AttachStderr\": true,\n            \"Tty\": false,\n            \"OpenStdin\": false,\n            \"StdinOnce\": false,\n            \"Env\": [\n                \"FT16_IMAGE_ID=sha256:747873867110897321865b8790204c0d42a9d51357dce8c3334f50c59d6e916c\",\n                \"PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin\",\n                \"DEBIAN_FRONTEND=noninteractive\",\n                \"CTI_HOME=/opt/cti\",\n                \"CTI_PERL=/usr/bin/perl\",\n                \"CTI_SHELL=/bin/bash\"\n            ],\n            \"Cmd\": [\n                \"-B\",\n                \"/tools/worker.py\",\n                \"serve\",\n                \"disconnect\",\n                \"9df99fa6687148288c7f3757d4a0a7f5\",\n                \"cti-ft16-5c0bcc0ba861\"\n            ],\n            \"Image\": \"sha256:747873867110897321865b8790204c0d42a9d51357dce8c3334f50c59d6e916c\",\n            \"Volumes\": null,\n            \"WorkingDir\": \"/capture\",\n            \"Entrypoint\": [\n                \"/usr/bin/python3\"\n            ],\n            \"Labels\": {\n                \"org.opencontainers.image.version\": \"24.04\",\n                \"org.opencti.phase0.ft16\": \"ft16-003\"\n            },\n            \"StopTimeout\": 1\n        },\n        \"NetworkSettings\": {\n            \"SandboxID\": \"1e0bac4101e5a8988151dfecac43dcc275b1f5840b2bea4b0c15d52c4d20f8ed\",\n            \"SandboxKey\": \"/var/run/docker/netns/1e0bac4101e5\",\n            \"Ports\": {},\n            \"Networks\": {\n                \"none\": {\n                    \"IPAMConfig\": null,\n                    \"Links\": null,\n                    \"Aliases\": null,\n                    \"DriverOpts\": null,\n                    \"GwPriority\": 0,\n                    \"NetworkID\": \"db469be2416af8289efb850ec787ddcb5266451b56691319d8bd80134baf0452\",\n                    \"EndpointID\": \"ec9078796a9728b64174c823f811bf51551327b3f99a21e946c403a51ae44640\",\n                    \"Gateway\": \"\",\n                    \"IPAddress\": \"\",\n                    \"MacAddress\": \"\",\n                    \"IPPrefixLen\": 0,\n                    \"IPv6Gateway\": \"\",\n                    \"GlobalIPv6Address\": \"\",\n                    \"GlobalIPv6PrefixLen\": 0,\n                    \"DNSNames\": null\n                }\n            }\n        }\n    }\n]\n",
+    "stderr": "",
+    "started_utc": "2026-11-13T00:53:42.967696+00:00",
+    "finished_utc": "2026-11-13T00:53:42.982705+00:00"
+  },
+  {
+    "argv": [
+      "docker",
+      "unpause",
+      "cti-ft16-5c0bcc0ba861"
+    ],
+    "returncode": 0,
+    "stdout": "cti-ft16-5c0bcc0ba861\n",
+    "stderr": "",
+    "started_utc": "2026-11-13T00:53:42.983821+00:00",
+    "finished_utc": "2026-11-13T00:53:43.002448+00:00"
+  },
+  {
+    "argv": [
+      "docker",
+      "exec",
+      "cti-ft16-5c0bcc0ba861",
+      "python3",
+      "-B",
+      "/tools/worker.py",
+      "snapshot",
+      "reconnected"
+    ],
+    "returncode": 0,
+    "stdout": "",
+    "stderr": "",
+    "started_utc": "2026-11-13T00:53:43.003195+00:00",
+    "finished_utc": "2026-11-13T00:53:43.165549+00:00"
+  },
+  {
+    "argv": [
+      "docker",
+      "exec",
+      "cti-ft16-5c0bcc0ba861",
+      "python3",
+      "-B",
+      "/tools/worker.py",
+      "cancel"
+    ],
+    "returncode": 0,
+    "stdout": "",
+    "stderr": "",
+    "started_utc": "2026-11-13T00:53:43.168355+00:00",
+    "finished_utc": "2026-11-13T00:53:43.240955+00:00"
+  },
+  {
+    "argv": [
+      "docker",
+      "exec",
+      "cti-ft16-5c0bcc0ba861",
+      "python3",
+      "-B",
+      "/tools/worker.py",
+      "snapshot",
+      "final"
+    ],
+    "returncode": 0,
+    "stdout": "",
+    "stderr": "",
+    "started_utc": "2026-11-13T00:53:43.468647+00:00",
+    "finished_utc": "2026-11-13T00:53:43.637144+00:00"
+  },
+  {
+    "argv": [
+      "docker",
+      "container",
+      "rm",
+      "-f",
+      "cti-ft16-5c0bcc0ba861"
+    ],
+    "returncode": 0,
+    "stdout": "cti-ft16-5c0bcc0ba861\n",
+    "stderr": "",
+    "started_utc": "2026-11-13T00:53:43.639091+00:00",
+    "finished_utc": "2026-11-13T00:53:43.679429+00:00"
+  },
+  {
+    "argv": [
+      "docker",
+      "container",
+      "inspect",
+      "cti-ft16-5c0bcc0ba861"
+    ],
+    "returncode": 1,
+    "stdout": "[]\n",
+    "stderr": "Error response from daemon: No such container: cti-ft16-5c0bcc0ba861\n",
+    "started_utc": "2026-11-13T00:53:43.680223+00:00",
+    "finished_utc": "2026-11-13T00:53:43.693316+00:00"
+  },
+  {
+    "argv": [
+      "docker",
+      "volume",
+      "rm",
+      "cti-ft16-33d9dff3c8b4"
+    ],
+    "returncode": 0,
+    "stdout": "cti-ft16-33d9dff3c8b4\n",
+    "stderr": "",
+    "started_utc": "2026-11-13T00:53:43.695743+00:00",
+    "finished_utc": "2026-11-13T00:53:43.710122+00:00"
+  },
+  {
+    "argv": [
+      "docker",
+      "volume",
+      "inspect",
+      "cti-ft16-33d9dff3c8b4"
+    ],
+    "returncode": 1,
+    "stdout": "[]\n",
+    "stderr": "Error response from daemon: get cti-ft16-33d9dff3c8b4: no such volume\n",
+    "started_utc": "2026-11-13T00:53:43.710817+00:00",
+    "finished_utc": "2026-11-13T00:53:43.724664+00:00"
+  },
+  {
+    "argv": [
+      "docker",
+      "volume",
+      "create",
+      "--label",
+      "org.opencti.phase0.ft16=ft16-003",
+      "cti-ft16-fb15c778cc23"
+    ],
+    "returncode": 0,
+    "stdout": "cti-ft16-fb15c778cc23\n",
+    "stderr": "",
+    "started_utc": "2026-11-13T00:53:43.725801+00:00",
+    "finished_utc": "2026-11-13T00:53:43.739905+00:00"
+  },
+  {
+    "argv": [
+      "docker",
+      "create",
+      "--name",
+      "cti-ft16-0f8c0161e9e2",
+      "--pull=never",
+      "--platform",
+      "linux/arm64",
+      "--network",
+      "none",
+      "--cpus",
+      "1",
+      "--memory",
+      "1g",
+      "--cap-drop",
+      "ALL",
+      "--security-opt",
+      "no-new-privileges",
+      "--label",
+      "org.opencti.phase0.ft16=ft16-003",
+      "--env",
+      "FT16_IMAGE_ID=sha256:747873867110897321865b8790204c0d42a9d51357dce8c3334f50c59d6e916c",
+      "--mount",
+      "type=bind,src=/Users/shinmingliu/opcti/validation/phase0/legacy/runs/ft16-003/retained-tools,dst=/tools,readonly",
+      "--mount",
+      "type=bind,src=/Users/shinmingliu/opcti/validation/phase0/legacy/runs/ft16-003/input-bundle,dst=/bundle,readonly",
+      "--mount",
+      "type=bind,src=/Users/shinmingliu/opcti/validation/phase0/legacy/runs/ft16-003/worker-loss,dst=/export",
+      "--mount",
+      "type=volume,src=cti-ft16-fb15c778cc23,dst=/state",
+      "--entrypoint",
+      "/usr/bin/python3",
+      "sha256:747873867110897321865b8790204c0d42a9d51357dce8c3334f50c59d6e916c",
+      "-B",
+      "/tools/worker.py",
+      "serve",
+      "worker-loss",
+      "22b403218a4f4d6f850c510a1cae2d4c",
+      "cti-ft16-0f8c0161e9e2"
+    ],
+    "returncode": 0,
+    "stdout": "0ebdfe5b93510d23398fc39806265bdd1ae3c4bd2fef3321d2f4cd739c301df8\n",
+    "stderr": "",
+    "started_utc": "2026-11-13T00:53:43.741396+00:00",
+    "finished_utc": "2026-11-13T00:53:43.770027+00:00"
+  },
+  {
+    "argv": [
+      "docker",
+      "container",
+      "inspect",
+      "cti-ft16-0f8c0161e9e2"
+    ],
+    "returncode": 0,
+    "stdout": "[\n    {\n        \"Id\": \"0ebdfe5b93510d23398fc39806265bdd1ae3c4bd2fef3321d2f4cd739c301df8\",\n        \"Created\": \"2026-11-13T00:53:43.752893462Z\",\n        \"Path\": \"/usr/bin/python3\",\n        \"Args\": [\n            \"-B\",\n            \"/tools/worker.py\",\n            \"serve\",\n            \"worker-loss\",\n            \"22b403218a4f4d6f850c510a1cae2d4c\",\n            \"cti-ft16-0f8c0161e9e2\"\n        ],\n        \"State\": {\n            \"Status\": \"created\",\n            \"Running\": false,\n            \"Paused\": false,\n            \"Restarting\": false,\n            \"OOMKilled\": false,\n            \"Dead\": false,\n            \"Pid\": 0,\n            \"ExitCode\": 0,\n            \"Error\": \"\",\n            \"StartedAt\": \"0001-01-01T00:00:00Z\",\n            \"FinishedAt\": \"0001-01-01T00:00:00Z\"\n        },\n        \"Image\": \"sha256:747873867110897321865b8790204c0d42a9d51357dce8c3334f50c59d6e916c\",\n        \"ResolvConfPath\": \"\",\n        \"HostnamePath\": \"\",\n        \"HostsPath\": \"\",\n        \"LogPath\": \"\",\n        \"Name\": \"/cti-ft16-0f8c0161e9e2\",\n        \"RestartCount\": 0,\n        \"Driver\": \"overlay2\",\n        \"Platform\": \"linux\",\n        \"MountLabel\": \"\",\n        \"ProcessLabel\": \"\",\n        \"AppArmorProfile\": \"\",\n        \"ExecIDs\": null,\n        \"HostConfig\": {\n            \"Binds\": null,\n            \"ContainerIDFile\": \"\",\n            \"LogConfig\": {\n                \"Type\": \"json-file\",\n                \"Config\": {}\n            },\n            \"NetworkMode\": \"none\",\n            \"PortBindings\": {},\n            \"RestartPolicy\": {\n                \"Name\": \"no\",\n                \"MaximumRetryCount\": 0\n            },\n            \"AutoRemove\": false,\n            \"VolumeDriver\": \"\",\n            \"VolumesFrom\": null,\n            \"ConsoleSize\": [\n                0,\n                0\n            ],\n            \"CapAdd\": null,\n            \"CapDrop\": [\n                \"ALL\"\n            ],\n            \"CgroupnsMode\": \"private\",\n            \"Dns\": null,\n            \"DnsOptions\": [],\n            \"DnsSearch\": [],\n            \"ExtraHosts\": null,\n            \"GroupAdd\": null,\n            \"IpcMode\": \"private\",\n            \"Cgroup\": \"\",\n            \"Links\": null,\n            \"OomScoreAdj\": 0,\n            \"PidMode\": \"\",\n            \"Privileged\": false,\n            \"PublishAllPorts\": false,\n            \"ReadonlyRootfs\": false,\n            \"SecurityOpt\": [\n                \"no-new-privileges\"\n            ],\n            \"UTSMode\": \"\",\n            \"UsernsMode\": \"\",\n            \"ShmSize\": 67108864,\n            \"Runtime\": \"runc\",\n            \"Isolation\": \"\",\n            \"CpuShares\": 0,\n            \"Memory\": 1073741824,\n            \"NanoCpus\": 1000000000,\n            \"CgroupParent\": \"\",\n            \"BlkioWeight\": 0,\n            \"BlkioWeightDevice\": [],\n            \"BlkioDeviceReadBps\": [],\n            \"BlkioDeviceWriteBps\": [],\n            \"BlkioDeviceReadIOps\": [],\n            \"BlkioDeviceWriteIOps\": [],\n            \"CpuPeriod\": 0,\n            \"CpuQuota\": 0,\n            \"CpuRealtimePeriod\": 0,\n            \"CpuRealtimeRuntime\": 0,\n            \"CpusetCpus\": \"\",\n            \"CpusetMems\": \"\",\n            \"Devices\": [],\n            \"DeviceCgroupRules\": null,\n            \"DeviceRequests\": null,\n            \"MemoryReservation\": 0,\n            \"MemorySwap\": 2147483648,\n            \"MemorySwappiness\": null,\n            \"OomKillDisable\": false,\n            \"PidsLimit\": null,\n            \"Ulimits\": [],\n            \"CpuCount\": 0,\n            \"CpuPercent\": 0,\n            \"IOMaximumIOps\": 0,\n            \"IOMaximumBandwidth\": 0,\n            \"Mounts\": [\n                {\n                    \"Type\": \"bind\",\n                    \"Source\": \"/Users/shinmingliu/opcti/validation/phase0/legacy/runs/ft16-003/retained-tools\",\n                    \"Target\": \"/tools\",\n                    \"ReadOnly\": true\n                },\n                {\n                    \"Type\": \"bind\",\n                    \"Source\": \"/Users/shinmingliu/opcti/validation/phase0/legacy/runs/ft16-003/input-bundle\",\n                    \"Target\": \"/bundle\",\n                    \"ReadOnly\": true\n                },\n                {\n                    \"Type\": \"bind\",\n                    \"Source\": \"/Users/shinmingliu/opcti/validation/phase0/legacy/runs/ft16-003/worker-loss\",\n                    \"Target\": \"/export\"\n                },\n                {\n                    \"Type\": \"volume\",\n                    \"Source\": \"cti-ft16-fb15c778cc23\",\n                    \"Target\": \"/state\"\n                }\n            ],\n            \"MaskedPaths\": [\n                \"/proc/acpi\",\n                \"/proc/asound\",\n                \"/proc/interrupts\",\n                \"/proc/kcore\",\n                \"/proc/keys\",\n                \"/proc/latency_stats\",\n                \"/proc/sched_debug\",\n                \"/proc/scsi\",\n                \"/proc/timer_list\",\n                \"/proc/timer_stats\",\n                \"/sys/devices/virtual/powercap\",\n                \"/sys/firmware\"\n            ],\n            \"ReadonlyPaths\": [\n                \"/proc/bus\",\n                \"/proc/fs\",\n                \"/proc/irq\",\n                \"/proc/sys\",\n                \"/proc/sysrq-trigger\"\n            ]\n        },\n        \"GraphDriver\": {\n            \"Data\": {\n                \"ID\": \"0ebdfe5b93510d23398fc39806265bdd1ae3c4bd2fef3321d2f4cd739c301df8\",\n                \"LowerDir\": \"/var/lib/docker/overlay2/3fa58304e9708321ea282ca29415b038e98589e51ed94ea439309c0f91ae8471-init/diff:/var/lib/docker/overlay2/qe060ivzuj600czqdq7r6i31q/diff:/var/lib/docker/overlay2/1wdzjbdhqu6tfzi2i401crrq1/diff:/var/lib/docker/overlay2/ttri2xu5n18wwohwi38tooeik/diff:/var/lib/docker/overlay2/os4d819slnpizlvcm8g13nv3a/diff:/var/lib/docker/overlay2/eac0fiqi2yu7zsw9xnen2hz18/diff:/var/lib/docker/overlay2/dj9xzqgejlnfjccxc2pdbh4ky/diff:/var/lib/docker/overlay2/jrgrxuvb8pkc0dbik46t9mjwc/diff:/var/lib/docker/overlay2/45b9d819b5b52e3f6876c7b987dcf6a2689fa57a81ed6f264c428e6c77388b17/diff\",\n                \"MergedDir\": \"/var/lib/docker/overlay2/3fa58304e9708321ea282ca29415b038e98589e51ed94ea439309c0f91ae8471/merged\",\n                \"UpperDir\": \"/var/lib/docker/overlay2/3fa58304e9708321ea282ca29415b038e98589e51ed94ea439309c0f91ae8471/diff\",\n                \"WorkDir\": \"/var/lib/docker/overlay2/3fa58304e9708321ea282ca29415b038e98589e51ed94ea439309c0f91ae8471/work\"\n            },\n            \"Name\": \"overlay2\"\n        },\n        \"Mounts\": [\n            {\n                \"Type\": \"volume\",\n                \"Name\": \"cti-ft16-fb15c778cc23\",\n                \"Source\": \"/var/lib/docker/volumes/cti-ft16-fb15c778cc23/_data\",\n                \"Destination\": \"/state\",\n                \"Driver\": \"local\",\n                \"Mode\": \"z\",\n                \"RW\": true,\n                \"Propagation\": \"\"\n            },\n            {\n                \"Type\": \"bind\",\n                \"Source\": \"/Users/shinmingliu/opcti/validation/phase0/legacy/runs/ft16-003/retained-tools\",\n                \"Destination\": \"/tools\",\n                \"Mode\": \"\",\n                \"RW\": false,\n                \"Propagation\": \"rprivate\"\n            },\n            {\n                \"Type\": \"bind\",\n                \"Source\": \"/Users/shinmingliu/opcti/validation/phase0/legacy/runs/ft16-003/input-bundle\",\n                \"Destination\": \"/bundle\",\n                \"Mode\": \"\",\n                \"RW\": false,\n                \"Propagation\": \"rprivate\"\n            },\n            {\n                \"Type\": \"bind\",\n                \"Source\": \"/Users/shinmingliu/opcti/validation/phase0/legacy/runs/ft16-003/worker-loss\",\n                \"Destination\": \"/export\",\n                \"Mode\": \"\",\n                \"RW\": true,\n                \"Propagation\": \"rprivate\"\n            }\n        ],\n        \"Config\": {\n            \"Hostname\": \"0ebdfe5b9351\",\n            \"Domainname\": \"\",\n            \"User\": \"\",\n            \"AttachStdin\": false,\n            \"AttachStdout\": true,\n            \"AttachStderr\": true,\n            \"Tty\": false,\n            \"OpenStdin\": false,\n            \"StdinOnce\": false,\n            \"Env\": [\n                \"FT16_IMAGE_ID=sha256:747873867110897321865b8790204c0d42a9d51357dce8c3334f50c59d6e916c\",\n                \"PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin\",\n                \"DEBIAN_FRONTEND=noninteractive\",\n                \"CTI_HOME=/opt/cti\",\n                \"CTI_PERL=/usr/bin/perl\",\n                \"CTI_SHELL=/bin/bash\"\n            ],\n            \"Cmd\": [\n                \"-B\",\n                \"/tools/worker.py\",\n                \"serve\",\n                \"worker-loss\",\n                \"22b403218a4f4d6f850c510a1cae2d4c\",\n                \"cti-ft16-0f8c0161e9e2\"\n            ],\n            \"Image\": \"sha256:747873867110897321865b8790204c0d42a9d51357dce8c3334f50c59d6e916c\",\n            \"Volumes\": null,\n            \"WorkingDir\": \"/capture\",\n            \"Entrypoint\": [\n                \"/usr/bin/python3\"\n            ],\n            \"Labels\": {\n                \"org.opencontainers.image.version\": \"24.04\",\n                \"org.opencti.phase0.ft16\": \"ft16-003\"\n            },\n            \"StopTimeout\": 1\n        },\n        \"NetworkSettings\": {\n            \"SandboxID\": \"\",\n            \"SandboxKey\": \"\",\n            \"Ports\": {},\n            \"Networks\": {\n                \"none\": {\n                    \"IPAMConfig\": null,\n                    \"Links\": null,\n                    \"Aliases\": null,\n                    \"DriverOpts\": null,\n                    \"GwPriority\": 0,\n                    \"NetworkID\": \"\",\n                    \"EndpointID\": \"\",\n                    \"Gateway\": \"\",\n                    \"IPAddress\": \"\",\n                    \"MacAddress\": \"\",\n                    \"IPPrefixLen\": 0,\n                    \"IPv6Gateway\": \"\",\n                    \"GlobalIPv6Address\": \"\",\n                    \"GlobalIPv6PrefixLen\": 0,\n                    \"DNSNames\": null\n                }\n            }\n        }\n    }\n]\n",
+    "stderr": "",
+    "started_utc": "2026-11-13T00:53:43.770793+00:00",
+    "finished_utc": "2026-11-13T00:53:43.785812+00:00"
+  },
+  {
+    "argv": [
+      "docker",
+      "start",
+      "cti-ft16-0f8c0161e9e2"
+    ],
+    "returncode": 0,
+    "stdout": "cti-ft16-0f8c0161e9e2\n",
+    "stderr": "",
+    "started_utc": "2026-11-13T00:53:43.787429+00:00",
+    "finished_utc": "2026-11-13T00:53:43.854094+00:00"
+  },
+  {
+    "argv": [
+      "docker",
+      "exec",
+      "cti-ft16-0f8c0161e9e2",
+      "python3",
+      "-B",
+      "/tools/worker.py",
+      "snapshot",
+      "checkpoint"
+    ],
+    "returncode": 0,
+    "stdout": "",
+    "stderr": "",
+    "started_utc": "2026-11-13T00:53:44.242451+00:00",
+    "finished_utc": "2026-11-13T00:53:44.413438+00:00"
+  },
+  {
+    "argv": [
+      "docker",
+      "kill",
+      "--signal",
+      "KILL",
+      "cti-ft16-0f8c0161e9e2"
+    ],
+    "returncode": 0,
+    "stdout": "cti-ft16-0f8c0161e9e2\n",
+    "stderr": "",
+    "started_utc": "2026-11-13T00:53:44.415883+00:00",
+    "finished_utc": "2026-11-13T00:53:44.453973+00:00"
+  },
+  {
+    "argv": [
+      "docker",
+      "container",
+      "inspect",
+      "cti-ft16-0f8c0161e9e2"
+    ],
+    "returncode": 0,
+    "stdout": "[\n    {\n        \"Id\": \"0ebdfe5b93510d23398fc39806265bdd1ae3c4bd2fef3321d2f4cd739c301df8\",\n        \"Created\": \"2026-11-13T00:53:43.752893462Z\",\n        \"Path\": \"/usr/bin/python3\",\n        \"Args\": [\n            \"-B\",\n            \"/tools/worker.py\",\n            \"serve\",\n            \"worker-loss\",\n            \"22b403218a4f4d6f850c510a1cae2d4c\",\n            \"cti-ft16-0f8c0161e9e2\"\n        ],\n        \"State\": {\n            \"Status\": \"exited\",\n            \"Running\": false,\n            \"Paused\": false,\n            \"Restarting\": false,\n            \"OOMKilled\": false,\n            \"Dead\": false,\n            \"Pid\": 0,\n            \"ExitCode\": 137,\n            \"Error\": \"\",\n            \"StartedAt\": \"2026-11-13T00:53:43.807057129Z\",\n            \"FinishedAt\": \"2026-11-13T00:53:44.435624379Z\"\n        },\n        \"Image\": \"sha256:747873867110897321865b8790204c0d42a9d51357dce8c3334f50c59d6e916c\",\n        \"ResolvConfPath\": \"/var/lib/docker/containers/0ebdfe5b93510d23398fc39806265bdd1ae3c4bd2fef3321d2f4cd739c301df8/resolv.conf\",\n        \"HostnamePath\": \"/var/lib/docker/containers/0ebdfe5b93510d23398fc39806265bdd1ae3c4bd2fef3321d2f4cd739c301df8/hostname\",\n        \"HostsPath\": \"/var/lib/docker/containers/0ebdfe5b93510d23398fc39806265bdd1ae3c4bd2fef3321d2f4cd739c301df8/hosts\",\n        \"LogPath\": \"/var/lib/docker/containers/0ebdfe5b93510d23398fc39806265bdd1ae3c4bd2fef3321d2f4cd739c301df8/0ebdfe5b93510d23398fc39806265bdd1ae3c4bd2fef3321d2f4cd739c301df8-json.log\",\n        \"Name\": \"/cti-ft16-0f8c0161e9e2\",\n        \"RestartCount\": 0,\n        \"Driver\": \"overlay2\",\n        \"Platform\": \"linux\",\n        \"MountLabel\": \"\",\n        \"ProcessLabel\": \"\",\n        \"AppArmorProfile\": \"\",\n        \"ExecIDs\": null,\n        \"HostConfig\": {\n            \"Binds\": null,\n            \"ContainerIDFile\": \"\",\n            \"LogConfig\": {\n                \"Type\": \"json-file\",\n                \"Config\": {}\n            },\n            \"NetworkMode\": \"none\",\n            \"PortBindings\": {},\n            \"RestartPolicy\": {\n                \"Name\": \"no\",\n                \"MaximumRetryCount\": 0\n            },\n            \"AutoRemove\": false,\n            \"VolumeDriver\": \"\",\n            \"VolumesFrom\": null,\n            \"ConsoleSize\": [\n                0,\n                0\n            ],\n            \"CapAdd\": null,\n            \"CapDrop\": [\n                \"ALL\"\n            ],\n            \"CgroupnsMode\": \"private\",\n            \"Dns\": null,\n            \"DnsOptions\": [],\n            \"DnsSearch\": [],\n            \"ExtraHosts\": null,\n            \"GroupAdd\": null,\n            \"IpcMode\": \"private\",\n            \"Cgroup\": \"\",\n            \"Links\": null,\n            \"OomScoreAdj\": 0,\n            \"PidMode\": \"\",\n            \"Privileged\": false,\n            \"PublishAllPorts\": false,\n            \"ReadonlyRootfs\": false,\n            \"SecurityOpt\": [\n                \"no-new-privileges\"\n            ],\n            \"UTSMode\": \"\",\n            \"UsernsMode\": \"\",\n            \"ShmSize\": 67108864,\n            \"Runtime\": \"runc\",\n            \"Isolation\": \"\",\n            \"CpuShares\": 0,\n            \"Memory\": 1073741824,\n            \"NanoCpus\": 1000000000,\n            \"CgroupParent\": \"\",\n            \"BlkioWeight\": 0,\n            \"BlkioWeightDevice\": [],\n            \"BlkioDeviceReadBps\": [],\n            \"BlkioDeviceWriteBps\": [],\n            \"BlkioDeviceReadIOps\": [],\n            \"BlkioDeviceWriteIOps\": [],\n            \"CpuPeriod\": 0,\n            \"CpuQuota\": 0,\n            \"CpuRealtimePeriod\": 0,\n            \"CpuRealtimeRuntime\": 0,\n            \"CpusetCpus\": \"\",\n            \"CpusetMems\": \"\",\n            \"Devices\": [],\n            \"DeviceCgroupRules\": null,\n            \"DeviceRequests\": null,\n            \"MemoryReservation\": 0,\n            \"MemorySwap\": 2147483648,\n            \"MemorySwappiness\": null,\n            \"OomKillDisable\": null,\n            \"PidsLimit\": null,\n            \"Ulimits\": [],\n            \"CpuCount\": 0,\n            \"CpuPercent\": 0,\n            \"IOMaximumIOps\": 0,\n            \"IOMaximumBandwidth\": 0,\n            \"Mounts\": [\n                {\n                    \"Type\": \"bind\",\n                    \"Source\": \"/Users/shinmingliu/opcti/validation/phase0/legacy/runs/ft16-003/retained-tools\",\n                    \"Target\": \"/tools\",\n                    \"ReadOnly\": true\n                },\n                {\n                    \"Type\": \"bind\",\n                    \"Source\": \"/Users/shinmingliu/opcti/validation/phase0/legacy/runs/ft16-003/input-bundle\",\n                    \"Target\": \"/bundle\",\n                    \"ReadOnly\": true\n                },\n                {\n                    \"Type\": \"bind\",\n                    \"Source\": \"/Users/shinmingliu/opcti/validation/phase0/legacy/runs/ft16-003/worker-loss\",\n                    \"Target\": \"/export\"\n                },\n                {\n                    \"Type\": \"volume\",\n                    \"Source\": \"cti-ft16-fb15c778cc23\",\n                    \"Target\": \"/state\"\n                }\n            ],\n            \"MaskedPaths\": [\n                \"/proc/acpi\",\n                \"/proc/asound\",\n                \"/proc/interrupts\",\n                \"/proc/kcore\",\n                \"/proc/keys\",\n                \"/proc/latency_stats\",\n                \"/proc/sched_debug\",\n                \"/proc/scsi\",\n                \"/proc/timer_list\",\n                \"/proc/timer_stats\",\n                \"/sys/devices/virtual/powercap\",\n                \"/sys/firmware\"\n            ],\n            \"ReadonlyPaths\": [\n                \"/proc/bus\",\n                \"/proc/fs\",\n                \"/proc/irq\",\n                \"/proc/sys\",\n                \"/proc/sysrq-trigger\"\n            ]\n        },\n        \"GraphDriver\": {\n            \"Data\": {\n                \"ID\": \"0ebdfe5b93510d23398fc39806265bdd1ae3c4bd2fef3321d2f4cd739c301df8\",\n                \"LowerDir\": \"/var/lib/docker/overlay2/3fa58304e9708321ea282ca29415b038e98589e51ed94ea439309c0f91ae8471-init/diff:/var/lib/docker/overlay2/qe060ivzuj600czqdq7r6i31q/diff:/var/lib/docker/overlay2/1wdzjbdhqu6tfzi2i401crrq1/diff:/var/lib/docker/overlay2/ttri2xu5n18wwohwi38tooeik/diff:/var/lib/docker/overlay2/os4d819slnpizlvcm8g13nv3a/diff:/var/lib/docker/overlay2/eac0fiqi2yu7zsw9xnen2hz18/diff:/var/lib/docker/overlay2/dj9xzqgejlnfjccxc2pdbh4ky/diff:/var/lib/docker/overlay2/jrgrxuvb8pkc0dbik46t9mjwc/diff:/var/lib/docker/overlay2/45b9d819b5b52e3f6876c7b987dcf6a2689fa57a81ed6f264c428e6c77388b17/diff\",\n                \"MergedDir\": \"/var/lib/docker/overlay2/3fa58304e9708321ea282ca29415b038e98589e51ed94ea439309c0f91ae8471/merged\",\n                \"UpperDir\": \"/var/lib/docker/overlay2/3fa58304e9708321ea282ca29415b038e98589e51ed94ea439309c0f91ae8471/diff\",\n                \"WorkDir\": \"/var/lib/docker/overlay2/3fa58304e9708321ea282ca29415b038e98589e51ed94ea439309c0f91ae8471/work\"\n            },\n            \"Name\": \"overlay2\"\n        },\n        \"Mounts\": [\n            {\n                \"Type\": \"bind\",\n                \"Source\": \"/Users/shinmingliu/opcti/validation/phase0/legacy/runs/ft16-003/retained-tools\",\n                \"Destination\": \"/tools\",\n                \"Mode\": \"\",\n                \"RW\": false,\n                \"Propagation\": \"rprivate\"\n            },\n            {\n                \"Type\": \"bind\",\n                \"Source\": \"/Users/shinmingliu/opcti/validation/phase0/legacy/runs/ft16-003/input-bundle\",\n                \"Destination\": \"/bundle\",\n                \"Mode\": \"\",\n                \"RW\": false,\n                \"Propagation\": \"rprivate\"\n            },\n            {\n                \"Type\": \"bind\",\n                \"Source\": \"/Users/shinmingliu/opcti/validation/phase0/legacy/runs/ft16-003/worker-loss\",\n                \"Destination\": \"/export\",\n                \"Mode\": \"\",\n                \"RW\": true,\n                \"Propagation\": \"rprivate\"\n            },\n            {\n                \"Type\": \"volume\",\n                \"Name\": \"cti-ft16-fb15c778cc23\",\n                \"Source\": \"/var/lib/docker/volumes/cti-ft16-fb15c778cc23/_data\",\n                \"Destination\": \"/state\",\n                \"Driver\": \"local\",\n                \"Mode\": \"z\",\n                \"RW\": true,\n                \"Propagation\": \"\"\n            }\n        ],\n        \"Config\": {\n            \"Hostname\": \"0ebdfe5b9351\",\n            \"Domainname\": \"\",\n            \"User\": \"\",\n            \"AttachStdin\": false,\n            \"AttachStdout\": true,\n            \"AttachStderr\": true,\n            \"Tty\": false,\n            \"OpenStdin\": false,\n            \"StdinOnce\": false,\n            \"Env\": [\n                \"FT16_IMAGE_ID=sha256:747873867110897321865b8790204c0d42a9d51357dce8c3334f50c59d6e916c\",\n                \"PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin\",\n                \"DEBIAN_FRONTEND=noninteractive\",\n                \"CTI_HOME=/opt/cti\",\n                \"CTI_PERL=/usr/bin/perl\",\n                \"CTI_SHELL=/bin/bash\"\n            ],\n            \"Cmd\": [\n                \"-B\",\n                \"/tools/worker.py\",\n                \"serve\",\n                \"worker-loss\",\n                \"22b403218a4f4d6f850c510a1cae2d4c\",\n                \"cti-ft16-0f8c0161e9e2\"\n            ],\n            \"Image\": \"sha256:747873867110897321865b8790204c0d42a9d51357dce8c3334f50c59d6e916c\",\n            \"Volumes\": null,\n            \"WorkingDir\": \"/capture\",\n            \"Entrypoint\": [\n                \"/usr/bin/python3\"\n            ],\n            \"Labels\": {\n                \"org.opencontainers.image.version\": \"24.04\",\n                \"org.opencti.phase0.ft16\": \"ft16-003\"\n            },\n            \"StopTimeout\": 1\n        },\n        \"NetworkSettings\": {\n            \"SandboxID\": \"\",\n            \"SandboxKey\": \"\",\n            \"Ports\": {},\n            \"Networks\": {\n                \"none\": {\n                    \"IPAMConfig\": null,\n                    \"Links\": null,\n                    \"Aliases\": null,\n                    \"DriverOpts\": null,\n                    \"GwPriority\": 0,\n                    \"NetworkID\": \"db469be2416af8289efb850ec787ddcb5266451b56691319d8bd80134baf0452\",\n                    \"EndpointID\": \"\",\n                    \"Gateway\": \"\",\n                    \"IPAddress\": \"\",\n                    \"MacAddress\": \"\",\n                    \"IPPrefixLen\": 0,\n                    \"IPv6Gateway\": \"\",\n                    \"GlobalIPv6Address\": \"\",\n                    \"GlobalIPv6PrefixLen\": 0,\n                    \"DNSNames\": null\n                }\n            }\n        }\n    }\n]\n",
+    "stderr": "",
+    "started_utc": "2026-11-13T00:53:44.454778+00:00",
+    "finished_utc": "2026-11-13T00:53:44.468327+00:00"
+  },
+  {
+    "argv": [
+      "docker",
+      "container",
+      "rm",
+      "-f",
+      "cti-ft16-0f8c0161e9e2"
+    ],
+    "returncode": 0,
+    "stdout": "cti-ft16-0f8c0161e9e2\n",
+    "stderr": "",
+    "started_utc": "2026-11-13T00:53:44.469278+00:00",
+    "finished_utc": "2026-11-13T00:53:44.485481+00:00"
+  },
+  {
+    "argv": [
+      "docker",
+      "container",
+      "inspect",
+      "cti-ft16-0f8c0161e9e2"
+    ],
+    "returncode": 1,
+    "stdout": "[]\n",
+    "stderr": "Error response from daemon: No such container: cti-ft16-0f8c0161e9e2\n",
+    "started_utc": "2026-11-13T00:53:44.486373+00:00",
+    "finished_utc": "2026-11-13T00:53:44.499263+00:00"
+  },
+  {
+    "argv": [
+      "docker",
+      "create",
+      "--name",
+      "cti-ft16-2d1eb4498925",
+      "--pull=never",
+      "--platform",
+      "linux/arm64",
+      "--network",
+      "none",
+      "--cpus",
+      "1",
+      "--memory",
+      "1g",
+      "--cap-drop",
+      "ALL",
+      "--security-opt",
+      "no-new-privileges",
+      "--label",
+      "org.opencti.phase0.ft16=ft16-003",
+      "--env",
+      "FT16_IMAGE_ID=sha256:747873867110897321865b8790204c0d42a9d51357dce8c3334f50c59d6e916c",
+      "--mount",
+      "type=bind,src=/Users/shinmingliu/opcti/validation/phase0/legacy/runs/ft16-003/retained-tools,dst=/tools,readonly",
+      "--mount",
+      "type=bind,src=/Users/shinmingliu/opcti/validation/phase0/legacy/runs/ft16-003/input-bundle,dst=/bundle,readonly",
+      "--mount",
+      "type=bind,src=/Users/shinmingliu/opcti/validation/phase0/legacy/runs/ft16-003/worker-loss,dst=/export",
+      "--mount",
+      "type=volume,src=cti-ft16-fb15c778cc23,dst=/state",
+      "--entrypoint",
+      "/usr/bin/python3",
+      "sha256:747873867110897321865b8790204c0d42a9d51357dce8c3334f50c59d6e916c",
+      "-B",
+      "/tools/worker.py",
+      "serve",
+      "recover",
+      "22b403218a4f4d6f850c510a1cae2d4c",
+      "cti-ft16-2d1eb4498925"
+    ],
+    "returncode": 0,
+    "stdout": "0a88e44ac355316618eeba53b26f76c2a3186597827850655cecfa309443779b\n",
+    "stderr": "",
+    "started_utc": "2026-11-13T00:53:44.500011+00:00",
+    "finished_utc": "2026-11-13T00:53:44.527562+00:00"
+  },
+  {
+    "argv": [
+      "docker",
+      "container",
+      "inspect",
+      "cti-ft16-2d1eb4498925"
+    ],
+    "returncode": 0,
+    "stdout": "[\n    {\n        \"Id\": \"0a88e44ac355316618eeba53b26f76c2a3186597827850655cecfa309443779b\",\n        \"Created\": \"2026-11-13T00:53:44.511849754Z\",\n        \"Path\": \"/usr/bin/python3\",\n        \"Args\": [\n            \"-B\",\n            \"/tools/worker.py\",\n            \"serve\",\n            \"recover\",\n            \"22b403218a4f4d6f850c510a1cae2d4c\",\n            \"cti-ft16-2d1eb4498925\"\n        ],\n        \"State\": {\n            \"Status\": \"created\",\n            \"Running\": false,\n            \"Paused\": false,\n            \"Restarting\": false,\n            \"OOMKilled\": false,\n            \"Dead\": false,\n            \"Pid\": 0,\n            \"ExitCode\": 0,\n            \"Error\": \"\",\n            \"StartedAt\": \"0001-01-01T00:00:00Z\",\n            \"FinishedAt\": \"0001-01-01T00:00:00Z\"\n        },\n        \"Image\": \"sha256:747873867110897321865b8790204c0d42a9d51357dce8c3334f50c59d6e916c\",\n        \"ResolvConfPath\": \"\",\n        \"HostnamePath\": \"\",\n        \"HostsPath\": \"\",\n        \"LogPath\": \"\",\n        \"Name\": \"/cti-ft16-2d1eb4498925\",\n        \"RestartCount\": 0,\n        \"Driver\": \"overlay2\",\n        \"Platform\": \"linux\",\n        \"MountLabel\": \"\",\n        \"ProcessLabel\": \"\",\n        \"AppArmorProfile\": \"\",\n        \"ExecIDs\": null,\n        \"HostConfig\": {\n            \"Binds\": null,\n            \"ContainerIDFile\": \"\",\n            \"LogConfig\": {\n                \"Type\": \"json-file\",\n                \"Config\": {}\n            },\n            \"NetworkMode\": \"none\",\n            \"PortBindings\": {},\n            \"RestartPolicy\": {\n                \"Name\": \"no\",\n                \"MaximumRetryCount\": 0\n            },\n            \"AutoRemove\": false,\n            \"VolumeDriver\": \"\",\n            \"VolumesFrom\": null,\n            \"ConsoleSize\": [\n                0,\n                0\n            ],\n            \"CapAdd\": null,\n            \"CapDrop\": [\n                \"ALL\"\n            ],\n            \"CgroupnsMode\": \"private\",\n            \"Dns\": null,\n            \"DnsOptions\": [],\n            \"DnsSearch\": [],\n            \"ExtraHosts\": null,\n            \"GroupAdd\": null,\n            \"IpcMode\": \"private\",\n            \"Cgroup\": \"\",\n            \"Links\": null,\n            \"OomScoreAdj\": 0,\n            \"PidMode\": \"\",\n            \"Privileged\": false,\n            \"PublishAllPorts\": false,\n            \"ReadonlyRootfs\": false,\n            \"SecurityOpt\": [\n                \"no-new-privileges\"\n            ],\n            \"UTSMode\": \"\",\n            \"UsernsMode\": \"\",\n            \"ShmSize\": 67108864,\n            \"Runtime\": \"runc\",\n            \"Isolation\": \"\",\n            \"CpuShares\": 0,\n            \"Memory\": 1073741824,\n            \"NanoCpus\": 1000000000,\n            \"CgroupParent\": \"\",\n            \"BlkioWeight\": 0,\n            \"BlkioWeightDevice\": [],\n            \"BlkioDeviceReadBps\": [],\n            \"BlkioDeviceWriteBps\": [],\n            \"BlkioDeviceReadIOps\": [],\n            \"BlkioDeviceWriteIOps\": [],\n            \"CpuPeriod\": 0,\n            \"CpuQuota\": 0,\n            \"CpuRealtimePeriod\": 0,\n            \"CpuRealtimeRuntime\": 0,\n            \"CpusetCpus\": \"\",\n            \"CpusetMems\": \"\",\n            \"Devices\": [],\n            \"DeviceCgroupRules\": null,\n            \"DeviceRequests\": null,\n            \"MemoryReservation\": 0,\n            \"MemorySwap\": 2147483648,\n            \"MemorySwappiness\": null,\n            \"OomKillDisable\": false,\n            \"PidsLimit\": null,\n            \"Ulimits\": [],\n            \"CpuCount\": 0,\n            \"CpuPercent\": 0,\n            \"IOMaximumIOps\": 0,\n            \"IOMaximumBandwidth\": 0,\n            \"Mounts\": [\n                {\n                    \"Type\": \"bind\",\n                    \"Source\": \"/Users/shinmingliu/opcti/validation/phase0/legacy/runs/ft16-003/retained-tools\",\n                    \"Target\": \"/tools\",\n                    \"ReadOnly\": true\n                },\n                {\n                    \"Type\": \"bind\",\n                    \"Source\": \"/Users/shinmingliu/opcti/validation/phase0/legacy/runs/ft16-003/input-bundle\",\n                    \"Target\": \"/bundle\",\n                    \"ReadOnly\": true\n                },\n                {\n                    \"Type\": \"bind\",\n                    \"Source\": \"/Users/shinmingliu/opcti/validation/phase0/legacy/runs/ft16-003/worker-loss\",\n                    \"Target\": \"/export\"\n                },\n                {\n                    \"Type\": \"volume\",\n                    \"Source\": \"cti-ft16-fb15c778cc23\",\n                    \"Target\": \"/state\"\n                }\n            ],\n            \"MaskedPaths\": [\n                \"/proc/acpi\",\n                \"/proc/asound\",\n                \"/proc/interrupts\",\n                \"/proc/kcore\",\n                \"/proc/keys\",\n                \"/proc/latency_stats\",\n                \"/proc/sched_debug\",\n                \"/proc/scsi\",\n                \"/proc/timer_list\",\n                \"/proc/timer_stats\",\n                \"/sys/devices/virtual/powercap\",\n                \"/sys/firmware\"\n            ],\n            \"ReadonlyPaths\": [\n                \"/proc/bus\",\n                \"/proc/fs\",\n                \"/proc/irq\",\n                \"/proc/sys\",\n                \"/proc/sysrq-trigger\"\n            ]\n        },\n        \"GraphDriver\": {\n            \"Data\": {\n                \"ID\": \"0a88e44ac355316618eeba53b26f76c2a3186597827850655cecfa309443779b\",\n                \"LowerDir\": \"/var/lib/docker/overlay2/18a52c9695bb112609476bb96d5c78440c17b81da746fbba8e7b5938fa40bf61-init/diff:/var/lib/docker/overlay2/qe060ivzuj600czqdq7r6i31q/diff:/var/lib/docker/overlay2/1wdzjbdhqu6tfzi2i401crrq1/diff:/var/lib/docker/overlay2/ttri2xu5n18wwohwi38tooeik/diff:/var/lib/docker/overlay2/os4d819slnpizlvcm8g13nv3a/diff:/var/lib/docker/overlay2/eac0fiqi2yu7zsw9xnen2hz18/diff:/var/lib/docker/overlay2/dj9xzqgejlnfjccxc2pdbh4ky/diff:/var/lib/docker/overlay2/jrgrxuvb8pkc0dbik46t9mjwc/diff:/var/lib/docker/overlay2/45b9d819b5b52e3f6876c7b987dcf6a2689fa57a81ed6f264c428e6c77388b17/diff\",\n                \"MergedDir\": \"/var/lib/docker/overlay2/18a52c9695bb112609476bb96d5c78440c17b81da746fbba8e7b5938fa40bf61/merged\",\n                \"UpperDir\": \"/var/lib/docker/overlay2/18a52c9695bb112609476bb96d5c78440c17b81da746fbba8e7b5938fa40bf61/diff\",\n                \"WorkDir\": \"/var/lib/docker/overlay2/18a52c9695bb112609476bb96d5c78440c17b81da746fbba8e7b5938fa40bf61/work\"\n            },\n            \"Name\": \"overlay2\"\n        },\n        \"Mounts\": [\n            {\n                \"Type\": \"bind\",\n                \"Source\": \"/Users/shinmingliu/opcti/validation/phase0/legacy/runs/ft16-003/input-bundle\",\n                \"Destination\": \"/bundle\",\n                \"Mode\": \"\",\n                \"RW\": false,\n                \"Propagation\": \"rprivate\"\n            },\n            {\n                \"Type\": \"bind\",\n                \"Source\": \"/Users/shinmingliu/opcti/validation/phase0/legacy/runs/ft16-003/worker-loss\",\n                \"Destination\": \"/export\",\n                \"Mode\": \"\",\n                \"RW\": true,\n                \"Propagation\": \"rprivate\"\n            },\n            {\n                \"Type\": \"volume\",\n                \"Name\": \"cti-ft16-fb15c778cc23\",\n                \"Source\": \"/var/lib/docker/volumes/cti-ft16-fb15c778cc23/_data\",\n                \"Destination\": \"/state\",\n                \"Driver\": \"local\",\n                \"Mode\": \"z\",\n                \"RW\": true,\n                \"Propagation\": \"\"\n            },\n            {\n                \"Type\": \"bind\",\n                \"Source\": \"/Users/shinmingliu/opcti/validation/phase0/legacy/runs/ft16-003/retained-tools\",\n                \"Destination\": \"/tools\",\n                \"Mode\": \"\",\n                \"RW\": false,\n                \"Propagation\": \"rprivate\"\n            }\n        ],\n        \"Config\": {\n            \"Hostname\": \"0a88e44ac355\",\n            \"Domainname\": \"\",\n            \"User\": \"\",\n            \"AttachStdin\": false,\n            \"AttachStdout\": true,\n            \"AttachStderr\": true,\n            \"Tty\": false,\n            \"OpenStdin\": false,\n            \"StdinOnce\": false,\n            \"Env\": [\n                \"FT16_IMAGE_ID=sha256:747873867110897321865b8790204c0d42a9d51357dce8c3334f50c59d6e916c\",\n                \"PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin\",\n                \"DEBIAN_FRONTEND=noninteractive\",\n                \"CTI_HOME=/opt/cti\",\n                \"CTI_PERL=/usr/bin/perl\",\n                \"CTI_SHELL=/bin/bash\"\n            ],\n            \"Cmd\": [\n                \"-B\",\n                \"/tools/worker.py\",\n                \"serve\",\n                \"recover\",\n                \"22b403218a4f4d6f850c510a1cae2d4c\",\n                \"cti-ft16-2d1eb4498925\"\n            ],\n            \"Image\": \"sha256:747873867110897321865b8790204c0d42a9d51357dce8c3334f50c59d6e916c\",\n            \"Volumes\": null,\n            \"WorkingDir\": \"/capture\",\n            \"Entrypoint\": [\n                \"/usr/bin/python3\"\n            ],\n            \"Labels\": {\n                \"org.opencontainers.image.version\": \"24.04\",\n                \"org.opencti.phase0.ft16\": \"ft16-003\"\n            },\n            \"StopTimeout\": 1\n        },\n        \"NetworkSettings\": {\n            \"SandboxID\": \"\",\n            \"SandboxKey\": \"\",\n            \"Ports\": {},\n            \"Networks\": {\n                \"none\": {\n                    \"IPAMConfig\": null,\n                    \"Links\": null,\n                    \"Aliases\": null,\n                    \"DriverOpts\": null,\n                    \"GwPriority\": 0,\n                    \"NetworkID\": \"\",\n                    \"EndpointID\": \"\",\n                    \"Gateway\": \"\",\n                    \"IPAddress\": \"\",\n                    \"MacAddress\": \"\",\n                    \"IPPrefixLen\": 0,\n                    \"IPv6Gateway\": \"\",\n                    \"GlobalIPv6Address\": \"\",\n                    \"GlobalIPv6PrefixLen\": 0,\n                    \"DNSNames\": null\n                }\n            }\n        }\n    }\n]\n",
+    "stderr": "",
+    "started_utc": "2026-11-13T00:53:44.528406+00:00",
+    "finished_utc": "2026-11-13T00:53:44.541885+00:00"
+  },
+  {
+    "argv": [
+      "docker",
+      "start",
+      "cti-ft16-2d1eb4498925"
+    ],
+    "returncode": 0,
+    "stdout": "cti-ft16-2d1eb4498925\n",
+    "stderr": "",
+    "started_utc": "2026-11-13T00:53:44.543526+00:00",
+    "finished_utc": "2026-11-13T00:53:44.611473+00:00"
+  },
+  {
+    "argv": [
+      "docker",
+      "exec",
+      "cti-ft16-2d1eb4498925",
+      "python3",
+      "-B",
+      "/tools/worker.py",
+      "snapshot",
+      "final"
+    ],
+    "returncode": 0,
+    "stdout": "",
+    "stderr": "",
+    "started_utc": "2026-11-13T00:53:44.828432+00:00",
+    "finished_utc": "2026-11-13T00:53:44.992942+00:00"
+  },
+  {
+    "argv": [
+      "docker",
+      "container",
+      "rm",
+      "-f",
+      "cti-ft16-2d1eb4498925"
+    ],
+    "returncode": 0,
+    "stdout": "cti-ft16-2d1eb4498925\n",
+    "stderr": "",
+    "started_utc": "2026-11-13T00:53:44.993944+00:00",
+    "finished_utc": "2026-11-13T00:53:45.036002+00:00"
+  },
+  {
+    "argv": [
+      "docker",
+      "container",
+      "inspect",
+      "cti-ft16-2d1eb4498925"
+    ],
+    "returncode": 1,
+    "stdout": "[]\n",
+    "stderr": "Error response from daemon: No such container: cti-ft16-2d1eb4498925\n",
+    "started_utc": "2026-11-13T00:53:45.037142+00:00",
+    "finished_utc": "2026-11-13T00:53:45.052760+00:00"
+  },
+  {
+    "argv": [
+      "docker",
+      "volume",
+      "rm",
+      "cti-ft16-fb15c778cc23"
+    ],
+    "returncode": 0,
+    "stdout": "cti-ft16-fb15c778cc23\n",
+    "stderr": "",
+    "started_utc": "2026-11-13T00:53:45.055259+00:00",
+    "finished_utc": "2026-11-13T00:53:45.070594+00:00"
+  },
+  {
+    "argv": [
+      "docker",
+      "volume",
+      "inspect",
+      "cti-ft16-fb15c778cc23"
+    ],
+    "returncode": 1,
+    "stdout": "[]\n",
+    "stderr": "Error response from daemon: get cti-ft16-fb15c778cc23: no such volume\n",
+    "started_utc": "2026-11-13T00:53:45.071444+00:00",
+    "finished_utc": "2026-11-13T00:53:45.085309+00:00"
+  },
+  {
+    "argv": [
+      "docker",
+      "volume",
+      "create",
+      "--label",
+      "org.opencti.phase0.ft16=ft16-003",
+      "cti-ft16-3210e275b735"
+    ],
+    "returncode": 0,
+    "stdout": "cti-ft16-3210e275b735\n",
+    "stderr": "",
+    "started_utc": "2026-11-13T00:53:45.086538+00:00",
+    "finished_utc": "2026-11-13T00:53:45.102346+00:00"
+  },
+  {
+    "argv": [
+      "docker",
+      "create",
+      "--name",
+      "cti-ft16-d623292174d0",
+      "--pull=never",
+      "--platform",
+      "linux/arm64",
+      "--network",
+      "none",
+      "--cpus",
+      "1",
+      "--memory",
+      "1g",
+      "--cap-drop",
+      "ALL",
+      "--security-opt",
+      "no-new-privileges",
+      "--label",
+      "org.opencti.phase0.ft16=ft16-003",
+      "--env",
+      "FT16_IMAGE_ID=sha256:747873867110897321865b8790204c0d42a9d51357dce8c3334f50c59d6e916c",
+      "--mount",
+      "type=bind,src=/Users/shinmingliu/opcti/validation/phase0/legacy/runs/ft16-003/retained-tools,dst=/tools,readonly",
+      "--mount",
+      "type=bind,src=/Users/shinmingliu/opcti/validation/phase0/legacy/runs/ft16-003/input-bundle,dst=/bundle,readonly",
+      "--mount",
+      "type=bind,src=/Users/shinmingliu/opcti/validation/phase0/legacy/runs/ft16-003/workspace-loss,dst=/export",
+      "--mount",
+      "type=volume,src=cti-ft16-3210e275b735,dst=/state",
+      "--entrypoint",
+      "/usr/bin/python3",
+      "sha256:747873867110897321865b8790204c0d42a9d51357dce8c3334f50c59d6e916c",
+      "-B",
+      "/tools/worker.py",
+      "serve",
+      "workspace-loss",
+      "480b68df76d74bda9329f50596b3d74d",
+      "cti-ft16-d623292174d0"
+    ],
+    "returncode": 0,
+    "stdout": "2798bdf11eb9fee181e38c50ff859d8f9d675bc07d0115d7ef0b2e4bda584e79\n",
+    "stderr": "",
+    "started_utc": "2026-11-13T00:53:45.103904+00:00",
+    "finished_utc": "2026-11-13T00:53:45.132630+00:00"
+  },
+  {
+    "argv": [
+      "docker",
+      "container",
+      "inspect",
+      "cti-ft16-d623292174d0"
+    ],
+    "returncode": 0,
+    "stdout": "[\n    {\n        \"Id\": \"2798bdf11eb9fee181e38c50ff859d8f9d675bc07d0115d7ef0b2e4bda584e79\",\n        \"Created\": \"2026-11-13T00:53:45.115786754Z\",\n        \"Path\": \"/usr/bin/python3\",\n        \"Args\": [\n            \"-B\",\n            \"/tools/worker.py\",\n            \"serve\",\n            \"workspace-loss\",\n            \"480b68df76d74bda9329f50596b3d74d\",\n            \"cti-ft16-d623292174d0\"\n        ],\n        \"State\": {\n            \"Status\": \"created\",\n            \"Running\": false,\n            \"Paused\": false,\n            \"Restarting\": false,\n            \"OOMKilled\": false,\n            \"Dead\": false,\n            \"Pid\": 0,\n            \"ExitCode\": 0,\n            \"Error\": \"\",\n            \"StartedAt\": \"0001-01-01T00:00:00Z\",\n            \"FinishedAt\": \"0001-01-01T00:00:00Z\"\n        },\n        \"Image\": \"sha256:747873867110897321865b8790204c0d42a9d51357dce8c3334f50c59d6e916c\",\n        \"ResolvConfPath\": \"\",\n        \"HostnamePath\": \"\",\n        \"HostsPath\": \"\",\n        \"LogPath\": \"\",\n        \"Name\": \"/cti-ft16-d623292174d0\",\n        \"RestartCount\": 0,\n        \"Driver\": \"overlay2\",\n        \"Platform\": \"linux\",\n        \"MountLabel\": \"\",\n        \"ProcessLabel\": \"\",\n        \"AppArmorProfile\": \"\",\n        \"ExecIDs\": null,\n        \"HostConfig\": {\n            \"Binds\": null,\n            \"ContainerIDFile\": \"\",\n            \"LogConfig\": {\n                \"Type\": \"json-file\",\n                \"Config\": {}\n            },\n            \"NetworkMode\": \"none\",\n            \"PortBindings\": {},\n            \"RestartPolicy\": {\n                \"Name\": \"no\",\n                \"MaximumRetryCount\": 0\n            },\n            \"AutoRemove\": false,\n            \"VolumeDriver\": \"\",\n            \"VolumesFrom\": null,\n            \"ConsoleSize\": [\n                0,\n                0\n            ],\n            \"CapAdd\": null,\n            \"CapDrop\": [\n                \"ALL\"\n            ],\n            \"CgroupnsMode\": \"private\",\n            \"Dns\": null,\n            \"DnsOptions\": [],\n            \"DnsSearch\": [],\n            \"ExtraHosts\": null,\n            \"GroupAdd\": null,\n            \"IpcMode\": \"private\",\n            \"Cgroup\": \"\",\n            \"Links\": null,\n            \"OomScoreAdj\": 0,\n            \"PidMode\": \"\",\n            \"Privileged\": false,\n            \"PublishAllPorts\": false,\n            \"ReadonlyRootfs\": false,\n            \"SecurityOpt\": [\n                \"no-new-privileges\"\n            ],\n            \"UTSMode\": \"\",\n            \"UsernsMode\": \"\",\n            \"ShmSize\": 67108864,\n            \"Runtime\": \"runc\",\n            \"Isolation\": \"\",\n            \"CpuShares\": 0,\n            \"Memory\": 1073741824,\n            \"NanoCpus\": 1000000000,\n            \"CgroupParent\": \"\",\n            \"BlkioWeight\": 0,\n            \"BlkioWeightDevice\": [],\n            \"BlkioDeviceReadBps\": [],\n            \"BlkioDeviceWriteBps\": [],\n            \"BlkioDeviceReadIOps\": [],\n            \"BlkioDeviceWriteIOps\": [],\n            \"CpuPeriod\": 0,\n            \"CpuQuota\": 0,\n            \"CpuRealtimePeriod\": 0,\n            \"CpuRealtimeRuntime\": 0,\n            \"CpusetCpus\": \"\",\n            \"CpusetMems\": \"\",\n            \"Devices\": [],\n            \"DeviceCgroupRules\": null,\n            \"DeviceRequests\": null,\n            \"MemoryReservation\": 0,\n            \"MemorySwap\": 2147483648,\n            \"MemorySwappiness\": null,\n            \"OomKillDisable\": false,\n            \"PidsLimit\": null,\n            \"Ulimits\": [],\n            \"CpuCount\": 0,\n            \"CpuPercent\": 0,\n            \"IOMaximumIOps\": 0,\n            \"IOMaximumBandwidth\": 0,\n            \"Mounts\": [\n                {\n                    \"Type\": \"bind\",\n                    \"Source\": \"/Users/shinmingliu/opcti/validation/phase0/legacy/runs/ft16-003/retained-tools\",\n                    \"Target\": \"/tools\",\n                    \"ReadOnly\": true\n                },\n                {\n                    \"Type\": \"bind\",\n                    \"Source\": \"/Users/shinmingliu/opcti/validation/phase0/legacy/runs/ft16-003/input-bundle\",\n                    \"Target\": \"/bundle\",\n                    \"ReadOnly\": true\n                },\n                {\n                    \"Type\": \"bind\",\n                    \"Source\": \"/Users/shinmingliu/opcti/validation/phase0/legacy/runs/ft16-003/workspace-loss\",\n                    \"Target\": \"/export\"\n                },\n                {\n                    \"Type\": \"volume\",\n                    \"Source\": \"cti-ft16-3210e275b735\",\n                    \"Target\": \"/state\"\n                }\n            ],\n            \"MaskedPaths\": [\n                \"/proc/acpi\",\n                \"/proc/asound\",\n                \"/proc/interrupts\",\n                \"/proc/kcore\",\n                \"/proc/keys\",\n                \"/proc/latency_stats\",\n                \"/proc/sched_debug\",\n                \"/proc/scsi\",\n                \"/proc/timer_list\",\n                \"/proc/timer_stats\",\n                \"/sys/devices/virtual/powercap\",\n                \"/sys/firmware\"\n            ],\n            \"ReadonlyPaths\": [\n                \"/proc/bus\",\n                \"/proc/fs\",\n                \"/proc/irq\",\n                \"/proc/sys\",\n                \"/proc/sysrq-trigger\"\n            ]\n        },\n        \"GraphDriver\": {\n            \"Data\": {\n                \"ID\": \"2798bdf11eb9fee181e38c50ff859d8f9d675bc07d0115d7ef0b2e4bda584e79\",\n                \"LowerDir\": \"/var/lib/docker/overlay2/edffe6ae43dd904cca22153f026ad345c36c50224291d9c4f4968865fd4a7a12-init/diff:/var/lib/docker/overlay2/qe060ivzuj600czqdq7r6i31q/diff:/var/lib/docker/overlay2/1wdzjbdhqu6tfzi2i401crrq1/diff:/var/lib/docker/overlay2/ttri2xu5n18wwohwi38tooeik/diff:/var/lib/docker/overlay2/os4d819slnpizlvcm8g13nv3a/diff:/var/lib/docker/overlay2/eac0fiqi2yu7zsw9xnen2hz18/diff:/var/lib/docker/overlay2/dj9xzqgejlnfjccxc2pdbh4ky/diff:/var/lib/docker/overlay2/jrgrxuvb8pkc0dbik46t9mjwc/diff:/var/lib/docker/overlay2/45b9d819b5b52e3f6876c7b987dcf6a2689fa57a81ed6f264c428e6c77388b17/diff\",\n                \"MergedDir\": \"/var/lib/docker/overlay2/edffe6ae43dd904cca22153f026ad345c36c50224291d9c4f4968865fd4a7a12/merged\",\n                \"UpperDir\": \"/var/lib/docker/overlay2/edffe6ae43dd904cca22153f026ad345c36c50224291d9c4f4968865fd4a7a12/diff\",\n                \"WorkDir\": \"/var/lib/docker/overlay2/edffe6ae43dd904cca22153f026ad345c36c50224291d9c4f4968865fd4a7a12/work\"\n            },\n            \"Name\": \"overlay2\"\n        },\n        \"Mounts\": [\n            {\n                \"Type\": \"bind\",\n                \"Source\": \"/Users/shinmingliu/opcti/validation/phase0/legacy/runs/ft16-003/retained-tools\",\n                \"Destination\": \"/tools\",\n                \"Mode\": \"\",\n                \"RW\": false,\n                \"Propagation\": \"rprivate\"\n            },\n            {\n                \"Type\": \"bind\",\n                \"Source\": \"/Users/shinmingliu/opcti/validation/phase0/legacy/runs/ft16-003/input-bundle\",\n                \"Destination\": \"/bundle\",\n                \"Mode\": \"\",\n                \"RW\": false,\n                \"Propagation\": \"rprivate\"\n            },\n            {\n                \"Type\": \"bind\",\n                \"Source\": \"/Users/shinmingliu/opcti/validation/phase0/legacy/runs/ft16-003/workspace-loss\",\n                \"Destination\": \"/export\",\n                \"Mode\": \"\",\n                \"RW\": true,\n                \"Propagation\": \"rprivate\"\n            },\n            {\n                \"Type\": \"volume\",\n                \"Name\": \"cti-ft16-3210e275b735\",\n                \"Source\": \"/var/lib/docker/volumes/cti-ft16-3210e275b735/_data\",\n                \"Destination\": \"/state\",\n                \"Driver\": \"local\",\n                \"Mode\": \"z\",\n                \"RW\": true,\n                \"Propagation\": \"\"\n            }\n        ],\n        \"Config\": {\n            \"Hostname\": \"2798bdf11eb9\",\n            \"Domainname\": \"\",\n            \"User\": \"\",\n            \"AttachStdin\": false,\n            \"AttachStdout\": true,\n            \"AttachStderr\": true,\n            \"Tty\": false,\n            \"OpenStdin\": false,\n            \"StdinOnce\": false,\n            \"Env\": [\n                \"FT16_IMAGE_ID=sha256:747873867110897321865b8790204c0d42a9d51357dce8c3334f50c59d6e916c\",\n                \"PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin\",\n                \"DEBIAN_FRONTEND=noninteractive\",\n                \"CTI_HOME=/opt/cti\",\n                \"CTI_PERL=/usr/bin/perl\",\n                \"CTI_SHELL=/bin/bash\"\n            ],\n            \"Cmd\": [\n                \"-B\",\n                \"/tools/worker.py\",\n                \"serve\",\n                \"workspace-loss\",\n                \"480b68df76d74bda9329f50596b3d74d\",\n                \"cti-ft16-d623292174d0\"\n            ],\n            \"Image\": \"sha256:747873867110897321865b8790204c0d42a9d51357dce8c3334f50c59d6e916c\",\n            \"Volumes\": null,\n            \"WorkingDir\": \"/capture\",\n            \"Entrypoint\": [\n                \"/usr/bin/python3\"\n            ],\n            \"Labels\": {\n                \"org.opencontainers.image.version\": \"24.04\",\n                \"org.opencti.phase0.ft16\": \"ft16-003\"\n            },\n            \"StopTimeout\": 1\n        },\n        \"NetworkSettings\": {\n            \"SandboxID\": \"\",\n            \"SandboxKey\": \"\",\n            \"Ports\": {},\n            \"Networks\": {\n                \"none\": {\n                    \"IPAMConfig\": null,\n                    \"Links\": null,\n                    \"Aliases\": null,\n                    \"DriverOpts\": null,\n                    \"GwPriority\": 0,\n                    \"NetworkID\": \"\",\n                    \"EndpointID\": \"\",\n                    \"Gateway\": \"\",\n                    \"IPAddress\": \"\",\n                    \"MacAddress\": \"\",\n                    \"IPPrefixLen\": 0,\n                    \"IPv6Gateway\": \"\",\n                    \"GlobalIPv6Address\": \"\",\n                    \"GlobalIPv6PrefixLen\": 0,\n                    \"DNSNames\": null\n                }\n            }\n        }\n    }\n]\n",
+    "stderr": "",
+    "started_utc": "2026-11-13T00:53:45.133523+00:00",
+    "finished_utc": "2026-11-13T00:53:45.146758+00:00"
+  },
+  {
+    "argv": [
+      "docker",
+      "start",
+      "cti-ft16-d623292174d0"
+    ],
+    "returncode": 0,
+    "stdout": "cti-ft16-d623292174d0\n",
+    "stderr": "",
+    "started_utc": "2026-11-13T00:53:45.148519+00:00",
+    "finished_utc": "2026-11-13T00:53:45.215526+00:00"
+  },
+  {
+    "argv": [
+      "docker",
+      "exec",
+      "cti-ft16-d623292174d0",
+      "python3",
+      "-B",
+      "/tools/worker.py",
+      "snapshot",
+      "checkpoint"
+    ],
+    "returncode": 0,
+    "stdout": "",
+    "stderr": "",
+    "started_utc": "2026-11-13T00:53:45.622769+00:00",
+    "finished_utc": "2026-11-13T00:53:45.780422+00:00"
+  },
+  {
+    "argv": [
+      "docker",
+      "kill",
+      "--signal",
+      "KILL",
+      "cti-ft16-d623292174d0"
+    ],
+    "returncode": 0,
+    "stdout": "cti-ft16-d623292174d0\n",
+    "stderr": "",
+    "started_utc": "2026-11-13T00:53:45.783243+00:00",
+    "finished_utc": "2026-11-13T00:53:45.817644+00:00"
+  },
+  {
+    "argv": [
+      "docker",
+      "container",
+      "inspect",
+      "cti-ft16-d623292174d0"
+    ],
+    "returncode": 0,
+    "stdout": "[\n    {\n        \"Id\": \"2798bdf11eb9fee181e38c50ff859d8f9d675bc07d0115d7ef0b2e4bda584e79\",\n        \"Created\": \"2026-11-13T00:53:45.115786754Z\",\n        \"Path\": \"/usr/bin/python3\",\n        \"Args\": [\n            \"-B\",\n            \"/tools/worker.py\",\n            \"serve\",\n            \"workspace-loss\",\n            \"480b68df76d74bda9329f50596b3d74d\",\n            \"cti-ft16-d623292174d0\"\n        ],\n        \"State\": {\n            \"Status\": \"exited\",\n            \"Running\": false,\n            \"Paused\": false,\n            \"Restarting\": false,\n            \"OOMKilled\": false,\n            \"Dead\": false,\n            \"Pid\": 0,\n            \"ExitCode\": 137,\n            \"Error\": \"\",\n            \"StartedAt\": \"2026-11-13T00:53:45.167394213Z\",\n            \"FinishedAt\": \"2026-11-13T00:53:45.800898963Z\"\n        },\n        \"Image\": \"sha256:747873867110897321865b8790204c0d42a9d51357dce8c3334f50c59d6e916c\",\n        \"ResolvConfPath\": \"/var/lib/docker/containers/2798bdf11eb9fee181e38c50ff859d8f9d675bc07d0115d7ef0b2e4bda584e79/resolv.conf\",\n        \"HostnamePath\": \"/var/lib/docker/containers/2798bdf11eb9fee181e38c50ff859d8f9d675bc07d0115d7ef0b2e4bda584e79/hostname\",\n        \"HostsPath\": \"/var/lib/docker/containers/2798bdf11eb9fee181e38c50ff859d8f9d675bc07d0115d7ef0b2e4bda584e79/hosts\",\n        \"LogPath\": \"/var/lib/docker/containers/2798bdf11eb9fee181e38c50ff859d8f9d675bc07d0115d7ef0b2e4bda584e79/2798bdf11eb9fee181e38c50ff859d8f9d675bc07d0115d7ef0b2e4bda584e79-json.log\",\n        \"Name\": \"/cti-ft16-d623292174d0\",\n        \"RestartCount\": 0,\n        \"Driver\": \"overlay2\",\n        \"Platform\": \"linux\",\n        \"MountLabel\": \"\",\n        \"ProcessLabel\": \"\",\n        \"AppArmorProfile\": \"\",\n        \"ExecIDs\": null,\n        \"HostConfig\": {\n            \"Binds\": null,\n            \"ContainerIDFile\": \"\",\n            \"LogConfig\": {\n                \"Type\": \"json-file\",\n                \"Config\": {}\n            },\n            \"NetworkMode\": \"none\",\n            \"PortBindings\": {},\n            \"RestartPolicy\": {\n                \"Name\": \"no\",\n                \"MaximumRetryCount\": 0\n            },\n            \"AutoRemove\": false,\n            \"VolumeDriver\": \"\",\n            \"VolumesFrom\": null,\n            \"ConsoleSize\": [\n                0,\n                0\n            ],\n            \"CapAdd\": null,\n            \"CapDrop\": [\n                \"ALL\"\n            ],\n            \"CgroupnsMode\": \"private\",\n            \"Dns\": null,\n            \"DnsOptions\": [],\n            \"DnsSearch\": [],\n            \"ExtraHosts\": null,\n            \"GroupAdd\": null,\n            \"IpcMode\": \"private\",\n            \"Cgroup\": \"\",\n            \"Links\": null,\n            \"OomScoreAdj\": 0,\n            \"PidMode\": \"\",\n            \"Privileged\": false,\n            \"PublishAllPorts\": false,\n            \"ReadonlyRootfs\": false,\n            \"SecurityOpt\": [\n                \"no-new-privileges\"\n            ],\n            \"UTSMode\": \"\",\n            \"UsernsMode\": \"\",\n            \"ShmSize\": 67108864,\n            \"Runtime\": \"runc\",\n            \"Isolation\": \"\",\n            \"CpuShares\": 0,\n            \"Memory\": 1073741824,\n            \"NanoCpus\": 1000000000,\n            \"CgroupParent\": \"\",\n            \"BlkioWeight\": 0,\n            \"BlkioWeightDevice\": [],\n            \"BlkioDeviceReadBps\": [],\n            \"BlkioDeviceWriteBps\": [],\n            \"BlkioDeviceReadIOps\": [],\n            \"BlkioDeviceWriteIOps\": [],\n            \"CpuPeriod\": 0,\n            \"CpuQuota\": 0,\n            \"CpuRealtimePeriod\": 0,\n            \"CpuRealtimeRuntime\": 0,\n            \"CpusetCpus\": \"\",\n            \"CpusetMems\": \"\",\n            \"Devices\": [],\n            \"DeviceCgroupRules\": null,\n            \"DeviceRequests\": null,\n            \"MemoryReservation\": 0,\n            \"MemorySwap\": 2147483648,\n            \"MemorySwappiness\": null,\n            \"OomKillDisable\": null,\n            \"PidsLimit\": null,\n            \"Ulimits\": [],\n            \"CpuCount\": 0,\n            \"CpuPercent\": 0,\n            \"IOMaximumIOps\": 0,\n            \"IOMaximumBandwidth\": 0,\n            \"Mounts\": [\n                {\n                    \"Type\": \"bind\",\n                    \"Source\": \"/Users/shinmingliu/opcti/validation/phase0/legacy/runs/ft16-003/retained-tools\",\n                    \"Target\": \"/tools\",\n                    \"ReadOnly\": true\n                },\n                {\n                    \"Type\": \"bind\",\n                    \"Source\": \"/Users/shinmingliu/opcti/validation/phase0/legacy/runs/ft16-003/input-bundle\",\n                    \"Target\": \"/bundle\",\n                    \"ReadOnly\": true\n                },\n                {\n                    \"Type\": \"bind\",\n                    \"Source\": \"/Users/shinmingliu/opcti/validation/phase0/legacy/runs/ft16-003/workspace-loss\",\n                    \"Target\": \"/export\"\n                },\n                {\n                    \"Type\": \"volume\",\n                    \"Source\": \"cti-ft16-3210e275b735\",\n                    \"Target\": \"/state\"\n                }\n            ],\n            \"MaskedPaths\": [\n                \"/proc/acpi\",\n                \"/proc/asound\",\n                \"/proc/interrupts\",\n                \"/proc/kcore\",\n                \"/proc/keys\",\n                \"/proc/latency_stats\",\n                \"/proc/sched_debug\",\n                \"/proc/scsi\",\n                \"/proc/timer_list\",\n                \"/proc/timer_stats\",\n                \"/sys/devices/virtual/powercap\",\n                \"/sys/firmware\"\n            ],\n            \"ReadonlyPaths\": [\n                \"/proc/bus\",\n                \"/proc/fs\",\n                \"/proc/irq\",\n                \"/proc/sys\",\n                \"/proc/sysrq-trigger\"\n            ]\n        },\n        \"GraphDriver\": {\n            \"Data\": {\n                \"ID\": \"2798bdf11eb9fee181e38c50ff859d8f9d675bc07d0115d7ef0b2e4bda584e79\",\n                \"LowerDir\": \"/var/lib/docker/overlay2/edffe6ae43dd904cca22153f026ad345c36c50224291d9c4f4968865fd4a7a12-init/diff:/var/lib/docker/overlay2/qe060ivzuj600czqdq7r6i31q/diff:/var/lib/docker/overlay2/1wdzjbdhqu6tfzi2i401crrq1/diff:/var/lib/docker/overlay2/ttri2xu5n18wwohwi38tooeik/diff:/var/lib/docker/overlay2/os4d819slnpizlvcm8g13nv3a/diff:/var/lib/docker/overlay2/eac0fiqi2yu7zsw9xnen2hz18/diff:/var/lib/docker/overlay2/dj9xzqgejlnfjccxc2pdbh4ky/diff:/var/lib/docker/overlay2/jrgrxuvb8pkc0dbik46t9mjwc/diff:/var/lib/docker/overlay2/45b9d819b5b52e3f6876c7b987dcf6a2689fa57a81ed6f264c428e6c77388b17/diff\",\n                \"MergedDir\": \"/var/lib/docker/overlay2/edffe6ae43dd904cca22153f026ad345c36c50224291d9c4f4968865fd4a7a12/merged\",\n                \"UpperDir\": \"/var/lib/docker/overlay2/edffe6ae43dd904cca22153f026ad345c36c50224291d9c4f4968865fd4a7a12/diff\",\n                \"WorkDir\": \"/var/lib/docker/overlay2/edffe6ae43dd904cca22153f026ad345c36c50224291d9c4f4968865fd4a7a12/work\"\n            },\n            \"Name\": \"overlay2\"\n        },\n        \"Mounts\": [\n            {\n                \"Type\": \"volume\",\n                \"Name\": \"cti-ft16-3210e275b735\",\n                \"Source\": \"/var/lib/docker/volumes/cti-ft16-3210e275b735/_data\",\n                \"Destination\": \"/state\",\n                \"Driver\": \"local\",\n                \"Mode\": \"z\",\n                \"RW\": true,\n                \"Propagation\": \"\"\n            },\n            {\n                \"Type\": \"bind\",\n                \"Source\": \"/Users/shinmingliu/opcti/validation/phase0/legacy/runs/ft16-003/retained-tools\",\n                \"Destination\": \"/tools\",\n                \"Mode\": \"\",\n                \"RW\": false,\n                \"Propagation\": \"rprivate\"\n            },\n            {\n                \"Type\": \"bind\",\n                \"Source\": \"/Users/shinmingliu/opcti/validation/phase0/legacy/runs/ft16-003/input-bundle\",\n                \"Destination\": \"/bundle\",\n                \"Mode\": \"\",\n                \"RW\": false,\n                \"Propagation\": \"rprivate\"\n            },\n            {\n                \"Type\": \"bind\",\n                \"Source\": \"/Users/shinmingliu/opcti/validation/phase0/legacy/runs/ft16-003/workspace-loss\",\n                \"Destination\": \"/export\",\n                \"Mode\": \"\",\n                \"RW\": true,\n                \"Propagation\": \"rprivate\"\n            }\n        ],\n        \"Config\": {\n            \"Hostname\": \"2798bdf11eb9\",\n            \"Domainname\": \"\",\n            \"User\": \"\",\n            \"AttachStdin\": false,\n            \"AttachStdout\": true,\n            \"AttachStderr\": true,\n            \"Tty\": false,\n            \"OpenStdin\": false,\n            \"StdinOnce\": false,\n            \"Env\": [\n                \"FT16_IMAGE_ID=sha256:747873867110897321865b8790204c0d42a9d51357dce8c3334f50c59d6e916c\",\n                \"PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin\",\n                \"DEBIAN_FRONTEND=noninteractive\",\n                \"CTI_HOME=/opt/cti\",\n                \"CTI_PERL=/usr/bin/perl\",\n                \"CTI_SHELL=/bin/bash\"\n            ],\n            \"Cmd\": [\n                \"-B\",\n                \"/tools/worker.py\",\n                \"serve\",\n                \"workspace-loss\",\n                \"480b68df76d74bda9329f50596b3d74d\",\n                \"cti-ft16-d623292174d0\"\n            ],\n            \"Image\": \"sha256:747873867110897321865b8790204c0d42a9d51357dce8c3334f50c59d6e916c\",\n            \"Volumes\": null,\n            \"WorkingDir\": \"/capture\",\n            \"Entrypoint\": [\n                \"/usr/bin/python3\"\n            ],\n            \"Labels\": {\n                \"org.opencontainers.image.version\": \"24.04\",\n                \"org.opencti.phase0.ft16\": \"ft16-003\"\n            },\n            \"StopTimeout\": 1\n        },\n        \"NetworkSettings\": {\n            \"SandboxID\": \"\",\n            \"SandboxKey\": \"\",\n            \"Ports\": {},\n            \"Networks\": {\n                \"none\": {\n                    \"IPAMConfig\": null,\n                    \"Links\": null,\n                    \"Aliases\": null,\n                    \"DriverOpts\": null,\n                    \"GwPriority\": 0,\n                    \"NetworkID\": \"db469be2416af8289efb850ec787ddcb5266451b56691319d8bd80134baf0452\",\n                    \"EndpointID\": \"\",\n                    \"Gateway\": \"\",\n                    \"IPAddress\": \"\",\n                    \"MacAddress\": \"\",\n                    \"IPPrefixLen\": 0,\n                    \"IPv6Gateway\": \"\",\n                    \"GlobalIPv6Address\": \"\",\n                    \"GlobalIPv6PrefixLen\": 0,\n                    \"DNSNames\": null\n                }\n            }\n        }\n    }\n]\n",
+    "stderr": "",
+    "started_utc": "2026-11-13T00:53:45.818714+00:00",
+    "finished_utc": "2026-11-13T00:53:45.831735+00:00"
+  },
+  {
+    "argv": [
+      "docker",
+      "container",
+      "rm",
+      "-f",
+      "cti-ft16-d623292174d0"
+    ],
+    "returncode": 0,
+    "stdout": "cti-ft16-d623292174d0\n",
+    "stderr": "",
+    "started_utc": "2026-11-13T00:53:45.832823+00:00",
+    "finished_utc": "2026-11-13T00:53:45.850064+00:00"
+  },
+  {
+    "argv": [
+      "docker",
+      "container",
+      "inspect",
+      "cti-ft16-d623292174d0"
+    ],
+    "returncode": 1,
+    "stdout": "[]\n",
+    "stderr": "Error response from daemon: No such container: cti-ft16-d623292174d0\n",
+    "started_utc": "2026-11-13T00:53:45.851081+00:00",
+    "finished_utc": "2026-11-13T00:53:45.864010+00:00"
+  },
+  {
+    "argv": [
+      "docker",
+      "volume",
+      "rm",
+      "cti-ft16-3210e275b735"
+    ],
+    "returncode": 0,
+    "stdout": "cti-ft16-3210e275b735\n",
+    "stderr": "",
+    "started_utc": "2026-11-13T00:53:45.865208+00:00",
+    "finished_utc": "2026-11-13T00:53:45.879453+00:00"
+  },
+  {
+    "argv": [
+      "docker",
+      "volume",
+      "inspect",
+      "cti-ft16-3210e275b735"
+    ],
+    "returncode": 1,
+    "stdout": "[]\n",
+    "stderr": "Error response from daemon: get cti-ft16-3210e275b735: no such volume\n",
+    "started_utc": "2026-11-13T00:53:45.880387+00:00",
+    "finished_utc": "2026-11-13T00:53:45.893531+00:00"
+  }
+]

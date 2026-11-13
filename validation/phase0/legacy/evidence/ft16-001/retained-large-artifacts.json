@@ -1,0 +1,8 @@
+{
+  "runtime-image.tar": {
+    "local_path": "/Users/shinmingliu/opcti/validation/phase0/legacy/runs/ft09-001/runtime-image.tar",
+    "bytes": 623109120,
+    "sha256": "1e001626e131877f12f638b98fa922bf6b05526c24c5678aa6557f9647ec277c",
+    "image_id": "sha256:747873867110897321865b8790204c0d42a9d51357dce8c3334f50c59d6e916c"
+  }
+}

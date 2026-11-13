@@ -1,0 +1,18 @@
+{
+  "groups/Regression/FT16/Masters/wait.out": {
+    "sha256": "ff5b924f0856cbbd2133f8d1946b236942361ae4fc75ccc3d0c5bec51024e445",
+    "mode": 420
+  },
+  "groups/Regression/FT16/Src/wait.c": {
+    "sha256": "a90ccf40bfb68b51f7a17221300860aae41024489daf7f71af5e0317aeafbadf",
+    "mode": 420
+  },
+  "groups/Regression/tmconfig": {
+    "sha256": "5b2df4761bb2411566e21cfc8828cf0d4e86dc6fba5935ba53d9515651d56e7f",
+    "mode": 420
+  },
+  "phase0.opt": {
+    "sha256": "cf2d5c943f552acabd2b8feec6a46bbf21525e3326af3a4d84fa142690f06417",
+    "mode": 420
+  }
+}

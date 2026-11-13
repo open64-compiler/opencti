@@ -431,3 +431,29 @@ The collector remains alive beyond the normal one-second phase limit until an ex
 Extraction normalizes session ownership before restoring executable file modes under the unchanged restricted profile. Sealed archives remain read-only during reconstruction. Both framework inventories remain at 2,654 entries; all 1,040 previous evidence entries and original input trees are unchanged. All workers are removed.
 
 Reference `runs/ft15-004/` has 193 regular-file hashes. Compact `evidence/ft15-001/` contains 136 hashes plus its index and totals 566,776 bytes. It retains sealed work/source/external archives, the input bundle, case contracts, per-phase compiler/make/stream/marker witnesses and exact copied tools/runner. Expanded work trees, development runs 001–003 and the 623,109,120-byte runtime remain local/ignored. Full/compact audits and fifteen offline contract/contradiction tests pass. Historical/vendor suites, other wrappers/languages, production adapter acceptance and correction of the run-hook false pass remain open. See the [FT15 report](../../../doc/guide/phase0-ft15-results.md).
+
+
+## FT16 timeout cancellation and worker loss
+
+Run seven synthetic interruption cases around the unchanged stock TM/regression driver. The runner verifies the retained FT09 image archive's exact hash/size and uses the pinned cached image without a pull. Each new worker has network disabled, one CPU, 1 GiB memory, all capabilities dropped and `no-new-privileges`. It mounts only copied tools/inputs read-only, a new native export and an owned Linux volume. No original evidence or framework checkout is writable in the worker.
+
+```sh
+python3 -B validation/phase0/legacy/run_ft16.py \
+  --output validation/phase0/legacy/runs/ft16-new
+# Optional relocated runtime prerequisite:
+#   --image-archive /absolute/path/to/retained/runtime-image.tar
+python3 -B validation/phase0/legacy/verify_ft16.py \
+  validation/phase0/legacy/runs/ft16-new
+python3 -B validation/phase0/legacy/verify_ft16.py \
+  validation/phase0/legacy/evidence/ft16-001
+python3 -B -m unittest discover -s validation/phase0/legacy \
+  -p 'test_verify_ft16.py' -v
+```
+
+For a new reviewed compact bundle, supply `--pack-output` to the auditor with a fresh destination. Keep full runs and private lease databases under ignored `runs/`; the packer selects copied tools, input/state archives, manifests, observations and preservation inventories, excluding the runtime image and private database. Do not replace prior evidence when repeating a run.
+
+The reference `runs/ft16-003` has 59 regular-file hashes; `evidence/ft16-001` has 54 hashes plus its index and totals 953,341 bytes. Six real TM launches cover timeout, cooperative/forced cancellation, paused-worker reconnect, worker loss with stored workspace recovery and worker/workspace loss; before-dispatch cancellation has zero launches. Sources, baseline, generated recipes/environment, generated input and separate partial stdout/stderr survive. Native records and archive role manifests name missing artifacts instead of fabricating a combined output, test result or acknowledgement. Both worker-loss cases stay `incomplete`.
+
+Recovery mounts the original stored volume in a new inspection-only worker, retains original backend/job identity and launch count 1, and never reruns TM. The workspace-loss case deletes only its owned fixture volume and retains its native pre-loss checkpoint. Eight containers and seven volumes are removed, with absence observations. Two logical lease resources per case are released only after confirmed termination, reacquired at the next epoch and protected from stale-owner release. The GPU-named slot is explicitly a fixture, not hardware.
+
+All 2,654 deployed framework entries, all 1,177 prior evidence entries, original native fixture inputs and checkpoint bytes remain unchanged. Full/compact audits and thirteen offline contradiction tests pass; the preceding FT15 compact audit also passes. The framework, original evidence and pre-existing filename collision edits are untouched. DA15/live dTM controls, production cancellation delivery, SSH/Mac-sleep outages, real performance/GPU reservations and broader process-tree behavior remain unqualified. See the [FT16 report](../../../doc/guide/phase0-ft16-results.md).

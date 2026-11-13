@@ -1,0 +1,112 @@
+{
+  "case": "workspace-loss",
+  "job_id": "480b68df76d74bda9329f50596b3d74d",
+  "attempt_id": "480b68df76d74bda9329f50596b3d74d",
+  "original_backend_id": "2798bdf11eb9fee181e38c50ff859d8f9d675bc07d0115d7ef0b2e4bda584e79",
+  "launch_count": 1,
+  "final_snapshot": "checkpoint",
+  "preservation": "incomplete",
+  "process_exit": null,
+  "events": [
+    {
+      "kind": "allocated",
+      "job_id": "480b68df76d74bda9329f50596b3d74d",
+      "attempt_id": "480b68df76d74bda9329f50596b3d74d",
+      "backend_id": "2798bdf11eb9fee181e38c50ff859d8f9d675bc07d0115d7ef0b2e4bda584e79",
+      "worker_name": "cti-ft16-d623292174d0",
+      "volume": "cti-ft16-3210e275b735",
+      "leases": [
+        {
+          "acquired": true,
+          "reason": "Acquired",
+          "resource": "fixture/performance-slot",
+          "epoch": 13,
+          "owner": "480b68df76d74bda9329f50596b3d74d",
+          "token": "5d9ff80560674c5cb020bf5cb6810eb1"
+        },
+        {
+          "acquired": true,
+          "reason": "Acquired",
+          "resource": "fixture/gpu-slot-NOT-A-GPU",
+          "epoch": 13,
+          "owner": "480b68df76d74bda9329f50596b3d74d",
+          "token": "e78eab3e2c4e4dbc8a59065143b9730a"
+        }
+      ]
+    },
+    {
+      "kind": "worker_unreachable",
+      "preservation": "incomplete",
+      "cancel_requested": true,
+      "cancel_acknowledged": false
+    },
+    {
+      "kind": "release_withheld_while_unreachable",
+      "contender": {
+        "acquired": false,
+        "reason": "Contended",
+        "resource": "fixture/performance-slot",
+        "epoch": 13,
+        "owner": "480b68df76d74bda9329f50596b3d74d",
+        "token": null
+      }
+    },
+    {
+      "kind": "worker_termination_confirmed",
+      "backend_id": "2798bdf11eb9fee181e38c50ff859d8f9d675bc07d0115d7ef0b2e4bda584e79",
+      "exit_code": 137
+    },
+    {
+      "kind": "workspace_unrecoverable",
+      "preservation": "incomplete",
+      "phase_relaunched": false
+    },
+    {
+      "kind": "leases_reconciled",
+      "released": [
+        {
+          "released": true,
+          "reason": "Released"
+        },
+        {
+          "released": true,
+          "reason": "Released"
+        }
+      ],
+      "renewed": [
+        {
+          "acquired": true,
+          "reason": "Acquired",
+          "resource": "fixture/performance-slot",
+          "epoch": 14,
+          "owner": "20f4585920a745498b30a20118a6e701",
+          "token": "083e5308d93144adab1a03124c059e72"
+        },
+        {
+          "acquired": true,
+          "reason": "Acquired",
+          "resource": "fixture/gpu-slot-NOT-A-GPU",
+          "epoch": 14,
+          "owner": "20f4585920a745498b30a20118a6e701",
+          "token": "4fb02814d26e4f7586b034aa25d2aa45"
+        }
+      ],
+      "stale_releases": [
+        {
+          "released": false,
+          "reason": "StaleOrForeignLease"
+        },
+        {
+          "released": false,
+          "reason": "StaleOrForeignLease"
+        }
+      ]
+    },
+    {
+      "kind": "resources_removed"
+    }
+  ],
+  "checkpoint_unchanged": true,
+  "gpu_hardware_tested": false,
+  "production_scheduler_tested": false
+}

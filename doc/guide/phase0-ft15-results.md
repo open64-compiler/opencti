@@ -77,4 +77,4 @@ Both audits and fifteen offline tests pass. Contradiction tests reject a rehashe
 - [Captured contracts](../../validation/phase0/legacy/evidence/ft15-001/capture/results.json)
 - [Replay and discrepancy controls](../../validation/phase0/legacy/evidence/ft15-001/replay/results.json)
 
-Historical/vendor suites, other application languages and custom wrappers, production adapter acceptance, correction of the run-hook discrepancy, and full remote GPU qualification remain open. Phase 0 is incomplete; FT16 through FT19 are not run.
+Historical/vendor suites, other application languages and custom wrappers, production adapter acceptance, correction of the run-hook discrepancy, and full remote GPU qualification remain open. Phase 0 is incomplete. An [FT16 interruption follow-up](phase0-ft16-results.md) now verifies isolated timeout/cancellation, same-attempt worker recovery and explicit incomplete loss preservation. FT17 through FT19 are not run.
