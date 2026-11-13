@@ -72,4 +72,4 @@ The full and compact audits pass. Thirteen offline tests reject corruption, a re
 - [Recovered worker-loss record](../../validation/phase0/legacy/evidence/ft16-001/worker-loss/result.json)
 - [Unrecoverable workspace record](../../validation/phase0/legacy/evidence/ft16-001/workspace-loss/result.json)
 
-DA15/DF32 dashboard controls, live dTM cancellation, remote disconnect/reconnect, real performance/GPU allocations, durable production cancellation delivery, additional process-tree behaviors and backend-specific cleanup remain open. Phase 0 is incomplete; FT17 through FT19 are not run.
+DA15/DF32 dashboard controls, live dTM cancellation, remote disconnect/reconnect, real performance/GPU allocations, durable production cancellation delivery, additional process-tree behaviors and backend-specific cleanup remain open. Phase 0 is incomplete. An [FT17 filename/permission/link follow-up](phase0-ft17-results.md) now verifies exact case identities and modes through native object/archive storage and fresh Linux reconstruction, with a same-basename legacy overwrite discrepancy retained. FT18 and FT19 are not run.

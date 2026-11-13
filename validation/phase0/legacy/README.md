@@ -457,3 +457,29 @@ The reference `runs/ft16-003` has 59 regular-file hashes; `evidence/ft16-001` ha
 Recovery mounts the original stored volume in a new inspection-only worker, retains original backend/job identity and launch count 1, and never reruns TM. The workspace-loss case deletes only its owned fixture volume and retains its native pre-loss checkpoint. Eight containers and seven volumes are removed, with absence observations. Two logical lease resources per case are released only after confirmed termination, reacquired at the next epoch and protected from stale-owner release. The GPU-named slot is explicitly a fixture, not hardware.
 
 All 2,654 deployed framework entries, all 1,177 prior evidence entries, original native fixture inputs and checkpoint bytes remain unchanged. Full/compact audits and thirteen offline contradiction tests pass; the preceding FT15 compact audit also passes. The framework, original evidence and pre-existing filename collision edits are untouched. DA15/live dTM controls, production cancellation delivery, SSH/Mac-sleep outages, real performance/GPU reservations and broader process-tree behavior remain unqualified. See the [FT16 report](../../../doc/guide/phase0-ft16-results.md).
+
+
+## FT17 case-sensitive filenames permissions and symlinks
+
+Create `sample.C`/`sample.c` and their distinct masters inside isolated case-sensitive Linux storage, never from the collision-damaged checkout. The runner verifies the pinned FT09 image/archive prerequisite and uses two restricted Docker workers without writable framework or original-evidence mounts. One captures two selected tests in independent workspaces plus a combined-unit overwrite control; the other reconstructs from native manifest/objects and independently extracts the opaque archive after the first worker is deleted.
+
+```sh
+python3 -B validation/phase0/legacy/run_ft17.py \
+  --output validation/phase0/legacy/runs/ft17-new
+# Optional relocated retained runtime (exact known size/hash required):
+#   --image-archive /absolute/path/to/runtime-image.tar
+python3 -B validation/phase0/legacy/verify_ft17.py \
+  validation/phase0/legacy/runs/ft17-new
+python3 -B validation/phase0/legacy/verify_ft17.py \
+  validation/phase0/legacy/evidence/ft17-001
+python3 -B -m unittest discover -s validation/phase0/legacy \
+  -p 'test_verify_ft17.py' -v
+```
+
+To create a new compact bundle, use the auditor's `--pack-output` with a fresh destination; keep full runs and development captures under ignored `runs/`. Do not expand case-distinct archives or fixtures on the Mac. The native materialization preflight probes destination case sensitivity and blocks conflicts before creating a session. Store content under hash-named compressed objects and preserve original paths/modes/targets in the logical manifest. Error collection retains the Docker TAR stream without native extraction.
+
+Reference `runs/ft17-004` has 130 hashes. Compact `evidence/ft17-001` has 130 hashes plus its index, totaling 675,453 bytes. It contains 135 logical entries and 59 compressed content objects, sealed state archive, extracted stat/hash inventories, original/replay observations and permission diagnostics. The runtime image, development runs and temporary native sessions remain local/ignored. Original test IDs and source/master names are unchanged; eight saved compile/link/run/compare replays reproduce the two `DiffPgmOut` cases with their correct `CC`/`CXX` choices.
+
+Modes `0751`/`0640` on distinct helpers, read-only inputs/headers/masters, relative input links, an executable link chain, an absolute input link and an intentionally dangling link are verified after reconstruction. Removing helper execute bits yields `ExecErr` and retained permission diagnostics; restoration succeeds. Own-master/cross-master controls return 0/1 respectively. Twenty offline tests reject changed identities/compiler/master semantics, lost modes/links, unsafe extraction and cleanup claims, corrupt/missing objects, duplicate/unsafe paths and overwriting existing sessions.
+
+The combined stock unit run enumerates both IDs but shares `sample` work basenames and retains only the later recipe/object/executable/result. The discrepancy is captured without patching the framework; independent captures isolate work while preserving the original IDs. All 2,654 deployed framework entries, all 1,232 prior evidence entries, native input bundle and sealed capture remain unchanged. Both workers are removed; pre-existing filename collision changes are untouched. Full/compact and preceding FT16 audits pass. Production storage/session/dashboard integration, repair of the basename hazard, broader permissions/Unicode filesystem behavior and GPU/DSL execution remain open. See the [FT17 report](../../../doc/guide/phase0-ft17-results.md).

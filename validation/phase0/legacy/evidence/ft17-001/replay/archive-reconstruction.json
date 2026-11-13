@@ -1,0 +1,727 @@
+{
+  "actual": {
+    "captures": {
+      "kind": "directory",
+      "mode": 493
+    },
+    "captures/c": {
+      "kind": "directory",
+      "mode": 493
+    },
+    "captures/c/summary.log": {
+      "kind": "file",
+      "sha256": "91969eb0c03d40b716a3c1a0b507199860d9d8d4d9f2a5540196b381be1f4c0c",
+      "bytes": 945,
+      "mode": 436
+    },
+    "captures/c/work": {
+      "kind": "directory",
+      "mode": 509
+    },
+    "captures/c/work/Regression": {
+      "kind": "directory",
+      "mode": 509
+    },
+    "captures/c/work/Regression/FT17": {
+      "kind": "directory",
+      "mode": 509
+    },
+    "captures/c/work/Regression/FT17/Helper.sh": {
+      "kind": "symlink",
+      "target": "/lab/fixtures/groups/Regression/FT17/Src/Helper.sh",
+      "mode": 511
+    },
+    "captures/c/work/Regression/FT17/Value.h": {
+      "kind": "symlink",
+      "target": "/lab/fixtures/groups/Regression/FT17/Src/Value.h",
+      "mode": 511
+    },
+    "captures/c/work/Regression/FT17/alias.link": {
+      "kind": "symlink",
+      "target": "/lab/fixtures/groups/Regression/FT17/Src/alias.link",
+      "mode": 511
+    },
+    "captures/c/work/Regression/FT17/data.C.txt": {
+      "kind": "symlink",
+      "target": "/lab/fixtures/groups/Regression/FT17/Src/data.C.txt",
+      "mode": 511
+    },
+    "captures/c/work/Regression/FT17/data.c.txt": {
+      "kind": "symlink",
+      "target": "/lab/fixtures/groups/Regression/FT17/Src/data.c.txt",
+      "mode": 511
+    },
+    "captures/c/work/Regression/FT17/helper.out": {
+      "kind": "file",
+      "sha256": "7cba6c338bd69736234a355dbf20fa0d640a4e01fee0e10959edacccaf5a8093",
+      "bytes": 13,
+      "mode": 436
+    },
+    "captures/c/work/Regression/FT17/helper.sh": {
+      "kind": "symlink",
+      "target": "/lab/fixtures/groups/Regression/FT17/Src/helper.sh",
+      "mode": 511
+    },
+    "captures/c/work/Regression/FT17/input.C.link": {
+      "kind": "symlink",
+      "target": "/lab/fixtures/groups/Regression/FT17/Src/input.C.link",
+      "mode": 511
+    },
+    "captures/c/work/Regression/FT17/input.c.link": {
+      "kind": "symlink",
+      "target": "/lab/fixtures/groups/Regression/FT17/Src/input.c.link",
+      "mode": 511
+    },
+    "captures/c/work/Regression/FT17/sample": {
+      "kind": "file",
+      "sha256": "2934d97d31975bf8441a923c2f37e3a414da0ab2f50818bc7382984a8445819c",
+      "bytes": 70632,
+      "mode": 509
+    },
+    "captures/c/work/Regression/FT17/sample.c": {
+      "kind": "symlink",
+      "target": "/lab/fixtures/groups/Regression/FT17/Src/sample.c",
+      "mode": 511
+    },
+    "captures/c/work/Regression/FT17/sample.c.out": {
+      "kind": "file",
+      "sha256": "6c471fb6060d79420512f8b53056c3881ebfc2f3405ff7dafaa8017dff58ecd2",
+      "bytes": 26,
+      "mode": 436
+    },
+    "captures/c/work/Regression/FT17/sample.c.out.diff": {
+      "kind": "file",
+      "sha256": "061ebd5abf7dfc43b8c17f41e6ad45c7ab4ffdbafa7d26fef88f097c65dfce0e",
+      "bytes": 67,
+      "mode": 436
+    },
+    "captures/c/work/Regression/FT17/sample.c.out.master": {
+      "kind": "symlink",
+      "target": "/lab/fixtures/groups/Regression/FT17/Src/../Masters/sample.c.out",
+      "mode": 511
+    },
+    "captures/c/work/Regression/FT17/sample.compare-c.out.sh": {
+      "kind": "file",
+      "sha256": "8c0cb8bcc7770251fce4522a7c9cbd707f3ca2471185bc78546bf277cc7c4435",
+      "bytes": 890,
+      "mode": 511
+    },
+    "captures/c/work/Regression/FT17/sample.compile.sh": {
+      "kind": "file",
+      "sha256": "38c4cd06845e4fb52f7e5636464454acf3ad3e2a41eb82421e63ef412f8a5641",
+      "bytes": 846,
+      "mode": 511
+    },
+    "captures/c/work/Regression/FT17/sample.env": {
+      "kind": "file",
+      "sha256": "58bafd0b98643144a997123e15324cef4458907e06db77ff90c696807782b3da",
+      "bytes": 2135,
+      "mode": 436
+    },
+    "captures/c/work/Regression/FT17/sample.err": {
+      "kind": "file",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0,
+      "mode": 436
+    },
+    "captures/c/work/Regression/FT17/sample.link.sh": {
+      "kind": "file",
+      "sha256": "9b82100be9d3b5ac3033fd0bfcd700d2d057bc7bd9f44f80dae9821273a7f3c3",
+      "bytes": 798,
+      "mode": 511
+    },
+    "captures/c/work/Regression/FT17/sample.o": {
+      "kind": "file",
+      "sha256": "93445e0584f5ea465a31a0c7d947b06ce0704a25bcb4287ae755ad76f4ac9929",
+      "bytes": 2944,
+      "mode": 436
+    },
+    "captures/c/work/Regression/FT17/sample.result": {
+      "kind": "file",
+      "sha256": "461325dffd71fed76022e3abcb471822b2b7da0bd0a45d623fd68d05e7fac465",
+      "bytes": 11,
+      "mode": 436
+    },
+    "captures/c/work/Regression/FT17/sample.run.sh": {
+      "kind": "file",
+      "sha256": "5341aa66b3d589d1f6e521fc3d8cc2471b53119ba85bf342a1bf3c3bff02b219",
+      "bytes": 676,
+      "mode": 511
+    },
+    "captures/c/work/Regression/FT17/sample.sh": {
+      "kind": "file",
+      "sha256": "f2ec27cb0ab4ccac36a0f59755c667a8fdfb5edb05b96e8cb14a688ac3531180",
+      "bytes": 1502,
+      "mode": 511
+    },
+    "captures/c/work/Regression/FT17/tool.link": {
+      "kind": "symlink",
+      "target": "/lab/fixtures/groups/Regression/FT17/Src/tool.link",
+      "mode": 511
+    },
+    "captures/c/work/Regression/FT17/value.h": {
+      "kind": "symlink",
+      "target": "/lab/fixtures/groups/Regression/FT17/Src/value.h",
+      "mode": 511
+    },
+    "captures/c/work/TMEnv": {
+      "kind": "file",
+      "sha256": "65206d8db64b4707afb529ef2bc09370d68164c2ab2cfab743152f8e199ca51c",
+      "bytes": 7254,
+      "mode": 436
+    },
+    "captures/c/work/TMUnits": {
+      "kind": "file",
+      "sha256": "7f47783c6574ffe2f88f256338979260a197842d930ac7db09938234769c4490",
+      "bytes": 19,
+      "mode": 436
+    },
+    "captures/c/work/TMmsgs": {
+      "kind": "directory",
+      "mode": 509
+    },
+    "captures/c/work/TMmsgs/enumfile.1": {
+      "kind": "file",
+      "sha256": "6b0157d5ca9c099efc5019bdf527d329a1c0bbcda85da8027370ec29a0da4157",
+      "bytes": 25,
+      "mode": 436
+    },
+    "captures/c/work/TMmsgs/result.1": {
+      "kind": "file",
+      "sha256": "4fe2b860f43a1ee9c914dbe262fa0d70197a3aeb93db3c338f911a7a6042447c",
+      "bytes": 36,
+      "mode": 436
+    },
+    "captures/c/work/log.header": {
+      "kind": "file",
+      "sha256": "78c43cc1320244ea6f1da0d240c9a46c2e5b1e16f9f337d7e1f7fa74185a757e",
+      "bytes": 581,
+      "mode": 436
+    },
+    "captures/cxx": {
+      "kind": "directory",
+      "mode": 493
+    },
+    "captures/cxx/summary.log": {
+      "kind": "file",
+      "sha256": "28d95beda9b925dd1e866f17e3f0756d417ee99636bfdf32f38151b3bccbbcc3",
+      "bytes": 949,
+      "mode": 436
+    },
+    "captures/cxx/work": {
+      "kind": "directory",
+      "mode": 509
+    },
+    "captures/cxx/work/Regression": {
+      "kind": "directory",
+      "mode": 509
+    },
+    "captures/cxx/work/Regression/FT17": {
+      "kind": "directory",
+      "mode": 509
+    },
+    "captures/cxx/work/Regression/FT17/Helper.sh": {
+      "kind": "symlink",
+      "target": "/lab/fixtures/groups/Regression/FT17/Src/Helper.sh",
+      "mode": 511
+    },
+    "captures/cxx/work/Regression/FT17/Value.h": {
+      "kind": "symlink",
+      "target": "/lab/fixtures/groups/Regression/FT17/Src/Value.h",
+      "mode": 511
+    },
+    "captures/cxx/work/Regression/FT17/alias.link": {
+      "kind": "symlink",
+      "target": "/lab/fixtures/groups/Regression/FT17/Src/alias.link",
+      "mode": 511
+    },
+    "captures/cxx/work/Regression/FT17/data.C.txt": {
+      "kind": "symlink",
+      "target": "/lab/fixtures/groups/Regression/FT17/Src/data.C.txt",
+      "mode": 511
+    },
+    "captures/cxx/work/Regression/FT17/data.c.txt": {
+      "kind": "symlink",
+      "target": "/lab/fixtures/groups/Regression/FT17/Src/data.c.txt",
+      "mode": 511
+    },
+    "captures/cxx/work/Regression/FT17/helper.out": {
+      "kind": "file",
+      "sha256": "7cba6c338bd69736234a355dbf20fa0d640a4e01fee0e10959edacccaf5a8093",
+      "bytes": 13,
+      "mode": 436
+    },
+    "captures/cxx/work/Regression/FT17/helper.sh": {
+      "kind": "symlink",
+      "target": "/lab/fixtures/groups/Regression/FT17/Src/helper.sh",
+      "mode": 511
+    },
+    "captures/cxx/work/Regression/FT17/input.C.link": {
+      "kind": "symlink",
+      "target": "/lab/fixtures/groups/Regression/FT17/Src/input.C.link",
+      "mode": 511
+    },
+    "captures/cxx/work/Regression/FT17/input.c.link": {
+      "kind": "symlink",
+      "target": "/lab/fixtures/groups/Regression/FT17/Src/input.c.link",
+      "mode": 511
+    },
+    "captures/cxx/work/Regression/FT17/sample": {
+      "kind": "file",
+      "sha256": "de9e9d3ef1900b41b44f361988583bd8ff6a3da07ec119659676425bfbcc675a",
+      "bytes": 70856,
+      "mode": 509
+    },
+    "captures/cxx/work/Regression/FT17/sample.C": {
+      "kind": "symlink",
+      "target": "/lab/fixtures/groups/Regression/FT17/Src/sample.C",
+      "mode": 511
+    },
+    "captures/cxx/work/Regression/FT17/sample.C.out": {
+      "kind": "file",
+      "sha256": "4149d6ed8662d263607b03e92c9132807236720a0c8eb65b77f03a9d3d074baa",
+      "bytes": 30,
+      "mode": 436
+    },
+    "captures/cxx/work/Regression/FT17/sample.C.out.diff": {
+      "kind": "file",
+      "sha256": "0329b2ad891962cef23502315a3cf9b94357587bc492edbd4fcd53507f9f53ba",
+      "bytes": 75,
+      "mode": 436
+    },
+    "captures/cxx/work/Regression/FT17/sample.C.out.master": {
+      "kind": "symlink",
+      "target": "/lab/fixtures/groups/Regression/FT17/Src/../Masters/sample.C.out",
+      "mode": 511
+    },
+    "captures/cxx/work/Regression/FT17/sample.compare-C.out.sh": {
+      "kind": "file",
+      "sha256": "e149ce15f8c1f657aa32eda9cd5c5d9cf8581945ff302dd573aa623efcde0046",
+      "bytes": 890,
+      "mode": 511
+    },
+    "captures/cxx/work/Regression/FT17/sample.compile.sh": {
+      "kind": "file",
+      "sha256": "dc40a639c1b5d2e6bef51b15dbeab13efef5f3cd65911f9bc0c5ed0a0d9007c7",
+      "bytes": 848,
+      "mode": 511
+    },
+    "captures/cxx/work/Regression/FT17/sample.env": {
+      "kind": "file",
+      "sha256": "6545b184e323fba361089c2a76de0b115b26842fb29c11fbb3a14d6059c74cca",
+      "bytes": 2137,
+      "mode": 436
+    },
+    "captures/cxx/work/Regression/FT17/sample.err": {
+      "kind": "file",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0,
+      "mode": 436
+    },
+    "captures/cxx/work/Regression/FT17/sample.link.sh": {
+      "kind": "file",
+      "sha256": "5acce70c048e892ee6d9e0a98ad99e0b01c885055d62aa03b5366f7093fa95c5",
+      "bytes": 800,
+      "mode": 511
+    },
+    "captures/cxx/work/Regression/FT17/sample.o": {
+      "kind": "file",
+      "sha256": "8b5c34b6ff790a5f623f464001d3c0f5b5a06408d7a8338dc00f9ab7c7f7c8a1",
+      "bytes": 3232,
+      "mode": 436
+    },
+    "captures/cxx/work/Regression/FT17/sample.result": {
+      "kind": "file",
+      "sha256": "461325dffd71fed76022e3abcb471822b2b7da0bd0a45d623fd68d05e7fac465",
+      "bytes": 11,
+      "mode": 436
+    },
+    "captures/cxx/work/Regression/FT17/sample.run.sh": {
+      "kind": "file",
+      "sha256": "91ee4cbe5601a1522977c61bb4bb461afc01910d86352372b7bf4624343a966f",
+      "bytes": 676,
+      "mode": 511
+    },
+    "captures/cxx/work/Regression/FT17/sample.sh": {
+      "kind": "file",
+      "sha256": "558ff69d59b662e7011a0741a5f5ef0e2f800efb5e9f35638953c509fc7ca4cb",
+      "bytes": 1502,
+      "mode": 511
+    },
+    "captures/cxx/work/Regression/FT17/tool.link": {
+      "kind": "symlink",
+      "target": "/lab/fixtures/groups/Regression/FT17/Src/tool.link",
+      "mode": 511
+    },
+    "captures/cxx/work/Regression/FT17/value.h": {
+      "kind": "symlink",
+      "target": "/lab/fixtures/groups/Regression/FT17/Src/value.h",
+      "mode": 511
+    },
+    "captures/cxx/work/TMEnv": {
+      "kind": "file",
+      "sha256": "38064ead9016cd7add137fd4258a5144ed25f020242dd14cf9cf29db37295245",
+      "bytes": 7260,
+      "mode": 436
+    },
+    "captures/cxx/work/TMUnits": {
+      "kind": "file",
+      "sha256": "7f47783c6574ffe2f88f256338979260a197842d930ac7db09938234769c4490",
+      "bytes": 19,
+      "mode": 436
+    },
+    "captures/cxx/work/TMmsgs": {
+      "kind": "directory",
+      "mode": 509
+    },
+    "captures/cxx/work/TMmsgs/enumfile.1": {
+      "kind": "file",
+      "sha256": "5b42e2ef1841b52158b7bada459fe0a5eb8a1f0b12acce9c78c2e0dcbfafe223",
+      "bytes": 25,
+      "mode": 436
+    },
+    "captures/cxx/work/TMmsgs/result.1": {
+      "kind": "file",
+      "sha256": "6efaa405752a740034d880570e8ee42a44c9b4931bdc6455543a6b8887dafd54",
+      "bytes": 36,
+      "mode": 436
+    },
+    "captures/cxx/work/log.header": {
+      "kind": "file",
+      "sha256": "24ee4ad7db1201fd5f10e48324ae13ce6a4a4b72ebdc2559597b23836b051487",
+      "bytes": 585,
+      "mode": 436
+    },
+    "captures/joint": {
+      "kind": "directory",
+      "mode": 493
+    },
+    "captures/joint/summary.log": {
+      "kind": "file",
+      "sha256": "a2ae3110c4afc35bcf1952e4a06e58a2669c6118b278eafc96d8f63b79b0dd88",
+      "bytes": 951,
+      "mode": 436
+    },
+    "captures/joint/work": {
+      "kind": "directory",
+      "mode": 509
+    },
+    "captures/joint/work/Regression": {
+      "kind": "directory",
+      "mode": 509
+    },
+    "captures/joint/work/Regression/FT17": {
+      "kind": "directory",
+      "mode": 509
+    },
+    "captures/joint/work/Regression/FT17/Helper.sh": {
+      "kind": "symlink",
+      "target": "/lab/fixtures/groups/Regression/FT17/Src/Helper.sh",
+      "mode": 511
+    },
+    "captures/joint/work/Regression/FT17/Value.h": {
+      "kind": "symlink",
+      "target": "/lab/fixtures/groups/Regression/FT17/Src/Value.h",
+      "mode": 511
+    },
+    "captures/joint/work/Regression/FT17/alias.link": {
+      "kind": "symlink",
+      "target": "/lab/fixtures/groups/Regression/FT17/Src/alias.link",
+      "mode": 511
+    },
+    "captures/joint/work/Regression/FT17/data.C.txt": {
+      "kind": "symlink",
+      "target": "/lab/fixtures/groups/Regression/FT17/Src/data.C.txt",
+      "mode": 511
+    },
+    "captures/joint/work/Regression/FT17/data.c.txt": {
+      "kind": "symlink",
+      "target": "/lab/fixtures/groups/Regression/FT17/Src/data.c.txt",
+      "mode": 511
+    },
+    "captures/joint/work/Regression/FT17/helper.out": {
+      "kind": "file",
+      "sha256": "7cba6c338bd69736234a355dbf20fa0d640a4e01fee0e10959edacccaf5a8093",
+      "bytes": 13,
+      "mode": 436
+    },
+    "captures/joint/work/Regression/FT17/helper.sh": {
+      "kind": "symlink",
+      "target": "/lab/fixtures/groups/Regression/FT17/Src/helper.sh",
+      "mode": 511
+    },
+    "captures/joint/work/Regression/FT17/input.C.link": {
+      "kind": "symlink",
+      "target": "/lab/fixtures/groups/Regression/FT17/Src/input.C.link",
+      "mode": 511
+    },
+    "captures/joint/work/Regression/FT17/input.c.link": {
+      "kind": "symlink",
+      "target": "/lab/fixtures/groups/Regression/FT17/Src/input.c.link",
+      "mode": 511
+    },
+    "captures/joint/work/Regression/FT17/sample": {
+      "kind": "file",
+      "sha256": "2934d97d31975bf8441a923c2f37e3a414da0ab2f50818bc7382984a8445819c",
+      "bytes": 70632,
+      "mode": 509
+    },
+    "captures/joint/work/Regression/FT17/sample.C": {
+      "kind": "symlink",
+      "target": "/lab/fixtures/groups/Regression/FT17/Src/sample.C",
+      "mode": 511
+    },
+    "captures/joint/work/Regression/FT17/sample.c": {
+      "kind": "symlink",
+      "target": "/lab/fixtures/groups/Regression/FT17/Src/sample.c",
+      "mode": 511
+    },
+    "captures/joint/work/Regression/FT17/sample.compare-out.sh": {
+      "kind": "file",
+      "sha256": "b8dd2ede212ed663f36a15b770d7d967fef87b72d03b648568b92866565a67bd",
+      "bytes": 874,
+      "mode": 511
+    },
+    "captures/joint/work/Regression/FT17/sample.compile.sh": {
+      "kind": "file",
+      "sha256": "99f250a7d831b7eb256bc9bc3d64018650529890c06f2416258f90c105b0edbf",
+      "bytes": 846,
+      "mode": 511
+    },
+    "captures/joint/work/Regression/FT17/sample.env": {
+      "kind": "file",
+      "sha256": "f71a28f92dfb6e9b76a62ec37de7257248c7212477158a2893aefce79beeaaf6",
+      "bytes": 2137,
+      "mode": 436
+    },
+    "captures/joint/work/Regression/FT17/sample.err": {
+      "kind": "file",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0,
+      "mode": 436
+    },
+    "captures/joint/work/Regression/FT17/sample.link.sh": {
+      "kind": "file",
+      "sha256": "6bdf13f69e347c3c98ded0d2a591636ae687b4adabaf0c592fd2bbde14dddfde",
+      "bytes": 798,
+      "mode": 511
+    },
+    "captures/joint/work/Regression/FT17/sample.o": {
+      "kind": "file",
+      "sha256": "93445e0584f5ea465a31a0c7d947b06ce0704a25bcb4287ae755ad76f4ac9929",
+      "bytes": 2944,
+      "mode": 436
+    },
+    "captures/joint/work/Regression/FT17/sample.out": {
+      "kind": "file",
+      "sha256": "6c471fb6060d79420512f8b53056c3881ebfc2f3405ff7dafaa8017dff58ecd2",
+      "bytes": 26,
+      "mode": 436
+    },
+    "captures/joint/work/Regression/FT17/sample.out.diff": {
+      "kind": "file",
+      "sha256": "4f4d69b2ddf63152df4b935c25dd7b4636f8fbf9a4ee9b90455e3003e660d713",
+      "bytes": 90,
+      "mode": 436
+    },
+    "captures/joint/work/Regression/FT17/sample.out.master": {
+      "kind": "symlink",
+      "target": "/lab/fixtures/groups/Regression/FT17/Src/../Masters/sample.out",
+      "mode": 511
+    },
+    "captures/joint/work/Regression/FT17/sample.result": {
+      "kind": "file",
+      "sha256": "461325dffd71fed76022e3abcb471822b2b7da0bd0a45d623fd68d05e7fac465",
+      "bytes": 11,
+      "mode": 436
+    },
+    "captures/joint/work/Regression/FT17/sample.run.sh": {
+      "kind": "file",
+      "sha256": "aa8bc409c5c699016484ad7973ce2b3787e986aa439b2d3329763441b8cde050",
+      "bytes": 670,
+      "mode": 511
+    },
+    "captures/joint/work/Regression/FT17/sample.sh": {
+      "kind": "file",
+      "sha256": "f7745eaa87f6067b260070abdf60d99673bd04ae106e9840b930926b5ceed999",
+      "bytes": 1500,
+      "mode": 511
+    },
+    "captures/joint/work/Regression/FT17/tool.link": {
+      "kind": "symlink",
+      "target": "/lab/fixtures/groups/Regression/FT17/Src/tool.link",
+      "mode": 511
+    },
+    "captures/joint/work/Regression/FT17/value.h": {
+      "kind": "symlink",
+      "target": "/lab/fixtures/groups/Regression/FT17/Src/value.h",
+      "mode": 511
+    },
+    "captures/joint/work/TMEnv": {
+      "kind": "file",
+      "sha256": "f1ccf03c1a1e3b1e82a05e73fdb39b716c82e8d6a6df79aecf300f5d9e6ee062",
+      "bytes": 7256,
+      "mode": 436
+    },
+    "captures/joint/work/TMUnits": {
+      "kind": "file",
+      "sha256": "7f47783c6574ffe2f88f256338979260a197842d930ac7db09938234769c4490",
+      "bytes": 19,
+      "mode": 436
+    },
+    "captures/joint/work/TMmsgs": {
+      "kind": "directory",
+      "mode": 509
+    },
+    "captures/joint/work/TMmsgs/enumfile.1": {
+      "kind": "file",
+      "sha256": "5ffa4cc178fdcf8f3a70272c269a588225cb99600bddda83de31e92153d877ff",
+      "bytes": 50,
+      "mode": 436
+    },
+    "captures/joint/work/TMmsgs/result.1": {
+      "kind": "file",
+      "sha256": "0987b3ebdab5f840e311ccb3b35b2b2dd8dcd6ff01e3111be2da72c632a1f367",
+      "bytes": 72,
+      "mode": 436
+    },
+    "captures/joint/work/log.header": {
+      "kind": "file",
+      "sha256": "6e249638a7fcbee8960eb6d69d3c3eb33cd7f974c19c679b06ffb4b7fd08b2cc",
+      "bytes": 562,
+      "mode": 436
+    },
+    "fixtures": {
+      "kind": "directory",
+      "mode": 493
+    },
+    "fixtures/groups": {
+      "kind": "directory",
+      "mode": 493
+    },
+    "fixtures/groups/Regression": {
+      "kind": "directory",
+      "mode": 493
+    },
+    "fixtures/groups/Regression/FT17": {
+      "kind": "directory",
+      "mode": 493
+    },
+    "fixtures/groups/Regression/FT17/Masters": {
+      "kind": "directory",
+      "mode": 493
+    },
+    "fixtures/groups/Regression/FT17/Masters/sample.C.out": {
+      "kind": "file",
+      "sha256": "4febdf8e051463639b9889fca19b7cfcb89ccf31394a0bf6e6bcd96c20f78e3f",
+      "bytes": 33,
+      "mode": 292
+    },
+    "fixtures/groups/Regression/FT17/Masters/sample.c.out": {
+      "kind": "file",
+      "sha256": "0e9de171600ec081409fe0c7e47f1bde6dcc14fafdcc7f9430453a286a0115be",
+      "bytes": 29,
+      "mode": 292
+    },
+    "fixtures/groups/Regression/FT17/Masters/sample.out": {
+      "kind": "file",
+      "sha256": "44d79fb8eedafdea9ffa4a56bc5f9820cb039f2313025fa80a1b33b9884c7a3e",
+      "bytes": 52,
+      "mode": 420
+    },
+    "fixtures/groups/Regression/FT17/Src": {
+      "kind": "directory",
+      "mode": 493
+    },
+    "fixtures/groups/Regression/FT17/Src/Helper.sh": {
+      "kind": "file",
+      "sha256": "74b9c87f006ced9580d229251bd4fb4d5e5c708ab241abe681e2bcf02fa1596c",
+      "bytes": 44,
+      "mode": 416
+    },
+    "fixtures/groups/Regression/FT17/Src/Value.h": {
+      "kind": "file",
+      "sha256": "22d51cee739df726813b6753f91d78ecdc8a4243ea8131943193d3845e738eae",
+      "bytes": 17,
+      "mode": 292
+    },
+    "fixtures/groups/Regression/FT17/Src/absolute-input.link": {
+      "kind": "symlink",
+      "target": "/lab/fixtures/groups/Regression/FT17/Src/data.C.txt",
+      "mode": 511
+    },
+    "fixtures/groups/Regression/FT17/Src/alias.link": {
+      "kind": "symlink",
+      "target": "tool.link",
+      "mode": 511
+    },
+    "fixtures/groups/Regression/FT17/Src/data.C.txt": {
+      "kind": "file",
+      "sha256": "f60f1316bb8ab9a8b9a1ce55f455ab2677a435123e51a48f3669ea464699b2e5",
+      "bytes": 10,
+      "mode": 288
+    },
+    "fixtures/groups/Regression/FT17/Src/data.c.txt": {
+      "kind": "file",
+      "sha256": "5e5b6c76d62bd0db8437a65eef2f921783a2383781b889b2b2662b687078fef8",
+      "bytes": 8,
+      "mode": 288
+    },
+    "fixtures/groups/Regression/FT17/Src/helper.sh": {
+      "kind": "file",
+      "sha256": "8164148d30ab6efa6ff85e64f83bb2d35cfbe8a460f6540e4b5a497250ef76ec",
+      "bytes": 34,
+      "mode": 489
+    },
+    "fixtures/groups/Regression/FT17/Src/input.C.link": {
+      "kind": "symlink",
+      "target": "data.C.txt",
+      "mode": 511
+    },
+    "fixtures/groups/Regression/FT17/Src/input.c.link": {
+      "kind": "symlink",
+      "target": "data.c.txt",
+      "mode": 511
+    },
+    "fixtures/groups/Regression/FT17/Src/missing.link": {
+      "kind": "symlink",
+      "target": "absent.txt",
+      "mode": 511
+    },
+    "fixtures/groups/Regression/FT17/Src/sample.C": {
+      "kind": "file",
+      "sha256": "3144f16e83c0efc082c103db48d1f7de34722a6fc3f25af1bb2d2790092d18a0",
+      "bytes": 684,
+      "mode": 420
+    },
+    "fixtures/groups/Regression/FT17/Src/sample.c": {
+      "kind": "file",
+      "sha256": "007f7ea36f35411c4fbf927fc7e28544565d524f27b8d5217e9d61d22970c4d9",
+      "bytes": 661,
+      "mode": 420
+    },
+    "fixtures/groups/Regression/FT17/Src/tool.link": {
+      "kind": "symlink",
+      "target": "helper.sh",
+      "mode": 511
+    },
+    "fixtures/groups/Regression/FT17/Src/value.h": {
+      "kind": "file",
+      "sha256": "016b1acdeaf15af41f6ba3a31aafc53b669bbdf165ba888b061de44082e9b09f",
+      "bytes": 17,
+      "mode": 292
+    },
+    "fixtures/groups/Regression/tmconfig": {
+      "kind": "file",
+      "sha256": "5cc6cc455a02748a70acc98e32616c23874e71cc5131c09575c180fdb36ae31d",
+      "bytes": 335,
+      "mode": 420
+    },
+    "fixtures/phase0.opt": {
+      "kind": "file",
+      "sha256": "dccb5d19f3c33ad39c486a619b608493f0710810876fbff2f6a1810befb77b71",
+      "bytes": 608,
+      "mode": 420
+    }
+  }
+}

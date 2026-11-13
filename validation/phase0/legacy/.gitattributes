@@ -50,3 +50,9 @@ evidence/ft15-001/replay/** -text whitespace=-blank-at-eol,-blank-at-eof
 
 # Preserve exact FT16 workspace/partial-stream archives without text conversion.
 evidence/ft16-001/**/*.tar.gz -text
+
+# Preserve exact FT17 archive/content objects and raw legacy diagnostics.
+evidence/ft17-001/**/*.gz -text
+evidence/ft17-001/**/*.stdout -text whitespace=-blank-at-eol,-blank-at-eof
+evidence/ft17-001/**/*.stderr -text whitespace=-blank-at-eol,-blank-at-eof
+evidence/ft17-001/**/*.run-output -text whitespace=-blank-at-eol,-blank-at-eof
