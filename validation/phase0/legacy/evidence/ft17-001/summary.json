@@ -1,0 +1,25 @@
+{
+  "status": "pass_for_isolated_case_permission_link_contracts",
+  "image_id": "sha256:747873867110897321865b8790204c0d42a9d51357dce8c3334f50c59d6e916c",
+  "original_test_ids": [
+    "Regression/FT17/sample.C",
+    "Regression/FT17/sample.c"
+  ],
+  "native_case_sensitive": false,
+  "native_materialization": "blocked",
+  "logical_entries": 135,
+  "stored_objects": 59,
+  "tm_executions": 3,
+  "saved_phase_replays": 8,
+  "original_container_removed_before_reconstruction": true,
+  "original_container_name": "cti-ft17-624014fadab8",
+  "earlier_evidence_unchanged": true,
+  "framework_unchanged": true,
+  "sealed_unchanged": true,
+  "input_bundle_unchanged": true,
+  "all_workers_removed": true,
+  "same_basename_overwrite_observed": true,
+  "framework_fixed": false,
+  "production_adapter_implemented": false,
+  "collision_damaged_checkout_used": false
+}

@@ -1,0 +1,401 @@
+{
+  "cases": [
+    {
+      "id": "Regression/FT17/sample.C",
+      "original": {
+        "id": "Regression/FT17/sample.C",
+        "test": "sample.C",
+        "language": "CXX",
+        "compiler": "/usr/bin/g++",
+        "suffix": "C.out",
+        "key": "cxx",
+        "actual": "CXX|input-CXX|helper-ready|17\n",
+        "master": "CXX|approved-CXX|helper-ready|17\n",
+        "verdict": "DiffPgmOut",
+        "source_link": "/lab/fixtures/groups/Regression/FT17/Src/sample.C",
+        "compile_recipe": "captures/cxx/work/Regression/FT17/sample.compile.sh",
+        "environment": "captures/cxx/work/Regression/FT17/sample.env"
+      },
+      "phases": [
+        {
+          "label": "cxx-compile",
+          "argv": [
+            "bash",
+            "./sample.compile.sh"
+          ],
+          "cwd": "/lab/captures/cxx/work/Regression/FT17",
+          "returncode": 0
+        },
+        {
+          "label": "cxx-link",
+          "argv": [
+            "bash",
+            "./sample.link.sh"
+          ],
+          "cwd": "/lab/captures/cxx/work/Regression/FT17",
+          "returncode": 0
+        },
+        {
+          "label": "cxx-run",
+          "argv": [
+            "bash",
+            "./sample.run.sh"
+          ],
+          "cwd": "/lab/captures/cxx/work/Regression/FT17",
+          "returncode": 0
+        },
+        {
+          "label": "cxx-compare-C.out",
+          "argv": [
+            "bash",
+            "./sample.compare-C.out.sh"
+          ],
+          "cwd": "/lab/captures/cxx/work/Regression/FT17",
+          "returncode": 1
+        }
+      ],
+      "own_master": {
+        "label": "cxx-own-master",
+        "argv": [
+          "bash",
+          "./sample.compare-C.out.sh"
+        ],
+        "cwd": "/lab/captures/cxx/work/Regression/FT17",
+        "returncode": 0
+      },
+      "crossed_master": {
+        "label": "cxx-crossed-master",
+        "argv": [
+          "bash",
+          "./sample.compare-C.out.sh"
+        ],
+        "cwd": "/lab/captures/cxx/work/Regression/FT17",
+        "returncode": 1
+      },
+      "without_execute": {
+        "label": "cxx-nonexecutable",
+        "argv": [
+          "bash",
+          "./sample.run.sh"
+        ],
+        "cwd": "/lab/captures/cxx/work/Regression/FT17",
+        "returncode": 22,
+        "target_mode": 416,
+        "legacy_result": "ExecErr",
+        "retained_diagnostic": "cxx-nonexecutable.run-output"
+      },
+      "restored_execute": {
+        "label": "cxx-permission-restored",
+        "argv": [
+          "bash",
+          "./sample.run.sh"
+        ],
+        "cwd": "/lab/captures/cxx/work/Regression/FT17",
+        "returncode": 0,
+        "target_mode": 489
+      }
+    },
+    {
+      "id": "Regression/FT17/sample.c",
+      "original": {
+        "id": "Regression/FT17/sample.c",
+        "test": "sample.c",
+        "language": "CC",
+        "compiler": "/usr/bin/gcc",
+        "suffix": "c.out",
+        "key": "c",
+        "actual": "C|input-c|helper-ready|23\n",
+        "master": "C|approved-c|helper-ready|23\n",
+        "verdict": "DiffPgmOut",
+        "source_link": "/lab/fixtures/groups/Regression/FT17/Src/sample.c",
+        "compile_recipe": "captures/c/work/Regression/FT17/sample.compile.sh",
+        "environment": "captures/c/work/Regression/FT17/sample.env"
+      },
+      "phases": [
+        {
+          "label": "c-compile",
+          "argv": [
+            "bash",
+            "./sample.compile.sh"
+          ],
+          "cwd": "/lab/captures/c/work/Regression/FT17",
+          "returncode": 0
+        },
+        {
+          "label": "c-link",
+          "argv": [
+            "bash",
+            "./sample.link.sh"
+          ],
+          "cwd": "/lab/captures/c/work/Regression/FT17",
+          "returncode": 0
+        },
+        {
+          "label": "c-run",
+          "argv": [
+            "bash",
+            "./sample.run.sh"
+          ],
+          "cwd": "/lab/captures/c/work/Regression/FT17",
+          "returncode": 0
+        },
+        {
+          "label": "c-compare-c.out",
+          "argv": [
+            "bash",
+            "./sample.compare-c.out.sh"
+          ],
+          "cwd": "/lab/captures/c/work/Regression/FT17",
+          "returncode": 1
+        }
+      ],
+      "own_master": {
+        "label": "c-own-master",
+        "argv": [
+          "bash",
+          "./sample.compare-c.out.sh"
+        ],
+        "cwd": "/lab/captures/c/work/Regression/FT17",
+        "returncode": 0
+      },
+      "crossed_master": {
+        "label": "c-crossed-master",
+        "argv": [
+          "bash",
+          "./sample.compare-c.out.sh"
+        ],
+        "cwd": "/lab/captures/c/work/Regression/FT17",
+        "returncode": 1
+      },
+      "without_execute": {
+        "label": "c-nonexecutable",
+        "argv": [
+          "bash",
+          "./sample.run.sh"
+        ],
+        "cwd": "/lab/captures/c/work/Regression/FT17",
+        "returncode": 22,
+        "target_mode": 416,
+        "legacy_result": "ExecErr",
+        "retained_diagnostic": "c-nonexecutable.run-output"
+      },
+      "restored_execute": {
+        "label": "c-permission-restored",
+        "argv": [
+          "bash",
+          "./sample.run.sh"
+        ],
+        "cwd": "/lab/captures/c/work/Regression/FT17",
+        "returncode": 0,
+        "target_mode": 489
+      }
+    }
+  ],
+  "case_sensitive": true,
+  "links": {
+    "input.C.link": {
+      "target": "data.C.txt",
+      "resolved": "/lab/fixtures/groups/Regression/FT17/Src/data.C.txt",
+      "exists": true
+    },
+    "input.c.link": {
+      "target": "data.c.txt",
+      "resolved": "/lab/fixtures/groups/Regression/FT17/Src/data.c.txt",
+      "exists": true
+    },
+    "alias.link": {
+      "target": "tool.link",
+      "resolved": "/lab/fixtures/groups/Regression/FT17/Src/helper.sh",
+      "exists": true
+    },
+    "tool.link": {
+      "target": "helper.sh",
+      "resolved": "/lab/fixtures/groups/Regression/FT17/Src/helper.sh",
+      "exists": true
+    },
+    "absolute-input.link": {
+      "target": "/lab/fixtures/groups/Regression/FT17/Src/data.C.txt",
+      "resolved": "/lab/fixtures/groups/Regression/FT17/Src/data.C.txt",
+      "exists": true
+    },
+    "missing.link": {
+      "target": "absent.txt",
+      "resolved": "/lab/fixtures/groups/Regression/FT17/Src/absent.txt",
+      "exists": false
+    }
+  },
+  "archive_reference_unchanged": true,
+  "original_logical_paths_absent_before_reconstruction": true,
+  "framework_before": {
+    "files": 2654,
+    "id": "1584e7b404a016da21ea8bd4a5c3ee2d30a1ee1424ece1d21deab627b00e1de2"
+  },
+  "framework_after": {
+    "id": "1584e7b404a016da21ea8bd4a5c3ee2d30a1ee1424ece1d21deab627b00e1de2",
+    "files": 2654
+  },
+  "records": [
+    {
+      "label": "source-helper-chain",
+      "argv": [
+        "bash",
+        "-c",
+        "/lab/fixtures/groups/Regression/FT17/Src/alias.link"
+      ],
+      "cwd": null,
+      "returncode": 0
+    },
+    {
+      "label": "cxx-compile",
+      "argv": [
+        "bash",
+        "./sample.compile.sh"
+      ],
+      "cwd": "/lab/captures/cxx/work/Regression/FT17",
+      "returncode": 0
+    },
+    {
+      "label": "cxx-link",
+      "argv": [
+        "bash",
+        "./sample.link.sh"
+      ],
+      "cwd": "/lab/captures/cxx/work/Regression/FT17",
+      "returncode": 0
+    },
+    {
+      "label": "cxx-run",
+      "argv": [
+        "bash",
+        "./sample.run.sh"
+      ],
+      "cwd": "/lab/captures/cxx/work/Regression/FT17",
+      "returncode": 0
+    },
+    {
+      "label": "cxx-compare-C.out",
+      "argv": [
+        "bash",
+        "./sample.compare-C.out.sh"
+      ],
+      "cwd": "/lab/captures/cxx/work/Regression/FT17",
+      "returncode": 1
+    },
+    {
+      "label": "cxx-own-master",
+      "argv": [
+        "bash",
+        "./sample.compare-C.out.sh"
+      ],
+      "cwd": "/lab/captures/cxx/work/Regression/FT17",
+      "returncode": 0
+    },
+    {
+      "label": "cxx-crossed-master",
+      "argv": [
+        "bash",
+        "./sample.compare-C.out.sh"
+      ],
+      "cwd": "/lab/captures/cxx/work/Regression/FT17",
+      "returncode": 1
+    },
+    {
+      "label": "cxx-nonexecutable",
+      "argv": [
+        "bash",
+        "./sample.run.sh"
+      ],
+      "cwd": "/lab/captures/cxx/work/Regression/FT17",
+      "returncode": 22,
+      "target_mode": 416,
+      "legacy_result": "ExecErr",
+      "retained_diagnostic": "cxx-nonexecutable.run-output"
+    },
+    {
+      "label": "cxx-permission-restored",
+      "argv": [
+        "bash",
+        "./sample.run.sh"
+      ],
+      "cwd": "/lab/captures/cxx/work/Regression/FT17",
+      "returncode": 0,
+      "target_mode": 489
+    },
+    {
+      "label": "c-compile",
+      "argv": [
+        "bash",
+        "./sample.compile.sh"
+      ],
+      "cwd": "/lab/captures/c/work/Regression/FT17",
+      "returncode": 0
+    },
+    {
+      "label": "c-link",
+      "argv": [
+        "bash",
+        "./sample.link.sh"
+      ],
+      "cwd": "/lab/captures/c/work/Regression/FT17",
+      "returncode": 0
+    },
+    {
+      "label": "c-run",
+      "argv": [
+        "bash",
+        "./sample.run.sh"
+      ],
+      "cwd": "/lab/captures/c/work/Regression/FT17",
+      "returncode": 0
+    },
+    {
+      "label": "c-compare-c.out",
+      "argv": [
+        "bash",
+        "./sample.compare-c.out.sh"
+      ],
+      "cwd": "/lab/captures/c/work/Regression/FT17",
+      "returncode": 1
+    },
+    {
+      "label": "c-own-master",
+      "argv": [
+        "bash",
+        "./sample.compare-c.out.sh"
+      ],
+      "cwd": "/lab/captures/c/work/Regression/FT17",
+      "returncode": 0
+    },
+    {
+      "label": "c-crossed-master",
+      "argv": [
+        "bash",
+        "./sample.compare-c.out.sh"
+      ],
+      "cwd": "/lab/captures/c/work/Regression/FT17",
+      "returncode": 1
+    },
+    {
+      "label": "c-nonexecutable",
+      "argv": [
+        "bash",
+        "./sample.run.sh"
+      ],
+      "cwd": "/lab/captures/c/work/Regression/FT17",
+      "returncode": 22,
+      "target_mode": 416,
+      "legacy_result": "ExecErr",
+      "retained_diagnostic": "c-nonexecutable.run-output"
+    },
+    {
+      "label": "c-permission-restored",
+      "argv": [
+        "bash",
+        "./sample.run.sh"
+      ],
+      "cwd": "/lab/captures/c/work/Regression/FT17",
+      "returncode": 0,
+      "target_mode": 489
+    }
+  ]
+}

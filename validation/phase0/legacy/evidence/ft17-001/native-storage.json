@@ -1,0 +1,91 @@
+{
+  "os": "Darwin",
+  "decision": {
+    "status": "blocked",
+    "reason": "CaseSensitiveFilesystemRequired",
+    "case_sensitive": false,
+    "conflicts": [
+      [
+        "captures/c/work/Regression/FT17/Helper.sh",
+        "captures/c/work/Regression/FT17/helper.sh"
+      ],
+      [
+        "captures/c/work/Regression/FT17/Value.h",
+        "captures/c/work/Regression/FT17/value.h"
+      ],
+      [
+        "captures/c/work/Regression/FT17/data.C.txt",
+        "captures/c/work/Regression/FT17/data.c.txt"
+      ],
+      [
+        "captures/c/work/Regression/FT17/input.C.link",
+        "captures/c/work/Regression/FT17/input.c.link"
+      ],
+      [
+        "captures/cxx/work/Regression/FT17/Helper.sh",
+        "captures/cxx/work/Regression/FT17/helper.sh"
+      ],
+      [
+        "captures/cxx/work/Regression/FT17/Value.h",
+        "captures/cxx/work/Regression/FT17/value.h"
+      ],
+      [
+        "captures/cxx/work/Regression/FT17/data.C.txt",
+        "captures/cxx/work/Regression/FT17/data.c.txt"
+      ],
+      [
+        "captures/cxx/work/Regression/FT17/input.C.link",
+        "captures/cxx/work/Regression/FT17/input.c.link"
+      ],
+      [
+        "captures/joint/work/Regression/FT17/Helper.sh",
+        "captures/joint/work/Regression/FT17/helper.sh"
+      ],
+      [
+        "captures/joint/work/Regression/FT17/Value.h",
+        "captures/joint/work/Regression/FT17/value.h"
+      ],
+      [
+        "captures/joint/work/Regression/FT17/data.C.txt",
+        "captures/joint/work/Regression/FT17/data.c.txt"
+      ],
+      [
+        "captures/joint/work/Regression/FT17/input.C.link",
+        "captures/joint/work/Regression/FT17/input.c.link"
+      ],
+      [
+        "captures/joint/work/Regression/FT17/sample.C",
+        "captures/joint/work/Regression/FT17/sample.c"
+      ],
+      [
+        "fixtures/groups/Regression/FT17/Masters/sample.C.out",
+        "fixtures/groups/Regression/FT17/Masters/sample.c.out"
+      ],
+      [
+        "fixtures/groups/Regression/FT17/Src/Helper.sh",
+        "fixtures/groups/Regression/FT17/Src/helper.sh"
+      ],
+      [
+        "fixtures/groups/Regression/FT17/Src/Value.h",
+        "fixtures/groups/Regression/FT17/Src/value.h"
+      ],
+      [
+        "fixtures/groups/Regression/FT17/Src/data.C.txt",
+        "fixtures/groups/Regression/FT17/Src/data.c.txt"
+      ],
+      [
+        "fixtures/groups/Regression/FT17/Src/input.C.link",
+        "fixtures/groups/Regression/FT17/Src/input.c.link"
+      ],
+      [
+        "fixtures/groups/Regression/FT17/Src/sample.C",
+        "fixtures/groups/Regression/FT17/Src/sample.c"
+      ]
+    ],
+    "destination_created": false
+  },
+  "objects": 59,
+  "logical_entries": 135,
+  "native_filenames_are_object_keys": true,
+  "test_ids_renamed": false
+}

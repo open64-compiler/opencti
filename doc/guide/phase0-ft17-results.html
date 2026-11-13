@@ -1,0 +1,72 @@
+<!--
+Copyright (C) 2011, Hewlett-Packard Development Company, L.P.
+All Rights Reserved.
+Open64 is free software; you can redistribute it and/or modify it under the
+terms of the GNU General Public License as published by the Free Software
+Foundation; either version 2 of the License, or (at your option) any later
+version. Distributed WITHOUT ANY WARRANTY; without even the implied warranty
+of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General
+Public License for more details.
+-->
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>FT17 case-sensitive filenames, permissions and symlinks — OpenCTI</title><style>body{margin:0;background:#f4f6f8;color:#18232e;font:17px/1.6 system-ui,sans-serif}
+main{max-width:1050px;margin:auto;padding:2rem;background:white;min-height:100vh}
+a{color:#075ca8}nav{padding:.7rem 0;border-bottom:1px solid #ccd5dd}
+h1,h2,h3{line-height:1.25;scroll-margin-top:1rem}h2{margin-top:2rem}
+pre{padding:1rem;background:#eff3f7;overflow:auto;border:1px solid #d5dce3}
+code{font: .88em/1.5 ui-monospace,monospace;overflow-wrap:anywhere}
+table{border-collapse:collapse;width:100%;display:block;overflow:auto}
+th,td{padding:.6rem;border:1px solid #ccd5dd;text-align:left;vertical-align:top}
+th{background:#eff3f7}td:first-child{min-width:10rem}footer{border-top:1px solid #ccd5dd;margin-top:2rem;color:#52606b}
+@media(max-width:640px){main{padding:1rem}body{font-size:16px}}
+</style></head><body><main>
+<nav><a href="index.html">CTI documentation</a></nav>
+<h1 id="ft17-case-sensitive-filenames-permissions-and-symlinks">FT17 case-sensitive filenames, permissions and symlinks</h1>
+<p><a href="index.html">Documentation home</a> · <a href="failure-triage-acceptance.html#ft17-filename-identity-permissions-and-links">FT17 acceptance</a> · <a href="architecture.html">Architecture</a> · <a href="../../validation/phase0/legacy/README.md#ft17-case-sensitive-filenames-permissions-and-symlinks">Reproduction</a></p>
+<h2 id="result-and-scope">Result and scope</h2>
+<p>FT17&#x27;s isolated preservation contract passes. Distinct <code>sample.C</code> and <code>sample.c</code>, their own case-distinct masters, executable/nonexecutable helpers, read-only inputs/headers and symlinks survive native Mac storage and reconstruction in a new Linux worker after the original container is deleted. Eight independent saved-phase replays retain the original test IDs, compiler selection and comparison outcomes.</p>
+<p>**The legacy regression driver also has a separate same-basename overwrite hazard.** When both cases run in one unit/workspace, it enumerates both identities but retains only the later test&#x27;s shared compile recipe, object, executable and result. The reference preserves this discrepancy; the framework is unchanged.</p>
+<p>The reference is <code>runs/ft17-004</code>, completed on 2026-11-12 Pacific time. Compact evidence is <a href="../../validation/phase0/legacy/evidence/ft17-001/summary.json">`evidence/ft17-001`</a>. These are synthetic C/C++ fixtures and validation-only storage/materialization tools, not a production artifact adapter or dashboard acceptance result.</p>
+<h2 id="case-identities-compilers-and-masters">Case identities, compilers and masters</h2>
+<p>The fixture is generated inside case-sensitive Linux storage. It does not copy the checkout&#x27;s collision-damaged test files and never exports expanded case-distinct source trees to the Mac.</p>
+<table><thead><tr><th>Original CTI test ID</th><th>Legacy frontend/compiler</th><th>Original master</th><th>Original and replay outcome</th></tr></thead><tbody>
+<tr><td><code>Regression/FT17/sample.C</code></td><td><code>CXX</code>, <code>/usr/bin/g++</code></td><td><code>sample.C.out</code></td><td><code>DiffPgmOut</code></td></tr>
+<tr><td><code>Regression/FT17/sample.c</code></td><td><code>CC</code>, <code>/usr/bin/gcc</code></td><td><code>sample.c.out</code></td><td><code>DiffPgmOut</code></td></tr>
+</tbody></table>
+<p>Both source files coexist in the same <code>Src</code> directory. <code>EXT_TO_FE=c:CC C:CXX</code> and <code>LANG_TYPE=ALL</code> preserve the case-sensitive extension mapping. The C file rejects C++ compilation; the C++ file requires <code>__cplusplus</code> and a C++ standard header. The saved recipes and environment retain their original <code>TESTNAME</code>, selected compiler and source spelling.</p>
+<p>For complete per-test evidence, two stock TM invocations select the exact original filename through <code>TESTS</code>, use separate workspaces, and set <code>OUTPUT_MASTER_SUFFIX=C.out</code> or <code>c.out</code>. These workspaces are storage locations; the original CTI test identities are not renamed. The generated compare recipes are consequently <code>sample.compare-C.out.sh</code> and <code>sample.compare-c.out.sh</code>, rather than <code>sample.compare-out.sh</code>.</p>
+<p>The C++ executable reads <code>input.C.link</code>, includes <code>Value.h</code> and emits <code>CXX|input-CXX|helper-ready|17</code>. The C executable reads <code>input.c.link</code>, includes <code>value.h</code> and emits <code>C|input-c|helper-ready|23</code>. Their captured masters contain different approved input strings, deliberately producing comparison failures. Each saved compile, link and run succeeds; each comparison reproduces <code>DiffPgmOut</code> against its own captured master. Separate private controls feed each comparison its own approved output and obtain status 0, then the other case&#x27;s approved output and obtain status 1. A wrong-case master cannot satisfy the original oracle.</p>
+<h2 id="observed-same-basename-overwrite">Observed same-basename overwrite</h2>
+<p>A third, combined-unit stock run selects both files without a per-case suffix override. A separate sentinel <code>sample.out</code> serves only this control. The unit&#x27;s enumeration and result records preserve both full test IDs and report two mismatches, but both tests strip to the work basename <code>sample</code>.</p>
+<p>The driver creates <code>sample.compile.sh</code>, <code>sample.o</code>, <code>sample</code>, <code>sample.env</code>, <code>sample.sh</code> and <code>sample.result</code> for each case. Its final cleanup moves those files back into the shared unit directory; the later case overwrites the earlier files. The captured control has one retained compile recipe and one result file, despite two enumerated/results identities. The final retained source is recorded without assuming Perl hash traversal order.</p>
+<p>This behavior follows <code>chopSrcExtension</code> and the work-directory/cleanup logic in <code>regressionDriver.pm</code>. Linux filename case sensitivity alone does not solve it. Future storage and execution isolation must use the full test identity, including extension and attempt, for work/evidence separation. FT17 keeps the two independent original captures and the combined control; it does not repair the legacy driver or rename approved tests.</p>
+<h2 id="native-mac-storage-and-reconstruction">Native Mac storage and reconstruction</h2>
+<p>The capture worker produces a logical manifest with 135 entries, an opaque compressed state archive and 59 compressed content-addressed objects. The manifest records exact relative path strings, regular-file content hashes/sizes/modes, directory modes, and symlink targets/modes. Shared content may use one object, while each manifest path retains its own mode and identity. Native object filenames are lowercase hexadecimal hashes, so they do not depend on source filename case.</p>
+<p>The native Mac probe observes a case-insensitive destination. A direct materialization attempt reports <code>CaseSensitiveFilesystemRequired</code>, lists the conflicting paths and stops before creating its destination. It neither renames paths nor selects one case as a winner. The native object store, archive and logical manifest remain usable and unchanged. Error-path collection also retains Docker&#x27;s TAR stream as an opaque file instead of expanding it on the Mac.</p>
+<p>After confirming deletion of the original container, a fresh restricted Linux worker reconstructs <code>/lab</code> from the native manifest/objects. It verifies every actual entry&#x27;s type, digest, size, file/directory mode and link target against the capture before executing recipes. Independently, it extracts the native archive under <code>/archive-check/lab</code> and verifies the same complete manifest. Listing archive members alone is insufficient.</p>
+<p>The original logical <code>/lab</code> paths are intentionally reconstructed because saved recipes and absolute symlinks refer to them. The original Linux workspace no longer exists; these are new worker-local copies. The archive extraction remains an untouched stat/hash reference while the object-based copy supplies the writable replay workspace. Native sealed bundle contents/modes remain identical before and after replay.</p>
+<h2 id="executable-permissions-and-link-semantics">Executable permissions and link semantics</h2>
+<p><code>helper.sh</code> has mode <code>0751</code>; the distinct <code>Helper.sh</code> is nonexecutable <code>0640</code>. Header pairs have mode <code>0444</code>, input pairs <code>0440</code>, and per-case masters <code>0444</code>. Reconstruction checks exact regular-file modes, not merely an executable Boolean.</p>
+<p>The executable is invoked through the relative chain <code>alias.link -&gt; tool.link -&gt; helper.sh</code>. Case-distinct input links point to <code>data.C.txt</code> and <code>data.c.txt</code>. An absolute input link resolves at the reconstructed logical <code>/lab</code> path. <code>missing.link -&gt; absent.txt</code> remains a symlink with an unavailable target; it is not omitted, dereferenced into a file or repaired with fabricated contents. Initial and reconstructed link observations match, including target spelling and resolution.</p>
+<p>The original stock work directories also contain links into the source and master tree. Baseline targets include the literal <code>Src/../Masters</code> spelling. Preservation retains that target verbatim while validating that its normalized destination stays inside the captured <code>/lab</code> closure.</p>
+<p>Private permission controls remove execute bits from the helper reached through the retained chain. The saved run returns nonzero, records <code>ExecErr</code>, and captures the shell&#x27;s “Permission denied” diagnostic. Restoring <code>0751</code> makes the saved run succeed. These mutations affect only the reconstructed writable copy; the source capture/archive/objects and separate extracted reference stay unchanged.</p>
+<p>The materializer verifies object hashes/sizes before creating the destination, rejects duplicate manifest keys, unsafe file parents and symlink targets escaping the declared closure, and refuses to overwrite an existing session. Session ownership belongs to the new worker; the contract tested here covers POSIX modes and symlink identity, not preservation of native ownership, ACLs, extended attributes or hard-link inode identity. Filename tests use ASCII case pairs; Unicode normalization remains outside this fixture.</p>
+<h2 id="isolation-retained-evidence-and-checks">Isolation, retained evidence and checks</h2>
+<p>Both workers use the pinned FT09 Linux ARM64 runtime, with networking disabled, one CPU, 1 GiB memory, all capabilities dropped, <code>no-new-privileges</code>, normal PID isolation and no device requests. Copied tools and the input/sealed bundle are read-only mounts. Only a new export directory is writable. Neither the framework checkout, earlier evidence nor native session databases are mounted.</p>
+<p>Both workers are removed, and the original container&#x27;s absence is observed before the replay worker is created. All 2,654 deployed framework entries and all 1,232 earlier evidence entries remain unchanged. The native input bundle and new sealed evidence retain their initial identities. The pre-existing filename-collision edits are untouched.</p>
+<p>The full reference has 130 regular-file hashes. Compact evidence has 130 hashes plus its index and totals 675,453 bytes. It retains the logical manifest, compressed objects/archive, pre/post extraction stat/hash inventories, exact recipes/environments and captured work inside the bundle, original/replay observations, permission diagnostics, Docker profiles/transcript, copied tools and source/preservation inventories. The large runtime image, development runs and temporary native materializations remain local/ignored. <code>--image-archive</code> supports a relocated prerequisite only when its exact size/hash match the retained runtime.</p>
+<p>Full and compact audits pass, along with twenty offline tests. The tests reject case-folded identities, unsafe native success claims, incorrect compiler/master outcomes, lost execute bits, dereferenced or fabricated links, hidden same-basename overwrite and missing cleanup. Preflight tests cover corrupt/missing objects, duplicate paths, escaping/symlink parents, existing sessions, and independent modes for identical content. The preceding FT16 compact audit also passes unchanged.</p>
+<ul>
+<li><a href="../../validation/phase0/legacy/run_ft17.py">Runner</a></li>
+<li><a href="../../validation/phase0/legacy/ft17/worker.py">Linux capture/replay worker and fixture sources</a></li>
+<li><a href="../../validation/phase0/legacy/ft17/storage.py">Validation-only manifest/object materializer</a></li>
+<li><a href="../../validation/phase0/legacy/verify_ft17.py">Full/compact auditor</a></li>
+<li><a href="../../validation/phase0/legacy/test_verify_ft17.py">Offline tests</a></li>
+<li><a href="../../validation/phase0/legacy/evidence/ft17-001/capture/sealed/manifest.json">Logical filename/mode/link manifest</a></li>
+<li><a href="../../validation/phase0/legacy/evidence/ft17-001/native-storage.json">Native extraction decision</a></li>
+<li><a href="../../validation/phase0/legacy/evidence/ft17-001/capture/results.json">Combined-unit overwrite observation</a></li>
+</ul>
+<p>Production artifact/session integration, repair of the same-basename hazard, dashboard navigation, broader filesystem/permission policy, remote GPU and DSL qualification remain open. Phase 0 is incomplete; FT18 and FT19 are not run.</p>
+<footer>Reconstructed from OpenCTI source, baseline 8c3d603. Generated by doc/tools/build_docs.py.</footer>
+</main></body></html>
