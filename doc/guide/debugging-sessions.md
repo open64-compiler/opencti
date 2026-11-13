@@ -8,7 +8,7 @@ The CLI attaches in the terminal where you run it. The opt-in dashboard adapter 
 
 ## Click a failure to open Terminal
 
-`tools/cti-dashboard` connects the existing dashboard to the session CLI. The failed-case name opens a fresh private Docker session; an adjacent **[details]** link retains the original artifact page. The case-details page also gains **Open preserved failure in Terminal**. Unregistered cases and unavailable or stale bindings keep their existing details links.
+`tools/cti-dashboard` connects the existing dashboard to the session CLI. The failed-case name opens a fresh private Docker session; an adjacent **[details]** link retains the original artifact page. The case-details page also gains **Open preserved failure in Terminal**. The [FT18 browser check](phase0-ft18-results.md) also finds that the current adapter rewrites in-page working/source-file anchors into Terminal links. Expanded file sections and their adjacent **[details]** links remain available; file-list scrolling parity needs a future adapter correction. Unregistered cases and unavailable or stale bindings keep their existing details links.
 
 Install the native URL handler once on your Mac, from the checkout you intend to keep using:
 
@@ -247,3 +247,10 @@ python3 -B validation/session-cli/run_validation.py \
 ```
 
 The CLI's compact acceptance record and offline auditor are in [validation/session-cli](../../validation/session-cli/README.md). The additional [dashboard/Terminal acceptance](../../validation/dashboard-session/README.md) covers the actual three CGI pages with the adapter enabled and disabled, run-log replacement/missing controls, a browser click into a native Terminal, interactive Docker cwd/TTY, saved flags, exit 7 and GDB. The original capture remains unchanged. This synthetic acceptance qualifies the click-to-Terminal slice; broader dashboard scenarios and production/site-specific deployments remain open.
+
+
+## FT18 standalone access and remaining dashboard work
+
+The [FT18 access report](phase0-ft18-results.md) verifies original source/output/master/environment/recipe inspection in copied legacy pages, a real Terminal handoff and a second interactive Docker shell from a relocated portable kit after the fixture dashboard and worker are stopped. The kit uses copied CLI code, relative archive bindings and an immutable image prerequisite; no dashboard registry, original capture path or current checkout is needed. Its download endpoint and packaging are validation tools, not product dashboard features.
+
+An explicitly declared missing baseline blocks normal opening; `--inspection-only` permits inspection while `replay_ready=false`. Supply complete prerequisite declarations rather than treating successful shell initialization as proof of complete evidence. The current UI lacks a general completeness indicator, full original-versus-session artifact distinction and mount-specification/download views. Full FT18/DF38 remains open, including the in-page anchor defect noted above. FT18 leaves the global handler unchanged and invokes the existing native launcher with the browser-observed URL; the earlier click-to-Terminal acceptance remains the evidence for OS URL dispatch.

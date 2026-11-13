@@ -56,3 +56,11 @@ evidence/ft17-001/**/*.gz -text
 evidence/ft17-001/**/*.stdout -text whitespace=-blank-at-eol,-blank-at-eof
 evidence/ft17-001/**/*.stderr -text whitespace=-blank-at-eol,-blank-at-eof
 evidence/ft17-001/**/*.run-output -text whitespace=-blank-at-eol,-blank-at-eof
+
+# Keep exact FT18 portable archives, binary HTTP responses and legacy diagnostics.
+evidence/ft18-001/**/*.tar.gz -text
+evidence/ft18-001/http/*.body -text whitespace=-blank-at-eol,-blank-at-eof,-space-before-tab
+evidence/ft18-001/**/*.stdout -text whitespace=-blank-at-eol,-blank-at-eof
+evidence/ft18-001/**/*.stderr -text whitespace=-blank-at-eol,-blank-at-eof
+# Copied deployment sources retain the original framework's exact whitespace.
+evidence/ft18-001/deployed/** -text whitespace=-blank-at-eol,-blank-at-eof,-space-before-tab

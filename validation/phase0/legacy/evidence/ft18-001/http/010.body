@@ -1,0 +1,373 @@
+/*
+ ====================================================================
+
+ Copyright (C) 2011, Hewlett-Packard Development Company, L.P.
+ All Rights Reserved.
+
+ Open64 is free software; you can redistribute it and/or
+ modify it under the terms of the GNU General Public License
+ as published by the Free Software Foundation; either version 2
+ of the License, or (at your option) any later version.
+
+ Open64 is distributed in the hope that it will be useful,
+ but WITHOUT ANY WARRANTY; without even the implied warranty of
+ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ GNU General Public License for more details.
+
+ You should have received a copy of the GNU General Public License
+ along with this program; if not, write to the Free Software
+ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston,
+ MA  02110-1301, USA.
+
+ ====================================================================
+*/
+BODY {
+	background: #ffffff;
+}
+
+BODY, #bodytext, P, A, TD, TH, DIV, INPUT, SELECT, TEXTAREA {
+	font-size: small;
+	font-family: Arial, Verdana, Helvetica;
+}
+
+
+BODY, #bodytext, P, TD, TH, DIV, INPUT, SELECT, TEXTAREA {
+	color: #000000;
+}
+
+PRE {
+    font-size: medium;
+}
+
+
+
+CAPTION {
+   font-size: large;
+#   font-weight: bold;
+}
+
+
+A {
+	color: #003366;
+}
+
+A:visited {
+	color: #660066;
+}
+
+input.NextGenButton {
+	font-weight: bold;
+	font-size: small;
+	color: #FFFFFF;
+	font-family: Arial, Verdana, Helvetica;
+	padding: 0px;
+	background-color : #666666;
+	border-left : thin groove #FFFFFF;
+	border-right : thin ridge #FFFFFF;
+	border-top : thin groove #FFFFFF;
+	margin: 0px;
+	text-align: center;
+}
+
+Table.RightModuleCalendar {
+	width: 95%;
+	border-color: #000000;
+	text-align:center;
+   border-style: solid;
+   border-width:1px;
+}
+
+Table.RightModuleCalendar TD{
+   font-family: Arial, Verdana, Helvetica;
+   font-size: small;
+   border:solid 1px #666666;
+   padding:3px;
+}
+
+input.LogOnButton {
+	border-right: 0px solid;
+	border-top: 0px solid;
+	font-weight: normal;
+	font-size: small;
+	background: #000000;
+	border-left: 0px solid px;
+	color: #ffffff;
+	border-bottom: 0px solid px;
+	font-family: Arial, Verdana, Helvetica;
+	text-align: left;
+	height: 20px;
+	padding-left: 10px;
+}
+
+TD.DateHeader {
+   background: #666666;
+	color: #FFFFFF;
+	font-size: small;
+  	font-family: Arial, Verdana, Helvetica;
+	text-indent: 10px;
+}
+
+td.ArrowList LI{
+	font-family:Arial, Verdana, Helvetica;
+	font-size : small;
+}
+
+.ModuleLeftNav {
+	width:170px;
+	vertical-align:top;
+}
+
+.BusinessHeader {
+	background-color:#FFFFFF;
+	color: #000000;
+	height: 30px;
+	font-family: Arial, Verdana, Helvetica;
+	font-size:large;
+	padding-left: 10px;
+}
+
+.ModuleWidthSeparator {
+	width: 10px;
+	border: solid;
+}
+
+.ModuleHeader {
+   background: #666666;
+	color: #FFFFFF;
+	font-size: small;
+   font-family: Arial, Verdana, Helvetica;
+   font-weight:bold;
+	padding-left: 10px;
+	padding-right: 10px;
+	height: 20px;
+}
+
+.ModuleHeader A{
+	color:#ffffff;
+	font-weight:normal;
+}
+
+.ModuleHeader A:visited {
+    color: #FFFFFF;
+    font-weight:normal;
+}
+
+.ModuleHeader A:link {
+	color:#ffffff;
+	font-weight:normal;
+}
+
+.ContentHeader {
+   background: #666666;
+	color: #FFFFFF;
+	font-size: small;
+   font-family: Arial, Verdana, Helvetica;
+   font-weight:bold;
+	padding-left: 10px;
+	padding-right: 10px;
+	height: 20px;
+}
+
+.ContentHeader A{
+	color:#ffffff;
+	font-weight:normal;
+}
+
+.ContentHeader A:visited {
+    color: #FFFFFF;
+    font-weight:normal;
+}
+
+.ContentHeader A:link {
+	color:#ffffff;
+	font-weight:normal;
+}
+
+.ModuleHeaderSeparator {
+	background-color: #FFFFFF;
+	height: 10px;
+}
+
+.ModuleHeaderImage {
+	background: #666666;
+	color: #FFFFFF;
+	height: 20px;
+}
+
+.ModuleContent {
+	background-color: #FFFFFF;
+	font-size: small;
+	font-family: Arial, Verdana, Helvetica;
+	font-weight: normal;
+	color: #000000;
+	text-align: left;
+	padding-left: 10px;
+	padding-right: 10px;
+	vertical-align:top;
+}
+
+.ModuleContent P, LI, A, TD, TH, DIV {
+	font-size: small;
+	font-family: Arial, Verdana, Helvetica;
+}
+
+.ContentText {
+	background-color: #FFFFFF;
+	FONT-SIZE: small;
+	FONT-FAMILY: Arial, Verdana, Helvetica;
+	font-weight: normal;
+	COLOR: #000000;
+	TEXT-ALIGN: left;
+	padding-left: 10px;
+	padding-right: 10px;
+	vertical-align:top;
+}
+
+.ModuleText {
+	font-size: small;
+	font-family: Arial, Verdana, Helvetica;
+	font-weight: normal;
+	color: #000000;
+	text-align: left;
+	padding : 0px 10px 0px 0px;
+}
+
+.PageHeader {
+	background-color:#FFFFFF;
+	color: #000000;
+	font-family: Arial, Verdana, Helvetica;
+	font-size: large;
+}
+
+.ModuleContent UL {
+	vertical-align:top;
+}
+
+.ContentText UL {
+	vertical-align:top;
+}
+
+.ModulePageTitleSeparator {
+	background-color: #FFFFFF;
+	height: 20px;
+}
+
+.ModuleSeparator {
+	background-color:#ffffff;
+	height: 25px;
+}
+
+.ArticleDate	{
+	font-family:Arial, Verdana, Helvetica;
+	font-size: xsmall;
+	font-style: italic;
+}
+
+.DateHeader {
+   background: #666666;
+	color: #FFFFFF;
+	font-size: small;
+   font-family: Arial, Verdana, Helvetica;
+	text-indent: 10px;
+	height: 20px;
+	vertical-align: middle;
+}
+
+.RightColumnSetup {
+	padding-right: 5px;
+	text-align: left;
+	vertical-align:top;
+	width: 182px;
+}
+
+.RightModuleHeader {
+   background: #CCCCCC;
+	color: #000000;
+	font-size: small;
+   font-family: Arial, Verdana, Helvetica;
+   font-weight:bold;
+   padding-left: 10px;
+   padding-right: 10px;
+	height: 20px;
+	vertical-align:middle;
+}
+
+
+IMG.ModulePicture {
+	border: 0 none;
+	width: 74px;
+	height: 56px;
+}
+
+IMG.PresidentPicture {
+	margin-bottom: 3px;
+	border: 0;
+	width: 60px;
+	height: 83px;
+	float: left;
+	text-align: left;
+	margin-right: 5px;
+}
+
+LI.RightModuleMore {
+	vertical-align:middle;
+	text-align:left;
+}
+
+.date	{
+	font-family:Arial, Verdana, Helvetica;
+	font-size: xsmall;
+	font-style: italic;
+}
+
+
+NavModuleLink {
+   font-size: small;
+   font-family: Arial, Verdana, Helvetica;
+   font-weight: normal;
+   color: #000000;
+   height: 20px;
+}
+
+.NavModuleTitle {
+   background-color:#FFFFFF;
+   color: #000000;
+   font-family: Arial, Verdana, Helvetica;
+   font-size: large;
+}
+
+.NavModuleSubCategory {
+   font-weight: bold;
+   font-size: small;
+   color: #000000;
+   font-family: Verdana, Arial, Helvetica;
+   height: 20px;
+   padding: 6px 0px 0px;
+}
+
+UL.List
+{
+	margin: 0px 0px 0px 9px;
+	padding : 0px 0px 0px 0px;
+}
+
+UL.IndentList
+{
+	margin: 0px 0px 0px 19px;
+	padding : 0px 0px 0px 0px;
+}
+
+PRE { font-family: mono-space;
+      white-space: pre;
+      font-color: #333333;
+      font-weight: 100;
+      font-size: 12pt;
+      background-color: #eeeeee;
+      padding: 5pt;
+      border-style: solid;
+      border-width: 1pt;
+      border-color: #bebebe;
+    }
+
+a:hover {color: #46e; text-decoration: underline;}
+

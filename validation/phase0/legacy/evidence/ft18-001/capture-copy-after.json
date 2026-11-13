@@ -1,0 +1,58 @@
+{
+  "SHA256SUMS.json": {
+    "sha256": "d1dead2140f9522ba8afc155f754b98a3b525ce9f0b8ba568fbf0436e9e901c0",
+    "mode": 420
+  },
+  "build.log": {
+    "sha256": "444e421c5261c5c522cebbf7f149201187ee80fab0e115dc11072a86e02c2f2d",
+    "mode": 420
+  },
+  "capture.py.log": {
+    "sha256": "c913dbfc25589f89b123c4debfb1bcd0cc9dece2cd101ce1f8a3258940ac44fd",
+    "mode": 420
+  },
+  "docker-version.txt": {
+    "sha256": "4069cca7e3cd674ac7691fabf647faa350580c0f937dc2616f773e8dd60bd609",
+    "mode": 420
+  },
+  "experiment.json": {
+    "sha256": "5a16177dbd04a84dad65942db2fa1e2c07e741445b033904e53674e2a201572e",
+    "mode": 420
+  },
+  "invocation.json": {
+    "sha256": "94a42d556eec328a9882ac52736630147aa7b4e36e39f8aad500a35848809661",
+    "mode": 420
+  },
+  "original-evidence.tar.gz": {
+    "sha256": "c84024ba3b065e10384d9d93024f0024e62e2b812b3f3f8a80ccb64c548ceb75",
+    "mode": 420
+  },
+  "original-inventory.json": {
+    "sha256": "5da530b28240e4f252af7cc4e636e698e34c57007d7c6284f6030e9743fb1608",
+    "mode": 420
+  },
+  "replay-evidence.tar.gz": {
+    "sha256": "eb91f38d6b67d8c9a227d9f527b14b9395e17e358a9c075729800800e034543b",
+    "mode": 420
+  },
+  "replay-results.json": {
+    "sha256": "6b9e283613c91f4cffe81c3cb8e15c26d721391c65da169a5fe8be126e542c1a",
+    "mode": 420
+  },
+  "replay.py.log": {
+    "sha256": "9c627389b80f05b15c1d606000cc7423be98e425322f7376f4d4c4f2803344c2",
+    "mode": 420
+  },
+  "retained-large-artifacts.json": {
+    "sha256": "c1e2a32b576073dcec1d2a8f634afe5fc0203b40edad3ff5473ca5b9dd1f1969",
+    "mode": 420
+  },
+  "runtime.json": {
+    "sha256": "3abb05668764a7cef9f1e1babb332b35332c831082dcc8f281a67bb37b1aab51",
+    "mode": 420
+  },
+  "verification.json": {
+    "sha256": "2b15249ca763224105305a634d4e283c630704f784fc2e00eeec8fe4b4d721e6",
+    "mode": 420
+  }
+}

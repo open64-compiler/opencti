@@ -1,0 +1,19 @@
+{
+  "status": "pass_for_isolated_access_subset_with_reference_gaps",
+  "image_id": "sha256:a119c5e4a42dedbb5cdce10d448efce31b4054018bde56a4e476bc2c529fa62c",
+  "complete_test": "Regression/FT03/output_mismatch.c",
+  "saved_phase_replays": 8,
+  "native_terminal_verified": true,
+  "standalone_interactive_shell_verified": true,
+  "same_bundle_download_sha256": "db5c23da68e76ab051175ae29d5a227da619d9272bd86227c7883627f26e5105",
+  "framework_unchanged": true,
+  "earlier_evidence_unchanged": true,
+  "capture_copy_unchanged": true,
+  "production_dashboard_qualified": false,
+  "os_url_dispatch_exercised": false,
+  "product_bundle_download_implemented": false,
+  "product_preservation_status_implemented": false,
+  "product_mount_spec_view_implemented": false,
+  "remote_gpu_tested": false,
+  "all_owned_resources_removed": true
+}

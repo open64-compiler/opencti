@@ -1,0 +1,75 @@
+<!--
+Copyright (C) 2011, Hewlett-Packard Development Company, L.P.
+All Rights Reserved.
+Open64 is free software; you can redistribute it and/or modify it under the
+terms of the GNU General Public License as published by the Free Software
+Foundation; either version 2 of the License, or (at your option) any later
+version. Distributed WITHOUT ANY WARRANTY; without even the implied warranty
+of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General
+Public License for more details.
+-->
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>FT18 dashboard and standalone debugging access — OpenCTI</title><style>body{margin:0;background:#f4f6f8;color:#18232e;font:17px/1.6 system-ui,sans-serif}
+main{max-width:1050px;margin:auto;padding:2rem;background:white;min-height:100vh}
+a{color:#075ca8}nav{padding:.7rem 0;border-bottom:1px solid #ccd5dd}
+h1,h2,h3{line-height:1.25;scroll-margin-top:1rem}h2{margin-top:2rem}
+pre{padding:1rem;background:#eff3f7;overflow:auto;border:1px solid #d5dce3}
+code{font: .88em/1.5 ui-monospace,monospace;overflow-wrap:anywhere}
+table{border-collapse:collapse;width:100%;display:block;overflow:auto}
+th,td{padding:.6rem;border:1px solid #ccd5dd;text-align:left;vertical-align:top}
+th{background:#eff3f7}td:first-child{min-width:10rem}footer{border-top:1px solid #ccd5dd;margin-top:2rem;color:#52606b}
+@media(max-width:640px){main{padding:1rem}body{font-size:16px}}
+</style></head><body><main>
+<nav><a href="index.html">CTI documentation</a></nav>
+<h1 id="ft18-dashboard-and-standalone-debugging-access">FT18 dashboard and standalone debugging access</h1>
+<p><a href="index.html">Documentation home</a> · <a href="failure-triage-acceptance.html#ft18-dashboard-and-standalone-debugging-access">FT18 acceptance</a> · <a href="debugging-sessions.html">Debugging guide</a> · <a href="../../validation/phase0/legacy/README.md#ft18-dashboard-and-standalone-debugging-access">Reproduction</a></p>
+<h2 id="result-and-acceptance-boundary">Result and acceptance boundary</h2>
+<p>FT18&#x27;s isolated local access subset passes. An actual browser opens copied legacy run/failure and case-details pages for the preserved FT03 comparison failure. The existing native launcher opens a temporary Terminal window in a fresh private Docker workspace. A downloaded portable bundle subsequently opens another interactive shell and replays the same phases after the dashboard, its worker and original registration/capture paths are unavailable.</p>
+<p>**Full FT18/DF38 acceptance remains open.** The current pages do not provide a product bundle-download API, mount-specification view or complete preservation-status model. A live browser also exposes an adapter defect: in-page file anchors on the case-details page are rewritten into Terminal links. These findings are retained without modifying the framework, adapter or original evidence.</p>
+<p>The reference is <code>runs/ft18-002</code>, completed on 2026-11-12 Pacific time. Compact evidence is <a href="../../validation/phase0/legacy/evidence/ft18-001/summary.json">`evidence/ft18-001`</a>. The source failure is the unchanged synthetic FT01–FT03 <code>run-002</code> capture, whose deletion/relocation replay was established in FT04. No historical production failure, organization dashboard or remote GPU worker is used.</p>
+<h2 id="browser-inspection-and-native-handoff">Browser inspection and native handoff</h2>
+<p>The exercised loopback browser routes invoke exact copies of the current <code>get-log-file.cgi</code>, <code>chk_test_errors.cgi</code> and identity CGI with the existing browser adapter. A bounded <code>get-file.cgi</code> route is also copied/configured, but general file-view controls are not qualified by this run. The pinned Linux runtime&#x27;s deployed framework is unchanged. A small Perl entry point configures only the copied deployment&#x27;s runtime environment: read-only CGI routing uses the image library, and ClearCase/SSH commands are disabled. HTTP requests are restricted to the known synthetic logs, tests and read-only routes; mutation forms are not submitted.</p>
+<p>The operator opens the actual legacy run/failure view, inspects the registered failed-case URL, and clicks its preserved **[details]** link. Visible browser content includes the original source, <code>actual</code> output, <code>expected</code> master, saved <code>.env</code>, compile/link/run/compare recipes and <code>DiffPgmOut</code>. The unregistered missing-baseline failure shows <code>NoMasterOut</code> and an explicit “No such file or directory” diagnostic. It does not become an empty successful view.</p>
+<p>The existing local registered-capture page is also inspected. Its complete case says <code>saved environment</code>; an explicitly incomplete fixture says <code>inspection only</code>. Those are session modes, not a full preservation verdict or remote capability model.</p>
+<p>The exact opaque URL observed in the browser is supplied to the unchanged <code>Registry.launch</code>/<code>cti-dashboard launch-url</code> boundary. It opens a real macOS Terminal window and invokes the ordinary session CLI against a private validation registry. That shell enters <code>/capture/original/work/Regression/FT03</code>, loads <code>/usr/bin/gcc</code> and <code>OPT_LEVEL=0</code> from the captured environment, then independently runs four saved recipes:</p>
+<table><thead><tr><th>Saved phase</th><th>Native Terminal</th><th>Standalone shell after dashboard shutdown</th></tr></thead><tbody>
+<tr><td>Compile</td><td>0</td><td>0</td></tr>
+<tr><td>Link</td><td>0</td><td>0</td></tr>
+<tr><td>Execute</td><td>0, output <code>actual</code></td><td>0, output <code>actual</code></td></tr>
+<tr><td>Compare</td><td>1, original master <code>expected</code></td><td>1, original master <code>expected</code></td></tr>
+</tbody></table>
+<p>Both sessions create a private note successfully and fail to append to the baseline through its read-only mount. The original verdict is not replaced by the successful compilation or execution. Compact transcripts retain only the fixture&#x27;s result markers; full Terminal/PTY history and native session data stay local and ignored.</p>
+<p>This run does not replace the user&#x27;s global URL-handler registration or invoke browser-to-LaunchServices dispatch. The <a href="../../validation/dashboard-session/README.md">earlier dashboard acceptance</a> separately records a real browser click through that installed-handler boundary. FT18 verifies the browser URL and existing native handoff with a new isolated registry; it does not claim to repeat the global-dispatch test.</p>
+<h2 id="observed-in-page-navigation-defect">Observed in-page navigation defect</h2>
+<p>The current adapter matches links to <code>chk_test_errors.cgi</code> using deployment, log and test identity. On the details page, a relative <code>#output_mismatch.compile.sh</code> file anchor resolves to that same page/query. The adapter treats it as another failed-case link and replaces it with the Terminal URL.</p>
+<p>The browser observes twelve Terminal links: the explicit Terminal action and eleven file-navigation anchors from the working/source lists. The original expanded sections remain readable, and adjacent **[details]** links are retained, but clicking a file-list anchor can open Terminal instead of scrolling to the file. This is a feature-preservation discrepancy in the existing adapter. It must be corrected and tested before claiming full details-page navigation parity. The experiment records the behavior and leaves the implementation unchanged.</p>
+<h2 id="downloaded-bundle-and-offline-debugging">Downloaded bundle and offline debugging</h2>
+<p>The validation tools construct a self-contained portable kit from copies of the existing CLI/package, a relative-path <code>cti-session/v1</code> specification, captured source/work/baseline archives and prerequisite metadata. The original summary, environment, recipes and baseline bytes remain in the captured archives. The kit contains no session registry, live workspace, credentials, database, native volume IDs or current-checkout reference.</p>
+<p>The browser downloads that kit through an explicitly labeled **validation-only** endpoint. The browser download, a separately collected transfer and the retained bundle share SHA-256 <code>db5c23da68e76ab051175ae29d5a227da619d9272bd86227c7883627f26e5105</code>. This demonstrates identical transferred bytes; it is not an existing product download feature.</p>
+<p>The fixture HTTP server is stopped and connection refusal is observed. Its Linux CGI worker is removed. The native capture copy and registration directory are moved away from their original paths, and earlier interactive sessions are removed. The downloaded kit is extracted into a different native directory. A fresh Python subprocess runs only its copied <code>tools/cti-session</code> and relative specification, with its working directory inside the relocated kit and no <code>PYTHONPATH</code> reference to the checkout.</p>
+<p>A real pseudo-terminal attaches to the resulting interactive Docker Bash shell. It loads the saved environment, enters the preserved test directory, independently runs compile/link/run/compare, reads the original baseline and attempts a denied baseline write. It needs no dashboard, registration database, original capture location or current source checkout.</p>
+<p>The local Docker engine and immutable cached Linux ARM64 image remain declared prerequisites. The kit records the original image ID plus the retained image archive&#x27;s exact hash/size; it does not embed the 586,248,192-byte runtime. If that image is unavailable, the normal CLI requires an explicitly supplied verified archive. Image-loss recovery was characterized separately in FT13. Remote GPU execution is unavailable and not exercised by FT18.</p>
+<h2 id="explicit-incomplete-inspection">Explicit incomplete inspection</h2>
+<p>A second portable specification selects the actual <code>Regression/FT03NoMaster/absent_master.c</code> capture and declares its missing approved-baseline path. Normal opening fails with a named unavailable-baseline diagnostic and cleans up initialization resources. Explicit <code>--inspection-only</code> opens the retained directory/environment with <code>accepted=true</code>, <code>replay_ready=false</code>, <code>mode=inspection</code> and the missing baseline listed.</p>
+<p>The requirement is explicitly supplied for this fixture. This does not establish automatic discovery of all missing artifacts by the legacy capture importer. The legacy details page&#x27;s missing-file text and the local page&#x27;s inspection label are useful observations, but they do not implement a general completeness indicator or distinguish every original artifact from later session output.</p>
+<h2 id="preservation-cleanup-and-checks">Preservation, cleanup and checks</h2>
+<p>The CGI worker uses network isolation, one CPU, 1 GiB memory, all capabilities dropped, <code>no-new-privileges</code>, default PID isolation and no device requests. Copied tools, deployment, capture and public catalog are read-only mounts; only a fresh export directory is writable. The unchanged session CLI creates separate private work/source volumes and read-only baseline overlays. No original evidence, native home, current checkout or Docker socket is mounted in a debugging container.</p>
+<p>All 2,654 deployed framework entries, 1,363 prior phase evidence entries, the copied original capture and CGI workspace retain their before/after identities. The original framework and adapter files, original captures and pre-existing filename-collision edits remain unchanged.</p>
+<p>The GUI worker, three initialized sessions and rejected-opening resources are cleaned up. A read-only post-run probe finds no containers or volumes owned by any of the four private session stores and confirms the listener is stopped. The temporary Terminal window has no tabs and is invisible; Terminal retains an empty scripting object after close. No pre-existing Terminal window or global handler configuration is changed.</p>
+<p>The original runner index retains 131 hashes. Post-run cleanup has its own separate index, leaving the runner&#x27;s index unchanged. Compact evidence has 85 hashes plus its index and totals 904,817 bytes. It includes the portable kit/archive, transferred-bundle digest/bytes, browser observations, captured HTTP responses, copied CGI/adapter code, marker transcripts, prerequisite decisions, cleanup observations and source/preservation inventories. Private registry/session trees, full native/PTY transcripts, development runs, compiled apps and large runtime archives are excluded.</p>
+<p>Full and compact audits pass. Fifteen offline tests reject false product/global-dispatch/GPU qualification, a hidden navigation defect, falsely replay-ready incomplete state, changed environment/comparison status, writable baselines, reused session identities, dashboard/checkout dependence and remaining resources. The preceding FT17 audit also passes unchanged.</p>
+<ul>
+<li><a href="../../validation/phase0/legacy/run_ft18.py">Runner</a></li>
+<li><a href="../../validation/phase0/legacy/ft18/server.py">Read-only fixture transport</a></li>
+<li><a href="../../validation/phase0/legacy/ft18/worker.py">Linux fixture preparation</a></li>
+<li><a href="../../validation/phase0/legacy/ft18/check_cleanup.py">Post-run resource observation</a></li>
+<li><a href="../../validation/phase0/legacy/verify_ft18.py">Auditor</a></li>
+<li><a href="../../validation/phase0/legacy/test_verify_ft18.py">Offline tests</a></li>
+<li><a href="../../validation/phase0/legacy/evidence/ft18-001/browser-observations.json">Browser observations</a></li>
+<li><a href="../../validation/phase0/legacy/evidence/ft18-001/native-terminal-results.json">Native Terminal replay</a></li>
+<li><a href="../../validation/phase0/legacy/evidence/ft18-001/standalone-results.json">Standalone replay</a></li>
+</ul>
+<p>DF38 is qualified only for the observed local access/standalone slice. Fixing in-page anchor decoration, implementing product bundle/mount/completeness views, qualifying an organization deployment and remote GPU access, and broader historical/dashboard acceptance remain open. Phase 0 is incomplete; FT19 is not run.</p>
+<footer>Reconstructed from OpenCTI source, baseline 8c3d603. Generated by doc/tools/build_docs.py.</footer>
+</main></body></html>

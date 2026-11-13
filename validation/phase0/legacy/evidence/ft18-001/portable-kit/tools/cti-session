@@ -1,0 +1,6 @@
+#!/usr/bin/env python3
+"""Open a private Docker debugging session from preserved CTI evidence."""
+from cti_session.cli import main
+
+if __name__ == '__main__':
+    raise SystemExit(main())

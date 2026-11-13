@@ -1,0 +1,38 @@
+{
+  "method": "Actual in-app-browser navigation; existing CGI and DOM adapter; native URL dispatch boundary invoked separately",
+  "terminal_url": "opencti-session://failure/a4c26352621da45418b8f21888c1a82f5d9888eb3836d25008076358a4c6bcca",
+  "details_url": "http://127.0.0.1:61359/cti/cgi-bin/chk_test_errors.cgi?details=1000&log=/capture/original/summary.log&arg=Regression/FT03/output_mismatch.c",
+  "details": {
+    "source": true,
+    "output": true,
+    "baseline": true,
+    "environment": true,
+    "compile": true,
+    "run": true,
+    "compare": true
+  },
+  "detail_terminal_links": 12,
+  "in_page_anchor_rewrite_observed": true,
+  "missing": {
+    "noMasterOut": true,
+    "missingBaselineDiagnostic": true,
+    "sourceAvailable": true
+  },
+  "local_modes": [
+    "saved environment",
+    "inspection only"
+  ],
+  "browser_download_sha256": "db5c23da68e76ab051175ae29d5a227da619d9272bd86227c7883627f26e5105",
+  "browser_download_bytes": 41042,
+  "product_download_endpoint": false,
+  "os_url_dispatch_exercised": false,
+  "actions": [
+    "fixture index -> legacy run/failure view",
+    "registered failed-case link inspected",
+    "[details] clicked",
+    "source/output/baseline/env/phase scripts inspected",
+    "missing-baseline case opened",
+    "local registered-capture page inspected",
+    "validation-only portable bundle downloaded"
+  ]
+}

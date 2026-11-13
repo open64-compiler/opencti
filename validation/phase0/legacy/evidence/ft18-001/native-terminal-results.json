@@ -1,0 +1,29 @@
+{
+  "lines": [
+    "FT18_NATIVE_BEGIN",
+    "FT18_NATIVE_CWD /capture/original/work/Regression/FT03",
+    "FT18_NATIVE_ENV /usr/bin/gcc 0",
+    "FT18_NATIVE_PHASE compile 0",
+    "FT18_NATIVE_PHASE link 0",
+    "FT18_NATIVE_PHASE run 0",
+    "FT18_NATIVE_PHASE compare-out 1",
+    "FT18_NATIVE_OUTPUT actual",
+    "FT18_NATIVE_BASELINE expected",
+    "FT18_NATIVE_BASELINE_READONLY confirmed",
+    "FT18_NATIVE_END"
+  ],
+  "session_id": "a2a9d2c4cc104a389cedea0dbd8e7cf6",
+  "cwd": "/capture/original/work/Regression/FT03",
+  "readiness": {
+    "session_id": "a2a9d2c4cc104a389cedea0dbd8e7cf6",
+    "accepted": true,
+    "replay_ready": true,
+    "mode": "debugging",
+    "problems": [],
+    "cwd": "/capture/original/work/Regression/FT03",
+    "saved_environment": "/capture/original/work/Regression/FT03/output_mismatch.env"
+  },
+  "browser_url_consumed": "opencti-session://failure/a4c26352621da45418b8f21888c1a82f5d9888eb3836d25008076358a4c6bcca",
+  "global_url_handler_replaced": false,
+  "os_url_dispatch_exercised": false
+}

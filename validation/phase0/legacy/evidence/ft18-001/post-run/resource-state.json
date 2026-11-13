@@ -1,0 +1,132 @@
+{
+  "schema": "ft18-post-run/v1",
+  "tool_sha256": "dbcec7e125f4c812623c11dd11d18b50cf32daf0057cc6a4aab92f064d96a3ff",
+  "session_resources": [
+    {
+      "state": "dashboard-sessions",
+      "resource": "containers",
+      "owner_sha256": "ca898d65064180e1fdec1146df8698c74c66699eb750ac08155836b53906b890",
+      "argv": [
+        "docker",
+        "ps",
+        "-aq",
+        "--filter",
+        "label=org.opencti.session.store=ca898d65064180e1fdec1146df8698c74c66699eb750ac08155836b53906b890"
+      ],
+      "returncode": 0,
+      "remaining": []
+    },
+    {
+      "state": "dashboard-sessions",
+      "resource": "volumes",
+      "owner_sha256": "ca898d65064180e1fdec1146df8698c74c66699eb750ac08155836b53906b890",
+      "argv": [
+        "docker",
+        "volume",
+        "ls",
+        "-q",
+        "--filter",
+        "label=org.opencti.session.store=ca898d65064180e1fdec1146df8698c74c66699eb750ac08155836b53906b890"
+      ],
+      "returncode": 0,
+      "remaining": []
+    },
+    {
+      "state": "missing-blocked",
+      "resource": "containers",
+      "owner_sha256": "8370519120ff8d90fb760a9bccbc6b61149ae538ebad50612f6f44a81c947f51",
+      "argv": [
+        "docker",
+        "ps",
+        "-aq",
+        "--filter",
+        "label=org.opencti.session.store=8370519120ff8d90fb760a9bccbc6b61149ae538ebad50612f6f44a81c947f51"
+      ],
+      "returncode": 0,
+      "remaining": []
+    },
+    {
+      "state": "missing-blocked",
+      "resource": "volumes",
+      "owner_sha256": "8370519120ff8d90fb760a9bccbc6b61149ae538ebad50612f6f44a81c947f51",
+      "argv": [
+        "docker",
+        "volume",
+        "ls",
+        "-q",
+        "--filter",
+        "label=org.opencti.session.store=8370519120ff8d90fb760a9bccbc6b61149ae538ebad50612f6f44a81c947f51"
+      ],
+      "returncode": 0,
+      "remaining": []
+    },
+    {
+      "state": "missing-inspection",
+      "resource": "containers",
+      "owner_sha256": "0da7ff87b47b85913bee5da33fe3817752199e53b9333b33ea7240a8d4826324",
+      "argv": [
+        "docker",
+        "ps",
+        "-aq",
+        "--filter",
+        "label=org.opencti.session.store=0da7ff87b47b85913bee5da33fe3817752199e53b9333b33ea7240a8d4826324"
+      ],
+      "returncode": 0,
+      "remaining": []
+    },
+    {
+      "state": "missing-inspection",
+      "resource": "volumes",
+      "owner_sha256": "0da7ff87b47b85913bee5da33fe3817752199e53b9333b33ea7240a8d4826324",
+      "argv": [
+        "docker",
+        "volume",
+        "ls",
+        "-q",
+        "--filter",
+        "label=org.opencti.session.store=0da7ff87b47b85913bee5da33fe3817752199e53b9333b33ea7240a8d4826324"
+      ],
+      "returncode": 0,
+      "remaining": []
+    },
+    {
+      "state": "standalone-state",
+      "resource": "containers",
+      "owner_sha256": "fca9b3a4a004611fa7abc2fb9bddc85f11e5cbcb234ee04039d66592a3dc0582",
+      "argv": [
+        "docker",
+        "ps",
+        "-aq",
+        "--filter",
+        "label=org.opencti.session.store=fca9b3a4a004611fa7abc2fb9bddc85f11e5cbcb234ee04039d66592a3dc0582"
+      ],
+      "returncode": 0,
+      "remaining": []
+    },
+    {
+      "state": "standalone-state",
+      "resource": "volumes",
+      "owner_sha256": "fca9b3a4a004611fa7abc2fb9bddc85f11e5cbcb234ee04039d66592a3dc0582",
+      "argv": [
+        "docker",
+        "volume",
+        "ls",
+        "-q",
+        "--filter",
+        "label=org.opencti.session.store=fca9b3a4a004611fa7abc2fb9bddc85f11e5cbcb234ee04039d66592a3dc0582"
+      ],
+      "returncode": 0,
+      "remaining": []
+    }
+  ],
+  "ui_containers_remaining": [],
+  "owned_terminal_window": "69619",
+  "owned_terminal_closed": true,
+  "loopback_listener_stopped": true,
+  "private_data_exported": false,
+  "terminal_observation": {
+    "window_object_present": true,
+    "visible": false,
+    "tabs": 0
+  }
+}

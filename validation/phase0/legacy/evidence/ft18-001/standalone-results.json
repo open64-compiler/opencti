@@ -1,0 +1,34 @@
+{
+  "lines": [
+    "FT18_OFFLINE_BEGIN",
+    "FT18_OFFLINE_CWD /capture/original/work/Regression/FT03",
+    "FT18_OFFLINE_ENV /usr/bin/gcc 0",
+    "FT18_OFFLINE_PHASE compile 0",
+    "FT18_OFFLINE_PHASE link 0",
+    "FT18_OFFLINE_PHASE run 0",
+    "FT18_OFFLINE_PHASE compare-out 1",
+    "FT18_OFFLINE_OUTPUT actual",
+    "FT18_OFFLINE_BASELINE expected",
+    "FT18_OFFLINE_BASELINE_READONLY confirmed",
+    "FT18_OFFLINE_END"
+  ],
+  "returncode": 0,
+  "session_id": "731c1434afc4465ab840e68e12fbe93e",
+  "cwd": "/capture/original/work/Regression/FT03",
+  "readiness": {
+    "session_id": "731c1434afc4465ab840e68e12fbe93e",
+    "accepted": true,
+    "replay_ready": true,
+    "mode": "debugging",
+    "problems": [],
+    "cwd": "/capture/original/work/Regression/FT03",
+    "saved_environment": "/capture/original/work/Regression/FT03/output_mismatch.env"
+  },
+  "dashboard_stopped": true,
+  "ui_worker_removed": true,
+  "registry_original_path_absent": true,
+  "capture_original_path_absent": true,
+  "current_checkout_used_by_subprocess": false,
+  "portable_bundle_sha256": "db5c23da68e76ab051175ae29d5a227da619d9272bd86227c7883627f26e5105",
+  "remote_gpu": "unavailable_not_exercised"
+}
