@@ -99,6 +99,8 @@ The [session-opening CLI and opt-in dashboard adapter](debugging-sessions.md) no
 
 ## Fixture acquisition catalog
 
+The [FT15 application/script characterization](phase0-ft15-results.md) adds a synthetic FX09 subset with original wrapper/upstream checks, script glue and file/directory dependencies, independent saved-phase replay and a reproduced stale-marker run-hook false pass. Original capture and verdicts remain preserved; the discrepancy is not a native success. Historical FX09 acquisition, production adapters and the related dashboard navigation scenarios remain open.
+
 The [FT14 isolated lifecycle subset](phase0-ft14-results.md) now qualifies persistent job IDs, explicit collection after client loss, duplicate/resumed transfers, protected cleanup and logical fixture leases using a genuine legacy CPU failure. Native inspection remains complete while GPU replay is explicitly blocked. There is no compatible remote GPU worker; FX10, real Mac sleep, physical GPU leases and full FT14 remain unqualified. This does not pass a dashboard scenario or extend the click-to-Terminal adapter to remote/GPU execution.
 
 These are specifications for evidence to acquire or construct in an isolated reference installation. The synthetic regression subset of FX03 and supporting container evidence for FX08 now exist under `validation/phase0/legacy`; the remaining fixture requirements are not yet acquired. Preserve raw archives and legacy outputs together with derived assertions. Label synthetic fixtures as synthetic and do not substitute them for historical coverage silently.

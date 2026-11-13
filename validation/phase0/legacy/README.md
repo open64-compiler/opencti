@@ -400,3 +400,34 @@ After both worker containers and the worker volume are deleted, native inspectio
 Reference `runs/ft14-003/` has 39 raw hashed files. Compact `evidence/ft14-001/` contains 32 hashed files plus its checksum index, totaling 578,270 bytes, with the four small collected objects and exact runner/tools. It excludes native/private SQLite databases, expanded scratch/source copies, live replay caches, full development runs and large runtime/compiler archives. The original 623,109,120-byte runtime remains local and referenced. Development runs 001–002 are not passing references.
 
 The full and compact audits plus thirteen offline tests pass, including rehashed false GPU/fallback/lease/cleanup/replay claims, event contradictions, byte corruption, immutable duplicate submissions and lease fencing. The fixture's acknowledgement is a trusted-controller integrity protocol, not authenticated remote storage proof. Production transport/authentication, actual GPU execution and replay, real Mac sleep, physical GPU leases and full FX10/FT14 acceptance remain open. See the [FT14 results](../../../doc/guide/phase0-ft14-results.md).
+
+## FT15 application and externally scripted harness contracts
+
+`run_ft15.py` captures four application and four script cases using the stock drivers, then replays their original phase recipes in a new container after deleting the original one. Two restricted, network-disabled Linux ARM64 workers use the pinned FT09 image. Python 3.9+, Docker and the retained FT09 runtime archive are required. `--image-archive PATH` can rebind a relocated archive while requiring its original size/digest; no original capture metadata needs editing. Output must be a new directory outside evidence.
+
+```sh
+python3 -B validation/phase0/legacy/run_ft15.py \
+  --output validation/phase0/legacy/runs/new-ft15-run
+
+python3 -B validation/phase0/legacy/verify_ft15.py \
+  validation/phase0/legacy/runs/new-ft15-run \
+  --pack-output validation/phase0/legacy/evidence/new-ft15-reference
+
+python3 -B validation/phase0/legacy/verify_ft15.py \
+  validation/phase0/legacy/evidence/ft15-001
+
+python3 -B -m unittest discover -s validation/phase0/legacy \
+  -p test_verify_ft15.py -v
+```
+
+Applications copy the tracked GSL `Makefile.CTI` verbatim and use synthetic upstream C/make/configure/check inputs. The main run records `CompileErr`, upstream-check `ExecErr`, nonempty-marker `DiffPgmOut` and fresh custom-hook `ExecErr`. Effective compiler/flags and `UNIT_MAKEVARS` are retained. Saved compile and validation execute independently; validation uses the captured executable without rebuilding. There is no application text master or invented compare-out recipe.
+
+The run-hook control deliberately preserves an old empty `compare.results` while upstream make still exits 2. The legacy outer wrapper ignores that status; its full meta-script reports `SuccessExec`. Raw hook/check/marker/result bytes and a separate discrepancy classification retain this false pass. The normal make-validation path returns `ExecErr` with the same stale marker. A private corrected check input genuinely validates; original evidence remains unchanged. No framework fix or native adapter success is claimed.
+
+Script cases cover output mismatch, producer exit 7 with exit checking enabled/disabled, and a directory case with nested input and shared-glue links across `/fixtures` and `/external`. Direct producer captures verify the driver's stdout-then-stderr concatenation. Independent invocation/comparison preserves the configured exit-check semantics; comparison success alone does not replace an original checked failure. Collection runs six times during initial enumeration/execution and never during saved-phase replay. A changed external collection selects a different test before archive-only reconstruction restores the original inputs.
+
+The collector remains alive beyond the normal one-second phase limit until an explicit external watchdog ends it; the same saved meta-script applies that limit to a waiting invoker and records `LongScriptTest`. A real `MULTIPLE_ITERATIONS=2` request reports unsupported behavior with no generated invoker, despite TM process status zero. Missing glue blocks the validation-only closure guard. Pruned `.env` files do not contain every policy control, so config, emitted recipes and glue are retained together.
+
+Extraction normalizes session ownership before restoring executable file modes under the unchanged restricted profile. Sealed archives remain read-only during reconstruction. Both framework inventories remain at 2,654 entries; all 1,040 previous evidence entries and original input trees are unchanged. All workers are removed.
+
+Reference `runs/ft15-004/` has 193 regular-file hashes. Compact `evidence/ft15-001/` contains 136 hashes plus its index and totals 566,776 bytes. It retains sealed work/source/external archives, the input bundle, case contracts, per-phase compiler/make/stream/marker witnesses and exact copied tools/runner. Expanded work trees, development runs 001–003 and the 623,109,120-byte runtime remain local/ignored. Full/compact audits and fifteen offline contract/contradiction tests pass. Historical/vendor suites, other wrappers/languages, production adapter acceptance and correction of the run-hook false pass remain open. See the [FT15 report](../../../doc/guide/phase0-ft15-results.md).

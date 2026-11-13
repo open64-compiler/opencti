@@ -1,0 +1,6 @@
+./configure 
+/usr/bin/gmake -f Makefile
+gmake[1]: Entering directory '/tmp/dTM/tm.work.241.1794529237/Applications/FT15Hook'
+/usr/bin/python3 build_probe.py "/usr/bin/gcc" "-O1 -DFT15_FLAG=15" "1"
+/usr/bin/gcc -O1 -DFT15_FLAG=15 program.c -o program
+gmake[1]: Leaving directory '/tmp/dTM/tm.work.241.1794529237/Applications/FT15Hook'

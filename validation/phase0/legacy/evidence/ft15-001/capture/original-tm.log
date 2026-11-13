@@ -1,0 +1,56 @@
+# Start time was Fri Nov 13 00:20:37 2026 on fd6345b38005
+# TEST_WORK_DIR --> /lab/original/work
+# OPT_LEVEL     --> 0
+# DATA_MODE     --> +DD64
+# COMPILER_VERSION --> gcc-13.3.0
+# CTI_GROUPS    --> /fixtures/groups
+# REPOSITORY_TYPE --> SVN
+# OPTIONS_FILE--> /fixtures/phase0.opt
+# SELECTIONS  --> Applications/FT15Compile Applications/FT15Check Applications/FT15Marker Applications/FT15Hook ScriptSuites/FT15Files ScriptSuites/FT15Unchecked ScriptSuites/FT15Dirs
+# VIEW    --> None
+# DTM_POOL    --> Default
+# DTM_CPUARCH --> aarch64
+# DTM_PRIORITY--> 2
+# DISTRIBUTED_TM --> 
+# SEND_LOG    --> 
+# http://localhost/CTI/cgi-bin/get-log-file.cgi?log=/export/original-tm.log
+# END OF HEADER
+
+# TOTAL TESTS=8,  PASS=1,  FAIL=7,  RUNNING=0
+
+#_________________________________________________________
+#  PASSES 
+#_________________________________________________________
+# Total Number of PASSES = 1
+ScriptSuites/FT15Unchecked/exit7.z
+
+#_________________________________________________________
+#  COMPILATION FAILURES 
+#_________________________________________________________
+# Total Number of COMPILATION FAILURES = 1
+Applications/FT15Compile
+
+#_________________________________________________________
+#  EXECUTION FAILURES 
+#_________________________________________________________
+# Total Number of EXECUTION FAILURES = 2
+Applications/FT15Check
+Applications/FT15Hook
+
+#_________________________________________________________
+#  OUTPUT DIFFERENCE FAILURES 
+#_________________________________________________________
+# Total Number of OUTPUT DIFFERENCE FAILURES = 3
+Applications/FT15Marker
+ScriptSuites/FT15Dirs/case_dir
+ScriptSuites/FT15Files/mismatch.z
+
+#_________________________________________________________
+#  SCRIPT TEST FAILURES 
+#_________________________________________________________
+# Total Number of SCRIPT TEST FAILURES = 1
+ScriptSuites/FT15Files/exit7.z
+
+# TIME_TAKEN --> 00:00:01 [1794529238 - 1794529237]
+
+# End Time was Fri Nov 13 00:20:38 2026

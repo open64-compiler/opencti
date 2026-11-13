@@ -1,0 +1,8 @@
+INFO: You are not in a view for this run.
+In local run mode
+[Fri Nov 13 00:20:40 2026 UTC] Now counting tests ...
+[Fri Nov 13 00:20:40 2026 UTC] Total units = 1
+[Fri Nov 13 00:20:40 2026 UTC] Total tests = 1
+The metadriver failed for unit 1:ScriptSuites/FT15Files
+WARNING : Running empty unit or all the tests are skipped in 1:ScriptSuites/FT15Files
+Preserving messages dir: /controls/iterations/work/TMmsgs

@@ -1,0 +1,24 @@
+# Start time was Fri Nov 13 00:20:40 2026 on 0c75b5313386
+# TEST_WORK_DIR --> /controls/iterations/work
+# OPT_LEVEL     --> 0
+# DATA_MODE     --> +DD64
+# COMPILER_VERSION --> gcc-13.3.0
+# CTI_GROUPS    --> /fixtures/groups
+# REPOSITORY_TYPE --> SVN
+# OPTIONS_FILE--> /fixtures/phase0.opt
+# SELECTIONS  --> ScriptSuites/FT15Files
+# TESTS       --> mismatch.z
+# VIEW    --> None
+# DTM_POOL    --> Default
+# DTM_CPUARCH --> aarch64
+# DTM_PRIORITY--> 2
+# DISTRIBUTED_TM --> 
+# SEND_LOG    --> 
+# http://localhost/CTI/cgi-bin/get-log-file.cgi?log=/export/unsupported-iterations.log
+# END OF HEADER
+
+# TOTAL TESTS=1,  PASS=0,  FAIL=0,  RUNNING=1
+
+# TIME_TAKEN --> 00:00:00 [1794529240 - 1794529240]
+
+# At Fri Nov 13 00:20:40 2026, there is 1 unit running

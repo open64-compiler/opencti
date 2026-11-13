@@ -9,6 +9,7 @@ These guides describe the code imported at commit `8c3d603`, rather than a curre
 - [Open a debugging session](debugging-sessions.md): enter a private Docker workspace with its captured directory and saved environment, directly or by clicking a registered dashboard failure to open Terminal.
 - [FT13 prerequisite availability](phase0-ft13-results.md): missing images/interpreters/dependencies, explicit recovery, dangling imports and credential references without retained values.
 - [FT14 persistent-job subset](phase0-ft14-results.md): disconnected collection, retained job IDs, duplicate/resumed transfers and fixture lease fencing; real remote GPU and Mac-sleep acceptance remains blocked.
+- [FT15 application/script contracts](phase0-ft15-results.md): independent wrapper/invoker/comparison replay, preserved external inputs and an observed stale-marker run-hook false pass.
 - [FT12 reruns and workspace reuse](phase0-ft12-results.md): preview/attempt identity, lost legacy options, destructive reuse and pinned original-failure replay.
 - [FT11 result semantics](phase0-ft11-results.md): expected failures, partial/cancelled units, process status and an observed negative-runtime false pass.
 - [FT10 collection retry results](phase0-ft10-results.md): interrupted/corrupt transfers, duplicate events, bounded storage pressure and verified cleanup/pin guards.

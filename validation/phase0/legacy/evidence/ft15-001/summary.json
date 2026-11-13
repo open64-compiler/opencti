@@ -1,0 +1,39 @@
+{
+  "status": "pass_for_synthetic_application_and_script_contracts",
+  "image_id": "sha256:747873867110897321865b8790204c0d42a9d51357dce8c3334f50c59d6e916c",
+  "application_cases": 4,
+  "script_cases": 4,
+  "main_tm_executions": 1,
+  "original_verdicts": {
+    "app-compile": "CompileErr",
+    "app-check": "ExecErr",
+    "app-marker": "DiffPgmOut",
+    "app-hook": "ExecErr",
+    "script-mismatch": "DiffPgmOut",
+    "script-exit-checked": "ScriptTestFailure",
+    "script-exit-unchecked": "SuccessExec",
+    "script-directory": "DiffPgmOut"
+  },
+  "replay_cases": 8,
+  "control_cases": [
+    "hook-stale-empty",
+    "normal-stale-empty",
+    "private-corrected-check",
+    "missing-glue",
+    "unsupported-iterations",
+    "unlimited-collection",
+    "limited-invoker"
+  ],
+  "framework_unchanged": true,
+  "earlier_evidence_unchanged": true,
+  "original_inputs_unchanged": true,
+  "sealed_evidence_unchanged": true,
+  "original_container_removed_before_replay": true,
+  "application_text_master_invented": false,
+  "collector_rerun_for_saved_phase_replay": false,
+  "hook_stale_marker_false_pass_observed": true,
+  "legacy_bug_fixed": false,
+  "production_adapter_implemented": false,
+  "historical_fx09_acquired": false,
+  "all_workers_removed": true
+}

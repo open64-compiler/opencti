@@ -1,0 +1,270 @@
+{
+  "fixtures": {
+    "groups/Applications/FT15Check/Src/Makefile": {
+      "sha256": "4fc0912395d91d5a413996fd7d07278c65e07ce8e772e33ff564cfddfb67894e",
+      "mode": 420
+    },
+    "groups/Applications/FT15Check/Src/Makefile.CTI": {
+      "sha256": "49b2cf2e27ccddb69d42f8314be7049628e95286e023ca43faa10fc073da56d9",
+      "mode": 420
+    },
+    "groups/Applications/FT15Check/Src/build_probe.py": {
+      "sha256": "0d93957ca54edf03c9d062365b436c836227e16b4b298a807387dddc93a19896",
+      "mode": 420
+    },
+    "groups/Applications/FT15Check/Src/check.py": {
+      "sha256": "c4d16d3da1053d5a60286016c14315b3f7838e3db7b1cabe0d9fbf0a6079ff28",
+      "mode": 420
+    },
+    "groups/Applications/FT15Check/Src/configure": {
+      "sha256": "0b3ee5d0b712586d93908aa2aabab9ae1b7508a5d4cb47ddcf4555923537c1ca",
+      "mode": 493
+    },
+    "groups/Applications/FT15Check/Src/expected.txt": {
+      "sha256": "3d9a947547797a596799db63f78e8325d3d8582fc6c79ce610d735002bcec574",
+      "mode": 420
+    },
+    "groups/Applications/FT15Check/Src/program.c": {
+      "sha256": "77d487608bdfb2fd262461be755483f5e788cc716ee35ff5ff5ef1dc6e40ce82",
+      "mode": 420
+    },
+    "groups/Applications/FT15Check/Src/settings.json": {
+      "sha256": "f3e29a5a7f51cf552d933e403555ad121ef95c8c6f3e664384c60455a7dea79f",
+      "mode": 420
+    },
+    "groups/Applications/FT15Compile/Src/Makefile": {
+      "sha256": "4fc0912395d91d5a413996fd7d07278c65e07ce8e772e33ff564cfddfb67894e",
+      "mode": 420
+    },
+    "groups/Applications/FT15Compile/Src/Makefile.CTI": {
+      "sha256": "49b2cf2e27ccddb69d42f8314be7049628e95286e023ca43faa10fc073da56d9",
+      "mode": 420
+    },
+    "groups/Applications/FT15Compile/Src/build_probe.py": {
+      "sha256": "0d93957ca54edf03c9d062365b436c836227e16b4b298a807387dddc93a19896",
+      "mode": 420
+    },
+    "groups/Applications/FT15Compile/Src/check.py": {
+      "sha256": "c4d16d3da1053d5a60286016c14315b3f7838e3db7b1cabe0d9fbf0a6079ff28",
+      "mode": 420
+    },
+    "groups/Applications/FT15Compile/Src/configure": {
+      "sha256": "0b3ee5d0b712586d93908aa2aabab9ae1b7508a5d4cb47ddcf4555923537c1ca",
+      "mode": 493
+    },
+    "groups/Applications/FT15Compile/Src/expected.txt": {
+      "sha256": "3d9a947547797a596799db63f78e8325d3d8582fc6c79ce610d735002bcec574",
+      "mode": 420
+    },
+    "groups/Applications/FT15Compile/Src/program.c": {
+      "sha256": "46403c2203a90ca66c0aefaa248388ec60919fa065975e9667486a7f89b9e8d7",
+      "mode": 420
+    },
+    "groups/Applications/FT15Compile/Src/settings.json": {
+      "sha256": "0d5cc87485c36dbf69111265c2d18c91f484ede3b91fa8b2a324ad7fb4a688b2",
+      "mode": 420
+    },
+    "groups/Applications/FT15Hook/Src/Makefile": {
+      "sha256": "4fc0912395d91d5a413996fd7d07278c65e07ce8e772e33ff564cfddfb67894e",
+      "mode": 420
+    },
+    "groups/Applications/FT15Hook/Src/Makefile.CTI": {
+      "sha256": "49b2cf2e27ccddb69d42f8314be7049628e95286e023ca43faa10fc073da56d9",
+      "mode": 420
+    },
+    "groups/Applications/FT15Hook/Src/build_probe.py": {
+      "sha256": "0d93957ca54edf03c9d062365b436c836227e16b4b298a807387dddc93a19896",
+      "mode": 420
+    },
+    "groups/Applications/FT15Hook/Src/check.py": {
+      "sha256": "c4d16d3da1053d5a60286016c14315b3f7838e3db7b1cabe0d9fbf0a6079ff28",
+      "mode": 420
+    },
+    "groups/Applications/FT15Hook/Src/configure": {
+      "sha256": "0b3ee5d0b712586d93908aa2aabab9ae1b7508a5d4cb47ddcf4555923537c1ca",
+      "mode": 493
+    },
+    "groups/Applications/FT15Hook/Src/expected.txt": {
+      "sha256": "3d9a947547797a596799db63f78e8325d3d8582fc6c79ce610d735002bcec574",
+      "mode": 420
+    },
+    "groups/Applications/FT15Hook/Src/program.c": {
+      "sha256": "77d487608bdfb2fd262461be755483f5e788cc716ee35ff5ff5ef1dc6e40ce82",
+      "mode": 420
+    },
+    "groups/Applications/FT15Hook/Src/settings.json": {
+      "sha256": "f3e29a5a7f51cf552d933e403555ad121ef95c8c6f3e664384c60455a7dea79f",
+      "mode": 420
+    },
+    "groups/Applications/FT15Hook/tmconfig": {
+      "sha256": "2a9c83f6f945b4ffd9eecfb4f56ceb8fae433b44d483b1931a5eff4a6e56b3a9",
+      "mode": 420
+    },
+    "groups/Applications/FT15Marker/Src/Makefile": {
+      "sha256": "4fc0912395d91d5a413996fd7d07278c65e07ce8e772e33ff564cfddfb67894e",
+      "mode": 420
+    },
+    "groups/Applications/FT15Marker/Src/Makefile.CTI": {
+      "sha256": "49b2cf2e27ccddb69d42f8314be7049628e95286e023ca43faa10fc073da56d9",
+      "mode": 420
+    },
+    "groups/Applications/FT15Marker/Src/build_probe.py": {
+      "sha256": "0d93957ca54edf03c9d062365b436c836227e16b4b298a807387dddc93a19896",
+      "mode": 420
+    },
+    "groups/Applications/FT15Marker/Src/check.py": {
+      "sha256": "c4d16d3da1053d5a60286016c14315b3f7838e3db7b1cabe0d9fbf0a6079ff28",
+      "mode": 420
+    },
+    "groups/Applications/FT15Marker/Src/configure": {
+      "sha256": "0b3ee5d0b712586d93908aa2aabab9ae1b7508a5d4cb47ddcf4555923537c1ca",
+      "mode": 493
+    },
+    "groups/Applications/FT15Marker/Src/expected.txt": {
+      "sha256": "3d9a947547797a596799db63f78e8325d3d8582fc6c79ce610d735002bcec574",
+      "mode": 420
+    },
+    "groups/Applications/FT15Marker/Src/program.c": {
+      "sha256": "77d487608bdfb2fd262461be755483f5e788cc716ee35ff5ff5ef1dc6e40ce82",
+      "mode": 420
+    },
+    "groups/Applications/FT15Marker/Src/settings.json": {
+      "sha256": "933eed0ef06942c794ffb99411d2692aa3ee9e53747899761ba718497c2d32ba",
+      "mode": 420
+    },
+    "groups/Applications/tmconfig": {
+      "sha256": "4993fcc5b58b6efd4a13e1051fe23c889264653931fd9ef9aa1d323f5cb8dec6",
+      "mode": 420
+    },
+    "groups/ScriptSuites/FT15Dirs/Masters/case_dir.out": {
+      "sha256": "7f8518f7db5e9a55049f49c4ea6d6e8f509695231e60cbd607bcb36c88a75a14",
+      "mode": 420
+    },
+    "groups/ScriptSuites/FT15Dirs/Src/case_dir": {
+      "link": "/external/case_dir",
+      "mode": 493
+    },
+    "groups/ScriptSuites/FT15Dirs/Src/collection.json": {
+      "sha256": "794845b168cee3aebe0c016f6f185ad4d217bc78662dd96ba3f202fc50f26b4f",
+      "mode": 420
+    },
+    "groups/ScriptSuites/FT15Files/Masters/exit7.out": {
+      "sha256": "87245993927bc43976da1585408eed7210c0be5ca10eb074edfb2a1ba3e84078",
+      "mode": 420
+    },
+    "groups/ScriptSuites/FT15Files/Masters/mismatch.out": {
+      "sha256": "7f8518f7db5e9a55049f49c4ea6d6e8f509695231e60cbd607bcb36c88a75a14",
+      "mode": 420
+    },
+    "groups/ScriptSuites/FT15Files/Src/collection.json": {
+      "sha256": "ac28a68d886ac404453fb3c1106431251b9e7e5e0b46296fa898260113a41552",
+      "mode": 420
+    },
+    "groups/ScriptSuites/FT15Files/Src/exit7.z": {
+      "link": "/external/exit7.z",
+      "mode": 493
+    },
+    "groups/ScriptSuites/FT15Files/Src/glue.py": {
+      "link": "/external/glue.py",
+      "mode": 493
+    },
+    "groups/ScriptSuites/FT15Files/Src/helper.py": {
+      "link": "/external/helper.py",
+      "mode": 493
+    },
+    "groups/ScriptSuites/FT15Files/Src/input.txt": {
+      "link": "/external/input.txt",
+      "mode": 493
+    },
+    "groups/ScriptSuites/FT15Files/Src/mismatch.z": {
+      "link": "/external/mismatch.z",
+      "mode": 493
+    },
+    "groups/ScriptSuites/FT15Unchecked/Masters/exit7.out": {
+      "sha256": "87245993927bc43976da1585408eed7210c0be5ca10eb074edfb2a1ba3e84078",
+      "mode": 420
+    },
+    "groups/ScriptSuites/FT15Unchecked/Src/collection.json": {
+      "sha256": "77809c7397546265ea6863aa69a882f75bf0b2c49d056777b2763219ca1089c2",
+      "mode": 420
+    },
+    "groups/ScriptSuites/FT15Unchecked/Src/exit7.z": {
+      "link": "/external/exit7.z",
+      "mode": 493
+    },
+    "groups/ScriptSuites/FT15Unchecked/Src/glue.py": {
+      "link": "/external/glue.py",
+      "mode": 493
+    },
+    "groups/ScriptSuites/FT15Unchecked/Src/helper.py": {
+      "link": "/external/helper.py",
+      "mode": 493
+    },
+    "groups/ScriptSuites/FT15Unchecked/Src/input.txt": {
+      "link": "/external/input.txt",
+      "mode": 493
+    },
+    "groups/ScriptSuites/FT15Unchecked/tmconfig": {
+      "sha256": "2872f3ef7577142fac68a6ebf3fd3f7f9a8c0f05b1b9ed1ae711d0ed20f3d0fd",
+      "mode": 420
+    },
+    "groups/ScriptSuites/tmconfig": {
+      "sha256": "0b867423eda811a5c04d3de3c19f5cd222558245384c9921ae478da6dd0ef89a",
+      "mode": 420
+    },
+    "hooks/collector.py": {
+      "sha256": "76839d6874b1535b7d354f69567d8fe083a608495b5a102783ff4f7d0a18fc56",
+      "mode": 493
+    },
+    "hooks/run_hook.py": {
+      "sha256": "29b6c27cc07c0ce7ff9628549e87d220852185cc98d689abe10c5a835a420fab",
+      "mode": 493
+    },
+    "phase0.opt": {
+      "sha256": "925edf8389c09c5ce99cffc2834de73c1510b75b52e6b2d704287fdc4efc79cc",
+      "mode": 420
+    }
+  },
+  "external": {
+    "case_dir/case.json": {
+      "sha256": "1cd7b60c0d07eb06ef19425114ff9d74860f9691cd34d4e8e67393e9baefa211",
+      "mode": 420
+    },
+    "case_dir/glue.py": {
+      "link": "/external/glue.py",
+      "mode": 493
+    },
+    "case_dir/helper.py": {
+      "sha256": "e3bf57c437e3ffc6536b9e7880b791a3cc38245c20bdb337ae325a089e427082",
+      "mode": 420
+    },
+    "case_dir/input.txt": {
+      "link": "nested/input.txt",
+      "mode": 493
+    },
+    "case_dir/nested/input.txt": {
+      "sha256": "09bfa8b1f83e1596cd6b0043a4d4e60bd49b59013fb991f55396f9632c262e15",
+      "mode": 420
+    },
+    "exit7.z": {
+      "sha256": "980dda75ceb874e0b30509c5713b0a7affeda2c73837e727dc6e1912f37e9d8e",
+      "mode": 420
+    },
+    "glue.py": {
+      "sha256": "2e10a6b2521712a9cb385db817b76e41f4f4ee521463ee00cedc9dfc6c6d445b",
+      "mode": 493
+    },
+    "helper.py": {
+      "sha256": "e3bf57c437e3ffc6536b9e7880b791a3cc38245c20bdb337ae325a089e427082",
+      "mode": 420
+    },
+    "input.txt": {
+      "sha256": "09bfa8b1f83e1596cd6b0043a4d4e60bd49b59013fb991f55396f9632c262e15",
+      "mode": 420
+    },
+    "mismatch.z": {
+      "sha256": "1cd7b60c0d07eb06ef19425114ff9d74860f9691cd34d4e8e67393e9baefa211",
+      "mode": 420
+    }
+  }
+}

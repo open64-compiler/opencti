@@ -1,0 +1,1 @@
+{"cc": "/usr/bin/gcc", "cflags": "-O1 -DFT15_FLAG=15", "unit_opt_level": "1"}

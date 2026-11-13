@@ -1,0 +1,11 @@
+./configure 
+/usr/bin/gmake -f Makefile
+gmake[1]: Entering directory '/lab/original/work/Applications/FT15Compile'
+/usr/bin/python3 build_probe.py "/usr/bin/gcc" "-O1 -DFT15_FLAG=15" "1"
+/usr/bin/gcc -O1 -DFT15_FLAG=15 program.c -o program
+program.c:1:11: error: expected declaration specifiers or ‘...’ before ‘{’ token
+    1 | int main( { deliberate_compile_failure; }
+      |           ^
+gmake[1]: *** [Makefile:4: all] Error 1
+gmake[1]: Leaving directory '/lab/original/work/Applications/FT15Compile'
+gmake: *** [Makefile.CTI:19: compile] Error 2
