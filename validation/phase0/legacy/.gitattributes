@@ -47,3 +47,6 @@ evidence/ft14-001/collected-artifacts/summary.log -text whitespace=-blank-at-eol
 evidence/ft15-001/**/*.tar.gz -text
 evidence/ft15-001/capture/** -text whitespace=-blank-at-eol,-blank-at-eof
 evidence/ft15-001/replay/** -text whitespace=-blank-at-eol,-blank-at-eof
+
+# Preserve exact FT16 workspace/partial-stream archives without text conversion.
+evidence/ft16-001/**/*.tar.gz -text

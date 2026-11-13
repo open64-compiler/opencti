@@ -1,0 +1,37 @@
+{
+  "status": "pass_for_isolated_interruption_contracts",
+  "cases": [
+    "timeout",
+    "cancel-before",
+    "cancel-after",
+    "forced-cancel",
+    "disconnect",
+    "worker-loss",
+    "workspace-loss"
+  ],
+  "image_id": "sha256:747873867110897321865b8790204c0d42a9d51357dce8c3334f50c59d6e916c",
+  "framework_unchanged": true,
+  "earlier_evidence_unchanged": true,
+  "fixture_inputs_unchanged": true,
+  "all_owned_resources_removed": true,
+  "production_scheduler_tested": false,
+  "gpu_hardware_tested": false,
+  "launch_counts": {
+    "timeout": 1,
+    "cancel-before": 0,
+    "cancel-after": 1,
+    "forced-cancel": 1,
+    "disconnect": 1,
+    "worker-loss": 1,
+    "workspace-loss": 1
+  },
+  "preservation": {
+    "timeout": "complete_available_state",
+    "cancel-before": "complete_available_state",
+    "cancel-after": "complete_available_state",
+    "forced-cancel": "complete_available_state",
+    "disconnect": "complete_available_state",
+    "worker-loss": "incomplete",
+    "workspace-loss": "incomplete"
+  }
+}

@@ -1,0 +1,141 @@
+{
+  "files": {
+    "exit.json": {
+      "sha256": "b2b56dc2b98de4883e7438adb63a576bbb0d03c1ad8f92b674a5720de0274452",
+      "bytes": 128,
+      "mode": 420
+    },
+    "launch.json": {
+      "sha256": "eaec5523de1599f55a2ede018b36d831f874b0828cef6ba56c6634f2a1abb794",
+      "bytes": 50,
+      "mode": 420
+    },
+    "request.json": {
+      "sha256": "58d64e2fecd37a4fea1823500f75785525b25656d0d9656180fff07c1c790f18",
+      "bytes": 260,
+      "mode": 420
+    },
+    "events.jsonl": {
+      "sha256": "901704f265e0848df46fade181575c7b621e3ac060161c8a3aeae67738970ab1",
+      "bytes": 347,
+      "mode": 420
+    },
+    "supervisor-ready.json": {
+      "sha256": "f1141718341bf4d251aa31907d9e985bb878e61f84510885c582d1d63bac13aa",
+      "bytes": 148,
+      "mode": 420
+    },
+    "fixtures/phase0.opt": {
+      "sha256": "cf2d5c943f552acabd2b8feec6a46bbf21525e3326af3a4d84fa142690f06417",
+      "bytes": 610,
+      "mode": 420
+    },
+    "fixtures/groups/Regression/tmconfig": {
+      "sha256": "722f9b9ed1ee3b39bb516ea8e10baaf8f2a7079a092ff8ebd79e196c70ddd2e1",
+      "bytes": 200,
+      "mode": 420
+    },
+    "fixtures/groups/Regression/FT16/Masters/wait.out": {
+      "sha256": "ff5b924f0856cbbd2133f8d1946b236942361ae4fc75ccc3d0c5bec51024e445",
+      "bytes": 28,
+      "mode": 420
+    },
+    "fixtures/groups/Regression/FT16/Src/wait.c": {
+      "sha256": "a90ccf40bfb68b51f7a17221300860aae41024489daf7f71af5e0317aeafbadf",
+      "bytes": 678,
+      "mode": 420
+    }
+  },
+  "links": {},
+  "framework": {
+    "files": 2654,
+    "id": "1584e7b404a016da21ea8bd4a5c3ee2d30a1ee1424ece1d21deab627b00e1de2"
+  },
+  "job": {
+    "job_id": "100dff3cbb164b88ab644b73b3841d2e",
+    "attempt_id": "100dff3cbb164b88ab644b73b3841d2e",
+    "backend_id": "cti-ft16-757b4a3cb99a",
+    "image_id": "sha256:747873867110897321865b8790204c0d42a9d51357dce8c3334f50c59d6e916c",
+    "mode": "cancel-before"
+  },
+  "launch": {
+    "launch_count": 0,
+    "phase_started": false
+  },
+  "artifact_roles": {
+    "source": {
+      "available": [
+        "fixtures/groups/Regression/FT16/Src/wait.c"
+      ],
+      "missing_reason": null
+    },
+    "baseline": {
+      "available": [
+        "fixtures/groups/Regression/FT16/Masters/wait.out"
+      ],
+      "missing_reason": null
+    },
+    "compile_recipe": {
+      "available": [],
+      "missing_reason": "not_started"
+    },
+    "run_recipe": {
+      "available": [],
+      "missing_reason": "not_started"
+    },
+    "compare_recipe": {
+      "available": [],
+      "missing_reason": "not_started"
+    },
+    "environment": {
+      "available": [],
+      "missing_reason": "not_started"
+    },
+    "generated_input": {
+      "available": [],
+      "missing_reason": "not_started"
+    },
+    "partial_stdout": {
+      "available": [],
+      "missing_reason": "not_started"
+    },
+    "partial_stderr": {
+      "available": [],
+      "missing_reason": "not_started"
+    },
+    "combined_output": {
+      "available": [],
+      "missing_reason": "not_started"
+    },
+    "legacy_result": {
+      "available": [],
+      "missing_reason": "not_started"
+    }
+  },
+  "exit": {
+    "returncode": null,
+    "phase_started": false,
+    "cancel_acknowledged": true,
+    "remaining_processes": [],
+    "signals": []
+  },
+  "events": [
+    {
+      "kind": "queued",
+      "monotonic_ns": 843748483171,
+      "job_id": "100dff3cbb164b88ab644b73b3841d2e",
+      "backend_id": "cti-ft16-757b4a3cb99a"
+    },
+    {
+      "kind": "cancel_requested",
+      "monotonic_ns": 843748521588,
+      "origin": "fixture-before-dispatch"
+    },
+    {
+      "kind": "cancel_acknowledged",
+      "monotonic_ns": 843748531463,
+      "phase_started": false,
+      "termination_required": false
+    }
+  ]
+}

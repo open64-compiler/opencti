@@ -1,0 +1,273 @@
+{
+  "files": {
+    "launch.json": {
+      "sha256": "75602c8c2fc6824b5a22e71d886808493cc308fadcb7332a987aa31565363293",
+      "bytes": 323,
+      "mode": 420
+    },
+    "request.json": {
+      "sha256": "f1bc45b3a79e03defe627900a7291de8aabbaa5a7be87408383573d515c89481",
+      "bytes": 261,
+      "mode": 420
+    },
+    "events.jsonl": {
+      "sha256": "4338c56f59f2e76c84186acad1e83eef493cac9f20f377c096b66d22665bf778",
+      "bytes": 277,
+      "mode": 420
+    },
+    "tm.stderr": {
+      "sha256": "e0c681fba89d600eab8c235f59a2b9457b24e195f19dafe25bcce9739b4dc23d",
+      "bytes": 2368,
+      "mode": 420
+    },
+    "summary.log": {
+      "sha256": "53f5dbfc0bebb57cbbdc7ddd35d5ef2ba439e55eec58fb74b6eb7b539847da24",
+      "bytes": 695,
+      "mode": 436
+    },
+    "tm.stdout": {
+      "sha256": "93d1ba4068a1b45fd659673f899e52de5c06e2e538cc300c560dee359c8f0233",
+      "bytes": 208,
+      "mode": 420
+    },
+    "ready.json": {
+      "sha256": "4694a3524fea7a9635e8d16c61227920add601dfb66d6e901e35a1a3dec08966",
+      "bytes": 5549,
+      "mode": 420
+    },
+    "test.ready": {
+      "sha256": "04c63c53c526685f820843e7293892fa0337c660b433e2fa36613c88ac0bae6a",
+      "bytes": 6,
+      "mode": 436
+    },
+    "fixtures/phase0.opt": {
+      "sha256": "cf2d5c943f552acabd2b8feec6a46bbf21525e3326af3a4d84fa142690f06417",
+      "bytes": 610,
+      "mode": 420
+    },
+    "work/log.header": {
+      "sha256": "0596e46806ea14886eeda862ff504f0bd59bdc8087d421b7a6b21dbafba54a3d",
+      "bytes": 540,
+      "mode": 436
+    },
+    "work/TMEnv": {
+      "sha256": "f4af4c7b7b107e82434dd908ad75f6fbd6346ada847909d18ad4ef14e2d131bb",
+      "bytes": 7318,
+      "mode": 436
+    },
+    "work/TMUnits": {
+      "sha256": "86324e932e903cd8f1307baa8a282f09144a80a785bcf9fbe4ff22d2828f70c3",
+      "bytes": 19,
+      "mode": 436
+    },
+    "fixtures/groups/Regression/tmconfig": {
+      "sha256": "722f9b9ed1ee3b39bb516ea8e10baaf8f2a7079a092ff8ebd79e196c70ddd2e1",
+      "bytes": 200,
+      "mode": 420
+    },
+    "fixtures/groups/Regression/FT16/Masters/wait.out": {
+      "sha256": "ff5b924f0856cbbd2133f8d1946b236942361ae4fc75ccc3d0c5bec51024e445",
+      "bytes": 28,
+      "mode": 420
+    },
+    "fixtures/groups/Regression/FT16/Src/wait.c": {
+      "sha256": "a90ccf40bfb68b51f7a17221300860aae41024489daf7f71af5e0317aeafbadf",
+      "bytes": 678,
+      "mode": 420
+    },
+    "work/TMmsgs/enumfile.1": {
+      "sha256": "e9f4d58d2b9a09b8f1c0022c0630ebafbf48cab85db4a6ca90e7b414ace37064",
+      "bytes": 23,
+      "mode": 436
+    },
+    "work/Regression/FT16/wait/wait.err": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0,
+      "mode": 436
+    },
+    "work/Regression/FT16/wait/wait.run.sh": {
+      "sha256": "235100ea88ce008ab0aa58be74acbe32dd4cfc2bed3b3721ab6527a772e91d52",
+      "bytes": 654,
+      "mode": 511
+    },
+    "work/Regression/FT16/wait/wait.env": {
+      "sha256": "fd298c3e211524e843c46335215181d09e3d8dac1f7420da52e3e826911356e4",
+      "bytes": 2024,
+      "mode": 436
+    },
+    "work/Regression/FT16/wait/wait": {
+      "sha256": "96fe2b92f770c56ed51ac368dbbf60f5cbd6f9524d410b0ab8d5c43eddb8dc34",
+      "bytes": 70816,
+      "mode": 509
+    },
+    "work/Regression/FT16/wait/wait.compare-out.sh": {
+      "sha256": "625e75893c9fd4f0fb8a12b74146b1e1a26d8dc0ac175e81fc08ecabaff251d5",
+      "bytes": 850,
+      "mode": 511
+    },
+    "work/Regression/FT16/wait/generated.txt": {
+      "sha256": "d8cbb23ce92889d8f030df17f0607b41f5d8e6e84a2be0b2d45141babf23339d",
+      "bytes": 35,
+      "mode": 436
+    },
+    "work/Regression/FT16/wait/wait.o": {
+      "sha256": "2f6656250d56ec7b5a3578c88565582628e195c837640a479dfa49345f1defa0",
+      "bytes": 3336,
+      "mode": 436
+    },
+    "work/Regression/FT16/wait/wait.out.2": {
+      "sha256": "3c33af15dd683ccf05d3a126165acabdbfc78f73dc9564f27c6e9aee104e6e6f",
+      "bytes": 20,
+      "mode": 436
+    },
+    "work/Regression/FT16/wait/wait.link.sh": {
+      "sha256": "b69b78612c33b658d5706e42d15405456a93bc6cc178be57f5c33ce16baec4e0",
+      "bytes": 778,
+      "mode": 511
+    },
+    "work/Regression/FT16/wait/wait.compile.sh": {
+      "sha256": "bb21df6bfe099e9b524b5625125bfcc7ccbdbb052ea571ed42eb60b20850fa86",
+      "bytes": 830,
+      "mode": 511
+    },
+    "work/Regression/FT16/wait/wait.out.master": {
+      "sha256": "ff5b924f0856cbbd2133f8d1946b236942361ae4fc75ccc3d0c5bec51024e445",
+      "bytes": 28,
+      "mode": 420
+    },
+    "work/Regression/FT16/wait/wait.out.1": {
+      "sha256": "6bebbe53e020636e7730498134fa66afbd9fb3880410b0da52dc97d472d4b8e5",
+      "bytes": 20,
+      "mode": 436
+    },
+    "work/Regression/FT16/wait/wait.c": {
+      "sha256": "a90ccf40bfb68b51f7a17221300860aae41024489daf7f71af5e0317aeafbadf",
+      "bytes": 678,
+      "mode": 420
+    },
+    "work/Regression/FT16/wait/wait.sh": {
+      "sha256": "ce1d097836829bba298c4f9d91b11bafb655f835d0306ce1977f923f5ce8f84a",
+      "bytes": 1488,
+      "mode": 511
+    }
+  },
+  "links": {},
+  "framework": {
+    "files": 2654,
+    "id": "1584e7b404a016da21ea8bd4a5c3ee2d30a1ee1424ece1d21deab627b00e1de2"
+  },
+  "job": {
+    "job_id": "480b68df76d74bda9329f50596b3d74d",
+    "attempt_id": "480b68df76d74bda9329f50596b3d74d",
+    "backend_id": "cti-ft16-d623292174d0",
+    "image_id": "sha256:747873867110897321865b8790204c0d42a9d51357dce8c3334f50c59d6e916c",
+    "mode": "workspace-loss"
+  },
+  "launch": {
+    "launch_count": 1,
+    "phase_started": true,
+    "pid": 13,
+    "argv": [
+      "perl",
+      "/opt/cti/bin/TM.pl",
+      "-nod",
+      "-nomail",
+      "-f",
+      "/state/fixtures/phase0.opt",
+      "-w",
+      "/state/work",
+      "-l",
+      "/state/summary.log",
+      "run"
+    ],
+    "environment_overrides": {
+      "FT16_STUBBORN": null
+    }
+  },
+  "artifact_roles": {
+    "source": {
+      "available": [
+        "fixtures/groups/Regression/FT16/Src/wait.c"
+      ],
+      "missing_reason": null
+    },
+    "baseline": {
+      "available": [
+        "fixtures/groups/Regression/FT16/Masters/wait.out"
+      ],
+      "missing_reason": null
+    },
+    "compile_recipe": {
+      "available": [
+        "work/Regression/FT16/wait/wait.compile.sh"
+      ],
+      "missing_reason": null
+    },
+    "run_recipe": {
+      "available": [
+        "work/Regression/FT16/wait/wait.run.sh"
+      ],
+      "missing_reason": null
+    },
+    "compare_recipe": {
+      "available": [
+        "work/Regression/FT16/wait/wait.compare-out.sh"
+      ],
+      "missing_reason": null
+    },
+    "environment": {
+      "available": [
+        "work/Regression/FT16/wait/wait.env"
+      ],
+      "missing_reason": null
+    },
+    "generated_input": {
+      "available": [
+        "work/Regression/FT16/wait/generated.txt"
+      ],
+      "missing_reason": null
+    },
+    "partial_stdout": {
+      "available": [
+        "work/Regression/FT16/wait/wait.out.1"
+      ],
+      "missing_reason": null
+    },
+    "partial_stderr": {
+      "available": [
+        "work/Regression/FT16/wait/wait.out.2"
+      ],
+      "missing_reason": null
+    },
+    "combined_output": {
+      "available": [],
+      "missing_reason": "not_produced_or_interrupted"
+    },
+    "legacy_result": {
+      "available": [],
+      "missing_reason": "not_produced_or_interrupted"
+    }
+  },
+  "exit": null,
+  "events": [
+    {
+      "kind": "queued",
+      "monotonic_ns": 850403819675,
+      "job_id": "480b68df76d74bda9329f50596b3d74d",
+      "backend_id": "cti-ft16-d623292174d0"
+    },
+    {
+      "kind": "phase_started",
+      "monotonic_ns": 850404099008,
+      "pid": 13
+    },
+    {
+      "kind": "test_ready",
+      "monotonic_ns": 850672369383,
+      "test_pids": [
+        91,
+        92
+      ]
+    }
+  ]
+}

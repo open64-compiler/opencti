@@ -1,0 +1,254 @@
+{
+  "case": "disconnect",
+  "job_id": "9df99fa6687148288c7f3757d4a0a7f5",
+  "attempt_id": "9df99fa6687148288c7f3757d4a0a7f5",
+  "original_backend_id": "fe0f0ef7a45cbc3dae47216195b1662e418924b04a06c2c15adf28e7c4cebd4a",
+  "launch_count": 1,
+  "final_snapshot": "final",
+  "preservation": "complete_available_state",
+  "process_exit": {
+    "returncode": -15,
+    "phase_started": true,
+    "cancel_acknowledged": true,
+    "remaining_processes": [],
+    "signals": [
+      "SIGTERM"
+    ],
+    "tracked_processes": [
+      {
+        "pid": 13,
+        "state": "R",
+        "parent": 1,
+        "group": 13,
+        "start_ticks": 84757,
+        "cmdline": "perl /opt/cti/bin/TM.pl -nod -nomail -f /state/fixtures/phase0.opt -w /state/work -l /state/summary.log run "
+      },
+      {
+        "pid": 34,
+        "state": "R",
+        "parent": 13,
+        "group": 13,
+        "start_ticks": 84767,
+        "cmdline": "/usr/local/bin/perl -w /opt/cti/Scripts/drivers/meta-driver.pl -unit Regression/FT16 -uid 1 "
+      },
+      {
+        "pid": 45,
+        "state": "S",
+        "parent": 34,
+        "group": 13,
+        "start_ticks": 84777,
+        "cmdline": "/bin/bash ./wait.sh "
+      },
+      {
+        "pid": 47,
+        "state": "S",
+        "parent": 45,
+        "group": 47,
+        "start_ticks": 84777,
+        "cmdline": "/usr/local/bin/perl /opt/cti/Scripts/limit.pl -q -p -m1 -s90 ./wait.compile.sh "
+      },
+      {
+        "pid": 54,
+        "state": "S",
+        "parent": 47,
+        "group": 47,
+        "start_ticks": 84778,
+        "cmdline": "/bin/bash ./wait.compile.sh "
+      },
+      {
+        "pid": 57,
+        "state": "S",
+        "parent": 54,
+        "group": 47,
+        "start_ticks": 84778,
+        "cmdline": "/usr/bin/gcc -O0 -c wait.c "
+      },
+      {
+        "pid": 58,
+        "state": "R",
+        "parent": 57,
+        "group": 47,
+        "start_ticks": 84778,
+        "cmdline": "/usr/libexec/gcc/aarch64-linux-gnu/13/cc1 -quiet -imultiarch aarch64-linux-gnu wait.c -quiet -dumpbase wait.c -dumpbase-ext .c -mlittle-endian -mabi=lp64 -O0 -fasynchronous-unwind-tables -fstack-protector-strong -Wformat -Wformat-security -fstack-clash-protection -o /tmp/ccenGtVX.s "
+      },
+      {
+        "pid": 66,
+        "state": "S",
+        "parent": 45,
+        "group": 66,
+        "start_ticks": 84779,
+        "cmdline": "/usr/local/bin/perl /opt/cti/Scripts/limit.pl -q -p -m1 -s90 ./wait.link.sh "
+      },
+      {
+        "pid": 73,
+        "state": "S",
+        "parent": 66,
+        "group": 66,
+        "start_ticks": 84781,
+        "cmdline": "/bin/bash ./wait.link.sh "
+      },
+      {
+        "pid": 74,
+        "state": "S",
+        "parent": 73,
+        "group": 66,
+        "start_ticks": 84781,
+        "cmdline": "/usr/bin/gcc -O0 -o ./wait wait.o "
+      },
+      {
+        "pid": 75,
+        "state": "S",
+        "parent": 74,
+        "group": 66,
+        "start_ticks": 84781,
+        "cmdline": "/usr/libexec/gcc/aarch64-linux-gnu/13/collect2 -plugin /usr/libexec/gcc/aarch64-linux-gnu/13/liblto_plugin.so -plugin-opt=/usr/libexec/gcc/aarch64-linux-gnu/13/lto-wrapper -plugin-opt=-fresolution=/tmp/ccgCmmkX.res -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_s --build-id --eh-frame-hdr --hash-style=gnu --as-needed -dynamic-linker /lib/ld-linux-aarch64.so.1 -X -EL -maarch64linux --fix-cortex-a53-843419 -pie -z now -z relro -o ./wait /usr/lib/gcc/aarch64-linux-gnu/13/../../../aarch64-linux-gnu/Scrt1.o /usr/lib/gcc/aarch64-linux-gnu/13/../../../aarch64-linux-gnu/crti.o /usr/lib/gcc/aarch64-linux-gnu/13/crtbeginS.o -L/usr/lib/gcc/aarch64-linux-gnu/13 -L/usr/lib/gcc/aarch64-linux-gnu/13/../../../aarch64-linux-gnu -L/usr/lib/gcc/aarch64-linux-gnu/13/../../../../lib -L/lib/aarch64-linux-gnu -L/lib/../lib -L/usr/lib/aarch64-linux-gnu -L/usr/lib/../lib -L/usr/lib/gcc/aarch64-linux-gnu/13/../../.. wait.o -lgcc --push-state --as-needed -lgcc_s --pop-state -lc -lgcc --push-state --as-needed -lgcc_s --pop-state /usr/lib/gcc/aarch64-linux-gnu/13/crtendS.o /usr/lib/gcc/aarch64-linux-gnu/13/../../../aarch64-linux-gnu/crtn.o "
+      },
+      {
+        "pid": 76,
+        "state": "R",
+        "parent": 75,
+        "group": 66,
+        "start_ticks": 84781,
+        "cmdline": "/usr/bin/ld -plugin /usr/libexec/gcc/aarch64-linux-gnu/13/liblto_plugin.so -plugin-opt=/usr/libexec/gcc/aarch64-linux-gnu/13/lto-wrapper -plugin-opt=-fresolution=/tmp/ccgCmmkX.res -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_s --build-id --eh-frame-hdr --hash-style=gnu --as-needed -dynamic-linker /lib/ld-linux-aarch64.so.1 -X -EL -maarch64linux --fix-cortex-a53-843419 -pie -z now -z relro -o ./wait /usr/lib/gcc/aarch64-linux-gnu/13/../../../aarch64-linux-gnu/Scrt1.o /usr/lib/gcc/aarch64-linux-gnu/13/../../../aarch64-linux-gnu/crti.o /usr/lib/gcc/aarch64-linux-gnu/13/crtbeginS.o -L/usr/lib/gcc/aarch64-linux-gnu/13 -L/usr/lib/gcc/aarch64-linux-gnu/13/../../../aarch64-linux-gnu -L/usr/lib/gcc/aarch64-linux-gnu/13/../../../../lib -L/lib/aarch64-linux-gnu -L/lib/../lib -L/usr/lib/aarch64-linux-gnu -L/usr/lib/../lib -L/usr/lib/gcc/aarch64-linux-gnu/13/../../.. wait.o -lgcc --push-state --as-needed -lgcc_s --pop-state -lc -lgcc --push-state --as-needed -lgcc_s --pop-state /usr/lib/gcc/aarch64-linux-gnu/13/crtendS.o /usr/lib/gcc/aarch64-linux-gnu/13/../../../aarch64-linux-gnu/crtn.o "
+      },
+      {
+        "pid": 83,
+        "state": "S",
+        "parent": 45,
+        "group": 83,
+        "start_ticks": 84781,
+        "cmdline": "/usr/local/bin/perl /opt/cti/Scripts/limit.pl -q -p -m1 -s90 ./wait.run.sh "
+      },
+      {
+        "pid": 96,
+        "state": "S",
+        "parent": 83,
+        "group": 83,
+        "start_ticks": 84783,
+        "cmdline": "/bin/bash ./wait.run.sh "
+      },
+      {
+        "pid": 97,
+        "state": "S",
+        "parent": 96,
+        "group": 83,
+        "start_ticks": 84783,
+        "cmdline": "./wait "
+      },
+      {
+        "pid": 98,
+        "state": "S",
+        "parent": 97,
+        "group": 83,
+        "start_ticks": 84783,
+        "cmdline": "./wait "
+      }
+    ],
+    "residual_before_cleanup": []
+  },
+  "events": [
+    {
+      "kind": "allocated",
+      "job_id": "9df99fa6687148288c7f3757d4a0a7f5",
+      "attempt_id": "9df99fa6687148288c7f3757d4a0a7f5",
+      "backend_id": "fe0f0ef7a45cbc3dae47216195b1662e418924b04a06c2c15adf28e7c4cebd4a",
+      "worker_name": "cti-ft16-5c0bcc0ba861",
+      "volume": "cti-ft16-33d9dff3c8b4",
+      "leases": [
+        {
+          "acquired": true,
+          "reason": "Acquired",
+          "resource": "fixture/performance-slot",
+          "epoch": 9,
+          "owner": "9df99fa6687148288c7f3757d4a0a7f5",
+          "token": "bcd458077b814081b96f31657a28e12f"
+        },
+        {
+          "acquired": true,
+          "reason": "Acquired",
+          "resource": "fixture/gpu-slot-NOT-A-GPU",
+          "epoch": 9,
+          "owner": "9df99fa6687148288c7f3757d4a0a7f5",
+          "token": "f87bf41e66e844c2b0c423674aa688cc"
+        }
+      ]
+    },
+    {
+      "kind": "transport_unavailable",
+      "injection": "paused local Docker worker",
+      "preservation": "incomplete",
+      "cancel_requested": true,
+      "cancel_acknowledged": false
+    },
+    {
+      "kind": "release_withheld_while_unreachable",
+      "contender": {
+        "acquired": false,
+        "reason": "Contended",
+        "resource": "fixture/performance-slot",
+        "epoch": 9,
+        "owner": "9df99fa6687148288c7f3757d4a0a7f5",
+        "token": null
+      }
+    },
+    {
+      "kind": "reconnected_same_attempt",
+      "launch_count": 1
+    },
+    {
+      "kind": "available_state_collected",
+      "job_id": "9df99fa6687148288c7f3757d4a0a7f5",
+      "object_sha256": "9e84e9a22f657335196de5bbdcd734d0f612ea313fc87677907e22b995b2ad2e"
+    },
+    {
+      "kind": "container_removed"
+    },
+    {
+      "kind": "leases_reconciled",
+      "released": [
+        {
+          "released": true,
+          "reason": "Released"
+        },
+        {
+          "released": true,
+          "reason": "Released"
+        }
+      ],
+      "renewed": [
+        {
+          "acquired": true,
+          "reason": "Acquired",
+          "resource": "fixture/performance-slot",
+          "epoch": 10,
+          "owner": "4f9177e5945a40f6b716f7ebd358a845",
+          "token": "63b6413beaad434aa4f66a4b7823b4d6"
+        },
+        {
+          "acquired": true,
+          "reason": "Acquired",
+          "resource": "fixture/gpu-slot-NOT-A-GPU",
+          "epoch": 10,
+          "owner": "4f9177e5945a40f6b716f7ebd358a845",
+          "token": "4114887d969846ab991c0f34c91635ba"
+        }
+      ],
+      "stale_releases": [
+        {
+          "released": false,
+          "reason": "StaleOrForeignLease"
+        },
+        {
+          "released": false,
+          "reason": "StaleOrForeignLease"
+        }
+      ]
+    },
+    {
+      "kind": "resources_removed"
+    }
+  ],
+  "checkpoint_unchanged": true,
+  "gpu_hardware_tested": false,
+  "production_scheduler_tested": false
+}

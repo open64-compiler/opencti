@@ -1,0 +1,99 @@
+{
+  "case": "cancel-before",
+  "job_id": "100dff3cbb164b88ab644b73b3841d2e",
+  "attempt_id": "100dff3cbb164b88ab644b73b3841d2e",
+  "original_backend_id": "d3d9a65dd5dbce5514f15c013bcff2358c859aad7753796ffa34c24995c447f7",
+  "launch_count": 0,
+  "final_snapshot": "final",
+  "preservation": "complete_available_state",
+  "process_exit": {
+    "returncode": null,
+    "phase_started": false,
+    "cancel_acknowledged": true,
+    "remaining_processes": [],
+    "signals": []
+  },
+  "events": [
+    {
+      "kind": "allocated",
+      "job_id": "100dff3cbb164b88ab644b73b3841d2e",
+      "attempt_id": "100dff3cbb164b88ab644b73b3841d2e",
+      "backend_id": "d3d9a65dd5dbce5514f15c013bcff2358c859aad7753796ffa34c24995c447f7",
+      "worker_name": "cti-ft16-757b4a3cb99a",
+      "volume": "cti-ft16-5a54675a0298",
+      "leases": [
+        {
+          "acquired": true,
+          "reason": "Acquired",
+          "resource": "fixture/performance-slot",
+          "epoch": 3,
+          "owner": "100dff3cbb164b88ab644b73b3841d2e",
+          "token": "172910f774214fff9e845083f85f913b"
+        },
+        {
+          "acquired": true,
+          "reason": "Acquired",
+          "resource": "fixture/gpu-slot-NOT-A-GPU",
+          "epoch": 3,
+          "owner": "100dff3cbb164b88ab644b73b3841d2e",
+          "token": "c6c956e2de1e46f9a53759b559df16a7"
+        }
+      ]
+    },
+    {
+      "kind": "available_state_collected",
+      "job_id": "100dff3cbb164b88ab644b73b3841d2e",
+      "object_sha256": "65e15318e5fe9a4c29087a0ebbba37d0ff5bbd50c4a363b8a4236ec9ba4b01a3"
+    },
+    {
+      "kind": "container_removed"
+    },
+    {
+      "kind": "leases_reconciled",
+      "released": [
+        {
+          "released": true,
+          "reason": "Released"
+        },
+        {
+          "released": true,
+          "reason": "Released"
+        }
+      ],
+      "renewed": [
+        {
+          "acquired": true,
+          "reason": "Acquired",
+          "resource": "fixture/performance-slot",
+          "epoch": 4,
+          "owner": "d8564925e43e4969800750e8fc6563c4",
+          "token": "cdb1cdec725d448f8510ecca29fd4cbb"
+        },
+        {
+          "acquired": true,
+          "reason": "Acquired",
+          "resource": "fixture/gpu-slot-NOT-A-GPU",
+          "epoch": 4,
+          "owner": "d8564925e43e4969800750e8fc6563c4",
+          "token": "605b93816e29485ab714bea5d1297280"
+        }
+      ],
+      "stale_releases": [
+        {
+          "released": false,
+          "reason": "StaleOrForeignLease"
+        },
+        {
+          "released": false,
+          "reason": "StaleOrForeignLease"
+        }
+      ]
+    },
+    {
+      "kind": "resources_removed"
+    }
+  ],
+  "checkpoint_unchanged": true,
+  "gpu_hardware_tested": false,
+  "production_scheduler_tested": false
+}

@@ -1,0 +1,198 @@
+{
+  "case": "timeout",
+  "job_id": "a61b1724974d474e8fee88f05d2a9dcd",
+  "attempt_id": "a61b1724974d474e8fee88f05d2a9dcd",
+  "original_backend_id": "e93005ff8100e07e3a304e44b8336d26a509e1178b7c0d75f832da04a862bfac",
+  "launch_count": 1,
+  "final_snapshot": "final",
+  "preservation": "complete_available_state",
+  "process_exit": {
+    "returncode": 0,
+    "phase_started": true,
+    "cancel_acknowledged": false,
+    "remaining_processes": [],
+    "signals": [],
+    "tracked_processes": [
+      {
+        "pid": 13,
+        "state": "R",
+        "parent": 1,
+        "group": 13,
+        "start_ticks": 84079,
+        "cmdline": "perl /opt/cti/bin/TM.pl -nod -nomail -f /state/fixtures/phase0.opt -w /state/work -l /state/summary.log run "
+      },
+      {
+        "pid": 34,
+        "state": "R",
+        "parent": 13,
+        "group": 13,
+        "start_ticks": 84089,
+        "cmdline": "/usr/local/bin/perl -w /opt/cti/Scripts/drivers/meta-driver.pl -unit Regression/FT16 -uid 1 "
+      },
+      {
+        "pid": 45,
+        "state": "S",
+        "parent": 34,
+        "group": 13,
+        "start_ticks": 84100,
+        "cmdline": "/bin/bash ./wait.sh "
+      },
+      {
+        "pid": 47,
+        "state": "S",
+        "parent": 45,
+        "group": 13,
+        "start_ticks": 84100,
+        "cmdline": "/bin/sh -u /opt/cti/Scripts/limit -q -p -m1 -s2 ./wait.compile.sh "
+      },
+      {
+        "pid": 49,
+        "state": "S",
+        "parent": 47,
+        "group": 13,
+        "start_ticks": 84100,
+        "cmdline": "/usr/local/bin/perl /opt/cti/Scripts/limit.pl -version "
+      },
+      {
+        "pid": 66,
+        "state": "R",
+        "parent": 45,
+        "group": 13,
+        "start_ticks": 84102,
+        "cmdline": "/usr/local/bin/perl /opt/cti/Scripts/limit.pl -q -p -m1 -s2 ./wait.link.sh "
+      },
+      {
+        "pid": 83,
+        "state": "S",
+        "parent": 45,
+        "group": 83,
+        "start_ticks": 84104,
+        "cmdline": "/usr/local/bin/perl /opt/cti/Scripts/limit.pl -q -p -m1 -s2 ./wait.run.sh "
+      },
+      {
+        "pid": 90,
+        "state": "R",
+        "parent": 83,
+        "group": 83,
+        "start_ticks": 84105,
+        "cmdline": "/bin/bash ./wait.run.sh "
+      },
+      {
+        "pid": 92,
+        "state": "S",
+        "parent": 90,
+        "group": 83,
+        "start_ticks": 84105,
+        "cmdline": "./wait "
+      },
+      {
+        "pid": 94,
+        "state": "S",
+        "parent": 92,
+        "group": 83,
+        "start_ticks": 84105,
+        "cmdline": "./wait "
+      },
+      {
+        "pid": 170,
+        "state": "S",
+        "parent": 34,
+        "group": 13,
+        "start_ticks": 84306,
+        "cmdline": "sh -c find /state/work -type d -exec chmod g+rwx '{}' \\; 2>/dev/null "
+      },
+      {
+        "pid": 171,
+        "state": "R",
+        "parent": 170,
+        "group": 13,
+        "start_ticks": 84306,
+        "cmdline": "find /state/work -type d -exec chmod g+rwx {} ; "
+      }
+    ],
+    "residual_before_cleanup": []
+  },
+  "events": [
+    {
+      "kind": "allocated",
+      "job_id": "a61b1724974d474e8fee88f05d2a9dcd",
+      "attempt_id": "a61b1724974d474e8fee88f05d2a9dcd",
+      "backend_id": "e93005ff8100e07e3a304e44b8336d26a509e1178b7c0d75f832da04a862bfac",
+      "worker_name": "cti-ft16-4d9ce25ac640",
+      "volume": "cti-ft16-ffd3ec1e0675",
+      "leases": [
+        {
+          "acquired": true,
+          "reason": "Acquired",
+          "resource": "fixture/performance-slot",
+          "epoch": 1,
+          "owner": "a61b1724974d474e8fee88f05d2a9dcd",
+          "token": "49cb63131b0c4ee3acded8bf691b4550"
+        },
+        {
+          "acquired": true,
+          "reason": "Acquired",
+          "resource": "fixture/gpu-slot-NOT-A-GPU",
+          "epoch": 1,
+          "owner": "a61b1724974d474e8fee88f05d2a9dcd",
+          "token": "b11006458db04d52b157c08eed242d2d"
+        }
+      ]
+    },
+    {
+      "kind": "available_state_collected",
+      "job_id": "a61b1724974d474e8fee88f05d2a9dcd",
+      "object_sha256": "f4623519f17b85c3318f9d8f4b68014fc22cdfd2bcab5959a2dbfb05753e0714"
+    },
+    {
+      "kind": "container_removed"
+    },
+    {
+      "kind": "leases_reconciled",
+      "released": [
+        {
+          "released": true,
+          "reason": "Released"
+        },
+        {
+          "released": true,
+          "reason": "Released"
+        }
+      ],
+      "renewed": [
+        {
+          "acquired": true,
+          "reason": "Acquired",
+          "resource": "fixture/performance-slot",
+          "epoch": 2,
+          "owner": "5702df1f126142388b80ab65fbfd5658",
+          "token": "3017c2eeeb4b4898b7fa92d2e988fefb"
+        },
+        {
+          "acquired": true,
+          "reason": "Acquired",
+          "resource": "fixture/gpu-slot-NOT-A-GPU",
+          "epoch": 2,
+          "owner": "5702df1f126142388b80ab65fbfd5658",
+          "token": "3fe5c8f86737450fab0052f5d417cebf"
+        }
+      ],
+      "stale_releases": [
+        {
+          "released": false,
+          "reason": "StaleOrForeignLease"
+        },
+        {
+          "released": false,
+          "reason": "StaleOrForeignLease"
+        }
+      ]
+    },
+    {
+      "kind": "resources_removed"
+    }
+  ],
+  "checkpoint_unchanged": true,
+  "gpu_hardware_tested": false,
+  "production_scheduler_tested": false
+}
