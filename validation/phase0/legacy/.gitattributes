@@ -40,3 +40,6 @@ evidence/ft13-001/**/*.stdout -text whitespace=-blank-at-eol,-blank-at-eof
 evidence/ft13-001/**/*.log -text whitespace=-blank-at-eol,-blank-at-eof
 evidence/ft13-001/**/*.tar.gz -text
 evidence/ft13-001/**/*.so -text
+# Keep the FT14 stock summary and sealed inputs/work objects byte-for-byte.
+evidence/ft14-001/**/*.tar.gz -text
+evidence/ft14-001/collected-artifacts/summary.log -text whitespace=-blank-at-eol,-blank-at-eof

@@ -1,0 +1,1253 @@
+[
+  {
+    "label": "actual-gpu-request-blocked",
+    "value": {
+      "job_id": "7552ab2a5f3447b8b8f57a6e37703125",
+      "request_sha256": "6aa86fa002cc6208d0c1514d1212321048f7921bda6ebac5af401fc41ba982cf",
+      "request": {
+        "execution_kind": "gpu",
+        "inputs_sha256": "6a66d4c07d0771c5c28f10647dcbec744edd207e8564200ae748b54c271687dc",
+        "job_id": "7552ab2a5f3447b8b8f57a6e37703125",
+        "local_runtime": {
+          "bytes": 623109120,
+          "name": "runtime-image.tar",
+          "sha256": "1e001626e131877f12f638b98fa922bf6b05526c24c5678aa6557f9647ec277c"
+        },
+        "mac_sleep": "not_exercised",
+        "requirements": {
+          "compiler_id": "gcc-13.3.0",
+          "device_capabilities": [
+            "fixture-capability-A"
+          ],
+          "driver_id": "fixture-driver-A",
+          "gpu_backend": "fixture-cuda-contract",
+          "image_id": "sha256:747873867110897321865b8790204c0d42a9d51357dce8c3334f50c59d6e916c",
+          "minimum_memory_bytes": 1024,
+          "platform": "linux/arm64",
+          "runtime_id": "fixture-runtime-A"
+        },
+        "schema": "ft14-local-fixture/v1",
+        "seed": 17
+      },
+      "state": "blocked",
+      "result": null,
+      "receipt": null,
+      "query_worker": {
+        "worker_identity": "c9591fc96e6d",
+        "generation": "72d7190c7d0245818a8db2938885010c",
+        "platform": "linux/arm64",
+        "image_id": "sha256:747873867110897321865b8790204c0d42a9d51357dce8c3334f50c59d6e916c",
+        "compiler_id": "gcc-13.3.0",
+        "available": true,
+        "gpu_backends": {},
+        "gpu_device_paths": [],
+        "nvidia_smi_available": false,
+        "qualification": "no GPU backend qualified; local Docker CPU transport fixture",
+        "framework": {
+          "id": "1584e7b404a016da21ea8bd4a5c3ee2d30a1ee1424ece1d21deab627b00e1de2",
+          "files": 2654
+        }
+      }
+    }
+  },
+  {
+    "label": "before-controller-disconnect",
+    "value": {
+      "job_id": "b81019f50c9341d881004f801e54c703",
+      "request_sha256": "0debe3ccf99df51d39c2add31759937afd1af4b46168bc3cb99eef75a7e2dec1",
+      "request": {
+        "execution_kind": "explicit_cpu_transport_control",
+        "inputs_sha256": "6a66d4c07d0771c5c28f10647dcbec744edd207e8564200ae748b54c271687dc",
+        "job_id": "b81019f50c9341d881004f801e54c703",
+        "local_runtime": {
+          "bytes": 623109120,
+          "name": "runtime-image.tar",
+          "sha256": "1e001626e131877f12f638b98fa922bf6b05526c24c5678aa6557f9647ec277c"
+        },
+        "mac_sleep": "not_exercised",
+        "schema": "ft14-local-fixture/v1",
+        "seed": 17
+      },
+      "state": "running",
+      "result": {
+        "phase_dispatches": 0,
+        "runner_pid": 59,
+        "stage": "waiting_for_fixture_release",
+        "worker": {
+          "available": true,
+          "compiler_id": "gcc-13.3.0",
+          "framework": {
+            "files": 2654,
+            "id": "1584e7b404a016da21ea8bd4a5c3ee2d30a1ee1424ece1d21deab627b00e1de2"
+          },
+          "generation": "72d7190c7d0245818a8db2938885010c",
+          "gpu_backends": {},
+          "gpu_device_paths": [],
+          "image_id": "sha256:747873867110897321865b8790204c0d42a9d51357dce8c3334f50c59d6e916c",
+          "nvidia_smi_available": false,
+          "platform": "linux/arm64",
+          "qualification": "no GPU backend qualified; local Docker CPU transport fixture",
+          "worker_identity": "c9591fc96e6d"
+        }
+      },
+      "receipt": null,
+      "query_worker": {
+        "worker_identity": "c9591fc96e6d",
+        "generation": "72d7190c7d0245818a8db2938885010c",
+        "platform": "linux/arm64",
+        "image_id": "sha256:747873867110897321865b8790204c0d42a9d51357dce8c3334f50c59d6e916c",
+        "compiler_id": "gcc-13.3.0",
+        "available": true,
+        "gpu_backends": {},
+        "gpu_device_paths": [],
+        "nvidia_smi_available": false,
+        "qualification": "no GPU backend qualified; local Docker CPU transport fixture",
+        "framework": {
+          "id": "1584e7b404a016da21ea8bd4a5c3ee2d30a1ee1424ece1d21deab627b00e1de2",
+          "files": 2654
+        }
+      }
+    }
+  },
+  {
+    "label": "running-job-lease",
+    "value": {
+      "acquired": true,
+      "reason": "AlreadyOwned",
+      "resource": "fixture/performance-slot-not-a-gpu",
+      "epoch": 1,
+      "owner": "b81019f50c9341d881004f801e54c703",
+      "token": "4e19e8c6faac47da8e394bb52a1d087a"
+    }
+  },
+  {
+    "label": "contending-performance-fixture",
+    "value": {
+      "acquired": false,
+      "reason": "Contended",
+      "resource": "fixture/performance-slot-not-a-gpu",
+      "epoch": 1,
+      "owner": "b81019f50c9341d881004f801e54c703",
+      "token": null
+    }
+  },
+  {
+    "label": "controller-disconnected",
+    "value": {
+      "controller_returncode": -9,
+      "native_original_path_unavailable": true,
+      "mac_os_sleep_exercised": false
+    }
+  },
+  {
+    "label": "finished-with-controller-absent",
+    "value": {
+      "job_id": "b81019f50c9341d881004f801e54c703",
+      "request_sha256": "0debe3ccf99df51d39c2add31759937afd1af4b46168bc3cb99eef75a7e2dec1",
+      "request": {
+        "execution_kind": "explicit_cpu_transport_control",
+        "inputs_sha256": "6a66d4c07d0771c5c28f10647dcbec744edd207e8564200ae748b54c271687dc",
+        "job_id": "b81019f50c9341d881004f801e54c703",
+        "local_runtime": {
+          "bytes": 623109120,
+          "name": "runtime-image.tar",
+          "sha256": "1e001626e131877f12f638b98fa922bf6b05526c24c5678aa6557f9647ec277c"
+        },
+        "mac_sleep": "not_exercised",
+        "schema": "ft14-local-fixture/v1",
+        "seed": 17
+      },
+      "state": "finished",
+      "result": {
+        "execution": {
+          "argv": [
+            "perl",
+            "/opt/cti/bin/TM.pl",
+            "-nod",
+            "-nomail",
+            "-f",
+            "/fixtures/phase0.opt",
+            "-w",
+            "/state/jobs/b81019f50c9341d881004f801e54c703/original/work",
+            "-l",
+            "/state/jobs/b81019f50c9341d881004f801e54c703/original/summary.log",
+            "run"
+          ],
+          "cpu_fallback_selected": false,
+          "execution_kind": "explicit_cpu_transport_control",
+          "framework_after": {
+            "files": 2654,
+            "id": "1584e7b404a016da21ea8bd4a5c3ee2d30a1ee1424ece1d21deab627b00e1de2"
+          },
+          "framework_before": {
+            "files": 2654,
+            "id": "1584e7b404a016da21ea8bd4a5c3ee2d30a1ee1424ece1d21deab627b00e1de2"
+          },
+          "gpu_execution": false,
+          "harness_returncode": 0,
+          "job_id": "b81019f50c9341d881004f801e54c703",
+          "phase_dispatches": 1,
+          "seed": 17,
+          "test_outcome": "DiffPgmOut",
+          "tolerance": {
+            "absolute": 0,
+            "mode": "exact_text",
+            "relative": 0
+          },
+          "worker": {
+            "available": true,
+            "compiler_id": "gcc-13.3.0",
+            "framework": {
+              "files": 2654,
+              "id": "1584e7b404a016da21ea8bd4a5c3ee2d30a1ee1424ece1d21deab627b00e1de2"
+            },
+            "generation": "72d7190c7d0245818a8db2938885010c",
+            "gpu_backends": {},
+            "gpu_device_paths": [],
+            "image_id": "sha256:747873867110897321865b8790204c0d42a9d51357dce8c3334f50c59d6e916c",
+            "nvidia_smi_available": false,
+            "platform": "linux/arm64",
+            "qualification": "no GPU backend qualified; local Docker CPU transport fixture",
+            "worker_identity": "c9591fc96e6d"
+          }
+        },
+        "manifest": {
+          "attempt_id": "b81019f50c9341d881004f801e54c703",
+          "execution_kind": "explicit_cpu_transport_control",
+          "local_prerequisites": [
+            {
+              "bytes": 623109120,
+              "name": "runtime-image.tar",
+              "sha256": "1e001626e131877f12f638b98fa922bf6b05526c24c5678aa6557f9647ec277c"
+            }
+          ],
+          "objects": [
+            {
+              "bytes": 1473,
+              "name": "execution.json",
+              "sha256": "9ace51eff9a3913f584a6685bcd6aa6d654b396c0f7d1bce4507cd9022195983"
+            },
+            {
+              "bytes": 8741,
+              "name": "failed-work.tar.gz",
+              "sha256": "4e061fbfa010779f8aa0c51bca26e6e34c60fd4dd8a65c207657ff9c088b3b2e"
+            },
+            {
+              "bytes": 1212,
+              "name": "inputs.tar.gz",
+              "sha256": "6a66d4c07d0771c5c28f10647dcbec744edd207e8564200ae748b54c271687dc"
+            },
+            {
+              "bytes": 988,
+              "name": "summary.log",
+              "sha256": "107342ede4852ef686052e77af12b5d6a2418c686f16735f370daed17d36c802"
+            }
+          ],
+          "test_outcome": "DiffPgmOut"
+        },
+        "original_worker_identity": "c9591fc96e6d",
+        "phase_dispatches": 1
+      },
+      "receipt": null,
+      "query_worker": {
+        "worker_identity": "c9591fc96e6d",
+        "generation": "72d7190c7d0245818a8db2938885010c",
+        "platform": "linux/arm64",
+        "image_id": "sha256:747873867110897321865b8790204c0d42a9d51357dce8c3334f50c59d6e916c",
+        "compiler_id": "gcc-13.3.0",
+        "available": true,
+        "gpu_backends": {},
+        "gpu_device_paths": [],
+        "nvidia_smi_available": false,
+        "qualification": "no GPU backend qualified; local Docker CPU transport fixture",
+        "framework": {
+          "id": "1584e7b404a016da21ea8bd4a5c3ee2d30a1ee1424ece1d21deab627b00e1de2",
+          "files": 2654
+        }
+      }
+    }
+  },
+  {
+    "label": "duplicate-submission",
+    "value": {
+      "delivery": "duplicate",
+      "job_id": "b81019f50c9341d881004f801e54c703",
+      "request_sha256": "0debe3ccf99df51d39c2add31759937afd1af4b46168bc3cb99eef75a7e2dec1",
+      "request": {
+        "execution_kind": "explicit_cpu_transport_control",
+        "inputs_sha256": "6a66d4c07d0771c5c28f10647dcbec744edd207e8564200ae748b54c271687dc",
+        "job_id": "b81019f50c9341d881004f801e54c703",
+        "local_runtime": {
+          "bytes": 623109120,
+          "name": "runtime-image.tar",
+          "sha256": "1e001626e131877f12f638b98fa922bf6b05526c24c5678aa6557f9647ec277c"
+        },
+        "mac_sleep": "not_exercised",
+        "schema": "ft14-local-fixture/v1",
+        "seed": 17
+      },
+      "state": "finished",
+      "result": {
+        "execution": {
+          "argv": [
+            "perl",
+            "/opt/cti/bin/TM.pl",
+            "-nod",
+            "-nomail",
+            "-f",
+            "/fixtures/phase0.opt",
+            "-w",
+            "/state/jobs/b81019f50c9341d881004f801e54c703/original/work",
+            "-l",
+            "/state/jobs/b81019f50c9341d881004f801e54c703/original/summary.log",
+            "run"
+          ],
+          "cpu_fallback_selected": false,
+          "execution_kind": "explicit_cpu_transport_control",
+          "framework_after": {
+            "files": 2654,
+            "id": "1584e7b404a016da21ea8bd4a5c3ee2d30a1ee1424ece1d21deab627b00e1de2"
+          },
+          "framework_before": {
+            "files": 2654,
+            "id": "1584e7b404a016da21ea8bd4a5c3ee2d30a1ee1424ece1d21deab627b00e1de2"
+          },
+          "gpu_execution": false,
+          "harness_returncode": 0,
+          "job_id": "b81019f50c9341d881004f801e54c703",
+          "phase_dispatches": 1,
+          "seed": 17,
+          "test_outcome": "DiffPgmOut",
+          "tolerance": {
+            "absolute": 0,
+            "mode": "exact_text",
+            "relative": 0
+          },
+          "worker": {
+            "available": true,
+            "compiler_id": "gcc-13.3.0",
+            "framework": {
+              "files": 2654,
+              "id": "1584e7b404a016da21ea8bd4a5c3ee2d30a1ee1424ece1d21deab627b00e1de2"
+            },
+            "generation": "72d7190c7d0245818a8db2938885010c",
+            "gpu_backends": {},
+            "gpu_device_paths": [],
+            "image_id": "sha256:747873867110897321865b8790204c0d42a9d51357dce8c3334f50c59d6e916c",
+            "nvidia_smi_available": false,
+            "platform": "linux/arm64",
+            "qualification": "no GPU backend qualified; local Docker CPU transport fixture",
+            "worker_identity": "c9591fc96e6d"
+          }
+        },
+        "manifest": {
+          "attempt_id": "b81019f50c9341d881004f801e54c703",
+          "execution_kind": "explicit_cpu_transport_control",
+          "local_prerequisites": [
+            {
+              "bytes": 623109120,
+              "name": "runtime-image.tar",
+              "sha256": "1e001626e131877f12f638b98fa922bf6b05526c24c5678aa6557f9647ec277c"
+            }
+          ],
+          "objects": [
+            {
+              "bytes": 1473,
+              "name": "execution.json",
+              "sha256": "9ace51eff9a3913f584a6685bcd6aa6d654b396c0f7d1bce4507cd9022195983"
+            },
+            {
+              "bytes": 8741,
+              "name": "failed-work.tar.gz",
+              "sha256": "4e061fbfa010779f8aa0c51bca26e6e34c60fd4dd8a65c207657ff9c088b3b2e"
+            },
+            {
+              "bytes": 1212,
+              "name": "inputs.tar.gz",
+              "sha256": "6a66d4c07d0771c5c28f10647dcbec744edd207e8564200ae748b54c271687dc"
+            },
+            {
+              "bytes": 988,
+              "name": "summary.log",
+              "sha256": "107342ede4852ef686052e77af12b5d6a2418c686f16735f370daed17d36c802"
+            }
+          ],
+          "test_outcome": "DiffPgmOut"
+        },
+        "original_worker_identity": "c9591fc96e6d",
+        "phase_dispatches": 1
+      },
+      "receipt": null
+    }
+  },
+  {
+    "label": "interrupted-first-collection",
+    "value": {
+      "events": {
+        "new": 3,
+        "duplicates": 0,
+        "unique_events": 3
+      },
+      "cursor_before": 0,
+      "collection": {
+        "transferred_this_call": [],
+        "status": {
+          "attempt_count": 1,
+          "unique_event_count": 1,
+          "attempt_id": "b81019f50c9341d881004f801e54c703",
+          "manifest_sha256": "041edf7df91d4ccd1184ed061ea3ae8c203683e44a107ba5c2d364b5f7fd837b",
+          "test_outcome": "DiffPgmOut",
+          "preservation_state": "incomplete",
+          "required_objects": 4,
+          "verified_objects": [],
+          "missing_objects": [
+            {
+              "name": "execution.json",
+              "sha256": "9ace51eff9a3913f584a6685bcd6aa6d654b396c0f7d1bce4507cd9022195983",
+              "reason": "InterruptedTransfer"
+            },
+            {
+              "name": "failed-work.tar.gz",
+              "sha256": "4e061fbfa010779f8aa0c51bca26e6e34c60fd4dd8a65c207657ff9c088b3b2e",
+              "reason": "NotCollected"
+            },
+            {
+              "name": "inputs.tar.gz",
+              "sha256": "6a66d4c07d0771c5c28f10647dcbec744edd207e8564200ae748b54c271687dc",
+              "reason": "NotCollected"
+            },
+            {
+              "name": "summary.log",
+              "sha256": "107342ede4852ef686052e77af12b5d6a2418c686f16735f370daed17d36c802",
+              "reason": "NotCollected"
+            }
+          ],
+          "corrupt_objects": [],
+          "local_prerequisites": [
+            {
+              "name": "runtime-image.tar",
+              "sha256": "1e001626e131877f12f638b98fa922bf6b05526c24c5678aa6557f9647ec277c",
+              "verified": false,
+              "status": "deferred_until_objects_complete"
+            }
+          ],
+          "temporary_files": [
+            {
+              "file": "9ace51eff9a3913f584a6685bcd6aa6d654b396c0f7d1bce4507cd9022195983.part",
+              "bytes": 128
+            }
+          ],
+          "acknowledged": false,
+          "retention_pinned": true
+        }
+      },
+      "transfers": [
+        {
+          "sha256": "9ace51eff9a3913f584a6685bcd6aa6d654b396c0f7d1bce4507cd9022195983",
+          "offset": 0,
+          "interrupted_transport": true,
+          "transport_returncode": 0
+        }
+      ],
+      "remote_ack_sent": false,
+      "transport": "local_docker_exec_fixture_not_ssh_or_wan"
+    }
+  },
+  {
+    "label": "incomplete-native-ack",
+    "value": {
+      "native": {
+        "accepted": false,
+        "reason": "IncompleteEvidence",
+        "status": {
+          "attempt_count": 1,
+          "unique_event_count": 1,
+          "attempt_id": "b81019f50c9341d881004f801e54c703",
+          "manifest_sha256": "041edf7df91d4ccd1184ed061ea3ae8c203683e44a107ba5c2d364b5f7fd837b",
+          "test_outcome": "DiffPgmOut",
+          "preservation_state": "incomplete",
+          "required_objects": 4,
+          "verified_objects": [],
+          "missing_objects": [
+            {
+              "name": "execution.json",
+              "sha256": "9ace51eff9a3913f584a6685bcd6aa6d654b396c0f7d1bce4507cd9022195983",
+              "reason": "InterruptedTransfer"
+            },
+            {
+              "name": "failed-work.tar.gz",
+              "sha256": "4e061fbfa010779f8aa0c51bca26e6e34c60fd4dd8a65c207657ff9c088b3b2e",
+              "reason": "NotCollected"
+            },
+            {
+              "name": "inputs.tar.gz",
+              "sha256": "6a66d4c07d0771c5c28f10647dcbec744edd207e8564200ae748b54c271687dc",
+              "reason": "NotCollected"
+            },
+            {
+              "name": "summary.log",
+              "sha256": "107342ede4852ef686052e77af12b5d6a2418c686f16735f370daed17d36c802",
+              "reason": "NotCollected"
+            }
+          ],
+          "corrupt_objects": [],
+          "local_prerequisites": [
+            {
+              "name": "runtime-image.tar",
+              "sha256": "1e001626e131877f12f638b98fa922bf6b05526c24c5678aa6557f9647ec277c",
+              "verified": false,
+              "status": "deferred_until_objects_complete"
+            }
+          ],
+          "temporary_files": [
+            {
+              "file": "9ace51eff9a3913f584a6685bcd6aa6d654b396c0f7d1bce4507cd9022195983.part",
+              "bytes": 128
+            }
+          ],
+          "acknowledged": false,
+          "retention_pinned": true
+        }
+      },
+      "remote_ack_sent": false
+    }
+  },
+  {
+    "label": "unacknowledged-remote-cleanup",
+    "value": {
+      "allowed": false,
+      "reason": "MissingOrStaleVerifiedAcknowledgement"
+    }
+  },
+  {
+    "label": "reconnected-original-job",
+    "value": {
+      "job_id": "b81019f50c9341d881004f801e54c703",
+      "request_sha256": "0debe3ccf99df51d39c2add31759937afd1af4b46168bc3cb99eef75a7e2dec1",
+      "request": {
+        "execution_kind": "explicit_cpu_transport_control",
+        "inputs_sha256": "6a66d4c07d0771c5c28f10647dcbec744edd207e8564200ae748b54c271687dc",
+        "job_id": "b81019f50c9341d881004f801e54c703",
+        "local_runtime": {
+          "bytes": 623109120,
+          "name": "runtime-image.tar",
+          "sha256": "1e001626e131877f12f638b98fa922bf6b05526c24c5678aa6557f9647ec277c"
+        },
+        "mac_sleep": "not_exercised",
+        "schema": "ft14-local-fixture/v1",
+        "seed": 17
+      },
+      "state": "finished",
+      "result": {
+        "execution": {
+          "argv": [
+            "perl",
+            "/opt/cti/bin/TM.pl",
+            "-nod",
+            "-nomail",
+            "-f",
+            "/fixtures/phase0.opt",
+            "-w",
+            "/state/jobs/b81019f50c9341d881004f801e54c703/original/work",
+            "-l",
+            "/state/jobs/b81019f50c9341d881004f801e54c703/original/summary.log",
+            "run"
+          ],
+          "cpu_fallback_selected": false,
+          "execution_kind": "explicit_cpu_transport_control",
+          "framework_after": {
+            "files": 2654,
+            "id": "1584e7b404a016da21ea8bd4a5c3ee2d30a1ee1424ece1d21deab627b00e1de2"
+          },
+          "framework_before": {
+            "files": 2654,
+            "id": "1584e7b404a016da21ea8bd4a5c3ee2d30a1ee1424ece1d21deab627b00e1de2"
+          },
+          "gpu_execution": false,
+          "harness_returncode": 0,
+          "job_id": "b81019f50c9341d881004f801e54c703",
+          "phase_dispatches": 1,
+          "seed": 17,
+          "test_outcome": "DiffPgmOut",
+          "tolerance": {
+            "absolute": 0,
+            "mode": "exact_text",
+            "relative": 0
+          },
+          "worker": {
+            "available": true,
+            "compiler_id": "gcc-13.3.0",
+            "framework": {
+              "files": 2654,
+              "id": "1584e7b404a016da21ea8bd4a5c3ee2d30a1ee1424ece1d21deab627b00e1de2"
+            },
+            "generation": "72d7190c7d0245818a8db2938885010c",
+            "gpu_backends": {},
+            "gpu_device_paths": [],
+            "image_id": "sha256:747873867110897321865b8790204c0d42a9d51357dce8c3334f50c59d6e916c",
+            "nvidia_smi_available": false,
+            "platform": "linux/arm64",
+            "qualification": "no GPU backend qualified; local Docker CPU transport fixture",
+            "worker_identity": "c9591fc96e6d"
+          }
+        },
+        "manifest": {
+          "attempt_id": "b81019f50c9341d881004f801e54c703",
+          "execution_kind": "explicit_cpu_transport_control",
+          "local_prerequisites": [
+            {
+              "bytes": 623109120,
+              "name": "runtime-image.tar",
+              "sha256": "1e001626e131877f12f638b98fa922bf6b05526c24c5678aa6557f9647ec277c"
+            }
+          ],
+          "objects": [
+            {
+              "bytes": 1473,
+              "name": "execution.json",
+              "sha256": "9ace51eff9a3913f584a6685bcd6aa6d654b396c0f7d1bce4507cd9022195983"
+            },
+            {
+              "bytes": 8741,
+              "name": "failed-work.tar.gz",
+              "sha256": "4e061fbfa010779f8aa0c51bca26e6e34c60fd4dd8a65c207657ff9c088b3b2e"
+            },
+            {
+              "bytes": 1212,
+              "name": "inputs.tar.gz",
+              "sha256": "6a66d4c07d0771c5c28f10647dcbec744edd207e8564200ae748b54c271687dc"
+            },
+            {
+              "bytes": 988,
+              "name": "summary.log",
+              "sha256": "107342ede4852ef686052e77af12b5d6a2418c686f16735f370daed17d36c802"
+            }
+          ],
+          "test_outcome": "DiffPgmOut"
+        },
+        "original_worker_identity": "c9591fc96e6d",
+        "phase_dispatches": 1
+      },
+      "receipt": null,
+      "query_worker": {
+        "worker_identity": "207c2248ef86",
+        "generation": "2199a56658f94832a1c5d0d432485c6c",
+        "platform": "linux/arm64",
+        "image_id": "sha256:747873867110897321865b8790204c0d42a9d51357dce8c3334f50c59d6e916c",
+        "compiler_id": "gcc-13.3.0",
+        "available": true,
+        "gpu_backends": {},
+        "gpu_device_paths": [],
+        "nvidia_smi_available": false,
+        "qualification": "no GPU backend qualified; local Docker CPU transport fixture",
+        "framework": {
+          "id": "1584e7b404a016da21ea8bd4a5c3ee2d30a1ee1424ece1d21deab627b00e1de2",
+          "files": 2654
+        }
+      }
+    }
+  },
+  {
+    "label": "resumed-and-redelivered-collection",
+    "value": {
+      "events": {
+        "new": 0,
+        "duplicates": 3,
+        "unique_events": 3
+      },
+      "cursor_before": 0,
+      "collection": {
+        "transferred_this_call": [
+          "execution.json",
+          "failed-work.tar.gz",
+          "inputs.tar.gz",
+          "summary.log"
+        ],
+        "status": {
+          "attempt_count": 1,
+          "unique_event_count": 1,
+          "attempt_id": "b81019f50c9341d881004f801e54c703",
+          "manifest_sha256": "041edf7df91d4ccd1184ed061ea3ae8c203683e44a107ba5c2d364b5f7fd837b",
+          "test_outcome": "DiffPgmOut",
+          "preservation_state": "complete",
+          "required_objects": 4,
+          "verified_objects": [
+            "execution.json",
+            "failed-work.tar.gz",
+            "inputs.tar.gz",
+            "summary.log"
+          ],
+          "missing_objects": [],
+          "corrupt_objects": [],
+          "local_prerequisites": [
+            {
+              "name": "runtime-image.tar",
+              "sha256": "1e001626e131877f12f638b98fa922bf6b05526c24c5678aa6557f9647ec277c",
+              "verified": true,
+              "status": "verified"
+            }
+          ],
+          "temporary_files": [],
+          "acknowledged": false,
+          "retention_pinned": true
+        }
+      },
+      "transfers": [
+        {
+          "sha256": "9ace51eff9a3913f584a6685bcd6aa6d654b396c0f7d1bce4507cd9022195983",
+          "offset": 128,
+          "interrupted_transport": false,
+          "transport_returncode": 0
+        },
+        {
+          "sha256": "4e061fbfa010779f8aa0c51bca26e6e34c60fd4dd8a65c207657ff9c088b3b2e",
+          "offset": 0,
+          "interrupted_transport": false,
+          "transport_returncode": 0
+        },
+        {
+          "sha256": "6a66d4c07d0771c5c28f10647dcbec744edd207e8564200ae748b54c271687dc",
+          "offset": 0,
+          "interrupted_transport": false,
+          "transport_returncode": 0
+        },
+        {
+          "sha256": "107342ede4852ef686052e77af12b5d6a2418c686f16735f370daed17d36c802",
+          "offset": 0,
+          "interrupted_transport": false,
+          "transport_returncode": 0
+        }
+      ],
+      "remote_ack_sent": false,
+      "transport": "local_docker_exec_fixture_not_ssh_or_wan"
+    }
+  },
+  {
+    "label": "duplicate-complete-collection",
+    "value": {
+      "events": {
+        "new": 0,
+        "duplicates": 3,
+        "unique_events": 3
+      },
+      "cursor_before": 0,
+      "collection": {
+        "transferred_this_call": [],
+        "status": {
+          "attempt_count": 1,
+          "unique_event_count": 1,
+          "attempt_id": "b81019f50c9341d881004f801e54c703",
+          "manifest_sha256": "041edf7df91d4ccd1184ed061ea3ae8c203683e44a107ba5c2d364b5f7fd837b",
+          "test_outcome": "DiffPgmOut",
+          "preservation_state": "complete",
+          "required_objects": 4,
+          "verified_objects": [
+            "execution.json",
+            "failed-work.tar.gz",
+            "inputs.tar.gz",
+            "summary.log"
+          ],
+          "missing_objects": [],
+          "corrupt_objects": [],
+          "local_prerequisites": [
+            {
+              "name": "runtime-image.tar",
+              "sha256": "1e001626e131877f12f638b98fa922bf6b05526c24c5678aa6557f9647ec277c",
+              "verified": true,
+              "status": "verified"
+            }
+          ],
+          "temporary_files": [],
+          "acknowledged": false,
+          "retention_pinned": true
+        }
+      },
+      "transfers": [],
+      "remote_ack_sent": false,
+      "transport": "local_docker_exec_fixture_not_ssh_or_wan"
+    }
+  },
+  {
+    "label": "new-performance-fixture-lease",
+    "value": {
+      "acquired": true,
+      "reason": "Acquired",
+      "resource": "fixture/performance-slot-not-a-gpu",
+      "epoch": 2,
+      "owner": "b7fac3eb9471421fb4885c37fe82af46",
+      "token": "a8d003abd2cb46f0911c56ad3cbd996b"
+    }
+  },
+  {
+    "label": "stale-original-release",
+    "value": {
+      "released": false,
+      "reason": "StaleOrForeignLease"
+    }
+  },
+  {
+    "label": "current-owner-still-owns-lease",
+    "value": {
+      "acquired": true,
+      "reason": "AlreadyOwned",
+      "resource": "fixture/performance-slot-not-a-gpu",
+      "epoch": 2,
+      "owner": "b7fac3eb9471421fb4885c37fe82af46",
+      "token": "a8d003abd2cb46f0911c56ad3cbd996b"
+    }
+  },
+  {
+    "label": "current-owner-release",
+    "value": {
+      "released": true,
+      "reason": "Released"
+    }
+  },
+  {
+    "label": "forged-receipt-remote-ack",
+    "value": {
+      "accepted": false,
+      "reason": "InvalidCollectionReceipt"
+    }
+  },
+  {
+    "label": "verified-local-and-remote-ack",
+    "value": {
+      "native": {
+        "accepted": true,
+        "receipt": {
+          "attempt_id": "b81019f50c9341d881004f801e54c703",
+          "manifest_sha256": "041edf7df91d4ccd1184ed061ea3ae8c203683e44a107ba5c2d364b5f7fd837b",
+          "object_hashes": [
+            "107342ede4852ef686052e77af12b5d6a2418c686f16735f370daed17d36c802",
+            "4e061fbfa010779f8aa0c51bca26e6e34c60fd4dd8a65c207657ff9c088b3b2e",
+            "6a66d4c07d0771c5c28f10647dcbec744edd207e8564200ae748b54c271687dc",
+            "9ace51eff9a3913f584a6685bcd6aa6d654b396c0f7d1bce4507cd9022195983"
+          ],
+          "prerequisite_hashes": [
+            "1e001626e131877f12f638b98fa922bf6b05526c24c5678aa6557f9647ec277c"
+          ],
+          "receipt_sha256": "0c2d2612228041a50b85cdbd0429c41aaa74f9829f5b37a5bfbea077f48d6e6d"
+        },
+        "status": {
+          "attempt_count": 1,
+          "unique_event_count": 1,
+          "attempt_id": "b81019f50c9341d881004f801e54c703",
+          "manifest_sha256": "041edf7df91d4ccd1184ed061ea3ae8c203683e44a107ba5c2d364b5f7fd837b",
+          "test_outcome": "DiffPgmOut",
+          "preservation_state": "complete",
+          "required_objects": 4,
+          "verified_objects": [
+            "execution.json",
+            "failed-work.tar.gz",
+            "inputs.tar.gz",
+            "summary.log"
+          ],
+          "missing_objects": [],
+          "corrupt_objects": [],
+          "local_prerequisites": [
+            {
+              "name": "runtime-image.tar",
+              "sha256": "1e001626e131877f12f638b98fa922bf6b05526c24c5678aa6557f9647ec277c",
+              "verified": true,
+              "status": "verified"
+            }
+          ],
+          "temporary_files": [],
+          "acknowledged": true,
+          "retention_pinned": true
+        }
+      },
+      "remote_ack_sent": true,
+      "remote": {
+        "accepted": true,
+        "reason": "MatchingVerifiedReceipt",
+        "receipt": {
+          "attempt_id": "b81019f50c9341d881004f801e54c703",
+          "manifest_sha256": "041edf7df91d4ccd1184ed061ea3ae8c203683e44a107ba5c2d364b5f7fd837b",
+          "object_hashes": [
+            "107342ede4852ef686052e77af12b5d6a2418c686f16735f370daed17d36c802",
+            "4e061fbfa010779f8aa0c51bca26e6e34c60fd4dd8a65c207657ff9c088b3b2e",
+            "6a66d4c07d0771c5c28f10647dcbec744edd207e8564200ae748b54c271687dc",
+            "9ace51eff9a3913f584a6685bcd6aa6d654b396c0f7d1bce4507cd9022195983"
+          ],
+          "prerequisite_hashes": [
+            "1e001626e131877f12f638b98fa922bf6b05526c24c5678aa6557f9647ec277c"
+          ],
+          "receipt_sha256": "0c2d2612228041a50b85cdbd0429c41aaa74f9829f5b37a5bfbea077f48d6e6d"
+        }
+      }
+    }
+  },
+  {
+    "label": "native-object-loss-withholds-cleanup",
+    "value": {
+      "native_gate": {
+        "allowed": false,
+        "reason": "MissingOrStaleVerifiedAcknowledgement",
+        "status": {
+          "attempt_count": 1,
+          "unique_event_count": 1,
+          "attempt_id": "b81019f50c9341d881004f801e54c703",
+          "manifest_sha256": "041edf7df91d4ccd1184ed061ea3ae8c203683e44a107ba5c2d364b5f7fd837b",
+          "test_outcome": "DiffPgmOut",
+          "preservation_state": "incomplete",
+          "required_objects": 4,
+          "verified_objects": [
+            "failed-work.tar.gz",
+            "inputs.tar.gz",
+            "summary.log"
+          ],
+          "missing_objects": [
+            {
+              "name": "execution.json",
+              "sha256": "9ace51eff9a3913f584a6685bcd6aa6d654b396c0f7d1bce4507cd9022195983",
+              "reason": "Verified"
+            }
+          ],
+          "corrupt_objects": [],
+          "local_prerequisites": [
+            {
+              "name": "runtime-image.tar",
+              "sha256": "1e001626e131877f12f638b98fa922bf6b05526c24c5678aa6557f9647ec277c",
+              "verified": false,
+              "status": "deferred_until_objects_complete"
+            }
+          ],
+          "temporary_files": [],
+          "acknowledged": false,
+          "retention_pinned": true
+        }
+      },
+      "remote_cleanup_sent": false,
+      "remote": null
+    }
+  },
+  {
+    "label": "restored-local-reack",
+    "value": {
+      "native": {
+        "accepted": true,
+        "receipt": {
+          "attempt_id": "b81019f50c9341d881004f801e54c703",
+          "manifest_sha256": "041edf7df91d4ccd1184ed061ea3ae8c203683e44a107ba5c2d364b5f7fd837b",
+          "object_hashes": [
+            "107342ede4852ef686052e77af12b5d6a2418c686f16735f370daed17d36c802",
+            "4e061fbfa010779f8aa0c51bca26e6e34c60fd4dd8a65c207657ff9c088b3b2e",
+            "6a66d4c07d0771c5c28f10647dcbec744edd207e8564200ae748b54c271687dc",
+            "9ace51eff9a3913f584a6685bcd6aa6d654b396c0f7d1bce4507cd9022195983"
+          ],
+          "prerequisite_hashes": [
+            "1e001626e131877f12f638b98fa922bf6b05526c24c5678aa6557f9647ec277c"
+          ],
+          "receipt_sha256": "0c2d2612228041a50b85cdbd0429c41aaa74f9829f5b37a5bfbea077f48d6e6d"
+        },
+        "status": {
+          "attempt_count": 1,
+          "unique_event_count": 1,
+          "attempt_id": "b81019f50c9341d881004f801e54c703",
+          "manifest_sha256": "041edf7df91d4ccd1184ed061ea3ae8c203683e44a107ba5c2d364b5f7fd837b",
+          "test_outcome": "DiffPgmOut",
+          "preservation_state": "complete",
+          "required_objects": 4,
+          "verified_objects": [
+            "execution.json",
+            "failed-work.tar.gz",
+            "inputs.tar.gz",
+            "summary.log"
+          ],
+          "missing_objects": [],
+          "corrupt_objects": [],
+          "local_prerequisites": [
+            {
+              "name": "runtime-image.tar",
+              "sha256": "1e001626e131877f12f638b98fa922bf6b05526c24c5678aa6557f9647ec277c",
+              "verified": true,
+              "status": "verified"
+            }
+          ],
+          "temporary_files": [],
+          "acknowledged": true,
+          "retention_pinned": true
+        }
+      },
+      "remote_ack_sent": true,
+      "remote": {
+        "accepted": true,
+        "reason": "MatchingVerifiedReceipt",
+        "receipt": {
+          "attempt_id": "b81019f50c9341d881004f801e54c703",
+          "manifest_sha256": "041edf7df91d4ccd1184ed061ea3ae8c203683e44a107ba5c2d364b5f7fd837b",
+          "object_hashes": [
+            "107342ede4852ef686052e77af12b5d6a2418c686f16735f370daed17d36c802",
+            "4e061fbfa010779f8aa0c51bca26e6e34c60fd4dd8a65c207657ff9c088b3b2e",
+            "6a66d4c07d0771c5c28f10647dcbec744edd207e8564200ae748b54c271687dc",
+            "9ace51eff9a3913f584a6685bcd6aa6d654b396c0f7d1bce4507cd9022195983"
+          ],
+          "prerequisite_hashes": [
+            "1e001626e131877f12f638b98fa922bf6b05526c24c5678aa6557f9647ec277c"
+          ],
+          "receipt_sha256": "0c2d2612228041a50b85cdbd0429c41aaa74f9829f5b37a5bfbea077f48d6e6d"
+        }
+      }
+    }
+  },
+  {
+    "label": "local-inspection-before-cleanup",
+    "value": {
+      "local_inspection": "complete",
+      "test_outcome": "DiffPgmOut",
+      "execution_kind": "explicit_cpu_transport_control",
+      "gpu_replay": "blocked_no_qualified_gpu_target",
+      "cpu_fallback_selected": false,
+      "artifacts": [
+        "work/Regression/FT14/mismatch",
+        "work/Regression/FT14/mismatch.c",
+        "work/Regression/FT14/mismatch.compare-out.sh",
+        "work/Regression/FT14/mismatch.compile.sh",
+        "work/Regression/FT14/mismatch.env",
+        "work/Regression/FT14/mismatch.err",
+        "work/Regression/FT14/mismatch.link.sh",
+        "work/Regression/FT14/mismatch.o",
+        "work/Regression/FT14/mismatch.out",
+        "work/Regression/FT14/mismatch.out.diff",
+        "work/Regression/FT14/mismatch.out.master",
+        "work/Regression/FT14/mismatch.result",
+        "work/Regression/FT14/mismatch.run.sh",
+        "work/Regression/FT14/mismatch.sh",
+        "work/TMEnv",
+        "work/TMUnits",
+        "work/TMmsgs/enumfile.1",
+        "work/TMmsgs/result.1",
+        "work/log.header",
+        "fixtures/data/input.txt",
+        "fixtures/groups/Regression/FT14/Masters/mismatch.out",
+        "fixtures/groups/Regression/FT14/Src/mismatch.c",
+        "fixtures/groups/Regression/tmconfig",
+        "fixtures/phase0.opt"
+      ],
+      "ir": "not_generated_by_this_C_transport_control"
+    }
+  },
+  {
+    "label": "verified-remote-cleanup",
+    "value": {
+      "native_gate": {
+        "allowed": true,
+        "reason": "VerifiedAcknowledgement",
+        "status": {
+          "attempt_count": 1,
+          "unique_event_count": 1,
+          "attempt_id": "b81019f50c9341d881004f801e54c703",
+          "manifest_sha256": "041edf7df91d4ccd1184ed061ea3ae8c203683e44a107ba5c2d364b5f7fd837b",
+          "test_outcome": "DiffPgmOut",
+          "preservation_state": "complete",
+          "required_objects": 4,
+          "verified_objects": [
+            "execution.json",
+            "failed-work.tar.gz",
+            "inputs.tar.gz",
+            "summary.log"
+          ],
+          "missing_objects": [],
+          "corrupt_objects": [],
+          "local_prerequisites": [
+            {
+              "name": "runtime-image.tar",
+              "sha256": "1e001626e131877f12f638b98fa922bf6b05526c24c5678aa6557f9647ec277c",
+              "verified": true,
+              "status": "verified"
+            }
+          ],
+          "temporary_files": [],
+          "acknowledged": true,
+          "retention_pinned": true
+        }
+      },
+      "remote_cleanup_sent": true,
+      "remote": {
+        "allowed": true,
+        "reason": "VerifiedAcknowledgement",
+        "job_id": "b81019f50c9341d881004f801e54c703"
+      }
+    }
+  },
+  {
+    "label": "durable-original-job-after-cleanup",
+    "value": {
+      "job_id": "b81019f50c9341d881004f801e54c703",
+      "request_sha256": "0debe3ccf99df51d39c2add31759937afd1af4b46168bc3cb99eef75a7e2dec1",
+      "request": {
+        "execution_kind": "explicit_cpu_transport_control",
+        "inputs_sha256": "6a66d4c07d0771c5c28f10647dcbec744edd207e8564200ae748b54c271687dc",
+        "job_id": "b81019f50c9341d881004f801e54c703",
+        "local_runtime": {
+          "bytes": 623109120,
+          "name": "runtime-image.tar",
+          "sha256": "1e001626e131877f12f638b98fa922bf6b05526c24c5678aa6557f9647ec277c"
+        },
+        "mac_sleep": "not_exercised",
+        "schema": "ft14-local-fixture/v1",
+        "seed": 17
+      },
+      "state": "cleaned",
+      "result": {
+        "execution": {
+          "argv": [
+            "perl",
+            "/opt/cti/bin/TM.pl",
+            "-nod",
+            "-nomail",
+            "-f",
+            "/fixtures/phase0.opt",
+            "-w",
+            "/state/jobs/b81019f50c9341d881004f801e54c703/original/work",
+            "-l",
+            "/state/jobs/b81019f50c9341d881004f801e54c703/original/summary.log",
+            "run"
+          ],
+          "cpu_fallback_selected": false,
+          "execution_kind": "explicit_cpu_transport_control",
+          "framework_after": {
+            "files": 2654,
+            "id": "1584e7b404a016da21ea8bd4a5c3ee2d30a1ee1424ece1d21deab627b00e1de2"
+          },
+          "framework_before": {
+            "files": 2654,
+            "id": "1584e7b404a016da21ea8bd4a5c3ee2d30a1ee1424ece1d21deab627b00e1de2"
+          },
+          "gpu_execution": false,
+          "harness_returncode": 0,
+          "job_id": "b81019f50c9341d881004f801e54c703",
+          "phase_dispatches": 1,
+          "seed": 17,
+          "test_outcome": "DiffPgmOut",
+          "tolerance": {
+            "absolute": 0,
+            "mode": "exact_text",
+            "relative": 0
+          },
+          "worker": {
+            "available": true,
+            "compiler_id": "gcc-13.3.0",
+            "framework": {
+              "files": 2654,
+              "id": "1584e7b404a016da21ea8bd4a5c3ee2d30a1ee1424ece1d21deab627b00e1de2"
+            },
+            "generation": "72d7190c7d0245818a8db2938885010c",
+            "gpu_backends": {},
+            "gpu_device_paths": [],
+            "image_id": "sha256:747873867110897321865b8790204c0d42a9d51357dce8c3334f50c59d6e916c",
+            "nvidia_smi_available": false,
+            "platform": "linux/arm64",
+            "qualification": "no GPU backend qualified; local Docker CPU transport fixture",
+            "worker_identity": "c9591fc96e6d"
+          }
+        },
+        "manifest": {
+          "attempt_id": "b81019f50c9341d881004f801e54c703",
+          "execution_kind": "explicit_cpu_transport_control",
+          "local_prerequisites": [
+            {
+              "bytes": 623109120,
+              "name": "runtime-image.tar",
+              "sha256": "1e001626e131877f12f638b98fa922bf6b05526c24c5678aa6557f9647ec277c"
+            }
+          ],
+          "objects": [
+            {
+              "bytes": 1473,
+              "name": "execution.json",
+              "sha256": "9ace51eff9a3913f584a6685bcd6aa6d654b396c0f7d1bce4507cd9022195983"
+            },
+            {
+              "bytes": 8741,
+              "name": "failed-work.tar.gz",
+              "sha256": "4e061fbfa010779f8aa0c51bca26e6e34c60fd4dd8a65c207657ff9c088b3b2e"
+            },
+            {
+              "bytes": 1212,
+              "name": "inputs.tar.gz",
+              "sha256": "6a66d4c07d0771c5c28f10647dcbec744edd207e8564200ae748b54c271687dc"
+            },
+            {
+              "bytes": 988,
+              "name": "summary.log",
+              "sha256": "107342ede4852ef686052e77af12b5d6a2418c686f16735f370daed17d36c802"
+            }
+          ],
+          "test_outcome": "DiffPgmOut"
+        },
+        "original_worker_identity": "c9591fc96e6d",
+        "phase_dispatches": 1
+      },
+      "receipt": {
+        "attempt_id": "b81019f50c9341d881004f801e54c703",
+        "manifest_sha256": "041edf7df91d4ccd1184ed061ea3ae8c203683e44a107ba5c2d364b5f7fd837b",
+        "object_hashes": [
+          "107342ede4852ef686052e77af12b5d6a2418c686f16735f370daed17d36c802",
+          "4e061fbfa010779f8aa0c51bca26e6e34c60fd4dd8a65c207657ff9c088b3b2e",
+          "6a66d4c07d0771c5c28f10647dcbec744edd207e8564200ae748b54c271687dc",
+          "9ace51eff9a3913f584a6685bcd6aa6d654b396c0f7d1bce4507cd9022195983"
+        ],
+        "prerequisite_hashes": [
+          "1e001626e131877f12f638b98fa922bf6b05526c24c5678aa6557f9647ec277c"
+        ],
+        "receipt_sha256": "0c2d2612228041a50b85cdbd0429c41aaa74f9829f5b37a5bfbea077f48d6e6d"
+      },
+      "query_worker": {
+        "worker_identity": "207c2248ef86",
+        "generation": "2199a56658f94832a1c5d0d432485c6c",
+        "platform": "linux/arm64",
+        "image_id": "sha256:747873867110897321865b8790204c0d42a9d51357dce8c3334f50c59d6e916c",
+        "compiler_id": "gcc-13.3.0",
+        "available": true,
+        "gpu_backends": {},
+        "gpu_device_paths": [],
+        "nvidia_smi_available": false,
+        "qualification": "no GPU backend qualified; local Docker CPU transport fixture",
+        "framework": {
+          "id": "1584e7b404a016da21ea8bd4a5c3ee2d30a1ee1424ece1d21deab627b00e1de2",
+          "files": 2654
+        }
+      }
+    }
+  },
+  {
+    "label": "offline-native-inspection",
+    "value": {
+      "local_inspection": "complete",
+      "test_outcome": "DiffPgmOut",
+      "execution_kind": "explicit_cpu_transport_control",
+      "gpu_replay": "blocked_no_qualified_gpu_target",
+      "cpu_fallback_selected": false,
+      "artifacts": [
+        "work/Regression/FT14/mismatch",
+        "work/Regression/FT14/mismatch.c",
+        "work/Regression/FT14/mismatch.compare-out.sh",
+        "work/Regression/FT14/mismatch.compile.sh",
+        "work/Regression/FT14/mismatch.env",
+        "work/Regression/FT14/mismatch.err",
+        "work/Regression/FT14/mismatch.link.sh",
+        "work/Regression/FT14/mismatch.o",
+        "work/Regression/FT14/mismatch.out",
+        "work/Regression/FT14/mismatch.out.diff",
+        "work/Regression/FT14/mismatch.out.master",
+        "work/Regression/FT14/mismatch.result",
+        "work/Regression/FT14/mismatch.run.sh",
+        "work/Regression/FT14/mismatch.sh",
+        "work/TMEnv",
+        "work/TMUnits",
+        "work/TMmsgs/enumfile.1",
+        "work/TMmsgs/result.1",
+        "work/log.header",
+        "fixtures/data/input.txt",
+        "fixtures/groups/Regression/FT14/Masters/mismatch.out",
+        "fixtures/groups/Regression/FT14/Src/mismatch.c",
+        "fixtures/groups/Regression/tmconfig",
+        "fixtures/phase0.opt"
+      ],
+      "ir": "not_generated_by_this_C_transport_control"
+    }
+  }
+]

@@ -1,0 +1,511 @@
+{
+  "requirements": {
+    "platform": "linux/arm64",
+    "image_id": "sha256:747873867110897321865b8790204c0d42a9d51357dce8c3334f50c59d6e916c",
+    "compiler_id": "gcc-13.3.0",
+    "gpu_backend": "fixture-cuda-contract",
+    "driver_id": "fixture-driver-A",
+    "runtime_id": "fixture-runtime-A",
+    "device_capabilities": [
+      "fixture-capability-A"
+    ],
+    "minimum_memory_bytes": 1024
+  },
+  "cases": [
+    {
+      "case": "compatible-original",
+      "candidate": {
+        "worker_identity": "constructed-host-A",
+        "generation": "72d7190c7d0245818a8db2938885010c",
+        "platform": "linux/arm64",
+        "image_id": "sha256:747873867110897321865b8790204c0d42a9d51357dce8c3334f50c59d6e916c",
+        "compiler_id": "gcc-13.3.0",
+        "available": true,
+        "gpu_backends": {
+          "fixture-cuda-contract": {
+            "driver_id": "fixture-driver-A",
+            "runtime_id": "fixture-runtime-A",
+            "device_capabilities": [
+              "fixture-capability-A"
+            ],
+            "memory_bytes": 2048,
+            "device_identity": "constructed-device-A"
+          }
+        },
+        "gpu_device_paths": [],
+        "nvidia_smi_available": false,
+        "qualification": "no GPU backend qualified; local Docker CPU transport fixture",
+        "framework": {
+          "id": "1584e7b404a016da21ea8bd4a5c3ee2d30a1ee1424ece1d21deab627b00e1de2",
+          "files": 2654
+        }
+      },
+      "decision": {
+        "status": "compatible_descriptor",
+        "reasons": [],
+        "dispatch_phase": true,
+        "cpu_fallback_selected": false,
+        "worker_identity": "constructed-host-A",
+        "device_identity": "constructed-device-A"
+      },
+      "gpu_phases_executed": 0
+    },
+    {
+      "case": "compatible-new-device",
+      "candidate": {
+        "worker_identity": "constructed-host-B",
+        "generation": "72d7190c7d0245818a8db2938885010c",
+        "platform": "linux/arm64",
+        "image_id": "sha256:747873867110897321865b8790204c0d42a9d51357dce8c3334f50c59d6e916c",
+        "compiler_id": "gcc-13.3.0",
+        "available": true,
+        "gpu_backends": {
+          "fixture-cuda-contract": {
+            "driver_id": "fixture-driver-A",
+            "runtime_id": "fixture-runtime-A",
+            "device_capabilities": [
+              "fixture-capability-A"
+            ],
+            "memory_bytes": 2048,
+            "device_identity": "constructed-device-B"
+          }
+        },
+        "gpu_device_paths": [],
+        "nvidia_smi_available": false,
+        "qualification": "no GPU backend qualified; local Docker CPU transport fixture",
+        "framework": {
+          "id": "1584e7b404a016da21ea8bd4a5c3ee2d30a1ee1424ece1d21deab627b00e1de2",
+          "files": 2654
+        }
+      },
+      "decision": {
+        "status": "compatible_descriptor",
+        "reasons": [],
+        "dispatch_phase": true,
+        "cpu_fallback_selected": false,
+        "worker_identity": "constructed-host-B",
+        "device_identity": "constructed-device-B"
+      },
+      "gpu_phases_executed": 0
+    },
+    {
+      "case": "unavailable-worker",
+      "candidate": {
+        "worker_identity": "constructed-host-A",
+        "generation": "72d7190c7d0245818a8db2938885010c",
+        "platform": "linux/arm64",
+        "image_id": "sha256:747873867110897321865b8790204c0d42a9d51357dce8c3334f50c59d6e916c",
+        "compiler_id": "gcc-13.3.0",
+        "available": false,
+        "gpu_backends": {
+          "fixture-cuda-contract": {
+            "driver_id": "fixture-driver-A",
+            "runtime_id": "fixture-runtime-A",
+            "device_capabilities": [
+              "fixture-capability-A"
+            ],
+            "memory_bytes": 2048,
+            "device_identity": "constructed-device-A"
+          }
+        },
+        "gpu_device_paths": [],
+        "nvidia_smi_available": false,
+        "qualification": "no GPU backend qualified; local Docker CPU transport fixture",
+        "framework": {
+          "id": "1584e7b404a016da21ea8bd4a5c3ee2d30a1ee1424ece1d21deab627b00e1de2",
+          "files": 2654
+        }
+      },
+      "decision": {
+        "status": "blocked",
+        "reasons": [
+          {
+            "code": "WorkerUnavailable"
+          }
+        ],
+        "dispatch_phase": false,
+        "cpu_fallback_selected": false,
+        "worker_identity": "constructed-host-A",
+        "device_identity": "constructed-device-A"
+      },
+      "gpu_phases_executed": 0
+    },
+    {
+      "case": "cpu-only-worker",
+      "candidate": {
+        "worker_identity": "constructed-host-A",
+        "generation": "72d7190c7d0245818a8db2938885010c",
+        "platform": "linux/arm64",
+        "image_id": "sha256:747873867110897321865b8790204c0d42a9d51357dce8c3334f50c59d6e916c",
+        "compiler_id": "gcc-13.3.0",
+        "available": true,
+        "gpu_backends": {},
+        "gpu_device_paths": [],
+        "nvidia_smi_available": false,
+        "qualification": "no GPU backend qualified; local Docker CPU transport fixture",
+        "framework": {
+          "id": "1584e7b404a016da21ea8bd4a5c3ee2d30a1ee1424ece1d21deab627b00e1de2",
+          "files": 2654
+        }
+      },
+      "decision": {
+        "status": "blocked",
+        "reasons": [
+          {
+            "code": "GPUBackendUnavailable",
+            "required": "fixture-cuda-contract"
+          }
+        ],
+        "dispatch_phase": false,
+        "cpu_fallback_selected": false,
+        "worker_identity": "constructed-host-A",
+        "device_identity": null
+      },
+      "gpu_phases_executed": 0
+    },
+    {
+      "case": "wrong-platform",
+      "candidate": {
+        "worker_identity": "constructed-host-A",
+        "generation": "72d7190c7d0245818a8db2938885010c",
+        "platform": "fixture/foreign",
+        "image_id": "sha256:747873867110897321865b8790204c0d42a9d51357dce8c3334f50c59d6e916c",
+        "compiler_id": "gcc-13.3.0",
+        "available": true,
+        "gpu_backends": {
+          "fixture-cuda-contract": {
+            "driver_id": "fixture-driver-A",
+            "runtime_id": "fixture-runtime-A",
+            "device_capabilities": [
+              "fixture-capability-A"
+            ],
+            "memory_bytes": 2048,
+            "device_identity": "constructed-device-A"
+          }
+        },
+        "gpu_device_paths": [],
+        "nvidia_smi_available": false,
+        "qualification": "no GPU backend qualified; local Docker CPU transport fixture",
+        "framework": {
+          "id": "1584e7b404a016da21ea8bd4a5c3ee2d30a1ee1424ece1d21deab627b00e1de2",
+          "files": 2654
+        }
+      },
+      "decision": {
+        "status": "blocked",
+        "reasons": [
+          {
+            "code": "IncompatiblePlatform",
+            "required": "linux/arm64"
+          }
+        ],
+        "dispatch_phase": false,
+        "cpu_fallback_selected": false,
+        "worker_identity": "constructed-host-A",
+        "device_identity": "constructed-device-A"
+      },
+      "gpu_phases_executed": 0
+    },
+    {
+      "case": "wrong-image",
+      "candidate": {
+        "worker_identity": "constructed-host-A",
+        "generation": "72d7190c7d0245818a8db2938885010c",
+        "platform": "linux/arm64",
+        "image_id": "sha256:0000000000000000000000000000000000000000000000000000000000000000",
+        "compiler_id": "gcc-13.3.0",
+        "available": true,
+        "gpu_backends": {
+          "fixture-cuda-contract": {
+            "driver_id": "fixture-driver-A",
+            "runtime_id": "fixture-runtime-A",
+            "device_capabilities": [
+              "fixture-capability-A"
+            ],
+            "memory_bytes": 2048,
+            "device_identity": "constructed-device-A"
+          }
+        },
+        "gpu_device_paths": [],
+        "nvidia_smi_available": false,
+        "qualification": "no GPU backend qualified; local Docker CPU transport fixture",
+        "framework": {
+          "id": "1584e7b404a016da21ea8bd4a5c3ee2d30a1ee1424ece1d21deab627b00e1de2",
+          "files": 2654
+        }
+      },
+      "decision": {
+        "status": "blocked",
+        "reasons": [
+          {
+            "code": "IncompatibleImageId",
+            "required": "sha256:747873867110897321865b8790204c0d42a9d51357dce8c3334f50c59d6e916c"
+          }
+        ],
+        "dispatch_phase": false,
+        "cpu_fallback_selected": false,
+        "worker_identity": "constructed-host-A",
+        "device_identity": "constructed-device-A"
+      },
+      "gpu_phases_executed": 0
+    },
+    {
+      "case": "wrong-compiler",
+      "candidate": {
+        "worker_identity": "constructed-host-A",
+        "generation": "72d7190c7d0245818a8db2938885010c",
+        "platform": "linux/arm64",
+        "image_id": "sha256:747873867110897321865b8790204c0d42a9d51357dce8c3334f50c59d6e916c",
+        "compiler_id": "fixture-other-compiler",
+        "available": true,
+        "gpu_backends": {
+          "fixture-cuda-contract": {
+            "driver_id": "fixture-driver-A",
+            "runtime_id": "fixture-runtime-A",
+            "device_capabilities": [
+              "fixture-capability-A"
+            ],
+            "memory_bytes": 2048,
+            "device_identity": "constructed-device-A"
+          }
+        },
+        "gpu_device_paths": [],
+        "nvidia_smi_available": false,
+        "qualification": "no GPU backend qualified; local Docker CPU transport fixture",
+        "framework": {
+          "id": "1584e7b404a016da21ea8bd4a5c3ee2d30a1ee1424ece1d21deab627b00e1de2",
+          "files": 2654
+        }
+      },
+      "decision": {
+        "status": "blocked",
+        "reasons": [
+          {
+            "code": "IncompatibleCompilerId",
+            "required": "gcc-13.3.0"
+          }
+        ],
+        "dispatch_phase": false,
+        "cpu_fallback_selected": false,
+        "worker_identity": "constructed-host-A",
+        "device_identity": "constructed-device-A"
+      },
+      "gpu_phases_executed": 0
+    },
+    {
+      "case": "wrong-driver",
+      "candidate": {
+        "worker_identity": "constructed-host-A",
+        "generation": "72d7190c7d0245818a8db2938885010c",
+        "platform": "linux/arm64",
+        "image_id": "sha256:747873867110897321865b8790204c0d42a9d51357dce8c3334f50c59d6e916c",
+        "compiler_id": "gcc-13.3.0",
+        "available": true,
+        "gpu_backends": {
+          "fixture-cuda-contract": {
+            "driver_id": "other",
+            "runtime_id": "fixture-runtime-A",
+            "device_capabilities": [
+              "fixture-capability-A"
+            ],
+            "memory_bytes": 2048,
+            "device_identity": "constructed-device-A"
+          }
+        },
+        "gpu_device_paths": [],
+        "nvidia_smi_available": false,
+        "qualification": "no GPU backend qualified; local Docker CPU transport fixture",
+        "framework": {
+          "id": "1584e7b404a016da21ea8bd4a5c3ee2d30a1ee1424ece1d21deab627b00e1de2",
+          "files": 2654
+        }
+      },
+      "decision": {
+        "status": "blocked",
+        "reasons": [
+          {
+            "code": "IncompatibleDriverId",
+            "required": "fixture-driver-A"
+          }
+        ],
+        "dispatch_phase": false,
+        "cpu_fallback_selected": false,
+        "worker_identity": "constructed-host-A",
+        "device_identity": "constructed-device-A"
+      },
+      "gpu_phases_executed": 0
+    },
+    {
+      "case": "wrong-runtime",
+      "candidate": {
+        "worker_identity": "constructed-host-A",
+        "generation": "72d7190c7d0245818a8db2938885010c",
+        "platform": "linux/arm64",
+        "image_id": "sha256:747873867110897321865b8790204c0d42a9d51357dce8c3334f50c59d6e916c",
+        "compiler_id": "gcc-13.3.0",
+        "available": true,
+        "gpu_backends": {
+          "fixture-cuda-contract": {
+            "driver_id": "fixture-driver-A",
+            "runtime_id": "other",
+            "device_capabilities": [
+              "fixture-capability-A"
+            ],
+            "memory_bytes": 2048,
+            "device_identity": "constructed-device-A"
+          }
+        },
+        "gpu_device_paths": [],
+        "nvidia_smi_available": false,
+        "qualification": "no GPU backend qualified; local Docker CPU transport fixture",
+        "framework": {
+          "id": "1584e7b404a016da21ea8bd4a5c3ee2d30a1ee1424ece1d21deab627b00e1de2",
+          "files": 2654
+        }
+      },
+      "decision": {
+        "status": "blocked",
+        "reasons": [
+          {
+            "code": "IncompatibleRuntimeId",
+            "required": "fixture-runtime-A"
+          }
+        ],
+        "dispatch_phase": false,
+        "cpu_fallback_selected": false,
+        "worker_identity": "constructed-host-A",
+        "device_identity": "constructed-device-A"
+      },
+      "gpu_phases_executed": 0
+    },
+    {
+      "case": "missing-capability",
+      "candidate": {
+        "worker_identity": "constructed-host-A",
+        "generation": "72d7190c7d0245818a8db2938885010c",
+        "platform": "linux/arm64",
+        "image_id": "sha256:747873867110897321865b8790204c0d42a9d51357dce8c3334f50c59d6e916c",
+        "compiler_id": "gcc-13.3.0",
+        "available": true,
+        "gpu_backends": {
+          "fixture-cuda-contract": {
+            "driver_id": "fixture-driver-A",
+            "runtime_id": "fixture-runtime-A",
+            "device_capabilities": [],
+            "memory_bytes": 2048,
+            "device_identity": "constructed-device-A"
+          }
+        },
+        "gpu_device_paths": [],
+        "nvidia_smi_available": false,
+        "qualification": "no GPU backend qualified; local Docker CPU transport fixture",
+        "framework": {
+          "id": "1584e7b404a016da21ea8bd4a5c3ee2d30a1ee1424ece1d21deab627b00e1de2",
+          "files": 2654
+        }
+      },
+      "decision": {
+        "status": "blocked",
+        "reasons": [
+          {
+            "code": "MissingDeviceCapabilities",
+            "required": [
+              "fixture-capability-A"
+            ]
+          }
+        ],
+        "dispatch_phase": false,
+        "cpu_fallback_selected": false,
+        "worker_identity": "constructed-host-A",
+        "device_identity": "constructed-device-A"
+      },
+      "gpu_phases_executed": 0
+    },
+    {
+      "case": "low-memory",
+      "candidate": {
+        "worker_identity": "constructed-host-A",
+        "generation": "72d7190c7d0245818a8db2938885010c",
+        "platform": "linux/arm64",
+        "image_id": "sha256:747873867110897321865b8790204c0d42a9d51357dce8c3334f50c59d6e916c",
+        "compiler_id": "gcc-13.3.0",
+        "available": true,
+        "gpu_backends": {
+          "fixture-cuda-contract": {
+            "driver_id": "fixture-driver-A",
+            "runtime_id": "fixture-runtime-A",
+            "device_capabilities": [
+              "fixture-capability-A"
+            ],
+            "memory_bytes": 0,
+            "device_identity": "constructed-device-A"
+          }
+        },
+        "gpu_device_paths": [],
+        "nvidia_smi_available": false,
+        "qualification": "no GPU backend qualified; local Docker CPU transport fixture",
+        "framework": {
+          "id": "1584e7b404a016da21ea8bd4a5c3ee2d30a1ee1424ece1d21deab627b00e1de2",
+          "files": 2654
+        }
+      },
+      "decision": {
+        "status": "blocked",
+        "reasons": [
+          {
+            "code": "InsufficientDeviceMemory",
+            "required": 1024
+          }
+        ],
+        "dispatch_phase": false,
+        "cpu_fallback_selected": false,
+        "worker_identity": "constructed-host-A",
+        "device_identity": "constructed-device-A"
+      },
+      "gpu_phases_executed": 0
+    },
+    {
+      "case": "missing-device-identity",
+      "candidate": {
+        "worker_identity": "constructed-host-A",
+        "generation": "72d7190c7d0245818a8db2938885010c",
+        "platform": "linux/arm64",
+        "image_id": "sha256:747873867110897321865b8790204c0d42a9d51357dce8c3334f50c59d6e916c",
+        "compiler_id": "gcc-13.3.0",
+        "available": true,
+        "gpu_backends": {
+          "fixture-cuda-contract": {
+            "driver_id": "fixture-driver-A",
+            "runtime_id": "fixture-runtime-A",
+            "device_capabilities": [
+              "fixture-capability-A"
+            ],
+            "memory_bytes": 2048,
+            "device_identity": null
+          }
+        },
+        "gpu_device_paths": [],
+        "nvidia_smi_available": false,
+        "qualification": "no GPU backend qualified; local Docker CPU transport fixture",
+        "framework": {
+          "id": "1584e7b404a016da21ea8bd4a5c3ee2d30a1ee1424ece1d21deab627b00e1de2",
+          "files": 2654
+        }
+      },
+      "decision": {
+        "status": "blocked",
+        "reasons": [
+          {
+            "code": "DeviceIdentityUnavailable"
+          }
+        ],
+        "dispatch_phase": false,
+        "cpu_fallback_selected": false,
+        "worker_identity": "constructed-host-A",
+        "device_identity": null
+      },
+      "gpu_phases_executed": 0
+    }
+  ],
+  "live_gpu_devices": false
+}

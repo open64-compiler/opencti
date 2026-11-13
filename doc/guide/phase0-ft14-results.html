@@ -1,0 +1,75 @@
+<!--
+Copyright (C) 2011, Hewlett-Packard Development Company, L.P.
+All Rights Reserved.
+Open64 is free software; you can redistribute it and/or modify it under the
+terms of the GNU General Public License as published by the Free Software
+Foundation; either version 2 of the License, or (at your option) any later
+version. Distributed WITHOUT ANY WARRANTY; without even the implied warranty
+of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General
+Public License for more details.
+-->
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>FT14 persistent jobs and collection with GPU acceptance blocked — OpenCTI</title><style>body{margin:0;background:#f4f6f8;color:#18232e;font:17px/1.6 system-ui,sans-serif}
+main{max-width:1050px;margin:auto;padding:2rem;background:white;min-height:100vh}
+a{color:#075ca8}nav{padding:.7rem 0;border-bottom:1px solid #ccd5dd}
+h1,h2,h3{line-height:1.25;scroll-margin-top:1rem}h2{margin-top:2rem}
+pre{padding:1rem;background:#eff3f7;overflow:auto;border:1px solid #d5dce3}
+code{font: .88em/1.5 ui-monospace,monospace;overflow-wrap:anywhere}
+table{border-collapse:collapse;width:100%;display:block;overflow:auto}
+th,td{padding:.6rem;border:1px solid #ccd5dd;text-align:left;vertical-align:top}
+th{background:#eff3f7}td:first-child{min-width:10rem}footer{border-top:1px solid #ccd5dd;margin-top:2rem;color:#52606b}
+@media(max-width:640px){main{padding:1rem}body{font-size:16px}}
+</style></head><body><main>
+<nav><a href="index.html">CTI documentation</a></nav>
+<h1 id="ft14-persistent-jobs-and-collection-with-gpu-acceptance-blocked">FT14 persistent jobs and collection with GPU acceptance blocked</h1>
+<p><a href="index.html">Documentation home</a> · <a href="failure-triage-acceptance.html#ft14-remote-gpu-failure-and-mac-sleep">FT14 acceptance</a> · <a href="dashboard-feature-ledger.html">Dashboard ledger</a> · <a href="../../validation/phase0/legacy/README.md#ft14-isolated-job-persistence-and-collection-subset">Reproduction</a></p>
+<h2 id="result-and-qualification-boundary">Result and qualification boundary</h2>
+<p>The isolated FT14 transport/lifecycle subset passes. **Full FT14 acceptance remains blocked because no compatible remote GPU worker is available.** The operator explicitly selected this limited experiment. It does not acquire FX10 or substitute a CPU result for a GPU result.</p>
+<p>The reference completed on 2026-11-12 as <code>runs/ft14-003</code>, with compact evidence in <a href="../../validation/phase0/legacy/evidence/ft14-001/summary.json">`evidence/ft14-001`</a>. A new synthetic C regression reaches a genuine stock CTI <code>DiffPgmOut</code>. It is explicitly labeled <code>explicit_cpu_transport_control</code>; a separate GPU request is blocked before any test phase. Neither result is a GPU execution or a silent fallback.</p>
+<table><thead><tr><th>FT14 obligation</th><th>Observed evidence</th><th>Remaining qualification</th></tr></thead><tbody>
+<tr><td>Persistent job ID while the controller disconnects</td><td>Kill the waiting native controller; make its database path unavailable; the worker finishes the original ID</td><td>Actual Mac sleep/disconnection from a physically independent host</td></tr>
+<tr><td>Recover events and collect once</td><td>Recreate the worker with its retained volume; redeliver three events; retain one native attempt and resume an interrupted object at byte 128</td><td>SSH/WAN transport and authenticated production endpoints</td></tr>
+<tr><td>Confirm evidence before collection acknowledgement</td><td>Verify four objects and the retained image prerequisite; incomplete evidence cannot acknowledge or clean remotely</td><td>Production trust, receipt authentication and retention policy</td></tr>
+<tr><td>Inspect after remote scratch/container cleanup</td><td>Local source, input, master, recipes, environment and logs remain available after worker/volume deletion</td><td>GPU-specific IR/device evidence from a real failing GPU case</td></tr>
+<tr><td>Reopen on a compatible target</td><td>Four saved CPU-control phases reproduce the original mismatch from native objects</td><td>Real GPU reconstruction and execution on a compatible device</td></tr>
+<tr><td>Lease and contention</td><td>An exclusive fixture slot persists across client loss, rejects contention and fences a stale release after ownership changes</td><td>Actual GPU allocation, performance isolation, lease expiry and recovery policy</td></tr>
+</tbody></table>
+<p>Docker Desktop runs the Linux worker on the same Mac. Terminating the controller models a disconnected client; it cannot establish that a remote job survives sleeping this Mac. No sleep command is issued. No SSH host, GPU runtime, external credential or vendor package is used or installed.</p>
+<h2 id="isolation-and-captured-control-failure">Isolation and captured control failure</h2>
+<p>Two successive worker containers use one private named Linux volume at <code>/state</code> for the worker ledger, job workspace and spool. Their only bind mount is the experiment&#x27;s copied tools, read-only at <code>/tools</code>. The Mac&#x27;s SQLite ledger and object store are never mounted into either worker. Uploads and object retrieval use explicit <code>docker cp</code> and streamed <code>docker exec</code> transfers; there is no network service in this fixture.</p>
+<p>Both workers use the retained native Linux ARM64 image <code>sha256:747873867110897321865b8790204c0d42a9d51357dce8c3334f50c59d6e916c</code>, disabled networking, one CPU, 1 GiB memory, dropped capabilities, <code>no-new-privileges</code>, default PID isolation and no device requests. The full deployed framework&#x27;s 2,654 file/link/mode entries retain identity <code>1584e7b404a016da21ea8bd4a5c3ee2d30a1ee1424ece1d21deab627b00e1de2</code>. Legacy drivers, defaults and existing tests are not changed.</p>
+<p>The control compiles with image-resident GCC 13.3.0, a saved seed flag of 17 and a preserved <code>input-A</code> file. Actual output is <code>observed seed=17 input=input-A\n</code>; the original master is <code>approved seed=17 input=input-A\n</code>. The oracle is exact text, with no floating-point tolerance. TM exits zero with the case tagged <code>DiffPgmOut</code>. Source/input snapshots, the failed workspace, summary and execution metadata are retained before cleanup. This C control generates no GPU IR.</p>
+<p>The actual worker reports no qualified GPU backend, no NVIDIA device paths and no <code>nvidia-smi</code>. Its GPU-kind request remains <code>blocked</code>, with no execution result or phase dispatch. Its immutable request/job identity remains distinct from the CPU control. An identical resubmission of the completed CPU job returns <code>duplicate</code> and does not launch another harness run; a conflicting request under the same ID is rejected.</p>
+<h2 id="disconnect-restart-and-collection">Disconnect, restart and collection</h2>
+<p>The worker persists the queued/running events and starts the job independently of the waiting controller. A deliberate fixture barrier allows the controller to be killed with SIGKILL before the test phase. The native database directory is then renamed outside its expected path. Releasing the worker barrier permits the genuine CTI failure to finish while that client is absent.</p>
+<p>After reconnection, the controller retrieves queued, running and finished events and begins explicit object collection. The first stream is interrupted after 128 bytes; its durable native journal records <code>InterruptedTransfer</code>. Collection remains incomplete, local acknowledgement is refused and remote cleanup is denied.</p>
+<p>The original worker container is then deleted. A new container using the same private volume answers queries for the original job ID and retains the original result and original worker identity. Its query-worker identity and generation are different. A restarted native controller redelivers the three events without adding an attempt or duplicate rows and resumes the object from offset 128. Repeating complete collection makes no object transfers.</p>
+<p>The retained objects are <code>execution.json</code>, <code>failed-work.tar.gz</code>, <code>inputs.tar.gz</code> and <code>summary.log</code>. Collection also verifies the original 623,109,120-byte image archive through its native reference; that archive is not copied into the worker or compact evidence. The verified acknowledgement binds the attempt, canonical manifest, all object hashes and runtime prerequisite hash.</p>
+<p>A fabricated receipt is rejected. After a valid acknowledgement, temporarily moving one object in the **new isolated native store** makes the local audit incomplete and withholds a cleanup request. Restoring the original bytes yields the same acknowledgement receipt. Only then does remote cleanup delete the job&#x27;s scratch/input/spool directories. A durable <code>cleaned</code> job record retains its original identity, outcome and manifest.</p>
+<p>The fixture assumes a trusted local controller and transport. Its hash-based receipt is an integrity record, not an authenticated proof of durable storage on another organization&#x27;s server. It does not qualify adversarial clients, asynchronous garbage collection or production storage guarantees.</p>
+<p>Worker recreation is performed after the test has finished and its spool is sealed. Recovery of an in-flight worker crash, GPU context loss or partially executed kernel is not qualified by this run.</p>
+<h2 id="leases-and-compatible-target-decisions">Leases and compatible-target decisions</h2>
+<p>The resource is named <code>fixture/performance-slot-not-a-gpu</code>. The running control owns epoch 1; another owner receives <code>Contended</code>. Disconnecting the client does not steal or expire that lease. The worker releases it when the control finishes. After worker recreation, a new owner receives epoch 2; the original owner&#x27;s token cannot release the new lease. The current owner remains recognized and can release it explicitly.</p>
+<p>Twelve separately labeled **constructed descriptor** cases exercise the proposed compatibility contract. Two accept equivalent requirements on the original or a different device identity. Ten reject unavailable workers, CPU-only workers, wrong platform/image/compiler/driver/runtime, missing capability, insufficient memory or absent device identity. Every decision records zero GPU phases and no CPU fallback. These descriptors use fixture driver/runtime/capability names; they are not a vendor compatibility matrix or observations of live devices.</p>
+<p>Native inspection reports <code>complete</code> independently from <code>gpu_replay: blocked_no_qualified_gpu_target</code>. Object preservation does not establish GPU execution readiness. Organization-specific worker endpoints, device/runtime requirements and access policy remain deployment configuration for future real-GPU qualification.</p>
+<h2 id="recovery-after-worker-and-scratch-deletion">Recovery after worker and scratch deletion</h2>
+<p>After acknowledgement and remote cleanup, both worker containers and the persistent worker volume are removed. Local inspection still finds source, input, master, saved <code>.env</code>, original compile/link/run/compare recipes and failure output in the collected archives.</p>
+<p>A fresh private session is opened with the existing session CLI using an explicit portable specification built from those native objects. Its cache is outside the captured evidence directory. Original container-visible work/source paths are restored and the master is read-only. The saved compile, link, run and compare scripts return **0/0/0/1**, ending with the original <code>DiffPgmOut</code>. This is explicitly a CPU-control replay, never GPU fallback. The session and its three private volumes are then removed.</p>
+<p>All 1,007 earlier compact evidence entries match their before/after hash, mode and link inventories. Original fixtures and the retained image archive are unchanged. A post-run Docker check finds no FT14 workers/worker volumes or CPU-replay containers/volumes. The pre-existing case-collision edits are untouched.</p>
+<h2 id="review-and-reproduction">Review and reproduction</h2>
+<p>The compact record contains 32 checksummed files plus its index, totaling 578,270 bytes. It includes copied tools, the exact runner, commands/checkpoints, worker profiles, original/current identities, native ledger projections, constructed descriptor decisions, original evidence inventories and four small collected objects. Private SQLite databases, expanded scratch trees, live session caches, full development runs and large runtime/compiler archives are omitted. Exploratory <code>runs/ft14-001</code> and <code>runs/ft14-002</code> are not the reference.</p>
+<ul>
+<li><a href="../../validation/phase0/legacy/run_ft14.py">Runner</a></li>
+<li><a href="../../validation/phase0/legacy/ft14/protocol.py">Worker/job and lease protocol</a></li>
+<li><a href="../../validation/phase0/legacy/ft14/worker.py">Detached worker and protected cleanup</a></li>
+<li><a href="../../validation/phase0/legacy/ft14/client.py">Native client and explicit transfer</a></li>
+<li><a href="../../validation/phase0/legacy/verify_ft14.py">Full/compact auditor</a></li>
+<li><a href="../../validation/phase0/legacy/test_verify_ft14.py">Protocol and contradiction tests</a></li>
+<li><a href="../../validation/phase0/legacy/evidence/ft14-001/checkpoints.json">Collection and lease checkpoints</a></li>
+<li><a href="../../validation/phase0/legacy/evidence/ft14-001/cpu-control-replay.json">CPU-control replay</a></li>
+</ul>
+<p>Thirteen offline tests cover reference integrity, byte corruption, rehashed false GPU/fallback/lease/cleanup/replay claims, duplicate-event contradictions, immutable job submissions, blocked dispatch and lease fencing across connections. See the <a href="../../validation/phase0/legacy/README.md#ft14-isolated-job-persistence-and-collection-subset">validation instructions</a>.</p>
+<p>Real GPU failure/replay, actual Mac sleep, a separate remote host, SSH/WAN behavior, physical GPU leases, historical FX10 and full FT14 acceptance remain open. Phase 0 is not complete; FT15 through FT19 are not run.</p>
+<footer>Reconstructed from OpenCTI source, baseline 8c3d603. Generated by doc/tools/build_docs.py.</footer>
+</main></body></html>

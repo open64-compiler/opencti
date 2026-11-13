@@ -1,0 +1,29 @@
+# Start time was Thu Nov 12 23:47:34 2026 on c9591fc96e6d
+# TEST_WORK_DIR --> /state/jobs/b81019f50c9341d881004f801e54c703/original/work
+# OPT_LEVEL     --> 0
+# DATA_MODE     --> +DD64
+# COMPILER_VERSION --> gcc-13.3.0
+# CTI_GROUPS    --> /fixtures/groups
+# REPOSITORY_TYPE --> SVN
+# OPTIONS_FILE--> /fixtures/phase0.opt
+# SELECTIONS  --> Regression/FT14
+# VIEW    --> None
+# DTM_POOL    --> Default
+# DTM_CPUARCH --> aarch64
+# DTM_PRIORITY--> 2
+# DISTRIBUTED_TM --> 
+# SEND_LOG    --> 
+# http://localhost/CTI/cgi-bin/get-log-file.cgi?log=/state/jobs/b81019f50c9341d881004f801e54c703/original/summary.log
+# END OF HEADER
+
+# TOTAL TESTS=1,  PASS=0,  FAIL=1,  RUNNING=0
+
+#_________________________________________________________
+#  OUTPUT DIFFERENCE FAILURES 
+#_________________________________________________________
+# Total Number of OUTPUT DIFFERENCE FAILURES = 1
+Regression/FT14/mismatch.c
+
+# TIME_TAKEN --> 00:00:00 [1794527254 - 1794527254]
+
+# End Time was Thu Nov 12 23:47:34 2026

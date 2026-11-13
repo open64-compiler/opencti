@@ -1,0 +1,43 @@
+{
+  "schema": "cti-session/v1",
+  "attempt_id": "b81019f50c9341d881004f801e54c703:explicit-cpu-control-replay",
+  "platform": "linux/arm64",
+  "image": {
+    "id": "sha256:747873867110897321865b8790204c0d42a9d51357dce8c3334f50c59d6e916c"
+  },
+  "work_tree": "work",
+  "test_directory": "Regression/FT14",
+  "environment": "mismatch.env",
+  "trees": [
+    {
+      "id": "work",
+      "destination": "/state/jobs/b81019f50c9341d881004f801e54c703/original/work",
+      "read_only": false,
+      "source": {
+        "archive": "/Users/shinmingliu/opcti/validation/phase0/legacy/runs/ft14-003/native/data/objects/4e061fbfa010779f8aa0c51bca26e6e34c60fd4dd8a65c207657ff9c088b3b2e",
+        "prefix": "work",
+        "sha256": "4e061fbfa010779f8aa0c51bca26e6e34c60fd4dd8a65c207657ff9c088b3b2e"
+      }
+    },
+    {
+      "id": "source",
+      "destination": "/fixtures",
+      "read_only": false,
+      "source": {
+        "archive": "/Users/shinmingliu/opcti/validation/phase0/legacy/runs/ft14-003/native/data/objects/6a66d4c07d0771c5c28f10647dcbec744edd207e8564200ae748b54c271687dc",
+        "prefix": "fixtures",
+        "sha256": "6a66d4c07d0771c5c28f10647dcbec744edd207e8564200ae748b54c271687dc"
+      }
+    },
+    {
+      "id": "baseline",
+      "destination": "/fixtures/groups/Regression/FT14/Masters",
+      "read_only": true,
+      "source": {
+        "archive": "/Users/shinmingliu/opcti/validation/phase0/legacy/runs/ft14-003/native/data/objects/6a66d4c07d0771c5c28f10647dcbec744edd207e8564200ae748b54c271687dc",
+        "prefix": "fixtures/groups/Regression/FT14/Masters",
+        "sha256": "6a66d4c07d0771c5c28f10647dcbec744edd207e8564200ae748b54c271687dc"
+      }
+    }
+  ]
+}

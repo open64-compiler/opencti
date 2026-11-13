@@ -1,0 +1,15 @@
+{
+  "session_id": "f27741e8c66a49ac90778801ff2edb42",
+  "container": "cti-session-f27741e8c66a49ac90778801ff2edb42",
+  "cwd": "/state/jobs/b81019f50c9341d881004f801e54c703/original/work/Regression/FT14",
+  "environment": "/state/jobs/b81019f50c9341d881004f801e54c703/original/work/Regression/FT14/mismatch.env",
+  "readiness": {
+    "session_id": "f27741e8c66a49ac90778801ff2edb42",
+    "accepted": true,
+    "replay_ready": true,
+    "mode": "debugging",
+    "problems": [],
+    "cwd": "/state/jobs/b81019f50c9341d881004f801e54c703/original/work/Regression/FT14",
+    "saved_environment": "/state/jobs/b81019f50c9341d881004f801e54c703/original/work/Regression/FT14/mismatch.env"
+  }
+}

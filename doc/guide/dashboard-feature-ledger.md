@@ -99,6 +99,8 @@ The [session-opening CLI and opt-in dashboard adapter](debugging-sessions.md) no
 
 ## Fixture acquisition catalog
 
+The [FT14 isolated lifecycle subset](phase0-ft14-results.md) now qualifies persistent job IDs, explicit collection after client loss, duplicate/resumed transfers, protected cleanup and logical fixture leases using a genuine legacy CPU failure. Native inspection remains complete while GPU replay is explicitly blocked. There is no compatible remote GPU worker; FX10, real Mac sleep, physical GPU leases and full FT14 remain unqualified. This does not pass a dashboard scenario or extend the click-to-Terminal adapter to remote/GPU execution.
+
 These are specifications for evidence to acquire or construct in an isolated reference installation. The synthetic regression subset of FX03 and supporting container evidence for FX08 now exist under `validation/phase0/legacy`; the remaining fixture requirements are not yet acquired. Preserve raw archives and legacy outputs together with derived assertions. Label synthetic fixtures as synthetic and do not substitute them for historical coverage silently.
 
 | Fixture ID | Required content | Scenario coverage |

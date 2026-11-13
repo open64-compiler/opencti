@@ -64,3 +64,5 @@ An exploratory run inherited `COMPILER_VERSION=opencc` and `DTM_CPUARCH=x86_64` 
 The assertions and original-image retention support FT01 through FT03 legacy characterization for these synthetic cases. They do not pass the replacement/native adapter gates, DA06's actual dashboard navigation, broader FX03 shared-harness coverage, or broader suite relocation requirements. The subsequent FT04 report separately covers deletion and relocation for this synthetic subset. No mounted compiler was changed, no GPU/DSL job was run, and no historical known-failure cache or live CGI/dTM dashboard was acquired. Human review/signoff remains open.
 
 Next phase 0 evidence should exercise the real failure drilldown in an isolated dashboard, extend dependency capture to a shared support harness, and review the now-recorded FT04 relocation evidence before expanding it to more suites. All other unexecuted scenarios retain their previous not-run status.
+
+Follow-up: the [FT14 isolated lifecycle subset](phase0-ft14-results.md) verifies persistent jobs and collection while real remote GPU/Mac-sleep acceptance remains blocked.
