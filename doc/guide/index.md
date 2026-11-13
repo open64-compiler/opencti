@@ -6,6 +6,8 @@ These guides describe the code imported at commit `8c3d603`, rather than a curre
 
 ## Start here
 
+- [Phase 1-3 implementation plan](phase1-3-implementation-plan.md): 19 PR-sized milestones, dependencies, owners and acceptance checks grounded in the latest Phase 0 evidence.
+
 - [Phase 0 review package](phase0-readiness.md): consolidated evidence, measured legacy dashboard counts, proposed contracts, suite-adoption fixtures and creator review handoff.
 
 - [Open a debugging session](debugging-sessions.md): enter a private Docker workspace with its captured directory and saved environment, directly or by clicking a registered dashboard failure to open Terminal.
