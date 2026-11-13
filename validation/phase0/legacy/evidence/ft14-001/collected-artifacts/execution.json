@@ -1,0 +1,52 @@
+{
+  "execution_kind": "explicit_cpu_transport_control",
+  "gpu_execution": false,
+  "cpu_fallback_selected": false,
+  "job_id": "b81019f50c9341d881004f801e54c703",
+  "worker": {
+    "worker_identity": "c9591fc96e6d",
+    "generation": "72d7190c7d0245818a8db2938885010c",
+    "platform": "linux/arm64",
+    "image_id": "sha256:747873867110897321865b8790204c0d42a9d51357dce8c3334f50c59d6e916c",
+    "compiler_id": "gcc-13.3.0",
+    "available": true,
+    "gpu_backends": {},
+    "gpu_device_paths": [],
+    "nvidia_smi_available": false,
+    "qualification": "no GPU backend qualified; local Docker CPU transport fixture",
+    "framework": {
+      "id": "1584e7b404a016da21ea8bd4a5c3ee2d30a1ee1424ece1d21deab627b00e1de2",
+      "files": 2654
+    }
+  },
+  "seed": 17,
+  "tolerance": {
+    "mode": "exact_text",
+    "absolute": 0,
+    "relative": 0
+  },
+  "argv": [
+    "perl",
+    "/opt/cti/bin/TM.pl",
+    "-nod",
+    "-nomail",
+    "-f",
+    "/fixtures/phase0.opt",
+    "-w",
+    "/state/jobs/b81019f50c9341d881004f801e54c703/original/work",
+    "-l",
+    "/state/jobs/b81019f50c9341d881004f801e54c703/original/summary.log",
+    "run"
+  ],
+  "harness_returncode": 0,
+  "test_outcome": "DiffPgmOut",
+  "framework_before": {
+    "id": "1584e7b404a016da21ea8bd4a5c3ee2d30a1ee1424ece1d21deab627b00e1de2",
+    "files": 2654
+  },
+  "framework_after": {
+    "id": "1584e7b404a016da21ea8bd4a5c3ee2d30a1ee1424ece1d21deab627b00e1de2",
+    "files": 2654
+  },
+  "phase_dispatches": 1
+}

@@ -1,0 +1,16 @@
+{
+  "worker_identity": "c9591fc96e6d",
+  "generation": "72d7190c7d0245818a8db2938885010c",
+  "platform": "linux/arm64",
+  "image_id": "sha256:747873867110897321865b8790204c0d42a9d51357dce8c3334f50c59d6e916c",
+  "compiler_id": "gcc-13.3.0",
+  "available": true,
+  "gpu_backends": {},
+  "gpu_device_paths": [],
+  "nvidia_smi_available": false,
+  "qualification": "no GPU backend qualified; local Docker CPU transport fixture",
+  "framework": {
+    "id": "1584e7b404a016da21ea8bd4a5c3ee2d30a1ee1424ece1d21deab627b00e1de2",
+    "files": 2654
+  }
+}

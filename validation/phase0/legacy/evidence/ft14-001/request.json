@@ -1,0 +1,13 @@
+{
+  "schema": "ft14-local-fixture/v1",
+  "job_id": "b81019f50c9341d881004f801e54c703",
+  "execution_kind": "explicit_cpu_transport_control",
+  "seed": 17,
+  "inputs_sha256": "6a66d4c07d0771c5c28f10647dcbec744edd207e8564200ae748b54c271687dc",
+  "mac_sleep": "not_exercised",
+  "local_runtime": {
+    "name": "runtime-image.tar",
+    "sha256": "1e001626e131877f12f638b98fa922bf6b05526c24c5678aa6557f9647ec277c",
+    "bytes": 623109120
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "schema": "ft14-local-fixture/v1",
+  "job_id": "7552ab2a5f3447b8b8f57a6e37703125",
+  "execution_kind": "gpu",
+  "seed": 17,
+  "inputs_sha256": "6a66d4c07d0771c5c28f10647dcbec744edd207e8564200ae748b54c271687dc",
+  "mac_sleep": "not_exercised",
+  "local_runtime": {
+    "name": "runtime-image.tar",
+    "sha256": "1e001626e131877f12f638b98fa922bf6b05526c24c5678aa6557f9647ec277c",
+    "bytes": 623109120
+  },
+  "requirements": {
+    "platform": "linux/arm64",
+    "image_id": "sha256:747873867110897321865b8790204c0d42a9d51357dce8c3334f50c59d6e916c",
+    "compiler_id": "gcc-13.3.0",
+    "gpu_backend": "fixture-cuda-contract",
+    "driver_id": "fixture-driver-A",
+    "runtime_id": "fixture-runtime-A",
+    "device_capabilities": [
+      "fixture-capability-A"
+    ],
+    "minimum_memory_bytes": 1024
+  }
+}

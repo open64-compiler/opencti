@@ -1,0 +1,7 @@
+{
+  "worker.py": "3f9f8bfda218cb682c8a3fa1a88f078edb0ee35a5ed4e6c2298b624b5780fbee",
+  "protocol.py": "2ae848709c3f8c59b17a3b12b562dd02c31c2fd9bb8888d00ab5180df64bcab7",
+  "client.py": "9c42e402ef38cbf2c514f3087b0fe13171963d4f4a990a5cd6f5b827d88b50ce",
+  "collector.py": "7053f1e76d0cf22efa5bf51bfae25517595bbec4286a83693367c5e20c880bb2",
+  "inventory.py": "2c9655c6f2fc7b7ed8aafb1ae4c077013f67940e569addb6a818fd4c692da23a"
+}

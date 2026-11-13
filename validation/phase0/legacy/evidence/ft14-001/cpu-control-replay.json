@@ -1,0 +1,24 @@
+{
+  "execution_kind": "explicit_cpu_transport_control",
+  "gpu_replay": false,
+  "phases": [
+    {
+      "phase": "compile",
+      "returncode": 0
+    },
+    {
+      "phase": "link",
+      "returncode": 0
+    },
+    {
+      "phase": "run",
+      "returncode": 0
+    },
+    {
+      "phase": "compare-out",
+      "returncode": 1
+    }
+  ],
+  "test_outcome": "DiffPgmOut",
+  "source": "native_collected_objects_after_worker_and_scratch_removal"
+}

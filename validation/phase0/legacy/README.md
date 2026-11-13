@@ -367,3 +367,36 @@ The local authorization fixture issues random values only inside an unmounted wo
 Reference `runs/ft13-001/` has 154 hashed files. The compact `evidence/ft13-001/` copy has 129 manifest entries and 541,085 regular-file bytes plus the relative input symlink. It retains exact original work/source/dependency archives, small mounted inputs, gates, fault/recovery diagnostics, image metadata, sanitized provisioning records and capture tools. Expanded original work, duplicate private inputs and the new 586,254,336-byte child runtime archive are omitted. That runtime and the original base archive stay ignored/local, with size/digests recorded; compact evidence alone cannot supply them.
 
 All three workers are removed after export. The raw and compact audits, nine offline tests and preservation checks pass. Existing framework, original FT13 capture/inputs and earlier evidence remain unchanged. Production resolution/provisioning, acquired historical archives, dashboard and remote/GPU/DSL acceptance remain open. See the [FT13 results](../../../doc/guide/phase0-ft13-results.md).
+
+## FT14 isolated job persistence and collection subset
+
+No compatible remote GPU worker is available. `run_ft14.py` therefore runs an explicitly labeled legacy **CPU transport control**, blocks a GPU-kind request on the actual worker and keeps full FT14 remote/GPU/Mac-sleep acceptance blocked. It is a validation-only fixture, not a production scheduler, SSH client or new framework backend.
+
+Prerequisites are Python 3.9+, Docker Desktop's native Linux ARM64 execution, the retained FT09 image and its unchanged native image archive at the binding recorded in `evidence/ft09-001/retained-large-artifacts.json`. The runner verifies the archive's size/digest and uses the immutable image ID with `--pull=never`; it does not download packages or select another runtime. Use a new output directory outside all original evidence. `--capture` can select a prepared isolated FT09 capture copy with reviewed local runtime binding metadata; never edit the original evidence to rebind a copy.
+
+```sh
+python3 -B validation/phase0/legacy/run_ft14.py \
+  --output validation/phase0/legacy/runs/new-ft14-run
+
+python3 -B validation/phase0/legacy/verify_ft14.py \
+  validation/phase0/legacy/runs/new-ft14-run \
+  --pack-output validation/phase0/legacy/evidence/new-ft14-reference
+
+python3 -B validation/phase0/legacy/verify_ft14.py \
+  validation/phase0/legacy/evidence/ft14-001
+
+python3 -B -m unittest discover -s validation/phase0/legacy \
+  -p test_verify_ft14.py -v
+```
+
+The worker owns a persistent named volume and SQLite job/event/lease ledger; the Mac owns a separate native ledger/object store. Only copied tools are bind-mounted, read-only. Explicit uploads and streamed reads use Docker CLI transport. After the waiting controller is killed with SIGKILL and its native database path is made unavailable, the worker executes the stock harness once and retains `DiffPgmOut`. This models client loss while the Mac stays awake; Docker Desktop on this Mac cannot prove survival of actual Mac sleep against an independent host.
+
+The controller retrieves three events and starts collecting four objects. An interrupted stream leaves 128 native bytes and incomplete preservation. No acknowledgement or cleanup is permitted. After deleting/recreating the worker around its retained volume, a restarted controller resumes at byte 128, deduplicates all events and retains one original attempt. Repeating collection transfers no objects. A malformed receipt is rejected; temporary loss of an isolated native object withholds cleanup even after an earlier acknowledgement. Restoring verified content yields the same receipt. Remote cleanup then removes scratch/input/spool data while keeping the original job/outcome/manifest tombstone.
+
+Logical resource `fixture/performance-slot-not-a-gpu` tests contention, ownership after controller loss, epoch progression after release and refusal of a stale owner's release after worker recreation. Twelve constructed GPU-descriptor cases cover compatible original/new-device identities and ten incompatible/unavailable candidates. They use fixture driver/runtime/capability names and execute zero GPU phases. They do not qualify a vendor compatibility matrix or reserve physical GPUs.
+
+After both worker containers and the worker volume are deleted, native inspection still finds the source, mounted input, master, `.env`, saved recipes and logs. A fresh session opened with the existing CLI restores only collected objects and executes four CPU-control recipes: 0/0/0/1, original `DiffPgmOut`. Its private cache is outside the capture; all replay resources are removed. Full framework identity (2,654 entries), source fixtures and all 1,007 prior evidence entries remain unchanged.
+
+Reference `runs/ft14-003/` has 39 raw hashed files. Compact `evidence/ft14-001/` contains 32 hashed files plus its checksum index, totaling 578,270 bytes, with the four small collected objects and exact runner/tools. It excludes native/private SQLite databases, expanded scratch/source copies, live replay caches, full development runs and large runtime/compiler archives. The original 623,109,120-byte runtime remains local and referenced. Development runs 001–002 are not passing references.
+
+The full and compact audits plus thirteen offline tests pass, including rehashed false GPU/fallback/lease/cleanup/replay claims, event contradictions, byte corruption, immutable duplicate submissions and lease fencing. The fixture's acknowledgement is a trusted-controller integrity protocol, not authenticated remote storage proof. Production transport/authentication, actual GPU execution and replay, real Mac sleep, physical GPU leases and full FX10/FT14 acceptance remain open. See the [FT14 results](../../../doc/guide/phase0-ft14-results.md).
