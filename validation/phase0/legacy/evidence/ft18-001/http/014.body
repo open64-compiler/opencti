@@ -1,0 +1,66 @@
+<!DOCTYPE html
+	PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+	 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en-US" xml:lang="en-US">
+<head>
+<title>show log files</title>
+<link rel="stylesheet" type="text/css" href="../css/homepages-v5.css" />
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+</head>
+<body>
+<script defer src="../js/cti-sessions.js" data-catalog="../links.json"></script><pre style="background-color: #FFFFFF; border-width: 0pt"><code><b>-rw-r--r-- 1 root root 1644 Nov 11 22:57 /capture/original/summary.log
+
+<a href="http://127.0.0.1:61359/cti/cgi-bin/get-log-file.cgi?details=20&log=%2Fcapture%2Foriginal%2Fsummary.log">Details</a>&nbsp;&nbsp;&nbsp;<a href="rerun_test.cgi?log=/capture/original/summary.log">Rerun</a>&nbsp;&nbsp;&nbsp;<a href="remaster-test.cgi?log=/capture/original/summary.log">Remaster</a>&nbsp;&nbsp;&nbsp;</b>
+
+
+# Start time was Wed Nov 11 22:57:03 2026 on 30ca03ca897a
+# TEST_WORK_DIR --> <a href="file:/capture/original/work">/capture/original/work</a>
+# OPT_LEVEL     --> 0
+# DATA_MODE     --> +DD64
+# COMPILER_VERSION --> gcc-13.3.0
+# CTI_GROUPS    --> /fixtures/groups
+# REPOSITORY_TYPE --> SVN
+# OPTIONS_FILE--> <a href="get-options-file.cgi?file=/fixtures/phase0.opt&view=">/fixtures/phase0.opt</a>
+# SELECTIONS  --> Regression/FT01 Regression/FT02 Regression/FT03 Regression/FT03NoMaster
+# VIEW    --> None
+# DTM_POOL    --> Default
+# DTM_CPUARCH --> aarch64
+# DTM_PRIORITY--> 2
+# DISTRIBUTED_TM --> 
+# SEND_LOG    --> 
+# <a href="http://localhost/CTI/cgi-bin/get-log-file.cgi?log=/capture/original/summary.log">http://localhost/CTI/cgi-bin/get-log-file.cgi?log=/capture/original/summary.log</a>
+# END OF HEADER
+
+# TOTAL TESTS=4,  PASS=0,  FAIL=4,  RUNNING=0
+
+#_________________________________________________________
+#  NO MASTER OUT FAILURES 
+#_________________________________________________________
+# Total Number of NO MASTER OUT FAILURES = 1
+<a href="chk_test_errors.cgi?details=1000&log=/capture/original/summary.log&arg=Regression/FT03NoMaster/absent_master.c">Regression/FT03NoMaster/absent_master.c</a>
+
+#_________________________________________________________
+#  COMPILATION FAILURES 
+#_________________________________________________________
+# Total Number of COMPILATION FAILURES = 1
+<b><acronym title="compile_error.c:1:25: error: 'syntax' undeclared (first use in this function)"><a href="chk_test_errors.cgi?details=1000&log=/capture/original/summary.log&arg=Regression/FT01/compile_error.c">Regression/FT01/compile_error.c</a></acronym></b><align="left">
+
+#_________________________________________________________
+#  EXECUTION FAILURES 
+#_________________________________________________________
+# Total Number of EXECUTION FAILURES = 1
+<a href="chk_test_errors.cgi?details=1000&log=/capture/original/summary.log&arg=Regression/FT02/runtime_error.c">Regression/FT02/runtime_error.c</a>
+
+#_________________________________________________________
+#  OUTPUT DIFFERENCE FAILURES 
+#_________________________________________________________
+# Total Number of OUTPUT DIFFERENCE FAILURES = 1
+<b><acronym title="< actual
+"><a href="chk_test_errors.cgi?details=1000&log=/capture/original/summary.log&arg=Regression/FT03/output_mismatch.c">Regression/FT03/output_mismatch.c</a></acronym></b><align="left">
+
+# TIME_TAKEN --> 00:00:01 [1794437824 - 1794437823]
+
+# End Time was Wed Nov 11 22:57:04 2026
+</code></pre>
+</body>
+</html>

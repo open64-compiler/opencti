@@ -1,0 +1,1 @@
+cti-session: Session prerequisites unavailable: [{"role": "baseline", "detail": "/fixtures/groups/Regression/FT03NoMaster/Masters/absent_master.out: required file unavailable", "reprovision_reference": "fixture://missing-approved-baseline"}]

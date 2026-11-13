@@ -1,0 +1,13 @@
+{
+  "schema": "cti-dashboard-links/v1",
+  "failures": [
+    {
+      "id": "a4c26352621da45418b8f21888c1a82f5d9888eb3836d25008076358a4c6bcca",
+      "label": "FT18 captured output mismatch",
+      "log": "/capture/original/summary.log",
+      "test": "Regression/FT03/output_mismatch.c",
+      "dashboard_url": "http://127.0.0.1:61359/cti/",
+      "log_sha256": "20a03f6d06b252a20bc59ffa8abde0c85b269210dabb78a047215e378c1264f0"
+    }
+  ]
+}

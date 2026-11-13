@@ -1,0 +1,9 @@
+{
+  "base": "http://127.0.0.1:61359/cti/",
+  "run_url": "http://127.0.0.1:61359/cti/cgi-bin/get-log-file.cgi?log=%2Fcapture%2Foriginal%2Fsummary.log",
+  "detail_url": "http://127.0.0.1:61359/cti/cgi-bin/chk_test_errors.cgi?log=%2Fcapture%2Foriginal%2Fsummary.log&arg=Regression%2FFT03%2Foutput_mismatch.c&details=1000",
+  "captures_url": "http://127.0.0.1:61359/cti/captures.html",
+  "terminal_url": "opencti-session://failure/a4c26352621da45418b8f21888c1a82f5d9888eb3836d25008076358a4c6bcca",
+  "complete_registration": "a4c26352621da45418b8f21888c1a82f5d9888eb3836d25008076358a4c6bcca",
+  "inspection_registration": "740067b6e632aa85bfcbc207e61d47099444e3da92a78d9400ed98f3cb752300"
+}

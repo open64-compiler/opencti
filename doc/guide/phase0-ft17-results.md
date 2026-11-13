@@ -74,4 +74,4 @@ Full and compact audits pass, along with twenty offline tests. The tests reject 
 - [Native extraction decision](../../validation/phase0/legacy/evidence/ft17-001/native-storage.json)
 - [Combined-unit overwrite observation](../../validation/phase0/legacy/evidence/ft17-001/capture/results.json)
 
-Production artifact/session integration, repair of the same-basename hazard, dashboard navigation, broader filesystem/permission policy, remote GPU and DSL qualification remain open. Phase 0 is incomplete; FT18 and FT19 are not run.
+Production artifact/session integration, repair of the same-basename hazard, dashboard navigation, broader filesystem/permission policy, remote GPU and DSL qualification remain open. Phase 0 is incomplete. An [FT18 isolated access follow-up](phase0-ft18-results.md) now verifies browser evidence inspection, native Terminal handoff and standalone interactive replay after dashboard shutdown, with navigation/product-view gaps retained. Full FT18 acceptance remains open; FT19 is not run.

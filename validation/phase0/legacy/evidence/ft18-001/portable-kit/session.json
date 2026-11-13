@@ -1,0 +1,70 @@
+{
+  "schema": "cti-session/v1",
+  "attempt_id": "capture:Regression/FT03/output_mismatch",
+  "platform": "linux/arm64",
+  "image": {
+    "id": "sha256:a119c5e4a42dedbb5cdce10d448efce31b4054018bde56a4e476bc2c529fa62c",
+    "archive": null,
+    "archive_sha256": "8b69adc550862c611dd9f4b58a2126e6f82e94dc7a2c7781dfae3163418bf8a5",
+    "archive_bytes": 586248192
+  },
+  "trees": [
+    {
+      "id": "work",
+      "destination": "/capture/original/work",
+      "read_only": false,
+      "source": {
+        "archive": "artifacts/c84024ba3b065e10384d9d93024f0024e62e2b812b3f3f8a80ccb64c548ceb75.tar.gz",
+        "prefix": "original/work",
+        "sha256": "c84024ba3b065e10384d9d93024f0024e62e2b812b3f3f8a80ccb64c548ceb75"
+      }
+    },
+    {
+      "id": "source",
+      "destination": "/fixtures",
+      "read_only": false,
+      "source": {
+        "archive": "artifacts/c84024ba3b065e10384d9d93024f0024e62e2b812b3f3f8a80ccb64c548ceb75.tar.gz",
+        "prefix": "fixtures",
+        "sha256": "c84024ba3b065e10384d9d93024f0024e62e2b812b3f3f8a80ccb64c548ceb75"
+      }
+    },
+    {
+      "id": "baseline-0",
+      "destination": "/fixtures/groups/Regression/FT01/Masters",
+      "read_only": true,
+      "source": {
+        "archive": "artifacts/c84024ba3b065e10384d9d93024f0024e62e2b812b3f3f8a80ccb64c548ceb75.tar.gz",
+        "prefix": "fixtures/groups/Regression/FT01/Masters",
+        "sha256": "c84024ba3b065e10384d9d93024f0024e62e2b812b3f3f8a80ccb64c548ceb75"
+      }
+    },
+    {
+      "id": "baseline-1",
+      "destination": "/fixtures/groups/Regression/FT02/Masters",
+      "read_only": true,
+      "source": {
+        "archive": "artifacts/c84024ba3b065e10384d9d93024f0024e62e2b812b3f3f8a80ccb64c548ceb75.tar.gz",
+        "prefix": "fixtures/groups/Regression/FT02/Masters",
+        "sha256": "c84024ba3b065e10384d9d93024f0024e62e2b812b3f3f8a80ccb64c548ceb75"
+      }
+    },
+    {
+      "id": "baseline-2",
+      "destination": "/fixtures/groups/Regression/FT03/Masters",
+      "read_only": true,
+      "source": {
+        "archive": "artifacts/c84024ba3b065e10384d9d93024f0024e62e2b812b3f3f8a80ccb64c548ceb75.tar.gz",
+        "prefix": "fixtures/groups/Regression/FT03/Masters",
+        "sha256": "c84024ba3b065e10384d9d93024f0024e62e2b812b3f3f8a80ccb64c548ceb75"
+      }
+    }
+  ],
+  "work_tree": "work",
+  "test_directory": "Regression/FT03",
+  "environment": "output_mismatch.env",
+  "requirements": [],
+  "external_requirements": [],
+  "cpu_features": [],
+  "capture_profile": "original"
+}

@@ -483,3 +483,34 @@ Reference `runs/ft17-004` has 130 hashes. Compact `evidence/ft17-001` has 130 ha
 Modes `0751`/`0640` on distinct helpers, read-only inputs/headers/masters, relative input links, an executable link chain, an absolute input link and an intentionally dangling link are verified after reconstruction. Removing helper execute bits yields `ExecErr` and retained permission diagnostics; restoration succeeds. Own-master/cross-master controls return 0/1 respectively. Twenty offline tests reject changed identities/compiler/master semantics, lost modes/links, unsafe extraction and cleanup claims, corrupt/missing objects, duplicate/unsafe paths and overwriting existing sessions.
 
 The combined stock unit run enumerates both IDs but shares `sample` work basenames and retains only the later recipe/object/executable/result. The discrepancy is captured without patching the framework; independent captures isolate work while preserving the original IDs. All 2,654 deployed framework entries, all 1,232 prior evidence entries, native input bundle and sealed capture remain unchanged. Both workers are removed; pre-existing filename collision changes are untouched. Full/compact and preceding FT16 audits pass. Production storage/session/dashboard integration, repair of the basename hazard, broader permissions/Unicode filesystem behavior and GPU/DSL execution remain open. See the [FT17 report](../../../doc/guide/phase0-ft17-results.md).
+
+
+## FT18 dashboard and standalone debugging access
+
+FT18 uses exact copies of the current read-only legacy CGI pages/adapter and the unchanged session CLI. The synthetic `run-002` capture and its pinned cached original Linux ARM64 image are required. The loopback fixture, capture copy, registry, session stores and portable kit are isolated under a fresh output. No global URL-handler install/selection or original-framework change is performed.
+
+```sh
+python3 -B validation/phase0/legacy/run_ft18.py \
+  --output validation/phase0/legacy/runs/ft18-new
+```
+
+The runner prints its loopback URL and writes `browser-ready.json`, then waits for actual browser observations. Open the legacy run/failure view, inspect the registered case URL, follow **[details]**, verify visible original source/output/baseline/environment and recipes, inspect the missing-baseline case and local capture page, and download the explicitly labeled validation-only bundle. Do not invoke the global handler for the fixture ID: the existing native launch boundary is exercised separately against the private registry.
+
+Record `browser-observations.json` using the reference schema in `evidence/ft18-001`. URLs/IDs, observed fields/link count and the downloaded-file hash/size must come from that run's actual browser observations; copying the reference's assertions is not evidence of a new UI execution. The runner then opens its own temporary Terminal window, verifies saved-phase results, tests missing-baseline opening/inspection, stops the server/removes its worker, relocates the registry/capture, and opens the downloaded kit in a new interactive PTY. It cleans up only its owned sessions and window.
+
+```sh
+python3 -B validation/phase0/legacy/ft18/check_cleanup.py \
+  validation/phase0/legacy/runs/ft18-new
+python3 -B validation/phase0/legacy/verify_ft18.py \
+  validation/phase0/legacy/runs/ft18-new
+python3 -B validation/phase0/legacy/verify_ft18.py \
+  validation/phase0/legacy/evidence/ft18-001
+python3 -B -m unittest discover -s validation/phase0/legacy \
+  -p 'test_verify_ft18.py' -v
+```
+
+The read-only post-run probe has a separate index and leaves the original runner index intact. For a new compact copy, use the auditor's `--pack-output` with a fresh destination. The packer excludes private registry/session trees, full native/PTY transcripts, development runs, compiled apps and runtime archives.
+
+Reference `runs/ft18-002` has 131 original runner hashes plus separately indexed cleanup observations. Compact `evidence/ft18-001` has 85 hashes plus its index and totals 904,817 bytes. Eight compile/link/run/compare replays across native Terminal and offline interactive Bash preserve the original `actual`/`expected` mismatch and saved compiler environment; baseline writes are denied. A genuinely absent baseline, explicitly declared in the portable requirement, blocks normal opening and permits only non-replay-ready inspection. All 2,654 deployed framework entries, 1,363 prior evidence entries and copied capture/CGI workspace identities remain unchanged; pre-existing filename-collision edits are untouched.
+
+Full/compact audits, fifteen contradiction tests and the preceding FT17 audit pass. The current adapter's in-page file-anchor rewrite is recorded, not fixed. Product bundle-download, mount-specification and completeness views, automatic full closure discovery, organization deployment and remote/GPU qualification remain open. Prior [dashboard acceptance](../../dashboard-session/README.md) separately records actual OS URL dispatch; FT18 preserves global handler selection. Full FT18/DF38 and phase 0 remain open. See the [FT18 report](../../../doc/guide/phase0-ft18-results.md).

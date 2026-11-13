@@ -1,0 +1,190 @@
+[
+  {
+    "label": "image",
+    "argv": [
+      "docker",
+      "image",
+      "inspect",
+      "sha256:a119c5e4a42dedbb5cdce10d448efce31b4054018bde56a4e476bc2c529fa62c"
+    ],
+    "cwd": null,
+    "returncode": 0,
+    "stdout_file": "image.stdout",
+    "stderr_file": "image.stderr"
+  },
+  {
+    "label": "create-ui",
+    "argv": [
+      "docker",
+      "create",
+      "--name",
+      "cti-ft18-b9d74c8af9a9",
+      "--pull=never",
+      "--platform",
+      "linux/arm64",
+      "--network",
+      "none",
+      "--cpus",
+      "1",
+      "--memory",
+      "1g",
+      "--cap-drop",
+      "ALL",
+      "--security-opt",
+      "no-new-privileges",
+      "--label",
+      "org.opencti.phase0.ft18=ft18-002",
+      "--mount",
+      "type=bind,src=/Users/shinmingliu/opcti/validation/phase0/legacy/runs/ft18-002/retained-tools,dst=/tools,readonly",
+      "--mount",
+      "type=bind,src=/Users/shinmingliu/opcti/validation/phase0/legacy/runs/ft18-002/private/capture,dst=/bundle,readonly",
+      "--mount",
+      "type=bind,src=/Users/shinmingliu/opcti/validation/phase0/legacy/runs/ft18-002/deployed,dst=/deployed,readonly",
+      "--mount",
+      "type=bind,src=/Users/shinmingliu/opcti/validation/phase0/legacy/runs/ft18-002/public,dst=/catalog,readonly",
+      "--mount",
+      "type=bind,src=/Users/shinmingliu/opcti/validation/phase0/legacy/runs/ft18-002/worker,dst=/export",
+      "--entrypoint",
+      "/usr/bin/python3",
+      "sha256:a119c5e4a42dedbb5cdce10d448efce31b4054018bde56a4e476bc2c529fa62c",
+      "-B",
+      "/tools/worker.py",
+      "serve"
+    ],
+    "cwd": null,
+    "returncode": 0,
+    "stdout_file": "create-ui.stdout",
+    "stderr_file": "create-ui.stderr"
+  },
+  {
+    "label": "inspect-ui",
+    "argv": [
+      "docker",
+      "container",
+      "inspect",
+      "cti-ft18-b9d74c8af9a9"
+    ],
+    "cwd": null,
+    "returncode": 0,
+    "stdout_file": "inspect-ui.stdout",
+    "stderr_file": "inspect-ui.stderr"
+  },
+  {
+    "label": "start-ui",
+    "argv": [
+      "docker",
+      "start",
+      "cti-ft18-b9d74c8af9a9"
+    ],
+    "cwd": null,
+    "returncode": 0,
+    "stdout_file": "start-ui.stdout",
+    "stderr_file": "start-ui.stderr"
+  },
+  {
+    "label": "terminal-windows-before",
+    "argv": [
+      "/usr/bin/osascript",
+      "-e",
+      "tell application \"Terminal\" to get id of every window"
+    ],
+    "cwd": null,
+    "returncode": 0,
+    "stdout_file": "terminal-windows-before.stdout",
+    "stderr_file": "terminal-windows-before.stderr"
+  },
+  {
+    "label": "terminal-send",
+    "argv": [
+      "/usr/bin/osascript",
+      "-e",
+      "tell application \"Terminal\" to do script \"printf '%s' cHJpbnRmICdGVDE4X05BVElWRV9CRUdJTlxuJwpwcmludGYgJ0ZUMThfTkFUSVZFX0NXRCAlc1xuJyAiJFBXRCIKcHJpbnRmICdGVDE4X05BVElWRV9FTlYgJXMgJXNcbicgIiRDQyIgIiRPUFRfTEVWRUwiCmZvciBwaGFzZSBpbiBjb21waWxlIGxpbmsgcnVuIGNvbXBhcmUtb3V0OyBkbwogIGJhc2ggLi9vdXRwdXRfbWlzbWF0Y2guJHBoYXNlLnNoCiAgcHJpbnRmICdGVDE4X05BVElWRV9QSEFTRSAlcyAlc1xuJyAiJHBoYXNlIiAiJD8iCmRvbmUKcHJpbnRmICdGVDE4X05BVElWRV9PVVRQVVQgJzsgY2F0IG91dHB1dF9taXNtYXRjaC5vdXQKcHJpbnRmICdGVDE4X05BVElWRV9CQVNFTElORSAnOyBjYXQgb3V0cHV0X21pc21hdGNoLm91dC5tYXN0ZXIKcHJpbnRmICdGVDE4IHByaXZhdGUgZWRpdFxuJyA+IGZ0MTgtc2Vzc2lvbi1ub3RlLnR4dAppZiBwcmludGYgJ211c3Qgbm90IHdyaXRlXG4nID4+IG91dHB1dF9taXNtYXRjaC5vdXQubWFzdGVyIDI+L3RtcC9mdDE4LWJhc2VsaW5lLXdyaXRlLmVycjsgdGhlbgogIHByaW50ZiAnRlQxOF9OQVRJVkVfQkFTRUxJTkVfV1JJVEFCTEUgdW5leHBlY3RlZFxuJwplbHNlCiAgcHJpbnRmICdGVDE4X05BVElWRV9CQVNFTElORV9SRUFET05MWSBjb25maXJtZWRcbicKZmkKcHJpbnRmICdGVDE4X05BVElWRV9FTkRcbicK | base64 -d | bash; exit\" in selected tab of window id 69619"
+    ],
+    "cwd": null,
+    "returncode": 0,
+    "stdout_file": "terminal-send.stdout",
+    "stderr_file": "terminal-send.stderr"
+  },
+  {
+    "label": "missing-blocked",
+    "argv": [
+      "/Applications/Xcode.app/Contents/Developer/usr/bin/python3",
+      "-B",
+      "/Users/shinmingliu/opcti/validation/phase0/legacy/runs/ft18-002/portable-kit/tools/cti-session",
+      "--state-dir",
+      "/Users/shinmingliu/opcti/validation/phase0/legacy/runs/ft18-002/private/missing-blocked",
+      "open",
+      "--spec",
+      "/Users/shinmingliu/opcti/validation/phase0/legacy/runs/ft18-002/private/incomplete-source/session.json",
+      "--no-attach",
+      "--json"
+    ],
+    "cwd": null,
+    "returncode": 2,
+    "stdout_file": "missing-blocked.stdout",
+    "stderr_file": "missing-blocked.stderr"
+  },
+  {
+    "label": "missing-inspection",
+    "argv": [
+      "/Applications/Xcode.app/Contents/Developer/usr/bin/python3",
+      "-B",
+      "/Users/shinmingliu/opcti/validation/phase0/legacy/runs/ft18-002/portable-kit/tools/cti-session",
+      "--state-dir",
+      "/Users/shinmingliu/opcti/validation/phase0/legacy/runs/ft18-002/private/missing-inspection",
+      "open",
+      "--spec",
+      "/Users/shinmingliu/opcti/validation/phase0/legacy/runs/ft18-002/private/incomplete-source/session.json",
+      "--no-attach",
+      "--json",
+      "--inspection-only"
+    ],
+    "cwd": null,
+    "returncode": 0,
+    "stdout_file": "missing-inspection.stdout",
+    "stderr_file": "missing-inspection.stderr"
+  },
+  {
+    "label": "audit-ui",
+    "argv": [
+      "docker",
+      "exec",
+      "cti-ft18-b9d74c8af9a9",
+      "python3",
+      "-B",
+      "/tools/worker.py",
+      "audit"
+    ],
+    "cwd": null,
+    "returncode": 0,
+    "stdout_file": "audit-ui.stdout",
+    "stderr_file": "audit-ui.stderr"
+  },
+  {
+    "label": "remove-ui",
+    "argv": [
+      "docker",
+      "container",
+      "rm",
+      "-f",
+      "cti-ft18-b9d74c8af9a9"
+    ],
+    "cwd": null,
+    "returncode": 0,
+    "stdout_file": "remove-ui.stdout",
+    "stderr_file": "remove-ui.stderr"
+  },
+  {
+    "label": "ui-absent",
+    "argv": [
+      "docker",
+      "container",
+      "inspect",
+      "cti-ft18-b9d74c8af9a9"
+    ],
+    "cwd": null,
+    "returncode": 1,
+    "stdout_file": "ui-absent.stdout",
+    "stderr_file": "ui-absent.stderr"
+  }
+]
