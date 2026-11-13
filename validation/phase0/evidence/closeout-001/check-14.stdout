@@ -1,0 +1,14 @@
+{
+  "status": "pass_for_isolated_case_permission_link_contracts",
+  "checksummed_files": 130,
+  "logical_entries": 135,
+  "stored_objects": 59,
+  "original_test_ids": [
+    "Regression/FT17/sample.C",
+    "Regression/FT17/sample.c"
+  ],
+  "saved_phase_replays": 8,
+  "native_case_sensitive": false,
+  "same_basename_overwrite": "observed_not_fixed",
+  "framework_unchanged": true
+}

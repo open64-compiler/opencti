@@ -1,0 +1,63 @@
+{
+  "Architecture": "amd64",
+  "Config": {
+    "Cmd": [
+      "opencc",
+      "-v"
+    ],
+    "Env": [
+      "PATH=/opt/open64/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin",
+      "PIP_DISABLE_PIP_VERSION_CHECK=1",
+      "PYTHONDONTWRITEBYTECODE=1"
+    ],
+    "Labels": {
+      "desktop.docker.io/binds/0/Source": "/Users/shinmingliu/open64",
+      "desktop.docker.io/binds/0/SourceKind": "hostFile",
+      "desktop.docker.io/binds/0/Target": "/open64",
+      "desktop.docker.io/binds/1/Source": "/Users/shinmingliu/open64/build",
+      "desktop.docker.io/binds/1/SourceKind": "hostFile",
+      "desktop.docker.io/binds/1/Target": "/build",
+      "desktop.docker.io/binds/2/Source": "/Users/shinmingliu/open64/opt/open64",
+      "desktop.docker.io/binds/2/SourceKind": "hostFile",
+      "desktop.docker.io/binds/2/Target": "/opt/open64",
+      "desktop.docker.io/binds/3/Source": "/tmp/open64-generated",
+      "desktop.docker.io/binds/3/SourceKind": "hostFile",
+      "desktop.docker.io/binds/3/Target": "/pregenerated_targ_info",
+      "desktop.docker.io/ports.scheme": "v2",
+      "org.opencontainers.image.ref.name": "ubuntu",
+      "org.opencontainers.image.version": "20.04"
+    },
+    "WorkingDir": "/work"
+  },
+  "Created": "2026-07-14T05:12:36.878141089Z",
+  "GraphDriver": {
+    "Data": {
+      "LowerDir": "/var/lib/docker/overlay2/93542810cd20d1bdebf12b71ecef39d9136eb2a54681b5a74ab0ef30acc27958/diff:/var/lib/docker/overlay2/14f514c88b9596fee096dc8ac1b2b8c0fa62c5492514f8d7da3e5cd76d14c9c5/diff:/var/lib/docker/overlay2/6673a4076cc7254c50ee3c0857b1698c1cc9b841e22d7de0bc3f8c3ed92e2406/diff:/var/lib/docker/overlay2/4084119a752bd16e496b79bdf2e1578a939fe6202802a9c640a5af76e6e1589c/diff",
+      "MergedDir": "/var/lib/docker/overlay2/470c06f784817fd46f4c54bd15100ab29f7aaa57fb8fa57bea2fced98c42d1e4/merged",
+      "UpperDir": "/var/lib/docker/overlay2/470c06f784817fd46f4c54bd15100ab29f7aaa57fb8fa57bea2fced98c42d1e4/diff",
+      "WorkDir": "/var/lib/docker/overlay2/470c06f784817fd46f4c54bd15100ab29f7aaa57fb8fa57bea2fced98c42d1e4/work"
+    },
+    "Name": "overlay2"
+  },
+  "Id": "sha256:b18b7676ae388026312993b0a299c4ca6ca36999444f337f6826ea5ff1e8f577",
+  "Metadata": {
+    "LastTagTime": "2026-07-14T05:12:37.094575297Z"
+  },
+  "Os": "linux",
+  "Parent": "sha256:0913830b80dcfc1e7b67469de2daceaf4cf7bfd70034d23f7f25e1bf842feeb5",
+  "RepoDigests": [],
+  "RepoTags": [
+    "open64:torch2whirl-torch-test"
+  ],
+  "RootFS": {
+    "Layers": [
+      "sha256:470b66ea5123c93b0d5606e4213bf9e47d3d426b640d32472e4ac213186c4bb6",
+      "sha256:264db27b923322a94659bf9fe1dcbea670014e64c0edcc17aea67f54d8b1ea3b",
+      "sha256:1f1fc4f30fdc0345a646067ccb6db7c5c63c904afd36227e7ac7565d256fa74c",
+      "sha256:110de122655f1ba93fd2478146ea669be1f5ed0b7f98864eaab718891ce8a2cd",
+      "sha256:025fb7594752d4a1745303b8e81b55dcd729896e4908834e57afa97921be6dea"
+    ],
+    "Type": "layers"
+  },
+  "Size": 2077630653
+}

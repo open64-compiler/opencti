@@ -1,0 +1,426 @@
+[
+  {
+    "sequence": 1,
+    "argv": [
+      "/Applications/Xcode.app/Contents/Developer/usr/bin/python3",
+      "-B",
+      "/Users/shinmingliu/opcti/validation/phase0/legacy/verify_ft04.py",
+      "/Users/shinmingliu/opcti/validation/phase0/legacy/evidence/ft04-002"
+    ],
+    "returncode": 0,
+    "stdout": "check-01.stdout",
+    "stderr": "check-01.stderr",
+    "started_utc": "2026-11-13T18:21:00.095402+00:00",
+    "finished_utc": "2026-11-13T18:21:00.123802+00:00"
+  },
+  {
+    "sequence": 2,
+    "argv": [
+      "/Applications/Xcode.app/Contents/Developer/usr/bin/python3",
+      "-B",
+      "/Users/shinmingliu/opcti/validation/phase0/legacy/verify_ft05.py",
+      "/Users/shinmingliu/opcti/validation/phase0/legacy/evidence/ft05-001"
+    ],
+    "returncode": 0,
+    "stdout": "check-02.stdout",
+    "stderr": "check-02.stderr",
+    "started_utc": "2026-11-13T18:21:00.123934+00:00",
+    "finished_utc": "2026-11-13T18:21:00.168065+00:00"
+  },
+  {
+    "sequence": 3,
+    "argv": [
+      "/Applications/Xcode.app/Contents/Developer/usr/bin/python3",
+      "-B",
+      "/Users/shinmingliu/opcti/validation/phase0/legacy/verify_ft06.py",
+      "/Users/shinmingliu/opcti/validation/phase0/legacy/evidence/ft06-002"
+    ],
+    "returncode": 0,
+    "stdout": "check-03.stdout",
+    "stderr": "check-03.stderr",
+    "started_utc": "2026-11-13T18:21:00.168191+00:00",
+    "finished_utc": "2026-11-13T18:21:00.215815+00:00"
+  },
+  {
+    "sequence": 4,
+    "argv": [
+      "/Applications/Xcode.app/Contents/Developer/usr/bin/python3",
+      "-B",
+      "/Users/shinmingliu/opcti/validation/phase0/legacy/verify_ft07.py",
+      "/Users/shinmingliu/opcti/validation/phase0/legacy/evidence/ft07-002"
+    ],
+    "returncode": 0,
+    "stdout": "check-04.stdout",
+    "stderr": "check-04.stderr",
+    "started_utc": "2026-11-13T18:21:00.215969+00:00",
+    "finished_utc": "2026-11-13T18:21:00.257700+00:00"
+  },
+  {
+    "sequence": 5,
+    "argv": [
+      "/Applications/Xcode.app/Contents/Developer/usr/bin/python3",
+      "-B",
+      "/Users/shinmingliu/opcti/validation/phase0/legacy/verify_ft08.py",
+      "/Users/shinmingliu/opcti/validation/phase0/legacy/evidence/ft08-001"
+    ],
+    "returncode": 0,
+    "stdout": "check-05.stdout",
+    "stderr": "check-05.stderr",
+    "started_utc": "2026-11-13T18:21:00.257848+00:00",
+    "finished_utc": "2026-11-13T18:21:00.294005+00:00"
+  },
+  {
+    "sequence": 6,
+    "argv": [
+      "/Applications/Xcode.app/Contents/Developer/usr/bin/python3",
+      "-B",
+      "/Users/shinmingliu/opcti/validation/phase0/legacy/verify_ft09.py",
+      "/Users/shinmingliu/opcti/validation/phase0/legacy/evidence/ft09-001"
+    ],
+    "returncode": 0,
+    "stdout": "check-06.stdout",
+    "stderr": "check-06.stderr",
+    "started_utc": "2026-11-13T18:21:00.294170+00:00",
+    "finished_utc": "2026-11-13T18:21:00.328675+00:00"
+  },
+  {
+    "sequence": 7,
+    "argv": [
+      "/Applications/Xcode.app/Contents/Developer/usr/bin/python3",
+      "-B",
+      "/Users/shinmingliu/opcti/validation/phase0/legacy/verify_ft10.py",
+      "/Users/shinmingliu/opcti/validation/phase0/legacy/evidence/ft10-003"
+    ],
+    "returncode": 0,
+    "stdout": "check-07.stdout",
+    "stderr": "check-07.stderr",
+    "started_utc": "2026-11-13T18:21:00.328836+00:00",
+    "finished_utc": "2026-11-13T18:21:00.557489+00:00"
+  },
+  {
+    "sequence": 8,
+    "argv": [
+      "/Applications/Xcode.app/Contents/Developer/usr/bin/python3",
+      "-B",
+      "/Users/shinmingliu/opcti/validation/phase0/legacy/verify_ft11.py",
+      "/Users/shinmingliu/opcti/validation/phase0/legacy/evidence/ft11-005"
+    ],
+    "returncode": 0,
+    "stdout": "check-08.stdout",
+    "stderr": "check-08.stderr",
+    "started_utc": "2026-11-13T18:21:00.557666+00:00",
+    "finished_utc": "2026-11-13T18:21:00.610085+00:00"
+  },
+  {
+    "sequence": 9,
+    "argv": [
+      "/Applications/Xcode.app/Contents/Developer/usr/bin/python3",
+      "-B",
+      "/Users/shinmingliu/opcti/validation/phase0/legacy/verify_ft12.py",
+      "/Users/shinmingliu/opcti/validation/phase0/legacy/evidence/ft12-003"
+    ],
+    "returncode": 0,
+    "stdout": "check-09.stdout",
+    "stderr": "check-09.stderr",
+    "started_utc": "2026-11-13T18:21:00.610286+00:00",
+    "finished_utc": "2026-11-13T18:21:00.673645+00:00"
+  },
+  {
+    "sequence": 10,
+    "argv": [
+      "/Applications/Xcode.app/Contents/Developer/usr/bin/python3",
+      "-B",
+      "/Users/shinmingliu/opcti/validation/phase0/legacy/verify_ft13.py",
+      "/Users/shinmingliu/opcti/validation/phase0/legacy/evidence/ft13-001"
+    ],
+    "returncode": 0,
+    "stdout": "check-10.stdout",
+    "stderr": "check-10.stderr",
+    "started_utc": "2026-11-13T18:21:00.673844+00:00",
+    "finished_utc": "2026-11-13T18:21:00.712945+00:00"
+  },
+  {
+    "sequence": 11,
+    "argv": [
+      "/Applications/Xcode.app/Contents/Developer/usr/bin/python3",
+      "-B",
+      "/Users/shinmingliu/opcti/validation/phase0/legacy/verify_ft14.py",
+      "/Users/shinmingliu/opcti/validation/phase0/legacy/evidence/ft14-001"
+    ],
+    "returncode": 0,
+    "stdout": "check-11.stdout",
+    "stderr": "check-11.stderr",
+    "started_utc": "2026-11-13T18:21:00.713354+00:00",
+    "finished_utc": "2026-11-13T18:21:00.752345+00:00"
+  },
+  {
+    "sequence": 12,
+    "argv": [
+      "/Applications/Xcode.app/Contents/Developer/usr/bin/python3",
+      "-B",
+      "/Users/shinmingliu/opcti/validation/phase0/legacy/verify_ft15.py",
+      "/Users/shinmingliu/opcti/validation/phase0/legacy/evidence/ft15-001"
+    ],
+    "returncode": 0,
+    "stdout": "check-12.stdout",
+    "stderr": "check-12.stderr",
+    "started_utc": "2026-11-13T18:21:00.752549+00:00",
+    "finished_utc": "2026-11-13T18:21:00.801768+00:00"
+  },
+  {
+    "sequence": 13,
+    "argv": [
+      "/Applications/Xcode.app/Contents/Developer/usr/bin/python3",
+      "-B",
+      "/Users/shinmingliu/opcti/validation/phase0/legacy/verify_ft16.py",
+      "/Users/shinmingliu/opcti/validation/phase0/legacy/evidence/ft16-001"
+    ],
+    "returncode": 0,
+    "stdout": "check-13.stdout",
+    "stderr": "check-13.stderr",
+    "started_utc": "2026-11-13T18:21:00.801976+00:00",
+    "finished_utc": "2026-11-13T18:21:00.934694+00:00"
+  },
+  {
+    "sequence": 14,
+    "argv": [
+      "/Applications/Xcode.app/Contents/Developer/usr/bin/python3",
+      "-B",
+      "/Users/shinmingliu/opcti/validation/phase0/legacy/verify_ft17.py",
+      "/Users/shinmingliu/opcti/validation/phase0/legacy/evidence/ft17-001"
+    ],
+    "returncode": 0,
+    "stdout": "check-14.stdout",
+    "stderr": "check-14.stderr",
+    "started_utc": "2026-11-13T18:21:00.934938+00:00",
+    "finished_utc": "2026-11-13T18:21:01.050589+00:00"
+  },
+  {
+    "sequence": 15,
+    "argv": [
+      "/Applications/Xcode.app/Contents/Developer/usr/bin/python3",
+      "-B",
+      "/Users/shinmingliu/opcti/validation/phase0/legacy/verify_ft18.py",
+      "/Users/shinmingliu/opcti/validation/phase0/legacy/evidence/ft18-001"
+    ],
+    "returncode": 0,
+    "stdout": "check-15.stdout",
+    "stderr": "check-15.stderr",
+    "started_utc": "2026-11-13T18:21:01.050802+00:00",
+    "finished_utc": "2026-11-13T18:21:01.179612+00:00"
+  },
+  {
+    "sequence": 16,
+    "argv": [
+      "/Applications/Xcode.app/Contents/Developer/usr/bin/python3",
+      "-B",
+      "/Users/shinmingliu/opcti/validation/phase0/legacy/verify_ft19.py",
+      "/Users/shinmingliu/opcti/validation/phase0/legacy/evidence/ft19-001"
+    ],
+    "returncode": 0,
+    "stdout": "check-16.stdout",
+    "stderr": "check-16.stderr",
+    "started_utc": "2026-11-13T18:21:01.179834+00:00",
+    "finished_utc": "2026-11-13T18:21:01.346975+00:00"
+  },
+  {
+    "sequence": 17,
+    "argv": [
+      "/Applications/Xcode.app/Contents/Developer/usr/bin/python3",
+      "-B",
+      "/Users/shinmingliu/opcti/validation/phase0/legacy/verify_evidence.py",
+      "/Users/shinmingliu/opcti/validation/phase0/legacy/evidence/run-002"
+    ],
+    "returncode": 0,
+    "stdout": "check-17.stdout",
+    "stderr": "check-17.stderr",
+    "started_utc": "2026-11-13T18:21:01.347209+00:00",
+    "finished_utc": "2026-11-13T18:21:01.377060+00:00"
+  },
+  {
+    "sequence": 18,
+    "argv": [
+      "/Applications/Xcode.app/Contents/Developer/usr/bin/python3",
+      "-B",
+      "/Users/shinmingliu/opcti/validation/phase0/adoption-audit/reproduce.py"
+    ],
+    "returncode": 0,
+    "stdout": "check-18.stdout",
+    "stderr": "check-18.stderr",
+    "started_utc": "2026-11-13T18:21:01.377306+00:00",
+    "finished_utc": "2026-11-13T18:21:07.141806+00:00"
+  },
+  {
+    "sequence": 19,
+    "argv": [
+      "/Applications/Xcode.app/Contents/Developer/usr/bin/python3",
+      "-B",
+      "/Users/shinmingliu/opcti/validation/session-cli/verify_validation.py",
+      "/Users/shinmingliu/opcti/validation/session-cli/evidence/cli-001"
+    ],
+    "returncode": 0,
+    "stdout": "check-19.stdout",
+    "stderr": "check-19.stderr",
+    "started_utc": "2026-11-13T18:21:07.142064+00:00",
+    "finished_utc": "2026-11-13T18:21:07.166827+00:00"
+  },
+  {
+    "sequence": 20,
+    "argv": [
+      "/Applications/Xcode.app/Contents/Developer/usr/bin/python3",
+      "-B",
+      "/Users/shinmingliu/opcti/validation/dashboard-session/verify_evidence.py",
+      "verify",
+      "--input",
+      "/Users/shinmingliu/opcti/validation/dashboard-session/evidence/dashboard-001"
+    ],
+    "returncode": 0,
+    "stdout": "check-20.stdout",
+    "stderr": "check-20.stderr",
+    "started_utc": "2026-11-13T18:21:07.167068+00:00",
+    "finished_utc": "2026-11-13T18:21:07.190279+00:00"
+  },
+  {
+    "sequence": 21,
+    "argv": [
+      "/Applications/Xcode.app/Contents/Developer/usr/bin/python3",
+      "-B",
+      "/Users/shinmingliu/opcti/validation/phase0/reference/verify.py",
+      "/Users/shinmingliu/opcti/validation/phase0/reference/evidence/reference-001"
+    ],
+    "returncode": 0,
+    "stdout": "check-21.stdout",
+    "stderr": "check-21.stderr",
+    "started_utc": "2026-11-13T18:21:07.190518+00:00",
+    "finished_utc": "2026-11-13T18:21:07.315929+00:00"
+  },
+  {
+    "sequence": 22,
+    "argv": [
+      "/private/tmp/opencti-phase0-schema-venv/bin/python",
+      "-B",
+      "/Users/shinmingliu/opcti/validation/phase0/contracts/validate.py"
+    ],
+    "returncode": 0,
+    "stdout": "check-22.stdout",
+    "stderr": "check-22.stderr",
+    "started_utc": "2026-11-13T18:21:07.316210+00:00",
+    "finished_utc": "2026-11-13T18:21:07.419307+00:00"
+  },
+  {
+    "sequence": 23,
+    "argv": [
+      "/private/tmp/opencti-phase0-schema-venv/bin/python",
+      "-B",
+      "-m",
+      "unittest",
+      "discover",
+      "-s",
+      "validation/phase0/contracts",
+      "-v"
+    ],
+    "returncode": 0,
+    "stdout": "check-23.stdout",
+    "stderr": "check-23.stderr",
+    "started_utc": "2026-11-13T18:21:07.419596+00:00",
+    "finished_utc": "2026-11-13T18:21:07.661345+00:00"
+  },
+  {
+    "sequence": 24,
+    "argv": [
+      "/Applications/Xcode.app/Contents/Developer/usr/bin/python3",
+      "-B",
+      "-m",
+      "unittest",
+      "discover",
+      "-s",
+      "validation/phase0/legacy",
+      "-p",
+      "test_*.py",
+      "-v"
+    ],
+    "returncode": 0,
+    "stdout": "check-24.stdout",
+    "stderr": "check-24.stderr",
+    "started_utc": "2026-11-13T18:21:07.661655+00:00",
+    "finished_utc": "2026-11-13T18:21:15.746000+00:00"
+  },
+  {
+    "sequence": 25,
+    "argv": [
+      "/Applications/Xcode.app/Contents/Developer/usr/bin/python3",
+      "-B",
+      "-m",
+      "unittest",
+      "discover",
+      "-s",
+      "validation/phase0/reference",
+      "-v"
+    ],
+    "returncode": 0,
+    "stdout": "check-25.stdout",
+    "stderr": "check-25.stderr",
+    "started_utc": "2026-11-13T18:21:15.746400+00:00",
+    "finished_utc": "2026-11-13T18:21:16.561852+00:00"
+  },
+  {
+    "sequence": 26,
+    "argv": [
+      "/Applications/Xcode.app/Contents/Developer/usr/bin/python3",
+      "-B",
+      "-m",
+      "unittest",
+      "discover",
+      "-s",
+      "tests/session_cli",
+      "-v"
+    ],
+    "returncode": 0,
+    "stdout": "check-26.stdout",
+    "stderr": "check-26.stderr",
+    "started_utc": "2026-11-13T18:21:16.562289+00:00",
+    "finished_utc": "2026-11-13T18:21:16.643245+00:00"
+  },
+  {
+    "sequence": 27,
+    "argv": [
+      "node",
+      "tests/session_cli/test_dashboard_links.js"
+    ],
+    "returncode": 0,
+    "stdout": "check-27.stdout",
+    "stderr": "check-27.stderr",
+    "started_utc": "2026-11-13T18:21:16.643666+00:00",
+    "finished_utc": "2026-11-13T18:21:16.983922+00:00"
+  },
+  {
+    "sequence": 28,
+    "argv": [
+      "/Applications/Xcode.app/Contents/Developer/usr/bin/python3",
+      "-B",
+      "-W",
+      "error",
+      "doc/tools/build_docs.py",
+      "--check"
+    ],
+    "returncode": 0,
+    "stdout": "check-28.stdout",
+    "stderr": "check-28.stderr",
+    "started_utc": "2026-11-13T18:21:16.984221+00:00",
+    "finished_utc": "2026-11-13T18:21:17.089274+00:00"
+  },
+  {
+    "sequence": 29,
+    "argv": [
+      "/Applications/Xcode.app/Contents/Developer/usr/bin/python3",
+      "-B",
+      "/Users/shinmingliu/opcti/validation/phase0/legacy/verify_evidence.py",
+      "/Users/shinmingliu/opcti/validation/phase0/legacy/runs/run-002"
+    ],
+    "returncode": 0,
+    "stdout": "check-29.stdout",
+    "stderr": "check-29.stderr",
+    "started_utc": "2026-11-13T18:21:17.089578+00:00",
+    "finished_utc": "2026-11-13T18:21:17.544792+00:00"
+  }
+]

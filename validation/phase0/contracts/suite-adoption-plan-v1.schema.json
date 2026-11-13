@@ -1,0 +1,162 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://open64-compiler.github.io/opencti/contracts/suite-adoption-plan-v1.schema.json",
+  "title": "Proposed phase 0 suite-adoption-plan",
+  "description": "Design contract; not a deployed API and not the existing cti-session/v1 specification.",
+  "type": "object",
+  "properties": {
+    "schema": {
+      "const": "opencti.suite-adoption-plan/v1"
+    },
+    "suite_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "repository": {
+      "type": "object",
+      "properties": {
+        "type": {
+          "enum": [
+            "git",
+            "svn",
+            "artifact"
+          ]
+        },
+        "identity": {
+          "type": "string",
+          "minLength": 1
+        },
+        "revision": {
+          "type": "string",
+          "minLength": 1
+        },
+        "logical_path": {
+          "type": "string",
+          "minLength": 1
+        },
+        "content_sha256": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "patch": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "authority": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "required": [
+        "type",
+        "identity",
+        "revision",
+        "logical_path",
+        "content_sha256",
+        "patch",
+        "authority"
+      ],
+      "additionalProperties": false
+    },
+    "write_authority": {
+      "type": "string",
+      "minLength": 1
+    },
+    "original_entry_points": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/artifact-ref"
+      }
+    },
+    "changes": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "path": {
+            "type": "string",
+            "minLength": 1
+          },
+          "before": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "after": {
+            "type": "string",
+            "pattern": "^[0-9a-f]{64}$"
+          }
+        },
+        "required": [
+          "path",
+          "before",
+          "after"
+        ],
+        "additionalProperties": false
+      }
+    },
+    "preview_only": {
+      "type": "boolean"
+    },
+    "publication": {
+      "enum": [
+        "not_requested",
+        "separate_review_required"
+      ]
+    },
+    "rollback": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/artifact-ref"
+      }
+    },
+    "capability_gaps": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    }
+  },
+  "required": [
+    "schema",
+    "suite_id",
+    "repository",
+    "write_authority",
+    "original_entry_points",
+    "changes",
+    "preview_only",
+    "publication",
+    "rollback",
+    "capability_gaps"
+  ],
+  "additionalProperties": false,
+  "$defs": {
+    "artifact-ref": {
+      "type": "object",
+      "properties": {
+        "sha256": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "logical_path": {
+          "type": "string",
+          "minLength": 1
+        },
+        "role": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "required": [
+        "sha256",
+        "logical_path",
+        "role"
+      ],
+      "additionalProperties": false
+    }
+  }
+}

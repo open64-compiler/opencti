@@ -1,0 +1,30 @@
+{
+  "original_failure": "CompilerCrash",
+  "raw_returncode": -4,
+  "diagnostic_signal": "SIGSEGV",
+  "process_signal": "SIGILL",
+  "runtime_wrong_result_claimed": false,
+  "core_preservation_tested": false,
+  "core_absence_reason": "RLIMIT_CORE explicitly zero for bounded validation",
+  "inputs_unchanged": true,
+  "source_toolchain_oracle_unchanged": true,
+  "positive_cpu_cases": 7,
+  "old_partial_image": {
+    "bytes": 4194304,
+    "sha256": "bb9f8df61474d25e71fa00722318cd387396ca1736605e1248821cc0de3d3af8",
+    "status": "incomplete_unvalidated_not_a_successful_phase_product"
+  },
+  "recipes": {
+    "lower-portable.sh": "62b2cd5b7f6e104addf363cc4c20f7816b4d7bc48c8ce6a0f6f2ecec169f7bd7",
+    "execute-cpu.sh": "0ce7c2cb006cec98e74ae0dd8ab06a51553c3f5e96fd53e45d6b8914ae0808cb",
+    "compile-cpu.sh": "f91f08a293eca5dd2bc4837387a4553316a402097a25aa8f4cd90dfda682e415",
+    "lower-compatible.sh": "4a7b449e9695bcf0186f5914a835036be4c86298e7d5e0911a336d6c1e8e1dee",
+    "lower-source.sh": "2431c5a10ca17daf793cd818af2ba9cdc5be5984c505af95eba01676c6eb54da",
+    "compare-cpu.sh": "bde7a8cecc029f3156bcc7339dd47fef4ad6fc0b448386f4556cd1df4a69627e",
+    "inspect-compatible.sh": "015e70b0710aa40a0f627c8b0a03a82ed8ac6b5a245f6779dc31941a56dd8165",
+    "emit-cpu.sh": "64bba469ea6e0732a1ad7fa02f71f0118177fb668a0fd275f46f945b7174e7ee",
+    "lower-failure.sh": "07752e86a4bc2107b2911c69db5e5737d4e72353caf0757c39a89892993bef42",
+    "inspect-input.sh": "6b6787782fe3f78bd8395d8081b7b8536edf238b6a754266468058f7e3c7ff70"
+  },
+  "mode": "replay"
+}

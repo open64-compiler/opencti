@@ -1,0 +1,10 @@
+{
+  "status": "pass_for_isolated_interruption_contracts",
+  "checksummed_files": 54,
+  "cases": 7,
+  "tm_launches": 6,
+  "worker_containers": 8,
+  "volumes": 7,
+  "loss_preservation": "incomplete_not_success",
+  "framework_unchanged": true
+}

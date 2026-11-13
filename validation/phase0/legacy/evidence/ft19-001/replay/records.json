@@ -1,0 +1,98 @@
+[
+  {
+    "phase": "lower-source",
+    "argv": [
+      "bash",
+      "/case/recipes/lower-source.sh"
+    ],
+    "returncode": 0,
+    "recipe_sha256": "2431c5a10ca17daf793cd818af2ba9cdc5be5984c505af95eba01676c6eb54da"
+  },
+  {
+    "phase": "inspect-input",
+    "argv": [
+      "bash",
+      "/case/recipes/inspect-input.sh"
+    ],
+    "returncode": 0,
+    "recipe_sha256": "6b6787782fe3f78bd8395d8081b7b8536edf238b6a754266468058f7e3c7ff70"
+  },
+  {
+    "phase": "lower-failure",
+    "argv": [
+      "bash",
+      "/case/recipes/lower-failure.sh"
+    ],
+    "returncode": -4,
+    "recipe_sha256": "07752e86a4bc2107b2911c69db5e5737d4e72353caf0757c39a89892993bef42",
+    "process_signal": "SIGILL",
+    "diagnostic_signal": "SIGSEGV",
+    "failed_phase": "Loop Nest Optimizer",
+    "original_test_verdict": "CompilerCrash",
+    "generated_program_executed": false,
+    "partial_image_validated": false
+  },
+  {
+    "phase": "lower-compatible",
+    "argv": [
+      "bash",
+      "/case/recipes/lower-compatible.sh"
+    ],
+    "returncode": 0,
+    "recipe_sha256": "4a7b449e9695bcf0186f5914a835036be4c86298e7d5e0911a336d6c1e8e1dee"
+  },
+  {
+    "phase": "lower-portable",
+    "argv": [
+      "bash",
+      "/case/recipes/lower-portable.sh"
+    ],
+    "returncode": 0,
+    "recipe_sha256": "62b2cd5b7f6e104addf363cc4c20f7816b4d7bc48c8ce6a0f6f2ecec169f7bd7"
+  },
+  {
+    "phase": "inspect-compatible",
+    "argv": [
+      "bash",
+      "/case/recipes/inspect-compatible.sh"
+    ],
+    "returncode": 0,
+    "recipe_sha256": "015e70b0710aa40a0f627c8b0a03a82ed8ac6b5a245f6779dc31941a56dd8165"
+  },
+  {
+    "phase": "emit-cpu",
+    "argv": [
+      "bash",
+      "/case/recipes/emit-cpu.sh"
+    ],
+    "returncode": 0,
+    "recipe_sha256": "64bba469ea6e0732a1ad7fa02f71f0118177fb668a0fd275f46f945b7174e7ee"
+  },
+  {
+    "phase": "compile-cpu",
+    "argv": [
+      "bash",
+      "/case/recipes/compile-cpu.sh"
+    ],
+    "returncode": 0,
+    "recipe_sha256": "f91f08a293eca5dd2bc4837387a4553316a402097a25aa8f4cd90dfda682e415"
+  },
+  {
+    "phase": "execute-cpu",
+    "argv": [
+      "bash",
+      "/case/recipes/execute-cpu.sh"
+    ],
+    "returncode": 0,
+    "recipe_sha256": "0ce7c2cb006cec98e74ae0dd8ab06a51553c3f5e96fd53e45d6b8914ae0808cb"
+  },
+  {
+    "phase": "compare-cpu",
+    "argv": [
+      "bash",
+      "/case/recipes/compare-cpu.sh"
+    ],
+    "returncode": 0,
+    "recipe_sha256": "bde7a8cecc029f3156bcc7339dd47fef4ad6fc0b448386f4556cd1df4a69627e"
+  }
+]

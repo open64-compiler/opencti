@@ -1,0 +1,109 @@
+{
+  "schema": "opencti.phase0-adoption-inputs/v1",
+  "status": "prepared_future_acceptance_inputs_not_a_native_adapter",
+  "files": {
+    "application/Makefile": {
+      "sha256": "ae74244e48c3505ab4677a8d03868ca0d3e001ac58b33354f4e1d9101c2e22ce",
+      "mode": 420
+    },
+    "application/Makefile.CTI": {
+      "sha256": "49b2cf2e27ccddb69d42f8314be7049628e95286e023ca43faa10fc073da56d9",
+      "mode": 420
+    },
+    "application/configure": {
+      "sha256": "07a039eef6d2a5893303280bd713c5e552d1ad1af93853c9e38a8423af2d62ae",
+      "mode": 493
+    },
+    "application/main.c": {
+      "sha256": "e341c722d325011613e6dc95bad2a1da0c5d3efe9d7105647eea8a35812fbcf1",
+      "mode": 420
+    },
+    "groups/Regression/Adoption/Src/one.c": {
+      "sha256": "fca6def087a4c83ab2c92b51f1a9438bbdf8e44c799e1ebfc50984351f27c254",
+      "mode": 420
+    },
+    "groups/Regression/Adoption/Src/pair.list": {
+      "sha256": "095308dda94070215279e59fae40c66dec45a3ec2c862608fef6a796a161d039",
+      "mode": 420
+    },
+    "groups/Regression/Adoption/Src/rejected.c": {
+      "sha256": "6fff93464426a192e23eb413d6a55506e2e37d2a894af25fd792a88edeb718a4",
+      "mode": 420
+    },
+    "groups/Regression/Adoption/Src/rejected.tmconfig": {
+      "sha256": "af5e782541fc37bcef31cfda2751ef38709c5ccc4f01a448972bdf68a4e463ab",
+      "mode": 420
+    },
+    "groups/Regression/Adoption/Src/skipped.c": {
+      "sha256": "1fb4d37fdc6b555edf91970838e3494bed80517da855d435fb254f44fe5156f9",
+      "mode": 420
+    },
+    "groups/Regression/Adoption/Src/two.c": {
+      "sha256": "7ad1544ff00dd1a25013685ee85be7c989385ec7b6445d6b8cce34541d39b48e",
+      "mode": 420
+    },
+    "groups/Regression/Adoption/tmconfig": {
+      "sha256": "eef550430b559ac90d10722498023dc2866fc7276892aff16ab2e3e8872ffcc6",
+      "mode": 420
+    },
+    "groups/Regression/tmconfig": {
+      "sha256": "f40d4bfb15e654b9a5781665117efb58733b8d6f28f547692765094b3ec39cc5",
+      "mode": 420
+    },
+    "repository/svn-fixture.json": {
+      "sha256": "2998258cb9046951dc4c303a193ce6a1d21f9d6b98d5e4be5a768bf558af81af",
+      "mode": 420
+    },
+    "script/Src/case.txt": {
+      "sha256": "948a4cd8172de668a7e256eb9621783b54d6a08192fc735e407dbed823f5d4a2",
+      "mode": 420
+    },
+    "script/collect.sh": {
+      "sha256": "5cee32af002f7b5b035d3a97c8830bcf726c9097dc379c2f41fd0b76eee9aa12",
+      "mode": 493
+    },
+    "script/invoke.sh": {
+      "sha256": "ff624fd4920fbefbc8c13818a4b48c047a19c7838c42179b966e2fd43d5b87ed",
+      "mode": 493
+    },
+    "transaction/after/master.out": {
+      "sha256": "ff8f0e8dfa785ec4ce0b0fd4fd3984d23d7a58c73e3b001e8d4cf506b6dc8b56",
+      "mode": 420
+    },
+    "transaction/after/source.c": {
+      "sha256": "2ad75d95660563887d8d3f1d0ae1dcf18c2379cbd83a5c72f5ab276351ee6949",
+      "mode": 420
+    },
+    "transaction/after/tmconfig": {
+      "sha256": "b14c6f48d83560ecf6397f9a5ebf96f003db5318377d974abdff2dd80593b738",
+      "mode": 420
+    },
+    "transaction/before/master.out": {
+      "sha256": "a99729075b20c45f930d79c82057d8cdd5fd0952d6b036f741b3422d4b77882f",
+      "mode": 420
+    },
+    "transaction/before/source.c": {
+      "sha256": "e341c722d325011613e6dc95bad2a1da0c5d3efe9d7105647eea8a35812fbcf1",
+      "mode": 420
+    },
+    "transaction/before/tmconfig": {
+      "sha256": "2ec1e83a06179bf647b6202088efa25300888098be50b4dd830451c9e5f5075c",
+      "mode": 420
+    },
+    "transaction/before/unrelated.txt": {
+      "sha256": "aace6ade5b87f5735531c5860bf3d24c3cb65ed9f3591f0fe9375db062fcf18f",
+      "mode": 420
+    }
+  },
+  "case_distinct_inputs": "use existing FT17 opaque archives; do not create case-colliding Mac filenames",
+  "legacy_qualification": "Use original FT11/FT15 evidence; new fixture input variants are not claimed executed",
+  "required_future_checks": [
+    "direct versus group selection",
+    "multi-source enumeration",
+    "per-test expected failure",
+    "explicit skip behavior",
+    "source/master/settings preview and rollback",
+    "SVN-independent Git route",
+    "SVN properties/externals and authority conflict"
+  ]
+}

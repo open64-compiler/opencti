@@ -77,4 +77,4 @@ Full and compact audits pass. Fifteen offline tests reject false product/global-
 - [Native Terminal replay](../../validation/phase0/legacy/evidence/ft18-001/native-terminal-results.json)
 - [Standalone replay](../../validation/phase0/legacy/evidence/ft18-001/standalone-results.json)
 
-DF38 is qualified only for the observed local access/standalone slice. Fixing in-page anchor decoration, implementing product bundle/mount/completeness views, qualifying an organization deployment and remote GPU access, and broader historical/dashboard acceptance remain open. Phase 0 is incomplete; FT19 is not run.
+DF38 is qualified only for the observed local access/standalone slice. Fixing in-page anchor decoration, implementing product bundle/mount/completeness views, qualifying an organization deployment and remote GPU access, and broader historical/dashboard acceptance remain open. Phase 0 is incomplete. The subsequent [FT19 CPU DSL follow-up](phase0-ft19-results.md) characterizes a real retained compiler-crash replay variant and separate semantic controls; it does not close the FT18/DF38 gaps.

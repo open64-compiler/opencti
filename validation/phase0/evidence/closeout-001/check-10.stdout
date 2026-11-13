@@ -1,0 +1,11 @@
+{
+  "verified_files": 129,
+  "image_steps": 6,
+  "dependency_faults": 16,
+  "blocked_guard_dispatches": 16,
+  "explicit_legacy_control_attempts": 16,
+  "guarded_recovery_phases": 20,
+  "original_replay_tag": "DiffPgmOut",
+  "credential_value_retained": false,
+  "framework_unchanged": true
+}
