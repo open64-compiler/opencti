@@ -1,0 +1,26 @@
+{
+  "fixture_only": true,
+  "remote_contacted": false,
+  "UUID": "00000000-0000-4000-8000-000000000042",
+  "url": "file:///fixture-only/not-a-live-repository",
+  "revision": 42,
+  "properties": {
+    "script/collect.sh": {
+      "svn:executable": "*"
+    }
+  },
+  "externals": [
+    {
+      "path": "support",
+      "revision": 17,
+      "content_sha256": "7d4db83d64e910913248f6a8e04a7b260ad5f574d69525988880c5daa87cf97c"
+    }
+  ],
+  "required_empty_directories": [
+    "empty-required"
+  ],
+  "authority_before": "svn:fixture",
+  "authority_after_cutover": "git:fixture",
+  "publication_route": "disabled_until_disposable_repository_qualification",
+  "conflicting_writes_expected": "reject_before_publication"
+}

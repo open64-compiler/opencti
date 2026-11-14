@@ -1,0 +1,171 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://open64-compiler.github.io/opencti/contracts/phase-result-v1.schema.json",
+  "title": "Proposed phase 0 phase-result",
+  "description": "Design contract; not a deployed API and not the existing cti-session/v1 specification.",
+  "type": "object",
+  "properties": {
+    "schema": {
+      "const": "opencti.phase-result/v1"
+    },
+    "identity": {
+      "type": "object",
+      "properties": {
+        "run_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "test_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "attempt_id": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "required": [
+        "run_id",
+        "test_id",
+        "attempt_id"
+      ],
+      "additionalProperties": false
+    },
+    "phase_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "command": {
+      "type": "object",
+      "properties": {
+        "phase_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "argv": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "minItems": 1
+        },
+        "cwd": {
+          "type": "string",
+          "pattern": "^/"
+        },
+        "environment": {
+          "$ref": "#/$defs/artifact-ref"
+        },
+        "inputs": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/artifact-ref"
+          }
+        },
+        "applicability": {
+          "enum": [
+            "required",
+            "optional",
+            "not_applicable"
+          ]
+        }
+      },
+      "required": [
+        "phase_id",
+        "argv",
+        "cwd",
+        "environment",
+        "inputs",
+        "applicability"
+      ],
+      "additionalProperties": false
+    },
+    "raw_returncode": {
+      "type": [
+        "integer",
+        "null"
+      ]
+    },
+    "diagnostic_signal": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "termination_signal": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "timed_out": {
+      "type": "boolean"
+    },
+    "stdout": {
+      "$ref": "#/$defs/artifact-ref"
+    },
+    "stderr": {
+      "$ref": "#/$defs/artifact-ref"
+    },
+    "expectation": {
+      "type": "string",
+      "minLength": 1
+    },
+    "test_verdict": {
+      "enum": [
+        "pass",
+        "fail",
+        "not_run",
+        "unknown"
+      ]
+    },
+    "raw_legacy_tag": {
+      "type": [
+        "string",
+        "null"
+      ]
+    }
+  },
+  "required": [
+    "schema",
+    "identity",
+    "phase_id",
+    "command",
+    "raw_returncode",
+    "diagnostic_signal",
+    "termination_signal",
+    "timed_out",
+    "stdout",
+    "stderr",
+    "expectation",
+    "test_verdict",
+    "raw_legacy_tag"
+  ],
+  "additionalProperties": false,
+  "$defs": {
+    "artifact-ref": {
+      "type": "object",
+      "properties": {
+        "sha256": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "logical_path": {
+          "type": "string",
+          "minLength": 1
+        },
+        "role": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "required": [
+        "sha256",
+        "logical_path",
+        "role"
+      ],
+      "additionalProperties": false
+    }
+  }
+}

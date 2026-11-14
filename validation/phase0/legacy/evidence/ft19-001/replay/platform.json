@@ -1,0 +1,19 @@
+{
+  "image_id": "sha256:b18b7676ae388026312993b0a299c4ca6ca36999444f337f6826ea5ff1e8f577",
+  "uname": [
+    "Linux",
+    "514243c09c4b",
+    "6.12.76-linuxkit",
+    "#1 SMP Fri May 29 10:00:01 UTC 2026",
+    "x86_64",
+    "x86_64"
+  ],
+  "python": "3.8.10 (default, Mar 18 2025, 20:04:55) \n[GCC 9.4.0]",
+  "core_limits": [
+    0,
+    0
+  ],
+  "core_pattern": "core",
+  "gpu_required": false,
+  "architecture_request": "explicit_linux_amd64_on_Apple_Silicon"
+}

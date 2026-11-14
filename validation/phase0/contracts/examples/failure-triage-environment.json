@@ -1,0 +1,82 @@
+{
+  "schema": "opencti.failure-triage-environment/v1",
+  "identity": {
+    "run_id": "ft19-002",
+    "test_id": "Open64/absorbed-mla/short",
+    "attempt_id": "captured-compiler-crash"
+  },
+  "original_verdict": "CompilerCrash",
+  "source": {
+    "type": "git",
+    "identity": "https://github.com/open64-compiler/open64",
+    "revision": "2dd9308c3c77eb06ef52e461329a04ab1da6e7ec",
+    "logical_path": "osprey/torch2whirl/python/tests/models/absorbed_mla.py",
+    "content_sha256": "0b09aa070ca31850f85d7721315b3ba430ddfeab68639edca3f992c8a014f222",
+    "patch": null,
+    "authority": "git:https://github.com/open64-compiler/open64"
+  },
+  "image": {
+    "sha256": "c974b531ecefd140db96d16fcbb503c942ab0360d5bc53be7a0ca5ec9cde7c1f",
+    "logical_path": "runtime-image.tar",
+    "role": "runtime"
+  },
+  "toolchain": {
+    "sha256": "6b8075fe04eac9040a8c4eef0ac484ed3db031170146b3c51314728f61eed7be",
+    "logical_path": "toolchain.tar.gz",
+    "role": "compiler_closure"
+  },
+  "environment": {
+    "sha256": "bffc291abf25aa66c4b70d50020a62e478a4cfabd32a6c202ef8e0b5d83d0bf0",
+    "logical_path": "capture/state.tar.gz",
+    "role": "sealed_environment_and_workspace"
+  },
+  "baseline": {
+    "sha256": "0ce4a35ef5760bb7e5ddcdb82c1a963f56d4f718fa6e8b41bc6dec8ef1316829",
+    "logical_path": "reference/original.reference.json",
+    "role": "original_semantic_oracle"
+  },
+  "workspace": {
+    "sha256": "bffc291abf25aa66c4b70d50020a62e478a4cfabd32a6c202ef8e0b5d83d0bf0",
+    "logical_path": "capture/state.tar.gz",
+    "role": "sealed_environment_and_workspace"
+  },
+  "phase_recipes": [
+    {
+      "phase_id": "lower-failure",
+      "argv": [
+        "bash",
+        "/case/recipes/lower-failure.sh"
+      ],
+      "cwd": "/case",
+      "environment": {
+        "sha256": "bffc291abf25aa66c4b70d50020a62e478a4cfabd32a6c202ef8e0b5d83d0bf0",
+        "logical_path": "capture/state.tar.gz",
+        "role": "sealed_environment_and_workspace"
+      },
+      "inputs": [
+        {
+          "sha256": "0ac4e3e6d3e8d5df429dc1d486b45a4f606cc704713fd2cf2266c575caaef4b4",
+          "logical_path": "case/short.input.B",
+          "role": "case"
+        }
+      ],
+      "applicability": "required"
+    }
+  ],
+  "mounts": [
+    {
+      "destination": "/bundle",
+      "snapshot": {
+        "sha256": "bffc291abf25aa66c4b70d50020a62e478a4cfabd32a6c202ef8e0b5d83d0bf0",
+        "logical_path": "capture/state.tar.gz",
+        "role": "sealed_environment_and_workspace"
+      },
+      "read_only": true
+    }
+  ],
+  "preservation": "verified",
+  "replay_ready": true,
+  "missing_required": [],
+  "execution_mode": "emulated",
+  "gpu_requirement": null
+}

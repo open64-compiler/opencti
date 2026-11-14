@@ -1,0 +1,16 @@
+$Cache_data = {
+  '/export/alpha/fri/summary.log' => {
+    'Regression/Reference/B.c' => {
+      'ERR_TYPE' => 'COMPILATION FAILURES',
+      'COMMENTS' => 'Phase 0 synthetic known-failure annotation',
+      'ERR_MSG' => 'B.c:1:2: error: #error retained-known-compile-failure'
+    }
+  },
+  '/export/beta/fri/summary.log' => {
+    'Regression/Reference/B.c' => {
+      'COMMENTS' => 'Phase 0 synthetic known-failure annotation',
+      'ERR_MSG' => 'B.c:1:2: error: #error retained-known-compile-failure',
+      'ERR_TYPE' => 'COMPILATION FAILURES'
+    }
+  }
+};

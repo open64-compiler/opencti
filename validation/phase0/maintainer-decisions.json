@@ -1,0 +1,13 @@
+{
+  "schema": "opencti.phase0-maintainer-decisions/v1",
+  "recorded_date": "2026-11-13",
+  "source": "maintainer replies in this chat; not independently asserted service availability",
+  "historical_campaign_archive": "none available",
+  "peer_reviewer": "GitHub repository creator",
+  "peer_review_requested_via_GitHub": false,
+  "peer_signoff_received": false,
+  "creator_GitHub_handle": null,
+  "identity_note": "GitHub REST reports owner open64-compiler (Organization); initial import author jianxin.lai is not mapped to a GitHub account. Repository creation identity cannot be inferred from those fields.",
+  "live_deployment": "organization-configured; do not configure a private server for the maintainer",
+  "remote_GPU_worker": "unavailable; previously authorized isolated FT14 subset"
+}

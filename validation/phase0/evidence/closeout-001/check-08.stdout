@@ -1,0 +1,18 @@
+{
+  "verified_files": 145,
+  "tm_runs": 5,
+  "recorded_commands": 24,
+  "legacy_normal_totals": [
+    9,
+    4,
+    5,
+    0
+  ],
+  "normal_acceptance_counts": {
+    "expectation_mismatch": 1,
+    "passed": 3,
+    "failed": 5
+  },
+  "unknown_preserved_unmapped": true,
+  "framework_unchanged": true
+}

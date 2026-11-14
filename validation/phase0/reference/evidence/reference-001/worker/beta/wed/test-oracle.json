@@ -1,0 +1,27 @@
+{
+  "variant": "previous",
+  "expected": {
+    "A.c": "SuccessExec",
+    "B.c": "CompileErr",
+    "C.c": "ExecErr",
+    "D.c": "SuccessExec",
+    "E.c": "SuccessExec"
+  },
+  "observed": {
+    "A.c": "SuccessExec",
+    "B.c": "CompileErr",
+    "C.c": "ExecErr",
+    "D.c": "SuccessExec",
+    "E.c": "SuccessExec"
+  },
+  "total": 5,
+  "pass": 3,
+  "fail": 2,
+  "known": [
+    "B.c"
+  ],
+  "unknown": [
+    "C.c"
+  ],
+  "new_failure": []
+}

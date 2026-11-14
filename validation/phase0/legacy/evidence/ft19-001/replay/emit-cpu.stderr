@@ -1,0 +1,3 @@
+/toolchain/current/whirl2c/whirl2c translates /case/positive/short.N into /case/positive/short.h and /case/positive/short.c, based on source /case/positive/short.c
+(/src/osprey/be/whirl2c/wn_attr.cxx:190): WARNING 0: (null)
+(/src/osprey/be/whirl2c/wn_attr.cxx:190): WARNING 0: (null)
