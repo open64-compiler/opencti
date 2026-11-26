@@ -1,0 +1,72 @@
+[
+  {
+    "case": "all-masked",
+    "comparison": {
+      "status": "PASS",
+      "max_absolute_errors": [
+        0.0,
+        0.0
+      ]
+    }
+  },
+  {
+    "case": "empty-first-chunk",
+    "comparison": {
+      "status": "PASS",
+      "max_absolute_errors": [
+        8.16988971960586e-09,
+        2.6227698501912755e-07
+      ]
+    }
+  },
+  {
+    "case": "equal-scores",
+    "comparison": {
+      "status": "PASS",
+      "max_absolute_errors": [
+        7.24068747320894e-09,
+        1.7321548106963292e-07
+      ]
+    }
+  },
+  {
+    "case": "large-scores",
+    "comparison": {
+      "status": "PASS",
+      "max_absolute_errors": [
+        7.932922513331775e-08,
+        1.0165666921579941e-06
+      ]
+    }
+  },
+  {
+    "case": "one-masked-head",
+    "comparison": {
+      "status": "PASS",
+      "max_absolute_errors": [
+        8.362554761512375e-09,
+        3.776979928815649e-07
+      ]
+    }
+  },
+  {
+    "case": "original",
+    "comparison": {
+      "status": "PASS",
+      "max_absolute_errors": [
+        8.362554761512375e-09,
+        3.776979928815649e-07
+      ]
+    }
+  },
+  {
+    "case": "tail-only",
+    "comparison": {
+      "status": "PASS",
+      "max_absolute_errors": [
+        7.31193240399719e-08,
+        5.102585402816384e-09
+      ]
+    }
+  }
+]

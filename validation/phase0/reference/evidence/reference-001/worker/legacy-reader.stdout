@@ -1,0 +1,174 @@
+{
+   "campaigns" : [
+      {
+         "current" : {
+            "cache" : {
+               "Regression/Reference/B.c" : {
+                  "ERR_MSG" : "B.c:1:2: error: #error retained-known-compile-failure",
+                  "ERR_TYPE" : "COMPILATION FAILURES"
+               },
+               "Regression/Reference/C.c" : {
+                  "ERR_TYPE" : "EXECUTION FAILURES"
+               },
+               "Regression/Reference/D.c" : {
+                  "ERR_MSG" : "< actual\n",
+                  "ERR_TYPE" : "OUTPUT DIFFERENCE FAILURES"
+               },
+               "STATUS" : [
+                  1,
+                  5,
+                  "2",
+                  3
+               ]
+            },
+            "counts" : [
+               5,
+               2,
+               3
+            ],
+            "known" : [
+               "Regression/Reference/B.c"
+            ],
+            "new" : [
+               "Regression/Reference/D.c"
+            ],
+            "status" : [
+               1,
+               5,
+               2,
+               3
+            ],
+            "unknown" : [
+               "Regression/Reference/C.c",
+               "Regression/Reference/D.c"
+            ]
+         },
+         "previous" : {
+            "cache" : {
+               "Regression/Reference/B.c" : {
+                  "ERR_MSG" : "B.c:1:2: error: #error retained-known-compile-failure",
+                  "ERR_TYPE" : "COMPILATION FAILURES"
+               },
+               "Regression/Reference/C.c" : {
+                  "ERR_TYPE" : "EXECUTION FAILURES"
+               },
+               "STATUS" : [
+                  1,
+                  5,
+                  "3",
+                  2
+               ]
+            },
+            "counts" : [
+               5,
+               3,
+               2
+            ],
+            "known" : [
+               "Regression/Reference/B.c"
+            ],
+            "new" : [],
+            "status" : [
+               1,
+               5,
+               3,
+               2
+            ],
+            "unknown" : [
+               "Regression/Reference/C.c"
+            ]
+         },
+         "view" : "alpha"
+      },
+      {
+         "current" : {
+            "cache" : {
+               "Regression/Reference/B.c" : {
+                  "ERR_MSG" : "B.c:1:2: error: #error retained-known-compile-failure",
+                  "ERR_TYPE" : "COMPILATION FAILURES"
+               },
+               "Regression/Reference/C.c" : {
+                  "ERR_TYPE" : "EXECUTION FAILURES"
+               },
+               "Regression/Reference/D.c" : {
+                  "ERR_MSG" : "< actual\n",
+                  "ERR_TYPE" : "OUTPUT DIFFERENCE FAILURES"
+               },
+               "STATUS" : [
+                  1,
+                  5,
+                  "2",
+                  3
+               ]
+            },
+            "counts" : [
+               5,
+               2,
+               3
+            ],
+            "known" : [
+               "Regression/Reference/B.c"
+            ],
+            "new" : [
+               "Regression/Reference/D.c"
+            ],
+            "status" : [
+               1,
+               5,
+               2,
+               3
+            ],
+            "unknown" : [
+               "Regression/Reference/C.c",
+               "Regression/Reference/D.c"
+            ]
+         },
+         "previous" : {
+            "cache" : {
+               "Regression/Reference/B.c" : {
+                  "ERR_MSG" : "B.c:1:2: error: #error retained-known-compile-failure",
+                  "ERR_TYPE" : "COMPILATION FAILURES"
+               },
+               "Regression/Reference/C.c" : {
+                  "ERR_TYPE" : "EXECUTION FAILURES"
+               },
+               "STATUS" : [
+                  1,
+                  5,
+                  "3",
+                  2
+               ]
+            },
+            "counts" : [
+               5,
+               3,
+               2
+            ],
+            "known" : [
+               "Regression/Reference/B.c"
+            ],
+            "new" : [],
+            "status" : [
+               1,
+               5,
+               3,
+               2
+            ],
+            "unknown" : [
+               "Regression/Reference/C.c"
+            ]
+         },
+         "view" : "beta"
+      }
+   ],
+   "days" : [
+      "fri",
+      "thu",
+      "wed",
+      "tue",
+      "mon",
+      "sun",
+      "sat",
+      "fri"
+   ]
+}

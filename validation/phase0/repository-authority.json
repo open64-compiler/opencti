@@ -1,0 +1,43 @@
+{
+  "schema": "opencti.phase0-repository-authority/v1",
+  "publication_performed": false,
+  "scopes": [
+    {
+      "scope": "OpenCTI framework, documentation, validation and new integration metadata",
+      "type": "git",
+      "identity": "https://github.com/open64-compiler/opencti",
+      "authoritative_writer": "reviewed Git working tree and repository merge workflow",
+      "read_revision": "c452c0a45538910a28a73be8c8824a072499bd5d",
+      "legacy_SVN_helpers_allowed_to_write": false,
+      "rollback": "reviewed revert or restored immutable input snapshot; no automatic publication"
+    },
+    {
+      "scope": "Retained Open64 DSL pilot inputs/tools",
+      "type": "artifact",
+      "identity": "Open64 PR242/M3 immutable review receipts",
+      "authoritative_writer": "upstream Open64 Git workflow; CTI consumes authenticated immutable receipts read-only",
+      "read_revision": "41493f2b16a0206e9b3642fd9c8938dda7476ac4bfc55cbfc19d96d3c0fe7723",
+      "legacy_SVN_helpers_allowed_to_write": false,
+      "rollback": "select earlier retained receipt as a new attempt; never overwrite original evidence"
+    },
+    {
+      "scope": "Organization-owned legacy SVN suites",
+      "type": "svn",
+      "identity": null,
+      "authoritative_writer": "configured upstream SVN repository only; integration metadata can remain Git-owned",
+      "read_revision": null,
+      "legacy_SVN_helpers_allowed_to_write": "only the separately declared SVN scope after qualification",
+      "rollback": "per-suite reviewed restoration and revision mapping",
+      "availability": "not supplied; not configured or contacted"
+    },
+    {
+      "scope": "Optional Git-to-SVN export or SVN-to-Git cutover",
+      "type": "bridge",
+      "identity": null,
+      "authoritative_writer": "one declared direction/authority at a time",
+      "legacy_SVN_helpers_allowed_to_write": false,
+      "availability": "not enabled; synthetic acceptance fixture only",
+      "rollback": "reconcile content/properties/externals and map revisions before publication; no dual writers"
+    }
+  ]
+}

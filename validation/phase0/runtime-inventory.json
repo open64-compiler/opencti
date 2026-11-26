@@ -1,0 +1,62 @@
+{
+  "schema": "opencti.phase0-runtime-inventory/v1",
+  "host": "macOS ARM64; native artifacts and Terminal launcher",
+  "workers": [
+    {
+      "image_id": "sha256:a119c5e4a42dedbb5cdce10d448efce31b4054018bde56a4e476bc2c529fa62c",
+      "os": "linux",
+      "arch": "arm64",
+      "mode": "native",
+      "evidence": "legacy/evidence/run-002/runtime.json",
+      "qualified_subset": "legacy synthetic C regression/independent phases"
+    },
+    {
+      "image_id": "sha256:747873867110897321865b8790204c0d42a9d51357dce8c3334f50c59d6e916c",
+      "os": "linux",
+      "arch": "arm64",
+      "mode": "native",
+      "evidence": "legacy/evidence/ft09-001/metadata/requirements.json",
+      "qualified_subset": "CPU C/C++, application/script fixtures, GDB, isolated legacy reader/CGI"
+    },
+    {
+      "image_id": "sha256:b18b7676ae388026312993b0a299c4ca6ca36999444f337f6826ea5ff1e8f577",
+      "os": "linux",
+      "arch": "amd64",
+      "mode": "emulated_on_ARM64",
+      "evidence": "legacy/evidence/ft19-001/host-platform.json",
+      "qualified_subset": "retained Open64 Common High CPU compiler crash and host semantic controls; no performance comparison"
+    }
+  ],
+  "unavailable": [
+    {
+      "capability": "compatible remote GPU worker (maintainer reported unavailable)",
+      "disposition": "retain explicit prerequisite; no qualification inferred"
+    },
+    {
+      "capability": "independent remote host/Mac-sleep test",
+      "disposition": "retain explicit prerequisite; no qualification inferred"
+    },
+    {
+      "capability": "historical CTI campaign archive (maintainer reports none)",
+      "disposition": "retain explicit prerequisite; no qualification inferred"
+    },
+    {
+      "capability": "organization CGI/dTM server configuration",
+      "disposition": "retain explicit prerequisite; no qualification inferred"
+    },
+    {
+      "capability": "Fortran/simulator/HP-UX/IA64 validation in this reference",
+      "disposition": "retain explicit prerequisite; no qualification inferred"
+    },
+    {
+      "capability": "vendor source/SDK/UTM dependencies",
+      "disposition": "retain explicit prerequisite; no qualification inferred"
+    },
+    {
+      "capability": "physical performance/GPU reservation controls",
+      "disposition": "retain explicit prerequisite; no qualification inferred"
+    }
+  ],
+  "operator": "Codex",
+  "reviewer": "GitHub repository creator (maintainer-designated)"
+}

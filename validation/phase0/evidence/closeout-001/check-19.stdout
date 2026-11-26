@@ -1,0 +1,10 @@
+{
+  "status": "pass",
+  "checksummed_records": 7,
+  "sessions": 6,
+  "private_volumes": 19,
+  "interactive_shell_and_gdb": true,
+  "all_validation_sessions_removed": true,
+  "original_evidence_unchanged": true,
+  "implementation_hashes_match": true
+}

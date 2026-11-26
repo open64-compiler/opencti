@@ -1,0 +1,47 @@
+{
+  "schema": "opencti.test-definition/v1",
+  "test_id": "Open64/absorbed-mla/short",
+  "family": "regression",
+  "language": "Open64 Common High DSL",
+  "adapter": "proposed-open64-dsl",
+  "source": {
+    "type": "git",
+    "identity": "https://github.com/open64-compiler/open64",
+    "revision": "2dd9308c3c77eb06ef52e461329a04ab1da6e7ec",
+    "logical_path": "osprey/torch2whirl/python/tests/models/absorbed_mla.py",
+    "content_sha256": "0b09aa070ca31850f85d7721315b3ba430ddfeab68639edca3f992c8a014f222",
+    "patch": null,
+    "authority": "git:https://github.com/open64-compiler/open64"
+  },
+  "phases": [
+    {
+      "phase_id": "lower-failure",
+      "argv": [
+        "bash",
+        "/case/recipes/lower-failure.sh"
+      ],
+      "cwd": "/case",
+      "environment": {
+        "sha256": "bffc291abf25aa66c4b70d50020a62e478a4cfabd32a6c202ef8e0b5d83d0bf0",
+        "logical_path": "capture/state.tar.gz",
+        "role": "sealed_environment_and_workspace"
+      },
+      "inputs": [
+        {
+          "sha256": "0ac4e3e6d3e8d5df429dc1d486b45a4f606cc704713fd2cf2266c575caaef4b4",
+          "logical_path": "case/short.input.B",
+          "role": "case"
+        }
+      ],
+      "applicability": "required"
+    }
+  ],
+  "oracle": {
+    "sha256": "0ce4a35ef5760bb7e5ddcdb82c1a963f56d4f718fa6e8b41bc6dec8ef1316829",
+    "logical_path": "reference/original.reference.json",
+    "role": "original_semantic_oracle"
+  },
+  "resources": [
+    "cpu:linux/amd64"
+  ]
+}

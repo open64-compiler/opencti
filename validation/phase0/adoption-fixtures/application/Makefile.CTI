@@ -1,0 +1,29 @@
+# Make.CTI for gsl-1.14
+
+APP_CONFIGFILE=./configure
+APP_MKFILE=Makefile
+CMP_FILE=compare.results
+
+# export and unexport environment to submake
+export CC = $(CC)
+export CFLAGS = $(EXTRA_FLAGS) $(EXTRA_CFLAGS)
+unexport CXX
+unexport CXXFLAGS
+
+export GMAKEROOT = $(GMAKEROOT) \
+				CC="$(CC)" \
+				CFLAGS="$(EXTRA_FLAGS) $(EXTRA_CFLAGS)" \
+
+compile:
+	$(APP_CONFIGFILE) 
+	$(MAKE) -f $(APP_MKFILE)
+
+validate: run_tests
+
+run_tests:
+	$(MAKE) -f $(APP_MKFILE) --quiet check || exit 1;
+	touch $(CMP_FILE)
+
+clean:
+	$(MAKE) -s -f $(APP_MKFILE) clean
+

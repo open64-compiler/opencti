@@ -1,0 +1,16 @@
+{
+  "schema": "opencti.attempt/v1",
+  "identity": {
+    "run_id": "ft19-002",
+    "test_id": "Open64/absorbed-mla/short",
+    "attempt_id": "captured-compiler-crash"
+  },
+  "backend": "docker",
+  "backend_job_id": "2108fa6c539821a7766d2c0e7547ee98771b7a89719f2fde4c62bdeb4ab7e747",
+  "execution_state": "failed",
+  "collection_state": "verified",
+  "missing_required": [],
+  "cancellation_confirmed": false,
+  "created_utc": "2026-11-13T08:28:43.443001+00:00",
+  "last_contact_utc": "2026-11-13T08:28:43.443001+00:00"
+}

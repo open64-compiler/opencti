@@ -1,0 +1,29 @@
+test_all_ten_design_records (test_contracts.ContractTests) ... ok
+test_annotation_cannot_rewrite_outcome (test_contracts.ContractTests) ... ok
+test_baseline_immutable (test_contracts.ContractTests) ... ok
+test_cancel_request_not_termination (test_contracts.ContractTests) ... ok
+test_case_distinct_paths_are_separate (test_contracts.ContractTests) ... ok
+test_conflicting_duplicate_event (test_contracts.ContractTests) ... ok
+test_diagnostic_and_process_signals_remain_separate (test_contracts.ContractTests) ... ok
+test_disconnected_unknown_is_representable (test_contracts.ContractTests) ... ok
+test_extra_fields_rejected (test_contracts.ContractTests) ... ok
+test_identical_events_idempotent (test_contracts.ContractTests) ... ok
+test_incomplete_inspection_is_representable (test_contracts.ContractTests) ... ok
+test_missing_baseline_not_replay_ready (test_contracts.ContractTests) ... ok
+test_missing_file_digest (test_contracts.ContractTests) ... ok
+test_missing_objects_cannot_be_acknowledged (test_contracts.ContractTests) ... ok
+test_mutable_revision (test_contracts.ContractTests) ... ok
+test_non_monotonic_new_event (test_contracts.ContractTests) ... ok
+test_phase_timeout_not_ordinary_pass (test_contracts.ContractTests) ... ok
+test_remote_requires_persistent_identity (test_contracts.ContractTests) ... ok
+test_svn_identity_and_pinned_revision (test_contracts.ContractTests) ... ok
+test_symlink_needs_target (test_contracts.ContractTests) ... ok
+test_traversing_artifact_rejected (test_contracts.ContractTests) ... ok
+test_two_authoritative_writers (test_contracts.ContractTests) ... ok
+test_unexecuted_phase_not_a_process_result (test_contracts.ContractTests) ... ok
+test_unknown_version (test_contracts.ContractTests) ... ok
+
+----------------------------------------------------------------------
+Ran 24 tests in 0.174s
+
+OK

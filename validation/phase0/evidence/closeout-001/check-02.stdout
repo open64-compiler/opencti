@@ -1,0 +1,11 @@
+{
+  "scenario": "FT05",
+  "hashed_files": 60,
+  "comparison_checks": 6,
+  "saved_recipe_files_match_original": 24,
+  "legacy_unpinned_control_changes_oracle": true,
+  "pinned_v1_still_mismatches_after_promotion_and_alternate_selection": true,
+  "read_only_write_rejected": true,
+  "explicit_v2_attempt_passes": true,
+  "native_promotion_acceptance": "open"
+}

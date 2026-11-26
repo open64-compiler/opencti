@@ -1,0 +1,127 @@
+{
+  "schema": "opencti.phase0-adoption-fixtures/v1",
+  "owner": "Codex (fixture/evidence preparation)",
+  "reviewer": "GitHub repository creator, designated by maintainer; account mapping pending",
+  "production_adoption_accepted": false,
+  "scenarios": [
+    {
+      "id": "SA01",
+      "title": "Original script identity",
+      "evidence_or_specification": "adoption-audit/inventory.json",
+      "inputs": [
+        "immutable Git baseline and configured-copy inventory"
+      ],
+      "acceptance": [
+        "hashes, executable modes and link targets match original scope",
+        "three intentional dashboard presentation changes are separately listed"
+      ],
+      "reproduction_commands": [
+        "python3 -B validation/phase0/adoption-audit/reproduce.py"
+      ],
+      "status": "original scope observed; complete package/runtime coverage not claimed"
+    },
+    {
+      "id": "SA02",
+      "title": "Regression adoption",
+      "evidence_or_specification": "legacy/evidence/ft11-005",
+      "inputs": [
+        "new unit with two-source .list case, per-test override, excluded test, expected compile rejection, output master",
+        "direct unit and parent CHILDREN selection"
+      ],
+      "acceptance": [
+        "same stable IDs selected through group/direct paths",
+        "auxiliary C source is not an extra independent test",
+        "expected rejection remains success; ordinary compile failure remains failure",
+        "original failed phase replays after input relocation"
+      ],
+      "reproduction_commands": [],
+      "status": "partial legacy negative/override/file identity evidence exists; complete adoption fixture not run"
+    },
+    {
+      "id": "SA03",
+      "title": "Application adoption",
+      "evidence_or_specification": "legacy/evidence/ft15-001",
+      "inputs": [
+        "original GSL wrapper plus isolated upstream configure/make/check files",
+        "compile failure, validate failure, absent/nonempty/empty compare.results",
+        "setup and run generator argument probes"
+      ],
+      "acceptance": [
+        "zero validate status and present empty marker required for success",
+        "compiler/flags and UNIT_MAKEVARS preserved",
+        "stale marker false pass stays a discrepancy"
+      ],
+      "reproduction_commands": [],
+      "status": "synthetic legacy wrapper and independent replay observed; native adoption not run"
+    },
+    {
+      "id": "SA04",
+      "title": "External script adoption",
+      "evidence_or_specification": "legacy/evidence/ft15-001",
+      "inputs": [
+        "file and directory cases, external glue, auxiliary input, local ./ invoker",
+        "producer exit 7 with exit checking enabled/disabled",
+        "collection failure/hang, enumeration probes, MULTIPLE_ITERATIONS=2"
+      ],
+      "acceptance": [
+        "collector receives unit source; invoker receives selected test name",
+        "original stdout/stderr concatenation and compare contract retained",
+        "unsupported iterations/collector hang do not become native passes"
+      ],
+      "reproduction_commands": [],
+      "status": "most legacy contracts characterized; native adoption and complete collection-error fixture not run"
+    },
+    {
+      "id": "SA05",
+      "title": "Preview, apply and rollback",
+      "evidence_or_specification": "../phase0/repository-authority.json",
+      "inputs": [
+        "disposable Git repository with existing source/master/settings and unrelated sentinel",
+        "new regression/application/script suite; source-only/master-only/settings-only changes",
+        "parent CHILDREN enrollment, existing-path conflict, case-distinct names",
+        "legacy SVN preview kept in separate disposable scope"
+      ],
+      "acceptance": [
+        "preview discloses target/files without execution, mail, publication or baseline mutation",
+        "apply changes only reviewed paths; rollback preserves sentinel and original evidence",
+        "legacy SVN helper rejected for Git-managed suite"
+      ],
+      "reproduction_commands": [],
+      "status": "specified design fixtures; native importer/legacy SVN enrollment not implemented or accepted"
+    },
+    {
+      "id": "SA06",
+      "title": "Specialized and performance adoption",
+      "evidence_or_specification": "adoption-inventory.json",
+      "inputs": [
+        "retained HPT/codegen/Perf helper variants and make wrappers",
+        "missing Perennial TESTC++, RogueWave, vendor SDK and UTM requirements",
+        "CPU correctness control separate from performance measurement"
+      ],
+      "acceptance": [
+        "missing external dependency is named; no fabricated success or measurement",
+        "original wrapper and lookup layout remain reachable",
+        "physical reservations and hardware comparability require actual target"
+      ],
+      "reproduction_commands": [],
+      "status": "static variants preserved; unavailable vendor/UTM/physical performance prerequisites explicit"
+    },
+    {
+      "id": "SA07",
+      "title": "Repository coexistence and cutover",
+      "evidence_or_specification": "repository-authority.json",
+      "inputs": [
+        "Git-only staging with SVN unavailable",
+        "synthetic SVN UUID/URL/revision with properties, pinned externals and empty directory",
+        "one-way publication map, duplicate retry, conflict and rollback records"
+      ],
+      "acceptance": [
+        "each scope has exactly one authority and approved publication route",
+        "Git enrollment works independently of SVN",
+        "external revisions/properties/externals reconciled before enabling bridge"
+      ],
+      "reproduction_commands": [],
+      "status": "authority/schema fixtures specified; live SVN retrieval/bridge publication not run"
+    }
+  ]
+}

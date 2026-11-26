@@ -1,0 +1,13 @@
+{
+  "runtime-image.tar": {
+    "local_path": "/Users/shinmingliu/opcti/validation/phase0/legacy/runs/ft19-runtime-001/runtime-image.tar",
+    "bytes": 2109571072,
+    "sha256": "c974b531ecefd140db96d16fcbb503c942ab0360d5bc53be7a0ca5ec9cde7c1f",
+    "image_id": "sha256:b18b7676ae388026312993b0a299c4ca6ca36999444f337f6826ea5ff1e8f577"
+  },
+  "toolchain.tar.gz": {
+    "local_path": "/Users/shinmingliu/opcti/validation/phase0/legacy/runs/ft19-002/bundles/toolchain.tar.gz",
+    "bytes": 110098537,
+    "sha256": "6b8075fe04eac9040a8c4eef0ac484ed3db031170146b3c51314728f61eed7be"
+  }
+}

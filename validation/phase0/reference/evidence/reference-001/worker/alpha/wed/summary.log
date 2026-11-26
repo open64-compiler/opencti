@@ -1,0 +1,43 @@
+# Start time was Fri Nov 13 18:13:36 2026 on 187210d2404b
+# TEST_WORK_DIR --> /export/alpha/wed/work
+# OPT_LEVEL     --> 0
+# DATA_MODE     --> +DD64
+# COMPILER_VERSION --> gcc-13.3.0
+# CTI_GROUPS    --> /fixtures/groups
+# REPOSITORY_TYPE --> SVN
+# OPTIONS_FILE--> /fixtures/reference.opt
+# SELECTIONS  --> Regression/Reference
+# VIEW    --> None
+# DTM_POOL    --> Default
+# DTM_CPUARCH --> aarch64
+# DTM_PRIORITY--> 2
+# DISTRIBUTED_TM --> 
+# SEND_LOG    --> 
+# http://localhost/CTI/cgi-bin/get-log-file.cgi?log=/export/alpha/wed/summary.log
+# END OF HEADER
+
+# TOTAL TESTS=5,  PASS=3,  FAIL=2,  RUNNING=0
+
+#_________________________________________________________
+#  PASSES 
+#_________________________________________________________
+# Total Number of PASSES = 3
+Regression/Reference/A.c
+Regression/Reference/D.c
+Regression/Reference/E.c
+
+#_________________________________________________________
+#  COMPILATION FAILURES 
+#_________________________________________________________
+# Total Number of COMPILATION FAILURES = 1
+Regression/Reference/B.c
+
+#_________________________________________________________
+#  EXECUTION FAILURES 
+#_________________________________________________________
+# Total Number of EXECUTION FAILURES = 1
+Regression/Reference/C.c
+
+# TIME_TAKEN --> 00:00:01 [1794593617 - 1794593616]
+
+# End Time was Fri Nov 13 18:13:37 2026

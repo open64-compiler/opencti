@@ -1,0 +1,177 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://open64-compiler.github.io/opencti/contracts/test-definition-v1.schema.json",
+  "title": "Proposed phase 0 test-definition",
+  "description": "Design contract; not a deployed API and not the existing cti-session/v1 specification.",
+  "type": "object",
+  "properties": {
+    "schema": {
+      "const": "opencti.test-definition/v1"
+    },
+    "test_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "family": {
+      "enum": [
+        "regression",
+        "application",
+        "script",
+        "performance"
+      ]
+    },
+    "language": {
+      "type": "string",
+      "minLength": 1
+    },
+    "adapter": {
+      "type": "string",
+      "minLength": 1
+    },
+    "source": {
+      "type": "object",
+      "properties": {
+        "type": {
+          "enum": [
+            "git",
+            "svn",
+            "artifact"
+          ]
+        },
+        "identity": {
+          "type": "string",
+          "minLength": 1
+        },
+        "revision": {
+          "type": "string",
+          "minLength": 1
+        },
+        "logical_path": {
+          "type": "string",
+          "minLength": 1
+        },
+        "content_sha256": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "patch": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "authority": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "required": [
+        "type",
+        "identity",
+        "revision",
+        "logical_path",
+        "content_sha256",
+        "patch",
+        "authority"
+      ],
+      "additionalProperties": false
+    },
+    "phases": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "phase_id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "argv": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1
+            },
+            "minItems": 1
+          },
+          "cwd": {
+            "type": "string",
+            "pattern": "^/"
+          },
+          "environment": {
+            "$ref": "#/$defs/artifact-ref"
+          },
+          "inputs": {
+            "type": "array",
+            "items": {
+              "$ref": "#/$defs/artifact-ref"
+            }
+          },
+          "applicability": {
+            "enum": [
+              "required",
+              "optional",
+              "not_applicable"
+            ]
+          }
+        },
+        "required": [
+          "phase_id",
+          "argv",
+          "cwd",
+          "environment",
+          "inputs",
+          "applicability"
+        ],
+        "additionalProperties": false
+      },
+      "minItems": 1
+    },
+    "oracle": {
+      "$ref": "#/$defs/artifact-ref"
+    },
+    "resources": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    }
+  },
+  "required": [
+    "schema",
+    "test_id",
+    "family",
+    "language",
+    "adapter",
+    "source",
+    "phases",
+    "oracle",
+    "resources"
+  ],
+  "additionalProperties": false,
+  "$defs": {
+    "artifact-ref": {
+      "type": "object",
+      "properties": {
+        "sha256": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "logical_path": {
+          "type": "string",
+          "minLength": 1
+        },
+        "role": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "required": [
+        "sha256",
+        "logical_path",
+        "role"
+      ],
+      "additionalProperties": false
+    }
+  }
+}

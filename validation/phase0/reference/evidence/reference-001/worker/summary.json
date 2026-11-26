@@ -1,0 +1,25 @@
+{
+  "status": "measured_synthetic_legacy_reference",
+  "actual_TM_runs": 4,
+  "tests_per_completed_campaign": 5,
+  "current_totals_per_campaign": [
+    5,
+    2,
+    3
+  ],
+  "previous_totals_per_campaign": [
+    5,
+    3,
+    2
+  ],
+  "current_known_unknown_per_campaign": [
+    1,
+    2
+  ],
+  "new_failure": "Regression/Reference/D.c",
+  "intervening_partial": "derived_fixture",
+  "legacy_reader_used": true,
+  "historical_archive": false,
+  "production_dashboard_qualified": false,
+  "framework_unchanged": true
+}

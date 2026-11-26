@@ -1,0 +1,2 @@
+source_pu=AbsorbedMLA operations=48 values=55 opt=3 source_unchanged=true
+common_high=PASS operations=48 buffers=41 runtime_calls=0 gpu_mapping=false

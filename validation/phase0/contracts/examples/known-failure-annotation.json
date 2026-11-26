@@ -1,0 +1,13 @@
+{
+  "schema": "opencti.known-failure-annotation/v1",
+  "annotation_id": "example-only-compiler-crash",
+  "test_id": "Open64/absorbed-mla/short",
+  "scope": "proposed local DSL pilot",
+  "match": "CompilerCrash in Loop Nest Optimizer",
+  "comment": "Illustrative annotation only; no known-failure database was modified",
+  "created_utc": "2026-11-13T08:28:43.443001+00:00",
+  "history": [
+    "proposal-fixture"
+  ],
+  "raw_outcome_unchanged": true
+}

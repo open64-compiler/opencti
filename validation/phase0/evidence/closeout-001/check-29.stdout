@@ -1,0 +1,17 @@
+{
+  "checks_passed": true,
+  "hashed_files": 180,
+  "original_failures": {
+    "FT01/compile_error": "CompileErr",
+    "FT02/runtime_error": "ExecErr",
+    "FT03/output_mismatch": "DiffPgmOut",
+    "FT03NoMaster/absent_master": "NoMasterOut"
+  },
+  "replay_checks": 10,
+  "deployment_config_changes": [
+    "dtm/conf/dTM_conf.xml",
+    "dtm/lib/DTM_global.env",
+    "lib/CTI_global.env"
+  ],
+  "framework_code_unchanged": true
+}

@@ -1,0 +1,127 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://open64-compiler.github.io/opencti/contracts/attempt-v1.schema.json",
+  "title": "Proposed phase 0 attempt",
+  "description": "Design contract; not a deployed API and not the existing cti-session/v1 specification.",
+  "type": "object",
+  "properties": {
+    "schema": {
+      "const": "opencti.attempt/v1"
+    },
+    "identity": {
+      "type": "object",
+      "properties": {
+        "run_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "test_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "attempt_id": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "required": [
+        "run_id",
+        "test_id",
+        "attempt_id"
+      ],
+      "additionalProperties": false
+    },
+    "backend": {
+      "enum": [
+        "legacy",
+        "docker",
+        "ssh"
+      ]
+    },
+    "backend_job_id": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "execution_state": {
+      "enum": [
+        "queued",
+        "running",
+        "completed",
+        "failed",
+        "cancel_requested",
+        "cancelled",
+        "disconnected",
+        "unknown"
+      ]
+    },
+    "collection_state": {
+      "enum": [
+        "not_started",
+        "collecting",
+        "incomplete",
+        "verified",
+        "acknowledged"
+      ]
+    },
+    "missing_required": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "cancellation_confirmed": {
+      "type": "boolean"
+    },
+    "created_utc": {
+      "type": "string",
+      "minLength": 1
+    },
+    "last_contact_utc": {
+      "type": [
+        "string",
+        "null"
+      ]
+    }
+  },
+  "required": [
+    "schema",
+    "identity",
+    "backend",
+    "backend_job_id",
+    "execution_state",
+    "collection_state",
+    "missing_required",
+    "cancellation_confirmed",
+    "created_utc",
+    "last_contact_utc"
+  ],
+  "additionalProperties": false,
+  "$defs": {
+    "artifact-ref": {
+      "type": "object",
+      "properties": {
+        "sha256": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "logical_path": {
+          "type": "string",
+          "minLength": 1
+        },
+        "role": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "required": [
+        "sha256",
+        "logical_path",
+        "role"
+      ],
+      "additionalProperties": false
+    }
+  }
+}

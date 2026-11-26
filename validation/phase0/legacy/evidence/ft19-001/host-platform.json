@@ -1,0 +1,6 @@
+{
+  "machine": "arm64",
+  "requested_execution": "linux/amd64",
+  "explicit_cpu_emulation": true,
+  "gpu_used": false
+}

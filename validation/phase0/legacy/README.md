@@ -514,3 +514,46 @@ The read-only post-run probe has a separate index and leaves the original runner
 Reference `runs/ft18-002` has 131 original runner hashes plus separately indexed cleanup observations. Compact `evidence/ft18-001` has 85 hashes plus its index and totals 904,817 bytes. Eight compile/link/run/compare replays across native Terminal and offline interactive Bash preserve the original `actual`/`expected` mismatch and saved compiler environment; baseline writes are denied. A genuinely absent baseline, explicitly declared in the portable requirement, blocks normal opening and permits only non-replay-ready inspection. All 2,654 deployed framework entries, 1,363 prior evidence entries and copied capture/CGI workspace identities remain unchanged; pre-existing filename-collision edits are untouched.
 
 Full/compact audits, fifteen contradiction tests and the preceding FT17 audit pass. The current adapter's in-page file-anchor rewrite is recorded, not fixed. Product bundle-download, mount-specification and completeness views, automatic full closure discovery, organization deployment and remote/GPU qualification remain open. Prior [dashboard acceptance](../../dashboard-session/README.md) separately records actual OS URL dispatch; FT18 preserves global handler selection. Full FT18/DF38 and phase 0 remain open. See the [FT18 report](../../../doc/guide/phase0-ft18-results.md).
+
+## FT19 real Open64 DSL compiler crash
+
+FT19 reuses authenticated immutable Open64 review products, not a live checkout or an invented failing DSL. The maintainer authorized a retained CPU case and clarified that crashes are relevant when no wrong-result bundle is available. The selected absorbed-MLA Common High input triggers a real LNO crash in retained initial-default products. Compatible retained products accept the same input/options; a separately labeled portable host lane emits actual C and passes seven original FP64 reference cases. This is a compiler-crash preservation variant, not a generated-program crash or numerical miscompile claim.
+
+Host prerequisites are Python 3.9+, Docker capable of explicit Linux AMD64 execution, the retained PR242 and parent M3 receipts named in `run_ft19.py`, and the exact runtime archive. The worker's cached runtime uses Python 3.8. On this ARM64 Mac, `--platform linux/amd64` explicitly uses CPU emulation. No GPU or network is used. If the pinned image is absent, load the retained archive offline before running; the runner does not pull a tag or rebuild Open64.
+
+```sh
+# Retain the cached image once, under a NEW ignored local path:
+docker image save --platform linux/amd64 \
+  -o /absolute/new/local/runtime-image.tar \
+  sha256:b18b7676ae388026312993b0a299c4ca6ca36999444f337f6826ea5ff1e8f577
+# For repeat runs, reuse the existing retained archive instead of overwriting it.
+# If the image is absent: docker image load -i /absolute/path/to/retained/runtime-image.tar
+
+python3 -B validation/phase0/legacy/run_ft19.py \
+  --runtime-archive /absolute/path/to/retained/runtime-image.tar \
+  --output validation/phase0/legacy/runs/ft19-new
+# Optional --receipt PATH and --parent PATH rebind relocated immutable receipts.
+
+python3 -B validation/phase0/legacy/verify_ft19.py \
+  validation/phase0/legacy/runs/ft19-new
+python3 -B validation/phase0/legacy/verify_ft19.py \
+  validation/phase0/legacy/evidence/ft19-001
+python3 -B -m unittest discover -s validation/phase0/legacy \
+  -p test_verify_ft19.py -v
+```
+
+The reference runtime archive is 2,109,571,072 bytes, SHA-256 `c974b531ecefd140db96d16fcbb503c942ab0360d5bc53be7a0ca5ec9cde7c1f`. The auditor requires this retained identity for this reference variant. A newly serialized or different runtime requires its own reviewed prerequisite identity rather than silently rewriting the original evidence. The optional path arguments do not edit the retained receipts. Each output directory must be new and outside the evidence/receipt trees. The runner verifies 38 selected file copies against the original receipt indexes, including bytes/modes, and checks their original locations again after replay.
+
+The ten saved executable recipes under `/case/recipes` separate native DSL prepare/high lowering, symbol/source inspection, original-failure LNO, same-options compatible LNO, portable LNO, post-LNO inspection, whirl2c, GCC compilation, guarded-buffer host execution and original-oracle comparison. `environment.sh` fixes locale and case/image identity; recipes select exact compiler library roots. The copied model is restored at the source path embedded in WHIRL for `ir_b2a -st -src`. Python-frontend regeneration is not claimed. The actual crash input is retained exactly, distinct from the newly regenerated native-lowering input.
+
+The failure's diagnostic says SIGSEGV in Loop Nest Optimizer with `MEM_POOL_FREE`/`Fuse` frames; the observed subprocess status is `-4`/SIGILL. The original verdict remains `CompilerCrash`. Its 4,194,304-byte partial `.N` is retained as unvalidated and never passed to emission/execution. Workers exit 0 only after checking these outcomes. Core limits are zero for this bounded run; no core-preservation/debugger qualification is claimed. No runtime output is invented for the failed branch.
+
+The receipt did not retain an initial-default IPL library. Both reconstructed toolchain variants therefore use the same authenticated final-receipt IPL, explicitly recorded in `case.json`. The captured reconstructed environment is pinned and reproduces the historical signature, but exact recovery of every historical process dependency is not claimed. The portable lane separately changes `roundoff=2` to `roundoff=0` and disables LNO SIMD so actual emitted code can run through the original host bridge. It is not substituted for the same-options compatible control.
+
+Seven unchanged input/reference pairs cover original, masked/empty/tail cases, equal and large scores. The exact retained checker uses FP64 reference values, `rtol=2e-5`, `atol=2e-6` and infinity sign/class rules. Capture and replay produce fourteen passing comparisons with maximum absolute error approximately 1.01657e-6. The offline auditor reruns that same checker on retained result bytes. The bridge verifies guard regions and unchanged input buffers.
+
+Both restricted workers use network isolation, one CPU, 2 GiB memory, dropped capabilities, `no-new-privileges`, default PID isolation and no device requests or Docker socket. Only copied tools/metadata/bundles are read-only mounts; a new export is writable. No original Open64 evidence or CTI framework path is mounted. After capture-worker deletion, a fresh worker unpacks the sealed case/source/reference state and compiler archive from relocated native paths, reuses identical recipes and independently repeats every phase. Both workers are removed and absence is observed. Original selected Open64 files, all 1,449 prior CTI evidence entries, native inputs and sealed relocated archives remain unchanged.
+
+Reference `runs/ft19-002` indexes 132 regular files; development run 001 is not a passing reference. For a new reviewed compact bundle, use the auditor's `--pack-output` with a fresh destination. Compact `evidence/ft19-001` has 91 hashes plus its index, totaling 4,717,588 bytes; every file is under 1 MiB. It retains case/source/reference archives, four actual source/symbol IR traces per worker, phase logs, original receipts/indexes, provenance/modes, runtime profiles, closure inventories and copied runner/tools. The runtime and 110,098,537-byte compiler archive, expanded compiler trees, private sessions and development runs remain local/ignored. Offline compact auditing needs neither Docker nor the original Open64 tree or large archives; repeating execution does need the declared runtime/compiler prerequisites.
+
+Full/compact audits, twenty offline tests and the preceding FT18 audit pass. Tests reject rehashed contradictions in signals, test verdicts, partial products, source/library/oracle/output identity, phases, mount permissions, cleanup and unsupported core/GPU/frontend claims. Production DSL/session/dashboard integration, generated-program or numerical-miscompile variants, full historical closure, core/debugger preservation and broader target coverage remain open. No framework, compiler implementation or original evidence is changed. See the [FT19 report](../../../doc/guide/phase0-ft19-results.md).

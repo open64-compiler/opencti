@@ -1,0 +1,30 @@
+{
+  "variant": "current",
+  "expected": {
+    "A.c": "SuccessExec",
+    "B.c": "CompileErr",
+    "C.c": "ExecErr",
+    "D.c": "DiffPgmOut",
+    "E.c": "SuccessExec"
+  },
+  "observed": {
+    "A.c": "SuccessExec",
+    "B.c": "CompileErr",
+    "C.c": "ExecErr",
+    "D.c": "DiffPgmOut",
+    "E.c": "SuccessExec"
+  },
+  "total": 5,
+  "pass": 2,
+  "fail": 3,
+  "known": [
+    "B.c"
+  ],
+  "unknown": [
+    "C.c",
+    "D.c"
+  ],
+  "new_failure": [
+    "D.c"
+  ]
+}
