@@ -1,0 +1,9 @@
+{
+  "status": "pass_for_isolated_subset",
+  "checksummed_files": 32,
+  "durable_job_id": "b81019f50c9341d881004f801e54c703",
+  "legacy_cpu_capture_runs": 1,
+  "replay_phases": 4,
+  "constructed_gpu_cases": 12,
+  "real_gpu_acceptance": "blocked"
+}

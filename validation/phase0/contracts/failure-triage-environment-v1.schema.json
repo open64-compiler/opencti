@@ -1,0 +1,247 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://open64-compiler.github.io/opencti/contracts/failure-triage-environment-v1.schema.json",
+  "title": "Proposed phase 0 failure-triage-environment",
+  "description": "Design contract; not a deployed API and not the existing cti-session/v1 specification.",
+  "type": "object",
+  "properties": {
+    "schema": {
+      "const": "opencti.failure-triage-environment/v1"
+    },
+    "identity": {
+      "type": "object",
+      "properties": {
+        "run_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "test_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "attempt_id": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "required": [
+        "run_id",
+        "test_id",
+        "attempt_id"
+      ],
+      "additionalProperties": false
+    },
+    "original_verdict": {
+      "type": "string",
+      "minLength": 1
+    },
+    "source": {
+      "type": "object",
+      "properties": {
+        "type": {
+          "enum": [
+            "git",
+            "svn",
+            "artifact"
+          ]
+        },
+        "identity": {
+          "type": "string",
+          "minLength": 1
+        },
+        "revision": {
+          "type": "string",
+          "minLength": 1
+        },
+        "logical_path": {
+          "type": "string",
+          "minLength": 1
+        },
+        "content_sha256": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "patch": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "authority": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "required": [
+        "type",
+        "identity",
+        "revision",
+        "logical_path",
+        "content_sha256",
+        "patch",
+        "authority"
+      ],
+      "additionalProperties": false
+    },
+    "image": {
+      "$ref": "#/$defs/artifact-ref"
+    },
+    "toolchain": {
+      "$ref": "#/$defs/artifact-ref"
+    },
+    "environment": {
+      "$ref": "#/$defs/artifact-ref"
+    },
+    "baseline": {
+      "$ref": "#/$defs/artifact-ref"
+    },
+    "workspace": {
+      "$ref": "#/$defs/artifact-ref"
+    },
+    "phase_recipes": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "phase_id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "argv": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1
+            },
+            "minItems": 1
+          },
+          "cwd": {
+            "type": "string",
+            "pattern": "^/"
+          },
+          "environment": {
+            "$ref": "#/$defs/artifact-ref"
+          },
+          "inputs": {
+            "type": "array",
+            "items": {
+              "$ref": "#/$defs/artifact-ref"
+            }
+          },
+          "applicability": {
+            "enum": [
+              "required",
+              "optional",
+              "not_applicable"
+            ]
+          }
+        },
+        "required": [
+          "phase_id",
+          "argv",
+          "cwd",
+          "environment",
+          "inputs",
+          "applicability"
+        ],
+        "additionalProperties": false
+      }
+    },
+    "mounts": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "destination": {
+            "type": "string",
+            "pattern": "^/"
+          },
+          "snapshot": {
+            "$ref": "#/$defs/artifact-ref"
+          },
+          "read_only": {
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "destination",
+          "snapshot",
+          "read_only"
+        ],
+        "additionalProperties": false
+      }
+    },
+    "preservation": {
+      "enum": [
+        "incomplete",
+        "verified"
+      ]
+    },
+    "replay_ready": {
+      "type": "boolean"
+    },
+    "missing_required": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "execution_mode": {
+      "enum": [
+        "native",
+        "emulated"
+      ]
+    },
+    "gpu_requirement": {
+      "type": [
+        "string",
+        "null"
+      ]
+    }
+  },
+  "required": [
+    "schema",
+    "identity",
+    "original_verdict",
+    "source",
+    "image",
+    "toolchain",
+    "environment",
+    "baseline",
+    "workspace",
+    "phase_recipes",
+    "mounts",
+    "preservation",
+    "replay_ready",
+    "missing_required",
+    "execution_mode",
+    "gpu_requirement"
+  ],
+  "additionalProperties": false,
+  "$defs": {
+    "artifact-ref": {
+      "type": "object",
+      "properties": {
+        "sha256": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "logical_path": {
+          "type": "string",
+          "minLength": 1
+        },
+        "role": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "required": [
+        "sha256",
+        "logical_path",
+        "role"
+      ],
+      "additionalProperties": false
+    }
+  }
+}

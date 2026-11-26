@@ -1,0 +1,11 @@
+{
+  "status": "pass_for_retained_CPU_DSL_compiler_crash_replay",
+  "checksummed_files": 91,
+  "saved_phase_executions": 20,
+  "CPU_reference_comparisons": 14,
+  "failure_verdict": "CompilerCrash",
+  "reported_fault": "SIGSEGV",
+  "raw_process_returncode": -4,
+  "wrong_result_or_generated_program_crash": "not_claimed",
+  "core_and_production_adapter_qualification": "open"
+}

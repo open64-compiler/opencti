@@ -1,0 +1,83 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://open64-compiler.github.io/opencti/contracts/known-failure-annotation-v1.schema.json",
+  "title": "Proposed phase 0 known-failure-annotation",
+  "description": "Design contract; not a deployed API and not the existing cti-session/v1 specification.",
+  "type": "object",
+  "properties": {
+    "schema": {
+      "const": "opencti.known-failure-annotation/v1"
+    },
+    "annotation_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "test_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "scope": {
+      "type": "string",
+      "minLength": 1
+    },
+    "match": {
+      "type": "string",
+      "minLength": 1
+    },
+    "comment": {
+      "type": "string",
+      "minLength": 1
+    },
+    "created_utc": {
+      "type": "string",
+      "minLength": 1
+    },
+    "history": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "raw_outcome_unchanged": {
+      "const": true
+    }
+  },
+  "required": [
+    "schema",
+    "annotation_id",
+    "test_id",
+    "scope",
+    "match",
+    "comment",
+    "created_utc",
+    "history",
+    "raw_outcome_unchanged"
+  ],
+  "additionalProperties": false,
+  "$defs": {
+    "artifact-ref": {
+      "type": "object",
+      "properties": {
+        "sha256": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "logical_path": {
+          "type": "string",
+          "minLength": 1
+        },
+        "role": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "required": [
+        "sha256",
+        "logical_path",
+        "role"
+      ],
+      "additionalProperties": false
+    }
+  }
+}

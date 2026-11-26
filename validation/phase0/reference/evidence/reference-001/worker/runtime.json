@@ -1,0 +1,80 @@
+{
+  "os": "linux",
+  "arch": "arm64",
+  "uname": [
+    "Linux",
+    "187210d2404b",
+    "6.12.76-linuxkit",
+    "#1 SMP Fri May 29 10:00:01 UTC 2026",
+    "aarch64",
+    "aarch64"
+  ],
+  "data_modes": [
+    64
+  ],
+  "cpu_features": [
+    "aes",
+    "afp",
+    "asimd",
+    "asimddp",
+    "asimdfhm",
+    "asimdhp",
+    "asimdrdm",
+    "atomics",
+    "bf16",
+    "bti",
+    "cpuid",
+    "crc32",
+    "dcpodp",
+    "dcpop",
+    "dit",
+    "ebf16",
+    "evtstrm",
+    "fcma",
+    "flagm",
+    "flagm2",
+    "fp",
+    "fphp",
+    "frint",
+    "i8mm",
+    "ilrcpc",
+    "jscvt",
+    "lrcpc",
+    "paca",
+    "pacg",
+    "pmull",
+    "sb",
+    "sha1",
+    "sha2",
+    "sha3",
+    "sha512",
+    "uscat"
+  ],
+  "verified_gpu_backends": [],
+  "gpu_observation": "No GPU backend qualified by this CPU-only fixture",
+  "selected_image_id": "sha256:747873867110897321865b8790204c0d42a9d51357dce8c3334f50c59d6e916c",
+  "tools": {
+    "gcc": {
+      "available": true,
+      "returncode": 0,
+      "output": "gcc (Ubuntu 13.3.0-6ubuntu2~24.04.1) 13.3.0\nCopyright (C) 2023 Free Software Foundation, Inc.\nThis is free software; see the source for copying conditions.  There is NO\nwarranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.\n\n"
+    },
+    "gdb": {
+      "available": true,
+      "returncode": 0,
+      "output": "GNU gdb (Ubuntu 15.1-1ubuntu1~24.04.1) 15.1\nCopyright (C) 2024 Free Software Foundation, Inc.\nLicense GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>\nThis is free software: you are free to change and redistribute it.\nThere is NO WARRANTY, to the extent permitted by law.\n"
+    },
+    "bash": {
+      "available": true,
+      "returncode": 0,
+      "output": "GNU bash, version 5.2.21(1)-release (aarch64-unknown-linux-gnu)\nCopyright (C) 2022 Free Software Foundation, Inc.\nLicense GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>\n\nThis is free software; you are free to change and redistribute it.\nThere is NO WARRANTY, to the extent permitted by law.\n"
+    },
+    "perl": {
+      "available": true,
+      "returncode": 0,
+      "output": "\nThis is perl 5, version 38, subversion 2 (v5.38.2) built for aarch64-linux-gnu-thread-multi\n(with 68 registered patches, see perl -V for more detail)\n\nCopyright 1987-2023, Larry Wall\n\nPerl may be copied only under the terms of either the Artistic License or the\nGNU General Public License, which may be found in the Perl 5 source kit.\n\nComplete documentation for Perl, including FAQ lists, should be found on\nthis system using \"man perl\" or \"perldoc perl\".  If you have access to the\nInternet, point your browser at https://www.perl.org/, the Perl Home Page.\n\n"
+    }
+  },
+  "process_status": "Name:\tpython3\nUmask:\t0022\nState:\tR (running)\nTgid:\t1\nNgid:\t0\nPid:\t1\nPPid:\t0\nTracerPid:\t0\nUid:\t0\t0\t0\t0\nGid:\t0\t0\t0\t0\nFDSize:\t64\nGroups:\t0 \nNStgid:\t1\nNSpid:\t1\nNSpgid:\t1\nNSsid:\t1\nKthread:\t0\nVmPeak:\t   31528 kB\nVmSize:\t   31356 kB\nVmLck:\t       0 kB\nVmPin:\t       0 kB\nVmHWM:\t   24752 kB\nVmRSS:\t   24752 kB\nRssAnon:\t   15492 kB\nRssFile:\t    9260 kB\nRssShmem:\t       0 kB\nVmData:\t   16136 kB\nVmStk:\t     132 kB\nVmExe:\t    6200 kB\nVmLib:\t    7200 kB\nVmPTE:\t      96 kB\nVmSwap:\t       0 kB\nHugetlbPages:\t       0 kB\nCoreDumping:\t0\nTHP_enabled:\t1\nuntag_mask:\t0xffffffffffffff\nThreads:\t1\nSigQ:\t0/31726\nSigPnd:\t0000000000000000\nShdPnd:\t0000000000000000\nSigBlk:\t0000000000000000\nSigIgn:\t0000000001001000\nSigCgt:\t0000000000000002\nCapInh:\t0000000000000000\nCapPrm:\t0000000000000000\nCapEff:\t0000000000000000\nCapBnd:\t0000000000000000\nCapAmb:\t0000000000000000\nNoNewPrivs:\t1\nSeccomp:\t2\nSeccomp_filters:\t1\nSpeculation_Store_Bypass:\tvulnerable\nSpeculationIndirectBranch:\tunknown\nCpus_allowed:\t3ffff\nCpus_allowed_list:\t0-17\nMems_allowed:\t1\nMems_allowed_list:\t0\nvoluntary_ctxt_switches:\t493\nnonvoluntary_ctxt_switches:\t117\n",
+  "ptrace_scope": "unavailable"
+}

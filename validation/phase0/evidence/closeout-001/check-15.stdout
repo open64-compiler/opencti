@@ -1,0 +1,11 @@
+{
+  "status": "pass_for_isolated_access_subset_with_reference_gaps",
+  "checksummed_files": 85,
+  "saved_phase_replays": 8,
+  "browser_observations": "actual_UI",
+  "terminal_handoff": "actual_Terminal_without_global_URL_dispatch",
+  "standalone": "interactive_offline",
+  "incomplete_baseline": "blocked_or_explicit_inspection",
+  "dashboard_anchor_defect": "observed_not_fixed",
+  "full_FT18_acceptance": "open"
+}

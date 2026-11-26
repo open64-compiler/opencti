@@ -1,0 +1,24 @@
+Signal: Segmentation fault in Loop Nest Optimizer phase.
+### Compiler Error (user routine 'open64_common_high') during Loop Nest Optimizer phase:
+### Signal Segmentation fault in phase Loop Nest Optimizer -- processing aborted
+Support Message:
+    /toolchain/old/be/be.so(+0x36ecdf) [0x7fffff4d1cdf]
+    /toolchain/old/be/be.so(+0x36f7a2) [0x7fffff4d27a2]
+    /toolchain/old/be/be.so(ErrMsgLine+0xa4) [0x7fffff4d1f24]
+    /toolchain/old/be/be.so(+0x370725) [0x7fffff4d3725]
+    /lib/x86_64-linux-gnu/libc.so.6(+0x43090) [0x7ffffedb2090]
+    /toolchain/old/be/be.so(MEM_POOL_FREE+0x3d) [0x7fffff299c6d]
+    /toolchain/old/lno/lno.so(+0x63cc0) [0x7ffffe644cc0]
+    /toolchain/old/lno/lno.so(_Z4FuseP2WNS0_hjiPyS1_PS0_Pi+0x7c0b) [0x7ffffe6e97ab]
+    /toolchain/old/lno/lno.so(_Z22Outer_Loop_Fusion_WalkP2WNP13FIZ_FUSE_INFOP10HASH_TABLEIS0_jE+0x1bdc) [0x7ffffe71160c]
+    /toolchain/old/lno/lno.so(_Z22Outer_Loop_Fusion_WalkP2WNP13FIZ_FUSE_INFOP10HASH_TABLEIS0_jE+0x117) [0x7ffffe70fb47]
+    /toolchain/old/lno/lno.so(_Z22Outer_Loop_Fusion_WalkP2WNP13FIZ_FUSE_INFOP10HASH_TABLEIS0_jE+0xb9) [0x7ffffe70fae9]
+    /toolchain/old/lno/lno.so(_Z23Outer_Loop_Fusion_PhaseP2WNP13FIZ_FUSE_INFO+0x19e) [0x7ffffe712dee]
+    /toolchain/old/lno/lno.so(_Z9Phase_123P7pu_infoP2WNiii+0x39b) [0x7ffffe69a06b]
+    /toolchain/old/lno/lno.so(_Z11LnoptimizerP7pu_infoP2WNP10DU_MANAGERP13ALIAS_MANAGER+0x1646) [0x7ffffe69c366]
+    /toolchain/old/lno/lno.so(Perform_Loop_Nest_Optimization+0x28a) [0x7ffffe6974aa]
+    /toolchain/old/be/be(+0x1c766) [0x555555570766]
+    /toolchain/old/be/be(+0x1fae2) [0x555555573ae2]
+    /toolchain/old/be/be(main+0x1a78) [0x555555569948]
+    /lib/x86_64-linux-gnu/libc.so.6(__libc_start_main+0xf3) [0x7ffffed93083]
+    /toolchain/old/be/be(_start+0x2e) [0x55555556af1e]

@@ -1,0 +1,195 @@
+[
+  {
+    "label": "alpha-previous",
+    "argv": [
+      "perl",
+      "/opt/cti/bin/TM.pl",
+      "-nod",
+      "-nomail",
+      "-f",
+      "/fixtures/reference.opt",
+      "-w",
+      "/export/alpha/wed/work",
+      "-l",
+      "/export/alpha/wed/summary.log",
+      "run"
+    ],
+    "returncode": 0,
+    "environment_overrides": {}
+  },
+  {
+    "label": "alpha-current",
+    "argv": [
+      "perl",
+      "/opt/cti/bin/TM.pl",
+      "-nod",
+      "-nomail",
+      "-f",
+      "/fixtures/reference.opt",
+      "-w",
+      "/export/alpha/fri/work",
+      "-l",
+      "/export/alpha/fri/summary.log",
+      "run"
+    ],
+    "returncode": 0,
+    "environment_overrides": {}
+  },
+  {
+    "label": "beta-previous",
+    "argv": [
+      "perl",
+      "/opt/cti/bin/TM.pl",
+      "-nod",
+      "-nomail",
+      "-f",
+      "/fixtures/reference.opt",
+      "-w",
+      "/export/beta/wed/work",
+      "-l",
+      "/export/beta/wed/summary.log",
+      "run"
+    ],
+    "returncode": 0,
+    "environment_overrides": {}
+  },
+  {
+    "label": "beta-current",
+    "argv": [
+      "perl",
+      "/opt/cti/bin/TM.pl",
+      "-nod",
+      "-nomail",
+      "-f",
+      "/fixtures/reference.opt",
+      "-w",
+      "/export/beta/fri/work",
+      "-l",
+      "/export/beta/fri/summary.log",
+      "run"
+    ],
+    "returncode": 0,
+    "environment_overrides": {}
+  },
+  {
+    "label": "legacy-reader",
+    "argv": [
+      "perl",
+      "/tools/read_reference.pl"
+    ],
+    "returncode": 0,
+    "environment_overrides": {}
+  },
+  {
+    "label": "page-matrix",
+    "argv": [
+      "perl",
+      "/tools/cgi_entry.pl",
+      "show-schedule.cgi"
+    ],
+    "returncode": 0,
+    "environment_overrides": {
+      "REQUEST_METHOD": "GET",
+      "QUERY_STRING": "sched=%2Fexport%2Freference.sched&old_log=OK&debug=1",
+      "GATEWAY_INTERFACE": "CGI/1.1",
+      "SERVER_NAME": "127.0.0.1",
+      "SCRIPT_NAME": "/cgi-bin/show-schedule.cgi"
+    }
+  },
+  {
+    "label": "page-failures",
+    "argv": [
+      "perl",
+      "/tools/cgi_entry.pl",
+      "show-failures.cgi"
+    ],
+    "returncode": 0,
+    "environment_overrides": {
+      "REQUEST_METHOD": "GET",
+      "QUERY_STRING": "sched=%2Fexport%2Freference.sched&old_log=OK&debug=1",
+      "GATEWAY_INTERFACE": "CGI/1.1",
+      "SERVER_NAME": "127.0.0.1",
+      "SCRIPT_NAME": "/cgi-bin/show-failures.cgi"
+    }
+  },
+  {
+    "label": "page-known-hidden",
+    "argv": [
+      "perl",
+      "/tools/cgi_entry.pl",
+      "show-failures.cgi"
+    ],
+    "returncode": 0,
+    "environment_overrides": {
+      "REQUEST_METHOD": "GET",
+      "QUERY_STRING": "sched=%2Fexport%2Freference.sched&old_log=OK&debug=1&filterout=KF",
+      "GATEWAY_INTERFACE": "CGI/1.1",
+      "SERVER_NAME": "127.0.0.1",
+      "SCRIPT_NAME": "/cgi-bin/show-failures.cgi"
+    }
+  },
+  {
+    "label": "page-compile-only",
+    "argv": [
+      "perl",
+      "/tools/cgi_entry.pl",
+      "show-failures.cgi"
+    ],
+    "returncode": 0,
+    "environment_overrides": {
+      "REQUEST_METHOD": "GET",
+      "QUERY_STRING": "sched=%2Fexport%2Freference.sched&old_log=OK&debug=1&filterin=CF",
+      "GATEWAY_INTERFACE": "CGI/1.1",
+      "SERVER_NAME": "127.0.0.1",
+      "SCRIPT_NAME": "/cgi-bin/show-failures.cgi"
+    }
+  },
+  {
+    "label": "page-alpha-only",
+    "argv": [
+      "perl",
+      "/tools/cgi_entry.pl",
+      "show-failures.cgi"
+    ],
+    "returncode": 0,
+    "environment_overrides": {
+      "REQUEST_METHOD": "GET",
+      "QUERY_STRING": "sched=%2Fexport%2Freference.sched&old_log=OK&debug=1&bucketin=alpha",
+      "GATEWAY_INTERFACE": "CGI/1.1",
+      "SERVER_NAME": "127.0.0.1",
+      "SCRIPT_NAME": "/cgi-bin/show-failures.cgi"
+    }
+  },
+  {
+    "label": "page-results-catalog",
+    "argv": [
+      "perl",
+      "/tools/cgi_entry.pl",
+      "describe-test-results.cgi"
+    ],
+    "returncode": 0,
+    "environment_overrides": {
+      "REQUEST_METHOD": "GET",
+      "QUERY_STRING": "sched=%2Fexport%2Freference.sched&old_log=OK&debug=1",
+      "GATEWAY_INTERFACE": "CGI/1.1",
+      "SERVER_NAME": "127.0.0.1",
+      "SCRIPT_NAME": "/cgi-bin/describe-test-results.cgi"
+    }
+  },
+  {
+    "label": "page-options-catalog",
+    "argv": [
+      "perl",
+      "/tools/cgi_entry.pl",
+      "describe-cti-options.cgi"
+    ],
+    "returncode": 0,
+    "environment_overrides": {
+      "REQUEST_METHOD": "GET",
+      "QUERY_STRING": "sched=%2Fexport%2Freference.sched&old_log=OK&debug=1",
+      "GATEWAY_INTERFACE": "CGI/1.1",
+      "SERVER_NAME": "127.0.0.1",
+      "SCRIPT_NAME": "/cgi-bin/describe-cti-options.cgi"
+    }
+  }
+]

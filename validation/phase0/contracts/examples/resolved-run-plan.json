@@ -1,0 +1,41 @@
+{
+  "schema": "opencti.resolved-run-plan/v1",
+  "run_id": "ft19-002",
+  "source": {
+    "type": "git",
+    "identity": "https://github.com/open64-compiler/open64",
+    "revision": "2dd9308c3c77eb06ef52e461329a04ab1da6e7ec",
+    "logical_path": "osprey/torch2whirl/python/tests/models/absorbed_mla.py",
+    "content_sha256": "0b09aa070ca31850f85d7721315b3ba430ddfeab68639edca3f992c8a014f222",
+    "patch": null,
+    "authority": "git:https://github.com/open64-compiler/open64"
+  },
+  "test_ids": [
+    "Open64/absorbed-mla/short"
+  ],
+  "compiler": {
+    "sha256": "6b8075fe04eac9040a8c4eef0ac484ed3db031170146b3c51314728f61eed7be",
+    "logical_path": "toolchain.tar.gz",
+    "role": "compiler_closure"
+  },
+  "options": [
+    {
+      "key": "LNO",
+      "value": "on",
+      "origin": "retained historical command"
+    }
+  ],
+  "image_id": "sha256:b18b7676ae388026312993b0a299c4ca6ca36999444f337f6826ea5ff1e8f577",
+  "target": {
+    "os": "linux",
+    "architecture": "amd64",
+    "execution_mode": "emulated",
+    "gpu_requirement": null
+  },
+  "backend": "docker",
+  "baseline": {
+    "sha256": "0ce4a35ef5760bb7e5ddcdb82c1a963f56d4f718fa6e8b41bc6dec8ef1316829",
+    "logical_path": "reference/original.reference.json",
+    "role": "original_semantic_oracle"
+  }
+}

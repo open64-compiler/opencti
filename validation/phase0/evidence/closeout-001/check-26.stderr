@@ -1,0 +1,23 @@
+test_binding_is_exact_and_public_export_omits_native_data (test_dashboard.DashboardContracts) ... ok
+test_changed_manifest_unknown_id_and_revocation (test_dashboard.DashboardContracts) ... ok
+test_external_requirements_require_explicit_inspection (test_dashboard.DashboardContracts) ... ok
+test_no_native_state_inside_evidence (test_dashboard.DashboardContracts) ... ok
+test_only_opaque_urls_are_accepted (test_dashboard.DashboardContracts) ... ok
+test_original_run_log_digest_is_required_and_cannot_be_overridden (test_dashboard.DashboardContracts) ... ok
+test_terminal_handoff_quotes_static_paths_and_run_revalidates (test_dashboard.DashboardContracts) ... ok
+test_archive_preserves_declared_links_and_executable_bits (test_session_cli.SessionContracts) ... ok
+test_archive_rejects_traversal_duplicate_device_and_symlink_parent (test_session_cli.SessionContracts) ... ok
+test_archive_snapshot_hashes_the_copied_bytes (test_session_cli.SessionContracts) ... ok
+test_incomplete_sessions_and_state_inside_evidence_are_rejected (test_session_cli.SessionContracts) ... ok
+test_input_specs_cannot_select_other_session_resources (test_session_cli.SessionContracts) ... ok
+test_modified_archive_is_rejected (test_session_cli.SessionContracts) ... ok
+test_normalized_work_and_environment (test_session_cli.SessionContracts) ... ok
+test_overlapping_writable_mounts_are_rejected (test_session_cli.SessionContracts) ... ok
+test_resource_ownership_and_image_are_checked (test_session_cli.SessionContracts) ... ok
+test_unimplemented_execution_requests_are_not_silently_ignored (test_session_cli.SessionContracts) ... ok
+test_unsupported_version_mutable_image_and_path_escape (test_session_cli.SessionContracts) ... ok
+
+----------------------------------------------------------------------
+Ran 18 tests in 0.024s
+
+OK

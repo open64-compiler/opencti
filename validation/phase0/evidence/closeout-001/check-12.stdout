@@ -1,0 +1,9 @@
+{
+  "status": "pass_for_synthetic_contracts",
+  "checksummed_files": 136,
+  "cases": 8,
+  "saved_phase_replays": 15,
+  "controls": 7,
+  "stale_hook_false_pass": "observed_not_fixed",
+  "framework_unchanged": true
+}

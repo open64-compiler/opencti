@@ -1,0 +1,75 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://open64-compiler.github.io/opencti/contracts/baseline-version-v1.schema.json",
+  "title": "Proposed phase 0 baseline-version",
+  "description": "Design contract; not a deployed API and not the existing cti-session/v1 specification.",
+  "type": "object",
+  "properties": {
+    "schema": {
+      "const": "opencti.baseline-version/v1"
+    },
+    "baseline_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "oracle": {
+      "$ref": "#/$defs/artifact-ref"
+    },
+    "input": {
+      "$ref": "#/$defs/artifact-ref"
+    },
+    "scope": {
+      "type": "string",
+      "minLength": 1
+    },
+    "review": {
+      "type": "string",
+      "minLength": 1
+    },
+    "predecessor": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "immutable": {
+      "const": true
+    }
+  },
+  "required": [
+    "schema",
+    "baseline_id",
+    "oracle",
+    "input",
+    "scope",
+    "review",
+    "predecessor",
+    "immutable"
+  ],
+  "additionalProperties": false,
+  "$defs": {
+    "artifact-ref": {
+      "type": "object",
+      "properties": {
+        "sha256": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "logical_path": {
+          "type": "string",
+          "minLength": 1
+        },
+        "role": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "required": [
+        "sha256",
+        "logical_path",
+        "role"
+      ],
+      "additionalProperties": false
+    }
+  }
+}

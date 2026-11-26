@@ -1,0 +1,11 @@
+{
+  "features": 38,
+  "failure_scenarios": 19,
+  "dashboard_scenarios": 16,
+  "adoption_scenarios": 7,
+  "adoption_gaps": 5,
+  "contracts": 10,
+  "source_inventory_entries": 266,
+  "historical_archive": "unavailable",
+  "peer_review": "pending"
+}

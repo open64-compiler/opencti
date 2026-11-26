@@ -1,0 +1,13 @@
+{
+  "checks_passed": true,
+  "hashed_files": 13,
+  "original_failures": {
+    "FT01/compile_error": "CompileErr",
+    "FT02/runtime_error": "ExecErr",
+    "FT03/output_mismatch": "DiffPgmOut",
+    "FT03NoMaster/absent_master": "NoMasterOut"
+  },
+  "replay_checks": 10,
+  "archived_original_verified": true,
+  "framework_comparison": "retained_original_record_not_reexecuted_without_large_archives"
+}

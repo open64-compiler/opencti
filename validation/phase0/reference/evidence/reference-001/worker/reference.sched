@@ -1,0 +1,6 @@
+use TestInfo;
+$SCHED_Title="Phase 0 measured synthetic reference";
+$SCHED_Cache_dir="/export/cache";
+TestInfo->new(OPTIONS=>"/fixtures/reference.opt",VIEW=>"alpha",DAYS=>[qw(fri thu wed tue mon sun sat)],WORKDIR=>"/export/alpha/DAY/work",LOGNAME=>"/export/alpha/DAY/summary.log");
+TestInfo->new(OPTIONS=>"/fixtures/reference.opt",VIEW=>"beta",DAYS=>[qw(fri thu wed tue mon sun sat)],WORKDIR=>"/export/beta/DAY/work",LOGNAME=>"/export/beta/DAY/summary.log");
+1;

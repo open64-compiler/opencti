@@ -1,0 +1,18 @@
+{
+  "reference_epoch": 1794593616,
+  "timezone": [
+    "UTC",
+    "UTC"
+  ],
+  "days_newest_first": [
+    "fri",
+    "thu",
+    "wed",
+    "tue",
+    "mon",
+    "sun",
+    "sat",
+    "fri"
+  ],
+  "partial_log_origin": "derived_by_truncating_previous_real_summary_not_a_live_interruption"
+}

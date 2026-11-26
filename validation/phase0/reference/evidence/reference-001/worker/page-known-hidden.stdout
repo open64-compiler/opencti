@@ -1,0 +1,163 @@
+Content-Type: text/html; charset=ISO-8859-1
+
+<!DOCTYPE html
+	PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+	 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en-US" xml:lang="en-US">
+<head>
+<title>Show Failures</title>
+<link rel="stylesheet" type="text/css" href="../css/homepages-v5.css" />
+<script type="text/javascript">//<![CDATA[
+
+
+    var req;
+    var counter=0;
+    var pics = new Array ('../images/plus.gif', '../images/minus.gif' );
+
+    function processReqChange()
+    { // only if req shows "loaded"
+      if (req.readyState == 4)
+        { // only if "OK"
+          counter++;
+          document.getElementById('usage_button').src = pics [counter % 2];
+          if (req.status == 200)
+            { // ...processing statements  go here...
+              if(counter % 2)
+                { document.getElementById('usage').innerHTML = req.responseText;
+                }
+              else
+                { document.getElementById('usage').innerHTML = '';
+                }
+            }
+          else
+            { alert("There was a problem retrieving the XML data:" + req.statusText);
+            }
+        }
+    }
+
+    function loadXMLDoc(url)
+    { // branch for native XMLHttpRequest object
+      if (window.XMLHttpRequest)
+        { req = new XMLHttpRequest();
+          req.onreadystatechange = processReqChange;
+          req.open("GET", url, true);
+          req.send(null);
+        }
+      else if (window.ActiveXObject)
+        { req = new ActiveXObject("Microsoft.XMLHTTP");
+          if (req)
+            { req.onreadystatechange = processReqChange;
+              req.open("GET", url, true);
+              req.send();
+            }
+        }
+    }
+  
+//]]></script>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+</head>
+<body>
+<h2>Test Failures Status /export/reference.sched as of Fri Nov 13 18:13:38 2026</h2>
+<h3>2 buckets</h3><a href="javascript:loadXMLDoc('http://127.0.0.1/cgi-bin/show-failures.cgi?customize=1');"><img id="usage_button" border="0"
+           src="../images/plus.gif" value="+"></a> Customizable options<p><div id="usage" align="left"> </div><table cellspacing="10"><tr><td><a href="http://localhost/CTI">CTI Home</a></td><td><a href="http://localhost/CTI/dtm/www/cgi-bin/dTMState.php">dTM server</a></td><td><a href="show-schedule.cgi?sched=/export/reference.sched&show=numbers&old_log=OK">Show schedule</a></td><td><a href="get-file.cgi?file=/export/reference.sched">Schedule file</a></td><td><a href="http://127.0.0.1/cgi-bin/show-failures.cgi?sched=%2Fexport%2Freference.sched;old_log=OK;debug=1;filterout=KF&import_known_failures=1">Import known failures</a></td></tr></table>    <table border="0">
+       <tr><td bgcolor="#E6E6E6">Status color code:</td>
+           <td bgcolor="#E6E6E6"><font color="Green"><b>no errors</b></font></td>
+           <td bgcolor="#E6E6E6"><font color="BlueViolet"><b>some errors</b></font></td>
+           <td bgcolor="#E6E6E6"><font color="Orange"><b>in-progress</b></font></td>
+           <td bgcolor="#E6E6E6"><font color="OrangeRed"><b>setup errors/old_log</b></font></td>
+       </tr>
+    </table>
+<table border="1">
+<tr><th nowrap bgcolor="#CCCCCC" align="center"> Options file, view, keywords &nbsp;/&nbsp; log files</th>
+<td nowrap bgcolor="#CCCCCC" align="center"><a href="./get-options-file.cgi?day=fri&file=/export/cache/errors.fri.cache&sched=/export/reference.sched"><b>Fri</b></a><br>[ unknown failures / known failures / passes / total ]</td>
+<td nowrap bgcolor="#CCCCCC" align="center"><a href="./get-options-file.cgi?day=thu&file=/export/cache/errors.thu.cache&sched=/export/reference.sched"><b>Thu</b></a><br>[ unknown failures / known failures / passes / total ]</td>
+<td nowrap bgcolor="#CCCCCC" align="center"><a href="./get-options-file.cgi?day=wed&file=/export/cache/errors.wed.cache&sched=/export/reference.sched"><b>Wed</b></a><br>[ unknown failures / known failures / passes / total ]</td>
+<td nowrap bgcolor="#CCCCCC" align="center"><a href="./get-options-file.cgi?day=tue&file=/export/cache/errors.tue.cache&sched=/export/reference.sched"><b>Tue</b></a><br>[ unknown failures / known failures / passes / total ]</td>
+<td nowrap bgcolor="#CCCCCC" align="center"><a href="./get-options-file.cgi?day=mon&file=/export/cache/errors.mon.cache&sched=/export/reference.sched"><b>Mon</b></a><br>[ unknown failures / known failures / passes / total ]</td>
+<td nowrap bgcolor="#CCCCCC" align="center"><a href="./get-options-file.cgi?day=sun&file=/export/cache/errors.sun.cache&sched=/export/reference.sched"><b>Sun</b></a><br>[ unknown failures / known failures / passes / total ]</td>
+<td nowrap bgcolor="#CCCCCC" align="center"><a href="./get-options-file.cgi?day=sat&file=/export/cache/errors.sat.cache&sched=/export/reference.sched"><b>Sat</b></a><br>[ unknown failures / known failures / passes / total ]</td>
+<th nowrap bgcolor="#CCCCCC" align="center"> OPTIONS</th>
+</tr>
+<tr valign="top"><td nowrap bgcolor="#E6E6E6"><a href="./get-options-file.cgi?file=/fixtures/reference.opt&view=alpha">reference.opt</a> <table cellspacing="0" cellpadding="0" border="0" width="100%">
+                            <tr><td align="left">alpha</td></tr><tr><td align="left"><i></i></td></tr>
+                            </table></td>
+<td nowrap bgcolor="#E6E6E6"><table border="0" cellpadding="0" cellspacing="0" width="100%"><tr><td nowrap><font color='red'><b>&lt;</b></font><font color='red'>&reg;</font><b><acronym title="< actual
+"><a href="./chk_test_errors.cgi?details=1000&log=/export/alpha/fri/summary.log&arg=Regression/Reference/D.c">Regression/Reference/D.c</a></acronym></td></b><td align="right">&nbsp;<acronym title="OUTPUT DIFFERENCE FAILURES">ODF</acronym></td></tr>
+ <tr><td nowrap><font color='red'><b>&lt;</b></font><a href="./chk_test_errors.cgi?details=1000&log=/export/alpha/fri/summary.log&arg=Regression/Reference/C.c">Regression/Reference/C.c</a></td><td align="right">&nbsp;<acronym title="EXECUTION FAILURES">EF</acronym></td></tr>
+<tr><td><acronym title="reference.opt / alpha / Fri Nov 13"><a href="./get-log-file.cgi?log=/export/alpha/fri/summary.log"><b><font color=BlueViolet>...log</font></b></a></acronym>[ 2 / 1 / 2 / 5 ] - Nov 13</td><td align="right"><a href="./update_known_failures.cgi?day=fri&opt=/fixtures/reference.opt&view=alpha&log=/export/alpha/fri/summary.log&cache_dir=/export/cache&sched=/export/reference.sched&prev_day=wed&prev_log=/export/alpha/wed/summary.log&filterout=KF">ukf</a></td></tr><tr><td><br>[1 5 2 3]<br>[1 5 2 3]<br>[prev_day=thu, prev_status=2]<br>[prev_day=wed, prev_status=1]<pre>$VAR1 = {
+          'ERR_TYPE' => 'EXECUTION FAILURES'
+        };
+
+</pre><pre>$VAR1 = {
+          'ERR_MSG' => '< actual
+',
+          'ERR_TYPE' => 'OUTPUT DIFFERENCE FAILURES'
+        };
+
+</pre></td></tr></table></td>
+<td nowrap bgcolor="#E6E6E6"><table border="0" cellpadding="0" cellspacing="0" width="100%"><tr><td nowrap><a href="./chk_test_errors.cgi?details=1000&log=/export/alpha/thu/summary.log&arg=Regression/Reference/C.c">Regression/Reference/C.c</a></td><td align="right">&nbsp;<acronym title="EXECUTION FAILURES">EF</acronym></td></tr>
+<tr><td><acronym title="reference.opt / alpha / Thu Nov 12"><a href="./get-log-file.cgi?log=/export/alpha/thu/summary.log"><b><font color=Orange>...log</font></b></a></acronym>[ -1 / 1 / 0 / 0 ] - Nov 13</td><td align="right"><a href="./update_known_failures.cgi?day=thu&opt=/fixtures/reference.opt&view=alpha&log=/export/alpha/thu/summary.log&cache_dir=/export/cache&sched=/export/reference.sched&prev_day=wed&prev_log=/export/alpha/wed/summary.log&filterout=KF">ukf</a></td></tr><tr><td><br>[2 0 0 0]<br>[2 0 0 0]<br>[prev_day=wed, prev_status=1]<pre>$VAR1 = {
+          'ERR_TYPE' => 'EXECUTION FAILURES'
+        };
+
+</pre></td></tr></table></td>
+<td nowrap bgcolor="#E6E6E6"><table border="0" cellpadding="0" cellspacing="0" width="100%"><tr><td nowrap><a href="./chk_test_errors.cgi?details=1000&log=/export/alpha/wed/summary.log&arg=Regression/Reference/C.c">Regression/Reference/C.c</a></td><td align="right">&nbsp;<acronym title="EXECUTION FAILURES">EF</acronym></td></tr>
+<tr><td><acronym title="reference.opt / alpha / Wed Nov 11"><a href="./get-log-file.cgi?log=/export/alpha/wed/summary.log"><b><font color=BlueViolet>...log</font></b></a></acronym>[ 1 / 1 / 3 / 5 ] - Nov 13</td><td align="right"><a href="./update_known_failures.cgi?day=wed&opt=/fixtures/reference.opt&view=alpha&log=/export/alpha/wed/summary.log&cache_dir=/export/cache&sched=/export/reference.sched&prev_day=sat&prev_log=/export/alpha/sat/summary.log&filterout=KF">ukf</a></td></tr><tr><td><br>[1 5 3 2]<br>[1 5 3 2]<br>[prev_day=tue<br>[prev_day=mon<br>[prev_day=sun<br>[prev_day=sat<pre>$VAR1 = {
+          'ERR_TYPE' => 'EXECUTION FAILURES'
+        };
+
+</pre></td></tr></table></td>
+<td nowrap bgcolor="#E6E6E6"><table border="0" cellpadding="0" cellspacing="0" width="100%"><tr><td><acronym title="reference.opt / alpha / Tue Nov 10"><a href="./get-log-file.cgi?log=/export/alpha/tue/summary.log"><b><font color=OrangeRed></font></b></a></acronym>[ 0 / 0 / 0 / 0 ] - </td></tr><tr><td><br>[3 0 0 0]<br>[0 0 0 0 0]<br>[]<br>[prev_day=mon<br>[prev_day=sun<br>[prev_day=sat</td></tr></table></td>
+<td nowrap bgcolor="#E6E6E6"><table border="0" cellpadding="0" cellspacing="0" width="100%"><tr><td><acronym title="reference.opt / alpha / Mon Nov 9"><a href="./get-log-file.cgi?log=/export/alpha/mon/summary.log"><b><font color=OrangeRed></font></b></a></acronym>[ 0 / 0 / 0 / 0 ] - </td></tr><tr><td><br>[3 0 0 0]<br>[0 0 0 0 0]<br>[]<br>[prev_day=sun<br>[prev_day=sat</td></tr></table></td>
+<td nowrap bgcolor="#E6E6E6"><table border="0" cellpadding="0" cellspacing="0" width="100%"><tr><td><acronym title="reference.opt / alpha / Sun Nov 8"><a href="./get-log-file.cgi?log=/export/alpha/sun/summary.log"><b><font color=OrangeRed></font></b></a></acronym>[ 0 / 0 / 0 / 0 ] - </td></tr><tr><td><br>[3 0 0 0]<br>[0 0 0 0 0]<br>[]<br>[prev_day=sat</td></tr></table></td>
+<td nowrap bgcolor="#E6E6E6"><table border="0" cellpadding="0" cellspacing="0" width="100%"><tr><td><acronym title="reference.opt / alpha / Sat Nov 7"><a href="./get-log-file.cgi?log=/export/alpha/sat/summary.log"><b><font color=OrangeRed></font></b></a></acronym>[ 0 / 0 / 0 / 0 ] - </td></tr><tr><td><br>[3 0 0 0]<br>[0 0 0 0 0]<br>[]</td></tr></table></td>
+<td nowrap bgcolor="#E6E6E6">reference.opt</td>
+</tr>
+<tr valign="top"><td nowrap bgcolor="#E6E6E6"><a href="./get-options-file.cgi?file=/fixtures/reference.opt&view=beta">reference.opt</a> <table cellspacing="0" cellpadding="0" border="0" width="100%">
+                            <tr><td align="left">beta</td></tr><tr><td align="left"><i></i></td></tr>
+                            </table></td>
+<td nowrap bgcolor="#E6E6E6"><table border="0" cellpadding="0" cellspacing="0" width="100%"><tr><td nowrap><font color='red'><b>&lt;</b></font><font color='red'>&reg;</font><b><acronym title="< actual
+"><a href="./chk_test_errors.cgi?details=1000&log=/export/beta/fri/summary.log&arg=Regression/Reference/D.c">Regression/Reference/D.c</a></acronym></td></b><td align="right">&nbsp;<acronym title="OUTPUT DIFFERENCE FAILURES">ODF</acronym></td></tr>
+ <tr><td nowrap><font color='red'><b>&lt;</b></font><a href="./chk_test_errors.cgi?details=1000&log=/export/beta/fri/summary.log&arg=Regression/Reference/C.c">Regression/Reference/C.c</a></td><td align="right">&nbsp;<acronym title="EXECUTION FAILURES">EF</acronym></td></tr>
+<tr><td><acronym title="reference.opt / beta / Fri Nov 13"><a href="./get-log-file.cgi?log=/export/beta/fri/summary.log"><b><font color=BlueViolet>...log</font></b></a></acronym>[ 2 / 1 / 2 / 5 ] - Nov 13</td><td align="right"><a href="./update_known_failures.cgi?day=fri&opt=/fixtures/reference.opt&view=beta&log=/export/beta/fri/summary.log&cache_dir=/export/cache&sched=/export/reference.sched&prev_day=wed&prev_log=/export/beta/wed/summary.log&filterout=KF">ukf</a></td></tr><tr><td><br>[1 5 2 3]<br>[1 5 2 3]<br>[prev_day=thu, prev_status=2]<br>[prev_day=wed, prev_status=1]<pre>$VAR1 = {
+  'ERR_TYPE' => 'EXECUTION FAILURES'
+};
+
+</pre><pre>$VAR1 = {
+  'ERR_TYPE' => 'OUTPUT DIFFERENCE FAILURES',
+  'ERR_MSG' => '< actual
+'
+};
+
+</pre></td></tr></table></td>
+<td nowrap bgcolor="#E6E6E6"><table border="0" cellpadding="0" cellspacing="0" width="100%"><tr><td nowrap><a href="./chk_test_errors.cgi?details=1000&log=/export/beta/thu/summary.log&arg=Regression/Reference/C.c">Regression/Reference/C.c</a></td><td align="right">&nbsp;<acronym title="EXECUTION FAILURES">EF</acronym></td></tr>
+<tr><td><acronym title="reference.opt / beta / Thu Nov 12"><a href="./get-log-file.cgi?log=/export/beta/thu/summary.log"><b><font color=Orange>...log</font></b></a></acronym>[ -1 / 1 / 0 / 0 ] - Nov 13</td><td align="right"><a href="./update_known_failures.cgi?day=thu&opt=/fixtures/reference.opt&view=beta&log=/export/beta/thu/summary.log&cache_dir=/export/cache&sched=/export/reference.sched&prev_day=wed&prev_log=/export/beta/wed/summary.log&filterout=KF">ukf</a></td></tr><tr><td><br>[2 0 0 0]<br>[2 0 0 0]<br>[prev_day=wed, prev_status=1]<pre>$VAR1 = {
+  'ERR_TYPE' => 'EXECUTION FAILURES'
+};
+
+</pre></td></tr></table></td>
+<td nowrap bgcolor="#E6E6E6"><table border="0" cellpadding="0" cellspacing="0" width="100%"><tr><td nowrap><a href="./chk_test_errors.cgi?details=1000&log=/export/beta/wed/summary.log&arg=Regression/Reference/C.c">Regression/Reference/C.c</a></td><td align="right">&nbsp;<acronym title="EXECUTION FAILURES">EF</acronym></td></tr>
+<tr><td><acronym title="reference.opt / beta / Wed Nov 11"><a href="./get-log-file.cgi?log=/export/beta/wed/summary.log"><b><font color=BlueViolet>...log</font></b></a></acronym>[ 1 / 1 / 3 / 5 ] - Nov 13</td><td align="right"><a href="./update_known_failures.cgi?day=wed&opt=/fixtures/reference.opt&view=beta&log=/export/beta/wed/summary.log&cache_dir=/export/cache&sched=/export/reference.sched&prev_day=sat&prev_log=/export/beta/sat/summary.log&filterout=KF">ukf</a></td></tr><tr><td><br>[1 5 3 2]<br>[1 5 3 2]<br>[prev_day=tue<br>[prev_day=mon<br>[prev_day=sun<br>[prev_day=sat<pre>$VAR1 = {
+  'ERR_TYPE' => 'EXECUTION FAILURES'
+};
+
+</pre></td></tr></table></td>
+<td nowrap bgcolor="#E6E6E6"><table border="0" cellpadding="0" cellspacing="0" width="100%"><tr><td><acronym title="reference.opt / beta / Tue Nov 10"><a href="./get-log-file.cgi?log=/export/beta/tue/summary.log"><b><font color=OrangeRed></font></b></a></acronym>[ 0 / 0 / 0 / 0 ] - </td></tr><tr><td><br>[3 0 0 0]<br>[0 0 0 0 0]<br>[]<br>[prev_day=mon<br>[prev_day=sun<br>[prev_day=sat</td></tr></table></td>
+<td nowrap bgcolor="#E6E6E6"><table border="0" cellpadding="0" cellspacing="0" width="100%"><tr><td><acronym title="reference.opt / beta / Mon Nov 9"><a href="./get-log-file.cgi?log=/export/beta/mon/summary.log"><b><font color=OrangeRed></font></b></a></acronym>[ 0 / 0 / 0 / 0 ] - </td></tr><tr><td><br>[3 0 0 0]<br>[0 0 0 0 0]<br>[]<br>[prev_day=sun<br>[prev_day=sat</td></tr></table></td>
+<td nowrap bgcolor="#E6E6E6"><table border="0" cellpadding="0" cellspacing="0" width="100%"><tr><td><acronym title="reference.opt / beta / Sun Nov 8"><a href="./get-log-file.cgi?log=/export/beta/sun/summary.log"><b><font color=OrangeRed></font></b></a></acronym>[ 0 / 0 / 0 / 0 ] - </td></tr><tr><td><br>[3 0 0 0]<br>[0 0 0 0 0]<br>[]<br>[prev_day=sat</td></tr></table></td>
+<td nowrap bgcolor="#E6E6E6"><table border="0" cellpadding="0" cellspacing="0" width="100%"><tr><td><acronym title="reference.opt / beta / Sat Nov 7"><a href="./get-log-file.cgi?log=/export/beta/sat/summary.log"><b><font color=OrangeRed></font></b></a></acronym>[ 0 / 0 / 0 / 0 ] - </td></tr><tr><td><br>[3 0 0 0]<br>[0 0 0 0 0]<br>[]</td></tr></table></td>
+<td nowrap bgcolor="#E6E6E6">reference.opt</td>
+</tr>
+<tr><td nowrap bgcolor="#CCCCCC" align="center">Refresh C/S error log</td>
+<td nowrap bgcolor="#CCCCCC" align="center"><a href="./update_cache.cgi?old_log=OK&day=fri&file=/export/cache/errors.fri.cache&sched=/export/reference.sched">Fri</a></td>
+<td nowrap bgcolor="#CCCCCC" align="center"><a href="./update_cache.cgi?old_log=OK&day=thu&file=/export/cache/errors.thu.cache&sched=/export/reference.sched">Thu</a></td>
+<td nowrap bgcolor="#CCCCCC" align="center"><a href="./update_cache.cgi?old_log=OK&day=wed&file=/export/cache/errors.wed.cache&sched=/export/reference.sched">Wed</a></td>
+<td nowrap bgcolor="#CCCCCC" align="center"><a href="./update_cache.cgi?old_log=OK&day=tue&file=/export/cache/errors.tue.cache&sched=/export/reference.sched">Tue</a></td>
+<td nowrap bgcolor="#CCCCCC" align="center"><a href="./update_cache.cgi?old_log=OK&day=mon&file=/export/cache/errors.mon.cache&sched=/export/reference.sched">Mon</a></td>
+<td nowrap bgcolor="#CCCCCC" align="center"><a href="./update_cache.cgi?old_log=OK&day=sun&file=/export/cache/errors.sun.cache&sched=/export/reference.sched">Sun</a></td>
+<td nowrap bgcolor="#CCCCCC" align="center"><a href="./update_cache.cgi?old_log=OK&day=sat&file=/export/cache/errors.sat.cache&sched=/export/reference.sched">Sat</a></td>
+<td nowrap bgcolor="#CCCCCC" align="center"> Refresh C/S error log</td>
+</tr>
+</table><h4>Code signs:</h4><ul><li>'<font color='red'>&reg;</font>' = regression (a new or different failure comparing to the log from the previous run)</li>    <li>'<b>bold_test_name</b>' = error message available</li>    <li>all the CTI test <a href="./describe-test-results.cgi">result types</a></li></ul>
+</body>
+</html>

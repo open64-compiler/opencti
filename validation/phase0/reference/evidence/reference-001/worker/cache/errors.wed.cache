@@ -1,0 +1,33 @@
+$Cache_data = {
+  'TIME_STAMP' => 'Wed Nov 11',
+  '/export/alpha/wed/summary.log' => {
+    'Regression/Reference/C.c' => {
+      'ERR_TYPE' => 'EXECUTION FAILURES'
+    },
+    'STATUS' => [
+      1,
+      5,
+      '3',
+      2
+    ],
+    'Regression/Reference/B.c' => {
+      'ERR_MSG' => 'B.c:1:2: error: #error retained-known-compile-failure',
+      'ERR_TYPE' => 'COMPILATION FAILURES'
+    }
+  },
+  '/export/beta/wed/summary.log' => {
+    'STATUS' => [
+      1,
+      5,
+      '3',
+      2
+    ],
+    'Regression/Reference/C.c' => {
+      'ERR_TYPE' => 'EXECUTION FAILURES'
+    },
+    'Regression/Reference/B.c' => {
+      'ERR_MSG' => 'B.c:1:2: error: #error retained-known-compile-failure',
+      'ERR_TYPE' => 'COMPILATION FAILURES'
+    }
+  }
+};

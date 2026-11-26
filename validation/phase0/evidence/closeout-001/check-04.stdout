@@ -1,0 +1,17 @@
+{
+  "scenario": "FT07",
+  "hashed_files": 142,
+  "archived_dependency_files": 17,
+  "resolved_symlink_edges": 10,
+  "shared_cases": 2,
+  "original_hook_calls": 1,
+  "replay_hook_calls": 0,
+  "preserved_object_phase_checks": 10,
+  "explicit_rebuild_and_phase_checks": 5,
+  "incomplete_closure_controls": 5,
+  "legacy_missing_dependency_controls": 3,
+  "saved_recipe_files_unchanged": 24,
+  "deleted_input_work_roots": 6,
+  "container_mount_maps_checked": 11,
+  "native_artifact_service_acceptance": "open"
+}

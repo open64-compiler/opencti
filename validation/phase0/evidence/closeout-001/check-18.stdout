@@ -1,0 +1,11 @@
+{
+  "audited_revision": "14440d0e2e284f5a2c2650d74bc72ff9d8a51312",
+  "framework_baseline": "8c3d603797129d32e90532c830b3cdabbc5e4b17",
+  "files": 266,
+  "regular_files": 255,
+  "symlinks": 11,
+  "shebang_files": 191,
+  "historical_inventory_matches": true,
+  "baseline_matches": true,
+  "limits": "Git-object comparison only; original host path presence, symlink permissions/resolution and working-tree status are historical observations, not re-tested here."
+}

@@ -1,0 +1,12 @@
+{
+  "validation/phase0/reference/worker.py": "6ac75d85ae2f605b42158793eccb979e7f01f2f8ec8c0175b719301e59aa1c81",
+  "validation/phase0/reference/run.py": "8aed7e46830387a92a7cb40567c8d53b07f3dae6258afdb8399323106ce37c36",
+  "validation/phase0/reference/cgi_entry.pl": "51a1732e272f4be3515ab932454a579533186836f7b6c264a87ddfed139a7c78",
+  "validation/phase0/reference/read_reference.pl": "fabf910fb006d2cc0ed6d43fa36023d0f4f38dee627199749fb21744e5120782",
+  "validation/phase0/legacy/fixtures/phase0.opt": "467f6ec91e8d2afef270239654d64e0c5a7459537db959370f6de782d4ffda4f",
+  "validation/phase0/legacy/ft09/inventory.py": "2c9655c6f2fc7b7ed8aafb1ae4c077013f67940e569addb6a818fd4c692da23a",
+  "www/cgi-bin/describe-cti-options.cgi": "4194a6b8b621e282eb5c51b5aaf178265a666dce8435d1851c2571def1058e16",
+  "www/cgi-bin/show-failures.cgi": "1d8584b28b4c2998dcffffcf078c5a849807f3f77ac265cabced6be5a8dae447",
+  "www/cgi-bin/show-schedule.cgi": "c3926bd952ce96555780b24aec57fe8d163b06d619d4088f61ed754d99180629",
+  "www/cgi-bin/describe-test-results.cgi": "3f806b6f739045edf31b34632712b01259aa217d7962524c7403a95ff356066b"
+}

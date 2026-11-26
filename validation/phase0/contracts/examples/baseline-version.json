@@ -1,0 +1,18 @@
+{
+  "schema": "opencti.baseline-version/v1",
+  "baseline_id": "m3-short-original-FP64",
+  "oracle": {
+    "sha256": "0ce4a35ef5760bb7e5ddcdb82c1a963f56d4f718fa6e8b41bc6dec8ef1316829",
+    "logical_path": "reference/original.reference.json",
+    "role": "original_semantic_oracle"
+  },
+  "input": {
+    "sha256": "420f87024b9dbd3dfacf56ed195cc7daf45227a0a54d99f53e1203acb06e4755",
+    "logical_path": "reference/original.inputs.bin",
+    "role": "reference"
+  },
+  "scope": "absorbed-MLA short CPU semantic control",
+  "review": "retained M3 receipt; not a newly approved baseline promotion",
+  "predecessor": null,
+  "immutable": true
+}

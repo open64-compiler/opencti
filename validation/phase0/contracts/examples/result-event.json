@@ -1,0 +1,14 @@
+{
+  "schema": "opencti.result-event/v1",
+  "identity": {
+    "run_id": "ft19-002",
+    "test_id": "Open64/absorbed-mla/short",
+    "attempt_id": "captured-compiler-crash"
+  },
+  "event_id": "capture-lower-failure-1",
+  "sequence": 0,
+  "idempotency_key": "ft19-002/captured-compiler-crash/lower-failure/1",
+  "kind": "execution",
+  "payload_sha256": "f1374d51460889c5285e85986a2ff48effd79d64d2d71a19eca0f47b9a3d5fdf",
+  "observed_utc": "2026-11-13T08:28:43.443001+00:00"
+}
